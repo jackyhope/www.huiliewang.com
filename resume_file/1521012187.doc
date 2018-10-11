@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<xml>
+<w:WordDocument>
+<w:View>
+Print
+</w:View>
+</xml>
+<title>简历</title>
+</head><body style="background:#dfdfdf;width:720px; margin:0 auto">
+<style>
+table{border-collapse:collapse; background:#ffffff; margin:0 auto; font-family:微软雅黑; font-size:14px;}
+table td{ white-space:normal;word-break:break-all;  font-size:14px;}
+table tr{ background:#ffffff}
+.resume_table_blod{ font-weight:bold; font-size:14px; background:#ededed}
+.image_gall{ margin-right:10px;}
+.resume_table_td_p{ line-height:25px;}
+</style>
+<table width="600" border="0" cellspacing="0" cellpadding="0" class="resume_tmpl4" bgcolor="#fff" style="font-size:14px; margin:0 auto;">
+<tbody>
+<tr>
+  <td>
+   <table width="600" cellspacing="5" cellpadding="0" class="resume_table_bg" >
+              <tbody>
+              <tr>
+              <td colspan="3" height="38" align="center" ><b style="font-size:16px;">个人简历</b></td>
+              </tr>
+              <tr>
+                  <td colspan="3" height="38" align="left" ><b style="font-size:16px;">基本信息</b></td>
+              </tr>
+              <tr>
+                  <td width="250" height="38"  align="left">
+                      姓名：穆创为
+                      </td>
+                  </td>
+                  <td width="250" height="38" align="left">性别：女</td>
+                  <td width="100" height="140"  align="center" rowspan="3"><img src="http://localhost/data/logo/20170418/14922051316.PNG" onerror="showImgDelay(this,'http://localhost/data/logo/20170418/14947989259.PNG',2);"/></td>
+              </tr>
+                <tr>
+                  <td width="250" height="38"  align="left">年龄：48</td>
+                  <td width="250"height="38"  align="left">所在城市：</td>
+                </tr>
+                <tr>
+                  <td width="250" height="38"  align="left">最高学历：</td>
+                  <td width="250" height="38"  align="left">工作年限：2年以上 </td>
+                </tr>
+              </tbody>
+            </table>
+      <!--联系方式-->
+
+      <table width="600" border="0" cellspacing="0" cellpadding="5"  class="resume_table_bg resume_table_bg_nt" >
+          <tbody>
+          <tr>
+              <td width="600"  colspan="3"  height="38" align="left" ><b style="font-size:16px;">联系方式</b></td>
+          </tr>
+          <tr>
+              <td width="250" height="38"  align="left">手机：13503862344</td>
+              <td width="250" height="38"  align="left">电子邮箱：muchuangwei@hotmail.com </td>
+              <td width="100" height="38"  align="left">
+                  <!---->
+              </td>
+          </tr>
+
+          </tbody>
+      </table>
+           <table width="600" border="0" cellspacing="0" cellpadding="5" class="resume_table_bg resume_table_bg_nt" >
+            <tbody>
+            <tr>
+                <td width="600" height="38" align="left" ><b style="font-size:16px;">求职意向</b></td>
+            </tr>
+              <tr>
+                <td class="resume_table_td_p" align="left" width="600">
+                  <div>从事行业：</div>
+                  <div>工作地点：重庆
+                  <div>期望薪资：面议</div>
+                                                                        <div class="yun_resume_job_intention_list_end">期望从事职位：</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+           
+          <!--工作经历-->
+          
+          <table width="600" border="0" cellspacing="0" cellpadding="5" class="resume_table_bg resume_table_bg_nt" >
+            <tbody>
+            <tr>
+                <td width="600" height="38" align="left" ><b style="font-size:16px;">工作经历</b></td>
+            </tr>
+              <tr>
+                <td width="600" class="resume_table_td_p"><div class="yun_resume_tabulation">                     <div class="yun_resume_exp_list ">
+                      <div class="yun_resume_exp_timt">-至今&nbsp;&nbsp;
+                          <b></b>&nbsp;&nbsp;
+                          <span class="yun_resume_exp_name_job">
+                              <b></b>
+                          </span>
+                      </div>
+                                          </div><br/>
+                                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          
+            <!--教育经历-->
+
+      <table width="600" border="0" cellspacing="0" cellpadding="5" class="resume_table_bg resume_table_bg_nt" >
+          <tbody>
+          <tr>
+              <td width="600" height="38" align="left" ><b style="font-size:16px;">教育经历</b></td>
+          </tr>
+          <tr>
+              <td  width="600"  class="resume_table_td_p"><div class="">                   <div class="yun_resume_exp_list ">
+                      <div class="yun_resume_exp_timt">-&nbsp;&nbsp;<b></b>&nbsp;&nbsp;<span class="yun_resume_exp_name_job"><b></b></span>&nbsp;&nbsp;学历</div>
+                  </div><br/>
+                   </div>
+              </td>
+          </tr>
+          </tbody>
+      </table>
+                            
+           
+          <!-- 我的作品--> 
+           
+          
+           
+          
+
+          
+          
+          </td>
+      </tr>
+        </tbody>
+      
+    </table>
+</body>
+</html>

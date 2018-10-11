@@ -1,0 +1,264 @@
+{yun:}include file="$ltstyle/header.htm"{/yun}
+{yun:}include file="$tplstyle/public_search/index_search.htm"{/yun}
+<script src="/data/plus/job.cache.js"></script>
+<script src="/data/plus/industry.cache.js"></script>
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/class.public.css" type="text/css">
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/comapply.css" type="text/css"/>
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/ltqy_detail.css" type="text/css"/>
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/job.css" type="text/css"/>
+<link href="{yun:}$com_style{/yun}/images/index_style.css" type=text/css rel=stylesheet>
+<div class="w1000">
+    <div class="alert alert-success" role="alert" style="width:1100px;margin: 0 auto;color: #3c763d;background-color: #fff;">
+
+        <div class="post-info" style="margin-top: 20px;height: 210px;">
+            <div class="info-gs-logo fl" style="float:right;"><img src="{yun:}if $jobs.logo{/yun}.{yun:}$jobs.logo{/yun}{yun:}else{/yun}{yun:}$style{/yun}/images/nopicqy.png{yun:}/if{/yun}" width="142" height="58"></div>
+            <ul class="info-zw" style="list-style: none;float: left;width: 850px;margin-top: 40px;">
+                <li class="row-office" style="width: 380px;border-left: none;text-align: left;margin-left: 24px;">
+                    <a id="recPosName" style="font-size: 24px;display: inherit;color: #5f75a3;font-weight: inherit;width: 380px;" class="nowrap" href="/job/index.php?c=comapply&id={yun:}$jobs.id{/yun}" target="_blank">{yun:}$jobs.name{/yun}</a>
+                    <div class="contentq" style="margin-top: 20px">
+                        <label style="color: #ff6600;font-size: 16px;margin-right: 10px;">{yun:}$jobs.job_salary{/yun}元</label>
+                        <label>工作经验:{yun:}$jobs.job_exp{/yun}</label>|
+                        <label>学历:{yun:}$jobs.job_edu{/yun}</label>|
+                        <label>{yun:}$jobs.job_city_one{/yun}-{yun:}$jobs.job_city_two{/yun}</label>
+                    </div>
+                    <div class="contentq" style="color: #999999;margin-top: 20px;">更新时间：{yun:}date('Y-m-d',$jobs.lastupdate){/yun}</div>
+                </li>
+                <li class="citywidth" style="border-left: none;width: 400px;float: left;margin-left: 30px;">
+                    <h5 id="recComName" style="font-size: 16px;display: inherit;color: #333;margin-top: 5px;font-weight: inherit;" class="nowrap">{yun:}$jobs.com_name{/yun}</h5>
+                    {yun:}if $jobs.identity==3{/yun}
+                    <div class="titleq">
+                        <div class="Compply_right_js">
+                            <ul>
+                                <li style="width: inherit;"><span style="display: inherit;" class="Compply_right_span_c"><i class="Compply_right_icon Compply_right_icon_hy"></i>{yun:}$jobs.hy_n{/yun}</span></li>
+                                <li style="width: inherit;"><span style="display: inherit;" class="Compply_right_span_c"><i class="Compply_right_icon Compply_right_icon_xz"></i>{yun:}$jobs.pr_n{/yun}</span> </li>
+                                <li style="width: inherit;"><span style="display: inherit;" class="Compply_right_span_c"><i class="Compply_right_icon Compply_right_icon_rs"></i>{yun:}$jobs.num_n{/yun}</span></li>
+
+                            </ul>
+                        </div></div>
+                    {yun:}else{/yun}
+                    <div class="titleq">
+                        <div class="Compply_right_js">
+                            <ul>
+                                <li style="width: inherit;"><span style="display: inherit;" class="Compply_right_span_c"><i class="Compply_right_icon Compply_right_icon_hy"></i>{yun:}$industry_name[$com.hy]{/yun}</span></li>
+                                <li style="width: inherit;"><span style="display: inherit;" class="Compply_right_span_c"><i class="Compply_right_icon Compply_right_icon_xz"></i>合资企业</span> </li>
+                                <li style="width: inherit;"><span style="display: inherit;" class="Compply_right_span_c"><i class="Compply_right_icon Compply_right_icon_rs"></i>{yun:}$comclass_name[$com.mun]{/yun}</span></li>
+                            </ul>
+                        </div></div>
+                    <div class="Compply_right_js comppnum" style="padding-top: 0">
+                        <ul class="comul">
+                            <li style="width: 70px;"><a class="nubers" href="#">{yun:}$job_num{/yun}11</a><br>招聘职位</li>
+                            <li style="width: 140px;"><label class="nubers">100%</label><br>简历及时处理率</li>
+                            <li style=""><label class="nubers">{yun:}date('Y-m-d',$login_date){/yun}</label><br>企业最近登录</li>
+                        </ul>
+                    </div>
+                    {yun:}/if{/yun}
+                </li>
+            </ul>
+            <div style="clear:both"></div>
+        </div>
+
+    </div>
+  <div class="admin_mainbody">
+    <div class=down_box>
+      <div class=admincont_box>
+          <div class="search_content" style="border: none;">
+              <div class="qiehuan">
+                  <a class="itemqh curss" href="{yun:}parse_url m=member c=apply identity=''{/yun}">全部推荐</a>
+                  <a class="itemqh" href="{yun:}parse_url m=member c=apply identity=3{/yun}">猎头推荐</a>
+                  <a class="itemqh " href="{yun:}parse_url m=member c=apply identity=1{/yun}">候选人自荐</a>
+              </div>
+              <form  method="post">
+
+                  <div class="Search_jobs_form_list" style="padding-bottom: 20px;">
+
+                      <div class="" style="font-weight: inherit;height: 26px;line-height: 26px;float: left;">简历状态：</div>
+                      <a class="Search_jobs_sub alcent {yun:}if empty($smarty.get.is_browse){/yun}hoverss{yun:}/if{/yun}" href="{yun:}parse_url m=member c=apply is_browse=0{/yun}" style="width: 40px;margin-left: 20px;">不限</a>
+                      <a class="Search_jobs_sub alcent {yun:}if $smarty.get.is_browse==-1{/yun}hoverss{yun:}/if{/yun}"  href="{yun:}parse_url m=member c=apply is_browse=-1{/yun}" style="float: left;width: 60px;">未查看</a>
+                      <a class="Search_jobs_sub alcent {yun:}if $smarty.get.is_browse==1{/yun}hoverss{yun:}/if{/yun}"  href="{yun:}parse_url m=member c=apply is_browse=1{/yun}" style="float: left;width: 60px;">已查看</a>
+                      <a class="Search_jobs_sub alcent {yun:}if $smarty.get.is_browse==6{/yun}hoverss{yun:}/if{/yun}"  href="{yun:}parse_url m=member c=apply is_browse=6{/yun}" style="float: left;width: 60px;">已下载</a>
+                      <a class="Search_jobs_sub alcent {yun:}if $smarty.get.is_browse==1{/yun}hoverss{yun:}/if{/yun}"  href="{yun:}parse_url m=member c=apply is_browse=1{/yun}" style="float: left;width: 40px;">待定</a>
+                      <a class="Search_jobs_sub alcent {yun:}if $smarty.get.is_browse==4{/yun}hoverss{yun:}/if{/yun}"  href="{yun:}parse_url m=member c=apply is_browse=4{/yun}" style="float: left;width: 60px;">不合适</a>
+                  </div>
+              </form>
+          </div>
+
+                  <div class="left_job_all fl">
+                      <div class="job_left_sidebar" style="width: 1040px;margin-left: 30px;">
+
+                          {yun:}foreach from=$rows item=list{/yun}
+                          <div class="job_hr_list_box" style="width: 1040px;">
+                              <div class="job_hr_list_l" style="background: #f4f7fb;color: #000;width: 1040px;margin-left: -10px;">
+                                  <div class="com_mem_hr_list_b_b fl" style="width: 410px;">
+                                      <span class="com_mem_hr_list_bzt fontw_b">投递职位：</span>
+                                      <a href="http://localhost/job/index.php?c=comapply&amp;id=20" class="" style="color:#f60; font-weight:bold">{yun:}$list.job_name{/yun}</a>
+                                      <a href="#" class="" style=" margin-left: 10px;">({yun:}$list.com_name{/yun})</a>
+                                  </div>
+                                  <div class="com_mem_hr_list_b_b fl" style="width:  400px;padding-left: 20px;">
+
+                                  </div>
+                                  <div class="com_mem_hr_list_b_b fl" style="width: 160px;">
+                                      <span class="com_mem_hr_list_bzt ">投递时间：{yun:}date("Y-m-d",$list.datetime){/yun}</span>
+                                  </div>
+                              </div>
+
+                              <div class="job_hr_resume_user" style="margin-top: 10px;margin-left: 10px;width: 1000px;">
+                                  <div class="fl" style="width: 40%;padding-right: 10px;">
+                                      <div class="job_hr_resume_user_name">
+                                          <a href="/resume/index.php?c=show&id={yun:}$list.eid{/yun}" target="_blank" style="color: purple;">
+                                              <label href="" target="_blank" class="com_Release_name">{yun:}$list.name{/yun}</label>
+                                              <label href="" target="_blank" class="pal_20">{yun:}if $list.sex==1{/yun}男{yun:}else{/yun}女{yun:}/if{/yun}</label>
+                                              <label href="" target="_blank" class="pal_20">{yun:}$list.age{/yun}岁</label>
+                                              <label href="" target="_blank" class="pal_20">{yun:}$list.living{/yun}</label>
+                                              <label href="" target="_blank" class="pal_20">{yun:}$list.edu{/yun}</label>
+                                              <label href="" target="_blank" class="pal_20">{yun:}$list.exp{/yun}</label>
+                                              {yun:}if $list.identity==3{/yun}
+                                              <img src="{yun:}$com_style{/yun}/images/lttuijian.png" class="ltpic"/>
+                                              {yun:}/if{/yun}
+                                          </a>
+                                      </div>
+                                      {yun:}if $list['edu_exp']{/yun}
+                                      <div class="job_hr_resume_user_yx">
+                                          <label>{yun:}date('Y/m',$list['edu_exp']['sdate']){/yun}-{yun:}date('Y/m',$list['edu_exp']['edate']){/yun}：</label>
+                                          <label class="zi0014 nowrapp" style="max-width: 100px;">{yun:}$list['edu_exp']['name']{/yun}</label>
+                                          {yun:}if $list['edu_exp']['specialty']{/yun}
+                                          <span class="shustyle">|</span>
+                                          <label class="zi3314 nowrapp" style="max-width: 180px;">{yun:}$list['edu_exp']['specialty']{/yun}</label>
+                                          {yun:}/if{/yun}
+
+                                          {yun:}if $list['edu_exp']['education']{/yun}
+                                          <span class="shustyle">|</span>
+                                          <label class="zi3314 nowrapp">{yun:}$list['edu_exp']['education']{/yun}</label>
+                                          {yun:}/if{/yun}
+                                      </div>
+                                      {yun:}/if{/yun}
+                                      <div class="mat_10">
+                                          <label class="tj_time">期望年薪：</label>
+                                          <label class="salery_s">11-12万</label>
+                                          <label class="tj_time mal_20">期望工作地：</label>
+                                          <label class="tj_time">{yun:}$user.hope_city{/yun}</label>
+                                      </div>
+                                      <div class="mat_10">
+                                          <label class="tj_time">期望职位：</label>
+                                          {yun:}foreach from=$user.job_classname item=li{/yun}
+                                          <label class="yixijob">{yun:}$li{/yun}</label>
+                                          {yun:}/foreach{/yun}
+                                      </div>
+                                  </div>
+                                  <div class="fl" style="padding-left: 20px;border-left: 1px solid #eeeeee;min-height: 60px;">
+                                      {yun:}foreach from=$list.work_exp item=li{/yun}
+                                      <div class="job_hr_resume_user_yx">
+                                          <label>{yun:}date('Y/m',$li['sdate']){/yun}-{yun:}date('Y/m',$li['edate']){/yun}</label><span class="shustyle">|</span>
+                                          <label class="zi3314 nowrapp" style="max-width: 220px;">{yun:}$li.name{/yun}</label><span class="shustyle">|</span>
+                                          <label class="zi0014 nowrapp" style="max-width: 200px;">{yun:}$li.title{/yun}</label>
+                                      </div>
+                                      {yun:}/foreach{/yun}
+                                  </div>
+                              </div>
+                              <div class="job_hr_list_l">
+                                  <div class="com_mem_hr_list_b_b">
+                                      <span class="com_mem_hr_list_bzt" style="padding-left: 10px;">标记状态：</span>
+                                      <span class="com_mem_hr_list_bj {yun:}if empty($list.is_browse){/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name="28" browse="2"> 未查看</span>
+                                      <span class="com_mem_hr_list_bj {yun:}if $list.is_browse==1{/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name="28" browse="2"> 已查看</span>
+                                      <span class="com_mem_hr_list_bj " name="28" browse="3" style="width: 45px;"> 待定 </span>
+                                      {yun:}if $list.is_browse==4{/yun}
+                                      <span class="com_mem_hr_list_bj com_mem_hr_list_bj_cur" name="28" browse="4"> 不合适</span>
+                                      {yun:}else{/yun}
+                                      <span class="com_mem_hr_list_bj " onclick="layer_del('确定不合适简历吗？', 'index.php?c=apply&act=hrset&refid={yun:}$list.id{/yun}');" name="28" browse="4"> 不合适</span>
+                                      {yun:}/if{/yun}
+
+                                      <span class="com_mem_hr_list_bj {yun:}if $list.is_browse==6{/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name="28" browse="5"> 已下载 </span>
+                                  </div>
+                                  <div class="job_hr_list_r">
+                                      <span class="job_hr_job_cz_a"> <a href="/resume/index.php?c=show&reid={yun:}$list.id{/yun}"  class="uesr_name_a" target="_blank">查看简历</a></span>
+                                      <!--<i class="job_hr_job_cz_line">|</i> <span class="job_hr_job_cz_a"><a href="javascript:void(0)" name="37" browse="4" class="browsebj uesr_name_a">不合适</a> </span>-->
+                                      <i class="job_hr_job_cz_line">|</i><span class="job_hr_job_cz_a"> <a href="javascript:void(0)" onclick="layer_del('确定要删除该条职位申请吗？', 'index.php?c=apply&act=hrset&delid={yun:}$list.id{/yun}');" class="uesr_name_a">删除</a> </span>
+                                  </div>
+                              </div>
+                          </div>
+                          {yun:}/foreach{/yun}
+
+                          <div class="clear"></div>
+                          {yun:}if $total!=0 || is_array($user){/yun}
+                          <div class="search_pages">
+                              <div class="pages">{yun:}$pagenav{/yun}</div>
+                          </div>
+                          {yun:}else{/yun}
+                          <div class="seachno">
+                              <div class="seachno_left"><img src="{yun:}$style{/yun}/images/search-no.gif" width="144" height="102"/></div>
+                              <div class="listno-content"> <strong>很抱歉，没有找到满足条件的人才</strong><br>
+                                  <span> 建议您：<br>
+                                    1、适当减少已选择的条件<br>
+                                    2、适当删减或更改搜索关键字<br>
+                                    </span> <span> 热门关键字：<br>
+                                    {yun:}key limit=10 recom=1 type=5 item=klist{/yun}<a href="{yun:}listurl m=resume type=keyword v=$klist.key_title{/yun}" title="{yun:}$klist.key_title{/yun}">{yun:}$klist.key_name{/yun}</a> {yun:}/key{/yun}
+                                  </span>
+                              </div>
+                          </div>
+                          {yun:}/if{/yun} </div>
+                  </div>
+              <div class="clear"></div>
+          </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+    $(document).ready(function(){
+        $(".browsebj").click(function(){
+            var browse=$(this).attr('browse');
+            var id=$(this).attr('name');
+            layer.confirm("确定设为不合适简历吗？",function() {
+                $.post("index.php?c=hr&act=hrset", {id:id,browse:browse}, function (data) {
+                    if (data == 1) {
+                        layer.msg("设置成功！", 2, 9, function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(data, 2, 8);
+                    }
+                });
+            });
+        });
+
+
+	$("body").on("click",".shoucang",function () {
+	    var _this = $(this);
+        $.ajax({
+            type:"post",
+            url:"/member/index.php?c=resume&act=collect",
+            data:{
+                resume_id:$(this).attr("data-id"),
+                eid:$(this).attr("data-eid")
+            },
+            success:function (data) {
+
+                var data = JSON.parse(data);
+                if(data==1){
+                    layer.msg('收藏成功！', 2, 9);
+                    _this.removeClass("shoucang").unbind();
+                    var src=_this.find("img").attr("src");
+                    var newsrc=src.replace("shoucang","yishoucang");
+                    _this.find("img").attr("src",newsrc);
+                    _this.find(".jieshiico").html("取消收藏");
+                }
+            }
+        })
+    })
+    
+});
+
+$(function () {
+
+    //收藏简历
+    $(".shoucang").click(function () {
+        layer.msg('收藏成功！', 2, 9);
+       var src=$(this).find("img").attr("src");
+        var newsrc=src.replace("shoucang","yishoucang");
+        $(this).find("img").attr("src",newsrc);
+    })
+})
+</script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/search.js" type="text/javascript"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/class.public.js"></script>
+{yun:}include file="$ltstyle/yqms.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}

@@ -1,0 +1,241 @@
+{yun:}include file="$ltstyle/header.htm"{/yun}
+{yun:}include file="$tplstyle/public_search/index_search.htm"{/yun}
+<script src="/data/plus/job.cache.js"></script>
+<script src="/data/plus/industry.cache.js"></script>
+<div class="w1000">
+  <div class="admin_mainbody">
+      <link rel="stylesheet" href="{yun:}$style{/yun}/style/class.public.css" type="text/css">
+      <link rel="stylesheet" href="{yun:}$style{/yun}/style/job.css" type="text/css"/>
+    <link href="{yun:}$com_style{/yun}/images/index_style.css" type=text/css rel=stylesheet>
+    <div class=down_box>
+      <div class=admincont_box>
+          {yun:}if empty($search.ids) && empty($search.uname){/yun}
+          {yun:}include file="$ltstyle/searchtop.htm"{/yun}
+          {yun:}/if{/yun}
+                  <div class="left_job_all fl">
+                      <div class="tongji">
+                          <label class="tj_style">共有<span class="numtj">{yun:}$total{/yun}</span>位人选</label>
+                          <div class="paixu_btn">
+                              <a class="pxbtn {yun:}if $smarty.get.order=='salary'{/yun}pxcur{yun:}/if{/yun}" href="{yun:}parse_url m=member c=resume order=salary{/yun}">年薪从高到低</a>
+                              <a class="pxbtn {yun:}if $smarty.get.order=='time'{/yun}pxcur{yun:}/if{/yun}" href="{yun:}parse_url m=member c=resume order=time{/yun}">更新时间从新到旧</a>
+                          </div>
+                      </div>
+                      <div class="job_left_sidebar" id="sscontent" style="width: 1040px;margin-left: 30px;">
+                          <div class="job_news_list" style="background: #f1f8ff">
+                              <span class="job_news_list_span job_w430" style="text-align:left;padding-left: 10px;">简历基本信息</span>
+                              <span class="job_news_list_span job_w420" style="margin-left: 20px;">工作信息</span>
+                              <span class="job_news_list_span job_w140 text_cen">操作</span>
+                          </div>
+                          {yun:}resumelist ispage=1 limit=30  minage=$search.minage maxage=$search.maxage sex=$search.sex edu=$search.edu  order="auto.order" exp=$search.exp  keyword=$search.keyword hy=$search.hy location=$search.location  jobs_id=$search.jobs_id  minsalary=$search.minsalary status='auto.status' uname=$search.uname  maxsalary=$search.maxsalary ids=$search.ids item=user name=resumelist2{/yun}
+                          <div class="job_news_list  job_hr_list_box" style="width: 1030px;">
+                              <div class="job_hr_resume_user" style="margin-top: 10px;width: 1040px;">
+                                  <div style="width: 100%;">
+                                      <a class="job_namer nowrap" style="font-size: 18px;vertical-align:bottom;max-width: 150px;" href="{yun:}$user.user_url{/yun}" target="_blank">{yun:}if $user.name{/yun}{yun:}$user.name{/yun}{yun:}else{/yun}***{yun:}/if{/yun}</a>
+                                      <!--<label class="tel_num mal_10"><img src="{yun:}$lt_style{/yun}/images/sj_ico.png">{yun:}$user.telphone{/yun}</label>-->
+                                      <label class="tj_time mal_20">{yun:}if $user.sex==1{/yun}男{yun:}else{/yun}女{yun:}/if{/yun}</label><span class="xianshu">|</span>
+                                      <label class="tj_time">{yun:}$user.age{/yun}岁</label><span class="xianshu">|</span>
+                                      <label class="tj_time">{yun:}$user.edu_n{/yun}</label>
+                                      <span class="xianshu">|</span>
+                                      <label class="tj_time">{yun:}$user.hope_city{/yun}</label>
+                                      {yun:}if $user.exp_n{/yun}
+                                      <span class="xianshu">|</span>
+                                      <label class="tj_time">{yun:}$user.exp_n{/yun}</label>
+                                      {yun:}/if{/yun}
+                                      <label class="btns_ji" style="float: right;margin-right: 20px;">
+                                          <a  href="/member/index.php?c=resume&act=jobrecommend&eid={yun:}$user.id{/yun}" target="_blank" class="btn_hxr w90b tuijan" style="width: 100px;float: left;">
+                                              <img src="{yun:}$lt_style{/yun}/images/tuijian.png" class="ico_dd">
+                                              <label class="biaoqian">推荐候选人</label>
+                                          </a>
+                                          {yun:}if $user.fav_resume{/yun}
+                                          <label class="btn_hxr yscstyle"  data-id="{yun:}$user.id{/yun}" data-eid="{yun:}$user.eid{/yun}">取消收藏</label>
+                                          {yun:}else{/yun}
+                                          <label class="btn_hxr scstyle"  data-id="{yun:}$user.id{/yun}" data-eid="{yun:}$user.eid{/yun}">
+                                              <img src="{yun:}$lt_style{/yun}/images/shoucang1.png" class="ico_dd">
+                                              <label class="biaoqian">收藏</label>
+                                          </label>
+                                          {yun:}/if{/yun}
+                                          <!--<label class="btn_hxr yscstyle"  data-id="{yun:}$user.id{/yun}" data-eid="{yun:}$user.eid{/yun}">取消收藏</label>-->
+                                        {yun:}if $user.edit{/yun}
+                                          <label class="btn_hxr bjstyle"  data-id="{yun:}$user.id{/yun}" data-eid="{yun:}$user.eid{/yun}">
+                                              <img src="{yun:}$lt_style{/yun}/images/bianji1.png" class="ico_dd">
+                                              <a class="biaoqian" href="/member/index.php?c=resume&act=edit&id={yun:}$user.id{/yun}" target="_blank">编辑</a>
+                                          </label>
+                                          {yun:}/if{/yun}
+                                      </label>
+                                  </div>
+                                  <div class="fl" style="width: 40%;padding-right: 10px;margin-top: 20px;">
+                                      <div class="job_hr_resume_user_name">
+                                          <div class="mat_10">
+                                              {yun:}if $user.resume_edu{/yun}
+                                                  <label class="tj_time">{yun:}date("Y/m",$user.resume_edu.startDateStr){/yun}-{yun:}date("Y/m",$user.resume_edu.endDateStr){/yun}：</label>
+                                                  <label class="tj_time">{yun:}$user.resume_edu.schoolName{/yun}</label>
+                                                  {yun:}if $user.resume_edu.majorName{/yun}
+                                                  <span class="xianshu">|</span>
+                                                  <label class="tj_time">{yun:}$user.resume_edu.majorName{/yun}</label>
+                                                  {yun:}/if{/yun}
+                                              {yun:}/if{/yun}
+                                          </div>
+                                          <div class="mat_10">
+                                              <label class="tj_time">期望年薪：</label>
+                                              <label class="salery_s">
+                                                  {yun:}if $user.wage_hope{/yun}
+                                                    ￥{yun:}$user.wage_hope{/yun}万以上
+                                                  {yun:}else{/yun}
+                                                    {yun:}$user.salary_n{/yun}
+                                                  {yun:}/if{/yun}
+                                              </label>
+                                              <label class="tj_time mal_20">期望工作地：</label>
+                                              <label class="tj_time">{yun:}$user.hope_city{/yun}</label>
+                                          </div>
+                                          <div class="mat_10">
+                                              <label class="tj_time">期望职位：</label>
+                                              {yun:}if $user.job_classname[0]{/yun}
+                                                  {yun:}foreach from=$user.job_classname item=li{/yun}
+                                                  <label class="yixijob">{yun:}$li{/yun}</label>
+                                                  {yun:}/foreach{/yun}
+                                              {yun:}else{/yun}
+                                                  <label class="yixijob">{yun:}$user.hy_name{/yun}</label>
+                                              {yun:}/if{/yun}
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="fl" style="padding-left: 20px;border-left: 1px solid #eeeeee;min-height: 60px;margin-top: 20px;">
+                                      {yun:}foreach from=$user.resume_work item=list{/yun}
+                                      <div class="job_hr_resume_user_yx">
+                                          <label>{yun:}date('Y/m',$list['startDateStr']){/yun}-{yun:}date('Y/m',$list['endDateStr']){/yun}</label>
+                                          <span class="shustyle">|</span>
+                                          <label class="zi3314 nowrapp" style="max-width: 210px;">{yun:}$list.companyName{/yun}</label>
+                                          {yun:}if $list.posName{/yun}
+                                          <span class="shustyle">|</span>
+                                          <label class="zi0014 nowrapp" style="max-width: 100px;">{yun:}$list.posName{/yun}</label>
+                                          {yun:}/if{/yun}
+                                      </div>
+                                      {yun:}/foreach{/yun}
+                                  </div>
+                              </div>
+                              {yun:}if $smarty.get.act=="recommend"{/yun}
+                              <div class="fl" style="margin-top: 20px;width: 100%;">
+                                  <label class="tj_time">推荐的职位：
+                                      <label style="font-size: 16px;color: #4b6e88;">PHP工程师</label><span class="xianshu color_999">|</span><label class="color_999" style="margin-right: 30px;">推荐时间：2018-12-23</label>
+                                      <label style="font-size: 16px;color: #4b6e88;">PHP工程师</label><span class="xianshu color_999">|</span><label class="color_999" style="margin-right: 30px;">推荐时间：2018-12-23</label>
+                                  </label>
+                              </div>
+                              {yun:}else{/yun}
+                              <div class="fl" style="margin-top: 20px;width: 100%;">
+                                  <label class="tj_time">简历编号：<label>{yun:}$user.id{/yun}</label></label>
+                                  <label class="tj_time col999 mal_200">服务猎头数：<span class="tj_time">{yun:}if $user.lietou_num{/yun}{yun:}$user.lietou_num{/yun}{yun:}else{/yun}0{yun:}/if{/yun}</span></label>
+                                  <label class="tj_time col999 mal_40">推荐过的职位数：<span class="tj_time">{yun:}if $user.job_num{/yun}{yun:}$user.job_num{/yun}{yun:}else{/yun}0{yun:}/if{/yun}</span></label>
+                                  <label class="tj_time col999 mal_40">HR下载：<span class="tj_time">{yun:}$user.download_num{/yun}</span></label>
+                                  <label class="tj_time col999" style="float: right;margin-right: 10px;">最新推荐时间：<span class="tj_time">{yun:}$user.datetime{/yun}</span></label>
+                              </div>
+                              {yun:}/if{/yun}
+                          </div>
+
+                          {yun:}/resumelist{/yun}
+
+                          <div class="clear"></div>
+                          {yun:}if $total{/yun}
+                          <div class="search_pages">
+                              <div class="pages">{yun:}$pagenav{/yun}</div>
+                          </div>
+                          {yun:}else{/yun}
+                          <div class="seachno">
+                              <div class="seachno_left"><img src="{yun:}$style{/yun}/images/search-no.gif" width="144" height="102"/></div>
+                              <div class="listno-content" style="line-height: 24px;"> <strong>很抱歉，暂时没有符合条件的人才信息</strong><br><br>
+                                  <span>建议您尝试修改搜索条件进行搜索</span>
+                              </div>
+                          </div>
+                          {yun:}/if{/yun} </div>
+                  </div>
+              <div class="clear"></div>
+          </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+
+//    var nav={yun:}$smarty.get.type{/yun};
+//        if(nav==1){
+//            $(".Search_jobs_box").show();
+//        }else{
+//            $(".Search_jobs_box").hide();
+//        }
+    })
+
+    $(function () {
+        $("body").on("click",".scstyle",function () {
+            var _this = $(this);
+            $.ajax({
+                type:"post",
+                url:"/member/index.php?c=resume&act=collect",
+                data:{
+                    resume_id:$(this).attr("data-id"),
+                    eid:$(this).attr("data-eid")
+                },
+                success:function (data) {
+                    var data = JSON.parse(data);
+                    if(data==1){
+                        layer.msg('收藏成功！', 2, 9);
+                        _this.removeClass("scstyle").unbind();
+                        _this.addClass("yscstyle");
+                        _this.html("取消收藏");
+                    }
+                }
+            })
+        })
+
+        $("body").on("click",".yscstyle",function () {
+            var _this = $(this);
+            var job_id = $(this).attr("data-id");
+            layer.confirm("您确定要取消收藏吗？",function() {
+                $.post("/member/index.php?c=resume&act=remove_collect",{id:job_id},function(data){
+                    if(data==1){
+                        layer.msg('取消收藏成功！', 2, 9);
+                        _this.html(' <img src="{yun:}$lt_style{/yun}/images/shoucang1.png" class="ico_dd"><label class="biaoqian">收藏</label>');
+                        _this.removeClass("yscstyle").addClass("scstyle");
+                    }
+                })
+            });
+        })
+    })
+
+function SearchHighlight(idVal, keyword) {
+    var pucl = document.getElementById(idVal);
+    if("" == keyword || keyword.matches("[0-9]+")) return;
+    var temp = pucl.innerHTML;
+    var htmlReg = new RegExp("\<.*?\>", "i");
+    var arrA = new Array();
+    //替换HTML标签
+    for(var i = 0; true; i++) {
+        var m = htmlReg.exec(temp);
+        if(m) {
+            arrA[i] = m;
+        } else {
+            break;
+        }
+        temp = temp.replace(m, "{[(" + i + ")]}");
+    }
+    words = unescape(keyword.replace(/\+/g, ' ')).split(/\s+/);
+    //替换关键字
+    for(w = 0; w < words.length; w++) {
+        var r = new RegExp("(" + words[w].replace(/[(){}.+*?^$|\\\[\]]/g, "\\$&") + ")", "ig");
+        temp = temp.replace(r, "<b style='color:Red;'>$1</b>");
+    }
+    //恢复HTML标签
+    for(var i = 0; i < arrA.length; i++) {
+        temp = temp.replace("{[(" + i + ")]}", arrA[i]);
+    }
+    pucl.innerHTML = temp;
+}
+
+    document.ready=function () {
+        SearchHighlight('sscontent',$("#keyword").val());
+    }
+
+</script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/search.js" type="text/javascript"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/class.public.js"></script>
+{yun:}include file="$ltstyle/yqms.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}

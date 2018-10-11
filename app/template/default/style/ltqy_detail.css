@@ -1,0 +1,176 @@
+.Company_post_top {
+ margin-top: 20px;
+}
+.Compply_right_sidebar{
+ margin-top: 20px;
+}
+#tujianhxr,#gzzhiwei{
+ width: 120px;height: 42px;
+ line-height: 42px;
+ text-align: center;
+ color: #fff;
+ font-size: 16px;
+ border-radius: 4px;
+ display: inline-block;
+ cursor: pointer;
+}
+#tujianhxr{
+ background: #6a8cd2;
+}
+#gzzhiwei{
+ background: #ff6a6a;
+ margin-left: 15px;
+}
+.Company_post_top{
+ border-bottom: none;
+}
+.zhiweidt{
+ clear: both;
+ width: 100%;
+ height: 116px;
+ background: #f1f8ff;
+}
+.Company_post_box{
+ height: auto;
+}
+.ico_zwdt{
+ float: left;
+ margin-top: 28px;
+}
+.tj_items{
+ float: left;
+ width: 720px;
+ margin-left: 40px;
+ margin-top: 30px;
+}
+.tjnubs{
+ width: 150px;
+ height:auto;
+ text-align: center;
+ float: left;
+ border-right:1px dashed  #eeeeee;
+}
+.tjnubs:last-child{
+ border-right: none;
+}
+.numdd{
+ color: #6a8cd2;
+ font-size: 24px;
+ margin-right: 8px;
+}
+.Compply_right_post .numdd{
+ color: #666666;
+}
+.tjjnun{margin-top: 10px;width: 100%;float: left;}
+.tjjnun .tjnubs{
+ margin-bottom: 20px;
+}
+.hang1{
+ color: #b2b4b5;
+ font-size: 14px;
+}
+.hang2{
+ color: #666666;
+ font-size: 14px;
+ margin-top: 5px;
+}
+.Company_h1_line{
+ margin-top: 0px;
+}
+.tongjiss{
+ clear: both;
+ float: left;
+ margin-top: 40px;
+ margin-left: 10px;
+}
+.nubers{
+ color: #007ccf;
+ font-size: 18px;
+ margin-left: 10px;
+}
+.three_vita_Basic_photo{
+ height: 80px;
+ border: none;
+ padding: 0;
+ border-radius: 100%;
+ top: 80px;
+}
+.three_vita_Basic_photo img{
+ width: 80px;
+ height: 80px; border-radius: 100%;
+}
+.three_vita_content{
+ border: 1px solid #dddddd;
+ padding-bottom: 80px;
+}
+.three_vita_list_h1_span{
+ color: #333333;
+ font-size: 20px;
+}
+.three_vita_list_h1{
+ background: none;
+}
+.dibujlxx{
+ width: 100%;
+ height: 80px;
+ background: #e5dec6;
+ position: fixed;
+ bottom: 0;
+}
+.dibujlxx_content{
+ width: 950px;
+ height: 60px;
+ margin: 10px auto;
+}
+.dibujlxx_content .jianltx{
+ border-radius: 100%;
+ float: left;
+}
+.xx_list{
+ position: relative;
+float: left;
+ width: 800px;
+ margin-left: 20px;
+ height: 60px;
+}
+.namejl{
+ line-height: 60px;
+ font-size: 20px;
+ color: #333333;
+ float: left;
+}
+.ssssjl{
+ display: block;
+ line-height: 30px;
+ float: left;
+ width: 70px;
+ max-width: 110px;
+ margin-left: 40px;
+ text-align: center;
+}
+.time_jl{
+font-size: 18px;
+ color: #545465;
+}
+.time_js{
+ font-size: 14px;
+ color: #666666;
+}
+.small{
+ color: #b2b4b5;
+ font-size: 14px;
+ margin-left: 5px;
+}
+.qyfuss{
+ position: absolute;
+ right: 0;
+ top: -10px;
+ width: 102px;
+ height: 52px;
+}
+.closeico{
+ position: absolute;
+ right: -60px;
+ top: -23px;
+ cursor: pointer;
+}

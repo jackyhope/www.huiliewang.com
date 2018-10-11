@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0af06b99-00d4-4a87-bff7-03e65e12e9ae" name="huiliewang" url="http://lt.huiliewang.com">
+        <fileTransfer host="lt.huiliewang.com" port="22" rootFolder="/data/wwwroot/lt.huiliewang.com" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

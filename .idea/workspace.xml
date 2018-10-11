@@ -1,0 +1,1388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="101d1199-4e54-4fec-854a-8b206a03fea6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/template/member/user/expect/expect.htm" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/added.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/addnews.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/addproduct.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/addshow.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/attention_me.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/banner.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/com.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/comapply.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/comtpl.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/down.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/editshow.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/favorite1.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/finder.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/finderinfo.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/hr.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/likeresume.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/look_job.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/map.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/msg.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/news.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/part.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/partadd.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/partapply.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/partlist.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/partok.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/product.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/progress_fal.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/progress_ing.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/progress_suc.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/replys.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/report.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/resume_xls.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/reward_list.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/search.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/show.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/special.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/subscribe.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/subscriberecord.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/tongji.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/tongji_web.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/topbid.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/lietou/uppic.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/blacklist.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/likejob.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/pay.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/paylist.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/paylog.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/payment.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/resumeout.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/resumetpl.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/reward_list.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/subscribe.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/member/user/subscriberecord.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/resume/lt_resume.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/template/resume/resume123.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/added.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/addnews.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/addproduct.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/addshow.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/attention_me.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/banner.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/bidding.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/binding.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/blacklist.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/buyad.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/com.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/comtpl.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/down.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/editshow.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/finder.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/finderinfo.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/footer.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/header.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/hr.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/index.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/info.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/integral.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/integral_reduce.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/invite.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/job.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/jobadd.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/joblist.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/jobserver.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/left.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/lietou.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/likeresume.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/look_job.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/look_resume.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/lookresume.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/map.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/member_right.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/member_time.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/msg.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/news.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/part.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/partadd.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/partapply.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/partlist.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/partok.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/pay.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/paylog.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/paylogtc.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/paymanage.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/payment.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/product.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/record.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/refuse.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/replys.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/report.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/resume.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/resume_xls.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/reward_list.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/search.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/setname.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/show.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/special.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/subscribe.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/subscriberecord.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/sysnews.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/talent_pool.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/tongji.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/tongji_web.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/topbid.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/uppic.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/vs.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/com/yqms.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/ad.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/ad_order.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/attention_me.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/blacklist.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/buysave.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/com.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/comapply.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/comtpl.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/coupon_list.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/down.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/favorite.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/finder.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/hr.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/integral.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/invite.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/likeresume.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/look_job.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/look_resume.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/map.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/message.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/msg.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/news.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/part.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/partadd.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/partapply.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/partok.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/pay.class20180202.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/paylogtc.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/pl.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/product.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/record.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/replys.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/report.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/reward_list.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/right.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/search.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/show.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/special.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/subscribe.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/talent_pool.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/tongji.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/topbid.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/model/zhaopinhui.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/atn.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/binding.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/blacklist.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/camphoto.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/checkimg.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/com_res.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/commsg.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/expect.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/expectq.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/favorite.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/finder.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/index.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/info.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/integral.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/integral_reduce.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/job.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/likejob.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/look.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/look_job.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/message.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/msg.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/other.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/partapply.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/partcollect.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/passwd.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/pay.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/paylist.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/paylog.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/payment.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/pl.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/privacy.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/resume.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/resumeout.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/resumetpl.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/reward_list.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/save_avatar.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/setname.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/show.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/subscribe.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/sysnews.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/up_msg.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/model/uppic.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/lietou/user/user.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/atn.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/blacklist.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/com_res.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/commsg.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/expect1.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/expectq.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/favorite.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/finder.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/integral.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/integral_reduce.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/likejob.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/look_job.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/msg.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/other.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/partapply.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/partcollect.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/pay.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/paylist.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/paylog.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/payment.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/pl.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/resumeout.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/resumetpl.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/reward_list.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/save_avatar.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/member/user/model/subscribe.class.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin-huilie/model/admin_lietou.class.php" afterPath="$PROJECT_DIR$/admin-huilie/model/admin_lietou.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/ajax/index.class.php" afterPath="$PROJECT_DIR$/app/controller/ajax/index.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/index/index.class.php" afterPath="$PROJECT_DIR$/app/controller/index/index.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/login/index.class.php" afterPath="$PROJECT_DIR$/app/controller/login/index.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/register/index.class.php" afterPath="$PROJECT_DIR$/app/controller/register/index.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/resume/show.class.php" afterPath="$PROJECT_DIR$/app/controller/resume/show.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/include/libs/sysplugins/smarty_internal_compile_resumelist.php" afterPath="$PROJECT_DIR$/app/include/libs/sysplugins/smarty_internal_compile_resumelist.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/include/mysql.class.php" afterPath="$PROJECT_DIR$/app/include/mysql.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/include/public.function.php" afterPath="$PROJECT_DIR$/app/include/public.function.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/include/public.url.php" afterPath="$PROJECT_DIR$/app/include/public.url.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/resume.model.php" afterPath="$PROJECT_DIR$/app/model/resume.model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/action.class.php" afterPath="$PROJECT_DIR$/app/public/action.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/common.php" afterPath="$PROJECT_DIR$/app/public/common.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/com/hr.htm" afterPath="$PROJECT_DIR$/app/template/member/com/hr.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/command.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/command.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/files/createResume.js" afterPath="$PROJECT_DIR$/app/template/member/lietou/files/createResume.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/files/resume.css" afterPath="$PROJECT_DIR$/app/template/member/lietou/files/resume.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/files/style.css" afterPath="$PROJECT_DIR$/app/template/member/lietou/files/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/input_resume.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/input_resume.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/jobrecommend.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/jobrecommend.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/recommend.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/recommend.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/resumelist.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/resumelist.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/search_list.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/search_list.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/searchbox.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/searchbox.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/searchtop.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/searchtop.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/lietou/yqms.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/yqms.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/user/index.htm" afterPath="$PROJECT_DIR$/app/template/member/user/index.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/member/user/js/resume.js" afterPath="$PROJECT_DIR$/app/template/member/user/js/resume.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/resume/resume.htm" afterPath="$PROJECT_DIR$/app/template/resume/resume.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/template/resume/wordresume.htm" afterPath="$PROJECT_DIR$/app/template/resume/wordresume.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/class.public.js" afterPath="$PROJECT_DIR$/js/class.public.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/search.js" afterPath="$PROJECT_DIR$/js/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/com/model/hr.class.php" afterPath="$PROJECT_DIR$/member/com/model/hr.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/index.php" afterPath="$PROJECT_DIR$/member/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/lietou/lietou.class.php" afterPath="$PROJECT_DIR$/member/lietou/lietou.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/lietou/model/jobadd.class.php" afterPath="$PROJECT_DIR$/member/lietou/model/jobadd.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/lietou/model/parse.class.php" afterPath="$PROJECT_DIR$/member/lietou/model/parse.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/lietou/model/resume.class.php" afterPath="$PROJECT_DIR$/member/lietou/model/resume.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/user/model/expect.class.php" afterPath="$PROJECT_DIR$/member/user/model/expect.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/user/model/index.class.php" afterPath="$PROJECT_DIR$/member/user/model/index.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/user/model/info.class.php" afterPath="$PROJECT_DIR$/member/user/model/info.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/user/model/job.class.php" afterPath="$PROJECT_DIR$/member/user/model/job.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/member/user/model/resume.class.php" afterPath="$PROJECT_DIR$/member/user/model/resume.class.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/template/member/user/expect.htm" afterPath="$PROJECT_DIR$/app/template/member/lietou/edit_resume.htm" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/template/member/user/expect_add.htm" afterPath="$PROJECT_DIR$/app/template/member/user/expect/expect_add.htm" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/template/member/user/expect_success.htm" afterPath="$PROJECT_DIR$/app/template/member/user/expect/expect_success.htm" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/template/member/user/expectq.htm" afterPath="$PROJECT_DIR$/app/template/member/user/expect/expectq.htm" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/template/member/user/favorite.htm" afterPath="$PROJECT_DIR$/app/template/member/user/job/favorite.htm" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/template/member/user/job.htm" afterPath="$PROJECT_DIR$/app/template/member/user/job/job.htm" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="parse.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/member/lietou/model/parse.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="64" column="134" lean-forward="false" selection-start-line="64" selection-start-column="124" selection-end-line="64" selection-end-column="134" />
+              <folding>
+                <element signature="n#filter_str#0;n#parse_controller#0;n#!!top" expanded="false" />
+                <element signature="n#arr_line#0;n#parse_controller#0;n#!!top" expanded="false" />
+                <element signature="n#split_lines#0;n#parse_controller#0;n#!!top" expanded="false" />
+                <element signature="n#sort_with_keyName#0;n#parse_controller#0;n#!!top" expanded="false" />
+                <element signature="n#m_iconv#0;n#parse_controller#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recommend.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/member/lietou/model/recommend.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recommend.htm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/template/member/lietou/recommend.htm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="88" column="119" lean-forward="false" selection-start-line="88" selection-start-column="119" selection-end-line="88" selection-end-column="119" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resume.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/member/lietou/model/resume.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="221" column="42" lean-forward="false" selection-start-line="221" selection-start-column="42" selection-end-line="221" selection-end-column="42" />
+              <folding>
+                <element signature="n#onejob_receivelist_action#0;n#resume_controller#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jobrecommend.htm" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/template/member/lietou/jobrecommend.htm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1320">
+              <caret line="73" column="75" lean-forward="false" selection-start-line="73" selection-start-column="75" selection-end-line="73" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resume.htm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/template/resume/resume.htm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="223" column="80" lean-forward="false" selection-start-line="223" selection-start-column="80" selection-end-line="223" selection-end-column="80" />
+              <folding>
+                <marker date="1520911421009" expanded="true" signature="25394:25431" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controller/ajax/index.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2447">
+              <caret line="1027" column="59" lean-forward="false" selection-start-line="1027" selection-start-column="59" selection-end-line="1027" selection-end-column="59" />
+              <folding>
+                <marker date="1520906240713" expanded="true" signature="46473:47144" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="55611:55687" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="62726:63077" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="71750:71763" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="74701:74713" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="76096:76107" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="87678:87691" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="116532:116578" ph="..." />
+                <marker date="1520906240713" expanded="true" signature="123443:123456" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hr.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/member/com/model/hr.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="35" column="59" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hr.htm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/template/member/com/hr.htm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-390">
+              <caret line="80" column="86" lean-forward="false" selection-start-line="80" selection-start-column="86" selection-end-line="80" selection-end-column="86" />
+              <folding>
+                <marker date="1520923272122" expanded="false" signature="7324:7373" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="11031:11047" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="11333:11349" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="12090:12141" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="12365:12382" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="12846:12863" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="13119:13186" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="13605:13622" ph="..." />
+                <marker date="1520923272122" expanded="false" signature="13796:13813" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input_resume.htm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/template/member/lietou/input_resume.htm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2070">
+              <caret line="558" column="58" lean-forward="false" selection-start-line="558" selection-start-column="58" selection-end-line="558" selection-end-column="58" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>split_line</find>
+      <find>echo</find>
+      <find>get_hash_table</find>
+      <find>resume_insert</find>
+      <find>*</find>
+      <find>姓名</find>
+      <find>月薪</find>
+      <find>curMoney</find>
+      <find>validNum</find>
+      <find>insert_id</find>
+      <find>sql</find>
+      <find>312058</find>
+      <find>filter_post</find>
+      <find>query</find>
+      <find>浏览</find>
+      <find>gbk</find>
+      <find>age</find>
+      <find>(时长)</find>
+      <find>HR下载</find>
+      <find>add</find>
+      <find>$_SERVER</find>
+      <find>resume_select</find>
+      <find>json_e</find>
+      <find>parse</find>
+      <find>arr_edu</find>
+      <find>deg</find>
+      <find>resume_word</find>
+      <find>repo</find>
+      <find>edu</find>
+      <find>jobrecommend</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>admin_lieset</replace>
+      <replace>业绩管理</replace>
+      <replace>lietou</replace>
+      <replace>lieclass</replace>
+      <replace>company_job</replace>
+      <replace>猎头</replace>
+      <replace>company_order</replace>
+      <replace>期望年薪</replace>
+      <replace>SelectResume</replace>
+      <replace>utf-8</replace>
+      <replace>$db1-&gt;</replace>
+      <replace>$this-&gt;obj</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/login/index.php" />
+        <option value="$PROJECT_DIR$/config/db.safety.php" />
+        <option value="$PROJECT_DIR$/member/user/model/index.class.php" />
+        <option value="$PROJECT_DIR$/global.php" />
+        <option value="$PROJECT_DIR$/member/lietou/model/class.wordphp.php" />
+        <option value="$PROJECT_DIR$/app/template/member/lietou/edit_resume.htm" />
+        <option value="$PROJECT_DIR$/member/lietou/model/index.class.php" />
+        <option value="D:/wordMht.php" />
+        <option value="$PROJECT_DIR$/wordMht.php" />
+        <option value="$PROJECT_DIR$/app/public/reaction.class.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/resume/index.php" />
+        <option value="$PROJECT_DIR$/member/index.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/member/lietou/model/resume.class.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/member/index.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/member/lietou/lietou.class.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/member/lietou/model/index.class.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/app/template/member/lietou/info.htm" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/member/lietou/model/info.class.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/app/public/common.php" />
+        <option value="&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/member/lietou/model/parse.class.php" />
+        <option value="$PROJECT_DIR$/resumes/config/industry.cache.php" />
+        <option value="$PROJECT_DIR$/resumes/index_ids.php" />
+        <option value="$PROJECT_DIR$/resumes/mysql/mysql.class.php" />
+        <option value="$PROJECT_DIR$/resumes/index_ids_2.php" />
+        <option value="$PROJECT_DIR$/resumes/indexs.php" />
+        <option value="$PROJECT_DIR$/resumes/index_ids_ext_4.php" />
+        <option value="$PROJECT_DIR$/resumes/index.php" />
+        <option value="$PROJECT_DIR$/resumes/test.php" />
+        <option value="$PROJECT_DIR$/app/template/member/lietou/files/resume.css" />
+        <option value="$PROJECT_DIR$/config/db.config.php" />
+        <option value="$PROJECT_DIR$/app/include/mysql.class.php" />
+        <option value="$PROJECT_DIR$/app/public/common.php" />
+        <option value="$PROJECT_DIR$/app/include/public.function.php" />
+        <option value="$PROJECT_DIR$/app/public/action.class.php" />
+        <option value="$PROJECT_DIR$/app/include/public.url.php" />
+        <option value="$PROJECT_DIR$/member/lietou/lietou.class.php" />
+        <option value="$PROJECT_DIR$/member/lietou/model/resume.class.php" />
+        <option value="$PROJECT_DIR$/app/include/libs/sysplugins/smarty_internal_compile_resumelist.php" />
+        <option value="$PROJECT_DIR$/resumes/config/db.config.php" />
+        <option value="$PROJECT_DIR$/app/controller/ajax/index.class.php" />
+        <option value="$PROJECT_DIR$/app/template/resume/wordresume.htm" />
+        <option value="$PROJECT_DIR$/app/template/member/lietou/files/createResume.js" />
+        <option value="$PROJECT_DIR$/app/template/member/lietou/input_resume.htm" />
+        <option value="$PROJECT_DIR$/member/lietou/model/parse.class.php" />
+        <option value="$PROJECT_DIR$/app/template/member/lietou/recommend.htm" />
+        <option value="$PROJECT_DIR$/app/template/resume/resume.htm" />
+        <option value="$PROJECT_DIR$/app/model/resume.model.php" />
+        <option value="$PROJECT_DIR$/app/controller/resume/show.class.php" />
+        <option value="$PROJECT_DIR$/member/com/model/hr.class.php" />
+        <option value="$PROJECT_DIR$/app/template/member/com/hr.htm" />
+        <option value="$PROJECT_DIR$/app/template/member/lietou/jobrecommend.htm" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="data" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="lietou" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="login" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="map" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="member" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="member" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="com" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="member" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="com" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resumes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="huiliewang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="huiliewang" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resumes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resumes" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\phpStudy\WWW\huiliewang\member\lietou\model" />
+      <recent name="D:\phpStudy\WWW\huiliewang\resumes" />
+      <recent name="D:\phpStudy\WWW\huiliewang\resume" />
+      <recent name="D:\phpStudy\WWW\huiliewang\app\public" />
+      <recent name="D:\phpStudy\WWW\huiliewang" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\phpStudy\WWW\huiliewang\app\template\member\user\expect" />
+      <recent name="D:\phpStudy\WWW\huiliewang\app\template\member\user\job" />
+      <recent name="D:\phpStudy\WWW\huiliewang\app\template\default" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="101d1199-4e54-4fec-854a-8b206a03fea6" name="Default" comment="" />
+      <created>1517801578726</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1517801578726</updated>
+      <workItem from="1517801579927" duration="15886000" />
+      <workItem from="1517878580184" duration="25819000" />
+      <workItem from="1517965084883" duration="25311000" />
+      <workItem from="1518050904169" duration="28391000" />
+      <workItem from="1518138249560" duration="29821000" />
+      <workItem from="1518223909437" duration="26575000" />
+      <workItem from="1519261995083" duration="23863000" />
+      <workItem from="1519346650136" duration="28062000" />
+      <workItem from="1519433153802" duration="23721000" />
+      <workItem from="1519605225068" duration="27529000" />
+      <workItem from="1519692674938" duration="20016000" />
+      <workItem from="1519779184123" duration="21730000" />
+      <workItem from="1519865021737" duration="25224000" />
+      <workItem from="1519951742738" duration="25223000" />
+      <workItem from="1520038190565" duration="24910000" />
+      <workItem from="1520211462695" duration="20612000" />
+      <workItem from="1520297085035" duration="22153000" />
+      <workItem from="1520383314576" duration="22182000" />
+      <workItem from="1520470008864" duration="29256000" />
+      <workItem from="1520557206255" duration="23158000" />
+      <workItem from="1520816091400" duration="27832000" />
+      <workItem from="1520902313539" duration="13145000" />
+    </task>
+    <task id="LOCAL-00001" summary="2018/2/6包崇林提交">
+      <created>1517878655639</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1517878655639</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2018/2/6包崇林提交">
+      <created>1517902702540</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1517902702540</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2018/2/6包崇林提交">
+      <created>1517912107677</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1517912107677</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2018/2/6包崇林提交">
+      <created>1517972000868</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1517972000868</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2018/2/6包崇林提交">
+      <created>1517973037423</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1517973037423</updated>
+    </task>
+    <task id="LOCAL-00006" summary="2018/2/6包崇林提交">
+      <created>1517989856800</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1517989856800</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2018/2/6包崇林提交">
+      <created>1517989933351</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1517989933351</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2018/2/6包崇林提交">
+      <created>1517995508565</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1517995508565</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2018/2/6包崇林提交">
+      <created>1518054197607</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1518054197607</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;&#10;# Conflicts:&#10;#&#9;app/template/member/lietou/search_list.htm">
+      <created>1518054257557</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1518054257557</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;&#10;# Conflicts:&#10;#&#9;app/template/member/lietou/search_list.htm">
+      <created>1518226146616</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1518226146616</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;                                              &#10;                                              # Conflicts:&#10;                                              #&#9;app/template/member/lietou/search_list.htm">
+      <created>1518226755225</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1518226755225</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;                                              &#10;                                              # Conflicts:&#10;                                              #&#9;app/template/member/lietou/search_list.htm">
+      <created>1518227196304</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1518227196304</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;                                              &#10;                                              # Conflicts:&#10;                                              #&#9;app/template/member/lietou/search_list.htm">
+      <created>1518228532378</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1518228532378</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;                                              &#10;                                              # Conflicts:&#10;                                              #&#9;app/template/member/lietou/search_list.htm">
+      <created>1518230363703</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1518230363703</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;                                              &#10;                                              # Conflicts:&#10;                                              #&#9;app/template/member/lietou/search_list.htm">
+      <created>1519270966283</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1519270966283</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="530419000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28944564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23720682" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.219935" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.687974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18634886" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18634886" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.219935" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.687974" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15085287" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17963752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2018/2/6包崇林提交" />
+    <MESSAGE value="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;&#10;# Conflicts:&#10;#&#9;app/template/member/lietou/search_list.htm" />
+    <MESSAGE value="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;                                              &#10;                                              # Conflicts:&#10;                                              #&#9;app/template/member/lietou/search_list.htm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of 192.168.0.101:/home/git/huiliewang&#10;                                              &#10;                                              # Conflicts:&#10;                                              #&#9;app/template/member/lietou/search_list.htm" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>remoteDeploymentFS://&lt;0af06b99-00d4-4a87-bff7-03e65e12e9ae&gt;/resumes/indexs.php</url>
+          <line>86</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="15" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/template/default/resume/index.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="47" lean-forward="true" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/include/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="68" column="25" lean-forward="false" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resume/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/plus/department.cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="429" lean-forward="true" selection-start-line="5" selection-start-column="429" selection-end-line="5" selection-end-column="429" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/plus/resume.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/plus/industry.cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/config/industry.cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="3" column="155" lean-forward="false" selection-start-line="3" selection-start-column="153" selection-end-line="3" selection-end-column="155" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/mysql/mysql.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="78" column="75" lean-forward="false" selection-start-line="78" selection-start-column="75" selection-end-line="78" selection-end-column="75" />
+          <folding>
+            <marker date="1520564351845" expanded="true" signature="2164:2214" ph="INSERT INTO `${$this-&gt;def}`... " />
+            <marker date="1520564351845" expanded="true" signature="3922:3994" ph="SELECT ${$se... ${$this-&gt;def}" />
+            <marker date="1520564351845" expanded="true" signature="4757:4807" ph="INSERT INTO `${$this-&gt;def}`... " />
+            <marker date="1520564351845" expanded="true" signature="5255:5320" ph="SELECT count... ${$this-&gt;def}" />
+            <marker date="1520564351845" expanded="true" signature="5710:5770" ph="SELECT ${$se... ${$this-&gt;def}" />
+            <marker date="1520564351845" expanded="true" signature="6029:6073" ph="SELECT ${$se... ${$tablename}" />
+            <marker date="1520564351845" expanded="true" signature="6315:6416" ph="SELECT ${$se... ${$this-&gt;def}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/index_ids_2.php" />
+    <entry file="file://$PROJECT_DIR$/resumes/index_ids.php" />
+    <entry file="file://$PROJECT_DIR$/resumes/indexs.php" />
+    <entry file="file://$PROJECT_DIR$/resumes/index_ids_ext_1.php" />
+    <entry file="file://$PROJECT_DIR$/resumes/index_ids_1.php" />
+    <entry file="file://$PROJECT_DIR$/resumes/index_ids_ext_4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/resume_files/resume_file_33/312058.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1770">
+          <caret line="0" column="6276" lean-forward="false" selection-start-line="0" selection-start-column="6276" selection-end-line="0" selection-end-column="6276" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2970">
+          <caret line="144" column="29" lean-forward="true" selection-start-line="144" selection-start-column="29" selection-end-line="144" selection-end-column="29" />
+          <folding>
+            <marker date="1520821844398" expanded="true" signature="826:1730" ph="CREATE TABLE... IF" />
+            <marker date="1520821844398" expanded="true" signature="2516:4672" ph="CREATE TABLE... IF" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/member/lietou/files/resume.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/include/mysql.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="374" column="33" lean-forward="true" selection-start-line="374" selection-start-column="33" selection-end-line="374" selection-end-column="33" />
+          <folding>
+            <marker date="1520825903905" expanded="true" signature="3825:3897" ph="SELECT ${$se... ${$this-&gt;def}" />
+            <marker date="1520825903905" expanded="true" signature="4576:4626" ph="INSERT INTO `${$this-&gt;def}`... " />
+            <marker date="1520825903905" expanded="true" signature="5020:5085" ph="SELECT count... ${$this-&gt;def}" />
+            <marker date="1520825903905" expanded="true" signature="5403:5463" ph="SELECT ${$se... ${$this-&gt;def}" />
+            <marker date="1520825903905" expanded="true" signature="5734:5778" ph="SELECT ${$se... ${$tablename}" />
+            <marker date="1520825903905" expanded="true" signature="6038:6139" ph="SELECT ${$se... ${$this-&gt;def}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db.config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/include/libs/sysplugins/smarty_internal_compilebase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="54" lean-forward="true" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/index_ids_4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="52" column="14" lean-forward="false" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/include/libs/plugins/function.url.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/iconv/iconv.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mbstring/mbstring.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="588" column="9" lean-forward="false" selection-start-line="588" selection-start-column="9" selection-end-line="588" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/action.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="332" column="0" lean-forward="true" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
+          <folding>
+            <marker date="1520836586579" expanded="true" signature="7266:7382" ph="SELECT count... ${$this-&gt;def}" />
+            <marker date="1520836586579" expanded="true" signature="7521:7593" ph="SELECT count... ${$this-&gt;def}" />
+            <marker date="1520836586579" expanded="true" signature="8215:8273" ph="SELECT ${$se... ${$this-&gt;def}" />
+            <marker date="1520836586579" expanded="true" signature="8643:8703" ph="SELECT ${$se... ${$this-&gt;def}" />
+            <marker date="1520836586579" expanded="true" signature="9451:9552" ph="SELECT ${$se... ${$this-&gt;def}" />
+            <marker date="1520836586579" expanded="true" signature="9955:10005" ph="INSERT INTO `${$this-&gt;def}`... " />
+            <marker date="1520836586579" expanded="true" signature="10742:10838" ph="DELETE FROM " />
+            <marker date="1520836586579" expanded="true" signature="10987:11050" ph="DELETE FROM " />
+            <marker date="1520836586579" expanded="true" signature="11468:11536" ph="SELECT * FRO... ${$this-&gt;def}" />
+            <marker date="1520836586579" expanded="true" signature="12198:12274" ph="SELECT ${$se... ${$this-&gt;def}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="64" column="168" lean-forward="true" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="168" />
+          <folding>
+            <element signature="n#yun_tpl#0;n#common#0;n#!!top" expanded="false" />
+            <element signature="n#add_cookie#0;n#common#0;n#!!top" expanded="false" />
+            <marker date="1520834045906" expanded="true" signature="58588:59562" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="58594:58943" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="58792:58931" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="58809:58857" ph="{...}" />
+            <marker date="1520834045906" expanded="true" signature="58869:58919" ph="{...}" />
+            <marker date="1520834045906" expanded="false" signature="58962:58977" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="58978:59550" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="59002:59538" ph="..." />
+            <marker date="1520834045906" expanded="false" signature="59127:59144" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="59145:59527" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="59158:59273" ph="..." />
+            <marker date="1520834045906" expanded="false" signature="59214:59229" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="59286:59512" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="59319:59498" ph="..." />
+            <marker date="1520834045906" expanded="false" signature="59330:59347" ph="..." />
+            <marker date="1520834045906" expanded="true" signature="59348:59493" ph="..." />
+            <marker date="1520834045906" expanded="false" signature="59349:59355" ph=" " />
+            <marker date="1520834045906" expanded="false" signature="59408:59414" ph=" " />
+            <marker date="1520834045906" expanded="false" signature="59441:59447" ph=" " />
+            <marker date="1520834045906" expanded="true" signature="63336:63461" ph="SELECT * FRO... ${$this-&gt;def}admin_user" />
+            <marker date="1520834045906" expanded="true" signature="63504:63581" ph="SELECT * FRO... ${$this-&gt;def}admin_user" />
+            <marker date="1520834045906" expanded="true" signature="64499:64624" ph="SELECT * FRO... ${$this-&gt;def}admin_user" />
+            <marker date="1520834045906" expanded="true" signature="64667:64744" ph="SELECT * FRO... ${$this-&gt;def}admin_user" />
+            <marker date="1520834045906" expanded="true" signature="65506:65611" ph="SELECT * FRO... ${$this-&gt;def}member" />
+            <marker date="1520834045906" expanded="true" signature="66089:66204" ph="SELECT * FRO... ${$this-&gt;def}admin_user" />
+            <marker date="1520834045906" expanded="true" signature="66247:66315" ph="SELECT * FRO... ${$this-&gt;def}admin_user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/include/public.url.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="260" column="86" lean-forward="false" selection-start-line="260" selection-start-column="86" selection-end-line="260" selection-end-column="86" />
+          <folding>
+            <element signature="n#PageNav#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/include/public.function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="258" column="20" lean-forward="false" selection-start-line="258" selection-start-column="9" selection-end-line="258" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member/lietou/lietou.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2460">
+          <caret line="90" column="44" lean-forward="false" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member/lietou/model/uppic.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+          <folding>
+            <element signature="n#ajaxfileupload_action#0;n#uppic_controller#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="925" column="9" lean-forward="false" selection-start-line="925" selection-start-column="9" selection-end-line="925" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resume_file/1517537163.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="236" column="29" lean-forward="false" selection-start-line="236" selection-start-column="24" selection-end-line="236" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/include/libs/sysplugins/smarty_internal_compile_resumelist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3960">
+          <caret line="132" column="45" lean-forward="true" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/member/lietou/resumelist.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3960">
+          <caret line="132" column="122" lean-forward="false" selection-start-line="132" selection-start-column="110" selection-end-line="132" selection-end-column="122" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/config/db.config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resumes/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4134">
+          <caret line="173" column="55" lean-forward="true" selection-start-line="173" selection-start-column="55" selection-end-line="173" selection-end-column="55" />
+          <folding>
+            <marker date="1520818488883" expanded="true" signature="10833:11693" ph="CREATE TABLE... IF" />
+            <marker date="1520818488883" expanded="true" signature="11763:13813" ph="CREATE TABLE... IF" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/resume/wordresume.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="240" column="24" lean-forward="false" selection-start-line="240" selection-start-column="24" selection-end-line="240" selection-end-column="24" />
+          <folding>
+            <element signature="e#6784#6790#0" expanded="false" />
+            <element signature="e#6864#6870#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/member/lietou/files/createResume.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="376" column="50" lean-forward="false" selection-start-line="375" selection-start-column="12" selection-end-line="376" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/member/lietou/input_resume.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2070">
+          <caret line="558" column="58" lean-forward="false" selection-start-line="558" selection-start-column="58" selection-end-line="558" selection-end-column="58" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/member/lietou/recommend.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="88" column="119" lean-forward="false" selection-start-line="88" selection-start-column="119" selection-end-line="88" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/resume/resume.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="223" column="80" lean-forward="false" selection-start-line="223" selection-start-column="80" selection-end-line="223" selection-end-column="80" />
+          <folding>
+            <marker date="1520911421009" expanded="true" signature="25394:25431" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/resume/show.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="77" column="78" lean-forward="true" selection-start-line="77" selection-start-column="78" selection-end-line="77" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/ajax/index.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2447">
+          <caret line="1027" column="59" lean-forward="false" selection-start-line="1027" selection-start-column="59" selection-end-line="1027" selection-end-column="59" />
+          <folding>
+            <marker date="1520906240713" expanded="true" signature="46473:47144" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="55611:55687" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="62726:63077" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="71750:71763" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="74701:74713" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="76096:76107" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="87678:87691" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="116532:116578" ph="..." />
+            <marker date="1520906240713" expanded="true" signature="123443:123456" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member/com/model/hr.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="35" column="59" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/member/com/hr.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-390">
+          <caret line="80" column="86" lean-forward="false" selection-start-line="80" selection-start-column="86" selection-end-line="80" selection-end-column="86" />
+          <folding>
+            <marker date="1520923272122" expanded="false" signature="7324:7373" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="11031:11047" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="11333:11349" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="12090:12141" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="12365:12382" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="12846:12863" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="13119:13186" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="13605:13622" ph="..." />
+            <marker date="1520923272122" expanded="false" signature="13796:13813" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/model/resume.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="136" column="30" lean-forward="false" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member/lietou/model/recommend.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member/lietou/model/parse.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="64" column="134" lean-forward="false" selection-start-line="64" selection-start-column="124" selection-end-line="64" selection-end-column="134" />
+          <folding>
+            <element signature="n#filter_str#0;n#parse_controller#0;n#!!top" expanded="false" />
+            <element signature="n#arr_line#0;n#parse_controller#0;n#!!top" expanded="false" />
+            <element signature="n#split_lines#0;n#parse_controller#0;n#!!top" expanded="false" />
+            <element signature="n#sort_with_keyName#0;n#parse_controller#0;n#!!top" expanded="false" />
+            <element signature="n#m_iconv#0;n#parse_controller#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member/lietou/model/resume.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="221" column="42" lean-forward="false" selection-start-line="221" selection-start-column="42" selection-end-line="221" selection-end-column="42" />
+          <folding>
+            <element signature="n#onejob_receivelist_action#0;n#resume_controller#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/member/lietou/jobrecommend.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="73" column="75" lean-forward="false" selection-start-line="73" selection-start-column="75" selection-end-line="73" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,664 @@
+{yun:}include file="$ltstyle/header.htm"{/yun}
+
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/comapply.css" type="text/css"/>
+<link href="{yun:}$style{/yun}/style/pinfen.css" type=text/css rel=stylesheet>
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/ltqy_detail.css" type="text/css"/>
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/job.css" type="text/css"/>
+{yun:}resumelist limit=1 eid='auto.eid' item=user1{/yun}
+<div class="w1000">
+    <div class="alert alert-success" role="alert" style="width:1100px;margin: 0 auto;color: #3c763d;background-color: #fff;">
+
+        <div class="post-info" style="margin-top: 20px;height: 230px;">
+            <div class="job_hr_resume_user" style="margin: 40px;width: 1040px;line-height: 30px;">
+                <div style="width: 100%;">
+                    <a class="job_namer" style="font-size: 18px;" href="{yun:}$user1.user_url{/yun}" target="_blank">{yun:}$user1.name{/yun}</a>
+                    <label class="tel_num mal_10"><img src="{yun:}$lt_style{/yun}/images/sj_ico.png">{yun:}$user1.telphone{/yun}</label>
+                    <label class="tj_time mal_20">{yun:}if $user1.sex==1{/yun}男{yun:}else{/yun}女{yun:}/if{/yun}</label><span class="xianshu">|</span>
+                    <label class="tj_time">{yun:}$user1.age{/yun}岁</label><span class="xianshu">|</span>
+                    <label class="tj_time">{yun:}$user1.edu_n{/yun}</label><span class="xianshu">|</span>
+                    {yun:}if $user1.exp_n{/yun}
+                    <label class="tj_time">{yun:}$user1.exp_n{/yun}工作经验</label>
+                    {yun:}/if{/yun}
+                    <!--<span class="xianshu">|</span><label class="tj_time">重庆-重庆</label>-->
+
+                </div>
+                <div class="fl" style="width: 40%;padding-right: 10px;margin-top: 20px;">
+                    <div class="job_hr_resume_user_name" style="line-height: 30px;">
+                        <div class="mat_10">
+                            {yun:}if $user1.resume_edu{/yun}
+                            <label class="tj_time">{yun:}date("Y/m",$user1.resume_edu.startDateStr){/yun}-{yun:}date("Y/m",$user1.resume_edu.endDateStr){/yun}：</label>
+                            <label class="tj_time">{yun:}$user1.resume_edu.schoolName{/yun}</label>
+                            {yun:}if $user1.resume_edu.majorName{/yun}
+                            <span class="xianshu">|</span>
+                            <label class="tj_time">{yun:}$user1.resume_edu.degree_n{/yun}</label>
+                            {yun:}/if{/yun}
+                            {yun:}/if{/yun}
+                        </div>
+                        <div class="mat_10">
+                            <label class="tj_time">期望年薪：</label>
+                            <label class="salery_s">{yun:}$user1.salary_n{/yun}</label>
+                            <label class="tj_time mal_20">期望工作地：</label>
+                            <label class="tj_time">{yun:}$user1.hope_city{/yun}</label>
+                        </div>
+                        <div class="mat_10">
+                            <label class="tj_time">期望职位：</label>
+                            {yun:}foreach from=$user1.job_classname item=li{/yun}
+                            <label class="yixijob">{yun:}$li{/yun}</label>
+                            {yun:}/foreach{/yun}
+                        </div>
+                    </div>
+                </div>
+                <div class="fl" style="padding-left: 20px;border-left: 1px solid #eeeeee;min-height: 60px;margin-top: 20px;">
+                    {yun:}foreach from=$user1.resume_work item=list{/yun}
+                    <div class="job_hr_resume_user_yx">
+                        <label>{yun:}date('Y/m',$list['startDateStr']){/yun}-{yun:}date('Y/m',$list['endDateStr']){/yun}</label>
+                        <span class="shustyle">|</span>
+                        <label class="zi3314 nowrapp" style="max-width: 210px;">{yun:}$list.companyName{/yun}</label>
+                        {yun:}if $list.posName{/yun}
+                        <span class="shustyle">|</span>
+                        <label class="zi0014 nowrapp" style="max-width: 100px;">{yun:}$list.posName{/yun}</label>
+                        {yun:}/if{/yun}
+                    </div>
+                    {yun:}/foreach{/yun}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="admin_mainbody" style="margin-top: 10px;">
+        <div class=down_box style="margin-top: 0;">
+            <div class=admincont_box>
+
+                <div class="tishilt">
+                    <label class="xztitle" style="float:left;">选择职位</label>
+                    <span class="mal_20">
+                <a class="bagn_item  {yun:}if empty($smarty.get.w){/yun}cur_select{yun:}/if{/yun}" href="/member/index.php?c=resume&act=jobrecommend&eid={yun:}$smarty.get.eid{/yun}">平台职位库</a>
+                <a class="bagn_item {yun:}if $smarty.get.w==1{/yun}cur_select{yun:}/if{/yun}" href="/member/index.php?c=resume&act=jobrecommend&w=1&eid={yun:}$smarty.get.eid{/yun}">关注的职位</a>
+                <a class="bagn_item {yun:}if $smarty.get.w==2{/yun}cur_select{yun:}/if{/yun}" href="/member/index.php?c=resume&act=jobrecommend&w=2&eid={yun:}$smarty.get.eid{/yun}">已推荐的职位</a>
+            </span>
+                </div>
+                <div class="search_content">
+                    <div class="Search_jobs_form_list" style="margin-top: 20px;padding-bottom: 20px;">
+
+                        <div class="shaixuan" style="font-weight: inherit;height: 32px;line-height: 32px;float: left;">职位编号：</div>
+                        <div class="Search_jobs_sub" style="float: left;width: 140px;">
+                            <input type="text" class="Search_jobs_more_chlose job_id" value="{yun:}$smarty.get.job_id{/yun}"  name="job_id" style="padding-left: 10px;cursor: inherit;width: 140px;">
+                        </div>
+                        <div class="shaixuan" style="font-weight: inherit;height: 32px;line-height: 32px;float: left;margin-left: 20px;">职位名称：</div>
+                        <div class="Search_jobs_sub" style="float: left;width: 140px;">
+                            <input type="text" class="Search_jobs_more_chlose job_name" value="{yun:}$smarty.get.job_name{/yun}"   name="job_name" style="padding-left: 10px;cursor: inherit;width: 140px;">
+                        </div>
+                        <div class="shaixuan" style="font-weight: inherit;height: 32px;line-height: 32px;float: left;margin-left: 20px;">公司名称：</div>
+                        <div class="Search_jobs_sub" style="float: left;width: 140px;">
+                            <input type="text" class="Search_jobs_more_chlose com_name" value="{yun:}$smarty.get.com_name{/yun}"   name="com_name" style="padding-left: 10px;cursor: inherit;width: 140px;">
+                        </div>
+                        <div class="shaixuan" style="font-weight: inherit;height: 32px;line-height: 32px;float: left;margin-left: 20px;">关键词：</div>
+                        <div class="Search_jobs_sub" style="float: left;width: 140px;">
+                            <input type="text" class="Search_jobs_more_chlose keyword" name="keyword" style="padding-left: 10px;cursor: inherit;width: 140px;">
+                        </div>
+                        <input type="submit" class="sousuo_btns" style="height: 30px;margin-left: 20px;line-height: 30px;" value="搜索"/>
+                    </div>
+
+                    <div class="Search_jobs_form_list search_more">
+                        <div class="shaixuan">
+                            <label class="sxtitle">筛选条件：</label>
+                            {yun:}if $smarty.get.identity{/yun}
+                            <label class="select_hy">
+                                <a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=resume act=$smarty.get.act identity=''{/yun}">职位来源：{yun:}if $smarty.get.identity==1{/yun}企业发布{yun:}elseif $smarty.get.identity==3{/yun}猎头发布{yun:}/if{/yun}</a>
+                            </label>
+                            {yun:}/if{/yun}
+                            {yun:}if $smarty.get.hy{/yun}
+                            <label class="select_hy">
+                                <a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=resume act=$smarty.get.act hy=''{/yun}">行业：{yun:}$industry_name[$smarty.get.hy]{/yun}</a>
+                            </label>
+                            {yun:}/if{/yun}
+                            {yun:}if $smarty.get.city{/yun}
+                            <label class="select_city"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=resume act=$smarty.get.act city=''{/yun}">工作地点：{yun:}$city_name[$smarty.get.city]{/yun}</a></label>
+                            {yun:}/if{/yun}
+                            {yun:}if  $smarty.get.minsalary || $smarty.get.maxsalary{/yun}
+                            <label class="select_salery">
+                                <a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=resume act=$smarty.get.act minsalary='' maxsalary=''{/yun}">年薪范围：
+                                    {yun:}if $smarty.get.minsalary && $smarty.get.maxsalary{/yun}
+                                    {yun:}$smarty.get.minsalary{/yun}-{yun:}$smarty.get.maxsalary{/yun}万以内
+                                    {yun:}elseif $smarty.get.minsalary && empty($smarty.get.maxsalary){/yun}
+                                    {yun:}$smarty.get.minsalary{/yun}万以上
+                                    {yun:}elseif empty($smarty.get.minsalary) && $smarty.get.maxsalary{/yun}
+                                    {yun:}$smarty.get.maxsalary{/yun}万以内
+                                    {yun:}/if{/yun}
+                                </a></label>
+                            {yun:}/if{/yun}
+                            {yun:}if $smarty.get.uptime{/yun}
+                            <label class="select_time"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=resume act=$smarty.get.act uptime=''{/yun}">更新时间：{yun:}$uptime[$smarty.get.uptime]{/yun}</a></label>
+                            {yun:}/if{/yun}
+                        </div>
+                        <div class="Search_jobs_sub" style="margin-left: 20px;margin-top: 14px;">
+                            <div class="Search_jobs_more_chlose">
+                                <span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.identity==1{/yun}企业发布{yun:}elseif $smarty.get.identity==3{/yun}猎头发布{yun:}else{/yun}职位来源{yun:}/if{/yun}</span><i class=""></i>
+                                <div class="Search_jobs_more_chlose_list none">
+                                    <ul class="select_hyitem">
+                                        <li><a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=resume act=$smarty.get.act identity=''{/yun}">全部</a> </li>
+                                        <li><a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=resume act=$smarty.get.act identity=1{/yun}">企业发布</a> </li>
+                                        <li><a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=resume act=$smarty.get.act identity=3{/yun}">猎头发布</a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="Search_jobs_more_chlose">
+                                <span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.hy{/yun}{yun:}$industry_name[$smarty.get.hy]{/yun}{yun:}else{/yun}行业类别{yun:}/if{/yun}</span><i class=""></i>
+                                <div class="Search_jobs_more_chlose_hylist none">
+                                    <ul class="select_hyitem">
+                                        {yun:}foreach from=$industry_index item=v key=key{/yun}
+                                        <li><a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=resume act=$smarty.get.act hy=$v{/yun}">{yun:}$industry_name[$v]{/yun}</a> </li>
+                                        {yun:}/foreach{/yun}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--<div class="Search_jobs_more_chlose">-->
+                                <!--<span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.hy{/yun}{yun:}$industry_name[$smarty.get.hy]{/yun}{yun:}else{/yun}职位类别{yun:}/if{/yun}</span><i class=""></i>-->
+                                <!--<div class="Search_jobs_more_chlose_hylist none">-->
+                                    <!--<ul class="select_hyitem">-->
+                                        <!--{yun:}foreach from=$industry_index item=v key=key{/yun}-->
+                                        <!--<li><a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=job act=$smarty.get.act hy=$v{/yun}">{yun:}$industry_name[$v]{/yun}</a> </li>-->
+                                        <!--{yun:}/foreach{/yun}-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="Search_jobs_more_chlose">
+                                <span class="Search_jobs_more_chlose_s">工作地点</span><i class=""></i>
+                                <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
+                                    <ul class="select_cityitem">
+                                        {yun:}foreach from=$city_index key=j item=v{/yun}
+                                        <li style="width: inherit;"><a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=resume act=$smarty.get.act city=$v{/yun}">{yun:}$city_name[$v]{/yun}</a> </li>
+                                        {yun:}/foreach{/yun}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">年薪范围</span><i class=""></i>
+                                <div class="Search_jobs_more_chlose_list none" style="width: 415px;height: 80px;">
+                                    <ul class="select_hyitem">
+                                        <li style="width: inherit;"> <a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=resume maxsalary=10{/yun}">10万以内</a></li>
+                                        <li style="width: inherit;"> <a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=resume minsalary=10 maxsalary=20{/yun}">10-20万以内</a></li>
+                                        <li style="width: inherit;"> <a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=resume minsalary=20 maxsalary=30{/yun}">20-30万以内</a></li>
+                                        <li style="width: inherit;"> <a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=resume minsalary=30 maxsalary=50{/yun}">30-50万以内</a></li>
+                                        <li style="width: inherit;"> <a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=resume minsalary=50{/yun}">50万以上</a></li>
+                                    </ul>
+                                    <input type="text" id="minsalary" class="saleryinput" style="margin-left: 10px;margin-top: 8px;">-<input id="maxsalary" type="text" class="saleryinput">万
+                                    <input type="button" value="确定" class="salery_btn">
+                                </div>
+                            </div>
+                            <div class="Search_jobs_more_chlose">
+                                <span class="Search_jobs_more_chlose_s">{yun:}if $uptime[$smarty.get.uptime]{/yun}{yun:}$uptime[$smarty.get.uptime]{/yun}{yun:}else{/yun}更新时间{yun:}/if{/yun}</span><i class=""></i>
+                                <div class="Search_jobs_more_chlose_list none">
+                                    <ul class="select_hyitem">
+                                        {yun:}foreach from=$uptime item=v key=key{/yun}
+                                        <li><a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=resume act=$smarty.get.act uptime=$key{/yun}">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="paixu_btn">
+                                <a class="pxbtn {yun:}if $smarty.get.order=='salary'{/yun}pxcur{yun:}/if{/yun}" href="{yun:}parse_url m=member c=resume act=$smarty.get.act order=salary{/yun}">年薪从高到低</a>
+                                <a class="pxbtn {yun:}if $smarty.get.order=='time'{/yun}pxcur{yun:}/if{/yun}" href="{yun:}parse_url m=member c=resume act=$smarty.get.act order=time{/yun}">更新时间从新到旧</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Search_jobs_form_list" style="display: none">
+                    <div class="yun_job_search" style="padding: 24px 30px 10px 30px;">
+                        <div class="Search_jobs_sub" style="width: 1040px;">
+                            <form method="post">
+                                <input type="text" id="keyword" name="keyword" value="{yun:}if $smarty.post.keyword!=""{/yun}{yun:}$smarty.post.keyword{/yun}{yun:}else{/yun}请输入关键字，如：姓名、期望工作地…{yun:}/if{/yun}" onclick="if(this.value=='请输入关键字，如：姓名、期望工作地…'){this.value=''}" onblur="if(this.value==''){this.value='请输入关键字，如：姓名、期望工作地…'}" class="Search_jobs_text" style="width:796px;"/>
+                                <input type="submit" value="搜索" class="Search_jobs_submit yun_bg_color"  style="background: #4b6e88;height: 40px;"/>
+                            </form>
+                            <a class="sc_resume" href="index.php?c=recommend&act=input" target="_blank">创建新候选人</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Search_jobs_form_list search_more" style="display: none">
+                    {yun:}if $smarty.get.hy||$smarty.get.provinceid||$smarty.get.salary||$smarty.get.edu||$smarty.get.work{/yun}
+                    <div class="shaixuan" style="margin-left: 30px;">
+                        <label class="sxtitle">筛选条件：</label>
+                        {yun:}if $smarty.get.hy{/yun}
+                        <label class="select_hy">
+                            <a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=recommend hy=''{/yun}">行业：{yun:}$industry_name[$smarty.get.hy]{/yun}</a>
+                        </label>
+                        {yun:}/if{/yun}
+                        {yun:}if $smarty.get.provinceid{/yun}
+                        <label class="select_city"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url  m=member c=recommend provinceid=''{/yun}">期望工作地：{yun:}$city_name[$smarty.get.provinceid]{/yun}</a></label>
+                        {yun:}/if{/yun}
+                        {yun:}if $smarty.get.salary{/yun}
+                        <label class="select_salary"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=recommend salary=''{/yun}">期望年薪：{yun:}$userclass_name[$smarty.get.salary]{/yun}</a></label>
+                        {yun:}/if{/yun}
+                        {yun:}if $smarty.get.work{/yun}
+                        <label class="select_work"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url  m=member c=recommend work=''{/yun}">工作年限：{yun:}$userclass_name[$smarty.get.work]{/yun}</a></label>
+                        {yun:}/if{/yun}
+                        {yun:}if $smarty.get.edu{/yun}
+                        <label class="select_work"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=recommend edu=''{/yun}">学历：{yun:}$userclass_name[$smarty.get.edu]{/yun}</a></label>
+                        {yun:}/if{/yun}
+                    </div>
+                    {yun:}/if{/yun}
+                    <div class="Search_jobs_sub" style="margin-left: 30px;margin-top: 14px;width: 1040px;">
+
+                        <div class="Search_jobs_more_chlose">
+                              <span class="Search_jobs_more_chlose_s">
+                                  {yun:}if $smarty.get.hy{/yun}
+                                    {yun:}$industry_name[$smarty.get.hy]{/yun}
+                                  {yun:}else{/yun}
+                                    期望行业
+                                  {yun:}/if{/yun}
+                              </span>
+                            <i class=""></i>
+                            <div class="Search_jobs_more_chlose_hylist none">
+                                <ul>
+                                    {yun:}if $config.fz_type!='2'&&$config.hyclass==''{/yun}
+                                    <div class="Search_jobs_form_list">
+                                        {yun:}foreach from=$industry_index item=v key=key{/yun}
+                                        <li><a href="{yun:}parse_url m=member c=recommend hy=$v city=$smarty.get.city{/yun}" class="Search_jobs_sub_a" onclick="showurl('{yun:}listurl m=resume type=hy v=$v{/yun}')">{yun:}$industry_name[$v]{/yun}</a> </li>
+                                        {yun:}/foreach{/yun}
+                                    </div>
+                                    {yun:}/if{/yun}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Search_jobs_more_chlose">
+                              <span class="Search_jobs_more_chlose_s">
+                                  {yun:}if $smarty.get.provinceid{/yun}
+                                    {yun:}$city_name[$smarty.get.provinceid]{/yun}
+                                  {yun:}else{/yun}
+                                    期望工作地
+                                  {yun:}/if{/yun}
+                              </span>
+                            <i class=""></i>
+                            <div class="Search_jobs_more_chlose_hylist none">
+                                <ul>
+                                    {yun:}foreach from=$city_index key=j item=v{/yun}
+                                    <li style="width: inherit;"><a class="Search_jobs_sub_a" href="{yun:}parse_url m=member c=recommend provinceid=$v{/yun}">{yun:}$city_name[$v]{/yun}</a> </li>
+                                    {yun:}/foreach{/yun}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Search_jobs_more_chlose">
+                              <span class="Search_jobs_more_chlose_s">
+                                  {yun:}if $smarty.get.salary{/yun}
+                                    {yun:}$userclass_name[$smarty.get.salary]{/yun}
+                                  {yun:}else{/yun}
+                                    期望年薪
+                                  {yun:}/if{/yun}
+                              </span><i class=""></i>
+                            <div class="Search_jobs_more_chlose_list none" style="width: 400px;">
+                                <ul class="select_hyitem">
+                                    {yun:}foreach from=$userdata['year_salary'] item=list{/yun}
+                                    <li style="width: inherit;"> <a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=recommend salary=$list{/yun}">{yun:}$userclass_name[$list]{/yun}</a></li>
+                                    {yun:}/foreach{/yun}
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Search_jobs_more_chlose">
+                              <span class="Search_jobs_more_chlose_s">
+                                  {yun:}if $smarty.get.work{/yun}
+                                    {yun:}$userclass_name[$smarty.get.work]{/yun}
+                                  {yun:}else{/yun}
+                                    工作年限
+                                  {yun:}/if{/yun}
+                              </span>
+                            <i class=""></i>
+                            <div class="Search_jobs_more_chlose_list none">
+                                <ul>
+                                    <li><a href="{yun:}parse_url m=member c=recommend work=''{/yun}" class="Search_jobs_sub_a " style="width: 110px;">全部</a></li>
+                                    {yun:}foreach from=$userdata['user_work'] item=list{/yun}
+                                    <li><a href="{yun:}parse_url m=member c=recommend work=$list{/yun}" class="Search_jobs_cxz " style="width: 110px;">{yun:}$userclass_name[$list]{/yun}</a></li>
+                                    {yun:}/foreach{/yun}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Search_jobs_more_chlose">
+                              <span class="Search_jobs_more_chlose_s">
+                                  {yun:}if $smarty.get.edu{/yun}
+                                    {yun:}$userclass_name[$smarty.get.edu]{/yun}
+                                  {yun:}else{/yun}
+                                    学历
+                                  {yun:}/if{/yun}
+                              </span><i class=""></i>
+                            <div class="Search_jobs_more_chlose_list none">
+                                <ul>
+                                    <li><a href="{yun:}parse_url m=member c=recommend work=''{/yun}" class="Search_jobs_sub_a " style="width: 110px;">全部</a></li>
+                                    {yun:}foreach from=$userdata['user_edu'] item=list{/yun}
+                                    <li><a href="{yun:}parse_url m=member c=recommend edu=$list{/yun}" class="Search_jobs_cxz " style="width: 110px;">{yun:}$userclass_name[$list]{/yun}</a></li>
+                                    {yun:}/foreach{/yun}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="paixu_btn">
+                            <label class="pxbtn">工作年限从高到低</label>
+                            <label class="pxbtn pxcur">期望薪资从高到低</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="left_job_all fl">
+                    <div class="job_left_sidebar" style="width: 1040px;margin-left: 30px;">
+
+                        <div class="job_news_list" style="background: #f1f8ff">
+                            <span class="job_news_list_span job_w90" style="padding-left: 10px;">职位编号</span>
+                            <span class="job_news_list_span job_w430" style="text-align:left;">职位信息</span>
+                            <!--<span class="job_news_list_span job_w110">工作地点</span>-->
+                            <!--<span class="job_news_list_span job_w110">年薪</span>-->
+                            <!--<span class="job_news_list_span job_w110">更新时间</span>-->
+                            <span class="job_news_list_span job_w300">
+                        <label class="num_tj">
+                            <img src="{yun:}$lt_style{/yun}/images/icol0.png">
+                            <label class="jieshiico">服务猎头</label>
+                        </label>
+                        <label class="num_tj w45">
+                            <img src="{yun:}$lt_style{/yun}/images/icol1.png">
+                            <label class="jieshiico">推荐候选人</label>
+                        </label>
+                        <label class="num_tj w45">
+                            <img src="{yun:}$lt_style{/yun}/images/icol2.png">
+                            <label class="jieshiico">HR已查看</label>
+                        </label>
+                        <label class="num_tj w50">
+                            <img src="{yun:}$lt_style{/yun}/images/icol3.png">
+                            <label class="jieshiico">HR已下载</label>
+                        </label>
+                        <label class="num_tj w50">
+                            <img src="{yun:}$lt_style{/yun}/images/icol4.png">
+                            <label class="jieshiico">HR已拒绝</label>
+                        </label>
+                    </span>
+                            <span class="job_news_list_span job_w180 text_cen">操作</span>
+                        </div>
+                        {yun:}joblist ispage=1 limit=12 item=job_list  w="auto.w" identity="auto.identity" hy="auto.hy" provinceid="auto.provinceid" minsalary="auto.minsalary" maxsalary="auto.maxsalary" uptime="auto.uptime" job_id="auto.job_id" job_name="auto.job_name" com_name="auto.com_name" w="auto.w" keyword="auto.keyword" eid="auto.eid" orderby="auto.orderby"{/yun}
+                        <div class="job_news_list line_heigh45" pid="{yun:}$job_list.id{/yun}">
+                            <span class="job_news_list_span job_w90" style="padding-left: 10px;">{yun:}$job_list.id{/yun}</span>
+                            <span class="job_news_list_span  job_w430 line_heigh23 posirel" style="text-align:left;">
+                        <!--判断职位发布者-->
+                        {yun:}if $job_list.identity==3{/yun}
+                            <img src="{yun:}$style{/yun}/images/ico_lie.png" class="ico_flag"/>
+                        {yun:}else{/yun}
+                            <img src="{yun:}$style{/yun}/images/ico_qi.png" class="ico_flag"/>
+                        {yun:}/if{/yun}
+                        <div>
+                            <a class="job_namer nowrap" href="{yun:}$job_list.job_url{/yun}" target="_blank" style="font-size: 18px;">{yun:}$job_list.name{/yun}</a>
+                             <label class="lastupdate">{yun:}$job_list.lastupdate{/yun}更新</label>
+                        </div>
+                        <div class="mat_10">
+                             <label class="salery_s" href="#">{yun:}$job_list.job_salary{/yun}</label><span class="xianshu">|</span>
+                            <label class="tj_time">{yun:}$job_list.job_city_one{/yun}-{yun:}$job_list.job_city_two{/yun}</label><span class="xianshu">|</span>
+                            <label class="tj_time">学历:{yun:}$job_list.job_edu{/yun}</label><span class="xianshu">|</span>
+                            <label class="tj_time">工作经验:{yun:}$job_list.job_exp{/yun}</label>
+                        </div>
+                        <div class="mat_10">
+                            {yun:}if $job_list.identity==3{/yun}
+                            <label class="com_style">{yun:}$job_list.com_name{/yun}</label>
+                            {yun:}else{/yun}
+                            <a class="com_style" href="{yun:}$job_list.com_url{/yun}" target="_blank">{yun:}$job_list.com_name{/yun}</a>
+                            {yun:}/if{/yun}
+                             </div>
+                    </span>
+                    <span class="job_news_list_span job_w300 line_heigh23 mat_10">
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.lietou_num{/yun}</span><br><span class="color_999">猎头</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.resume_num{/yun}</span><br><span class="color_999">候选人</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.view_num{/yun}</span><br><span class="color_999">HR查看</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.download_num{/yun}</span><br><span class="color_999">HR下载</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.refuse_num{/yun}</span><br><span class="color_999">HR拒绝</span></label>
+                    </span>
+                    <span class="job_news_list_span job_w180 text_cen">
+                        {yun:}if $job_list.recommend==1{/yun}
+                        <label class="btn_hxr w90b yituijian">已推荐</label>
+                        {yun:}elseif $job_list.recommend==2{/yun}
+                        <label class="btn_hxr w90b qttuijan">某猎头已推荐</label>
+                        {yun:}else{/yun}
+                        <label class="btn_hxr w90b tuijan" id="t_tj_{yun:}$job_list.id{/yun}" data-id="{yun:}$user1.id{/yun}" data-jid="{yun:}$job_list.id{/yun}">立即推荐</label>
+                        {yun:}/if{/yun}
+
+                    </span>
+                        </div>
+                        {yun:}/joblist{/yun}
+
+
+                        <div class="clear"></div>
+                        {yun:}if $total!=0 || is_array($user){/yun}
+                        <div class="search_pages">
+                            <div class="pages">{yun:}$pagenav{/yun}</div>
+                        </div>
+                        {yun:}else{/yun}
+                        <div class="seachno">
+                            <div class="seachno_left"><img src="{yun:}$style{/yun}/images/search-no.gif" width="144" height="102"/></div>
+                            <div class="listno-content"> <strong>很抱歉，没有找到满足条件的职位</strong><br>
+                                <span> 建议您：<br>
+        1、适当减少已选择的条件<br>
+        2、适当删减或更改搜索关键字<br>
+        </span> <span> 热门关键字：<br>
+        {yun:}key limit=10 recom=1 type=5 item=klist{/yun}<a href="{yun:}listurl m=resume type=keyword v=$klist.key_title{/yun}" title="{yun:}$klist.key_title{/yun}">{yun:}$klist.key_name{/yun}</a> {yun:}/key{/yun}</span> </div>
+                        </div>
+                        {yun:}/if{/yun} </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div  class="infoboxp22"  id="tuijianbox" style="display:none; ">
+    <div>
+        <input name="resume_id" id="resume_id" value="0" type="hidden">
+        <input name="eid" id="eid" value="0" type="hidden">
+        <input name="job_id" id="job_id" value="0" type="hidden">
+        <input name="pingfen" class="pingfen" value="0" type="hidden">
+        <div class="pjnr">推荐备注：</div>
+        <div class="jb_infobox" style="width: 100%;margin-top: 20px;">
+            <textarea id="tjcontent" placeholder="请输入推荐备注，让企业更精准的了解候选人信息。" name="r_reason" cols="30" rows="9" class="hr_textarea tj_textarea" maxlength="100"></textarea>
+            <div class="numts position">还可输入<label class="xznum">100</label>字</div>
+        </div>
+        <div class="jb_infobox" style="width: 100%;">
+            <button type="submit"   name='submit' value='1' class="submit_btn tuijianbtn" style="margin-left: 160px;">确定推荐</button>
+            <button type="button" class="submit_btn quxiao" style="margin-left: 20px;background: #ddd;">取消</button>
+        </div>
+    </div>
+</div>
+{yun:}/resumelist{/yun}
+<script>
+    function gotime(id,edate,i){
+        $("#gotimeid").val(id);
+        if(i){
+            $("#gotime_edate").html("本次共延期<font color='red'>"+i+"</font>个职位！");
+        }else{
+            $("#gotime_edate").html('当前职位到期时间：<font color="red">'+edate+'</font>');
+        }
+        $.layer({
+            type : 1,
+            title : '延期天数',
+            closeBtn : [0 , true],
+            border : [10 , 0.3 , '#000', true],
+            area : ['340px','210px'],
+            page : {dom : '#gotime'}
+        });
+    }
+    function allgotime(){//批量延期
+        var allid =[];
+        var i=0;
+        $('input[name="checkboxid[]"]:checked').each(function(){
+            allid.push($(this).val());
+            i++;
+        });
+        if(allid.length==0){
+            layer.msg("请选择要延期的职位！",2,8);return false;
+        }else{
+            gotime(allid,'',i);
+        }
+    }
+    function allonstatus(){//批量延期
+        var allid =[];
+        var i=0;
+        $('input[name="checkboxid[]"]:checked').each(function(){
+            allid.push($(this).val());
+            i++;
+        });
+        if(allid.length==0){
+            layer.msg("请选择要下架的职位！",2,8);return false;
+        }else{
+            onstatus(allid,1);
+        }
+    }
+    function onstatus(id,status){//修改招聘状态
+        $.post("index.php?c=job&act=opera",{id:id,status:status},function(data){
+            if(data==1){
+                layer.msg('设置成功！', 2, 9,function(){window.location.reload();});return false;
+            }else{
+                layer.msg('设置失败！', 2, 8);
+            }
+        })
+    }
+    function Refresh(name){
+        var chk_value =[];
+        var i=0;
+        $('input[name="'+name+'"]:checked').each(function(){
+            chk_value.push($(this).val());
+            i++;
+        });
+        if(chk_value.length==0){
+            layer.msg("请选择要刷新的职位！",2,8);return false;
+        }else{
+
+            var num="{yun:}$config.integral_jobefresh{/yun}";
+            var breakmsg = '本次共刷新'+i+'个职位,需扣除'+i+'个刷新数量,或消耗'+(num*i)+'{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}！';
+            layer.confirm(breakmsg,function(){
+                $.post("{yun:}$config.sy_weburl{/yun}/member/index.php?m=ajax&c=Refresh_job",{ids:chk_value},function(data){
+                    if(data==1){
+                        layer.msg("刷新成功！",2,9,function(){window.location.reload();});
+                    }else{
+                        layer.msg(data,2,8);
+                    }
+                })
+            });
+
+
+        }
+    }
+    $(document).ready(function(){
+        $('#zxxCancelBtn,.quxiao').click(function(){
+            layer.closeAll();
+        });
+
+        $(".job_share").hover(function(){
+
+            var html=$(this).find('.job_share_img').html();
+            layer.tips(html, this, {
+                guide: 1,
+                style: ['background-color:#5EA7DC;', '#5EA7DC']
+            });
+            $(".xubox_layer").addClass("xubox_tips_border");
+        },function(){layer.closeTips();});
+
+        $(".job_list_extension_box").hover(function(){
+            $(this).find('.job_list_extension_box_list').show();
+        },function(){
+            $(this).find('.job_list_extension_box_list').hide();
+        })
+        $(".job_tck_list").click(function(){
+            var cron = $(this).attr('data-cron');
+            var name = $(this).attr('data-name');
+            $("#autotype").val(cron);
+            $(".job_box_in").html(name);
+            $(".job_tck_box_pot").hide();
+        });
+        $(".job_box_in").click(function(e){
+            $(".job_tck_box_pot").toggle();
+        });
+
+//	推荐简历
+        $(".yun_user_lok_bth").click(function () {
+            var resume_id = $(this).attr("data-id");
+            var eid = $(this).attr("data-eid");
+            $.ajax({
+                type:"post",
+                url:"/member/index.php?c=recommend&act=report",
+                data:{
+                    job_id:"{yun:}$smarty.get.id{/yun}",
+                    resume_id:resume_id,
+                    eid:eid
+                },
+                success:function (data) {
+                    var data =JSON.parse(data);
+
+                }
+            })
+        })
+        $(document).bind("click",function(e){
+            if(e.target.className != 'job_box_in'){
+                $(".job_tck_box_pot").hide();
+            }
+        });
+    });
+</script>
+<!--延期天数弹出框-->
+<div id="gotime"  style="display:none; width:230px; ">
+    <div class="job_box_div"   style="width:300px; ">
+        <div class="job_box_msg" style="margin-left:10px;_margin-left:5px;padding:5px;">
+            <p id="gotime_edate"></p>
+        </div>
+        <form action='index.php?c=job&act=opera' target="supportiframe" method="post" id='gotimef'>
+            <input type="hidden" name="gotimeid" id="gotimeid" value=""/>
+            <div class="job_box_inp"  style="padding:10px 5px 5px 20px"> <span style="float:left; margin-right:0px;">延期天数：</span>
+                <input name="day" value="" class="com_info_text placeholder" type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" style="width:100px;"/>
+                <span class="fltL box_infobox_span" style="padding-left:10px;">天</span> </div>
+            <span class="job_box_botton" style="width:100%;"> <a class="job_box_yes job_box_botton2" href="javascript:void(0);" onclick="setTimeout(function(){$('#gotimef').submit()},0);">确定</a> </span>
+        </form>
+    </div>
+</div>
+<!--延期天数弹出框end-->
+<script src="{yun:}$style{/yun}/js/com_index.js" language="javascript"></script>
+<script src="/js/search.js" language="javascript"></script>
+<script src="{yun:}$lt_style{/yun}/js/commend1.js" language="javascript"></script>
+<script>
+
+    function changeUrlArg(url, arg, val){
+        var pattern = arg+'=([^&]*)';
+        var replaceText = arg+'='+val;
+        return url.match(pattern) ? url.replace(eval('/('+ arg+'=)([^&]*)/gi'), replaceText) : (url.match('[\?]') ? url+'&'+replaceText : url+'?'+replaceText);
+    }
+
+
+    $(".sousuo_btns").click(function () {
+        var job_id = $(".job_id").val();
+        var job_name = $(".job_name").val();
+        var com_name = $(".com_name").val();
+        var keyword = $(".keyword").val();
+
+        var url=changeUrlArg(window.location.href,"job_id",job_id);
+        var url=changeUrlArg(url,"job_name",job_name);
+        var url=changeUrlArg(url,"com_name",com_name);
+        var url=changeUrlArg(url,"keyword",keyword);
+        location = url;
+    })
+    //推荐候选人
+//    $("body").on("click",".tuijan",function () {
+//        var _this = $(this);
+//        layer.confirm("确定推荐该候选人给这个职位吗？",function() {
+//            $.post("/member/index.php?c=recommend&act=report",{ resume_id:_this.attr("data-id"), job_id:_this.attr("data-jid"), eid:"{yun:}$smarty.get.eid{/yun}"},function(data){
+//                if(data==1){
+//                    //推荐成功后的效果
+//                    layer.msg('推荐成功！', 2, 9);
+//                    _this.html("已推荐");
+//                    _this.removeClass("tuijan");
+//                    _this.addClass("yituijian");
+//                }
+//            })
+//        });
+//
+//    })
+
+    $(".salery_btn").click(function () {
+        var minsalary = $("#minsalary").val();
+        var maxsalary = $("#maxsalary").val();
+        var url=changeUrlArg(window.location.href,"minsalary",minsalary);
+        var url=changeUrlArg(url,"maxsalary",maxsalary);
+        location = url;
+
+    })
+
+</script>
+{yun:}include file="$ltstyle/jobserver.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}

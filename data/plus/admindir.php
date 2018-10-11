@@ -1,0 +1,2 @@
+<?php
+$admindir='admin-huilie';?>

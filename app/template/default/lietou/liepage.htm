@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{yun:}$title{/yun}</title>
+<meta name="keywords" content="{yun:}$keywords{/yun}"/>
+<meta name="description" content="{yun:}$description{/yun}"/>
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/css.css" type="text/css"/>
+<link rel="stylesheet" href="{yun:}$style{/yun}/style/comapply.css" type="text/css"/>
+    <link rel="stylesheet" href="/app/template/company/default/images/comapply.css" type="text/css" />
+</head>
+<body class="body_bg">
+    {yun:}if $usertype==3{/yun}
+    {yun:}include file="$ltstyle/header.htm"{/yun}
+    <div class="bg_top"></div>
+    {yun:}else{/yun}
+    {yun:}include file="$tplstyle/header.htm"{/yun}
+    <div class="bg_top" style="top: 190px;"></div>
+    {yun:}/if{/yun}
+    <link rel="stylesheet" href="{yun:}$style{/yun}/style/job.css" type="text/css"/>
+    <link rel="stylesheet" href="{yun:}$style{/yun}/style/ltqy_detail.css" type="text/css"/>
+
+
+<div class="yun_content" style="width: 1100px;">
+  <div class="comappiy_left_box fl" style="width: 760px;">
+        <div class="Company_post_box" style="background:#fff;margin-top: 20px;float: left;">
+            <div class="fl" style="width: 100%">
+                <img src="{yun:}$style{/yun}/images/ico_wen.png" class="lielogo"/>
+                <div class="jiesll">
+                    <div class="liename1">{yun:}$lietou.name{/yun}</div>
+                    <div style="margin-top: 20px">擅长行业：{yun:}$lietou.hy{/yun}</div>
+                    <div style="margin-top: 15px">所在公司：{yun:}$lietou.com_name{/yun}</div>
+                </div>
+            </div>
+            <div class="contentll">
+                <div class="biaodian">
+                    <img src="{yun:}$style{/yun}/images/ico_biao.png"/>
+                </div>
+                <div class="content22">{yun:}$lietou.content{/yun}</div>
+            </div>
+                <div class="zhiweifw">
+                <div class="top_zw">TA正在发布的职位</div>
+                <ul class="job_lists">
+                    {yun:}foreach item=li from=$job{/yun}
+                    <li class="job_listsli">
+                        <a class="btnkss" href="#">立即查看</a>
+                        <div>
+                            <a href="#">{yun:}$li.name{/yun}</a>
+                        </div>
+                        <div>
+                            <label class="coloess"><svg class="icon wihe16" aria-hidden="true">
+                                        <use xlink:href="#icon-xinzi"></use>
+                                    </svg>
+                                {yun:}if $li.minsalary && $li.maxsalary{/yun}
+                                    {yun:}$li.minsalary{/yun}-{yun:}$li.maxsalary{/yun}
+                                {yun:}elseif $li.minsalary && empty($li.maxsalary){/yun}
+                                    {yun:}$li.minsalary{/yun}以上
+                                {yun:}else{/yun}
+                                    面议
+                                {yun:}/if{/yun}
+
+                            </label>
+                            <label class="coloe66"><svg class="icon wihe16" aria-hidden="true">
+                                <use xlink:href="#icon-didian"></use>
+                            </svg>上海
+                            </label>
+                            <label class="coloe66"><svg class="icon wihe16" aria-hidden="true">
+                                <use xlink:href="#icon-hangye"></use>
+                            </svg>工作经验不限
+                            </label>
+                            <label class="coloe66">
+                                <span class="comshow_job_xl">高中学历</span>
+                            </label>
+                        </div>
+                        <div class="colo999">发布时间：2018-2-5</div>
+                    </li>
+                    {yun:}/foreach{/yun}
+                </ul>
+            </div>
+        </div>
+  </div>
+
+
+  <div class="Compply_right_sidebar" style="width: 320px;overflow: inherit;">
+      <div class="Compply_right_post" style="margin-bottom: 20px;margin-top: 0;width: 320px;">
+          <div class="tj_kuai">
+              <div class="ll_kuai">
+                  <p class="numddd">1</p>
+                  <div class="ccolo">
+                      <svg class="icon wihe16" aria-hidden="true">
+                          <use xlink:href="#icon-HRgongzuo"></use>
+                      </svg>推荐候选人数</div>
+              </div>
+              <div class="ll_kuai">
+                  <p class="numddd">1</p>
+                  <div class="ccolo">
+                      <svg class="icon wihe16" aria-hidden="true">
+                          <use xlink:href="#icon-zhiweiguanli"></use>
+                      </svg>服务职位数</div>
+              </div>
+          </div>
+          <div class="top_zw pabttb">TA正在发布的职位</div>
+          <div class="tj_lv">
+            <div class="hang_lv">
+                推荐查看率：<span class="colored">44%</span>
+                <span class="eeerigh">
+                    <img src="{yun:}$style{/yun}/images/ico_wen.png"/>
+                    <div class="jieshi">
+                        <p>推荐查看率：</p>
+                        <p>推荐候选人HR查看数/该猎头推荐简历数</p>
+                    </div>
+                </span>
+            </div>
+              <div class="hang_lv" style="margin-top: 10px;">
+                  推荐下载率：<span class="colored">44%</span>
+                  <span class="eeerigh">
+                    <img src="{yun:}$style{/yun}/images/ico_wen.png"/>
+                      <div class="jieshi">
+                        <p>推荐下载率：</p>
+                        <p>推荐候选人HR下载数/该猎头推荐简历数</p>
+                    </div>
+                </span>
+              </div>
+          </div>
+          <div class="top_zw pabttb">服务过的企业客户</div>
+          <div class="tj_lv">
+              <a class="items_logo" href="#">
+                  <img src="{yun:}$style{/yun}/images/ico_wen.png" class="logo_img"/>
+              </a>
+              <a class="items_logo" href="#">
+                  <img src="{yun:}$style{/yun}/images/ico_wen.png" class="logo_img"/>
+              </a>
+              <a class="items_logo" href="#">
+                  <img src="{yun:}$style{/yun}/images/ico_wen.png" class="logo_img"/>
+              </a>
+              <a class="items_logo" href="#">
+                  <img src="{yun:}$style{/yun}/images/ico_wen.png" class="logo_img"/>
+              </a>
+              <a class="items_logo" href="#">
+                  <img src="{yun:}$style{/yun}/images/ico_wen.png" class="logo_img"/>
+              </a>
+              <a class="items_logo" href="#">
+                  <img src="{yun:}$style{/yun}/images/ico_wen.png" class="logo_img"/>
+              </a>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+    <script type="" src="http://localhost/app/template/default/js/iconfont.js"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/jquery-1.8.0.min.js" language="javascript"></script>
+
+
+
+{yun:}include file="$tplstyle/public_search/login.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}
