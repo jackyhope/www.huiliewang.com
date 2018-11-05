@@ -1,25 +1,52 @@
-<?php 
-  $db_config = array(
-      'dbtype'=>'mysql',
-      'dbhost'=>'localhost',
-      'dbuser'=>'root',
-      'dbpass'=>'J6599cd62dea43026',
-      'dbname'=>'huiliewang',
-      'def'=>'phpyun_',
-      'charset'=>'GBK',
-      'timezone'=>'PRC',
-      'coding'=>'64698fc107b59dd7569f2adad3d140c3', //Éú³Écookie¼ÓÃÜ
+<?php
+
+if (strpos($_SERVER['SERVER_ADDR'], '192.168') !== FALSE) {
+    $db_config = array(
+        'dbtype' => 'mysql',
+        'dbhost' => 'localhost',
+        'dbuser' => 'root',
+        'dbpass' => '123456',
+        'dbname' => 'huiliewang',
+        'def' => 'phpyun_',
+        'charset' => 'GBK',
+        'timezone' => 'PRC',
+        'coding' => '64698fc107b59dd7569f2adad3d140c3', //ï¿½ï¿½ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½
     );
-    
-	$db_config1 = array(
-        'dbtype'=>'mysql',
-        'dbhost'=>'localhost',
-        'dbuser'=>'root',
-        'dbpass'=>'J6599cd62dea43026',
-        'dbname'=>'resume',
-        'def'=>'huilie_',
-        'charset'=>'utf8',
-        'timezone'=>'PRC',
-        'coding'=>'utf8', //Éú³Écookie¼ÓÃÜ
+
+    $db_config1 = array(
+        'dbtype' => 'mysql',
+        'dbhost' => 'localhost',
+        'dbuser' => 'root',
+        'dbpass' => '123456',
+        'dbname' => 'resume',
+        'def' => 'huilie_',
+        'charset' => 'utf8',
+        'timezone' => 'PRC',
+        'coding' => 'utf8', //ï¿½ï¿½ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½
     );
+} else {
+    $db_config = array(
+        'dbtype' => 'mysql',
+        'dbhost' => '10.30.88.15',
+        'dbuser' => 'SAP',
+        'dbpass' => 'bffebfb01900fe3af8a8633d3b0b7be2',
+        'dbname' => 'huiliewang',
+        'def' => 'phpyun_',
+        'charset' => 'GBK',
+        'timezone' => 'PRC',
+        'coding' => '64698fc107b59dd7569f2adad3d140c3', //ï¿½ï¿½ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½
+    );
+
+    $db_config1 = array(
+        'dbtype' => 'mysql',
+        'dbhost' => '10.30.88.15',
+        'dbuser' => 'SAP',
+        'dbpass' => 'bffebfb01900fe3af8a8633d3b0b7be2',
+        'dbname' => 'resume',
+        'def' => 'huilie_',
+        'charset' => 'utf8',
+        'timezone' => 'PRC',
+        'coding' => 'utf8', //ï¿½ï¿½ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½
+    );
+}
 ?>
