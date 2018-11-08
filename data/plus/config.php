@@ -1,4 +1,5 @@
 <?php
+echo $_SERVER['SERVER_ADDR'];
 if (strpos($_SERVER['SERVER_ADDR'], '192.168') !== FALSE) {
 $config = array(
     "sy_msgpw" => "",
@@ -13,7 +14,7 @@ $config = array(
     "lt_enforce_emailcert" => "0",
     "lt_enforce_mobilecert" => "0",
     "lt_enforce_licensecert" => "0",
-    "sy_apikey" => "php213yun",
+    "sy_apikey" => "",
     "sy_webname" => "慧猎网",
     "sy_weburl" => "http://www.huiliewang.com",
     "sy_companydomain" => "",
