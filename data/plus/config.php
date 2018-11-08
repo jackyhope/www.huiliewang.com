@@ -1,5 +1,4 @@
 <?php
-echo $_SERVER['SERVER_ADDR'];
 if (strpos($_SERVER['SERVER_ADDR'], '192.168') !== FALSE) {
 $config = array(
     "sy_msgpw" => "",
