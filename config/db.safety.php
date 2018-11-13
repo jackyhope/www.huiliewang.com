@@ -19,7 +19,7 @@ function gpc2sql($str,$str2) {
 	if(preg_match("/select|insert|update|delete|load_file|outfile/is", $str2)){
 		exit(safe_pape());
 	}
-	$arr=array("sleep"=>"ï¼³leep"," and "=>" an d "," or "=>" ï¼¯r ","xor"=>"xï¼¯r","%20"=>" ","select"=>"ï¼³elect","update"=>"ï¼µpdate","count"=>"ï¼£ount","chr"=>"ï¼£hr","truncate"=>"ï¼´runcate","union"=>"ï¼µnion","delete"=>"ï¼¤elete","insert"=>"ï¼©nsert","\""=>"&quot;","'"=>"&acute;","--"=>"- -","\("=>"ï¼ˆ","\)"=>"ï¼‰","00000000"=>"OOOOOOOO","0x"=>"Ox");
+	$arr=array("sleep"=>"£Óleep"," and "=>" an d "," or "=>" £Ïr ","xor"=>"x£Ïr","%20"=>" ","select"=>"£Óelect","update"=>"£Õpdate","count"=>"£Ãount","chr"=>"£Ãhr","truncate"=>"£Ôruncate","union"=>"£Õnion","delete"=>"£Äelete","insert"=>"£Énsert","\""=>"&quot;","'"=>"&acute;","--"=>"- -","\("=>"£¨","\)"=>"£©","00000000"=>"OOOOOOOO","0x"=>"Ox");
 	foreach($arr as $key=>$v){
     	$str = preg_replace('/'.$key.'/isU',$v,$str);
 	}

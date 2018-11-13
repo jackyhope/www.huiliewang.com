@@ -10,7 +10,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168') !== FALSE) {
         'def' => 'phpyun_',
         'charset' => 'GBK',
         'timezone' => 'PRC',
-        'coding' => '64698fc107b59dd7569f2adad3d140c3', //����cookie����
+        'coding' => '64698fc107b59dd7569f2adad3d140c3', 
     );
 
     $db_config1 = array(
@@ -22,7 +22,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168') !== FALSE) {
         'def' => 'huilie_',
         'charset' => 'utf8',
         'timezone' => 'PRC',
-        'coding' => 'utf8', //����cookie����
+        'coding' => 'utf8', 
     );
 } else {
     $db_config = array(
@@ -34,7 +34,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168') !== FALSE) {
         'def' => 'phpyun_',
         'charset' => 'GBK',
         'timezone' => 'PRC',
-        'coding' => '64698fc107b59dd7569f2adad3d140c3', //����cookie����
+        'coding' => '64698fc107b59dd7569f2adad3d140c3', 
     );
 
     $db_config1 = array(
@@ -46,7 +46,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168') !== FALSE) {
         'def' => 'huilie_',
         'charset' => 'utf8',
         'timezone' => 'PRC',
-        'coding' => 'utf8', //����cookie����
+        'coding' => 'utf8', //????cookie????
     );
 }
 ?>

@@ -1,122 +1,122 @@
 <?php
 $arr_data = array (
-	'pay' => array ('alipay'=>'æ”¯ä»˜å®','wxpay'=>'å¾®ä¿¡æ”¯ä»˜','tenpay'=>'è´¢å¯Œé€š','bank'=>'é“¶è¡Œè½¬å¸','alipaydual'=>'æ”¯ä»˜å®åŒæ¥å£','alipayescow'=>'æ‹…ä¿äº¤æ˜“','adminpay'=>'ç®¡ç†å‘˜å……å€¼','balance'=>'ä½™é¢æ”¯ä»˜','admincut'=>'ç®¡ç†å‘˜æ‰£æ¬¾','wapalipay'=>'æ”¯ä»˜å®æ‰‹æœºæ”¯ä»˜'),
-	'source' => array ('1'=>'ç½‘é¡µ','2'=>'æ‰‹æœº','3'=>'App','4'=>'å¾®ä¿¡','6'=>'é‡‡é›†','7'=>'Excelå¯¼å…¥','8'=>'QQç™»å½•','9'=>'å¾®ä¿¡æ‰«ä¸€æ‰«','10'=>'å¾®åš','11'=>'PCå¿«é€ŸæŠ•é€’','12'=>'WAPå¿«é€ŸæŠ•é€’','13'=>'å¾®ä¿¡å°ç¨‹åº'),
-	'rewardstate' => array ( '1'=>array('id'=>'1','name'=>'å¾…æŸ¥çœ‹','state'=>array('0'))
-							,'2'=>array('id'=>'2','name'=>'å¾…é‚€è¯·','state'=>array('1'))
-							,'3'=>array('id'=>'3','name'=>'å¾…å‘Offer','state'=>array('4'))
-							,'4'=>array('id'=>'4','name'=>'å¾…å…¥èŒ','state'=>array('6'))
-							,'5'=>array('id'=>'5','name'=>'å·²ç»“æŸ','state'=>array('18','19','20','21','23','27','28','29'))
-							,'6'=>array('id'=>'6','name'=>'ä»²è£ä¸­','state'=>array('26'))),
-	'sex' => array ('3'=>'ä¸é™','1'=>'ç”·','2'=>'å¥³'),	
-	'paystate' => array ('<font color=red>æ”¯ä»˜å¤±è´¥</font>','<font color=green>ç­‰å¾…ä»˜æ¬¾</font>','<font color=blsue>æ”¯ä»˜æˆåŠŸ</font>','<font color=#c30ad9>ç­‰å¾…ç¡®è®¤</font>'),
-	'withdrawstate' => array ('<font color=green>ç­‰å¾…å®¡æ ¸</font>','<font color=blsue>æç°æˆåŠŸ</font>','<font color=red>æç°å¤±è´¥</font>'),
-	'cache' => array ('1'=>'åŒºåŸŸ','2'=>'è¡Œä¸š','3'=>'èŒä½','4'=>'ä¸ªäººä¼šå‘˜åˆ†ç±»','5'=>'ä¼ä¸šä¼šå‘˜åˆ†ç±»','6'=>'å¯¼èˆª','7'=>'ç½‘ç«™ç¼“å­˜','8'=>'SEOè®¾ç½®','9'=>'åˆ†ç«™','10'=>'å…³é”®å­—','11'=>'å‹æƒ…é“¾æ¥','12'=>'æ–°é—»åˆ†ç±»','13'=>'å•é¡µé¢åˆ†ç±»','14'=>'å¹¿å‘Š','15'=>'å…¼èŒåˆ†ç±»','16'=>'å•†å“åˆ†ç±»','17'=>'æ•°æ®åº“','18'=>'é‚®ä»¶æœåŠ¡å™¨'),
+	'pay' => array ('alipay'=>'Ö§¸¶±¦','wxpay'=>'Î¢ĞÅÖ§¸¶','tenpay'=>'²Æ¸»Í¨','bank'=>'ÒøĞĞ×ªÕÊ','alipaydual'=>'Ö§¸¶±¦Ë«½Ó¿Ú','alipayescow'=>'µ£±£½»Ò×','adminpay'=>'¹ÜÀíÔ±³äÖµ','balance'=>'Óà¶îÖ§¸¶','admincut'=>'¹ÜÀíÔ±¿Û¿î','wapalipay'=>'Ö§¸¶±¦ÊÖ»úÖ§¸¶'),
+	'source' => array ('1'=>'ÍøÒ³','2'=>'ÊÖ»ú','3'=>'App','4'=>'Î¢ĞÅ','6'=>'²É¼¯','7'=>'Excelµ¼Èë','8'=>'QQµÇÂ¼','9'=>'Î¢ĞÅÉ¨Ò»É¨','10'=>'Î¢²©','11'=>'PC¿ìËÙÍ¶µİ','12'=>'WAP¿ìËÙÍ¶µİ','13'=>'Î¢ĞÅĞ¡³ÌĞò'),
+	'rewardstate' => array ( '1'=>array('id'=>'1','name'=>'´ı²é¿´','state'=>array('0'))
+							,'2'=>array('id'=>'2','name'=>'´ıÑûÇë','state'=>array('1'))
+							,'3'=>array('id'=>'3','name'=>'´ı·¢Offer','state'=>array('4'))
+							,'4'=>array('id'=>'4','name'=>'´ıÈëÖ°','state'=>array('6'))
+							,'5'=>array('id'=>'5','name'=>'ÒÑ½áÊø','state'=>array('18','19','20','21','23','27','28','29'))
+							,'6'=>array('id'=>'6','name'=>'ÖÙ²ÃÖĞ','state'=>array('26'))),
+	'sex' => array ('3'=>'²»ÏŞ','1'=>'ÄĞ','2'=>'Å®'),	
+	'paystate' => array ('<font color=red>Ö§¸¶Ê§°Ü</font>','<font color=green>µÈ´ı¸¶¿î</font>','<font color=blsue>Ö§¸¶³É¹¦</font>','<font color=#c30ad9>µÈ´ıÈ·ÈÏ</font>'),
+	'withdrawstate' => array ('<font color=green>µÈ´ıÉóºË</font>','<font color=blsue>ÌáÏÖ³É¹¦</font>','<font color=red>ÌáÏÖÊ§°Ü</font>'),
+	'cache' => array ('1'=>'ÇøÓò','2'=>'ĞĞÒµ','3'=>'Ö°Î»','4'=>'¸öÈË»áÔ±·ÖÀà','5'=>'ÆóÒµ»áÔ±·ÖÀà','6'=>'µ¼º½','7'=>'ÍøÕ¾»º´æ','8'=>'SEOÉèÖÃ','9'=>'·ÖÕ¾','10'=>'¹Ø¼ü×Ö','11'=>'ÓÑÇéÁ´½Ó','12'=>'ĞÂÎÅ·ÖÀà','13'=>'µ¥Ò³Ãæ·ÖÀà','14'=>'¹ã¸æ','15'=>'¼æÖ°·ÖÀà','16'=>'ÉÌÆ··ÖÀà','17'=>'Êı¾İ¿â','18'=>'ÓÊ¼ş·şÎñÆ÷'),
 	'faceurl' => '/config/face/',
 	'imface' => array ('CNM'=>'shenshou_org.gif','SM'=>'horse2_org.gif','FU'=>'fuyun_org.gif','GL'=>'geili_org.gif','WG'=>'wg_org.gif','VW'=>'vw_org.gif','XM'=>'panda_org.gif','TZ'=>'rabbit_org.gif','OTM'=>'otm_org.gif','JU'=>'j_org.gif','HF'=>'hufen_org.gif','LW'=>'liwu_org.gif','HH'=>'smilea_org.gif','XX'=>'tootha_org.gif','HH2'=>'laugh.gif','TZA'=>'tza_org.gif','KL'=>'kl_org.gif','WBS'=>'kbsa_org.gif','CJ'=>'cj_org.gif','HX'=>'shamea_org.gif','ZY'=>'zy_org.gif','BZ'=>'bz_org.gif','BS2'=>'bs2_org.gif','LOVE'=>'lovea_org.gif','LEI'=>'sada_org.gif','TX'=>'heia_org.gif','QQ'=>'qq_org.gif','SB'=>'sb_org.gif','TKX'=>'mb_org.gif','LD'=>'ldln_org.gif','YHH'=>'yhh_org.gif','ZHH'=>'zhh_org.gif','XU'=>'x_org.gif','cry'=>'cry.gif','WQ'=>'wq_org.gif','T'=>'t_org.gif','DHQ'=>'k_org.gif','BBA'=>'bba_org.gif','N'=>'angrya_org.gif','YW'=>'yw_org.gif','CZ'=>'cza_org.gif','88'=>'88_org.gif','SI'=>'sk_org.gif','HAN'=>'sweata_org.gif','sl'=>'sleepya_org.gif','SJ'=>'sleepa_org.gif','P'=>'money_org.gif','SW'=>'sw_org.gif','K'=>'cool_org.gif','HXA'=>'hsa_org.gif','H'=>'hatea_org.gif','GZ'=>'gza_org.gif','YD'=>'dizzya_org.gif','BS'=>'bs_org.gif','ZK'=>'crazya_org.gif','HX2'=>'h_org.gif','YX'=>'yx_org.gif','NM'=>'nm_org.gif','XIN'=>'hearta_org.gif','SX'=>'unheart.gif','PIG'=>'pig.gif','ok'=>'ok_org.gif','ye'=>'ye_org.gif','good'=>'good_org.gif','no'=>'no_org.gif','Z'=>'z2_org.gif','go'=>'come_org.gif','R'=>'sad_org.gif','lz'=>'lazu_org.gif','CL'=>'clock_org.gif','ht'=>'m_org.gif','dg'=>'cake.gif'),
 	'datacall' => array(
-		'resume'=>array('ç®€å†','order'=>array('id desc'=>'æœ€æ–°ç®€å†','hits desc'=>'çƒ­é—¨ç®€å†','lastedit desc'=>'æ›´æ–°æ—¶é—´'),'field'=>array('resumename'=>'ç®€å†åç§°','name'=>'å§“å','url'=>'é“¾æ¥','birthday'=>'å¹´é¾„','edu'=>'å­¦å†','lastedit'=>'æ›´æ–°æ—¶é—´','hits'=>'æµè§ˆæ¬¡æ•°','big_pic'=>'å¤§å¤´åƒ','small_pic'=>'å°å¤´åƒ','email'=>'EMAIL','tel'=>'ç”µè¯','moblie'=>'æ‰‹æœº','hy'=>'æœŸæœ›ä»äº‹è¡Œä¸š','hyurl'=>'æœŸæœ›ä»äº‹è¡Œä¸šé“¾æ¥','job_classid'=>'æœŸæœ›ä»äº‹èŒä½','report'=>'åˆ°å²—æ—¶é—´','salary'=>'æœŸæœ›è–ªæ°´','type'=>'æœŸæœ›å·¥ä½œæ€§è´¨','gz_city'=>'æœŸæœ›å·¥ä½œåœ°ç‚¹(æ±Ÿè‹-å—äº¬)','domicile'=>'æˆ·ç±æ‰€åœ¨åœ°','living'=>'ç°å±…ä½åœ°','exp'=>'å·¥ä½œç»éªŒ','address'=>'è¯¦ç»†åœ°å€','description'=>'ä¸ªäººç®€ä»‹','idcard'=>'èº«ä»½è¯å·ç ','homepage'=>'ä¸ªäººä¸»é¡µ/åšå®¢')),
-		'member'=>array('ç”¨æˆ·','order'=>array('uid desc'=>'æœ€æ–°ç”¨æˆ·','login_date desc'=>'æœ€åç™»å½•æ—¶é—´','login_hits desc'=>'çƒ­é—¨ç”¨æˆ·'),'field'=>array('name'=>'ç”¨æˆ·å','url'=>'é“¾æ¥','email'=>'EMAIL','moblie'=>'æ‰‹æœº','usertype'=>'ç”¨æˆ·ç±»å‹','hits'=>'ç™»å½•æ¬¡æ•°','reg_date'=>'æ³¨å†Œæ—¶é—´','login_date'=>'ç™»å½•æ—¶é—´'),'where'=>array('usertype'=>array('0'=>'ç”¨æˆ·ç±»å‹','1'=>'ä¸ªäººç”¨æˆ·','3'=>'çŒå¤´ç”¨æˆ·','2'=>'ä¼ä¸šç”¨æˆ·'))),
-		'company'=>array('å…¬å¸','order'=>array('uid desc'=>'æœ€æ–°ä¼ä¸š','hits desc'=>'çƒ­é—¨ä¼ä¸š','lastedit desc'=>'æ›´æ–°æ—¶é—´'),'field'=>array('companyname'=>'å…¬å¸åç§°','url'=>'å…¬å¸é“¾æ¥','hy'=>'è¡Œä¸š','hy_url'=>'è¡Œä¸šé“¾æ¥','pr'=>'å…¬å¸æ€§è´¨','city'=>'ä¼ä¸šåœ°å€','mun'=>'ä¼ä¸šè§„æ¨¡','address'=>'ä¼ä¸šåœ°å€','linkphone'=>'å›ºå®šç”µè¯','linkmail'=>'è”ç³»é‚®ç®±','sdate'=>'åˆ›åŠæ—¶é—´','money'=>'æ³¨å†Œèµ„é‡‘','zip'=>'é‚®æ”¿ç¼–ç ','linkman'=>'è”ç³»äºº','job_num'=>'èŒä½æ•°','linkqq'=>'è”ç³»QQ','linktel'=>'è”ç³»ç”µè¯','website'=>'ä¼ä¸šç½‘å€','logo'=>'ä¼ä¸šLOGO')),
-		'job'=>array('èŒä½','order'=>array('id desc'=>'æœ€æ–°èŒä½','hits desc'=>'çƒ­é—¨èŒä½','rec_time desc'=>'æ¨èèŒä½','urgent_time desc'=>'ç´§æ€¥èŒä½','lastedit desc'=>'æ›´æ–°æ—¶é—´'),'field'=>array('jobname'=>'èŒä½åç§°','companyname'=>'å…¬å¸åç§°','url'=>'èŒä½é“¾æ¥','com_url'=>'å…¬å¸é“¾æ¥','hy'=>'ä»äº‹è¡Œä¸š','hy_url'=>'è¡Œä¸šé“¾æ¥','num'=>'æ‹›è˜äººæ•°','jobtype'=>'èŒä½ç±»å‹','edu'=>'å­¦å†è¦æ±‚','age'=>'å¹´é¾„è¦æ±‚','report'=>'åˆ°å²—æ—¶é—´','exp'=>'å·¥ä½œç»éªŒ','lang'=>'è¯­è¨€è¦æ±‚','salary'=>'æä¾›æœˆè–ª','welfare'=>'ç¦åˆ©å¾…é‡','time'=>'æ›´æ–°æ—¶é—´','city'=>'å·¥ä½œåœ°ç‚¹')),
-		'zph'=>array('æ‹›è˜ä¼š','order'=>array('id desc'=>'æœ€æ–°æ‹›è˜ä¼š'),'field'=>array('title'=>'æ‹›è˜ä¼šæ ‡é¢˜','url'=>'é“¾æ¥','organizers'=>'ä¸»åŠæ–¹','time'=>'ä¸¾åŠæ—¶é—´','address'=>'ä¸¾åŠä¼šåœº','phone'=>'å’¨è¯¢ç”µè¯','linkman'=>'è”ç³»äºº','website'=>'ç½‘å€','logo'=>'æ‹›è˜ä¼šLOGO','com_num'=>'å‚ä¸ä¼ä¸šæ•°')),
-		'news'=>array('æ–°é—»','order'=>array('a.id desc'=>'æœ€æ–°æ–°é—»','a.hits desc'=>'çƒ­é—¨æ–°é—»'),'field'=>array('title'=>'æ–°é—»æ ‡é¢˜','url'=>'é“¾æ¥','keyword'=>'å…³é”®å­—','author'=>'ä½œè€…','time'=>'å‘å¸ƒæ—¶é—´','hits'=>'ç‚¹å‡»ç‡','description'=>'æè¿°','thumb'=>'ç¼©ç•¥å›¾','source'=>'æ¥æº')),
-		'ask'=>array('é—®ç­”','order'=>array('id desc'=>'æœ€æ–°é—®ç­”','answer_num desc'=>'çƒ­é—¨é—®ç­”'),'field'=>array('title'=>'é—®ç­”æ ‡é¢˜','url'=>'é—®ç­”é“¾æ¥','content'=>'é—®ç­”å†…å®¹','name'=>'å‘å¸ƒäºº','time'=>'å‘å¸ƒæ—¶é—´','answer_num'=>'å›ç­”äººæ•°','img'=>'å‘å¸ƒäººå¤´åƒ','user_url'=>'å‘å¸ƒäººé“¾æ¥')),
-		'lt_job'=>array('çŒå¤´èŒä½','order'=>array('a.id desc'=>'æœ€æ–°çŒå¤´èŒä½','a.hits desc'=>'çƒ­é—¨çŒå¤´èŒä½','a.lastedit desc'=>'æ›´æ–°æ—¶é—´'),'field'=>array('jobname'=>'èŒä½åç§°','url'=>'èŒä½é“¾æ¥','companyname'=>'æ‹›è˜ä¼ä¸š','com_url'=>'ä¼ä¸šé“¾æ¥','address'=>'å·¥ä½œåœ°ç‚¹(æ±Ÿè‹-å—äº¬)','department'=>'æ‰€å±éƒ¨é—¨','hy'=>'æ‰€å±è¡Œä¸š','mun'=>'ä¼ä¸šè§„æ¨¡','pr'=>'ä¼ä¸šæ€§è´¨','report'=>'æ±‡æŠ¥å¯¹è±¡','jobtype'=>'èŒä½ç±»åˆ«','constitute'=>'è–ªèµ„æ„æˆ','years'=>'å¹´å‡ç¦åˆ©','social'=>'ç¤¾ä¿ç¦åˆ©','live'=>'å±…ä½ç¦åˆ©','sdate'=>'å‘å¸ƒæ—¶é—´','edate'=>'æˆªæ­¢æ—¥æœŸ','job_desc'=>'èŒä½æè¿°','salary'=>'å¹´è–ª','edu'=>'å­¦å†è¦æ±‚','sex'=>'æ€§åˆ«è¦æ±‚','language'=>'è¯­è¨€è¦æ±‚','full'=>'æ˜¯å¦ç»Ÿæ‹›å…¨ä½“åˆ¶','age'=>'å¹´é¾„è¦æ±‚','exp'=>'æ€»å·¥èµ„å¹´é™','qw_hy'=>'æœŸæœ›è¡Œä¸š','eligible'=>'ä»»èŒèµ„æ ¼','desc'=>'ä¼ä¸šä»‹ç»','name'=>'èŒä½å‘å¸ƒäºº')),
-		'link'=>array('å‹æƒ…é“¾æ¥','order'=>array('id desc'=>'æœ€æ–°å‹é“¾','link_sorting desc'=>'æ’åº(å¤§å‰å°å)','link_sorting asc'=>'æ’åº(å°å‰å¤§å)'),'field'=>array('link_name'=>'åç§°','link_url'=>'é“¾æ¥','link_src'=>'å›¾ç‰‡åœ°å€(å›¾ç‰‡é“¾æ¥ä½¿ç”¨)'),'where'=>array('img_type'=>array('0'=>'å‹é“¾ç±»å‹','1'=>'æ–‡å­—è¿æ¥','2'=>'å›¾ç‰‡é“¾æ¥'))),
-		'once'=>array('åº—é“ºæ‹›è˜','order'=>array('id desc'=>'æœ€æ–°åº—é“ºæ‹›è˜','lastedit desc'=>'æ›´æ–°æ—¶é—´'),'field'=>array('jobname'=>'èŒä½åç§°','companyname'=>'å…¬å¸åç§°','mans'=>'æ‹›è˜äººæ•°','require'=>'æ‹›è˜è¦æ±‚','phone'=>'è”ç³»ç”µè¯','linkman'=>'è”ç³»äºº','address'=>'è”ç³»åœ°å€','time'=>'æ›´æ–°æ—¶é—´')),
-		'tiny'=>array('æ™®å·¥ç®€å†2','order'=>array('id desc'=>'æœ€æ–°æ™®å·¥ç®€å†','lastedit desc'=>'æ›´æ–°æ—¶é—´'),'field'=>array('name'=>'å§“å','url'=>'é“¾æ¥','sex'=>'æ€§åˆ«','exp'=>'å·¥ä½œç»éªŒ','job'=>'åº”è˜èŒä½','mobile'=>'è”ç³»ç”µè¯','describe'=>'ä¸ªäººè¯´æ˜','time'=>'æ›´æ–°æ—¶é—´')),
-		'keyword'=>array('çƒ­é—¨å…³é”®å­—','order'=>array('num desc'=>'æœç´¢æ¬¡æ•°'),'field'=>array('name'=>'å…³é”®å­—åç§°','url'=>'é“¾æ¥','num'=>'æœç´¢æ¬¡æ•°'),'where'=>array('keytype'=>array('0'=>'å…³é”®å­—ç±»å‹','1'=>'åº—é“ºæ‹›è˜','3'=>'èŒä½','4'=>'å…¬å¸','5'=>'ç®€å†','6'=>'çŒå¤´','7'=>'çŒå¤´èŒä½')))
+		'resume'=>array('¼òÀú','order'=>array('id desc'=>'×îĞÂ¼òÀú','hits desc'=>'ÈÈÃÅ¼òÀú','lastedit desc'=>'¸üĞÂÊ±¼ä'),'field'=>array('resumename'=>'¼òÀúÃû³Æ','name'=>'ĞÕÃû','url'=>'Á´½Ó','birthday'=>'ÄêÁä','edu'=>'Ñ§Àú','lastedit'=>'¸üĞÂÊ±¼ä','hits'=>'ä¯ÀÀ´ÎÊı','big_pic'=>'´óÍ·Ïñ','small_pic'=>'Ğ¡Í·Ïñ','email'=>'EMAIL','tel'=>'µç»°','moblie'=>'ÊÖ»ú','hy'=>'ÆÚÍû´ÓÊÂĞĞÒµ','hyurl'=>'ÆÚÍû´ÓÊÂĞĞÒµÁ´½Ó','job_classid'=>'ÆÚÍû´ÓÊÂÖ°Î»','report'=>'µ½¸ÚÊ±¼ä','salary'=>'ÆÚÍûĞ½Ë®','type'=>'ÆÚÍû¹¤×÷ĞÔÖÊ','gz_city'=>'ÆÚÍû¹¤×÷µØµã(½­ËÕ-ÄÏ¾©)','domicile'=>'»§¼®ËùÔÚµØ','living'=>'ÏÖ¾Ó×¡µØ','exp'=>'¹¤×÷¾­Ñé','address'=>'ÏêÏ¸µØÖ·','description'=>'¸öÈË¼ò½é','idcard'=>'Éí·İÖ¤ºÅÂë','homepage'=>'¸öÈËÖ÷Ò³/²©¿Í')),
+		'member'=>array('ÓÃ»§','order'=>array('uid desc'=>'×îĞÂÓÃ»§','login_date desc'=>'×îºóµÇÂ¼Ê±¼ä','login_hits desc'=>'ÈÈÃÅÓÃ»§'),'field'=>array('name'=>'ÓÃ»§Ãû','url'=>'Á´½Ó','email'=>'EMAIL','moblie'=>'ÊÖ»ú','usertype'=>'ÓÃ»§ÀàĞÍ','hits'=>'µÇÂ¼´ÎÊı','reg_date'=>'×¢²áÊ±¼ä','login_date'=>'µÇÂ¼Ê±¼ä'),'where'=>array('usertype'=>array('0'=>'ÓÃ»§ÀàĞÍ','1'=>'¸öÈËÓÃ»§','3'=>'ÁÔÍ·ÓÃ»§','2'=>'ÆóÒµÓÃ»§'))),
+		'company'=>array('¹«Ë¾','order'=>array('uid desc'=>'×îĞÂÆóÒµ','hits desc'=>'ÈÈÃÅÆóÒµ','lastedit desc'=>'¸üĞÂÊ±¼ä'),'field'=>array('companyname'=>'¹«Ë¾Ãû³Æ','url'=>'¹«Ë¾Á´½Ó','hy'=>'ĞĞÒµ','hy_url'=>'ĞĞÒµÁ´½Ó','pr'=>'¹«Ë¾ĞÔÖÊ','city'=>'ÆóÒµµØÖ·','mun'=>'ÆóÒµ¹æÄ£','address'=>'ÆóÒµµØÖ·','linkphone'=>'¹Ì¶¨µç»°','linkmail'=>'ÁªÏµÓÊÏä','sdate'=>'´´°ìÊ±¼ä','money'=>'×¢²á×Ê½ğ','zip'=>'ÓÊÕş±àÂë','linkman'=>'ÁªÏµÈË','job_num'=>'Ö°Î»Êı','linkqq'=>'ÁªÏµQQ','linktel'=>'ÁªÏµµç»°','website'=>'ÆóÒµÍøÖ·','logo'=>'ÆóÒµLOGO')),
+		'job'=>array('Ö°Î»','order'=>array('id desc'=>'×îĞÂÖ°Î»','hits desc'=>'ÈÈÃÅÖ°Î»','rec_time desc'=>'ÍÆ¼öÖ°Î»','urgent_time desc'=>'½ô¼±Ö°Î»','lastedit desc'=>'¸üĞÂÊ±¼ä'),'field'=>array('jobname'=>'Ö°Î»Ãû³Æ','companyname'=>'¹«Ë¾Ãû³Æ','url'=>'Ö°Î»Á´½Ó','com_url'=>'¹«Ë¾Á´½Ó','hy'=>'´ÓÊÂĞĞÒµ','hy_url'=>'ĞĞÒµÁ´½Ó','num'=>'ÕĞÆ¸ÈËÊı','jobtype'=>'Ö°Î»ÀàĞÍ','edu'=>'Ñ§ÀúÒªÇó','age'=>'ÄêÁäÒªÇó','report'=>'µ½¸ÚÊ±¼ä','exp'=>'¹¤×÷¾­Ñé','lang'=>'ÓïÑÔÒªÇó','salary'=>'Ìá¹©ÔÂĞ½','welfare'=>'¸£Àû´ıÓö','time'=>'¸üĞÂÊ±¼ä','city'=>'¹¤×÷µØµã')),
+		'zph'=>array('ÕĞÆ¸»á','order'=>array('id desc'=>'×îĞÂÕĞÆ¸»á'),'field'=>array('title'=>'ÕĞÆ¸»á±êÌâ','url'=>'Á´½Ó','organizers'=>'Ö÷°ì·½','time'=>'¾Ù°ìÊ±¼ä','address'=>'¾Ù°ì»á³¡','phone'=>'×ÉÑ¯µç»°','linkman'=>'ÁªÏµÈË','website'=>'ÍøÖ·','logo'=>'ÕĞÆ¸»áLOGO','com_num'=>'²ÎÓëÆóÒµÊı')),
+		'news'=>array('ĞÂÎÅ','order'=>array('a.id desc'=>'×îĞÂĞÂÎÅ','a.hits desc'=>'ÈÈÃÅĞÂÎÅ'),'field'=>array('title'=>'ĞÂÎÅ±êÌâ','url'=>'Á´½Ó','keyword'=>'¹Ø¼ü×Ö','author'=>'×÷Õß','time'=>'·¢²¼Ê±¼ä','hits'=>'µã»÷ÂÊ','description'=>'ÃèÊö','thumb'=>'ËõÂÔÍ¼','source'=>'À´Ô´')),
+		'ask'=>array('ÎÊ´ğ','order'=>array('id desc'=>'×îĞÂÎÊ´ğ','answer_num desc'=>'ÈÈÃÅÎÊ´ğ'),'field'=>array('title'=>'ÎÊ´ğ±êÌâ','url'=>'ÎÊ´ğÁ´½Ó','content'=>'ÎÊ´ğÄÚÈİ','name'=>'·¢²¼ÈË','time'=>'·¢²¼Ê±¼ä','answer_num'=>'»Ø´ğÈËÊı','img'=>'·¢²¼ÈËÍ·Ïñ','user_url'=>'·¢²¼ÈËÁ´½Ó')),
+		'lt_job'=>array('ÁÔÍ·Ö°Î»','order'=>array('a.id desc'=>'×îĞÂÁÔÍ·Ö°Î»','a.hits desc'=>'ÈÈÃÅÁÔÍ·Ö°Î»','a.lastedit desc'=>'¸üĞÂÊ±¼ä'),'field'=>array('jobname'=>'Ö°Î»Ãû³Æ','url'=>'Ö°Î»Á´½Ó','companyname'=>'ÕĞÆ¸ÆóÒµ','com_url'=>'ÆóÒµÁ´½Ó','address'=>'¹¤×÷µØµã(½­ËÕ-ÄÏ¾©)','department'=>'ËùÊô²¿ÃÅ','hy'=>'ËùÊôĞĞÒµ','mun'=>'ÆóÒµ¹æÄ£','pr'=>'ÆóÒµĞÔÖÊ','report'=>'»ã±¨¶ÔÏó','jobtype'=>'Ö°Î»Àà±ğ','constitute'=>'Ğ½×Ê¹¹³É','years'=>'Äê¼Ù¸£Àû','social'=>'Éç±£¸£Àû','live'=>'¾Ó×¡¸£Àû','sdate'=>'·¢²¼Ê±¼ä','edate'=>'½ØÖ¹ÈÕÆÚ','job_desc'=>'Ö°Î»ÃèÊö','salary'=>'ÄêĞ½','edu'=>'Ñ§ÀúÒªÇó','sex'=>'ĞÔ±ğÒªÇó','language'=>'ÓïÑÔÒªÇó','full'=>'ÊÇ·ñÍ³ÕĞÈ«ÌåÖÆ','age'=>'ÄêÁäÒªÇó','exp'=>'×Ü¹¤×ÊÄêÏŞ','qw_hy'=>'ÆÚÍûĞĞÒµ','eligible'=>'ÈÎÖ°×Ê¸ñ','desc'=>'ÆóÒµ½éÉÜ','name'=>'Ö°Î»·¢²¼ÈË')),
+		'link'=>array('ÓÑÇéÁ´½Ó','order'=>array('id desc'=>'×îĞÂÓÑÁ´','link_sorting desc'=>'ÅÅĞò(´óÇ°Ğ¡ºó)','link_sorting asc'=>'ÅÅĞò(Ğ¡Ç°´óºó)'),'field'=>array('link_name'=>'Ãû³Æ','link_url'=>'Á´½Ó','link_src'=>'Í¼Æ¬µØÖ·(Í¼Æ¬Á´½ÓÊ¹ÓÃ)'),'where'=>array('img_type'=>array('0'=>'ÓÑÁ´ÀàĞÍ','1'=>'ÎÄ×ÖÁ¬½Ó','2'=>'Í¼Æ¬Á´½Ó'))),
+		'once'=>array('µêÆÌÕĞÆ¸','order'=>array('id desc'=>'×îĞÂµêÆÌÕĞÆ¸','lastedit desc'=>'¸üĞÂÊ±¼ä'),'field'=>array('jobname'=>'Ö°Î»Ãû³Æ','companyname'=>'¹«Ë¾Ãû³Æ','mans'=>'ÕĞÆ¸ÈËÊı','require'=>'ÕĞÆ¸ÒªÇó','phone'=>'ÁªÏµµç»°','linkman'=>'ÁªÏµÈË','address'=>'ÁªÏµµØÖ·','time'=>'¸üĞÂÊ±¼ä')),
+		'tiny'=>array('ÆÕ¹¤¼òÀú2','order'=>array('id desc'=>'×îĞÂÆÕ¹¤¼òÀú','lastedit desc'=>'¸üĞÂÊ±¼ä'),'field'=>array('name'=>'ĞÕÃû','url'=>'Á´½Ó','sex'=>'ĞÔ±ğ','exp'=>'¹¤×÷¾­Ñé','job'=>'Ó¦Æ¸Ö°Î»','mobile'=>'ÁªÏµµç»°','describe'=>'¸öÈËËµÃ÷','time'=>'¸üĞÂÊ±¼ä')),
+		'keyword'=>array('ÈÈÃÅ¹Ø¼ü×Ö','order'=>array('num desc'=>'ËÑË÷´ÎÊı'),'field'=>array('name'=>'¹Ø¼ü×ÖÃû³Æ','url'=>'Á´½Ó','num'=>'ËÑË÷´ÎÊı'),'where'=>array('keytype'=>array('0'=>'¹Ø¼ü×ÖÀàĞÍ','1'=>'µêÆÌÕĞÆ¸','3'=>'Ö°Î»','4'=>'¹«Ë¾','5'=>'¼òÀú','6'=>'ÁÔÍ·','7'=>'ÁÔÍ·Ö°Î»')))
 	),
-	'seomodel'=>array('index'=>'é¦–é¡µ','job'=>'æ‰¾å·¥ä½œ','part'=>'å…¼èŒ','company'=>'å…¬å¸','resume'=>'æ‰¾äººæ‰','article'=>'æ–°é—»å…¬å‘Š','hr'=>'å·¥å…·ç®±','zph'=>'æ‹›è˜ä¼š','ask'=>'é—®ç­”','evaluate'=>'æµ‹è¯„','once'=>'åº—é“ºæ‹›è˜','tiny'=>'æ™®å·¥ç®€å†','redeem'=>'å•†åŸ','map'=>'åœ°å›¾','special'=>'ä¸“é¢˜æ‹›è˜','login'=>'ç™»å½•æ³¨å†Œ','other'=>'å…¶å®ƒ'
+	'seomodel'=>array('index'=>'Ê×Ò³','job'=>'ÕÒ¹¤×÷','part'=>'¼æÖ°','company'=>'¹«Ë¾','resume'=>'ÕÒÈË²Å','article'=>'ĞÂÎÅ¹«¸æ','hr'=>'¹¤¾ßÏä','zph'=>'ÕĞÆ¸»á','ask'=>'ÎÊ´ğ','evaluate'=>'²âÆÀ','once'=>'µêÆÌÕĞÆ¸','tiny'=>'ÆÕ¹¤¼òÀú','redeem'=>'ÉÌ³Ç','map'=>'µØÍ¼','special'=>'×¨ÌâÕĞÆ¸','login'=>'µÇÂ¼×¢²á','other'=>'ÆäËü'
 	),
-	'modelconfig'=>array('job'=>'æ‰¾å·¥ä½œ','resume'=>'æ‰¾äººæ‰','part'=>'å…¼èŒ','company'=>'æ‰¾ä¼ä¸š','wap'=>'æ‰‹æœºç«¯','article'=>'èµ„è®¯','announcement'=>'å…¬å‘Š','hr'=>'å·¥å…·ç®±','zph'=>'æ‹›è˜ä¼š','ask'=>'é—®ç­”','evaluate'=>'æµ‹è¯„','once'=>'åº—é“ºæ‹›è˜','tiny'=>'æ™®å·¥ç®€å†','redeem'=>'å•†åŸ','map'=>'åœ°å›¾','special'=>'ä¸“é¢˜æ‹›è˜','login'=>'ç™»å½•','reg'=>'æ³¨å†Œ','error'=>'é”™è¯¯æé†’'
+	'modelconfig'=>array('job'=>'ÕÒ¹¤×÷','resume'=>'ÕÒÈË²Å','part'=>'¼æÖ°','company'=>'ÕÒÆóÒµ','wap'=>'ÊÖ»ú¶Ë','article'=>'×ÊÑ¶','announcement'=>'¹«¸æ','hr'=>'¹¤¾ßÏä','zph'=>'ÕĞÆ¸»á','ask'=>'ÎÊ´ğ','evaluate'=>'²âÆÀ','once'=>'µêÆÌÕĞÆ¸','tiny'=>'ÆÕ¹¤¼òÀú','redeem'=>'ÉÌ³Ç','map'=>'µØÍ¼','special'=>'×¨ÌâÕĞÆ¸','login'=>'µÇÂ¼','reg'=>'×¢²á','error'=>'´íÎóÌáĞÑ'
 	),
-    'msgreturn'=>array('0'=>'ok','1'=>'è¯·æ±‚å‚æ•°ç¼ºå¤±','2'=>'è¯·æ±‚å‚æ•°æ ¼å¼é”™è¯¯','3'=>'è´¦æˆ·ä½™é¢ä¸è¶³','4'=>'å…³é”®è¯å±è”½','5'=>'æœªæ‰¾åˆ°å¯¹åº”idçš„æ¨¡æ¿','6'=>'æ·»åŠ æ¨¡æ¿å¤±è´¥','7'=>'æ¨¡æ¿ä¸å¯ç”¨','8'=>'åŒä¸€æ‰‹æœºå·30ç§’å†…é‡å¤æäº¤ç›¸åŒå†…å®¹','9'=>'åŒä¸€æ‰‹æœºå·5åˆ†é’Ÿå†…æäº¤ç›¸åŒçš„å†…å®¹è¶…è¿‡3æ¬¡','10'=>'æ‰‹æœºå·é»‘åå•è¿‡æ»¤','11'=>'æ¥å£ä¸æ”¯æŒGETæ–¹å¼è°ƒç”¨','12'=>'æ¥å£ä¸æ”¯æŒPOSTæ–¹å¼è°ƒç”¨','13'=>'è¥é”€çŸ­ä¿¡æš‚åœå‘é€','14'=>'è§£ç å¤±è´¥','15'=>'ç­¾åä¸åŒ¹é…','16'=>'ç­¾åæ ¼å¼ä¸æ­£ç¡®','17'=>'24å°æ—¶åŒä¸€æ‰‹æœºå·å‘é€æ¬¡æ•°è¶…è¿‡é™åˆ¶','-1'=>'éæ³•çš„apikey','-2'=>'APIæ²¡æœ‰æƒé™','-3'=>'IPæ²¡æœ‰æƒé™','-4'=>'è®¿é—®æ¬¡æ•°è¶…é™','-5'=>'è®¿é—®é¢‘ç‡è¶…é™','-50'=>'æœªçŸ¥å¼‚å¸¸','-51'=>'ç³»ç»Ÿç¹å¿™','-52'=>'å……å€¼å¤±è´¥','-53'=>'æäº¤çŸ­ä¿¡å¤±è´¥','-54'=>'è®°å½•å·²å­˜åœ¨','-55'=>'è®°å½•ä¸å­˜åœ¨','-57'=>'ç”¨æˆ·å¼€é€šè¿‡å›ºå®šç­¾ååŠŸèƒ½ï¼Œä½†ç­¾åæœªè®¾ç½®'   
+    'msgreturn'=>array('0'=>'ok','1'=>'ÇëÇó²ÎÊıÈ±Ê§','2'=>'ÇëÇó²ÎÊı¸ñÊ½´íÎó','3'=>'ÕË»§Óà¶î²»×ã','4'=>'¹Ø¼ü´ÊÆÁ±Î','5'=>'Î´ÕÒµ½¶ÔÓ¦idµÄÄ£°å','6'=>'Ìí¼ÓÄ£°åÊ§°Ü','7'=>'Ä£°å²»¿ÉÓÃ','8'=>'Í¬Ò»ÊÖ»úºÅ30ÃëÄÚÖØ¸´Ìá½»ÏàÍ¬ÄÚÈİ','9'=>'Í¬Ò»ÊÖ»úºÅ5·ÖÖÓÄÚÌá½»ÏàÍ¬µÄÄÚÈİ³¬¹ı3´Î','10'=>'ÊÖ»úºÅºÚÃûµ¥¹ıÂË','11'=>'½Ó¿Ú²»Ö§³ÖGET·½Ê½µ÷ÓÃ','12'=>'½Ó¿Ú²»Ö§³ÖPOST·½Ê½µ÷ÓÃ','13'=>'ÓªÏú¶ÌĞÅÔİÍ£·¢ËÍ','14'=>'½âÂëÊ§°Ü','15'=>'Ç©Ãû²»Æ¥Åä','16'=>'Ç©Ãû¸ñÊ½²»ÕıÈ·','17'=>'24Ğ¡Ê±Í¬Ò»ÊÖ»úºÅ·¢ËÍ´ÎÊı³¬¹ıÏŞÖÆ','-1'=>'·Ç·¨µÄapikey','-2'=>'APIÃ»ÓĞÈ¨ÏŞ','-3'=>'IPÃ»ÓĞÈ¨ÏŞ','-4'=>'·ÃÎÊ´ÎÊı³¬ÏŞ','-5'=>'·ÃÎÊÆµÂÊ³¬ÏŞ','-50'=>'Î´ÖªÒì³£','-51'=>'ÏµÍ³·±Ã¦','-52'=>'³äÖµÊ§°Ü','-53'=>'Ìá½»¶ÌĞÅÊ§°Ü','-54'=>'¼ÇÂ¼ÒÑ´æÔÚ','-55'=>'¼ÇÂ¼²»´æÔÚ','-57'=>'ÓÃ»§¿ªÍ¨¹ı¹Ì¶¨Ç©Ãû¹¦ÄÜ£¬µ«Ç©ÃûÎ´ÉèÖÃ'   
     ),
 	'seoconfig'=>array(
 		'public'=>array(
-			'webname'=>'ç½‘ç«™åç§°',
-			'webkeyword'=>'ç½‘ç«™å…³é”®å­—',
-			'webdesc'=>'ç½‘ç«™æè¿°',
-			'weburl'=>'ç½‘å€',
-			'city'=>'å½“å‰åŸå¸‚',
-			'seacrh_class'=>'æœç´¢ç±»åˆ«'
+			'webname'=>'ÍøÕ¾Ãû³Æ',
+			'webkeyword'=>'ÍøÕ¾¹Ø¼ü×Ö',
+			'webdesc'=>'ÍøÕ¾ÃèÊö',
+			'weburl'=>'ÍøÖ·',
+			'city'=>'µ±Ç°³ÇÊĞ',
+			'seacrh_class'=>'ËÑË÷Àà±ğ'
 		),
 		'other'=>array(
-			'spename'=>'ä¸“é¢˜åç§°', 
+			'spename'=>'×¨ÌâÃû³Æ', 
 		),
 		'news'=>array(
-			'news_class'=>'æ–°é—»ç±»åˆ«',
-			'news_title'=>'æ–°é—»æ ‡é¢˜',
-			'news_keyword'=>'æ–°é—»å…³é”®å­—',
-			'news_source'=>'æ–°é—»æ¥æº',
-			'news_author'=>'æ–°é—»ä½œè€…',
-			'news_desc'=>'æ–°é—»æè¿°',
+			'news_class'=>'ĞÂÎÅÀà±ğ',
+			'news_title'=>'ĞÂÎÅ±êÌâ',
+			'news_keyword'=>'ĞÂÎÅ¹Ø¼ü×Ö',
+			'news_source'=>'ĞÂÎÅÀ´Ô´',
+			'news_author'=>'ĞÂÎÅ×÷Õß',
+			'news_desc'=>'ĞÂÎÅÃèÊö',
 		),
 		'company'=>array(
-			'company_name'=>'ä¼ä¸šåç§°',
-			'company_name_desc'=>'ä¼ä¸šç®€ä»‹',
-			'company_product'=>'ä¼ä¸šäº§å“',
-			'company_news'=>'ä¼ä¸šæ–°é—»',
-			'company_news_desc'=>'ä¼ä¸šæ–°é—»æè¿°',
-			'industry_class'=>'è¡Œä¸šç±»åˆ«',
+			'company_name'=>'ÆóÒµÃû³Æ',
+			'company_name_desc'=>'ÆóÒµ¼ò½é',
+			'company_product'=>'ÆóÒµ²úÆ·',
+			'company_news'=>'ÆóÒµĞÂÎÅ',
+			'company_news_desc'=>'ÆóÒµĞÂÎÅÃèÊö',
+			'industry_class'=>'ĞĞÒµÀà±ğ',
 		),
 		'job'=>array(
-			'industry_class'=>'è¡Œä¸šç±»åˆ«',
-			'job_class'=>'èŒä½ç±»åˆ«',
-			'job_name'=>'èŒä½åç§°',
-			'job_desc'=>'èŒä½æè¿°',
+			'industry_class'=>'ĞĞÒµÀà±ğ',
+			'job_class'=>'Ö°Î»Àà±ğ',
+			'job_name'=>'Ö°Î»Ãû³Æ',
+			'job_desc'=>'Ö°Î»ÃèÊö',
 		),
 		'part'=>array(
-			'part_name'=>'å…¼èŒåç§°',
+			'part_name'=>'¼æÖ°Ãû³Æ',
 		),
 		'zph'=>array(
-			'zph_title'=>'æ‹›è˜ä¼šæ ‡é¢˜',
-			'zph_desc'=>'æ‹›è˜ä¼šæè¿°',
+			'zph_title'=>'ÕĞÆ¸»á±êÌâ',
+			'zph_desc'=>'ÕĞÆ¸»áÃèÊö',
 		),
 		'ask'=>array(
-			'ask_title'=>'é—®ç­”æ ‡é¢˜',
-			'ask_desc'=>'é—®ç­”æè¿°',
-			'ask_class_name'=>'åˆ†ç±»åç§°',
+			'ask_title'=>'ÎÊ´ğ±êÌâ',
+			'ask_desc'=>'ÎÊ´ğÃèÊö',
+			'ask_class_name'=>'·ÖÀàÃû³Æ',
 		),
 		'resume'=>array(
-			'resume_username'=>'ç®€å†å§“å',
-			'resume_job'=>'ç®€å†æ„å‘èŒä½',
-			'resume_city'=>'ç®€å†å·¥ä½œåŸå¸‚',
+			'resume_username'=>'¼òÀúĞÕÃû',
+			'resume_job'=>'¼òÀúÒâÏòÖ°Î»',
+			'resume_city'=>'¼òÀú¹¤×÷³ÇÊĞ',
 		),
 		'tiny'=>array(
-			'tiny_username'=>'æ™®å·¥ç®€å†åç§°',
-			'tiny_job'=>'æ™®å·¥ç®€å†èŒä½',
-			'tiny_desc'=>'æ™®å·¥ç®€å†æè¿°',
+			'tiny_username'=>'ÆÕ¹¤¼òÀúÃû³Æ',
+			'tiny_job'=>'ÆÕ¹¤¼òÀúÖ°Î»',
+			'tiny_desc'=>'ÆÕ¹¤¼òÀúÃèÊö',
 		),
 		'once'=>array(
-			'once_name'=>'åº—é“ºåç§°',
-			'once_job'=>'åº—é“ºæ‹›è˜èŒä½',
-			'once_desc'=>'åº—é“ºæ‹›è˜æè¿°',
+			'once_name'=>'µêÆÌÃû³Æ',
+			'once_job'=>'µêÆÌÕĞÆ¸Ö°Î»',
+			'once_desc'=>'µêÆÌÕĞÆ¸ÃèÊö',
 		),
 		'lietou'=>array(
-			'lt_name'=>'çŒå¤´åç§°',
-			'job_name'=>'çŒå¤´èŒä½åç§°',
-			'job_desc'=>'çŒå¤´èŒä½æè¿°'
+			'lt_name'=>'ÁÔÍ·Ãû³Æ',
+			'job_name'=>'ÁÔÍ·Ö°Î»Ãû³Æ',
+			'job_desc'=>'ÁÔÍ·Ö°Î»ÃèÊö'
 			
 		),
 		'train'=>array(
-			'px_subject_name'=>'è¯¾ç¨‹åç§°',
-			'px_subject_desc'=>'è¯¾ç¨‹æè¿°',
-			'px_teacher_name'=>'åŸ¹è®­å¸ˆåç§°',
-			'px_teacher_desc'=>'åŸ¹è®­å¸ˆæè¿°',
-			'px_agency_name'=>'åŸ¹è®­æœºæ„åç§°',
-			'px_agency_desc'=>'åŸ¹è®­æœºæ„æè¿°',
+			'px_subject_name'=>'¿Î³ÌÃû³Æ',
+			'px_subject_desc'=>'¿Î³ÌÃèÊö',
+			'px_teacher_name'=>'ÅàÑµÊ¦Ãû³Æ',
+			'px_teacher_desc'=>'ÅàÑµÊ¦ÃèÊö',
+			'px_agency_name'=>'ÅàÑµ»ú¹¹Ãû³Æ',
+			'px_agency_desc'=>'ÅàÑµ»ú¹¹ÃèÊö',
 		),
 		'hr'=>array(
-			'hr_class'=>'ç±»åˆ«åç§°',
-			'hr_desc'=>'ç±»åˆ«æè¿°',
-		    'hr_name'=>'å·¥å…·ç®±è¯¦æƒ…',
+			'hr_class'=>'Àà±ğÃû³Æ',
+			'hr_desc'=>'Àà±ğÃèÊö',
+		    'hr_name'=>'¹¤¾ßÏäÏêÇé',
 		),
 		'gg'=>array(
-			'gg_title'=>'å…¬å‘Šæ ‡é¢˜',
-			'gg_desc'=>'å…¬å‘Šæè¿°',
+			'gg_title'=>'¹«¸æ±êÌâ',
+			'gg_desc'=>'¹«¸æÃèÊö',
 		)
 	)
 
