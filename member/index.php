@@ -1,5 +1,6 @@
 <?php
 include(dirname(dirname(__FILE__))."/global.php");
+include(dirname(dirname(__FILE__))."/include/apiClient.php");
 //$DirNameList=explode('\\',dirname(__FILE__));
 $Dir = str_replace("/","\\",dirname(__FILE__));
 $DirNameList=explode('\\',$Dir);
