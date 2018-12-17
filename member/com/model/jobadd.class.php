@@ -350,13 +350,13 @@ class jobadd_controller extends company {
             //处理语言要求
             $language = [];
             $_POST['lang103']?array_push($language, '英语'):'';
-            $_POST['lang100']?array_push($languagea, '普通话'):'';
-            $_POST['lang107']?array_push($languagea, '日语'):'';
-            $_POST['lang104']?array_push($languagea, '韩语'):'';
-            $_POST['lang105']?array_push($languagea, '德语'):'';
-            $_POST['lang106']?array_push($languagea, '法语'):'';
-            $_POST['lang108']?array_push($languagea, '粤语'):'';
-
+            $_POST['lang100']?array_push($language, '普通话'):'';
+            $_POST['lang107']?array_push($language, '日语'):'';
+            $_POST['lang104']?array_push($language, '韩语'):'';
+            $_POST['lang105']?array_push($language, '德语'):'';
+            $_POST['lang106']?array_push($language, '法语'):'';
+            $_POST['lang108']?array_push($language, '粤语'):'';
+            $language = implode(',', $language);
             try {
                 apiClient::init($appid, $secret);
                 $jobService = new com\hlw\huilie\interfaces\JobServiceClient(null);
@@ -377,7 +377,7 @@ class jobadd_controller extends company {
                 $saveJobDo->age = baseUtils::getStr($_POST['age']);
                 $saveJobDo->sex = baseUtils::getStr($_POST['sex']);
                 $saveJobDo->edu = baseUtils::getStr($_POST['edu']);
-                $saveJobDo->language = baseUtils::getStr($_POST['language']);
+                $saveJobDo->language = $language;
                 $saveJobDo->marriage = baseUtils::getStr($_POST['marriage']);
                 $result = $jobService->saveJob($saveJobDo);
             } catch (Exception $ex) {
