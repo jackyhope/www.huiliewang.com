@@ -223,6 +223,8 @@ class info_controller extends company {
                     $customerDo->linkmail = baseUtils::getStr($_POST['linkmail']);
                     $customerDo->website = baseUtils::getStr($_POST['website']);
                     $customerDo->busstops = baseUtils::getStr($_POST['busstops']);
+                    $customerDo->hy = baseUtils::getStr($_POST['hy']);
+                    $customerDo->mun = baseUtils::getStr($_POST['mun']);
                     $result = $customerService->saveCustomer($customerDo);
                 } catch (Exception $ex) {
                     $this->ACT_layer_msg("更新失败！API服务失败", 8, "index.php?c=info");
