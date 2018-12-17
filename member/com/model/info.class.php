@@ -206,31 +206,26 @@ class info_controller extends company {
                     apiClient::init($appid, $secret);
                     $customerService = new com\hlw\huilie\interfaces\CustomerServiceClient(null);
                     apiClient::build($customerService);
-                    $addCustomerDo = new com\hlw\huilie\dataobject\customer\AddCustomerRequestDTO();
-                    
-                    $addCustomerDo->name = baseUtils::getStr($_POST['name']);
-                    $addCustomerDo->address = baseUtils::getStr($_POST['address']);
-                    $addCustomerDo->linkman = baseUtils::getStr($_POST['linkman']);
-                    $addCustomerDo->linktel = baseUtils::getStr($_POST['linktel']);
-                    $addCustomerDo->phoneone = baseUtils::getStr($_POST['phoneone']);
-                    $addCustomerDo->phonetwo = baseUtils::getStr($_POST['phonetwo']);
-                    $addCustomerDo->phonethree = baseUtils::getStr($_POST['phonethree']);
-                    $addCustomerDo->content = baseUtils::getStr($_POST['content']);
-                    $addCustomerDo->sdate = baseUtils::getStr($_POST['sdate']);
-                    $addCustomerDo->money = baseUtils::getStr($_POST['money']);
-                    $addCustomerDo->zip = baseUtils::getStr($_POST['zip']);
-                    $addCustomerDo->linkjob = baseUtils::getStr($_POST['linkjob']);
-                    $addCustomerDo->linkqq = baseUtils::getStr($_POST['linkqq']);
-                    $addCustomerDo->linkmail = baseUtils::getStr($_POST['linkmail']);
-                    $addCustomerDo->website = baseUtils::getStr($_POST['website']);
-                    $addCustomerDo->busstops = baseUtils::getStr($_POST['busstops']);
-                    $result = $customerService->addCustomer($addCustomerDo);
-                    echo 2;exit;
-                    if($result->success && $result->code == 200){
-                        
-                    }
+                    $customerDo = new com\hlw\huilie\dataobject\customer\CustomerRequestDTO();
+                    $customerDo->name = baseUtils::getStr($_POST['name']);
+                    $customerDo->address = baseUtils::getStr($_POST['address']);
+                    $customerDo->linkman = baseUtils::getStr($_POST['linkman']);
+                    $customerDo->linktel = baseUtils::getStr($_POST['linktel']);
+                    $customerDo->phoneone = baseUtils::getStr($_POST['phoneone']);
+                    $customerDo->phonetwo = baseUtils::getStr($_POST['phonetwo']);
+                    $customerDo->phonethree = baseUtils::getStr($_POST['phonethree']);
+                    $customerDo->content = baseUtils::getStr($_POST['content']);
+                    $customerDo->sdate = baseUtils::getStr($_POST['sdate']);
+                    $customerDo->money = baseUtils::getStr($_POST['money']);
+                    $customerDo->zip = baseUtils::getStr($_POST['zip']);
+                    $customerDo->linkjob = baseUtils::getStr($_POST['linkjob']);
+                    $customerDo->linkqq = baseUtils::getStr($_POST['linkqq']);
+                    $customerDo->linkmail = baseUtils::getStr($_POST['linkmail']);
+                    $customerDo->website = baseUtils::getStr($_POST['website']);
+                    $customerDo->busstops = baseUtils::getStr($_POST['busstops']);
+                    $result = $customerService->saveCustomer($customerDo);
                 } catch (Exception $ex) {
-                    var_dump($ex->getCode());var_dump($ex->getTrace());echo 1;exit;
+                    $this->ACT_layer_msg("更新失败！API服务失败", 8, "index.php?c=info");
                 }
 
 

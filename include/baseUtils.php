@@ -77,6 +77,7 @@ class baseUtils {
                 $_str = str_replace("\\", '', $_str);
                 $_str = str_replace("\/", '', $_str);
                 $_str = str_replace("+/v", '', $_str);
+                $_str = iconv('GBK', 'UTF-8', $_str);
                 break;
             case 'int': //获取整形数据
                 $_str = intval($str);
@@ -86,9 +87,11 @@ class baseUtils {
                 break;
             case 'html': //获取HTML，防止XSS攻击
                 $_str = self::reMoveXss($str);
+                $_str = iconv('GBK', 'UTF-8', $_str);
                 break;
             default: //默认当做字符处理
                 $_str = strip_tags($str);
+                $_str = iconv('GBK', 'UTF-8', $_str);
         }
 
         return $_str;
