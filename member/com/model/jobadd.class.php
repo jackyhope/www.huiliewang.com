@@ -144,7 +144,6 @@ class jobadd_controller extends company {
     }
 
     function save_action() {
-//	    var_dump($_POST);exit();
         if ($_POST['submitBtn']) {
             $id = intval($_POST['id']);
             if ($id) {
@@ -346,16 +345,26 @@ class jobadd_controller extends company {
             if ($nid && $_POST['xuanshang']) {
                 $nid = $this->company_invtal($this->uid, $_POST['xuanshang'], false, "发布竟价职位", true, 2, 'integral', 11);
             }
+            
+            //判断新增or更新
+            $job_id = 0;
+            if (is_numeric($nid)) {
+                $mode = 'add';
+                $job_id = $nid;
+            } elseif (is_numeric($id)) {
+                $mode = 'update';
+                $job_id = $id;
+            }
 
             //处理语言要求
             $language = [];
-            $_POST['lang103']?array_push($language, '英语'):'';
-            $_POST['lang100']?array_push($language, '普通话'):'';
-            $_POST['lang107']?array_push($language, '日语'):'';
-            $_POST['lang104']?array_push($language, '韩语'):'';
-            $_POST['lang105']?array_push($language, '德语'):'';
-            $_POST['lang106']?array_push($language, '法语'):'';
-            $_POST['lang108']?array_push($language, '粤语'):'';
+            $_POST['lang103'] ? array_push($language, '英语') : '';
+            $_POST['lang100'] ? array_push($language, '普通话') : '';
+            $_POST['lang107'] ? array_push($language, '日语') : '';
+            $_POST['lang104'] ? array_push($language, '韩语') : '';
+            $_POST['lang105'] ? array_push($language, '德语') : '';
+            $_POST['lang106'] ? array_push($language, '法语') : '';
+            $_POST['lang108'] ? array_push($language, '粤语') : '';
             $language = implode(',', $language);
             try {
                 apiClient::init($appid, $secret);
@@ -379,6 +388,11 @@ class jobadd_controller extends company {
                 $saveJobDo->edu = baseUtils::getStr($_POST['edu']);
                 $saveJobDo->language = $language;
                 $saveJobDo->marriage = baseUtils::getStr($_POST['marriage']);
+                $saveJobDo->uid = baseUtils::getStr($_POST['uid'], 'int');
+                $saveJobDo->sdate = baseUtils::getStr($_POST['sdate']);
+                $saveJobDo->com_name = baseUtils::getStr($_POST['com_name']);
+                $saveJobDo->mode = baseUtils::getStr($mode);
+                $saveJobDo->job_id = baseUtils::getStr($job_id, 'int');
                 $result = $jobService->saveJob($saveJobDo);
             } catch (Exception $ex) {
                 $this->ACT_layer_msg("更新失败！API服务失败", 8, "index.php?c=info");
