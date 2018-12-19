@@ -192,10 +192,10 @@ function wxorderstatus(orderid) {
 					</li>
 					{yun:}/if{/yun}
 					{yun:}if $config.tenpay=='1'{/yun}
-					<li class="item">
+<!--					<li class="item">
 					  <input id="check-tenpay" class="radio" type="radio"  name="pay_bank" {yun:}if $config.alipay=='0'{/yun}checked="checked"{yun:}/if{/yun} value="tenpay" onclick="paycheck('tenpay');">
 					  <label class="bank bank--tenpay " for="check-tenpay">财付通{yun:}$config.alipay{/yun}</label>
-					</li>
+					</li>-->
 					{yun:}/if{/yun}
 					 
 					{yun:}if $config.bank=='1'&&is_array($rows)&&$rows{/yun}
@@ -268,7 +268,7 @@ function wxorderstatus(orderid) {
 				</div>
 				{yun:}/if{/yun}
               {yun:}if $config.alipaytype=='1'&&$config.alipay=='1'{/yun} 
-				<div class="alipaytype">
+<!--				<div class="alipaytype">
 					<div class="payment_zfb">网上银行支付</div>
 					<ul class="paytype-list bank-list">
 						<li class="item">
@@ -344,7 +344,7 @@ function wxorderstatus(orderid) {
 							<label title="杭州银行" for="bank-type-HZCBB2C" class="bank bank--hzcb">杭州银行</label>
 						</li>
 					</ul>
-				</div> 
+				</div> -->
 				{yun:}/if{/yun}
 				</div>
             </div> 
