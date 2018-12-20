@@ -614,7 +614,28 @@ class index_controller extends common{
     function for_link_action(){
         $eid=(int)$_POST['eid'];
         $dos = $_POST['dos'];
-
+        $reid = (int)$_POST['reid'];
+        
+        //计算金币
+        $job_id=$this->obj->DB_select_once('userid_job','`id`='.$reid.'','job_id');
+        $job_info=$this->obj->DB_select_once('company_job','`id`='.$job_id['job_id'].'','maxsalary,ejob_salary_month');
+        $bit = 0;
+        $year_num = ($job_info['maxsalary']/10000)*$job_info['ejob_salary_month'];
+        $code = 0;
+        if( $year_num>0 && $year_num <20){
+            $code = 40;
+        } elseif($year_num >= 20 && $year_num <=30) {
+             $code = 50;
+        } elseif($year_num >= 30 && $year_num <=40) {
+             $code = 60;
+        } elseif($year_num >= 40 && $year_num <=50) {
+             $code = 70;
+        } elseif($year_num >= 50 && $year_num <=80) {
+             $code =80;
+        }elseif($year_num >= 90) {
+             $code =90;
+        }
+        
         $user=$this->obj->DB_select_once('resume_expect','`id`='.$eid.'','uid');
         if($user['uid']==$this->uid){
             $arr['status']=5;
@@ -678,9 +699,9 @@ class index_controller extends common{
                                 }
                                 if($this->usertype=='2'){
 
-                                    $arr['msg']="你将扣除".$this->config['integral_down_resume'].$this->config['integral_pricename']."，是否".$word."？";
+                                    $arr['msg']="你将扣除".$code."，是否".$word."？";
                                 }else{
-                                    $arr['msg']="你将扣除".$this->config['integral_lt_downresume'].$this->config['integral_pricename']."，是否".$word."？";
+                                    $arr['msg']="你将扣除".$code."，是否".$word."？";
                                 }
                             }else{
                                 $arr['status']=4;
@@ -715,9 +736,9 @@ class index_controller extends common{
                         $arr['status']=2;
                         $arr['uid']=$user['uid'];
                         if($this->usertype=='2'){
-                            $arr['msg']="你将扣除".$this->config['integral_down_resume'].$this->config['integral_pricename']."，是否下载？";
+                            $arr['msg']="你将扣除".$code."，是否下载？";
                         }else{
-                            $arr['msg']="你将扣除".$this->config['integral_lt_downresume'].$this->config['integral_pricename']."，是否下载？";
+                            $arr['msg']="你将扣除".$code."，是否下载？";
                         }
                     }else{
                         $arr['status']=1;
@@ -745,12 +766,36 @@ class index_controller extends common{
 
         $eid=(int)$_POST['eid'];
         $uid=(int)$_POST['uid'];
+        $reid = ($_POST['reid']);
         $type=$_POST['type'];
         $data['eid']=$eid;
         $data['uid']=$uid;
         $data['comid']=$this->uid;
         $data['did']=$this->userdid;
         $data['downtime']=time();
+        
+        
+        
+        //计算金币
+        $job_id=$this->obj->DB_select_once('userid_job','`id`='.$reid.'','job_id');
+        $job_info=$this->obj->DB_select_once('company_job','`id`='.$job_id['job_id'].'','maxsalary,ejob_salary_month');
+        $bit = 0;
+        $year_num = ($job_info['maxsalary']/10000)*$job_info['ejob_salary_month'];
+        $code = 0;
+        if( $year_num>0 && $year_num <20){
+            $code = 40;
+        } elseif($year_num >= 20 && $year_num <=30) {
+             $code = 50;
+        } elseif($year_num >= 30 && $year_num <=40) {
+             $code = 60;
+        } elseif($year_num >= 40 && $year_num <=50) {
+             $code = 70;
+        } elseif($year_num >= 50 && $year_num <=80) {
+             $code =80;
+        }elseif($year_num >= 90) {
+             $code =90;
+        }
+        
         if(!$this->uid || !$this->username || $this->usertype!=2){
             $arr['status']=0;
             $arr['msg']='只有企业会员才可下载简历！';
@@ -788,10 +833,11 @@ class index_controller extends common{
             $row=$this->obj->DB_select_once("company_statis","`uid`='".$this->uid."'","`down_resume`,`integral`,`vip_etime`,`rating`,`rating_type`");
 
             if($type=="integral"){
-                if($row['integral']<$this->config['integral_down_resume'] && $this->config['integral_down_resume_type']=="2"){
+                if($row['integral']<$code && $this->config['integral_down_resume_type']=="2"){
                     $arr['status']=5;
                     $arr['integral']=$row['integral'];
                 }else{
+                    $this->obj->insert_into("down_resume",['eid'=>$eid,'comid'=>$this->uid,'did' => $this->userdid,'downtime'=>time()]);
                     $this->obj->insert_into("down_resume",$data);
                     if($_POST['reid']){
                         $this->obj->DB_update_all("userid_job","is_browse=6","id=".$_POST['reid']);
@@ -802,7 +848,7 @@ class index_controller extends common{
                         $auto=false;
                     }
                     $this->obj->DB_update_all("resume_expect","`dnum`=`dnum`+'1'","`id`='".$eid."'");
-                    $this->company_invtal($this->uid,$this->config['integral_down_resume'],$auto,"下载简历",true,2,'integral',13);
+                    $this->company_invtal($this->uid,$code,$auto,"下载简历",true,2,'integral',13);
                     $state_content = "新下载了 <a href=\"".Url("resume",array("c"=>'show','id'=>$eid))."\" target=\"_blank\">".$username['username']."</a> 的简历。";
                     $this->addstate($state_content,2);
                     $arr['status']=3;
@@ -810,7 +856,7 @@ class index_controller extends common{
                     $this->warning("2");
                 }
             }else{
-                $arr['integral']=$this->config['integral_down_resume'];
+                $arr['integral']=$code;
                 if($row['rating']==0){
                     $arr['status']=1;
                 }else{
