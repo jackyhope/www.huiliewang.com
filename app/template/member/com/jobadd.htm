@@ -393,7 +393,7 @@
                                 <input type="text" size="5" id="maxsalary" name="maxsalary" {yun:}if $row.maxsalary{/yun}value="{yun:}$row.maxsalary{/yun}"{yun:}/if{/yun} onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"  class="job_xz_text" placeholder="最高薪资"{yun:}if !$row.minsalary&&!$row.maxsalary&&$row.id{/yun} disabled="disabled"{yun:}/if{/yun}>
                                 <span class="job_xz_dw">元/月</span>
                             </div>
-                            <span class="job_xz_text_line" style="margin-left:10px;color:#666;line-height:40px;"><label><input style="margin-right:5px;" type="checkbox" id="salary_type" name="salary_type" value="1" onclick="change_salary_type()"{yun:}if !$row.minsalary&&!$row.maxsalary&&$row.id{/yun} checked="checked"{yun:}/if{/yun} />面议</label></span>
+                            <span class="job_xz_text_line" style="margin-left:10px;color:#666;line-height:40px;"><label><input style="margin-right:5px;display: none" type="checkbox" id="salary_type" name="salary_type" value="1" onclick="change_salary_type()"{yun:}if !$row.minsalary&&!$row.maxsalary&&$row.id{/yun} checked="checked"{yun:}/if{/yun} /><!--面议--></label></span>
                     </li>
                     <li>
                         <div class=tit> <font color="#FF0000">*</font>发放月数：</div>
@@ -673,7 +673,7 @@
 
 </div>
 </div>  {yun:}if !$row.linkmak && !$row.content{/yun}
-<div class="text_tips_bc">
+<div class="text_tips_bc" style="display: none">
     <div class="text_tips_bc_h1"> 保存临时信息</div>
     <div class="text_tips_bc_cont">
         {yun:}if $save.time{/yun}

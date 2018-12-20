@@ -242,7 +242,7 @@ function checkpostcom(){
                 <div class=tit><font color="#FF0000">*</font> 公司地址：</div>
                 <div class=textbox>
                   <input type="text" style="width:320px;" id="address" name="address" size="45" value="{yun:}$row.address{/yun}" class="com_info_text"/>
-				  <a href="javascript:void(0)"  onclick="setmap('{yun:}$row.address{/yun}')" class="com_set_a" id="set_map">设置地图</a>
+				  <a style="display: none" href="javascript:void(0)"  onclick="setmap('{yun:}$row.address{/yun}')" class="com_set_a" id="set_map">设置地图</a>
                   <span id="by_address" class="errordisplay">请填写正确的公司地址</span> </div>
               </li>
               <li>

@@ -32,8 +32,8 @@
         <div class="com_body">
           <div class=admin_textbox_04>
           <iframe id="supportiframe"  name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe>
-          <div class="hr_tip_box">
-           <div class="hr_subMetx"> <span class="hr_resumesearch_span fltL">人才类型：</span> 
+          <div class="hr_tip_box" >
+           <div class="hr_subMetx" style="display: none"> <span class="hr_resumesearch_span fltL">人才类型：</span>
            <a href="index.php?c=hr&jobid={yun:}$smarty.get.jobid{/yun}&state={yun:}$smarty.get.state{/yun}&keyword={yun:}$smarty.get.keyword{/yun}" class="hr_subMetx_a {yun:}if $smarty.get.resumetype==''{/yun}hr_subMetx_cur{yun:}/if{/yun}">不限</a>
            <a href="index.php?c=hr&jobid={yun:}$smarty.get.jobid{/yun}&state={yun:}$smarty.get.state{/yun}&resumetype=1&keyword={yun:}$smarty.get.keyword{/yun}" class="hr_subMetx_a {yun:}if $smarty.get.resumetype=='1'{/yun}hr_subMetx_cur{yun:}/if{/yun}">候选人自荐</a>
            <a href="index.php?c=hr&jobid={yun:}$smarty.get.jobid{/yun}&state={yun:}$smarty.get.state{/yun}&resumetype=3&keyword={yun:}$smarty.get.keyword{/yun}" class="hr_subMetx_a {yun:}if $smarty.get.resumetype=='3'{/yun}hr_subMetx_cur{yun:}/if{/yun}">猎头推荐</a>
@@ -52,8 +52,8 @@
                 </div>
               </div>
                <form action="index.php" method="get" >
-                <span class="hr_resumesearch_span fltL">关 键 字：</span>
-                <div class="hr_subMetx_se">
+                <span class="hr_resumesearch_span fltL" style="display: none">关 键 字：</span>
+                <div class="hr_subMetx_se" style="display: none">
                   <input name="c" type="hidden" value="hr">
                   <input name="resumetype" type="hidden" value="{yun:}$smarty.get.resumetype{/yun}">
                    <input name="jobid" type="hidden" value="{yun:}$smarty.get.jobid{/yun}">
@@ -347,7 +347,7 @@
               <p>没有搜索到相关简历记录！</p>
               {yun:}else{/yun}
               <p> 亲爱的用户，目前您还没有收到申请贵公司职位的人才简历！</p>
-              <a href="{yun:}url m=resume{/yun}" class="com_msg_no_bth com_submit">我要主动找人才</a> 
+              <a href="{yun:}url m=resume{/yun}" class="com_msg_no_bth com_submit" style="display: none">我要主动找人才</a>
 			 {yun:}/if{/yun} </div>
             {yun:}/if{/yun}
             <div class="diggg mt10 fltR">{yun:}$pagenav{/yun}</div>
