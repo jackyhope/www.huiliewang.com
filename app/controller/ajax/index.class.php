@@ -640,9 +640,9 @@ class index_controller extends common{
             }
         }else{
             $resume=$this->obj->DB_select_once("down_resume","`eid`='".$eid."' and `comid`='".$this->uid."'");
-            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
-            $user=$user[0];
-
+//            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
+//            $user=$user[0];
+            $user = $this->obr->DB_select_once("resume","`id`=$eid");
             $black=$this->obj->DB_select_once("blacklist","`c_uid`='".$user['uid']."' and `p_uid`='".$this->uid."'");
             if(!empty($black)){
                 $arr['status']=1;
@@ -658,7 +658,7 @@ class index_controller extends common{
                 if($this->usertype=='3'){
                     $row=$this->obj->DB_select_once("lietou_statis","`uid`='".$this->uid."'","vip_etime,down_resume,rating_type");
                 }
-                $data['eid']=$user['id'];
+                $data['eid']=$user[''];
                 $data['uid']=$user['uid'];
                 $data['comid']=$this->uid;
                 $data['did']=$this->userdid;
@@ -857,8 +857,9 @@ class index_controller extends common{
             $arr['msg']=iconv("gbk", "utf-8",$arr['msg']);
         }
         if($arr['status']==3||$arr['status']==6){
-            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
-            $user=$user[0];
+//            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
+//            $user=$user[0];
+            $user = $this->obr->DB_select_once("resume","`id`=$eid");
             $html="<table>";
             $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ÊÖ»ú£º")."</td><td>".$user['telphone']."</td></tr>";
             if($user['basic_info']=='1' && $user['telhome']!=""){
@@ -1002,38 +1003,6 @@ class index_controller extends common{
         echo 'diffdomains('.json_encode($arr).')';
     }
 
-    function resume_word_action(){
-
-        $resumename=$this->obr->DB_select_once("resume","`id`='".(int)$_GET['id']."'","`uid`,`name`");
-
-        $resume=$this->obj->DB_select_once("down_resume","`eid`='".(int)$_GET['id']."' and `comid`='".$this->uid."'");
-
-
-        if((int)$_GET['reid']){
-            $userid_job = $this->obj->DB_update_all("userid_job","is_browse=6","id=".$_GET['reid']);
-        }
-        if($resumename['uid']==$this->uid || $this->usertype==3){
-            $url = $this->config['sy_weburl']."/resume/index.php?c=show&id=".(int)$_GET['id'].'&type=word';
-//            echo $url;exit();
-            foreach($_COOKIE as $key=>$value){
-                $cookies[] = $key."=".$value;
-            }
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_COOKIE, @implode(';',$cookies));
-            $content = curl_exec($ch);
-            curl_close($ch);
-            $this->startword($resumename['name'],$content);
-
-        }elseif(is_array($resume) && !empty($resume)){
-
-            $content = file_get_contents(Url('resume',array('c'=>'show','id'=>(int)$_GET['id'],'downtime'=>$resume['downtime'],'type'=>'word')));
-//echo $content;exit();
-//            $this->startword($resumename['uname'],$content);
-        }
-    }
 
 
     function resume_report_action(){
