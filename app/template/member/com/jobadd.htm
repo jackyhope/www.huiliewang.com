@@ -157,6 +157,23 @@
                     });
                     $(".xubox_layer").addClass("xubox_tips_border");
                 },function(){layer.closeTips();});
+                let service_price = '<table style="text-align: center;color: white;width: 240px;font-size: 14px">' +
+                    '<tr><td colspan="2">服务费标准</td></tr>' +
+                    '<tr><td style="text-align: left">综合年薪范围</td> <td>定价</td></tr>'+
+                    '<tr><td style="text-align: left">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; < 年薪 < 20w</td> <td>￥40/每份</td></tr>'+
+                    '<tr><td style="text-align: left">20w ≤ 年薪 ≤ 30w</td> <td>￥50/每份</td></tr>'+
+                    '<tr><td style="text-align: left">30w < 年薪 ≤ 40w</td> <td>￥60/每份</td></tr>'+
+                    '<tr><td style="text-align: left">40w < 年薪 ≤ 50w</td> <td>￥70/每份</td></tr>'+
+                    '<tr><td style="text-align: left">50w < 年薪 ≤ 80w</td> <td>￥80/每份</td></tr>'+
+                    '<tr><td style="text-align: left">80w ≤ 年薪</td> <td>￥90/每份</td></tr>'+
+                    '</table>';
+                $(".com_admin_ask_hjl").hover(function(){
+                    layer.tips(service_price, this, {
+                        guide: 1,
+                        style: ['background-color:#5EA7DC; color:#fff;top:-7px', '#5EA7DC'],
+                    });
+                    $(".xubox_layer").addClass("xubox_tips_border");
+                },function(){layer.closeTips();});
                 $(".job_sex_box_li").hover(function(){
                     var aid=$(this).attr("aid");
                     $(this).addClass("selected");
@@ -580,6 +597,7 @@
                                             <div class=tit> 方式：</div>
                         <div class=textbox>
                             <INPUT type="text" size="20" value="慧简历" style="float:left" class="com_info_text" disabled="disabled">
+                            <i class="com_admin_ask_hjl com_admin_ask "></i>
                     </li>
                     
                     </ul>
@@ -688,6 +706,5 @@
     </div>
 
 </div>
-
 {yun:}include file="$comstyle/jobserver.htm"{/yun}
 {yun:}include file="$tplstyle/footer.htm"{/yun}
