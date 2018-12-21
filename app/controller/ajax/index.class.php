@@ -1565,7 +1565,7 @@ class index_controller extends common{
 
                 $html = str_replace("{kjlogin}",$kjlogin,$html);
             }
-            echo "document.write('".$html."');";
+            echo "document.write('".$html."');"; 
         }
     }
     function Site_action(){
