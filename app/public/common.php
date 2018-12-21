@@ -1,14 +1,14 @@
 <?php
 /*
-* $Author £ºPHPYUN¿ª·¢ÍÅ¶Ó
+* $Author ï¿½ï¿½PHPYUNï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½
 *
-* ¹ÙÍø: http://www.phpyun.com
+* ï¿½ï¿½ï¿½ï¿½: http://www.phpyun.com
 *
-* °æÈ¨ËùÓÐ 2009-2016 ËÞÇ¨öÎ³±ÐÅÏ¢¼¼ÊõÓÐÏÞ¹«Ë¾£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
+* ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ 2009-2016 ï¿½ï¿½Ç¨ï¿½Î³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½
 *
-* Èí¼þÉùÃ÷£ºÎ´¾­ÊÚÈ¨Ç°ÌáÏÂ£¬²»µÃÓÃÓÚÉÌÒµÔËÓª¡¢¶þ´Î¿ª·¢ÒÔ¼°ÈÎºÎÐÎÊ½µÄÔÙ´Î·¢²¼¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½È¨Ç°ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Óªï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Îºï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ù´Î·ï¿½ï¿½ï¿½ï¿½ï¿½
 *
-***È«¾ÖµÄÈ¨ÏÞÑéÖ¤ Êý¾ÝÑéÖ¤¿â
+***È«ï¿½Öµï¿½È¨ï¿½ï¿½ï¿½ï¿½Ö¤ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½
  */
 class common{
 	public $tpl='';
@@ -145,7 +145,7 @@ class common{
 
 
 	function DoException(){
-		$this->ACT_msg("index.php","ÄúÇëÇóµÄÒ³Ãæ²»´æÔÚ£¡");
+		$this->ACT_msg("index.php","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æ²»ï¿½ï¿½ï¿½Ú£ï¿½");
 	}
 	function yuntpl($tplarr=array()){
 	    //var_dump ($tplarr);
@@ -155,7 +155,7 @@ class common{
 				$this->tpl->display($v.".htm");
 			}
 		}else{
-			echo "Ä£°æ²»ÄÜÎª¿Õ£¡";die;
+			echo "Ä£ï¿½æ²»ï¿½ï¿½Îªï¿½Õ£ï¿½";die;
 		}
 	}
 	function yun_tpl($tplarr=array()){
@@ -166,7 +166,7 @@ class common{
 				$this->tpl->display($this->config['style']."/".$this->m."/".$v.".htm");
 			}
 		}else{
-			echo "Ä£°æ²»ÄÜÎª¿Õ£¡";die;
+			echo "Ä£ï¿½æ²»ï¿½ï¿½Îªï¿½Õ£ï¿½";die;
 		}
 	}
 
@@ -236,13 +236,13 @@ class common{
 				$this->uc_open();
 				$ucresult = uc_user_edit($old_info['username'], $post['oldpw'], $post['password'], $post['email'],$old);
 				if($ucresult == -1){
-					$msg= '¾ÉÃÜÂë²»ÕýÈ·';
+					$msg= 'ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½È·';
 				} elseif($ucresult == -4) {
-					$msg= 'Email ¸ñÊ½ÓÐÎó';
+					$msg= 'Email ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½';
 				} elseif($ucresult == -5) {
-					$msg= 'Email ²»ÔÊÐí×¢²á';
+					$msg= 'Email ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½';
 				} elseif($ucresult == -6) {
-					$msg= '¸Ã Email ÒÑ¾­±»×¢²á';
+					$msg= 'ï¿½ï¿½ Email ï¿½Ñ¾ï¿½ï¿½ï¿½×¢ï¿½ï¿½';
 				}
 				if($msg!=""){
 					$this->ACT_msg($url, $msg);
@@ -348,7 +348,7 @@ class common{
 			}
 			if($_POST){
 				if($_POST['pytoken']!=$_SESSION['pytoken']){
-					$this->ACT_layer_msg("À´Ô´µØÖ··Ç·¨£¡",8,$this->config['sy_weburl']);
+					$this->ACT_layer_msg("ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½Ç·ï¿½ï¿½ï¿½",8,$this->config['sy_weburl']);
 				}
 				unset($_POST['pytoken']);
 			}
@@ -446,7 +446,7 @@ class common{
 			}
 			$this->unset_cookie();
 			
-			$data['msg']='ÇëÏÈµÇÂ¼£¡';
+			$data['msg']='ï¿½ï¿½ï¿½Èµï¿½Â¼ï¿½ï¿½';
 			$data['url']=$this->config['sy_weburl'].'/wap/index.php?c=login';
 			$this->yunset("layer",$data);
 		}else{
@@ -457,7 +457,7 @@ class common{
 
 				$this->unset_cookie();
 			    
-				$data['msg']='ÄãÎÞÈ¨²Ù×÷£¬ÇëÖØÐÂµÇÂ¼£¡';
+				$data['msg']='ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½';
 				$data['url']=$this->config['sy_weburl'].'/wap/index.php?m=login';
 				$this->yunset("layer",$data);
 				
@@ -498,11 +498,11 @@ class common{
 		$this->tpl->is_fun();
 		if(!$this->uid && !$this->username){
 			$login=Url("login",array("usertype"=>"1"),"1");
-			$this->ACT_msg($login,"ÇëÏÈµÇÂ¼");
+			$this->ACT_msg($login,"ï¿½ï¿½ï¿½Èµï¿½Â¼");
 		}else{
 			$shell=$this->GET_user_shell($this->uid,$_COOKIE['shell']);
 			if(!is_array($shell)){
-				$this->ACT_msg("../index.php","ÄãÎÞÈ¨²Ù×÷£¬ÇëÖØÐÂµÇÂ¼");
+				$this->ACT_msg("../index.php","ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼");
 			}else{
 				if($_COOKIE['usertype']==2 || $_COOKIE['usertype']==3){
 					
@@ -562,12 +562,12 @@ class common{
 				$insert_id=$this->MODEL()->insert_into('message',$data);
 			}
 			if($messagealert){
-				$this->ACT_layer_msg("·¢ËÍ³É¹¦£¡",9,$_SERVER['HTTP_REFERER']);
+				$this->ACT_layer_msg("ï¿½ï¿½ï¿½Í³É¹ï¿½ï¿½ï¿½",9,$_SERVER['HTTP_REFERER']);
 			}else{
 				return $insert_id;
 			}
 		}else{
-			$this->ACT_layer_msg("²ÎÊýÓÐÎó£¬Çë¼ì²é²ÎÊý£¡",8,$_SERVER['HTTP_REFERER']);
+			$this->ACT_layer_msg("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",8,$_SERVER['HTTP_REFERER']);
 		}
 	}
 	function sqjobmsg($jobinfo=array(),$comtel=''){  
@@ -620,11 +620,11 @@ class common{
 		$job_info['edu_info'] = $comclass_name[$job_info['edu']];
 		$job_info['age_info'] = $comclass_name[$job_info['age']];
 		if($job_info['minsalary']&&$job_info['maxsalary']){
-			$job_info['salary_info'] ="£¤".$job_info['minsalary']."-".$job_info['maxsalary'];
+			$job_info['salary_info'] ="ï¿½ï¿½".$job_info['minsalary']."-".$job_info['maxsalary'];
 		}elseif($value['minsalary']){
-			$job_info['salary_info'] ="£¤".$job_info['minsalary']."ÒÔÉÏ";
+			$job_info['salary_info'] ="ï¿½ï¿½".$job_info['minsalary']."ï¿½ï¿½ï¿½ï¿½";
 		}else{
-			$job_info['salary_info'] ="ÃæÒé";
+			$job_info['salary_info'] ="ï¿½ï¿½ï¿½ï¿½";
 		}
 		$job_info['number_info'] = $comclass_name[$job_info['number']];
 		$job_info['mun_info'] = $comclass_name[$job_info['mun']];
@@ -643,7 +643,7 @@ class common{
 		$job_info['hy_info'] = $industry_name[$job_info['hy']];
 		$job_info['pr_info'] = $comclass_name[$job_info['pr']];
 		$job_info['mun_info'] = $comclass_name[$job_info['mun']];
-		$job_info['edate']=date("YÄêmÔÂdÈÕ",$job_info['edate']);
+		$job_info['edate']=date("Yï¿½ï¿½mï¿½ï¿½dï¿½ï¿½",$job_info['edate']);
 		if($job_info['lang']!=""){
 			$lang = @explode(",",$job_info['lang']);
 			foreach($lang as $key=>$value){
@@ -788,7 +788,7 @@ class common{
 		$data['type']="login";
 		$data['autocode']=$randstr;
 		$status=$this->send_msg_email($data);
-		if($status=="·¢ËÍ³É¹¦!"){
+		if($status=="ï¿½ï¿½ï¿½Í³É¹ï¿½!"){
 			setcookie("moblie_code",$randstr,time()+120, "/");
 			$sql['status']=0;
 			$sql['step']=1;
@@ -799,14 +799,14 @@ class common{
 				$where['uid']=$member_arr['uid'];
 				$where['type']='2';
 				$this->obj->update_once("company_cert",$sql,$where);
-				$this->obj->member_log("ÊÖ»úµÇÂ¼ÑéÖ¤ÂëÖØÐÂ»ñÈ¡");
+				$this->obj->member_log("ï¿½Ö»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½È¡");
 			}else{
 				$sql['uid']=$member_arr['uid'];
-				$sql['statusbody']='ÊÖ»úµÇÂ¼ÑéÖ¤Âë';
+				$sql['statusbody']='ï¿½Ö»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ö¤ï¿½ï¿½';
 				$sql['did']=$this->userdid;
 				$sql['type']=2;
 				$this->obj->insert_into("company_cert",$sql);
-				$this->obj->member_log("ÊÖ»úµÇÂ¼ÑéÖ¤Âë»ñÈ¡");
+				$this->obj->member_log("ï¿½Ö»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½È¡");
 			}
 		}
 		return $status;
@@ -841,10 +841,10 @@ class common{
 					$sendid = $this->sendemail($emailData);		
 					
 				}else{
-					$this->ACT_layer_msg("ÓÊÏä¸ñÊ½´íÎó£¡",8,$_SERVER['HTTP_REFERER'],2,$type);
+					$this->ACT_layer_msg("ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½",8,$_SERVER['HTTP_REFERER'],2,$type);
 				}
 			}else{
-				$this->ACT_layer_msg( "»¹Ã»ÓÐÅäÖÃÓÊÏä£¬ÇëÁªÏµ¹ÜÀíÔ±£¡",8,$_SERVER['HTTP_REFERER'],2,$type);
+				$this->ACT_layer_msg( "ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½",8,$_SERVER['HTTP_REFERER'],2,$type);
 			}
 		}
 
@@ -854,14 +854,14 @@ class common{
         if($data["moblie"]){
  		    require APP_PATH."/app/public/sms.mod.php";
             if(sendSms($data["moblie"],$data["code"])){
-                return "·¢ËÍ³É¹¦!";exit();
+                return "ï¿½ï¿½ï¿½Í³É¹ï¿½!";exit();
             };
 
         }
 //		if($data["moblie"]&&$this->config["sy_msg_".$data["type"]]==1 || $data['type'] == 'regcode' && $this->config['sy_msg_regcode'] == 2 && $this->config['reg_real_name_check'] == 1
 //		){
 //			if(!$this->config["sy_msguser"] || !$this->config["sy_msgpw"] || !$this->config["sy_msgkey"]||$this->config['sy_msg_isopen']!='1'){
-//				$this->ACT_layer_msg( "»¹Ã»ÓÐÅäÖÃ¶ÌÐÅ£¬ÇëÁªÏµ¹ÜÀíÔ±£¡",8,$_SERVER['HTTP_REFERER'],2,$type);
+//				$this->ACT_layer_msg( "ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½",8,$_SERVER['HTTP_REFERER'],2,$type);
 //			}else{
 //				$msguser=$this->config["sy_msguser"];
 //				$msgpw=$this->config["sy_msgpw"];
@@ -906,20 +906,20 @@ class common{
 			$data_msg['state']="0";
 			$data_msg['ip']=fun_ip_get();
 			$this->MODEL()->insert_into("moblie_msg",$data_msg); 
-			return "·¢ËÍ³É¹¦!";
+			return "ï¿½ï¿½ï¿½Í³É¹ï¿½!";
 		}else{
 		  include(CONFIG_PATH."db.data.php");
 			$data_msg["state"]=$re;
 			$this->MODEL()->insert_into("moblie_msg",$data_msg);
 			if($arr_data['msgreturn'][$re]){
-				return "·¢ËÍÊ§°Ü£¡×´Ì¬£º".$arr_data['msgreturn'][$re];
+				return "ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½×´Ì¬ï¿½ï¿½".$arr_data['msgreturn'][$re];
 			}else{
-				return "·¢ËÍÊ§°Ü£¡×´Ì¬£º".$re;
+				return "ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½×´Ì¬ï¿½ï¿½".$re;
 			}
 		}
 	}
 	function postSMS($type="msgsend",$data=''){
-		$data['content'] = str_replace(array(" ","¡¡","\t","\n","\r"),array("","","","",""),$data['content']);
+		$data['content'] = str_replace(array(" ","ï¿½ï¿½","\t","\n","\r"),array("","","","",""),$data['content']);
 		$url='http://msg.phpyun.com/send.php';
 	    $url.='?user='.$data['uid'].'&pass='.$data['pwd'].'&code='.$data['key'].'&moblie='.$data['mobile'].'&content='.$data['content'].'&time='.$data['time'].'';
 	    if(function_exists('file_get_contents')){
@@ -1142,13 +1142,13 @@ class common{
 				$data[]=$city_name[$v];
 				break;
 				case "rec":
-				$data[]='ÍÆ¼ö';
+				$data[]='ï¿½Æ¼ï¿½';
 				break;
 				case "urgent":
-				$data[]='½ô¼±';
+				$data[]='ï¿½ï¿½ï¿½ï¿½';
 				break;
 				case "pic":
-				$data[]='ÕÕÆ¬';
+				$data[]='ï¿½ï¿½Æ¬';
 				break;
 				default:
 				if(!in_array($key,array('idcard','work','cert'))){
@@ -1212,7 +1212,7 @@ class common{
 		$M->insert_into('sysmsg',array('fa_uid'=>$uid,'content'=>$content,'username'=>$member['username'],'ctime'=>time(),'remind_status'=>0));
 	}
 	function picmsg($pic,$url,$type=""){
-		$error = array("1"=>"ÎÄ¼þÌ«´ó","2"=>"ÎÄ¼þÀàÐÍ²»·û","3"=>"Í¬ÃûÎÄ¼þÒÑ¾­´æÔÚ","4"=>"ÒÆ¶¯ÎÄ¼þ³ö´í,Çë¼ì²éuploadÄ¿Â¼È¨ÏÞ");
+		$error = array("1"=>"ï¿½Ä¼ï¿½Ì«ï¿½ï¿½","2"=>"ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½","3"=>"Í¬ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½","4"=>"ï¿½Æ¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½uploadÄ¿Â¼È¨ï¿½ï¿½");
 		if($error[$pic]!=""){
 			if($type=="ajax"){
 				echo "{";
@@ -1320,7 +1320,7 @@ class common{
 		}
 	}
 
-    function ACT_layer_msg($msg = "²Ù×÷ÒÑ³É¹¦£¡", $st = 9,$url='',$tm = 2,$type='0'){
+    function ACT_layer_msg($msg = "ï¿½ï¿½ï¿½ï¿½ï¿½Ñ³É¹ï¿½ï¿½ï¿½", $st = 9,$url='',$tm = 2,$type='0'){
         if(is_array($msg)){
             foreach($msg as $k=>$v){
                 $Html.='<div id="'.$k.'">'.$v.'</div>';
@@ -1329,7 +1329,7 @@ class common{
         }
 
         if($st==9&&$type=='1'){$this->admin_log($msg);}
-        $msg = preg_replace('/\([^\)]+?\)/x',"",str_replace(array("£¨","£©"),array("(",")"),$msg));
+        $msg = preg_replace('/\([^\)]+?\)/x',"",str_replace(array("ï¿½ï¿½","ï¿½ï¿½"),array("(",")"),$msg));
         echo '<input id="layer_url" type="hidden" value="'.$url.'"><input id="layer_msg" type="hidden" value="'.$msg.'"><input id="layer_time" type="hidden" value="'.$tm.'"><input id="layer_st" type="hidden" value="'.$st.'">';exit();
     }
 	
@@ -1338,7 +1338,7 @@ class common{
 			$this->ACT_layer_msg($msg,$st,$url);
 		}else{
 			if($st==9){$this->admin_log($msg);}
-			$msg = preg_replace('/\([^\)]+?\)/x',"",str_replace(array("£¨","£©"),array("(",")"),$msg));
+			$msg = preg_replace('/\([^\)]+?\)/x',"",str_replace(array("ï¿½ï¿½","ï¿½ï¿½"),array("(",")"),$msg));
 			$layer_msg['msg']=yun_iconv("gbk","utf-8",$msg);
 			$layer_msg['tm']=$tm;
 			$layer_msg['st']=$st;
@@ -1461,7 +1461,7 @@ class common{
 		if($this->config['sy_iscsrf']!='2'){
 			if($_SESSION['pytoken']!=$_GET['pytoken'] || !$_SESSION['pytoken']){
 				unset($_SESSION['pytoken']);
-				$this->ACT_layer_msg("À´Ô´µØÖ··Ç·¨£¡",8,'index.php');
+				$this->ACT_layer_msg("ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½Ç·ï¿½ï¿½ï¿½",8,'index.php');
 				exit();
 			}
 		}
@@ -1547,12 +1547,12 @@ class common{
 		}
 		$M=$this->MODEL();
 		if($id){
-			$M->member_log("ÐÞ¸ÄËÑË÷Æ÷");
+			$M->member_log("ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return $M->update_once("finder",$data,"`id`='".$id."'");
 		}else{
 			$data['usertype']=$this->usertype;
 			$data['addtime']=time();
-			$M->member_log("Ìí¼ÓËÑË÷Æ÷");
+			$M->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return $M->insert_into("finder",$data);
 		}
 	}
@@ -1743,7 +1743,7 @@ class common{
 			$ip=fun_ip_get();
 			$time=time()-3600; 
 			$num=$this->obj->DB_select_num("moblie_msg","`ctime`>'".$time."'"); 
-			$msg="ÏµÍ³Ò»Ð¡Ê±ÄÚÒÑ·¢ËÍ".$num."Ìõ¶ÌÐÅ£¡";
+			$msg="ÏµÍ³Ò»Ð¡Ê±ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½".$num."ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½";
 			if($num>=$this->config['sy_hour_msgnum']){
 				$this->send_warning($type,$msg);
 			} 
@@ -1757,39 +1757,39 @@ class common{
 			$this->obj->DB_insert_once("warning","`type`='".$type."',`uid`='".$this->uid."',`ctime`='".time()."'");
 			$member=$this->obj->DB_select_once("member","`uid`='".$this->uid."'","email");
 			if($type=="1"){
-				$emailcoment="ÓÃ»§£º¡¾".$this->username."¡¿·¢²¼Ö°Î»³¬³ö¹æ¶¨ÊýÄ¿£¬Çë¼ì²éÊÇ·ñÓÐÎÊÌâ";
+				$emailcoment="ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½".$this->username."ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 				if($this->config['warning_addjob_type']=="1"){
 					$this->obj->DB_update_all("company_job","`r_status`='2'","`uid`='".$this->uid."'");
 					$this->obj->DB_update_all("company","`r_status`='2'","`uid`='".$this->uid."'");
-					$this->obj->DB_update_all("member","`status`='2',`lock_info`='·¢²¼Ö°Î»³¬³ö¹æ¶¨ÊýÄ¿'","`uid`='".$this->uid."'");
-					$this->send_msg_email(array("email"=>$member['email'],"uid"=>$this->uid,"name"=>$this->username,"lock_info"=>'·¢²¼Ö°Î»³¬³ö¹æ¶¨ÊýÄ¿',"type"=>"lock"));
+					$this->obj->DB_update_all("member","`status`='2',`lock_info`='ï¿½ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿'","`uid`='".$this->uid."'");
+					$this->send_msg_email(array("email"=>$member['email'],"uid"=>$this->uid,"name"=>$this->username,"lock_info"=>'ï¿½ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿',"type"=>"lock"));
 					$this->unset_cookie();
 				}
 			}elseif($type=="2"){
-				$emailcoment="ÓÃ»§£º¡¾".$this->username."¡¿ÏÂÔØ¼òÀú³¬³ö¹æ¶¨ÊýÄ¿£¬Çë¼ì²éÊÇ·ñÓÐÎÊÌâ";
+				$emailcoment="ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½".$this->username."ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 				if($this->config['warning_downresume_type']=="1"){
 					$this->obj->DB_update_all("company_job","`r_status`='2'","`uid`='".$this->uid."'");
 					$this->obj->DB_update_all("company","`r_status`='2'","`uid`='".$this->uid."'");
-					$this->obj->DB_update_all("member","`status`='2',`lock_info`='ÏÂÔØ¼òÀú³¬³ö¹æ¶¨ÊýÄ¿'","`uid`='".$this->uid."'");
-					$this->send_msg_email(array("email"=>$member['email'],"uid"=>$this->uid,"name"=>$this->username,"lock_info"=>'ÏÂÔØ¼òÀú³¬³ö¹æ¶¨ÊýÄ¿',"type"=>"lock"));
+					$this->obj->DB_update_all("member","`status`='2',`lock_info`='ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿'","`uid`='".$this->uid."'");
+					$this->send_msg_email(array("email"=>$member['email'],"uid"=>$this->uid,"name"=>$this->username,"lock_info"=>'ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿',"type"=>"lock"));
 					$this->unset_cookie();
 				}
 			}elseif($type=="3"){
-				$emailcoment="ÓÃ»§£º¡¾".$this->username."¡¿¼òÀú·¢²¼³¬³ö¹æ¶¨ÊýÄ¿£¬Çë¼ì²éÊÇ·ñÓÐÎÊÌâ";
+				$emailcoment="ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½".$this->username."ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 				if($this->config['warning_addresume_type']=="1"){
-			 		$this->obj->DB_update_all("member","`status`='2',`lock_info`='¼òÀú·¢²¼³¬³ö¹æ¶¨ÊýÄ¿'","`uid`='".$this->uid."'");
+			 		$this->obj->DB_update_all("member","`status`='2',`lock_info`='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿'","`uid`='".$this->uid."'");
 			 		$this->obj->DB_update_all("resume","`r_status`='2'","`uid`='".$this->uid."' ");
 			 		$this->obj->DB_update_all("resume_expect","`r_status`='2'","`uid`='".$this->uid."' ");
-					$this->send_msg_email(array("email"=>$member['email'],'uid'=>$this->uid,'name'=>$this->username,"lock_info"=>'¼òÀú·¢²¼³¬³ö¹æ¶¨ÊýÄ¿',"type"=>"lock"));
+					$this->send_msg_email(array("email"=>$member['email'],'uid'=>$this->uid,'name'=>$this->username,"lock_info"=>'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Ä¿',"type"=>"lock"));
 					$this->unset_cookie();
 				}
 			}elseif($type=="4"){
-				$emailcoment="ÓÃ»§£º¡¾".$this->username."¡¿³äÖµ³¬³ö¹æ¶¨½ð¶î£¬Çë¼ì²éÊÇ·ñÓÐÎÊÌâ";
+				$emailcoment="ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½".$this->username."ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 				if($this->config['warning_recharge_type']=="1"){
 					$this->obj->DB_update_all("company_job","`r_status`='2'","`uid`='".$this->uid."'");
 					$this->obj->DB_update_all("company","`r_status`='2'","`uid`='".$this->uid."'");
-					$this->obj->DB_update_all("member","`status`='2',`lock_info`='³äÖµ³¬³ö¹æ¶¨½ð¶î'","`uid`='".$this->uid."'");
-					$this->send_msg_email(array("email"=>$member['email'],"uid"=>$this->uid,"name"=>$this->username,"lock_info"=>'³äÖµ³¬³ö¹æ¶¨½ð¶î',"type"=>"lock"));
+					$this->obj->DB_update_all("member","`status`='2',`lock_info`='ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½ï¿½'","`uid`='".$this->uid."'");
+					$this->send_msg_email(array("email"=>$member['email'],"uid"=>$this->uid,"name"=>$this->username,"lock_info"=>'ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½ï¿½',"type"=>"lock"));
 					$this->unset_cookie();
 				}
 			}else if($type=='5'&&$this->config['warning_close_msg']==1){ 
@@ -1798,7 +1798,7 @@ class common{
 			}
 	
 			$emailData['to'] = $this->config['sy_webemail'];
-			$emailData['subject'] = "Ô¤¾¯ÌáÐÑ";
+			$emailData['subject'] = "Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			$emailData['content'] = $emailcoment;
 			$sendid = $this->sendemail($emailData);
 
@@ -1831,12 +1831,12 @@ class common{
 		$Model=new $ModelName($this->db,$this->def,array('uid'=>$this->uid,'username'=>$this->username,'usertype'=>$this->usertype));
         return $Model;
     }
-	public function get_admin_msg($url, $show = '²Ù×÷ÒÑ³É¹¦£¡') {
+	public function get_admin_msg($url, $show = 'ï¿½ï¿½ï¿½ï¿½ï¿½Ñ³É¹ï¿½ï¿½ï¿½') {
 		$msg = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml"><head>
 				<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 				<meta http-equiv="refresh" content="2; URL=' . $url . '" />
-				<title>ÏûÏ¢ÌáÊ¾ Powered by PHPYUN_JOB!</title>
+				<title>ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ Powered by PHPYUN_JOB!</title>
 				<style>
 				a,a:visited{
 				color:#0066FF; text-decoration:none;
@@ -1850,12 +1850,12 @@ class common{
 				<div id="man_zone">
 				  <table width="30%" border="0" align="center"  cellpadding="0" cellspacing="1" class="table" bgcolor="#dfdfdf" style="margin-top:100px;">
 				    <tr>
-				      <th height="25" align="center"><font style="font-size:12px;" color="#000">ÐÅÏ¢ÌáÊ¾</font></th>
+				      <th height="25" align="center"><font style="font-size:12px;" color="#000">ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾</font></th>
 				    </tr>
 				    <tr>
 				      <td bgcolor="#FFFFFF"><p style="line-height:20px;">&nbsp;<font color=red>' . $show . '</font><br />
-				      &nbsp;2Ãëºó·µ»ØÖ¸¶¨Ò³Ãæ£¡<br />
-				      &nbsp;Èç¹ûä¯ÀÀÆ÷ÎÞ·¨Ìø×ª£¬<a href="' . $url . '">Çëµã»÷´Ë´¦</a>¡£</p></td>
+				      &nbsp;2ï¿½ï¿½ó·µ»ï¿½Ö¸ï¿½ï¿½Ò³ï¿½æ£¡<br />
+				      &nbsp;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½×ªï¿½ï¿½<a href="' . $url . '">ï¿½ï¿½ï¿½ï¿½ï¿½Ë´ï¿½</a>ï¿½ï¿½</p></td>
 				    </tr>
 				  </table>
 				</div>
@@ -1878,7 +1878,7 @@ class common{
 		if($_SESSION['auid'] && $_SESSION['ausername']&&$data){$this->MODEL()->DB_insert_once("admin_log",$value);}
 	}
 
-	function ACT_msg($url='', $msg = "²Ù×÷ÒÑ³É¹¦£¡", $st = 8,$tm = 3) {
+	function ACT_msg($url='', $msg = "ï¿½ï¿½ï¿½ï¿½ï¿½Ñ³É¹ï¿½ï¿½ï¿½", $st = 8,$tm = 3) {
 		if($url==''){
 			$url=$this->config['sy_weburl'];
 		}
@@ -1917,7 +1917,7 @@ class common{
 
 			if(!$row){
 			    $this->adminlogout();
-			    echo "µÇÂ¼³¬Ê±£¬ÇëË¢ÐÂºóÖØÐÂµÇÂ¼£¡";
+			    echo "ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Âºï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½";
 				exit();
 			}
 
@@ -1945,7 +1945,7 @@ class common{
 				$nav=$this->get_shell($row["m_id"],$url);
 				if(!$nav){
                     $this->adminlogout();
-                    echo "µÇÂ¼³¬Ê±£¬ÇëË¢ÐÂºóÖØÐÂµÇÂ¼£¡";
+                    echo "ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Âºï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½";
 					exit();
                 }
                 if(is_numeric($this->config['did'])){
@@ -1959,7 +1959,7 @@ class common{
 					$info=$this->obj->DB_select_once("admin_navigation","`url`='".$url."'");
 				}
                 if(!$info){
-                    echo "µÇÂ¼³¬Ê±£¬ÇëË¢ÐÂºóÖØÐÂµÇÂ¼£¡";
+                    echo "ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Âºï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½";
 					exit();
                 }
                
@@ -1967,7 +1967,7 @@ class common{
 		}else{
 			if($_GET['m']!=""){
 				$this->adminlogout();
-				 echo "µÇÂ¼³¬Ê±£¬ÇëË¢ÐÂºóÖØÐÂµÇÂ¼£¡";
+				 echo "ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Âºï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½";
 				 exit();
 			}
 		}
@@ -2004,10 +2004,10 @@ class common{
 			$_SESSION['ashell']=md5($row['username'] . $row['password'] . $this->md);
 			setCookie("ashell", md5($row['username'] . $row['password'] . $this->md), time() + 80000,"/");
 			$this->obj->DB_update_all("admin_user","`lasttime`='".time()."'","`uid`='".$row['uid']."'");
-			$this->ACT_layer_msg("µÇÂ¼³É¹¦£¡",9,$url);
+			$this->ACT_layer_msg("ï¿½ï¿½Â¼ï¿½É¹ï¿½ï¿½ï¿½",9,$url);
 			
 		} else {
-			$this->ACT_layer_msg("ÃÜÂë»òÓÃ»§´íÎó£¡",8,$url);
+			$this->ACT_layer_msg("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½",8,$url);
 		}
 	}
 	
@@ -2333,7 +2333,7 @@ class common{
 				}
 				$this->obj->DB_update_all("company_order","`order_state`='2'","`id`='".$order['id']."'");
 				if($order['type']=='2'){
-					$this->insert_company_pay($order['integral'],2,$order['uid'],"¹ºÂò".$this->config['integral_pricename'],1,2,true);
+					$this->insert_company_pay($order['integral'],2,$order['uid'],"ï¿½ï¿½ï¿½ï¿½".$this->config['integral_pricename'],1,2,true);
 				}
 			}
 			return $status;
@@ -2349,8 +2349,8 @@ class common{
 					$num=$this->obj->DB_select_num("company_statis","`vip_etime`<'".$time."' and `vip_etime`>'0'");
 					if($num>0){ 
 
-						$emailtitle=$this->config['sy_webname']."-»áÔ±µ½ÆÚÌáÐÑ";
-						$emailcoment=$this->config['sy_webname']."-ÓÐ".$num."Î»ÆóÒµ»áÔ±".$this->config['sy_maturityday']."ÌìÄÚ½«Òªµ½ÆÚ£¬ÇëµÇÂ¼ÍøÕ¾ºóÌ¨²é¿´£¡";
+						$emailtitle=$this->config['sy_webname']."-ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+						$emailcoment=$this->config['sy_webname']."-ï¿½ï¿½".$num."Î»ï¿½ï¿½Òµï¿½ï¿½Ô±".$this->config['sy_maturityday']."ï¿½ï¿½ï¿½Ú½ï¿½Òªï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Õ¾ï¿½ï¿½Ì¨ï¿½é¿´ï¿½ï¿½";
 						$emailData['to'] = $this->config['sy_webemail'];
 						$emailData['subject'] = $emailtitle;
 						$emailData['content'] = $emailcoment;

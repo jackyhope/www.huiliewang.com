@@ -1,12 +1,12 @@
 <?php
 /*
-* $Author £ºPHPYUN¿ª·¢ÍÅ¶Ó
+* $Author ï¿½ï¿½PHPYUNï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½
 *
-* ¹ÙÍø: http://www.phpyun.com
+* ï¿½ï¿½ï¿½ï¿½: http://www.phpyun.com
 *
-* °æÈ¨ËùÓÐ 2009-2016 ËÞÇ¨öÎ³±ÐÅÏ¢¼¼ÊõÓÐÏÞ¹«Ë¾£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
+* ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ 2009-2016 ï¿½ï¿½Ç¨ï¿½Î³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½
 *
-* Èí¼þÉùÃ÷£ºÎ´¾­ÊÚÈ¨Ç°ÌáÏÂ£¬²»µÃÓÃÓÚÉÌÒµÔËÓª¡¢¶þ´Î¿ª·¢ÒÔ¼°ÈÎºÎÐÎÊ½µÄÔÙ´Î·¢²¼¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½È¨Ç°ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Óªï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Îºï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ù´Î·ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 if($_GET['yunurl']){
@@ -79,9 +79,7 @@ if($config['sy_'.$ModuleName.'_web']==2){
 }
 
 
-
 $ControllerPath=APP_PATH.'app/controller/'.$ModuleName.'/';
-
 require(APP_PATH.'app/public/common.php');
 
 if(file_exists($ControllerPath.$ModuleName.'.controller.php')){
@@ -102,7 +100,6 @@ if($ModuleName=='siteadmin'){$model='admin';}elseif($ModuleName=='wap'){$model='
 
 $conclass=$ControllerName.'_controller';
 $actfunc=$ActionName.'_action';
-
 $views=new $conclass($phpyun,$db,$db_config['def'],$model,$ModuleName);
 $views->m=$ModuleName;
 if(!method_exists($views,$actfunc)){
