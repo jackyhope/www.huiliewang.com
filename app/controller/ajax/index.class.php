@@ -6,7 +6,7 @@
 *
 * ��Ȩ���� 2009-2016 ��Ǩ�γ���Ϣ�������޹�˾������������Ȩ����
 *
-* ���������δ����Ȩǰ���£�����������ҵ��Ӫ�����ο����Լ��κ���ʽ���ٴη�����
+* ���������δ����Ȩǰ���£�����������ҵ��Ӫ�����ο����Լ��κ���ʽ���ٴη�����?
  */
 
 class index_controller extends common{
@@ -377,7 +377,7 @@ class index_controller extends common{
         $umessage = $JobM->GetUseridMsgOne(array("uid"=>$p_uid,"fid"=>$this->uid,"jobid"=>intval($_POST['jobid']),'type'=>$jobtype));
         if(is_array($umessage)){
             $arr['status']=8;
-            $arr['msg']=yun_iconv("gbk","utf-8",'��ְλ��������˲ţ��벻Ҫ�ظ����룡');
+            $arr['msg']=yun_iconv("gbk","utf-8",'��ְλ��������˲ţ��벻Ҫ�ظ�����?');
             echo json_encode($arr);die;
         }else{
             $com=$this->obj->DB_select_once("company","`uid`='".$this->uid."'","name,did");
@@ -409,7 +409,7 @@ class index_controller extends common{
                                 }else{
                                     $auto=false;
                                 }
-                                $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"�����Ա����",true,2,'integral',14);
+                                $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"�����Ա����?",true,2,'integral',14);
                                 $state_content = "�Ҹ��������˲� <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$resume[def_job]))."\" target=\"_blank\">".$resume['name']."</a> ���ԡ�";
                                 $this->addstate($state_content,2);
                                 $arr['status']=3;
@@ -457,7 +457,7 @@ class index_controller extends common{
                         }else{
                             $auto=false;
                         }
-                        $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"�����Ա����",true,2,'integral',14);
+                        $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"�����Ա����?",true,2,'integral',14);
                         $state_content = "�Ҹ��������˲� <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$_POST[eid]))."\" target=\"_blank\">".$resume['name']."</a> ���ԡ�";
                         $this->addstate($state_content,2);
                         $arr['status']=3;
@@ -667,7 +667,7 @@ class index_controller extends common{
             $black=$this->obj->DB_select_once("blacklist","`c_uid`='".$user['uid']."' and `p_uid`='".$this->uid."'");
             if(!empty($black)){
                 $arr['status']=1;
-                $arr['msg']="���ѱ����û������������";
+                $arr['msg']="���ѱ����û������������?";
             }
 
             if(!empty($resume)&&$arr['status']==''){
@@ -804,7 +804,7 @@ class index_controller extends common{
             $black=$this->obj->DB_select_once("blacklist","`p_uid`='".$uid."' and `c_uid`='".$this->uid."'");
             if(!empty($black)){
                 $arr['status']=7;
-                $arr['msg']="���û��ѱ��������������";
+                $arr['msg']="���û��ѱ��������������?";
                 echo json_encode($arr);die;
             }
 
@@ -1225,11 +1225,11 @@ class index_controller extends common{
         if($info['price']>$statis['integral']){
             $this->layer_msg($this->config['integral_pricename'].'���㣬���ȳ�ֵ����',8,0);
         }else{
-            $nid=$this->company_invtal($this->uid,$info['price'],false,"�������ģ��",true,2,'integral',15);
+            $nid=$this->company_invtal($this->uid,$info['price'],false,"�������ģ��?",true,2,'integral',15);
             if($nid){
                 $paytpls[]=$info['id'];
                 $this->obj->DB_update_all("member_statis","`tpl`='".$info['id']."',`paytpls`='".@implode(',',$paytpls)."'","`uid`='".$this->uid."'");
-                $this->layer_msg('����ɹ���',9,0,Url("resume",array("c"=>"show","id"=>$expect['id'],"see"=>"used")));
+                $this->layer_msg('����ɹ���?',9,0,Url("resume",array("c"=>"show","id"=>$expect['id'],"see"=>"used")));
             }else{
                 $this->layer_msg('����ʧ�ܣ�',8,0,Url("resume",array("c"=>"show","id"=>$expect['id'],"see"=>"used")));
             }
@@ -1377,7 +1377,7 @@ class index_controller extends common{
     }
 
     function regcode_action(){
-        if(strpos($this->config['code_web'],'ע���Ա')!==false){
+        if(strpos($this->config['code_web'],'ע����?')!==false){
             session_start();
             if ($this->config['code_kind']==3){
                 if(!gtauthcode($this->config)){
@@ -1474,7 +1474,7 @@ class index_controller extends common{
                         $this->obj->DB_update_all('company',"`ant_num`=`ant_num`-1","`uid`='".$id."'");
                         $content="ȡ���˶�<a href=\"".$comurl."\" target=\"_bank\">".$name."</a>��ע";
                         $this->addstate($content,2);
-                        $msg_content = "�û� ".$this->username." ȡ���˶���Ĺ�ע��";
+                        $msg_content = "�û� ".$this->username." ȡ���˶���Ĺ�ע��?";
                         $this->automsg($msg_content,$id);
                     }
                     $this->obj->member_log("ȡ���˶�".$name."��ע");
@@ -1533,11 +1533,13 @@ class index_controller extends common{
 
             }else{
                 $kjlogin = '';
-                $html='<div class="fr"><div class="yun_topLogin_cont"><div class="yun_topLogin denglu" style="width:100px;border-right: 1px solid #eee;"><a class="coloess"  href="http://www.zhanjob.com/index.html#/dologin" >�ڲ�ϵͳ���</a></div><div class="yun_topLogin" style="width:126px;padding-left: 5px;border-right: 1px solid #eee;"> <a class="coloess" href="http://27.11.210.44:5678/webapp/#/login">�Ϸ��»�OAϵͳ</a></div><div class="yun_topLogin denglu" style="width:90px;"><a class="coloess" href="http://lt.huiliewang.com">����ϵͳ</a></div></div></div>';
+
+                $html='<div class=" fr"><div class="yun_topLogin_cont"><div class="yun_topLogin denglu" style="width:100px;border-right: 1px solid #eee;"><a class="coloess"  href="http://www.zhanjob.com/index.html#/dologin" >�ڲ�ϵͳ���</a></div><div class="yun_topLogin" style="width:126px;padding-left: 5px;border-right: 1px solid #eee;"> <a class="coloess" href="http://27.11.220.106:5678/webapp/#/login">�Ϸ��»�OAϵͳ</a></div><div class="yun_topLogin denglu" style="width:90px;"><a class="coloess" href="http://lt.huiliewang.com">����ϵͳ</a></div></div></div>';
+
                 if($this->config['sy_qqlogin']=='1'||$this->config['sy_sinalogin']=='1'||$this->config['wx_author']=='1'){
 
                     if($_GET['type']=='index'){
-
+ 
                         if($this->config['sy_qqlogin']=='1'){
                             $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_qq.png" class="png" ><a href="'.$this->config['sy_weburl'].'/qqlogin.php'.'">QQ��¼</a></li>';
                         }
@@ -1680,7 +1682,7 @@ class index_controller extends common{
                 $this->send_msg_email($data);
                 $email=@explode('@',$row['email']);
                 $newemail=substr($email[0],0,3).'****@'.end($email);
-                $this->layer_msg('<div class="rl_box"><div class="rl_yx_p">�ѷ��͵��������䣺</div><div class="rl_yx">'.$newemail.'��</div><div class="">���¼�������������ʺ����룡</div><div class="">�绻��������ϵ�ͷ��绰��</div><div class="rl_tel">'. $this->config['sy_freewebtel'] .'</div></div>',9,0);
+                $this->layer_msg('<div class="rl_box"><div class="rl_yx_p">�ѷ��͵��������䣺</div><div class="rl_yx">'.$newemail.'��</div><div class="">���¼�������������ʺ�����?</div><div class="">�绻��������ϵ�ͷ��绰��</div><div class="rl_tel">'. $this->config['sy_freewebtel'] .'</div></div>',9,0);
             }else{
                 $this->layer_msg('���û�����������������',8,0);
             }
@@ -1718,7 +1720,7 @@ class index_controller extends common{
             if(!empty($zphcom)){
                 $unpass=$Zph->GetZphComOnce(array("uid"=>$this->uid,"zid"=>(int)$_POST['zid'],'status'=>2));
                 if(!empty($unpass)){
-                    $arr['msg']=iconv("gbk","utf-8","���ı���δͨ����ˣ�����ϵ����Ա��");
+                    $arr['msg']=iconv("gbk","utf-8","���ı���δͨ����ˣ�����ϵ����Ա��?");
                     $arr['status']=1;
                 }else{
                     $arr['msg']=iconv("gbk","utf-8","���ѱ�������Ƹ�ᣡ");
@@ -1751,7 +1753,7 @@ class index_controller extends common{
                             $html.='<input name="checkbox_job" value="'.$v[id].'" id="status_'.$v[id].'" type="checkbox"><label for="status_'.$v[id].'">'.iconv("gbk","utf-8",$v[name]).'</label><br>';
                         }
                         if($statis['zph_num']=='0'&&$statis['integral']>=$space['price']&&$statis['rating_type']=='1'){
-                            $arr['msg']=iconv("gbk","utf-8","���ı������������꣬�����������۳���".$space['price'].$this->config['integral_pricename']."���Ƿ������");
+                            $arr['msg']=iconv("gbk","utf-8","���ı������������꣬�����������۳���".$space['price'].$this->config['integral_pricename']."���Ƿ������?");
                             $arr['status']=2;
                         }else{
                             $arr['msg']=iconv("gbk","utf-8","ȷ����������Ƹ�᣿");
@@ -1789,12 +1791,12 @@ class index_controller extends common{
                         $bmtype=1;
                         if($space['price']>$statis['integral']){
                             $arr['status']=0;
-                            $arr['content']=iconv("gbk","utf-8","���".$this->config['integral_pricename']."���㣬���ȳ�ֵ��");
+                            $arr['content']=iconv("gbk","utf-8","���?".$this->config['integral_pricename']."���㣬���ȳ�ֵ��");
                             echo json_encode($arr);die;
                         }
                     }else{
                         $arr['status']=0;
-                        $arr['content']=iconv("gbk","utf-8","�����Ƹ�ᱨ�����������꣡");
+                        $arr['content']=iconv("gbk","utf-8","�����Ƹ�ᱨ������������?");
                         echo json_encode($arr);die;
                     }
                 }
@@ -1802,7 +1804,7 @@ class index_controller extends common{
             $zphcom=$Zph->GetZphComOnce(array("uid"=>$this->uid,"zid"=>(int)$_POST['zid']));
             if(!empty($zphcom)){
                 $arr['status']=0;
-                $arr['content']=iconv("gbk","utf-8","���Ѿ��������Ƹ��");
+                $arr['content']=iconv("gbk","utf-8","���Ѿ��������Ƹ��?");
             }else{
                 $jobidarr=@explode(",",$_GET['jobid']);
                 $array=array();
@@ -1841,7 +1843,7 @@ class index_controller extends common{
                                 $this->company_invtal($this->uid,$space['price'],false,"��Ƹ�ᱨ��",true,2,'integral');
                             }
                             $arr['status']=1;
-                            $arr['content']=iconv("gbk","utf-8","�����ɹ�,�ȴ�����Ա���");
+                            $arr['content']=iconv("gbk","utf-8","�����ɹ�,�ȴ�����Ա���?");
                             $this->obj->member_log("������Ƹ��");
                         }else{
                             $arr['status']=0;
@@ -2119,7 +2121,7 @@ class index_controller extends common{
             $res = true;
             if ($this->config['sy_msg_isopen']==1 && $this->config['reg_real_name_check']==1) {
                 if(!$_POST['authcode']){
-                    echo '�����������֤�룡';die;
+                    echo '�����������֤��?';die;
                 }
 
                 $cert_validity = 1800;
@@ -2128,10 +2130,10 @@ class index_controller extends common{
                     if ((time()-$cert_arr['ctime']) <= $cert_validity) {
                         $res = $_POST['authcode'] == $cert_arr['check2'];
                     } else {
-                        echo "��֤����֤��ʱ�������µ��������֤�룡";die;
+                        echo "��֤����֤��ʱ�������µ��������֤��?";die;
                     }
                 } else {
-                    echo "��֤�뷢�Ͳ��ɹ��������µ��������֤�룡";die;
+                    echo "��֤�뷢�Ͳ��ɹ��������µ��������֤��?";die;
                 }
             }
             if ($res) {
@@ -2159,7 +2161,7 @@ class index_controller extends common{
                 $id=$Resume->TemporaryResume($_POST);
                 echo $id;die;
             } else {
-                echo "�ֻ���֤�����";die;
+                echo "�ֻ���֤�����?";die;
             }
         }
     }
@@ -2172,7 +2174,7 @@ class index_controller extends common{
 
             if(isset($_POST['authcode'])){
                 if(gtverify() == false){
-                    $this->layer_msg('ͼƬ��֤�����!');
+                    $this->layer_msg('ͼƬ��֤�����?!');
                 }
             }
 
@@ -2215,7 +2217,7 @@ class index_controller extends common{
         }else{
             $ismoblie= $Member->GetMemberNum(array("moblie"=>$row['telphone']));
             if($ismoblie>0){
-                echo "��ǰ�ֻ����ѱ�ʹ�ã�����������ֻ��ţ�";die;
+                echo "��ǰ�ֻ����ѱ�ʹ�ã�����������ֻ��ţ�?";die;
             }else{
                 session_start();
                 if(md5(strtolower($_POST['authcode']))!=$_SESSION['authcode']  || empty($_SESSION['authcode'])){
@@ -2475,7 +2477,7 @@ class index_controller extends common{
     }
     function LoginHead_action(){
         if($this->uid!=""&&$this->username!=""){
-            $html.='<div class="hp_top_rt_login fl">��ã�<a class="hp_top_rt_login_g" href="'.$this->config['sy_weburl'].'/member\">'.$this->username.'</a></div><i class="hp_top_line fl"> | </i>';
+            $html.='<div class="hp_top_rt_login fl">��ã�?<a class="hp_top_rt_login_g" href="'.$this->config['sy_weburl'].'/member\">'.$this->username.'</a></div><i class="hp_top_line fl"> | </i>';
 
             echo "document.write('".$html."');";
         }else{
@@ -2483,7 +2485,7 @@ class index_controller extends common{
             $reg_url = Url("register",array("usertype"=>"1",'type'=>1),"1");
             $reg_com_url = Url("register",array("usertype"=>"2",'type'=>1),"1");
             $style = $this->config['sy_weburl']."/app/template/".$this->config['style'];
-            $html.='<div class="hp_top_rt_login fl">��ã���<a class="hp_top_rt_login_g" href="'.$log_url.'">��¼</a></div><i class="hp_top_line fl"> | </i><div class="hp_top_rt_regist fl"><a class="hp_top_rt_regist_m" href="javascript:void(0);">���ע�� <i class="hp_top_rg_down"></i></a><div class="hp_top_regist_list" style="display:none;"><ul><li><a href="'.$reg_url.'">����ע��</a></li><li><a href="'.$reg_com_url.'">��ҵע��</a></li><li><a href="'.$reg_lietou_url.'">��ͷע��</a></li></ul></div></div>';
+            $html.='<div class="hp_top_rt_login fl">��ã���?<a class="hp_top_rt_login_g" href="'.$log_url.'">��¼</a></div><i class="hp_top_line fl"> | </i><div class="hp_top_rt_regist fl"><a class="hp_top_rt_regist_m" href="javascript:void(0);">���ע��? <i class="hp_top_rg_down"></i></a><div class="hp_top_regist_list" style="display:none;"><ul><li><a href="'.$reg_url.'">����ע��</a></li><li><a href="'.$reg_com_url.'">��ҵע��</a></li><li><a href="'.$reg_lietou_url.'">��ͷע��</a></li></ul></div></div>';
             echo "document.write('".$html."');";
         }
     }
