@@ -1539,7 +1539,7 @@ class index_controller extends common{
                 if($this->config['sy_qqlogin']=='1'||$this->config['sy_sinalogin']=='1'||$this->config['wx_author']=='1'){
 
                     if($_GET['type']=='index'){
- 
+
                         if($this->config['sy_qqlogin']=='1'){
                             $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_qq.png" class="png" ><a href="'.$this->config['sy_weburl'].'/qqlogin.php'.'">QQ��¼</a></li>';
                         }
