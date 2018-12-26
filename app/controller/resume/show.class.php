@@ -106,7 +106,7 @@ class show_controller extends resume_controller{
 			}
 
 
-            $user = $M->resume_select($resume);
+            $user = $M->resume_select($resume,$_GET['reid']);
 
 			if(empty($down_resume)){
                 $user['email'] = "******";

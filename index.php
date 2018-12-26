@@ -19,4 +19,5 @@ if($ModuleName=='')	$ModuleName='index';
 include(LIB_PATH.'init.php');
 
 
+
 ?>

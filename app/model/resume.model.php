@@ -99,9 +99,7 @@ class resume_model extends model{
 		return $this->DB_select_num('resume_expect',$WhereStr);
     }
   
-	function resume_select($user){
-
-
+	function resume_select($user,$reid){
 
 		if($user){
 			$thisember=$this->DB_select_once("member","`uid`='".$user['uid']."'");
@@ -225,8 +223,8 @@ class resume_model extends model{
 					$user['m_status']=1;
 					$user['username_n'] = $user['name'];
 				}else{
-					$user['link_msg']="<a href='javascript:void(0)' onclick=\"for_link('$id','".Url("ajax",array('c'=>'for_link'))."')\">查看联系方式</a>";
-					$user['link_wapmsg']="<a href='javascript:void(0)' onclick=\"for_link('$id','".Url("ajax",array('c'=>'forlink'))."')\">查看联系方式</a>";
+					$user['link_msg']="<a href='javascript:void(0)' onclick=\"for_link('{$user['id']}','{$reid}','".Url("ajax",array('c'=>'for_link'))."')\">查看联系方式</a>";
+                                        $user['link_wapmsg']="<a href='javascript:void(0)' onclick=\"for_link('{$user['id']}','{$reid}','".Url("ajax",array('c'=>'forlink'))."')\">查看联系方式</a>";
 
 				}
 			}

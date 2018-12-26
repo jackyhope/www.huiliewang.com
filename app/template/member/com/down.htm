@@ -91,10 +91,10 @@
                 </div>
                 {yun:}elseif $smarty.get.keyword!="" {/yun}
                  <div class="msg_no"><p>没有搜索到下载简历！</p>
-                 <a href="{yun:}url m=resume{/yun}" class="com_msg_no_bth com_submit">我要主动找人才</a></div>
+                 <a href="{yun:}url m=resume{/yun}" style="display: none" class="com_msg_no_bth com_submit">我要主动找人才</a></div>
                 {yun:}else{/yun}
                  <div class="msg_no"><p>亲爱的用户，目前您还没有下载简历。</p>
-                 <a href="{yun:}url m=resume{/yun}" class="com_msg_no_bth com_submit">我要主动找人才</a></div>
+                 <a href="{yun:}url m=resume{/yun}" style="display: none" class="com_msg_no_bth com_submit">我要主动找人才</a></div>
                 {yun:}/if{/yun} </div>
               {yun:}if !empty($rows){/yun}
               <div class="wxts_box wxts_box_mt30" style="display: none;">

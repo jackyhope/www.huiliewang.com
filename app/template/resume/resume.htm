@@ -419,13 +419,13 @@
         {yun:}if $Info.file_path{/yun}
         <a href="/resumes/index.php?eid={yun:}$Info.id{/yun}" class="btn_2 btn">查看原件</a>
         {yun:}/if{/yun}
-       <a href="{yun:}url m=ajax c=resume_word id=$Info.id{/yun}" class="btn_1">下载简历</a>
+       <!--<a href="{yun:}url m=ajax c=resume_word id=$Info.id{/yun}" class="btn_1">下载简历</a>-->
 	</div>
 </div>
 
 <!--右侧操作 预览时隐藏-->
 {yun:}if $smarty.get.see!=member && $smarty.get.see!=used{/yun}
-<div class="yun_resume_operation" id="operation_box">
+<!--<div class="yun_resume_operation" id="operation_box">
   <div class="yun_resume_operation_box">
   <div class="yun_resume_operation_box_h1">操作区</div>
       {yun:}if $Info.file_path{/yun}
@@ -461,7 +461,7 @@
 
     </div>
     {yun:}else{/yun}
-    <div class="vita_Opera_cz_list">
+    <div class="vita_Opera_cz_list" style="display: none">
         <i class="vita_Opera_cz_list_icon vita_Opera_cz_list_icon_sc"></i>
       <input class="vita_btn_1 yun_resume_cz_sub" type="button" onClick="add_user_talent('{yun:}$Info.id{/yun}','{yun:}$usertype{/yun}')" value="收藏简历">
     </div>
@@ -494,7 +494,7 @@
         {yun:}else{/yun}
         <input class="vita_btn_1 yun_resume_cz_sub" onClick="for_link('{yun:}$Info.id{/yun}','{yun:}url m=ajax c=for_link{/yun}','{yun:}url m=ajax c=resume_word id=$Info.id{/yun}');" type="button" name="submit" value="下载联系方式 ">
         {yun:}/if{/yun}
-       <!--<input class="vita_btn_1 yun_resume_cz_sub" onClick="addjob();" type="button" name="submit" value="下载联系方式 ">-->
+       <input class="vita_btn_1 yun_resume_cz_sub" onClick="addjob();" type="button" name="submit" value="下载联系方式 ">
     {yun:}/if{/yun}
 
 
@@ -508,7 +508,7 @@
 
   </div>
 
-</div>
+</div>-->
 
 <div id='for_link'  class="none"  style="float:left;width:350px">
 	<div class="city_1" style="padding-top:5px;"></div>

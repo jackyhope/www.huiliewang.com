@@ -12,7 +12,7 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
 </script>
 </head>
 <body>
-<div class="top">
+<div class="top" style="display: none">
   <div class="top_cot">
     <div class="top_cot_content">
       <div class="top_left fl">
@@ -62,7 +62,7 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
       <ul class="reg_ul_list">
           <!--<li class="{yun:}if $type==3{/yun}reg_cur{yun:}/if{/yun}"><a class="reg_h1_icon" href="{yun:}url m=register usertype=3 type=1{/yun}"><i class="reg_h1_icon_i reg_h1_icon_i5 png"></i>猎头注册</a></li>-->
           <li class="{yun:}if $type==1{/yun}reg_cur{yun:}/if{/yun}"><a class="reg_h1_icon" href="{yun:}url m=register usertype=2 type=1{/yun}"><i class="reg_h1_icon_i reg_h1_icon_i4 png"></i>企业注册</a></li>
-	    <li class="{yun:}if $type==2{/yun}reg_cur{yun:}/if{/yun}"><a class="reg_h1_icon" href="{yun:}url m=register usertype=1 type=1{/yun}"><i class="reg_h1_icon_i reg_h1_icon_i3 png"></i>个人注册</a></li>
+	    <li style="display: none" class="{yun:}if $type==2{/yun}reg_cur{yun:}/if{/yun}"><a class="reg_h1_icon" href="{yun:}url m=register usertype=1 type=1{/yun}"><i class="reg_h1_icon_i reg_h1_icon_i3 png"></i>个人注册</a></li>
 
 
 		{yun:}if $config.reg_moblie=='1'{/yun}
@@ -363,10 +363,10 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
         </div>
     <div class="register_right">
              <!--<div class="register_right_reg">我要找工作<a href="{yun:}url m=register usertype=1 type=1{/yun}">注册个人账户</a></div>-->
-        <div class="register_right_c">
+        <div class="register_right_c" style="display: none">
             <a href="/index.php?m=register&usertype=3&type=1" class="btnsitem" style="background: #4e5c84">我是猎头，注册猎头账号>></a>
         </div>
-        <div class="register_right_c">
+        <div class="register_right_c" style="display: none">
             <a href="/index.php?m=register&usertype=1&type=1" class="btnsitem" style="background: #f26d49;">我是求职者，注册个人账号>></a>
         </div>
       {yun:}if $config.sy_qqlogin==1 || $config.sy_sinalogin==1 || $config.wx_author==1{/yun}

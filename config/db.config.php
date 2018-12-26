@@ -1,6 +1,6 @@
 <?php
 
-if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.27') !== FALSE) {//²âÊÔ»·¾³1
+if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.20') !== FALSE) {//ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½1
     $db_config = array(
         'dbtype' => 'mysql',
         'dbhost' => 'localhost',
@@ -24,10 +24,10 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.27') !== FALSE) {//²âÊÔ»·¾³1
         'timezone' => 'PRC',
         'coding' => 'utf8',
     );
-} elseif (strpos($_SERVER['SERVER_ADDR'], '192.168.116.31') !== FALSE) {//²âÊÔ»·¾³2
+} elseif (strpos($_SERVER['SERVER_ADDR'], '192.168.116.31') !== FALSE) {//ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½2
     $db_config = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.116.27',
+        'dbhost' => '192.168.116.20',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'huiliewang',
@@ -39,7 +39,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.27') !== FALSE) {//²âÊÔ»·¾³1
 
     $db_config1 = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.116.27',
+        'dbhost' => '192.168.116.20',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'resume',
@@ -48,10 +48,10 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.27') !== FALSE) {//²âÊÔ»·¾³1
         'timezone' => 'PRC',
         'coding' => 'utf8',
     );
-} elseif (strpos($_SERVER['SERVER_ADDR'], '192.168') !== false) {//±¾µØ»·¾³
+} elseif (strpos($_SERVER['SERVER_ADDR'], '192.168') !== false) {//ï¿½ï¿½ï¿½Ø»ï¿½ï¿½ï¿½
     $db_config = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.116.27',
+        'dbhost' => '192.168.116.20',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'huiliewang',
@@ -63,7 +63,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.27') !== FALSE) {//²âÊÔ»·¾³1
 
     $db_config1 = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.116.27',
+        'dbhost' => '192.168.116.20',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'resume',
@@ -72,7 +72,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.27') !== FALSE) {//²âÊÔ»·¾³1
         'timezone' => 'PRC',
         'coding' => 'utf8',
     );
-} else {//ÏßÉÏ»·¾³
+} else {//ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½
     $db_config = array(
         'dbtype' => 'mysql',
         'dbhost' => '10.30.88.15',
@@ -97,4 +97,5 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.27') !== FALSE) {//²âÊÔ»·¾³1
         'coding' => 'utf8', //????cookie????
     );
 }
+
 ?>

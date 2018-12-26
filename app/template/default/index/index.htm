@@ -42,7 +42,7 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
             </div>
           </div>
             <!--<span class="fr"><a href="{yun:}$config.sy_weburl{/yun}/wap" class="wap_icon" target="_blank">手机版</a><i class="htop_line">|</i><a href="{yun:}url m=subscribe{/yun}" target="_blank" class="top_dy">订阅</a><i class="htop_line_two">|</i></span>-->
-            <script language='JavaScript' src='{yun:}url m=ajax c=RedLoginHead{/yun}'></script>
+			<script language='JavaScript' src="{yun:}url m=ajax c=RedLoginHead{/yun}"></script>
         </div>
       </div>
     </div>
@@ -162,7 +162,7 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
 	<div class="login_box_cz">
 	<input type="button" value="登 录" id='sublogin' class="login_box_bth2" onclick="check_login('{yun:}url m=login c=loginsave{/yun}','vcode_imgs');"/>
 	</div>
-	<div class="tishis">还没有账号？<a href="/index.php?m=register&usertype=1&type=1" class="zhucealink">马上注册</a></div>
+	<div class="tishis">还没有账号？<a href="/index.php?m=register&usertype=2&type=1" class="zhucealink">马上注册</a></div>
 	<!--其他登录方式-->
 	{yun:}if $config.sy_qqlogin==1 || $config.sy_sinalogin==1 || $config.wx_author==1{/yun}
 	  <div class="login_other">

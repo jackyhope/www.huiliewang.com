@@ -47,7 +47,7 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
           </div>
           {yun:}/if{/yun}
      </div>
-     <div class="hp_head_search fr">
+     <div class="hp_head_search fr"style="display:none">
             <form action="{yun:}if !$config.sy_jobdir{/yun}index.php{yun:}else{/yun}{yun:}url m=job{/yun}{yun:}/if{/yun}" method="get" onsubmit="return search_keyword(this);"  id="index_search_form">
             <input type="hidden" {yun:}if  !$config.sy_jobdir{/yun}name="m"{yun:}/if{/yun} value="job" id="m" />
         <input type="hidden" name="c" value="search" id="search" />
@@ -75,6 +75,10 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
 
          {yun:}if $navlist.name=="首页" && $usertype{/yun}
          <li class="{yun:}$navlist.navclass{/yun}"> <a href="/member/index.php" {yun:}if $navlist.eject{/yun} target="_blank"{yun:}/if{/yun} class="png"> {yun:}$navlist.name{/yun} </a></li>
+         {yun:}elseif $navlist.name=="高端人才" {/yun}
+         <li class="{yun:}$navlist.navclass{/yun}" style="display: none"> <a href="/member/index.php" {yun:}if $navlist.eject{/yun} target="_blank"{yun:}/if{/yun} class="png"> {yun:}$navlist.name{/yun} </a></li>
+         {yun:}elseif $navlist.name=="慧猎资讯" {/yun}
+         <li class="{yun:}$navlist.navclass{/yun}" style="display: none"> <a href="/member/index.php" {yun:}if $navlist.eject{/yun} target="_blank"{yun:}/if{/yun} class="png"> {yun:}$navlist.name{/yun} </a></li>
          {yun:}else{/yun}
           <li class="{yun:}$navlist.navclass{/yun}"> <a href="{yun:}$navlist.url{/yun}" {yun:}if $navlist.eject{/yun} target="_blank"{yun:}/if{/yun} class="png"> {yun:}$navlist.name{/yun} </a>
             {yun:}if $navlist.model=="new"{/yun}
@@ -84,7 +88,7 @@ var weburl="{yun:}$config.sy_weburl{/yun}",integral_pricename='{yun:}$config.int
              {yun:}/if{/yun}
           </li>
          {yun:}/if{/yun}
-          {yun:}/nav{/yun}
+         {yun:}/nav{/yun}
      </ul>
 </div>
 </div>

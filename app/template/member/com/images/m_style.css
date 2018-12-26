@@ -368,6 +368,7 @@ center; font-size:12px; z-index:11 }
 .admin_tit span{ float:left}
 .admin_tit .admin_tit_bg{ display:inline-block; font-size:18px;color:#3281cb; font-family:Î¢ÈíÑÅºÚ; margin-right:10px;margin-left:15px;}
 .com_admin_ask{width:16px;height:16px; background:url(../images/ask.jpg) no-repeat; display:inline-block; float:left; margin-top:15px; cursor:pointer}
+.com_admin_ask_hjl{width:16px;height:16px; background:url(../images/ask.jpg) no-repeat; display:inline-block; float:left; margin-top:15px; cursor:pointer}
 .condition{width:130px; float:left}
 .btn_01{width:160px;height:45px; font-size:16px;color:#fff;border:none;font-family:Î¢ÈíÑÅºÚ; background:#456dab; cursor:pointer;border-radius:3px;}
 .sub_btn{ float:left; margin-top:10px}

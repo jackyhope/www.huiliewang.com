@@ -16,12 +16,12 @@ $(document).ready(function(){
 	});
 })
 //简历详情页查看联系方式、下载简历
-function for_link(eid,url,todown,dos){
+function for_link(eid,reid,url,todown,dos){
 
 	var i=layer.load('执行中，请稍候...',0);
 	dos = dos?dos:"";
 	
-	$.post(url,{eid:eid,dos:dos},function(data){
+	$.post(url,{eid:eid,reid:reid,dos:dos},function(data){
 		layer.closeAll();
 		var data=eval('('+data+')');
 		var status=data.status;

@@ -1,16 +1,16 @@
 <?php
 /*
-* $Author £ºPHPYUN¿ª·¢ÍÅ¶Ó
+* $Author ï¿½ï¿½PHPYUNï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½
 *
-* ¹ÙÍø: http://www.phpyun.com
+* ï¿½ï¿½ï¿½ï¿½: http://www.phpyun.com
 *
-* °æÈ¨ËùÓÐ 2009-2016 ËÞÇ¨öÎ³±ÐÅÏ¢¼¼ÊõÓÐÏÞ¹«Ë¾£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
+* ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ 2009-2016 ï¿½ï¿½Ç¨ï¿½Î³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½
 *
-* Èí¼þÉùÃ÷£ºÎ´¾­ÊÚÈ¨Ç°ÌáÏÂ£¬²»µÃÓÃÓÚÉÌÒµÔËÓª¡¢¶þ´Î¿ª·¢ÒÔ¼°ÈÎºÎÐÎÊ½µÄÔÙ´Î·¢²¼¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½È¨Ç°ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Óªï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Îºï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ù´Î·ï¿½ï¿½ï¿½ï¿½ï¿?
  */
 
 class index_controller extends common{
-
+    
     function comindex_favjob_action(){
         if(!$this->uid || !$this->username ){
             echo 4;die;
@@ -50,9 +50,9 @@ class index_controller extends common{
 
                     if($nid){
                         $M->UpdateUserStatis(array("`fav_jobnum`=`fav_jobnum`+1"),array("uid"=>$this->uid),array("usertype"=>"1"));
-                        $state_content = "ÎÒÊÕ²ØÁËÖ°Î» <a href=\"".Url("job",array('c'=>'comapply','id'=>$v))."\" target=\"_bank\">".$row['name']."</a>";
+                        $state_content = "ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½Ö°Î» <a href=\"".Url("job",array('c'=>'comapply','id'=>$v))."\" target=\"_bank\">".$row['name']."</a>";
                         $this->addstate($state_content,2);
-                        $this->obj->member_log("ÎÒÊÕ²ØÁËÖ°Î»£º".$row['name'],5);
+                        $this->obj->member_log("ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½".$row['name'],5);
                     }
                 }
                 if(!empty($favid)){
@@ -126,10 +126,10 @@ class index_controller extends common{
                     $nid=$JobM->AddUseridJob($value);
                     if($nid){
                         $sendid[] = $v['id'];
-                        $this->addstate("ÎÒÉêÇëÁËÖ°Î» <a href=\"".Url("job",array('c'=>'comapply','id'=>$v['id']),"1")."\" target=\"_blank\">".$v['name']."</a>",2);
+                        $this->addstate("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î» <a href=\"".Url("job",array('c'=>'comapply','id'=>$v['id']),"1")."\" target=\"_blank\">".$v['name']."</a>",2);
                         if($v['link_type']=='1'&&$coms[$v['uid']]['linkmail']){$v['email']=$coms[$v['uid']]['linkmail'];}
                         $this->sqjobmsg($v,$coms[$v['uid']]['linktel']);
-                        $this->obj->member_log("ÎÒÉêÇëÁËÖ°Î»£º".$v['name'],6);
+                        $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½".$v['name'],6);
                         $M->UpdateUserStatis(array("`sq_job`=`sq_job`+1"),array("uid"=>$v['uid']),array("usertype"=>"2"));
                     }
                 }
@@ -207,20 +207,20 @@ class index_controller extends common{
                         $contents=@file_get_contents(Url("resume",array("c"=>"sendresume","job_link"=>'1',"id"=>(int)$_POST['eid'])));
                         $smtp = $this->email_set();
                         $smtpusermail =$this->config['sy_smtpemail'];
-                        $sendid = $smtp->sendmail($job_link['email'],"ÄúÊÕµ½Ò»·ÝÐÂµÄÇóÖ°¼òÀú£¡¡ª¡ª".$this->config['sy_webname'],$contents);
+                        $sendid = $smtp->sendmail($job_link['email'],"ï¿½ï¿½ï¿½Õµï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$this->config['sy_webname'],$contents);
                         if($sendid){
                             $state = '1';
                         }else{
                             $state = '0';
                         }
-                        $this->obj->insert_into("email_msg",array('uid'=>$job['uid'],'name'=>$job['com_name'],'cuid'=>'','cname'=>'','email'=>$job_link['email'],'title'=>"ÄúÊÕµ½Ò»·ÝÐÂµÄÇóÖ°¼òÀú£¡¡ª¡ª".$this->config['sy_webname'],'content'=>'¼òÀúÏêÇé','state'=>$state,'ctime'=>time(),'smtpserver'=>$smtp->user));
+                        $this->obj->insert_into("email_msg",array('uid'=>$job['uid'],'name'=>$job['com_name'],'cuid'=>'','cname'=>'','email'=>$job_link['email'],'title'=>"ï¿½ï¿½ï¿½Õµï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$this->config['sy_webname'],'content'=>'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','state'=>$state,'ctime'=>time(),'smtpserver'=>$smtp->user));
                     }
                     if($job_link['link_moblie']){
                         $data=array('uid'=>$job['uid'],'name'=>$job['com_name'],'cuid'=>'','cname'=>'','type'=>'sqzw','jobname'=>$job['name'],'date'=>date("Y-m-d"),'moblie'=>$job_link['link_moblie']);
                         $this->send_msg_email($data);
                     }
                 }
-                $this->obj->member_log("ÎÒÉêÇëÁËÖ°Î»£º".$job['name'],6);
+                $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½".$job['name'],6);
                 if($jobid){
                     $Weixin=$this->MODEL('weixin');
                     $Weixin->sendWxJob($this->uid,$jobid);
@@ -258,7 +258,7 @@ class index_controller extends common{
             if($nid){
                 $M=$this->MODEL("userinfo");
                 $M->UpdateUserStatis(array("`fav_jobnum`=`fav_jobnum`+1"),array("uid"=>$this->uid),array("usertype"=>"1"));
-                $this->obj->member_log("ÊÕ²ØÁËÖ°Î»£º".$job['name'],5);//»áÔ±ÈÕÖ¾
+                $this->obj->member_log("ï¿½Õ²ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½".$job['name'],5);//ï¿½ï¿½Ô±ï¿½ï¿½Ö¾
             }
             echo $nid?1:2;die;
         }
@@ -311,7 +311,7 @@ class index_controller extends common{
             if(is_array($rows)&&!empty($rows)){
                 foreach($rows as $v){
                     if($def_job['def_job']==$v['id']){
-                        $data.='<em><input type="radio" name="resume" value="'.$v['id'].'" id="resume_'.$v['id'].'" checked/><label for="resume_'.$v['id'].'">'.$v['name'].'</label>(Ä¬ÈÏ¼òÀú)</em>';
+                        $data.='<em><input type="radio" name="resume" value="'.$v['id'].'" id="resume_'.$v['id'].'" checked/><label for="resume_'.$v['id'].'">'.$v['name'].'</label>(Ä¬ï¿½Ï¼ï¿½ï¿½ï¿½)</em>';
                     }else{
                         $data.='<em><input type="radio" name="resume" value="'.$v['id'].'" id="resume_'.$v['id'].'"/><label for="resume_'.$v['id'].'">'.$v['name'].'</label></em>';
                     }
@@ -344,7 +344,7 @@ class index_controller extends common{
         $data=array();
         $data['uid']=$_POST['uid'];
         $data['type']=$jobtype;
-        $data['title']='ÃæÊÔÑûÇë';
+        $data['title']='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
         $data['content']=yun_iconv("utf-8","gbk",$_POST['content']);
         $data['fid']=$this->uid;
         $data['datetime']=time();
@@ -365,7 +365,7 @@ class index_controller extends common{
 
         if($num<1){
             $arr['status']=4;
-            $arr['msg']=yun_iconv("gbk","utf-8",'ÇëÑ¡ÔñÒªÃæÊÔµÄÖ°Î»£¡');
+            $arr['msg']=yun_iconv("gbk","utf-8",'ï¿½ï¿½Ñ¡ï¿½ï¿½Òªï¿½ï¿½ï¿½Ôµï¿½Ö°Î»ï¿½ï¿½');
             echo json_encode($arr);die;
         }
 
@@ -377,7 +377,7 @@ class index_controller extends common{
         $umessage = $JobM->GetUseridMsgOne(array("uid"=>$p_uid,"fid"=>$this->uid,"jobid"=>intval($_POST['jobid']),'type'=>$jobtype));
         if(is_array($umessage)){
             $arr['status']=8;
-            $arr['msg']=yun_iconv("gbk","utf-8",'´ËÖ°Î»ÑûÇë¹ý¸ÃÈË²Å£¬Çë²»ÒªÖØ¸´ÑûÇë£¡');
+            $arr['msg']=yun_iconv("gbk","utf-8",'ï¿½ï¿½Ö°Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²Å£ï¿½ï¿½ë²»Òªï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ë£?');
             echo json_encode($arr);die;
         }else{
             $com=$this->obj->DB_select_once("company","`uid`='".$this->uid."'","name,did");
@@ -409,11 +409,11 @@ class index_controller extends common{
                                 }else{
                                     $auto=false;
                                 }
-                                $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"ÑûÇë»áÔ±ÃæÊÔ",true,2,'integral',14);
-                                $state_content = "ÎÒ¸ÕÑûÇëÁËÈË²Å <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$resume[def_job]))."\" target=\"_blank\">".$resume['name']."</a> ÃæÊÔ¡£";
+                                $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿?",true,2,'integral',14);
+                                $state_content = "ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$resume[def_job]))."\" target=\"_blank\">".$resume['name']."</a> ï¿½ï¿½ï¿½Ô¡ï¿½";
                                 $this->addstate($state_content,2);
                                 $arr['status']=3;
-                                $this->obj->member_log("ÑûÇëÁËÈË²Å£º".$resume['name'],4);
+                                $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²Å£ï¿½".$resume['name'],4);
                                 $this->msg_post($_POST['uid'],$this->uid,$info);
                             }
                         }
@@ -423,10 +423,10 @@ class index_controller extends common{
                         $historyM = $this->MODEL('history');
                         $historyM->addHistory('userid_msg',$data['uid']);
                         $this->obj->DB_update_all("company_statis","`invite_resume`=`invite_resume`-1","uid='".$this->uid."'");
-                        $state_content = "ÎÒ¸ÕÑûÇëÁËÈË²Å <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$resume[def_job]))."\" target=\"_blank\">".$resume['name']."</a> ÃæÊÔ¡£";
+                        $state_content = "ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$resume[def_job]))."\" target=\"_blank\">".$resume['name']."</a> ï¿½ï¿½ï¿½Ô¡ï¿½";
                         $this->addstate($state_content,2);
                         $arr['status']=3;
-                        $this->obj->member_log("ÑûÇëÁËÈË²Å£º".$resume['name'],4);
+                        $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²Å£ï¿½".$resume['name'],4);
                         $this->msg_post($_POST['uid'],$this->uid,$info);
                     }
 
@@ -434,10 +434,10 @@ class index_controller extends common{
                     $this->obj->insert_into("userid_msg",$data);
                     $historyM = $this->MODEL('history');
                     $historyM->addHistory('userid_msg',$data['uid']);
-                    $state_content = "ÎÒ¸ÕÑûÇëÁËÈË²Å <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$resume[def_job]))."\" target=\"_blank\">".$resume['name']."</a> ÃæÊÔ¡£";
+                    $state_content = "ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$resume[def_job]))."\" target=\"_blank\">".$resume['name']."</a> ï¿½ï¿½ï¿½Ô¡ï¿½";
                     $this->addstate($state_content,2);
                     $arr['status']=3;
-                    $this->obj->member_log("ÑûÇëÁËÈË²Å£º".$resume['name'],4);
+                    $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²Å£ï¿½".$resume['name'],4);
                     $this->msg_post($_POST['uid'],$this->uid,$info);
                 }
 
@@ -457,11 +457,11 @@ class index_controller extends common{
                         }else{
                             $auto=false;
                         }
-                        $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"ÑûÇë»áÔ±ÃæÊÔ",true,2,'integral',14);
-                        $state_content = "ÎÒ¸ÕÑûÇëÁËÈË²Å <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$_POST[eid]))."\" target=\"_blank\">".$resume['name']."</a> ÃæÊÔ¡£";
+                        $this->company_invtal($this->uid,$this->config['integral_interview'],$auto,"ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿?",true,2,'integral',14);
+                        $state_content = "ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$_POST[eid]))."\" target=\"_blank\">".$resume['name']."</a> ï¿½ï¿½ï¿½Ô¡ï¿½";
                         $this->addstate($state_content,2);
                         $arr['status']=3;
-                        $this->obj->member_log("ÑûÇëÁËÈË²Å£º".$resume['name'],4);
+                        $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²Å£ï¿½".$resume['name'],4);
                         $this->msg_post($_POST['uid'],$this->uid,$info);
                     }
                 }
@@ -528,26 +528,26 @@ class index_controller extends common{
                     $price=$v['service_price'];
                 }
                 if ($discount['service_discount']){
-                    $pricezk="×¨Ïí".(0.1 * $discount['service_discount']).'ÕÛÓÅ»Ý';
+                    $pricezk="×¨ï¿½ï¿½".(0.1 * $discount['service_discount']).'ï¿½ï¿½ï¿½Å»ï¿½';
                 }
                 if($v['interview']>0){
-                    $list[]='<span class="added_cont_s">ÑûÇëÃæÊÔ£º<i class="com_dt_rage">'.$v[interview].'</i>,</span>';
+                    $list[]='<span class="added_cont_s">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½<i class="com_dt_rage">'.$v[interview].'</i>,</span>';
                 }
                 if($v['job_num']>0){
-                    $list[]='<span class="added_cont_s">·¢²¼Ö°Î»£º<i class="com_dt_rage">'.$v[job_num].'</i>,</span>';
+                    $list[]='<span class="added_cont_s">ï¿½ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½<i class="com_dt_rage">'.$v[job_num].'</i>,</span>';
                 }
                 if($v['breakjob_num']>0){
-                    $list[]='<span class="added_cont_s">Ë¢ÐÂÖ°Î»£º<i class="com_dt_rage">'.$v[breakjob_num].'</i>,</span>';
+                    $list[]='<span class="added_cont_s">Ë¢ï¿½ï¿½Ö°Î»ï¿½ï¿½<i class="com_dt_rage">'.$v[breakjob_num].'</i>,</span>';
                 }
                 if($v['part_num']>0){
-                    $list[]='<span class="added_cont_s">·¢²¼¼æÖ°£º<i class="com_dt_rage">'.$v[part_num].'</i>,</span>';
+                    $list[]='<span class="added_cont_s">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½<i class="com_dt_rage">'.$v[part_num].'</i>,</span>';
                 }
                 if($v['breakpart_num']>0){
-                    $list[]='<span class="added_cont_s">Ë¢ÐÂ¼æÖ°£º<i class="com_dt_rage">'.$v[breakpart_num].'</i>,</span>';
+                    $list[]='<span class="added_cont_s">Ë¢ï¿½Â¼ï¿½Ö°ï¿½ï¿½<i class="com_dt_rage">'.$v[breakpart_num].'</i>,</span>';
                 }
 
                 if($v['resume']>0){
-                    $list[]="<span class=\"added_cont_s\">ÏÂÔØ¼òÀú£º<i class=\"com_dt_rage\">".$v[resume]."</i>,</span>";
+                    $list[]="<span class=\"added_cont_s\">ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½<i class=\"com_dt_rage\">".$v[resume]."</i>,</span>";
                 }
 
 
@@ -558,7 +558,7 @@ class index_controller extends common{
                 }
             }
         }else{
-            $html.="<div class='added_de_box_tip'>ºÜ±§Ç¸£¬¸ÃÔöÖµÀàÐÍÔÝÎÞÔöÖµ°üÐÅÏ¢</div>";
+            $html.="<div class='added_de_box_tip'>ï¿½Ü±ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ï¢</div>";
         }
         echo $html;die;
     }
@@ -576,19 +576,19 @@ class index_controller extends common{
             foreach($rating_detial as $key=>$v){
                 $list=array();
                 if($v['job_num']>0){
-                    $list[]='<span class="Download_resume_tips_p_span">·¢²¼Ö°Î»:<em class="Download_resume_tips_c">'.$v[job_num].'</em>·Ý</span>';
+                    $list[]='<span class="Download_resume_tips_p_span">ï¿½ï¿½ï¿½ï¿½Ö°Î»:<em class="Download_resume_tips_c">'.$v[job_num].'</em>ï¿½ï¿½</span>';
                 }
                 if($v['resume']>0){
-                    $list[]='<span class="Download_resume_tips_p_span">ÏÂÔØ¼òÀú:<em class="Download_resume_tips_c">'.$v[resume].'</em>·Ý</span>';
+                    $list[]='<span class="Download_resume_tips_p_span">ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½:<em class="Download_resume_tips_c">'.$v[resume].'</em>ï¿½ï¿½</span>';
                 }
                 if($v['interview']>0){
-                    $list[]='<span class="Download_resume_tips_p_span">ÑûÇëÃæÊÔ:<em class="Download_resume_tips_c">'.$v[interview].'</em>·Ý</span>';
+                    $list[]='<span class="Download_resume_tips_p_span">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:<em class="Download_resume_tips_c">'.$v[interview].'</em>ï¿½ï¿½</span>';
                 }
                 if($v['editjob_num']>0){
-                    $list[]='<span class="Download_resume_tips_p_span">ÐÞ¸ÄÖ°Î»:<em class="Download_resume_tips_c">'.$v[editjob_num].'</em>·Ý</span>';
+                    $list[]='<span class="Download_resume_tips_p_span">ï¿½Þ¸ï¿½Ö°Î»:<em class="Download_resume_tips_c">'.$v[editjob_num].'</em>ï¿½ï¿½</span>';
                 }
                 if($v['breakjob_num']>0){
-                    $list[]='<span class="Download_resume_tips_p_span">Ë¢ÐÂÖ°Î»:<em class="Download_resume_tips_c">'.$v[breakjob_num].'</em>·Ý</span>';
+                    $list[]='<span class="Download_resume_tips_p_span">Ë¢ï¿½ï¿½Ö°Î»:<em class="Download_resume_tips_c">'.$v[breakjob_num].'</em>ï¿½ï¿½</span>';
                 }
 
 
@@ -614,7 +614,28 @@ class index_controller extends common{
     function for_link_action(){
         $eid=(int)$_POST['eid'];
         $dos = $_POST['dos'];
-
+        $reid = (int)$_POST['reid'];
+        
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        $job_id=$this->obj->DB_select_once('userid_job','`id`='.$reid.'','job_id');
+        $job_info=$this->obj->DB_select_once('company_job','`id`='.$job_id['job_id'].'','maxsalary,ejob_salary_month');
+        $bit = 0;
+        $year_num = ($job_info['maxsalary']/10000)*$job_info['ejob_salary_month'];
+        $code = 0;
+        if( $year_num>0 && $year_num <20){
+            $code = 40;
+        } elseif($year_num >= 20 && $year_num <=30) {
+             $code = 50;
+        } elseif($year_num >= 30 && $year_num <=40) {
+             $code = 60;
+        } elseif($year_num >= 40 && $year_num <=50) {
+             $code = 70;
+        } elseif($year_num >= 50 && $year_num <=80) {
+             $code =80;
+        }elseif($year_num >= 90) {
+             $code =90;
+        }
+        
         $user=$this->obj->DB_select_once('resume_expect','`id`='.$eid.'','uid');
         if($user['uid']==$this->uid){
             $arr['status']=5;
@@ -633,20 +654,20 @@ class index_controller extends common{
         if(!$this->uid || !$this->username || $this->usertype==1){
             if(!$this->uid || !$this->username){
                 $arr['status']=1;
-                $arr['msg']="ÇëÏÈµÇÂ¼£¡";
+                $arr['msg']="ï¿½ï¿½ï¿½Èµï¿½Â¼ï¿½ï¿½";
             }else if($this->usertype=='1'){
                 $arr['status']=1;
-                $arr['msg']="Äú²»ÊÇÆóÒµÕË»§£¬ÎÞ·¨ÏÂÔØ¼òÀú£¡";
+                $arr['msg']="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Ë»ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½";
             }
         }else{
             $resume=$this->obj->DB_select_once("down_resume","`eid`='".$eid."' and `comid`='".$this->uid."'");
-            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
-            $user=$user[0];
-
+//            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
+//            $user=$user[0];
+            $user = $this->obr->DB_select_once("resume","`id`=$eid");
             $black=$this->obj->DB_select_once("blacklist","`c_uid`='".$user['uid']."' and `p_uid`='".$this->uid."'");
             if(!empty($black)){
                 $arr['status']=1;
-                $arr['msg']="ÄúÒÑ±»¸ÃÓÃ»§ÁÐÈëºÚÃûµ¥£¡";
+                $arr['msg']="ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?";
             }
 
             if(!empty($resume)&&$arr['status']==''){
@@ -658,7 +679,7 @@ class index_controller extends common{
                 if($this->usertype=='3'){
                     $row=$this->obj->DB_select_once("lietou_statis","`uid`='".$this->uid."'","vip_etime,down_resume,rating_type");
                 }
-                $data['eid']=$user['id'];
+                $data['eid']=$user[''];
                 $data['uid']=$user['uid'];
                 $data['comid']=$this->uid;
                 $data['did']=$this->userdid;
@@ -671,20 +692,20 @@ class index_controller extends common{
                                 $arr['status']=2;
                                 $arr['uid']=$user['uid'];
                                 if($dos){
-                                    $word = "²é¿´";
+                                    $word = "ï¿½é¿´";
 //                                    $arr['status']=8;
                                 }else{
-                                    $word = "ÏÂÔØ";
+                                    $word = "ï¿½ï¿½ï¿½ï¿½";
                                 }
                                 if($this->usertype=='2'){
 
-                                    $arr['msg']="Äã½«¿Û³ý".$this->config['integral_down_resume'].$this->config['integral_pricename']."£¬ÊÇ·ñ".$word."£¿";
+                                    $arr['msg']="ï¿½ã½«ï¿½Û³ï¿½".$code."ï¿½ï¿½ï¿½Ç·ï¿½".$word."ï¿½ï¿½";
                                 }else{
-                                    $arr['msg']="Äã½«¿Û³ý".$this->config['integral_lt_downresume'].$this->config['integral_pricename']."£¬ÊÇ·ñ".$word."£¿";
+                                    $arr['msg']="ï¿½ã½«ï¿½Û³ï¿½".$code."ï¿½ï¿½ï¿½Ç·ï¿½".$word."ï¿½ï¿½";
                                 }
                             }else{
                                 $arr['status']=4;
-                                $arr['msg']="»áÔ±ÏÂÔØ¼òÀúÒÑÓÃÍê£¡";
+                                $arr['msg']="ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¡";
                             }
                         }else{
                             $this->obj->insert_into("down_resume",$data);
@@ -693,20 +714,20 @@ class index_controller extends common{
                                 $this->obj->DB_update_all("company_statis","`down_resume`=`down_resume`-1","uid='".$this->uid."'");
                             }
 
-                            $state_content = "ÐÂÏÂÔØÁË¼òÀú <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$user[id]))."\" target=\"_blank\">".$user['name']."</a> ¡£";
+                            $state_content = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$user[id]))."\" target=\"_blank\">".$user['name']."</a> ï¿½ï¿½";
                             $this->addstate($state_content,2);
                             $arr['status']=3;
-                            $this->obj->member_log("ÏÂÔØÁË¼òÀú£º".$user['name'],3);
+                            $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½".$user['name'],3);
                             $this->warning("2");
                         }
                     }else{
 
                         $this->obj->insert_into("down_resume",$data);
                         $this->obj->DB_update_all("resume_expect","`dnum`=`dnum`+'1'","`id`='".$eid."'");
-                        $state_content = "ÐÂÏÂÔØÁË¼òÀú <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$user[id]))."\" target=\"_blank\">".$user['name']."</a> ¡£";
+                        $state_content = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$user[id]))."\" target=\"_blank\">".$user['name']."</a> ï¿½ï¿½";
                         $this->addstate($state_content,2);
                         $arr['status']=3;
-                        $this->obj->member_log("ÏÂÔØÁË¼òÀú£º".$user['name'],3);
+                        $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½".$user['name'],3);
                         $this->warning("2");
                     }
                 }else{
@@ -715,23 +736,23 @@ class index_controller extends common{
                         $arr['status']=2;
                         $arr['uid']=$user['uid'];
                         if($this->usertype=='2'){
-                            $arr['msg']="Äã½«¿Û³ý".$this->config['integral_down_resume'].$this->config['integral_pricename']."£¬ÊÇ·ñÏÂÔØ£¿";
+                            $arr['msg']="ï¿½ã½«ï¿½Û³ï¿½".$code."ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ø£ï¿½";
                         }else{
-                            $arr['msg']="Äã½«¿Û³ý".$this->config['integral_lt_downresume'].$this->config['integral_pricename']."£¬ÊÇ·ñÏÂÔØ£¿";
+                            $arr['msg']="ï¿½ã½«ï¿½Û³ï¿½".$code."ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ø£ï¿½";
                         }
                     }else{
                         $arr['status']=1;
-                        $arr['msg']="ÄúµÄµÈ¼¶ÌØÈ¨ÒÑµ½ÆÚ£¡";
+                        $arr['msg']="ï¿½ï¿½ï¿½ÄµÈ¼ï¿½ï¿½ï¿½È¨ï¿½Ñµï¿½ï¿½Ú£ï¿½";
                     }
                 }
             }
             if($arr['status']==3){
                 $html="<table>";
-                $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ÊÖ»ú£º")."</td><td>".$user['telphone']."</td></tr>";
+                $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ï¿½Ö»ï¿½ï¿½ï¿½")."</td><td>".$user['telphone']."</td></tr>";
                 if($user['basic_info']=='1' && $user['telhome']!=""){
-                    $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","×ù»ú£º")."</td><td>".$user['telhome']."</td></tr>";
+                    $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")."</td><td>".$user['telhome']."</td></tr>";
                 }
-                $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ÓÊÏä£º")."</td><td>".$user['email']."</td></tr>";
+                $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ï¿½ï¿½ï¿½ä£º")."</td><td>".$user['email']."</td></tr>";
                 $html.="</table>";
                 $arr['html']=$html;
             }
@@ -745,21 +766,45 @@ class index_controller extends common{
 
         $eid=(int)$_POST['eid'];
         $uid=(int)$_POST['uid'];
+        $reid = ($_POST['reid']);
         $type=$_POST['type'];
         $data['eid']=$eid;
         $data['uid']=$uid;
         $data['comid']=$this->uid;
         $data['did']=$this->userdid;
         $data['downtime']=time();
+        
+        
+        
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        $job_id=$this->obj->DB_select_once('userid_job','`id`='.$reid.'','job_id');
+        $job_info=$this->obj->DB_select_once('company_job','`id`='.$job_id['job_id'].'','maxsalary,ejob_salary_month');
+        $bit = 0;
+        $year_num = ($job_info['maxsalary']/10000)*$job_info['ejob_salary_month'];
+        $code = 0;
+        if( $year_num>0 && $year_num <20){
+            $code = 40;
+        } elseif($year_num >= 20 && $year_num <=30) {
+             $code = 50;
+        } elseif($year_num >= 30 && $year_num <=40) {
+             $code = 60;
+        } elseif($year_num >= 40 && $year_num <=50) {
+             $code = 70;
+        } elseif($year_num >= 50 && $year_num <=80) {
+             $code =80;
+        }elseif($year_num >= 90) {
+             $code =90;
+        }
+        
         if(!$this->uid || !$this->username || $this->usertype!=2){
             $arr['status']=0;
-            $arr['msg']='Ö»ÓÐÆóÒµ»áÔ±²Å¿ÉÏÂÔØ¼òÀú£¡';
+            $arr['msg']='Ö»ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ô±ï¿½Å¿ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½';
         }else{
 
             $black=$this->obj->DB_select_once("blacklist","`p_uid`='".$uid."' and `c_uid`='".$this->uid."'");
             if(!empty($black)){
                 $arr['status']=7;
-                $arr['msg']="¸ÃÓÃ»§ÒÑ±»ÄúÁÐÈëºÚÃûµ¥£¡";
+                $arr['msg']="ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?";
                 echo json_encode($arr);die;
             }
 
@@ -778,9 +823,9 @@ class index_controller extends common{
 //                    $this->obj->DB_update_all("userid_job","is_browse=6","id=".$_POST['reid']);
 //                }
 //                $this->obj->DB_update_all("resume_expect","`dnum`=`dnum`+'1'","`id`='".$eid."'");
-//                $state_content = "ÐÂÏÂÔØÁË <a href=\"".Url("resume",array('c'=>'show','id'=>$eid))."\" target=\"_blank\">".$username['username']."</a> µÄ¼òÀú¡£";
+//                $state_content = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>$eid))."\" target=\"_blank\">".$username['username']."</a> ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½";
 //                $this->addstate($state_content,2);
-//                $this->obj->member_log("ÏÂÔØÁË ".$username['username']." µÄ¼òÀú¡£",3);
+//                $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ".$username['username']." ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½",3);
 //                $this->warning("2");
 //                $arr['status']=6;
 //                echo json_encode($arr);die;
@@ -788,10 +833,11 @@ class index_controller extends common{
             $row=$this->obj->DB_select_once("company_statis","`uid`='".$this->uid."'","`down_resume`,`integral`,`vip_etime`,`rating`,`rating_type`");
 
             if($type=="integral"){
-                if($row['integral']<$this->config['integral_down_resume'] && $this->config['integral_down_resume_type']=="2"){
+                if($row['integral']<$code && $this->config['integral_down_resume_type']=="2"){
                     $arr['status']=5;
                     $arr['integral']=$row['integral'];
                 }else{
+                    $this->obj->insert_into("down_resume",['eid'=>$eid,'comid'=>$this->uid,'did' => $this->userdid,'downtime'=>time()]);
                     $this->obj->insert_into("down_resume",$data);
                     if($_POST['reid']){
                         $this->obj->DB_update_all("userid_job","is_browse=6","id=".$_POST['reid']);
@@ -802,15 +848,15 @@ class index_controller extends common{
                         $auto=false;
                     }
                     $this->obj->DB_update_all("resume_expect","`dnum`=`dnum`+'1'","`id`='".$eid."'");
-                    $this->company_invtal($this->uid,$this->config['integral_down_resume'],$auto,"ÏÂÔØ¼òÀú",true,2,'integral',13);
-                    $state_content = "ÐÂÏÂÔØÁË <a href=\"".Url("resume",array("c"=>'show','id'=>$eid))."\" target=\"_blank\">".$username['username']."</a> µÄ¼òÀú¡£";
+                    $this->company_invtal($this->uid,$code,$auto,"ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½",true,2,'integral',13);
+                    $state_content = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <a href=\"".Url("resume",array("c"=>'show','id'=>$eid))."\" target=\"_blank\">".$username['username']."</a> ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½";
                     $this->addstate($state_content,2);
                     $arr['status']=3;
-                    $this->obj->member_log("ÏÂÔØÁË ".$username['username']." µÄ¼òÀú¡£",3);
+                    $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ".$username['username']." ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½",3);
                     $this->warning("2");
                 }
             }else{
-                $arr['integral']=$this->config['integral_down_resume'];
+                $arr['integral']=$code;
                 if($row['rating']==0){
                     $arr['status']=1;
                 }else{
@@ -826,19 +872,19 @@ class index_controller extends common{
                                 $this->obj->insert_into("down_resume",$data);
                                 $this->obj->DB_update_all("resume_expect","`dnum`=`dnum`+'1'","`id`='".$eid."'");
                                 $this->obj->DB_update_all("company_statis","`down_resume`=`down_resume`-1","uid='".$this->uid."'");
-                                $state_content = "ÐÂÏÂÔØÁË <a href=\"".Url("resume",array("c"=>'show','id'=>(int)$_POST[eid]))."\" target=\"_blank\">".$username['username']."</a> µÄ¼òÀú¡£";
+                                $state_content = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <a href=\"".Url("resume",array("c"=>'show','id'=>(int)$_POST[eid]))."\" target=\"_blank\">".$username['username']."</a> ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½";
                                 $this->addstate($state_content,2);
                                 $arr['status']=3;
-                                $this->obj->member_log("ÏÂÔØÁË ".$username['username']." µÄ¼òÀú¡£",3);
+                                $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ".$username['username']." ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½",3);
                                 $this->warning("2");
                             }
                         }else{
                             $this->obj->insert_into("down_resume",$data);
                             $this->obj->DB_update_all("resume_expect","`dnum`=`dnum`+'1'","`id`='".$eid."'");
-                            $state_content = "ÐÂÏÂÔØÁË <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$_POST[eid]))."\" target=\"_blank\">".$username['username']."</a> µÄ¼òÀú¡£";
+                            $state_content = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <a href=\"".Url("resume",array('c'=>'show','id'=>(int)$_POST[eid]))."\" target=\"_blank\">".$username['username']."</a> ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½";
                             $this->addstate($state_content,2);
                             $arr['status']=3;
-                            $this->obj->member_log("ÏÂÔØÁË ".$username['username']." µÄ¼òÀú¡£",3);
+                            $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ".$username['username']." ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½",3);
                             $this->warning("2");
                         }
                     }else{
@@ -857,14 +903,15 @@ class index_controller extends common{
             $arr['msg']=iconv("gbk", "utf-8",$arr['msg']);
         }
         if($arr['status']==3||$arr['status']==6){
-            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
-            $user=$user[0];
+//            $user=$this->obj->DB_select_alls("resume","resume_expect","a.`r_status`<>'2' and a.`uid`=b.`uid` and b.`id`='".$eid."'","a.name,a.basic_info,a.telphone,a.telhome,a.email,a.uid,b.id,b.`height_status`");
+//            $user=$user[0];
+            $user = $this->obr->DB_select_once("resume","`id`=$eid");
             $html="<table>";
-            $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ÊÖ»ú£º")."</td><td>".$user['telphone']."</td></tr>";
+            $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ï¿½Ö»ï¿½ï¿½ï¿½")."</td><td>".$user['telphone']."</td></tr>";
             if($user['basic_info']=='1' && $user['telhome']!=""){
-                $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","×ù»ú£º")."</td><td>".$user['telhome']."</td></tr>";
+                $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")."</td><td>".$user['telhome']."</td></tr>";
             }
-            $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ÓÊÏä£º")."</td><td>".$user['email']."</td></tr>";
+            $html.="<tr><td align='right' width='90'>".iconv("gbk", "utf-8","ï¿½ï¿½ï¿½ä£º")."</td><td>".$user['email']."</td></tr>";
             $html.="</table>";
             $arr['html']=$html;
         }
@@ -879,7 +926,7 @@ class index_controller extends common{
         }else{
             $cityid=$_POST['str'];
         }
-        $data="<option value=''>--ÇëÑ¡Ôñ--</option>";
+        $data="<option value=''>--ï¿½ï¿½Ñ¡ï¿½ï¿½--</option>";
         if(is_array($city_type[$cityid])){
             foreach($city_type[$cityid] as $v){
                 $data.="<option value='$v'>".$city_name[$v]."</option>";
@@ -895,7 +942,7 @@ class index_controller extends common{
         }else{
             $jobid=$_POST[str];
         }
-        $data="<option value=''>--ÇëÑ¡Ôñ--</option>";
+        $data="<option value=''>--ï¿½ï¿½Ñ¡ï¿½ï¿½--</option>";
         if(is_array($job_type[$jobid])){
             foreach($job_type[$jobid] as $v){
                 $data.="<option value='$v'>".$job_name[$v]."</option>";
@@ -919,7 +966,7 @@ class index_controller extends common{
     function ajax_ltjob_action(){
         include(PLUS_PATH."ltjob.cache.php");
         $jobid=$_POST['str'];
-        $data="<option value=''>--ÇëÑ¡Ôñ--</option>";
+        $data="<option value=''>--ï¿½ï¿½Ñ¡ï¿½ï¿½--</option>";
         if(is_array($ltjob_type[$jobid])){
             foreach($ltjob_type[$jobid] as $v){
                 $data.="<option value='$v'>".$ltjob_name[$v]."</option>";
@@ -963,14 +1010,14 @@ class index_controller extends common{
                 $com_url=Url('company',array("c"=>"show","id"=>$val[uid]));
                 if($val['rec_time']>time()){$val['name']="<font color='red'>".$val['name']."</font>";}
                 if($val['minsalary']&&$val['maxsalary']){
-                    $val['job_salary']='£¤'.$val['minsalary'].'-'.$val['maxsalary'];
+                    $val['job_salary']='ï¿½ï¿½'.$val['minsalary'].'-'.$val['maxsalary'];
                 }elseif($val['minsalary']&&!$val['maxsalary']){
-                    $val['job_salary']='£¤'.$val['minsalary'].'ÒÔÉÏ';
+                    $val['job_salary']='ï¿½ï¿½'.$val['minsalary'].'ï¿½ï¿½ï¿½ï¿½';
                 }else{
-                    $val['job_salary']='ÃæÒé';
+                    $val['job_salary']='ï¿½ï¿½ï¿½ï¿½';
                 }
                 $html.="<li> <a href=\"".$job_url."\" class=\"job_recommendation_jobname\">".$val['name']."</a>
-                        <div  class=\"job_recommendation_msg\"><span class=\"job_recommendation_city\">".$city_name[$val['cityid']]."</span>".$city_name[$val['three_cityid']]."<span class=\"job_recommendation_jy\">".$comclass_name[$val['exp']]."¾­Ñé</span><span class=\"job_recommendation_xl\">".$comclass_name[$val['edu']]."Ñ§Àú</span></div>
+                        <div  class=\"job_recommendation_msg\"><span class=\"job_recommendation_city\">".$city_name[$val['cityid']]."</span>".$city_name[$val['three_cityid']]."<span class=\"job_recommendation_jy\">".$comclass_name[$val['exp']]."ï¿½ï¿½ï¿½ï¿½</span><span class=\"job_recommendation_xl\">".$comclass_name[$val['edu']]."Ñ§ï¿½ï¿½</span></div>
                         <a href=\"".$com_url."\" class=\"job_recommendation_Comname\">".$val['com_name']."</a>
                         <span class=\"job_recommendation_xz\"><em class=\"job_right_box_list_c\">".$val['job_salary']."</em></span> </li>";
             }
@@ -1002,38 +1049,6 @@ class index_controller extends common{
         echo 'diffdomains('.json_encode($arr).')';
     }
 
-    function resume_word_action(){
-
-        $resumename=$this->obr->DB_select_once("resume","`id`='".(int)$_GET['id']."'","`uid`,`name`");
-
-        $resume=$this->obj->DB_select_once("down_resume","`eid`='".(int)$_GET['id']."' and `comid`='".$this->uid."'");
-
-
-        if((int)$_GET['reid']){
-            $userid_job = $this->obj->DB_update_all("userid_job","is_browse=6","id=".$_GET['reid']);
-        }
-        if($resumename['uid']==$this->uid || $this->usertype==3){
-            $url = $this->config['sy_weburl']."/resume/index.php?c=show&id=".(int)$_GET['id'].'&type=word';
-//            echo $url;exit();
-            foreach($_COOKIE as $key=>$value){
-                $cookies[] = $key."=".$value;
-            }
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_COOKIE, @implode(';',$cookies));
-            $content = curl_exec($ch);
-            curl_close($ch);
-            $this->startword($resumename['name'],$content);
-
-        }elseif(is_array($resume) && !empty($resume)){
-
-            $content = file_get_contents(Url('resume',array('c'=>'show','id'=>(int)$_GET['id'],'downtime'=>$resume['downtime'],'type'=>'word')));
-//echo $content;exit();
-//            $this->startword($resumename['uname'],$content);
-        }
-    }
 
 
     function resume_report_action(){
@@ -1047,7 +1062,7 @@ class index_controller extends common{
         $fileName = $resume['id'];
         $filePath= "./data/resumes/";
         if (!is_dir($filePath)){
-            mkdir($filePath,0777,true);  // ´´½¨ÎÄ¼þ¼Ð,²¢¸ø777µÄÈ¨ÏÞ£¨ËùÓÐÈ¨ÏÞ£©
+            mkdir($filePath,0777,true);  // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½777ï¿½ï¿½È¨ï¿½Þ£ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½Þ£ï¿½
         }
         $M=$this->MODEL('resume');
         $resume = $M->doc_resume($resume);
@@ -1098,9 +1113,9 @@ class index_controller extends common{
 
     }
 
-    //ÏÂÔØÎÄ¼þµ½±¾µØ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     function downfile($file,$files){
-        $filename=realpath($file); //ÎÄ¼þÃû
+        $filename=realpath($file); //ï¿½Ä¼ï¿½ï¿½ï¿½
 //        echo basename($file);exit();
 
 //    echo basename($filename);exit();
@@ -1182,10 +1197,10 @@ class index_controller extends common{
             $update=$this->obj->DB_update_all("resume_expect","`tmpid`='".$_POST['tmpid']."'","`id`='".$_POST['eid']."'");
             $arr['url']=Url("resume",array("c"=>"show","id"=>$_POST['eid'],"see"=>"used"));
             $update?$arr['status']='9':$arr['status']='8';
-            $update?$arr['msg']='ÉèÖÃ³É¹¦£¡':$arr['msg']='ÉèÖÃÊ§°Ü£¡';
+            $update?$arr['msg']='ï¿½ï¿½ï¿½Ã³É¹ï¿½ï¿½ï¿½':$arr['msg']='ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
         }else{
             $arr['status']='8';
-            $arr['msg']='¶Ô²»Æð£¬ÄúÎÞÈ¨²Ù×÷£¡';
+            $arr['msg']='ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
         }
         $arr['msg']=iconv("gbk","utf-8",$arr['msg']);
         echo json_encode($arr);die;
@@ -1196,7 +1211,7 @@ class index_controller extends common{
         $eid=intval($_GET['eid']);
         $expect=$this->obj->DB_select_once("resume_expect","`id`='".$eid."' and `uid`='".$this->uid."'",'id');
         if($expect['id']==''){
-            $this->layer_msg('·Ç·¨²Ù×÷£¡',8,0,Url("resume"));
+            $this->layer_msg('ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',8,0,Url("resume"));
         }
         $statis=$this->obj->DB_select_once("member_statis","`uid`='".$this->uid."'",'`tpl`,`paytpls`,`integral`');
         $info=$this->obj->DB_select_once("resumetpl","`id`='".$id."'");
@@ -1204,19 +1219,19 @@ class index_controller extends common{
         if($statis['paytpls']){
             $paytpls=@explode(',',$statis['paytpls']);
             if(in_array($info['id'],$paytpls)){
-                $this->layer_msg('ÇëÎðÖØ¸´¹ºÂò£¡',8,0,"index.php?c=resumetpl");
+                $this->layer_msg('ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½',8,0,"index.php?c=resumetpl");
             }
         }
         if($info['price']>$statis['integral']){
-            $this->layer_msg($this->config['integral_pricename'].'²»×ã£¬ÇëÏÈ³äÖµ£¡£¡',8,0);
+            $this->layer_msg($this->config['integral_pricename'].'ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½È³ï¿½Öµï¿½ï¿½ï¿½ï¿½',8,0);
         }else{
-            $nid=$this->company_invtal($this->uid,$info['price'],false,"¹ºÂò¼òÀúÄ£°å",true,2,'integral',15);
+            $nid=$this->company_invtal($this->uid,$info['price'],false,"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿?",true,2,'integral',15);
             if($nid){
                 $paytpls[]=$info['id'];
                 $this->obj->DB_update_all("member_statis","`tpl`='".$info['id']."',`paytpls`='".@implode(',',$paytpls)."'","`uid`='".$this->uid."'");
-                $this->layer_msg('¹ºÂò³É¹¦£¡',9,0,Url("resume",array("c"=>"show","id"=>$expect['id'],"see"=>"used")));
+                $this->layer_msg('ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿?',9,0,Url("resume",array("c"=>"show","id"=>$expect['id'],"see"=>"used")));
             }else{
-                $this->layer_msg('¹ºÂòÊ§°Ü£¡',8,0,Url("resume",array("c"=>"show","id"=>$expect['id'],"see"=>"used")));
+                $this->layer_msg('ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½',8,0,Url("resume",array("c"=>"show","id"=>$expect['id'],"see"=>"used")));
             }
         }
     }
@@ -1225,7 +1240,7 @@ class index_controller extends common{
         $eid=intval($_GET['eid']);
         $expect=$this->obj->DB_select_once("resume_expect","`id`='".$eid."' and `uid`='".$this->uid."'",'id');
         if($expect['id']==''){
-            $this->layer_msg('·Ç·¨²Ù×÷£¡',8,0,Url("resume"));
+            $this->layer_msg('ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',8,0,Url("resume"));
         }
         $statis=$this->obj->DB_select_once("member_statis","`uid`='".$this->uid."'",'`tpl`,`paytpls`,`integral`');
         $paytpls=array();
@@ -1233,10 +1248,10 @@ class index_controller extends common{
             $paytpls=@explode(',',$statis['paytpls']);
         }
         if(in_array($id,$paytpls)==false&&$id>0){
-            $this->layer_msg('ÇëÏÈ¹ºÂò£¡',8,0,Url("resume",array("c"=>"show","id"=>$eid,"see"=>"used")));
+            $this->layer_msg('ï¿½ï¿½ï¿½È¹ï¿½ï¿½ï¿½',8,0,Url("resume",array("c"=>"show","id"=>$eid,"see"=>"used")));
         }
         $this->obj->DB_update_all("member_statis","`tpl`='".$id."'","`uid`='".$this->uid."'");
-        $this->layer_msg('²Ù×÷³É¹¦£¡',9,0,Url("resume",array("c"=>"show","id"=>$eid,"see"=>"used")));
+        $this->layer_msg('ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½',9,0,Url("resume",array("c"=>"show","id"=>$eid,"see"=>"used")));
     }
 
     function get_coupon_action(){
@@ -1266,7 +1281,7 @@ class index_controller extends common{
             $pagenum=ceil($allnum/10);
             $start=($page-1)*10;
             $limit=" limit ".$start.",10";
-            if($page>1){$phtml.="<a class=\"Company_pages_a\"  onclick=\"forrecord('".$id."','1')\">Ê×Ò³</a><a class=\"Company_pages_a\" onclick=\"forrecord('".$id."','".($page-1)."')\">Ç°Ò³</a>";}
+            if($page>1){$phtml.="<a class=\"Company_pages_a\"  onclick=\"forrecord('".$id."','1')\">ï¿½ï¿½Ò³</a><a class=\"Company_pages_a\" onclick=\"forrecord('".$id."','".($page-1)."')\">Ç°Ò³</a>";}
             if($page%5>0){
                 $spage=floor($page/5)*5+1;
                 $epage=ceil($page/5)*5;
@@ -1278,13 +1293,13 @@ class index_controller extends common{
             for($i=$spage;$i<=$epage;$i++){
                 $page==$i?$phtml.="<span class=\"Company_pages_cur\">".$i."</span>":$phtml.="<a class=\"Company_pages_a\" onclick=\"forrecord('".$id."','".$i."')\">".$i."</a>";
             }
-            if($pagenum-$page>0){$phtml.="<a class=\"Company_pages_a\" onclick=\"forrecord('".$id."','".($page+1)."')\">ºóÒ³</a><a class=\"Company_pages_a\" onclick=\"forrecord('".$id."','".$pagenum."')\"> Î²Ò³</a>";}
+            if($pagenum-$page>0){$phtml.="<a class=\"Company_pages_a\" onclick=\"forrecord('".$id."','".($page+1)."')\">ï¿½ï¿½Ò³</a><a class=\"Company_pages_a\" onclick=\"forrecord('".$id."','".$pagenum."')\"> Î²Ò³</a>";}
             $pagehtml="<div class=\"Company_pages\">".$phtml."</div>";
         }
         $rows=$this->obj->DB_select_all("userid_job","`job_id`='".$id."' order by `datetime` desc ".$limit);
         if($rows&&is_array($rows)){
             $uid=$username=array();
-            $is_browse=array('1'=>'´ý·´À¡','2'=>'ÆóÒµÒÑ²é¿´');
+            $is_browse=array('1'=>'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2'=>'ï¿½ï¿½Òµï¿½Ñ²é¿´');
             foreach($rows as $val){
                 $uid[]=$val['uid'];
             }
@@ -1301,7 +1316,7 @@ class index_controller extends common{
             }
             $html.=$pagehtml;
         }else{
-            $html="<div class=\"comapply_no_msg\"><div class=\"comapply_no_msg_cont\"><span></span><em>ÔÝÎÞÊý¾Ý</em></div></div>";
+            $html="<div class=\"comapply_no_msg\"><div class=\"comapply_no_msg_cont\"><span></span><em>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</em></div></div>";
         }
         echo $html;die;
     }
@@ -1362,7 +1377,7 @@ class index_controller extends common{
     }
 
     function regcode_action(){
-        if(strpos($this->config['code_web'],'×¢²á»áÔ±')!==false){
+        if(strpos($this->config['code_web'],'×¢ï¿½ï¿½ï¿½Ô?')!==false){
             session_start();
             if ($this->config['code_kind']==3){
                 if(!gtauthcode($this->config)){
@@ -1396,7 +1411,7 @@ class index_controller extends common{
                 echo 2;die;
             }
             $status=$this->send_msg_email(array("moblie"=>$_POST['moblie'],"code"=>$randstr,"type"=>'regcode'));
-            if($status=='·¢ËÍ³É¹¦!'){
+            if($status=='ï¿½ï¿½ï¿½Í³É¹ï¿½!'){
                 $data['did']=$this->config['did'];
                 $data['uid']='0';
                 $data['type']='2';
@@ -1405,7 +1420,7 @@ class index_controller extends common{
                 $data['check']=$_POST['moblie'];
                 $data['check2']=$randstr;
                 $data['ctime']=time();
-                $data['statusbody']='ÊÖ»ú×¢²áÑéÖ¤Âë';
+                $data['statusbody']='ï¿½Ö»ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½';
                 if(is_array($moblieCode) && !empty($moblieCode)){
                     $this->obj->update_once("company_cert",$data,"`check`='".$_POST['moblie']."'");
                 }else{
@@ -1457,12 +1472,12 @@ class index_controller extends common{
                     }else{
                         $this->obj->DB_delete_all("atn","`uid`='".$this->uid."' AND `sc_uid`='".$id."'");
                         $this->obj->DB_update_all('company',"`ant_num`=`ant_num`-1","`uid`='".$id."'");
-                        $content="È¡ÏûÁË¶Ô<a href=\"".$comurl."\" target=\"_bank\">".$name."</a>¹Ø×¢";
+                        $content="È¡ï¿½ï¿½ï¿½Ë¶ï¿½<a href=\"".$comurl."\" target=\"_bank\">".$name."</a>ï¿½ï¿½×¢";
                         $this->addstate($content,2);
-                        $msg_content = "ÓÃ»§ ".$this->username." È¡ÏûÁË¶ÔÄãµÄ¹Ø×¢£¡";
+                        $msg_content = "ï¿½Ã»ï¿½ ".$this->username." È¡ï¿½ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½Ä¹ï¿½×¢ï¿½ï¿?";
                         $this->automsg($msg_content,$id);
                     }
-                    $this->obj->member_log("È¡ÏûÁË¶Ô".$name."¹Ø×¢");
+                    $this->obj->member_log("È¡ï¿½ï¿½ï¿½Ë¶ï¿½".$name."ï¿½ï¿½×¢");
                     echo "2";die;
                 }else{
                     if ($tid){
@@ -1471,12 +1486,12 @@ class index_controller extends common{
                     }else{
                         $this->obj->DB_insert_once("atn","`uid`='".$this->uid."',`sc_uid`='".$id."',`usertype`='".(int)$this->usertype."',`sc_usertype`='2',`time`='".time()."'");
                         $this->obj->DB_update_all('company',"`ant_num`=`ant_num`+1","`uid`='".$id."'");
-                        $content="¹Ø×¢ÁË<a href=\"".$comurl."\" target=\"_bank\">".$name."</a>";
+                        $content="ï¿½ï¿½×¢ï¿½ï¿½<a href=\"".$comurl."\" target=\"_bank\">".$name."</a>";
                         $this->addstate($content,2);
-                        $msg_content = "ÓÃ»§ ".$this->username." ¹Ø×¢ÁËÄã£¡";
+                        $msg_content = "ï¿½Ã»ï¿½ ".$this->username." ï¿½ï¿½×¢ï¿½ï¿½ï¿½ã£¡";
                         $this->automsg($msg_content,$id);
                     }
-                    $this->obj->member_log("¹Ø×¢ÁË".$name);
+                    $this->obj->member_log("ï¿½ï¿½×¢ï¿½ï¿½".$name);
                     echo "1";die;
                 }
             }else{
@@ -1490,13 +1505,13 @@ class index_controller extends common{
             if($_COOKIE['remind_num']>0){
                 $html.='<div class="header_Remind header_Remind_hover"> <em class="header_Remind_em "><i class="header_Remind_msg"></i></em><div class="header_Remind_list" style="display:none;">';
                 if($this->usertype==1){
-                    $html.='<div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=msg">ÑûÇëÃæÊÔ</a><span class="header_Remind_list_r fr">('.$_COOKIE['userid_msg'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=sysnews">ÏµÍ³ÏûÏ¢</a><span class="header_Remind_list_r fr">('.$_COOKIE['sysmsg1'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=commsg">ÆóÒµ»Ø¸´×ÉÑ¯</a><span class="header_Remind_list_r fr">('.$_COOKIE['usermsg'].')</span></div>';
+                    $html.='<div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=msg">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a><span class="header_Remind_list_r fr">('.$_COOKIE['userid_msg'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=sysnews">ÏµÍ³ï¿½ï¿½Ï¢</a><span class="header_Remind_list_r fr">('.$_COOKIE['sysmsg1'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=commsg">ï¿½ï¿½Òµï¿½Ø¸ï¿½ï¿½ï¿½Ñ¯</a><span class="header_Remind_list_r fr">('.$_COOKIE['usermsg'].')</span></div>';
                 }elseif($this->usertype==2){
-                    $html.='<div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=hr"class="fl">ÉêÇëÖ°Î»</a><span class="header_Remind_list_r fr">('.$_COOKIE['userid_job'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=sysnews" class="fl"> ÏµÍ³ÏûÏ¢</a><span class="header_Remind_list_r fr">('.$_COOKIE['sysmsg2'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=msg"class="fl">ÇóÖ°×ÉÑ¯</a><span class="header_Remind_list_r fr">('.$_COOKIE['commsg'].')</span></div>';
+                    $html.='<div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=hr"class="fl">ï¿½ï¿½ï¿½ï¿½Ö°Î»</a><span class="header_Remind_list_r fr">('.$_COOKIE['userid_job'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=sysnews" class="fl"> ÏµÍ³ï¿½ï¿½Ï¢</a><span class="header_Remind_list_r fr">('.$_COOKIE['sysmsg2'].')</span></div><div class="header_Remind_list_a"><a href="'.$this->config['sy_weburl'].'/member/index.php?c=msg"class="fl">ï¿½ï¿½Ö°ï¿½ï¿½Ñ¯</a><span class="header_Remind_list_r fr">('.$_COOKIE['commsg'].')</span></div>';
                 }
                 $html.='</div> </div>';
             }
-            $html2= "<span class=\"sss\">ÄúºÃ£º</span><a href=\"".$this->config['sy_weburl']."/member\" ><font color=\"red\">".mb_substr($this->username,0,6,'GBK')."</font></a>£¡<a href=\"".$this->config['sy_weburl']."/member\" >½øÈëÓÃ»§ÖÐÐÄ>></a> <a href=\"javascript:void(0)\" onclick=\"logout(\'".$this->config['sy_weburl']."/index.php?c=logout\');\">[°²È«ÍË³ö]</a>";
+            $html2= "<span class=\"sss\">ï¿½ï¿½ï¿½Ã£ï¿½</span><a href=\"".$this->config['sy_weburl']."/member\" ><font color=\"red\">".mb_substr($this->username,0,6,'GBK')."</font></a>ï¿½ï¿½<a href=\"".$this->config['sy_weburl']."/member\" >ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½>></a> <a href=\"javascript:void(0)\" onclick=\"logout(\'".$this->config['sy_weburl']."/index.php?c=logout\');\">[ï¿½ï¿½È«ï¿½Ë³ï¿½]</a>";
 
             $html.='<div class="yun_header_af fr">'.$html2.'</div>';
 
@@ -1509,39 +1524,41 @@ class index_controller extends common{
             $style = $this->config['sy_weburl']."/app/template/".$this->config['style'];
 
 
-            $login='<li><a href="'.$login_url.'">»áÔ±µÇÂ¼</a></li>';
-            $user_reg='<li><a href="'.$reg_url.'">¸öÈË×¢²á</a></li>';
-            $com_reg='<li><a href="'.$reg_com_url.'">ÆóÒµ×¢²á</a></li>';
-            $lietou_reg='<li><a href="'.$reg_lietou_url.'">ÁÔÍ·×¢²á</a></li>';
+            $login='<li><a href="'.$login_url.'">ï¿½ï¿½Ô±ï¿½ï¿½Â¼</a></li>';
+            $user_reg='<li><a href="'.$reg_url.'">ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½</a></li>';
+            $com_reg='<li><a href="'.$reg_com_url.'">ï¿½ï¿½Òµ×¢ï¿½ï¿½</a></li>';
+            $lietou_reg='<li><a href="'.$reg_lietou_url.'">ï¿½ï¿½Í·×¢ï¿½ï¿½</a></li>';
 
             if($_GET['f']=='l'){
 
             }else{
                 $kjlogin = '';
-                $html='<div class=" fr"><div class="yun_topLogin_cont"><div class="yun_topLogin denglu" style="width:100px;border-right: 1px solid #eee;"><a class="coloess"  href="http://www.zhanjob.com/index.html#/dologin" >ÄÚ²¿ÏµÍ³Èë¿Ú</a></div><div class="yun_topLogin" style="width:126px;padding-left: 5px;border-right: 1px solid #eee;"> <a class="coloess" href="http://27.11.210.44:5678/webapp/#/login">ÄÏ·½ÐÂ»ªOAÏµÍ³</a></div><div class="yun_topLogin denglu" style="width:90px;"><a class="coloess" href="http://lt.huiliewang.com">¿¼ÊÔÏµÍ³</a></div></div></div>';
+
+                $html='<div class=" fr"><div class="yun_topLogin_cont"><div class="yun_topLogin denglu" style="width:100px;border-right: 1px solid #eee;"><a class="coloess"  href="http://www.zhanjob.com/index.html#/dologin" >ÄÚ²¿ÏµÍ³Èë¿Ú</a></div><div class="yun_topLogin" style="width:126px;padding-left: 5px;border-right: 1px solid #eee;"> <a class="coloess" href="http://27.11.220.106:5678/webapp/#/login">ÄÏ·½ÐÂ»ªOAÏµÍ³</a></div><div class="yun_topLogin denglu" style="width:90px;"><a class="coloess" href="http://lt.huiliewang.com">¿¼ÊÔÏµÍ³</a></div></div></div>';
+
                 if($this->config['sy_qqlogin']=='1'||$this->config['sy_sinalogin']=='1'||$this->config['wx_author']=='1'){
 
                     if($_GET['type']=='index'){
 
                         if($this->config['sy_qqlogin']=='1'){
-                            $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_qq.png" class="png" ><a href="'.$this->config['sy_weburl'].'/qqlogin.php'.'">QQµÇÂ¼</a></li>';
+                            $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_qq.png" class="png" ><a href="'.$this->config['sy_weburl'].'/qqlogin.php'.'">QQï¿½ï¿½Â¼</a></li>';
                         }
                         if($this->config['sy_sinalogin']=='1'){
-                            $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_sina.png" class="png" ><a href="'.Url("sinaconnect",array(),"1").'">ÐÂÀËµÇÂ¼</a></li>';
+                            $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_sina.png" class="png" ><a href="'.Url("sinaconnect",array(),"1").'">ï¿½ï¿½ï¿½Ëµï¿½Â¼</a></li>';
                         }
                         if($this->config['wx_author']=='1'){
-                            $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_wx.png" class="png" ><a href="'.Url("wxconnect",array(),"1").'">Î¢ÐÅµÇÂ¼</a></li>';
+                            $kjlogin.='<li><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_wx.png" class="png" ><a href="'.Url("wxconnect",array(),"1").'">Î¢ï¿½Åµï¿½Â¼</a></li>';
                         }
                     }else{
                         $flogin='<div class="fastlogin fr">';
                         if($this->config['sy_qqlogin']=='1'){
-                            $flogin.='<span style="width:80px;"><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_qq.png" class="png" > <a href="'.$this->config['sy_weburl'].'/qqlogin.php'.'">QQµÇÂ¼</a></span>';
+                            $flogin.='<span style="width:80px;"><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_qq.png" class="png" > <a href="'.$this->config['sy_weburl'].'/qqlogin.php'.'">QQï¿½ï¿½Â¼</a></span>';
                         }
                         if($this->config['sy_sinalogin']=='1'){
-                            $flogin.='<span><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_sina.png" class="png"> <a href="'.Url("sinaconnect",array(),"1").'">ÐÂÀË</a></span>';
+                            $flogin.='<span><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_sina.png" class="png"> <a href="'.Url("sinaconnect",array(),"1").'">ï¿½ï¿½ï¿½ï¿½</a></span>';
                         }
                         if($this->config['wx_author']=='1'){
-                            $flogin.='<span><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_wx.png" class="png"> <a href="'.Url("wxconnect",array(),"1").'">Î¢ÐÅ</a></span>';
+                            $flogin.='<span><img src="'.$this->config['sy_weburl'].'/app/template/'.$this->config['style'].'/images/yun_wx.png" class="png"> <a href="'.Url("wxconnect",array(),"1").'">Î¢ï¿½ï¿½</a></span>';
                         }
                         $flogin.='</div>';
                         $html.=$flogin;
@@ -1550,7 +1567,7 @@ class index_controller extends common{
 
                 $html = str_replace("{kjlogin}",$kjlogin,$html);
             }
-            echo "document.write('".$html."');";
+            echo "document.write('".$html."');"; 
         }
     }
     function Site_action(){
@@ -1562,7 +1579,7 @@ class index_controller extends common{
                 $cityname = $this->config['sy_indexcity'];
             }
             $site_url = Url('index',array("c"=>"site"),"1");
-            $html = "<span class=\"hp_head_ft_city_x\">".$cityname."Õ¾</span><span class=\"hp_head_ft_city_qh\">¡¾<a href=\"".$site_url."\">ÇÐ»»³ÇÊÐ</a>¡¿</span>";
+            $html = "<span class=\"hp_head_ft_city_x\">".$cityname."Õ¾</span><span class=\"hp_head_ft_city_qh\">ï¿½ï¿½<a href=\"".$site_url."\">ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½</a>ï¿½ï¿½</span>";
         } echo "document.write('".$html."');";
     }
     function SiteCity_action(){
@@ -1601,7 +1618,7 @@ class index_controller extends common{
             $_SESSION['cityname'] = yun_iconv("utf-8","gbk",$_POST['cityname']);
             echo $_SESSION['host'];die;
         }else{
-            $this->ACT_layer_msg("´«µÝÁË·Ç·¨²ÎÊý£¡",8,$_SERVER['HTTP_REFERER']);
+            $this->ACT_layer_msg("ï¿½ï¿½ï¿½ï¿½ï¿½Ë·Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",8,$_SERVER['HTTP_REFERER']);
         }
     }
     function SiteHy_action(){
@@ -1631,7 +1648,7 @@ class index_controller extends common{
             $_SESSION['hyclass'] = $_POST['hyid'];
             echo $_SESSION['host'];die;
         }else{
-            $this->ACT_layer_msg("´«µÝÁË·Ç·¨²ÎÊý£¡",8,$_SERVER['HTTP_REFERER']);
+            $this->ACT_layer_msg("ï¿½ï¿½ï¿½ï¿½ï¿½Ë·Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",8,$_SERVER['HTTP_REFERER']);
         }
     }
     function claim_action(){
@@ -1640,7 +1657,7 @@ class index_controller extends common{
             $row=$UserinfoM->GetMemberOne(array("uid"=>(int)$_GET['uid']),array("field"=>"`source`,`email`,`claim`"));
             if($row['source']=="6" && $row['email']!=""){
                 if($row['claim']=="1"){
-                    $this->layer_msg('¸ÃÓÃ»§ÒÑ±»ÈÏÁì£¡',8,0);
+                    $this->layer_msg('ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ì£¡',8,0);
                 }
                 $cert=$UserinfoM->GetCompanyCert(array("uid"=>(int)$_GET['uid'],"type"=>6));
                 if(empty($cert)){
@@ -1661,19 +1678,19 @@ class index_controller extends common{
                 $data['email']=$row['email'];
                 $data['type']="claim";
                 $url=Url("claim",array('uid'=>(int)$_GET['uid'],'code'=>$salt),"1");
-                $data['url']="<a href='".$url."'>".$url."</a> Èç¹ûÄú²»ÄÜÔÚÓÊÏäÖÐÖ±½Ó´ò¿ª£¬Çë¸´ÖÆ¸ÃÁ´½Óµ½ä¯ÀÀÆ÷µØÖ·À¸ÖÐÖ±½Ó´ò¿ª£º".$url;
+                $data['url']="<a href='".$url."'>".$url."</a> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó´ò¿ª£ï¿½ï¿½ë¸´ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó´ò¿ª£ï¿½".$url;
                 $this->send_msg_email($data);
                 $email=@explode('@',$row['email']);
                 $newemail=substr($email[0],0,3).'****@'.end($email);
-                $this->layer_msg('<div class="rl_box"><div class="rl_yx_p">ÒÑ·¢ËÍµ½ÄúµÄÓÊÏä£º</div><div class="rl_yx">'.$newemail.'£¬</div><div class="">ÇëµÇÂ¼ÄúµÄÓÊÏäÖØÖÃÕÊºÅÃÜÂë£¡</div><div class="">Èç»»ÓÊÏäÇëÁªÏµ¿Í·þµç»°£º</div><div class="rl_tel">'. $this->config['sy_freewebtel'] .'</div></div>',9,0);
+                $this->layer_msg('<div class="rl_box"><div class="rl_yx_p">ï¿½Ñ·ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä£º</div><div class="rl_yx">'.$newemail.'ï¿½ï¿½</div><div class="">ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êºï¿½ï¿½ï¿½ï¿½ë£?</div><div class="">ï¿½ç»»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½Í·ï¿½ï¿½ç»°ï¿½ï¿½</div><div class="rl_tel">'. $this->config['sy_freewebtel'] .'</div></div>',9,0);
             }else{
-                $this->layer_msg('¸ÃÓÃ»§²»·ûºÏÈÏÁìÌõ¼þ£¡',8,0);
+                $this->layer_msg('ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',8,0);
             }
         }
     }
     function ajaxzphjob_action(){
         if($this->usertype!=2){
-            $arr['msg']=iconv("gbk","utf-8","Ö»ÓÐÆóÒµÓÃ»§²Å¿ÉÒÔÔ¤¶¨Õ¹Î»£¡");
+            $arr['msg']=iconv("gbk","utf-8","Ö»ï¿½ï¿½ï¿½ï¿½Òµï¿½Ã»ï¿½ï¿½Å¿ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½Õ¹Î»ï¿½ï¿½");
             $arr['status']=1;
         }else{
             $id=intval($_POST['id']);
@@ -1703,10 +1720,10 @@ class index_controller extends common{
             if(!empty($zphcom)){
                 $unpass=$Zph->GetZphComOnce(array("uid"=>$this->uid,"zid"=>(int)$_POST['zid'],'status'=>2));
                 if(!empty($unpass)){
-                    $arr['msg']=iconv("gbk","utf-8","ÄúµÄ±¨ÃûÎ´Í¨¹ýÉóºË£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+                    $arr['msg']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Î´Í¨ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿?");
                     $arr['status']=1;
                 }else{
-                    $arr['msg']=iconv("gbk","utf-8","ÄúÒÑ±¨Ãû¸ÃÕÐÆ¸»á£¡");
+                    $arr['msg']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½á£¡");
                     $arr['status']=1;
                 }
             }else{
@@ -1718,13 +1735,13 @@ class index_controller extends common{
                 if($statis['zph_num']<1){
                     if($this->config['com_integral_online']=='1'){
                         if($statis['integral']<$space['price']&&$statis['rating_type']=='1'){
-                            $arr['msg']=iconv("gbk","utf-8",$this->config['integral_pricename']."²»×ã£¬ÎÞ·¨±¨Ãû£¡");
+                            $arr['msg']=iconv("gbk","utf-8",$this->config['integral_pricename']."ï¿½ï¿½ï¿½ã£¬ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                             $arr['status']=1;
                         }else{
                             $mtype='1';
                         }
                     }else{
-                        $arr['msg']=iconv("gbk","utf-8","±¨Ãû´ÎÊýÒÑÓÃÍê£¬ÎÞ·¨±¨Ãû£¡");
+                        $arr['msg']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                         $arr['status']=1;
                     }
                 }
@@ -1736,15 +1753,15 @@ class index_controller extends common{
                             $html.='<input name="checkbox_job" value="'.$v[id].'" id="status_'.$v[id].'" type="checkbox"><label for="status_'.$v[id].'">'.iconv("gbk","utf-8",$v[name]).'</label><br>';
                         }
                         if($statis['zph_num']=='0'&&$statis['integral']>=$space['price']&&$statis['rating_type']=='1'){
-                            $arr['msg']=iconv("gbk","utf-8","ÄúµÄ±¨Ãû´ÎÊýÒÑÓÃÍê£¬¼ÌÐø±¨Ãû½«¿Û³ýÄú".$space['price'].$this->config['integral_pricename']."£¬ÊÇ·ñ¼ÌÐø£¿");
+                            $arr['msg']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û³ï¿½ï¿½ï¿½".$space['price'].$this->config['integral_pricename']."ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?");
                             $arr['status']=2;
                         }else{
-                            $arr['msg']=iconv("gbk","utf-8","È·¶¨±¨Ãû¸ÃÕÐÆ¸»á£¿");
+                            $arr['msg']=iconv("gbk","utf-8","È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½á£¿");
                             $arr['status']=2;
                         }
                         $arr['html']=$html;
                     }else{
-                        $arr['msg']=iconv("gbk","utf-8","ÇëÏÈ·¢²¼Ö°Î»£¡");
+                        $arr['msg']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½");
                         $arr['status']=1;
                     }
                 }
@@ -1759,10 +1776,10 @@ class index_controller extends common{
         $sid=$Zph->GetZphspaceOnce(array("id"=>$space['keyid']));
         if(!$this->uid || !$this->username || $this->usertype!=2){
             $arr['status']=0;
-            $arr['content']=iconv("gbk","utf-8","Äú»¹Ã»ÓÐµÇÂ¼£¬<a href='javascript:void(0);' onclick=\"showlogin('2');\" style='color:#1d50a1'>ÇëÏÈµÇÂ¼</a>£¡");
+            $arr['content']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ðµï¿½Â¼ï¿½ï¿½<a href='javascript:void(0);' onclick=\"showlogin('2');\" style='color:#1d50a1'>ï¿½ï¿½ï¿½Èµï¿½Â¼</a>ï¿½ï¿½");
         }elseif(!$_GET['jobid']){
             $arr['status']=0;
-            $arr['content']=iconv("gbk","utf-8","Äã»¹Ã»ÓÐÑ¡ÔñÖ°Î»");
+            $arr['content']=iconv("gbk","utf-8","ï¿½ã»¹Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½Ö°Î»");
         }else{
             $User=$this->MODEL("userinfo");
             $statis=$User->GetUserstatisOne(array("uid"=>$this->uid),array("usertype"=>"2"));
@@ -1774,12 +1791,12 @@ class index_controller extends common{
                         $bmtype=1;
                         if($space['price']>$statis['integral']){
                             $arr['status']=0;
-                            $arr['content']=iconv("gbk","utf-8","ÄãµÄ".$this->config['integral_pricename']."²»×ã£¬ÇëÏÈ³äÖµ£¡");
+                            $arr['content']=iconv("gbk","utf-8","ï¿½ï¿½ï¿?".$this->config['integral_pricename']."ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½È³ï¿½Öµï¿½ï¿½");
                             echo json_encode($arr);die;
                         }
                     }else{
                         $arr['status']=0;
-                        $arr['content']=iconv("gbk","utf-8","ÄãµÄÕÐÆ¸»á±¨Ãû´ÎÊýÒÑÓÃÍê£¡");
+                        $arr['content']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½á±¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£?");
                         echo json_encode($arr);die;
                     }
                 }
@@ -1787,7 +1804,7 @@ class index_controller extends common{
             $zphcom=$Zph->GetZphComOnce(array("uid"=>$this->uid,"zid"=>(int)$_POST['zid']));
             if(!empty($zphcom)){
                 $arr['status']=0;
-                $arr['content']=iconv("gbk","utf-8","ÄúÒÑ¾­²ÎÓë¸ÃÕÐÆ¸»á");
+                $arr['content']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½ï¿?");
             }else{
                 $jobidarr=@explode(",",$_GET['jobid']);
                 $array=array();
@@ -1799,12 +1816,12 @@ class index_controller extends common{
                 $info=$Zph->GetZphOnce(array("id"=>(int)$_GET['zid']),array("field"=>"`sid`,`did`"));
                 if($sid['keyid']!=$info['sid']){
                     $arr['status']=0;
-                    $arr['content']=iconv("gbk","utf-8","·Ç·¨²Ù×÷£¡");
+                    $arr['content']=iconv("gbk","utf-8","ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                 }else{
                     $bid=$Zph->GetZphComOnce(array("zid"=>(int)$_GET['zid'],"bid"=>(int)$_GET['bid']));
                     if(!empty($bid)){
                         $arr['status']=0;
-                        $arr['content']=iconv("gbk","utf-8","¸ÃÕ¹Î»ÒÑ±»Ô¤¶¨£¬ÇëÑ¡ÔñÆäËûÕ¹Î»£¡");
+                        $arr['content']=iconv("gbk","utf-8","ï¿½ï¿½Õ¹Î»ï¿½Ñ±ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹Î»ï¿½ï¿½");
                     }else{
                         $sql['did']=$info['did'];
                         $sql['uid']=$this->uid;
@@ -1823,14 +1840,14 @@ class index_controller extends common{
                             if($bmtype==2){
                                 $User->UpdateUserStatis(array("`zph_num`=`zph_num`-1"),array("uid"=>$this->uid),array("usertype"=>"2"));
                             }else if($bmtype==1&&$space['price']){
-                                $this->company_invtal($this->uid,$space['price'],false,"ÕÐÆ¸»á±¨Ãû",true,2,'integral');
+                                $this->company_invtal($this->uid,$space['price'],false,"ï¿½ï¿½Æ¸ï¿½á±¨ï¿½ï¿½",true,2,'integral');
                             }
                             $arr['status']=1;
-                            $arr['content']=iconv("gbk","utf-8","±¨Ãû³É¹¦,µÈ´ý¹ÜÀíÔ±ÉóºË");
-                            $this->obj->member_log("±¨ÃûÕÐÆ¸»á");
+                            $arr['content']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½,ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿?");
+                            $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½ï¿½");
                         }else{
                             $arr['status']=0;
-                            $arr['content']=iconv("gbk","utf-8","±¨ÃûÊ§°Ü,ÇëÉÔºóÖØÊÔ");
+                            $arr['content']=iconv("gbk","utf-8","ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½,ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½");
                         }
                     }
                 }
@@ -1859,7 +1876,7 @@ class index_controller extends common{
     function partapply_action(){
         if($this->usertype!=1){
             $arr['status']=8;
-            $arr['msg']='Ö»ÓÐ¸öÈËÓÃ»§²ÅÄÜÉêÇë±¨Ãû£¡';
+            $arr['msg']='Ö»ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë±¨ï¿½ï¿½ï¿½ï¿½';
         }else{
             $M=$this->MODEL("part");
             $job=$M->GetPartJobOne(array("id"=>(int)$_POST['jobid']));
@@ -1868,23 +1885,23 @@ class index_controller extends common{
                 $num=$Resume->GetResumeExpectNum(array("uid"=>$this->uid));
                 if($num<1){
                     $arr['status']=8;
-                    $arr['msg']='ÓµÓÐ¼òÀú²Å¿ÉÒÔ±¨Ãû¼æÖ°£¡';
+                    $arr['msg']='Óµï¿½Ð¼ï¿½ï¿½ï¿½ï¿½Å¿ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½';
                 }
             }
             if($job['edate']<time()&&$job['edate']!=0){
                 $arr['status']=8;
-                $arr['msg']='¼æÖ°ÒÑ¹ýÆÚÎÞ·¨±¨Ãû£¡';
+                $arr['msg']='ï¿½ï¿½Ö°ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
             }
             if($arr['msg']==''){
                 if($job['edate']&&$job['deadline']<time()){
                     $arr['status']=8;
-                    $arr['msg']='±¨ÃûÒÑ½ØÖ¹£¡';
+                    $arr['msg']='ï¿½ï¿½ï¿½ï¿½ï¿½Ñ½ï¿½Ö¹ï¿½ï¿½';
                 }else{
                     $row=$M->GetPartApplyOne(array("uid"=>$this->uid,"jobid"=>(int)$_POST['jobid']));
 
                     if(!empty($row)){
                         $arr['status']=8;
-                        $arr['msg']='ÄúÒÑ¾­±¨Ãû¹ý¸Ã¼æÖ°£¡';
+                        $arr['msg']='ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½Ö°ï¿½ï¿½';
                     }else{
                         $data['uid']=$this->uid;
                         $data['jobid']=(int)$_POST['jobid'];
@@ -1905,7 +1922,7 @@ class index_controller extends common{
                             $this->send_msg_email($data);
                         }
                         $arr['status']=9;
-                        $arr['msg']='±¨Ãû³É¹¦£¡';
+                        $arr['msg']='ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½';
                     }
                 }
             }
@@ -1916,7 +1933,7 @@ class index_controller extends common{
     function wap_job_action(){
         include(PLUS_PATH."job.cache.php");
         if($_POST['type']==1){
-            $data="<option value=''>--ÇëÑ¡Ôñ--</option>";
+            $data="<option value=''>--ï¿½ï¿½Ñ¡ï¿½ï¿½--</option>";
         }
         if(is_array($job_type[$_POST['id']])){
             foreach($job_type[$_POST['id']] as $v){
@@ -1928,7 +1945,7 @@ class index_controller extends common{
     function wap_city_action(){
         include(PLUS_PATH."city.cache.php");
         if($_POST['type']==1){
-            $data="<option value=''>--ÇëÑ¡Ôñ--</option>";
+            $data="<option value=''>--ï¿½ï¿½Ñ¡ï¿½ï¿½--</option>";
         }
         if(is_array($city_type[$_POST['id']])){
             foreach($city_type[$_POST['id']] as $v){
@@ -2090,7 +2107,7 @@ class index_controller extends common{
     {
         if (!$_POST['name'] || !$_POST['birthday'] || !$_POST['exp'] || !$_POST['edu'] || !$_POST['telphone'])
         {
-            echo "ÇëÌîÐ´±ØÒªÉêÇëÐÅÏ¢£¡";die;
+            echo "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½";die;
         }
         else {
 
@@ -2098,13 +2115,13 @@ class index_controller extends common{
             $ismoblie= $Member->GetMemberNum(array("moblie"=>$_POST['telphone']));
 
             if ($ismoblie>0) {
-                echo "ÊÖ»úÒÑ´æÔÚ£¡";die;
+                echo "ï¿½Ö»ï¿½ï¿½Ñ´ï¿½ï¿½Ú£ï¿½";die;
             }
 
             $res = true;
             if ($this->config['sy_msg_isopen']==1 && $this->config['reg_real_name_check']==1) {
                 if(!$_POST['authcode']){
-                    echo 'ÇëÊäÈë¶ÌÐÅÑéÖ¤Âë£¡';die;
+                    echo 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ë£?';die;
                 }
 
                 $cert_validity = 1800;
@@ -2113,10 +2130,10 @@ class index_controller extends common{
                     if ((time()-$cert_arr['ctime']) <= $cert_validity) {
                         $res = $_POST['authcode'] == $cert_arr['check2'];
                     } else {
-                        echo "ÑéÖ¤ÂëÑéÖ¤³¬Ê±£¬ÇëÖØÐÂµã»÷·¢ËÍÑéÖ¤Âë£¡";die;
+                        echo "ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ë£?";die;
                     }
                 } else {
-                    echo "ÑéÖ¤Âë·¢ËÍ²»³É¹¦£¬ÇëÖØÐÂµã»÷·¢ËÍÑéÖ¤Âë£¡";die;
+                    echo "ï¿½ï¿½Ö¤ï¿½ë·¢ï¿½Í²ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ë£?";die;
                 }
             }
             if ($res) {
@@ -2144,38 +2161,38 @@ class index_controller extends common{
                 $id=$Resume->TemporaryResume($_POST);
                 echo $id;die;
             } else {
-                echo "ÊÖ»úÑéÖ¤Âë´íÎó£¡";die;
+                echo "ï¿½Ö»ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿?";die;
             }
         }
     }
 
     function sendmsg_action(){
         if(!$this->config['sy_msg_isopen'] || !$this->config['sy_msg_login']){
-            $this->layer_msg('ÍøÕ¾Î´¿ªÆô¶ÌÐÅÑéÖ¤µÇÂ¼·þÎñ!');
+            $this->layer_msg('ï¿½ï¿½Õ¾Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½!');
         }else{
             $moblie=$_POST['moblie'];
 
             if(isset($_POST['authcode'])){
                 if(gtverify() == false){
-                    $this->layer_msg('Í¼Æ¬ÑéÖ¤Âë´íÎó!');
+                    $this->layer_msg('Í¼Æ¬ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿?!');
                 }
             }
 
             $res = $this->send_autocode($moblie, 6, 90, true);
             if($res == 5){
-                $this->layer_msg('ÊÖ»úºÅÓÐÎó!');
+                $this->layer_msg('ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
             }elseif ($res == 1) {
-                $this->layer_msg('¸ÃÊÖ»úºÅ³¬¹ý·¢ËÍÌõÊý!');
+                $this->layer_msg('ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
             }elseif ($res == 2) {
-                $this->layer_msg('¸ÃIP³¬¹ýÒ»Ìì·¢ËÍÌõÊý!');
+                $this->layer_msg('ï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½Ò»ï¿½ì·¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
             }elseif ($res == 3) {
-                $this->layer_msg('ÊÖ»úÓÃ»§²»´æÔÚ!');
+                $this->layer_msg('ï¿½Ö»ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
             }elseif ($res == 4) {
-                $this->layer_msg('Î´¿ªÆô¶ÌÐÅ·¢ËÍ¹¦ÄÜ!');
+                $this->layer_msg('Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å·ï¿½ï¿½Í¹ï¿½ï¿½ï¿½!');
             }elseif ($res == 6) {
-                $this->layer_msg('ÑéÖ¤ÂëÖØ¸´·¢ËÍ£¬ÇëÉÔºó!');
-            }elseif($res == '·¢ËÍ³É¹¦!'){
-                $this->layer_msg('·¢ËÍ³É¹¦!',9,0,'',2,1);
+                $this->layer_msg('ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½Ôºï¿½!');
+            }elseif($res == 'ï¿½ï¿½ï¿½Í³É¹ï¿½!'){
+                $this->layer_msg('ï¿½ï¿½ï¿½Í³É¹ï¿½!',9,0,'',2,1);
             }else{
                 $this->layer_msg($res);
             }
@@ -2196,11 +2213,11 @@ class index_controller extends common{
         $Resume=$this->MODEL("resume");
         $row=$Resume->SelectTemporaryResume(array("id"=>$_POST['resumeid']));
         if(!$row['name'] || !$row['birthday'] || !$row['exp'] || !$row['edu'] || !$row['telphone']){
-            echo "ÇëÌîÐ´±ØÒªÉêÇëÐÅÏ¢£¡";die;
+            echo "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½";die;
         }else{
             $ismoblie= $Member->GetMemberNum(array("moblie"=>$row['telphone']));
             if($ismoblie>0){
-                echo "µ±Ç°ÊÖ»úºÅÒÑ±»Ê¹ÓÃ£¬Çë¸ü»»ÆäËûÊÖ»úºÅ£¡";die;
+                echo "ï¿½ï¿½Ç°ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½Ê¹ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å£ï¿?";die;
             }else{
                 session_start();
                 if(md5(strtolower($_POST['authcode']))!=$_SESSION['authcode']  || empty($_SESSION['authcode'])){
@@ -2265,13 +2282,13 @@ class index_controller extends common{
                     $Member->UpdateUserinfo(array("usertype"=>"1","values"=>$rdata),array("uid"=>$userid));
                     $Member->UpdateMember(array("moblie"=>$row['telphone'],"email"=>$row['email']),array("uid"=>$userid));
                     if($this->config['integral_reg']>0){
-                        $Member->company_invtal($userid,$this->config['integral_reg'],true,"×¢²áÔùËÍ",true,2,'integral',23);
+                        $Member->company_invtal($userid,$this->config['integral_reg'],true,"×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",true,2,'integral',23);
                     }
-                    $this->get_integral_action($userid,"integral_login","»áÔ±µÇÂ¼");
+                    $this->get_integral_action($userid,"integral_login","ï¿½ï¿½Ô±ï¿½ï¿½Â¼");
                     if($this->config['integral_userinfo']>0){
-                        $this->company_invtal($userid,$this->config['integral_userinfo'],true,"Ê×´ÎÌîÐ´»ù±¾×ÊÁÏ",true,2,'integral',25);
+                        $this->company_invtal($userid,$this->config['integral_userinfo'],true,"ï¿½×´ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",true,2,'integral',25);
                     }
-                    $this->get_integral_action($userid,"integral_add_resume","·¢²¼¼òÀú");
+                    $this->get_integral_action($userid,"integral_add_resume","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     $jobid=(int)$_POST['jobid'];
                     $Job=$this->MODEL("job");
                     $comjob=$Job->GetComjobOne(array("id"=>$jobid));
@@ -2297,13 +2314,13 @@ class index_controller extends common{
                             $contents=@file_get_contents(Url("resume",array("c"=>"sendresume","job_link"=>'1',"id"=>$eid)));
                             $smtp = $this->email_set();
                             $smtpusermail =$this->config['sy_smtpemail'];
-                            $sendid = $smtp->sendmail($job_link['email'],"ÄúÊÕµ½Ò»·ÝÐÂµÄÇóÖ°¼òÀú£¡¡ª¡ª".$this->config['sy_webname'],$contents);
+                            $sendid = $smtp->sendmail($job_link['email'],"ï¿½ï¿½ï¿½Õµï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$this->config['sy_webname'],$contents);
                             if($sendid){
                                 $state = '1';
                             }else{
                                 $state = '0';
                             }
-                            $this->obj->insert_into("email_msg",array('uid'=>$comjob['uid'],'name'=>$comjob['com_name'],'cuid'=>'','cname'=>'','email'=>$job_link['email'],'title'=>"ÄúÊÕµ½Ò»·ÝÐÂµÄÇóÖ°¼òÀú£¡¡ª¡ª".$this->config['sy_webname'],'content'=>$contents,'state'=>$state,'ctime'=>time(),'smtpserver'=>$smtp->user));
+                            $this->obj->insert_into("email_msg",array('uid'=>$comjob['uid'],'name'=>$comjob['com_name'],'cuid'=>'','cname'=>'','email'=>$job_link['email'],'title'=>"ï¿½ï¿½ï¿½Õµï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".$this->config['sy_webname'],'content'=>$contents,'state'=>$state,'ctime'=>time(),'smtpserver'=>$smtp->user));
                         }
                     }
                     if($this->config['sy_msg_isopen']=='1'){
@@ -2313,10 +2330,10 @@ class index_controller extends common{
                         }
                     }
 
-                    $this->obj->member_log("ÎÒÉêÇëÁËÖ°Î»£º".$comjob['name'],6);
+                    $this->obj->member_log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»ï¿½ï¿½".$comjob['name'],6);
                     echo 1;die;
                 }else{
-                    echo "ÉêÇëÊ§°Ü!";die;
+                    echo "ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½!";die;
                 }
             }
         }
@@ -2331,14 +2348,14 @@ class index_controller extends common{
         $expectnum = $expect->GetResumeExpectNum();
         $html = '<a href="javascript:void(0);" onclick="$(\'.tip_bottom\').hide();"  class="tip_bottom_close"></a>
         <span class="tip_bottom_logo fl">
-          <h2>·¢ÏÖ¸ü¶àÐÂµÄÖ°Î»ÐÅÏ¢</h2>
+          <h2>ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Âµï¿½Ö°Î»ï¿½ï¿½Ï¢</h2>
         </span>
-        <div class="tip_bottom_num fl"><span>'.number_format($comnum).'</span>¹«Ë¾</div>
+        <div class="tip_bottom_num fl"><span>'.number_format($comnum).'</span>ï¿½ï¿½Ë¾</div>
         <div class="tip_bottom_num fl"><span>'.number_format($jobnum).'</span>Ö°Î»</div>
-        <div class="tip_bottom_num fl"><span>'.number_format($expectnum).'</span>¼òÀú</div>';
+        <div class="tip_bottom_num fl"><span>'.number_format($expectnum).'</span>ï¿½ï¿½ï¿½ï¿½</div>';
         if(!$this->uid){
-            $html.='<a href="'.Url('login').'" class="tip_bottom_login fl">µÇÂ¼</a>
-                    <a href="'.Url('register',array('usertype'=>1,'type'=>2)).'" class="tip_bottom_reg fl" >¿ìËÙ×¢²á<i class="tip_bottom_reg_icon"></i></a>';
+            $html.='<a href="'.Url('login').'" class="tip_bottom_login fl">ï¿½ï¿½Â¼</a>
+                    <a href="'.Url('register',array('usertype'=>1,'type'=>2)).'" class="tip_bottom_reg fl" >ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½<i class="tip_bottom_reg_icon"></i></a>';
         }
         echo $html;
     }
@@ -2460,7 +2477,7 @@ class index_controller extends common{
     }
     function LoginHead_action(){
         if($this->uid!=""&&$this->username!=""){
-            $html.='<div class="hp_top_rt_login fl">ÄãºÃ£¬<a class="hp_top_rt_login_g" href="'.$this->config['sy_weburl'].'/member\">'.$this->username.'</a></div><i class="hp_top_line fl"> | </i>';
+            $html.='<div class="hp_top_rt_login fl">ï¿½ï¿½Ã£ï¿?<a class="hp_top_rt_login_g" href="'.$this->config['sy_weburl'].'/member\">'.$this->username.'</a></div><i class="hp_top_line fl"> | </i>';
 
             echo "document.write('".$html."');";
         }else{
@@ -2468,7 +2485,7 @@ class index_controller extends common{
             $reg_url = Url("register",array("usertype"=>"1",'type'=>1),"1");
             $reg_com_url = Url("register",array("usertype"=>"2",'type'=>1),"1");
             $style = $this->config['sy_weburl']."/app/template/".$this->config['style'];
-            $html.='<div class="hp_top_rt_login fl">ÄãºÃ£¬Çë<a class="hp_top_rt_login_g" href="'.$log_url.'">µÇÂ¼</a></div><i class="hp_top_line fl"> | </i><div class="hp_top_rt_regist fl"><a class="hp_top_rt_regist_m" href="javascript:void(0);">Ãâ·Ñ×¢²á <i class="hp_top_rg_down"></i></a><div class="hp_top_regist_list" style="display:none;"><ul><li><a href="'.$reg_url.'">¸öÈË×¢²á</a></li><li><a href="'.$reg_com_url.'">ÆóÒµ×¢²á</a></li><li><a href="'.$reg_lietou_url.'">ÁÔÍ·×¢²á</a></li></ul></div></div>';
+            $html.='<div class="hp_top_rt_login fl">ï¿½ï¿½Ã£ï¿½ï¿½ï¿?<a class="hp_top_rt_login_g" href="'.$log_url.'">ï¿½ï¿½Â¼</a></div><i class="hp_top_line fl"> | </i><div class="hp_top_rt_regist fl"><a class="hp_top_rt_regist_m" href="javascript:void(0);">ï¿½ï¿½ï¿½×¢ï¿½ï¿? <i class="hp_top_rg_down"></i></a><div class="hp_top_regist_list" style="display:none;"><ul><li><a href="'.$reg_url.'">ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½</a></li><li><a href="'.$reg_com_url.'">ï¿½ï¿½Òµ×¢ï¿½ï¿½</a></li><li><a href="'.$reg_lietou_url.'">ï¿½ï¿½Í·×¢ï¿½ï¿½</a></li></ul></div></div>';
             echo "document.write('".$html."');";
         }
     }
@@ -2514,7 +2531,7 @@ class index_controller extends common{
             if ($resume['email']){
                 $data['email']=yun_iconv("gbk","utf-8",$resume['email']);
             }else{
-                $data['email']=yun_iconv("gbk","utf-8","ÎÞ");
+                $data['email']=yun_iconv("gbk","utf-8","ï¿½ï¿½");
             }
             $data['hy']=yun_iconv("gbk","utf-8",$industry_name[$resume['hy']]);
             if($resume['job_classid']){
@@ -2522,7 +2539,7 @@ class index_controller extends common{
                 foreach($jobids as $val){
                     $jobname[]=$job_name[$val];
                 }
-                $jobname=@implode('¡¢',$jobname);
+                $jobname=@implode('ï¿½ï¿½',$jobname);
             }
             $data['job_classid']=yun_iconv("gbk","utf-8",$jobname);
             if($resume['provinceid']){
@@ -2530,11 +2547,11 @@ class index_controller extends common{
             }
             $data['city']=yun_iconv("gbk","utf-8",$city);
             if($resume['minsalary']&&$resume['maxsalary']){
-                $salary='£¤'.$resume['minsalary'].'-'.$resume['maxsalary'];
+                $salary='ï¿½ï¿½'.$resume['minsalary'].'-'.$resume['maxsalary'];
             }else if($resume['minsalary']){
-                $salary='£¤'.$resume['minsalary'].'ÒÔÉÏ';
+                $salary='ï¿½ï¿½'.$resume['minsalary'].'ï¿½ï¿½ï¿½ï¿½';
             }else{
-                $salary='ÃæÒé';
+                $salary='ï¿½ï¿½ï¿½ï¿½';
             }
             $data['salary']=yun_iconv("gbk","utf-8",$salary);
             $data['type']=yun_iconv("gbk","utf-8",$userclass_name[$resume['type']]);
@@ -2568,7 +2585,7 @@ class index_controller extends common{
                 && $this->config['sy_recommend_day_num'] > 0){
                 $num = $this->obj->DB_select_num('recommend', "`uid`={$this->uid}");
                 if($num >= $this->config['sy_recommend_day_num']){
-                    $data['msg'] = "Ã¿Ìì×î¶àÍÆ¼ö{$this->config['sy_recommend_day_num']}´ÎÖ°Î»/¼òÀú£¡";
+                    $data['msg'] = "Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½{$this->config['sy_recommend_day_num']}ï¿½ï¿½Ö°Î»/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
                     $data['status'] = 1;
 
                     $data['msg'] = iconv("gbk", "utf-8",$data['msg']);
@@ -2585,7 +2602,7 @@ class index_controller extends common{
                 if(isset($row['addtime'])
                     && (time() - $row['addtime']) < $this->config['sy_recommend_interval']){
                     $needTime = $this->config['sy_recommend_interval'] - (time() - $row['addtime']);
-                    $data['msg'] = "ÍÆ¼öÖ°Î»/¼òÀú¼ä¸ô²»µÃÉÙÓÚ{$this->config['sy_recommend_interval']}Ãë£¬Çë{$needTime}Ãëºó²Ù×÷£¡";
+                    $data['msg'] = "ï¿½Æ¼ï¿½Ö°Î»/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{$this->config['sy_recommend_interval']}ï¿½ë£¬ï¿½ï¿½{$needTime}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
                     $data['status'] = 2;
 
                     $data['msg'] = iconv("gbk", "utf-8",$data['msg']);

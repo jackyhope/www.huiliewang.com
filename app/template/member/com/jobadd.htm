@@ -157,6 +157,23 @@
                     });
                     $(".xubox_layer").addClass("xubox_tips_border");
                 },function(){layer.closeTips();});
+                let service_price = '<table style="text-align: center;color: white;width: 240px;font-size: 14px">' +
+                    '<tr><td colspan="2">服务费标准</td></tr>' +
+                    '<tr><td style="text-align: left">综合年薪范围</td> <td>定价</td></tr>'+
+                    '<tr><td style="text-align: left">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; < 年薪 < 20w</td> <td>￥40/每份</td></tr>'+
+                    '<tr><td style="text-align: left">20w ≤ 年薪 ≤ 30w</td> <td>￥50/每份</td></tr>'+
+                    '<tr><td style="text-align: left">30w < 年薪 ≤ 40w</td> <td>￥60/每份</td></tr>'+
+                    '<tr><td style="text-align: left">40w < 年薪 ≤ 50w</td> <td>￥70/每份</td></tr>'+
+                    '<tr><td style="text-align: left">50w < 年薪 ≤ 80w</td> <td>￥80/每份</td></tr>'+
+                    '<tr><td style="text-align: left">80w ≤ 年薪</td> <td>￥90/每份</td></tr>'+
+                    '</table>';
+                $(".com_admin_ask_hjl").hover(function(){
+                    layer.tips(service_price, this, {
+                        guide: 1,
+                        style: ['background-color:#5EA7DC; color:#fff;top:-7px', '#5EA7DC'],
+                    });
+                    $(".xubox_layer").addClass("xubox_tips_border");
+                },function(){layer.closeTips();});
                 $(".job_sex_box_li").hover(function(){
                     var aid=$(this).attr("aid");
                     $(this).addClass("selected");
@@ -376,7 +393,7 @@
                                 <input type="text" size="5" id="maxsalary" name="maxsalary" {yun:}if $row.maxsalary{/yun}value="{yun:}$row.maxsalary{/yun}"{yun:}/if{/yun} onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"  class="job_xz_text" placeholder="最高薪资"{yun:}if !$row.minsalary&&!$row.maxsalary&&$row.id{/yun} disabled="disabled"{yun:}/if{/yun}>
                                 <span class="job_xz_dw">元/月</span>
                             </div>
-                            <span class="job_xz_text_line" style="margin-left:10px;color:#666;line-height:40px;"><label><input style="margin-right:5px;" type="checkbox" id="salary_type" name="salary_type" value="1" onclick="change_salary_type()"{yun:}if !$row.minsalary&&!$row.maxsalary&&$row.id{/yun} checked="checked"{yun:}/if{/yun} />面议</label></span>
+                            <span class="job_xz_text_line" style="margin-left:10px;color:#666;line-height:40px;"><label><input style="margin-right:5px;display: none" type="checkbox" id="salary_type" name="salary_type" value="1" onclick="change_salary_type()"{yun:}if !$row.minsalary&&!$row.maxsalary&&$row.id{/yun} checked="checked"{yun:}/if{/yun} /><!--面议--></label></span>
                     </li>
                     <li>
                         <div class=tit> <font color="#FF0000">*</font>发放月数：</div>
@@ -575,6 +592,14 @@
                                 </div>
                                 {yun:}/foreach{/yun} </div></div>
                     </li>
+                    <div class="admin_tit"> <span class="admin_tit_bg">服务方式</span> </div>
+                    <li>
+                                            <div class=tit> 方式：</div>
+                        <div class=textbox>
+                            <INPUT type="text" size="20" value="慧简历" style="float:left" class="com_info_text" disabled="disabled">
+                            <i class="com_admin_ask_hjl com_admin_ask "></i>
+                    </li>
+                    
                     </ul>
             </div>
 
@@ -648,7 +673,7 @@
 
 </div>
 </div>  {yun:}if !$row.linkmak && !$row.content{/yun}
-<div class="text_tips_bc">
+<div class="text_tips_bc" style="display: none">
     <div class="text_tips_bc_h1"> 保存临时信息</div>
     <div class="text_tips_bc_cont">
         {yun:}if $save.time{/yun}
@@ -681,6 +706,5 @@
     </div>
 
 </div>
-
 {yun:}include file="$comstyle/jobserver.htm"{/yun}
 {yun:}include file="$tplstyle/footer.htm"{/yun}
