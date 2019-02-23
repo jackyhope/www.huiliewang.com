@@ -14,6 +14,7 @@ input {outline: medium none;}
 .mt20 {margin-top: 20px;}
 .clear {clear: both;}
 .fl {float: left}
+.fls {margin-left: -60px}
 .fr {float: right}
 .Orange {color: #F60}
 .red {color: red;}
