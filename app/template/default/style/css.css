@@ -76,7 +76,7 @@ button, input, textarea, th, td { font-family:Source Han Sans CN;}
 .hp_top_dy a{color:#828080;}
 .hp_top_dy a:hover{color:#c30;}
 .hp_top_nav a{color:#828080;}
-.hp_head{width:100%;background:#fff; float:left; padding:30px 0;}
+.hp_head{width:100%;background:#fff; float:left; padding:0 0;}
 .hp_head_ft_logo{}
 .hp_head_ft_city{margin-left:40px; height:30px;line-height:30px;margin-top:15px;background:url(../images/wz.png) no-repeat left;width:180px;}
 .hp_head_ft_city_x{padding-left:20px;}
