@@ -130,7 +130,7 @@ class show_controller extends resume_controller{
             }elseif ($user['username']){
                 $user['uploader'] = "求职者/".$user['username_n'];
             }else{
-                $user['uploader'] = "慧猎网";
+                $user['uploader'] = "慧猎高级人才服务系统";
             }
 
 

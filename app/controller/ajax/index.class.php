@@ -1534,7 +1534,7 @@ class index_controller extends common{
             }else{
                 $kjlogin = '';
 
-                $html='<div class=" fr"><div class="yun_topLogin_cont"><div class="yun_topLogin denglu" style="width:100px;border-right: 1px solid #eee;"><a class="coloess"  href="http://www.zhanjob.com/index.html#/dologin" >内部系统入口</a></div><div class="yun_topLogin" style="width:126px;padding-left: 5px;border-right: 1px solid #eee;"> <a class="coloess" href="http://27.11.211.54:5678/webapp/#/login">南方新华OA系统</a></div><div class="yun_topLogin denglu" style="width:90px;"><a class="coloess" href="http://lt.huiliewang.com">考试系统</a></div></div></div>';
+                $html='<div class=" fr"><div class="yun_topLogin_cont"><div class="yun_topLogin denglu" style="width:100px;border-right: 1px solid #eee;"><a class="coloess"  href="http://www.zhanjob.com/index.html#/dologin" >内部系统入口</a></div><div class="yun_topLogin" style="width:126px;padding-left: 5px;border-right: 1px solid #eee;"> <a class="coloess" href="'.$this->config['sy_ppingurl'].'">南方新华OA系统</a></div><div class="yun_topLogin denglu" style="width:90px;"><a class="coloess" href="http://lt.huiliewang.com">考试系统</a></div></div></div>';
 
                 if($this->config['sy_qqlogin']=='1'||$this->config['sy_sinalogin']=='1'||$this->config['wx_author']=='1'){
 
