@@ -145,25 +145,41 @@
 		<th width="160">客服QQ：</th>
 		<td><input class="input-text" type="text" name="sy_qq" id="sy_qq" value="{yun:}$config.sy_qq{/yun}" size="40" maxlength="255"/> <span class="admin_web_tip">多个则用半角逗号隔开！</span></td>
        
-	</tr>
-	<tr>
-		<th width="160">公司地址：</th>
-		<td><input class="input_text_w290" type="text" name="sy_webadd" id="sy_webadd" value="{yun:}$config.sy_webadd{/yun}" size="80" maxlength="255"/><span class="admin_web_tip">如：上海徐汇区零陵路爱和大厦14A座</span></td>
-      
-	</tr>
+        </tr>
         <tr>
-		<th width="160">品聘地址：</th>
-		<td><input class="input_text_w290" type="text" name="sy_ppingurl" id="sy_ppingurl" value="{yun:}$config.sy_ppingurl{/yun}" size="80" maxlength="255"/><span class="admin_web_tip"></span></td>
-      
-	</tr>
-		<tr class="admin_table_trbg">
-		<th width="160">统计代码：</th>
-        <td><textarea name="sy_webtongji" id="sy_webtongji" rows="3" cols="80" class="web_text_textarea">{yun:}$config.sy_webtongji{/yun}</textarea></td>
-     
-	</tr>
-<tr>
-		<td colspan="3" align="center"><input class="admin_submit4" id="config" type="button" name="config" value="提交">&nbsp;&nbsp;<input class="admin_submit4" type="reset" value="重置"/></td>
-	</tr>
+            <th width="160">公司地址：</th>
+            <td><input class="input_text_w290" type="text" name="sy_webadd" id="sy_webadd" value="{yun:}$config.sy_webadd{/yun}" size="80" maxlength="255"/><span class="admin_web_tip">如：上海徐汇区零陵路爱和大厦14A座</span></td>
+
+        </tr>
+        <tr>
+            <th width="160">品聘地址：</th>
+            <td><input class="input_text_w290" type="text" name="sy_ppingurl" id="sy_ppingurl" value="{yun:}$config.sy_ppingurl{/yun}" size="80" maxlength="255"/><span class="admin_web_tip"></span></td>
+
+        </tr>
+        <tr>
+            <th width="160">慧猎服务系统：</th>
+            <td><input class="input_text_w290" type="text" name="sy_bossurl" id="sy_bossurl" value="{yun:}$config.sy_bossurl{/yun}" size="80" maxlength="255"/><span class="admin_web_tip"></span></td>
+
+        </tr>
+
+        <tr>
+            <th width="160">考试系统：</th>
+            <td><input class="input_text_w290" type="text" name="sy_lturl" id="sy_lturl" value="{yun:}$config.sy_lturl{/yun}" size="80" maxlength="255"/><span class="admin_web_tip"></span></td>
+
+        </tr>
+        <tr>
+            <th width="160">展昭链接：</th>
+            <td><input class="input_text_w290" type="text" name="sy_zzurl" id="sy_zzurl" value="{yun:}$config.sy_zzurl{/yun}" size="80" maxlength="255"/><span class="admin_web_tip"></span></td>
+
+        </tr>
+        <tr class="admin_table_trbg">
+            <th width="160">统计代码：</th>
+            <td><textarea name="sy_webtongji" id="sy_webtongji" rows="3" cols="80" class="web_text_textarea">{yun:}$config.sy_webtongji{/yun}</textarea></td>
+
+        </tr>
+        <tr>
+            <td colspan="3" align="center"><input class="admin_submit4" id="config" type="button" name="config" value="提交">&nbsp;&nbsp;<input class="admin_submit4" type="reset" value="重置"/></td>
+        </tr>
 </table>  
 </div>
 <div class="hiddendiv"> 
@@ -703,6 +719,9 @@ $(function(){
 			sy_listnum : $("#sy_listnum").val(), 
 			sy_webadd : $("#sy_webadd").val(),
                         sy_ppingurl : $("#sy_ppingurl").val(),
+                        sy_bossurl : $('#sy_bossurl').val(),
+                        sy_lturl : $('#sy_lturl').val(),
+                        sy_zzurl : $("#sy_zzurl").val(),
 			sy_rand : $("#sy_rand").val(),
 			sy_city_online: $("input[name=sy_city_online]:checked").val(),
 			sy_webclose: $("#sy_webclose").val(),  
