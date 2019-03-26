@@ -48,10 +48,10 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.20') !== FALSE) {//���Ի�
         'timezone' => 'PRC',
         'coding' => 'utf8',
     );
-} elseif (strpos($_SERVER['SERVER_ADDR'], '192.168') !== false) {//���ػ���
+} elseif (strpos($_SERVER['SERVER_ADDR'], '192.168') !== false || strpos($_SERVER['SERVER_ADDR'], '127.0') !== false) {//���ػ���
     $db_config = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.116.20',
+        'dbhost' => '192.168.0.195',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'huiliewang',
@@ -63,7 +63,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.20') !== FALSE) {//���Ի�
 
     $db_config1 = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.116.20',
+        'dbhost' => '192.168.0.195',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'resume',
