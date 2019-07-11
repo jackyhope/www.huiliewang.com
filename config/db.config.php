@@ -51,7 +51,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.20') !== FALSE) {//ï¿½ï¿½ï¿½Ô»ï
 } elseif (strpos($_SERVER['SERVER_ADDR'], '192.168') !== false || strpos($_SERVER['SERVER_ADDR'], '127.0') !== false) {//ï¿½ï¿½ï¿½Ø»ï¿½ï¿½ï¿½
     $db_config = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.0.195',
+        'dbhost' => '192.168.0.118',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'huiliewang',
@@ -63,7 +63,7 @@ if (strpos($_SERVER['SERVER_ADDR'], '192.168.116.20') !== FALSE) {//ï¿½ï¿½ï¿½Ô»ï
 
     $db_config1 = array(
         'dbtype' => 'mysql',
-        'dbhost' => '192.168.0.195',
+        'dbhost' => '192.168.0.248',
         'dbuser' => 'root',
         'dbpass' => '123456',
         'dbname' => 'resume',
