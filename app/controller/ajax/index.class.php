@@ -1416,7 +1416,7 @@ class index_controller extends common{
 			$user_reg='<li><a href="'.$reg_url.'">个人注册</a></li>';
 			$com_reg='<li><a href="'.$reg_com_url.'">企业注册</a></li>';
 			$kjlogin = '';
-			$html='<div class=" fr"><div class="yun_topLogin_cont"><div class="yun_topLogin"><a class="yun_More" href="javascript:void(0)">用户登陆</a><ul class="yun_Moredown" style="display:none">'.$login.'{kjlogin}</ul></div><div class="yun_topLogin"> <a class="yun_More yun_More_cor yun_More_cor_red" href="javascript:void(0)">免费注册</a><ul class="yun_Moredown fn-hide" style="display:none">'.$user_reg.$com_reg.'</ul></div></div></div>';
+			$html='<div class=" fr"><div class="yun_topLogin_cont"><div class="yun_topLogin"><a class="yun_More" href="javascript:void(0)">用户登陆</a><ul class="yun_Moredown" style="display:none">'.$login.'{kjlogin}</ul></div><div class="yun_topLogin"> <a class="yun_More yun_More_cor yun_More_cor_red" href="javascript:void(0)">免费注册</a><ul class="yun_Moredown fn-hide" style="display:none">'.$com_reg.'</ul></div></div></div>';
 			if($this->config['sy_qqlogin']=='1'||$this->config['sy_sinalogin']=='1'||$this->config['sy_wxlogin']=='1'){
 			
 				if($_GET['type']=='index'){
@@ -2220,7 +2220,7 @@ class index_controller extends common{
 			$reg_url = Url("register",array("usertype"=>"1",'type'=>1),"1");
 			$reg_com_url = Url("register",array("usertype"=>"2",'type'=>1),"1");
 			$style = $this->config['sy_weburl']."/app/template/".$this->config['style'];
-			$html.='<div class="hp_top_rt_login fl">你好，请<a class="hp_top_rt_login_g" href="'.$log_url.'">登陆</a></div><i class="hp_top_line fl"> | </i><div class="hp_top_rt_regist fl"><a class="hp_top_rt_regist_m" href="javascript:void(0);">免费注册 <i class="hp_top_rg_down"></i></a><div class="hp_top_regist_list" style="display:none;"><ul><li><a href="'.$reg_url.'">个人注册</a></li><li><a href="'.$reg_com_url.'">企业注册</a></li></ul></div></div>';
+			$html.='<div class="hp_top_rt_login fl">你好，请<a class="hp_top_rt_login_g" href="'.$log_url.'">登陆</a></div><i class="hp_top_line fl"> | </i><li><a href="'.$reg_com_url.'">注册</a></li></ul></div>';
 						
 			echo "document.write('".$html."');";
 		}
