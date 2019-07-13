@@ -138,8 +138,75 @@ class index_controller extends common{
 		$arr['msg']=yun_iconv("gbk","utf-8",$msg);
 		echo json_encode($arr);die;
 	}
-	function regsave_action(){
 
+	//验证电话是否存在
+	function checktel_action(){
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
+        $tel = baseUtils::getStr(trim($_GET['tel']));
+        apiClient::init($appid, $secret);
+        $register = new com\hlw\huiliewang\interfaces\HlwRegisterServiceClient(null);
+        apiClient::build($register);
+        $result = $register->checkTel($tel);
+        $arr['code'] = $result->code;
+        $arr['message'] = $result->message;
+        $arr['success'] = $result->success;
+        echo  json_encode($arr);die;
+    }
+
+    //向手机发送验证码
+    function sendtel_action(){
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
+        $tel = baseUtils::getStr(trim($_GET['tel']));
+        $randstr = rand(100000,999999);
+        require APP_PATH."/app/public/sms.mod.php";
+        session_start();
+        if(sendSms($tel,$randstr)){
+            unset($_SESSION['code']);
+            unset($_SESSION['code_time']);
+            $_SESSION['code'] = $randstr;
+            $_SESSION['code_time'] = time();
+            $arr['code'] = '200';
+            $arr['message'] = yun_iconv("gbk","utf-8",'发送成功');
+            $arr['success'] = true;
+            echo json_encode($arr);die;
+        }else{
+            $arr['code'] = 200;
+            $arr['message'] = yun_iconv("gbk","utf-8",'发送失败');
+            $arr['success'] = false;
+            echo json_encode($arr);die;
+        }
+    }
+
+    //注册记录用户信息
+    function registcom_action(){
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
+        $tel = baseUtils::getStr(trim($_GET['tel']));
+        $code = baseUtils::getStr(trim($_GET['code']));
+        session_start();
+        $session_code = $_SESSION['code'];
+        $session_codetime = $_SESSION['code_time'];
+        $invitecode = baseUtils::getStr(trim($_GET['invitecode']));
+        apiClient::init($appid, $secret);
+        $register = new com\hlw\huiliewang\interfaces\HlwRegisterServiceClient(null);
+        $request = new com\hlw\huiliewang\dataobject\register\registerRequestDTO();
+        $request->tel = $tel;
+        $request->code = $code;
+        $request->session_code  = $session_code;
+        $request->code_time = $session_codetime;
+        $request->invite = $invitecode;
+        apiClient::build($register);
+        $result = $register->regist($request);
+        $arr['code'] = $result->code;
+        $arr['message'] = $result->message;
+        $arr['success'] = $result->success;
+        echo json_encode($arr);die;
+    }
+
+
+	function regsave_action(){
 		if($this->config['reg_user_stop']!=1){
 			$this->errjson('网站已关闭注册！');
 		}
