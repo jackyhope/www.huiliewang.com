@@ -264,6 +264,148 @@ class info_controller extends company {
         }
     }
 
+    /**
+     * @desc 资料更新接口
+     */
+    function saveInfo_action() {
+        $uid = $this->uid;
+        delfiledir("../data/upload/tel/" . $uid);
+        $company = $this->obj->DB_select_once("company", "`uid`='" . $this->uid . "'");
+        //LOGO图片处理
+        $logo = '';
+        if (isset($_FILES['uplocadpic']['tmp_name'])) {
+            $upload = $this->upload_pic("../data/upload/company/", false, $this->config['com_pickb']);
+            $pictures = $upload->picture($_FILES['uplocadpic']);
+            $this->picmsg($pictures, $_SERVER['HTTP_REFERER']);
+            $s_thumb = $upload->makeThumb($pictures, 185, 75, '_S_');
+            $logo = str_replace("../data/upload/company", "./data/upload/company", $s_thumb);
+            if ($company['logo']) {
+                unlink_pic("." . $company['logo']);
+            }
+        }
+        //firmpic 图片处理
+        $firmpic = '';
+        if (isset($_FILES['firmpic']['tmp_name'])) {
+            $upload = $this->upload_pic("../data/upload/company/", false, $this->config['com_uppic']);
+            $firmpic = $upload->picture($_FILES['firmpic']);
+            $this->picmsg($firmpic, $_SERVER['HTTP_REFERER']);
+            $firmpic = str_replace("../data/upload/company", "./data/upload/company", $firmpic);
+            if ($company['firmpic']) {
+                unlink_pic("." . $company['firmpic']);
+            }
+        }
+        //修改操作
+        $name = baseUtils::getStr($_POST['name']);
+        try {
+            ApiClient::init($appid, $secret);
+            $companyInfoService = new com\hlw\huiliewang\interfaces\company\CompanyInfoServiceClient(null);
+            ApiClient::build($companyInfoService);
+            $infoRequestDo = new com\hlw\huiliewang\dataobject\company\companyInfoRequestDTO();
+            $infoRequestDo->name = $name;
+            $infoRequestDo->linkmail = baseUtils::getStr($_POST['linkmail']);
+            $infoRequestDo->linktel = baseUtils::getStr($_POST['linktel']);
+            $infoRequestDo->linkjob = baseUtils::getStr($_POST['linkjob']);
+            $infoRequestDo->linkman = baseUtils::getStr($_POST['linkman']);
+            $infoRequestDo->linkqq = baseUtils::getStr($_POST['linkqq']);
+            $infoRequestDo->provinceid = baseUtils::getStr($_POST['provinceid']);
+            $infoRequestDo->cityid = baseUtils::getStr($_POST['cityid']);
+            $infoRequestDo->three_cityid = baseUtils::getStr($_POST['three_cityid']);
+            $infoRequestDo->pr = baseUtils::getStr($_POST['pr']);
+            $infoRequestDo->hy = baseUtils::getStr($_POST['hy']);
+            $infoRequestDo->mun = baseUtils::getStr($_POST['mun']);
+            $infoRequestDo->phoneone = baseUtils::getStr($_POST['phoneone']);
+            $infoRequestDo->phonetwo = baseUtils::getStr($_POST['phonetwo']);
+            $infoRequestDo->phonethree = baseUtils::getStr($_POST['phonethree']);
+            $infoRequestDo->zip = baseUtils::getStr($_POST['zip']);
+            $infoRequestDo->firmpic = $firmpic;
+            $infoRequestDo->logo = $logo;
+            $infoRequestDo->busstops = baseUtils::getStr($_POST['busstops']);
+            $infoRequestDo->address = baseUtils::getStr($_POST['address']);
+            $infoRequestDo->moneytype = baseUtils::getStr($_POST['moneytype']);
+            $infoRequestDo->uid = $uid;
+            $infoRequestDo->content = baseUtils::getStr($_POST['content'],'html');
+            $infoRequestDo->comqcode = isset($_POST['comqcode']) ? baseUtils::getStr($_POST['comqcode']) : '';
+            $infoRequestDo->sdate = baseUtils::getStr($_POST['sdate']);
+
+            $infoRequestDo->money = baseUtils::getStr($_POST['money']);
+            $infoRequestDo->website = baseUtils::getStr($_POST['website']);
+            $infoRequestDo->infostatus = baseUtils::getStr($_POST['infostatus']);
+            $infoRes = $companyInfoService->save($infoRequestDo);;
+        } catch (Exception $e) {
+            $message = "更新失败！API服务失败" . $e->getMessage();
+            $return = ['success' => false, 'code' => 500, 'info' => $message];
+            exit(json_encode($return));
+        }
+        if ($infoRes->code != 200) {
+            $return = ['success' => false, 'code' => 500, 'info' => $infoRes->message];
+            exit(json_encode($return));
+        }
+
+        $this->saveAfter($name, $company);
+
+        //同步到OA
+        try {
+            ApiClient::init($appid, $secret);
+            $customerService = new com\hlw\huilie\interfaces\CustomerServiceClient(null);
+            apiClient::build($customerService);
+            $customerDo = new com\hlw\huilie\dataobject\customer\CustomerRequestDTO();
+            $customerDo->name = baseUtils::getStr($_POST['name']);
+            $customerDo->address = baseUtils::getStr($_POST['address']);
+            $customerDo->linkman = baseUtils::getStr($_POST['linkman']);
+            $customerDo->linktel = baseUtils::getStr($_POST['linktel']);
+            $customerDo->phoneone = baseUtils::getStr($_POST['phoneone']);
+            $customerDo->phonetwo = baseUtils::getStr($_POST['phonetwo']);
+            $customerDo->phonethree = baseUtils::getStr($_POST['phonethree']);
+            $customerDo->content = baseUtils::getStr($_POST['content']);
+            $customerDo->sdate = baseUtils::getStr($_POST['sdate']);
+            $customerDo->money = baseUtils::getStr($_POST['money']);
+            $customerDo->zip = baseUtils::getStr($_POST['zip']);
+            $customerDo->linkjob = baseUtils::getStr($_POST['linkjob']);
+            $customerDo->linkqq = baseUtils::getStr($_POST['linkqq']);
+            $customerDo->linkmail = baseUtils::getStr($_POST['linkmail']);
+            $customerDo->website = baseUtils::getStr($_POST['website']);
+            $customerDo->busstops = baseUtils::getStr($_POST['busstops']);
+            $customerDo->hy = baseUtils::getStr($_POST['hy']);
+            $customerDo->mun = baseUtils::getStr($_POST['mun']);
+            $customerService->saveCustomer($customerDo);
+        } catch (Exception $ex) {
+            $message = $ex->getMessage();
+        }
+        $message = "更新成功";
+        $this->ACT_layer_msg("更新成功！", 9, "index.php?c=info");
+        $return = ['success' => true, 'code' => 200, 'info' => $message];
+        exit(json_encode($return));
+    }
+
+    /**
+     * @desc 更新后操作
+     * @param $companyName
+     * @param $company
+     */
+    private function saveAfter($companyName, $company) {
+        $this->obj->DB_delete_all("lssave", "`uid`='" . $this->uid . "'and `savetype`='3'");
+        $this->obj->member_log("修改企业信息", 7);
+
+        if ($company['lastupdate'] == "") {
+            if ($this->config['integral_userinfo_type'] == "1") {
+                $auto = true;
+            } else {
+                $auto = false;
+            }
+
+            $this->company_invtal($this->uid, $this->config['integral_userinfo'], $auto, "首次填写基本资料", true, 2, 'integral', 25);
+        }
+        if ($companyName != $company['name'] && $companyName) {
+            $this->obj->update_once("hotjob", array("username" => $companyName), array("uid" => $this->uid));
+            $this->obj->update_once("partjob", array("com_name" => $companyName), array("uid" => $this->uid));
+            $this->obj->update_once("userid_job", array("com_name" => $companyName), array("com_id" => $this->uid));
+            $this->obj->update_once("fav_job", array("com_name" => $companyName), array("com_id" => $this->uid));
+            $this->obj->update_once("report", array("r_name" => $companyName), array("c_uid" => $this->uid));
+            $this->obj->update_once("blacklist", array("com_name" => $companyName), array("c_uid" => $this->uid));
+            $this->obj->update_once("msg", array("com_name" => $companyName), array("job_uid" => $this->uid));
+        }
+        return;
+    }
 }
 
 ?>
