@@ -183,12 +183,12 @@ class index_controller extends common{
     function registcom_action(){
         include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
         include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
-        $tel = baseUtils::getStr(trim($_GET['tel']));
-        $code = baseUtils::getStr(trim($_GET['code']));
+        $tel = baseUtils::getStr(trim($_POST['tel']));
+        $code = baseUtils::getStr(trim($_POST['code']));
         session_start();
         $session_code = $_SESSION['code'];
         $session_codetime = $_SESSION['code_time'];
-        $invitecode = baseUtils::getStr(trim($_GET['invitecode']));
+        $invitecode = baseUtils::getStr(trim($_POST['invitecode']));
         apiClient::init($appid, $secret);
         $register = new com\hlw\huiliewang\interfaces\HlwRegisterServiceClient(null);
         $request = new com\hlw\huiliewang\dataobject\register\registerRequestDTO();

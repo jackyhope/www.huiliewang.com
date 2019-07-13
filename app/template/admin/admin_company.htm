@@ -236,7 +236,7 @@ function checkguwen(id){
     $('#gwuid').val(id);
 	$.layer({
 		type : 1,
-		title :'分配顾问', 
+		title :'分配BD',
 		closeBtn : [0 , true],
 		border : [10 , 0.3 , '#000', true],
 		area : ['350px','260px'],
@@ -390,7 +390,7 @@ function manage(comid,url){
 <a href="javascript:void(0);" class="admin_operation_but_a" id="m_lock">锁定企业</a>
 <!--a href="javascript:void(0);" class="admin_operation_but_a" id="m_delcom">删除企业</a-->
 <a href="javascript:void(0);" class="admin_operation_but_a" id="m_check">审核企业</a>
-<a href="javascript:void(0);" class="admin_operation_but_a" id="m_guwen">分配顾问</a>
+<a href="javascript:void(0);" class="admin_operation_but_a" id="m_guwen">分配BD</a>
 </div>
 
 <input type="hidden" id="m_yyzzurl" value=""/>
@@ -762,12 +762,12 @@ function manage(comid,url){
 		</div>
 		
 		<div class="admin_compay_fp">
-			<span class="admin_compay_fp_s">顾问搜索：</span>
+			<span class="admin_compay_fp_s">BD搜索：</span>
 			<input type="text" value="" id="gwkeyword" class="admin_compay_fp_sub">
 			<input type='button' onclick="searchs('1')"value="搜索" class="admin_compay_fp_sub1">
 		</div>
 		<div class="admin_compay_fp" style="height:34px;">
-			<span class="admin_compay_fp_s" style="float:left; line-height:34px; display:inline-block; margin-right:5px;">选择顾问：</span>
+			<span class="admin_compay_fp_s" style="float:left; line-height:34px; display:inline-block; margin-right:5px;">选择BD：</span>
 			<div class="yun_admin_select_box zindex100" id="gw_option"> 
             	<input type="button" value="请选择" class="yun_admin_select_box_text" id="gw_name" onClick="select_click('gw');">
                 <input name="conid" type="hidden" id="gw_val" value="">
