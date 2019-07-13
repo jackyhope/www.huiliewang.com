@@ -344,6 +344,7 @@ class info_controller extends company {
         $this->saveAfter($name, $company);
 
         //同步到OA
+        $message = '';
         try {
             ApiClient::init($appid, $secret);
             $customerService = new com\hlw\huilie\interfaces\CustomerServiceClient(null);
@@ -371,8 +372,7 @@ class info_controller extends company {
         } catch (Exception $ex) {
             $message = $ex->getMessage();
         }
-        $message = "更新成功";
-        $this->ACT_layer_msg("更新成功！", 9, "index.php?c=info");
+        !$message && $message = "更新成功";
         $return = ['success' => true, 'code' => 200, 'info' => $message];
         exit(json_encode($return));
     }
