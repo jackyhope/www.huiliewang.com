@@ -821,7 +821,7 @@ class admin_company_controller extends common{
         $addtime = time();
         $roleId = baseUtils::getStr(trim($_GET['role_id']),'int');
         $rname = baseUtils::getStr(trim($_GET['username']));
-        apiClient::init($appid,$secret);
+        apiClient::init($appid,$secret);//
         $adminmanager = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
         apiClient::build($adminmanager);
         $res = $adminmanager->addBD($userId,$addtime,$roleId,$rname);
