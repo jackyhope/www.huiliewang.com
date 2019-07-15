@@ -2481,5 +2481,15 @@ class common{
 		}
 		return $html;
 	}
+
+    /**
+     * @desc  ajax返回
+     * @param $data
+     */
+    function jsonReturn($data){
+	    $data['info'] = yun_iconv("gbk","utf-8",$data['info']);
+        exit(json_encode($data));
+    }
+
 }
 ?>

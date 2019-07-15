@@ -51,7 +51,7 @@ class info_controller extends company {
         $this->com_tpl('info');
     }
 
-    function save_action() {
+    function saveInfo_action() {
         if ($_POST['submitbtn']) {
             $_POST = $this->post_trim($_POST);
             if (trim($_POST['linktel'])) {
@@ -267,7 +267,7 @@ class info_controller extends company {
     /**
      * @desc 资料更新接口
      */
-    function saveInfo_action() {
+    function save_action() {
         $uid = $this->uid;
         delfiledir("../data/upload/tel/" . $uid);
         $company = $this->obj->DB_select_once("company", "`uid`='" . $this->uid . "'");
@@ -334,11 +334,11 @@ class info_controller extends company {
         } catch (Exception $e) {
             $message = "更新失败！API服务失败" . $e->getMessage();
             $return = ['success' => false, 'code' => 500, 'info' => $message];
-            exit(json_encode($return));
+            $this->jsonReturn($return);
         }
         if ($infoRes->code != 200) {
             $return = ['success' => false, 'code' => 500, 'info' => $infoRes->message];
-            exit(json_encode($return));
+            $this->jsonReturn($return);
         }
 
         $this->saveAfter($name, $company);
@@ -374,7 +374,7 @@ class info_controller extends company {
         }
         !$message && $message = "更新成功";
         $return = ['success' => true, 'code' => 200, 'info' => $message];
-        exit(json_encode($return));
+        $this->jsonReturn($return);
     }
 
     /**

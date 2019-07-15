@@ -546,4 +546,42 @@ function gtverify(){
   return true;
 }
 
+/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+/**
+ * date  2019-07-13
+ * author hellocrab
+ * @param string $msg
+ * @param int $code
+ * 返回一个error  success 状态类型的json数据
+ */
+function return_json($msg='操作成功',$code=200,$data=[]){
+	if(count($data)>0){
+		if(!isset($data['message']) || empty($data['message'])){
+			$data['message']=$msg;
+		}
+		if(!isset($data['code']) || empty($data['code'])){
+			$data['code']=$code;
+		}
+		echo json_encode($data);die;
+	}else{
+		echo '{"message":"'.$msg.'","code":'.$code.'}';die;
+	}
+}
+
+
+/**
+ * date  2019-07-13
+ * author hellocrab
+ * 把对象转换为数组
+ * @param $obj
+ * @return bool|mixed
+ */
+function return_toArray($obj){
+	if(gettype($obj)=='object'){
+		return json_decode(json_encode($obj),true);
+	}else{
+		return true;
+	}
+}
+/* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 ?>
