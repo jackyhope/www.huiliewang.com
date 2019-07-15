@@ -51,7 +51,7 @@ class info_controller extends company {
         $this->com_tpl('info');
     }
 
-    function saveInfo_action() {
+    function save_action() {
         if ($_POST['submitbtn']) {
             $_POST = $this->post_trim($_POST);
             if (trim($_POST['linktel'])) {
@@ -267,8 +267,13 @@ class info_controller extends company {
     /**
      * @desc 资料更新接口
      */
-    function save_action() {
+    function saveInfo_action() {
         $uid = $this->uid;
+        $cert = $this->obj->DB_select_once("company_cert", "`uid`='" . $uid . "' and type='3'");
+        if(!$cert || $cert['status'] != 1){
+            $return = ['success' => false, 'code' => 500, 'info' => '请先认证'];
+            $this->jsonReturn($return);
+        }
         delfiledir("../data/upload/tel/" . $uid);
         $company = $this->obj->DB_select_once("company", "`uid`='" . $this->uid . "'");
         //LOGO图片处理
