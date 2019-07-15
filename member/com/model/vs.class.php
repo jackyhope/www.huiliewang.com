@@ -1,13 +1,15 @@
 <?php
 /* *
-* $Author £ºPHPYUN¿ª·¢ÍÅ¶Ó
+* $Author ï¿½ï¿½PHPYUNï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½
 *
-* ¹ÙÍø: http://www.phpyun.com
+* ï¿½ï¿½ï¿½ï¿½: http://www.phpyun.com
 *
-* °æÈ¨ËùÓÐ 2009-2017 ËÞÇ¨öÎ³±ÐÅÏ¢¼¼ÊõÓÐÏÞ¹«Ë¾£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
+* ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ 2009-2017 ï¿½ï¿½Ç¨ï¿½Î³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½
 *
-* Èí¼þÉùÃ÷£ºÎ´¾­ÊÚÈ¨Ç°ÌáÏÂ£¬²»µÃÓÃÓÚÉÌÒµÔËÓª¡¢¶þ´Î¿ª·¢ÒÔ¼°ÈÎºÎÐÎÊ½µÄÔÙ´Î·¢²¼¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½È¨Ç°ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Óªï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Îºï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ù´Î·ï¿½ï¿½ï¿½ï¿½ï¿½
 */
+ini_set('display_errors', 1);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 class vs_controller extends company
 {
 	function index_action(){
@@ -21,13 +23,13 @@ class vs_controller extends company
 			if(is_array($info)){
 				$oldpass = md5(md5($_POST['oldpassword']).$info['salt']);
 				if($info['password']!=$oldpass){
- 					$this->ACT_layer_msg("Ô­Ê¼ÃÜÂë´íÎó£¡",8,"index.php?c=vs");
+ 					$this->ACT_layer_msg("Ô­Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",8,"index.php?c=vs");
 				}
 				if($this->config['sy_uc_type']=="uc_center" && $info['name_repeat']!="1"){
 					$this->uc_open();
 					$ucresult= uc_user_edit($info['username'], $_POST['oldpassword'], $_POST['password'], "","1");
 					if($ucresult == -1) {
- 						$this->ACT_layer_msg("Ô­Ê¼ÃÜÂë´íÎó£¡",8,"index.php?c=vs");
+ 						$this->ACT_layer_msg("Ô­Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",8,"index.php?c=vs");
 					}
 				}else{
 					$salt = substr(uniqid(rand()), -6);
@@ -37,10 +39,78 @@ class vs_controller extends company
 					$this->obj->update_once("member",$data,array("uid"=>$this->uid));
 				}
 				$this->unset_cookie();
-				$this->obj->member_log("ÐÞ¸ÄÃÜÂë",8);
- 				$this->ACT_layer_msg("ÃÜÂëÐÞ¸Ä³É¹¦£¬ÇëÖØÐÂµÇÂ¼£¡",9,$this->config['sy_weburl']."/index.php?m=login&usertype=".$_POST['usertype']);
+				$this->obj->member_log("ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½",8);
+ 				$this->ACT_layer_msg("ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½",9,$this->config['sy_weburl']."/index.php?m=login&usertype=".$_POST['usertype']);
 			}
 		}
 	}
+
+	//å¾€æ‰‹æœºå‘éªŒè¯
+    function phone_action(){
+	    session_start();
+	    $oldphone = baseUtils::getStr(trim($_GET['oldphone']));
+	    $uid = baseUtils::getStr(trim($_GET['uid']),'int');
+	    $username = baseUtils::getStr(trim($_GET['username']));
+	    $code = rand(100000,999999);
+	    $content= 'ã€æ…§çŒŽç½‘ã€‘æ‚¨çš„éªŒè¯ç æ˜¯ '.$code.',è¯·å‹¿æ³„æ¼ä»–äººï¼Œæ„Ÿè°¢æ‚¨çš„æ”¯æŒ!';
+	    unset($_SESSION['phone_code']);
+	    $_SESSION['phone_code'] = $code;
+	    $_SESSION['phone'] = $oldphone;
+	    apiClient::init($appid,$secret);
+        $sysmsg =  new com\hlw\huiliewang\dataobject\sysmsg\sysmsgRequestDTO();
+        $sysmsg->uid = $uid;
+        $sysmsg->phone = $oldphone;
+        $sysmsg->name = $username;
+        $sysmsg->content = $content;
+        $msgclient = new com\hlw\huiliewang\interfaces\sysmsg\SysmsgServiceClient(null);
+        apiClient::build($msgclient);
+        $res = $msgclient->sendMSG($sysmsg);
+        $arr['code'] = $res->code;
+        $arr['success'] = $res -> success;
+        $arr['message'] = $res -> message;
+        echo json_encode($arr);die;
+    }
+
+    //éªŒè¯ç æ ¡éªŒ
+    function verify_action(){
+	    session_start();
+	    $phone = baseUtils::getStr(trim($_POST['phone']));
+	    $code = baseUtils::getStr(trim($_POST['code']));
+	    $session_phone = $_SESSION['phone'];
+	    $session_code = $_SESSION['phone_code'];
+	    if($phone == $session_phone){
+            if($code == $session_code){
+                $arr['code'] = 200;
+                $arr['success'] = true;
+                $arr['message'] = 'éªŒè¯æˆåŠŸ';
+                echo json_encode($arr);die;
+            }else{
+                $arr['code'] = 500;
+                $arr['success'] = true;
+                $arr['message'] = 'éªŒè¯ç æœ‰è¯¯';
+                echo json_encode($arr);die;
+            }
+        }else{
+            $arr['code'] = 500;
+            $arr['success'] = true;
+            $arr['message'] = 'æ‰‹æœºå·æœ‰è¯¯';
+            echo json_encode($arr);die;
+        }
+    }
+
+    //è®¾ç½®æ–°æ‰‹æœº
+    function newphone_action(){
+        $newphone = baseUtils::getStr(trim($_POST['newphone']));
+        $uid = baseUtils::getStr(trim($_POST['uid']),'int');
+        apiClient::init($appid,$secret);
+        $adminManager = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
+        apiClient::build($adminManager);
+        $res = $adminManager->modifyphone($uid,$newphone);
+        $arr['code'] = $res->code;
+        $arr['message'] = $res->message;
+        $arr['success'] = $res -> success;
+        echo json_encode($arr);
+    }
+
 }
 ?>
