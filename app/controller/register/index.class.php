@@ -138,8 +138,30 @@ class index_controller extends common{
 		$arr['msg']=yun_iconv("gbk","utf-8",$msg);
 		echo json_encode($arr);die;
 	}
-	function regsave_action(){
 
+	//判定手机号是否存在
+    function checktel_action(){
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
+        $tel = baseUtils::getStr(trim($_GET['tel']));
+        apiClient::init($appid, $secret);
+        $register = new com\hlw\huiliewang\interfaces\HlwRegisterServiceClient(null);
+        var_dump('dfadfa');die;
+        apiClient::build($register);
+        $result = $register->checkTel($tel);
+        $arr['code'] = $result->code;
+        $arr['message'] = $result->message;
+        $arr['success'] = $result->success;
+        echo 'dsafsd';
+        echo  json_encode($arr);die;
+    }
+
+	//短信验证
+    function regcheckmob_action(){
+
+    }
+
+	function regsave_action(){
 		if($this->config['reg_user_stop']!=1){
 			$this->errjson('网站已关闭注册！');
 		}
