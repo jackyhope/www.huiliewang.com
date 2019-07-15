@@ -174,10 +174,11 @@ class admin_company_controller extends common{
 		$urlarr['page']="{{page}}";
 		$pageurl=Url($_GET['m'],$urlarr,'admin');
 		$rows=$this->get_page("company",$where,$pageurl,$this->config['sy_listnum']);
+
  		if(is_array($rows)&&$rows){
 			if($mwhere=='1'&&empty($username)){
 				foreach($rows as $v){$uids[]=$v['uid'];}
-				$username=$this->obj->DB_select_all("member","`uid` in (".@implode(",",$uids).")","`username`,`uid`,`reg_date`,`login_date`,`reg_ip`,`status`,`source`,`login_ip`");
+				$username=$this->obj->DB_select_all("member","`uid` in (".@implode(",",$uids).")","`username`,`uid`,`reg_date`,`login_date`,`reg_ip`,`status`,`source`,`login_ip`,`moblie`");
 			}
 			if($swhere=='1'&&empty($list)){
 				$list=$this->obj->DB_select_all("company_statis","`uid` in (".@implode(",",$uids).")","`uid`,`pay`,`integral`,`rating`,`rating_name`,`vip_etime`,`msg_num`");
@@ -199,6 +200,7 @@ class admin_company_controller extends common{
 						$rows[$k]['status']=$val['status'];
 						$rows[$k]['source']=$val['source'];
 						$rows[$k]['login_ip']=$val['login_ip'];
+						$rows[$k]['moblie']=$val['moblie'];
 					}
 				}
 				foreach($list as $val){
@@ -218,6 +220,7 @@ class admin_company_controller extends common{
 				}
 			}
 		}
+
 		$guweninfo=$this->obj->DB_select_all("company_consultant","`id`>'0'");
 		$this->yunset("guweninfo",$guweninfo);
 		$nav_user=$this->obj->DB_select_alls("admin_user","admin_user_group","a.`m_id`=b.`id` and a.`uid`='".$_SESSION["auid"]."'");
@@ -240,6 +243,7 @@ class admin_company_controller extends common{
 		/***分站******/
 		$this->yunset("where", $where);
 		$this->yunset("rows",$rows);
+		echo '<pre>';print_r($rows[0]);die;
 		$this->yuntpl(array('admin/admin_company'));
 	}
 
@@ -776,6 +780,58 @@ class admin_company_controller extends common{
 		 	$this->ACT_layer_msg( "非法操作！",8,$_SERVER['HTTP_REFERER']);
 		 }
 	}
+
+	//BD列表
+    function showbd_action(){
+        apiClient::init($appid,$secret);
+        $adminmanager = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
+        apiClient::build($adminmanager);
+        $res = $adminmanager->bdList();
+        $arr['code'] = $res->code;
+        $arr['message'] = yun_iconv("gbk","utf-8",$res->message);
+        $arr['success'] = $res->success;
+        $data = $res -> data;
+        foreach ($data as $k=>$v){
+            $data[$k]['full_name'] = yun_iconv("gbk","utf-8",$v['full_name']);
+        }
+        $arr['data'] = $data;
+        echo json_encode($arr);die;
+    }
+
+    //按名字查询BD
+    function searchbd_action(){
+	    $name = baseUtils::getStr(trim($_GET['name']));
+	    apiClient::init($appid,$secret);
+	    $adminmanager = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
+	    apiClient::build($adminmanager);
+	    $res = $adminmanager->searBD($name);
+        $arr['code'] = $res->code;
+        $arr['message'] = yun_iconv("gbk","utf-8",$res->message);
+        $arr['success'] = $res->success;
+        $data = $res -> data;
+        foreach ($data as $k=>$v){
+            $data[$k]['full_name'] = yun_iconv("gbk","utf-8",$v['full_name']);
+        }
+        $arr['data'] = $data;
+        echo json_encode($arr);die;
+    }
+
+    //BD分配
+    function addbd_action(){
+        $userId = baseUtils::getStr(trim($_GET['uid']),'int');
+        $addtime = time();
+        $roleId = baseUtils::getStr(trim($_GET['role_id']),'int');
+        apiClient::init($appid,$secret);
+        $adminmanager = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
+        apiClient::build($adminmanager);
+        $res = $adminmanager->addBD($userId,$addtime,$roleId);
+
+        $arr['code'] = $res->code;
+        $arr['message'] = yun_iconv("gbk","utf-8",$res->message);
+        $arr['success'] = $res->success;
+        echo json_encode($arr);die;
+    }
+
 	function status_action(){
 		 extract($_POST);
 		 $member=$this->obj->DB_select_all("member","`uid` in (".$uid.")","`email`,`moblie`,`uid`");
