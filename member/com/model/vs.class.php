@@ -109,7 +109,7 @@ class vs_controller extends company
         $arr['code'] = $res->code;
         $arr['message'] = $res->message;
         $arr['success'] = $res -> success;
-        echo json_encode($arr);
+        echo json_encode($arr);//dafdsafsd
     }
 
 }
