@@ -10,7 +10,8 @@
  * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
  */
 
-class jobadd_controller extends company {
+class jobadd_controller extends company
+{
 
     function index_action() {
         include(CONFIG_PATH . "db.data.php");
@@ -85,7 +86,7 @@ class jobadd_controller extends company {
         $this->yunset("arr_data", $arr_data);
         $statics = $this->company_satic();
         if ($_GET['id']) {
-            $id = (int) $_GET['id'];
+            $id = (int)$_GET['id'];
         } else {
             if ($_GET['jobcopy']) {
                 if ($statics['addjobnum'] == 2) {
@@ -94,7 +95,7 @@ class jobadd_controller extends company {
                     }
                 }
             }
-            $id = (int) $_GET['jobcopy'];
+            $id = (int)$_GET['jobcopy'];
         }
         $row = $this->obj->DB_select_once("company_job", "`id`='" . $id . "' and `uid`='" . $this->uid . "'");
         $lang[] = @explode(',', $row['lang']);
@@ -218,7 +219,7 @@ class jobadd_controller extends company {
                 if (intval($_POST['days']) > 999) {
                     $_POST['days'] = 999;
                 }
-                $_POST['edate'] = time() + (int) trim($_POST['days']) * 86400;
+                $_POST['edate'] = time() + (int)trim($_POST['days']) * 86400;
                 unset($_POST['days']);
             } else if ($_POST['days_type']) {
                 unset($_POST['days_type']);
@@ -229,11 +230,11 @@ class jobadd_controller extends company {
                 }
             }
 
-            if ((int) $_POST['islink'] == '2' && ($_POST['link_man'] == '' || $_POST['link_moblie'] == '')) {
+            if ((int)$_POST['islink'] == '2' && ($_POST['link_man'] == '' || $_POST['link_moblie'] == '')) {
                 $this->ACT_layer_msg("联系人、联系电话均不能为空！", 8);
             }
 
-            if ((int) $_POST['isemail'] == '2') {
+            if ((int)$_POST['isemail'] == '2') {
                 if ($_POST['email'] == '') {
                     $this->ACT_layer_msg("请输入新联系邮箱！", 8);
                 } else if ($this->CheckRegEmail($_POST['email']) == false) {
@@ -252,7 +253,7 @@ class jobadd_controller extends company {
             $_POST['pr'] = $company['pr'];
             $_POST['mun'] = $company['mun'];
             $_POST['rating'] = $satic['rating'];
-            $islink = (int) $_POST['islink'];
+            $islink = (int)$_POST['islink'];
             $link_type = $islink;
             if ($islink < 3) {
                 $linktype = $islink;
@@ -260,7 +261,7 @@ class jobadd_controller extends company {
             } else {
                 $islink = 0;
             }
-            $isemail = (int) $_POST['isemail'];
+            $isemail = (int)$_POST['isemail'];
             $emailtype = $isemail;
             if ($isemail < 3) {
                 $isemail = 1;
@@ -328,7 +329,7 @@ class jobadd_controller extends company {
                     }
                 } else {
                     $joblink[] = "`uid`='" . $this->uid . "'";
-                    $sid = $this->obj->DB_insert_once("company_job_link", @implode(',', $joblink) . ",`jobid`='" . (int) $nid . "'");
+                    $sid = $this->obj->DB_insert_once("company_job_link", @implode(',', $joblink) . ",`jobid`='" . (int)$nid . "'");
                     if ($sid && $tblink == 1) {
                         $this->obj->DB_update_all("company_job_link", @implode(',', $joblink), "`uid`='" . $this->uid . "'");
                         $this->obj->DB_update_all("company_job", "`link_type`='2'", "`uid`='" . $this->uid . "'");
@@ -336,7 +337,7 @@ class jobadd_controller extends company {
                 }
             } else if ($nid > 0) {
                 $joblink[] = "`uid`='" . $this->uid . "'";
-                $sid = $this->obj->DB_insert_once("company_job_link", @implode(',', $joblink) . ",`jobid`='" . (int) $nid . "'");
+                $sid = $this->obj->DB_insert_once("company_job_link", @implode(',', $joblink) . ",`jobid`='" . (int)$nid . "'");
                 if ($sid && $tblink == 1) {
                     $this->obj->DB_update_all("company_job_link", @implode(',', $joblink), "`uid`='" . $this->uid . "'");
                     $this->obj->DB_update_all("company_job", "`link_type`='2'", "`uid`='" . $this->uid . "'");
@@ -345,7 +346,7 @@ class jobadd_controller extends company {
             if ($nid && $_POST['xuanshang']) {
                 $nid = $this->company_invtal($this->uid, $_POST['xuanshang'], false, "发布竟价职位", true, 2, 'integral', 11);
             }
-            
+
             //判断新增or更新
             $job_id = 0;
             if (is_numeric($nid)) {
@@ -397,7 +398,6 @@ class jobadd_controller extends company {
             } catch (Exception $ex) {
                 $this->ACT_layer_msg("更新失败！API服务失败", 8, "index.php?c=info");
             }
-
             if ($nid) {
                 $this->obj->member_log($name . "《" . $_POST['name'] . "》", 1, $type);
                 if ($id == '') {
@@ -411,6 +411,238 @@ class jobadd_controller extends company {
         }
     }
 
+
+    /**
+     * @desc 职位更新
+     */
+    function saveInfo_action() {
+        $uId = $this->uid;
+        if (!$_POST['name']) {
+            $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
+            $this->jsonReturn($return);
+        }
+        $_POST['state'] = 0;
+        $companyCert = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "'and type=3", "uid,type,status");
+        if ($this->config['com_free_status'] == "1" && $companyCert['status'] == "1") {
+            $_POST['state'] = 1;
+        } else {
+            $member = $this->obj->DB_select_once("member", "`uid`='" . $this->uid . "'", "status");
+            $member['status'] == 1 && $_POST['state'] = $this->config['com_job_status'];
+        }
+
+        $CacheList = $this->MODEL('cache')->GetCache(array('com'));
+        $lang = [];
+        foreach ($CacheList['comdata']['job_lang'] as $k => $v) {
+            if (intval($_POST['lang' . $v]) == $v) {
+                $lang[] = $v;
+            }
+        }
+        $_POST['lang'] = '';
+        !empty($lang) && $_POST['lang'] = pyLode(',', $lang);
+        $welfare = [];
+        foreach ($CacheList['comdata']['job_welfare'] as $k => $v) {
+            if (intval($_POST['welfare' . $v]) != '') {
+                $welfare[] = $v;
+            }
+        }
+        $_POST['welfare'] = '';
+        !empty($welfare) && $_POST['welfare'] = pyLode(',', $welfare);
+
+        if (intval($_POST['days']) && $_POST['days_type'] == '') {
+            if (intval($_POST['days']) > 999) {
+                $_POST['days'] = 999;
+            }
+            $_POST['edate'] = time() + (int)trim($_POST['days']) * 86400;
+        } else if ($_POST['days_type']) {
+            $_POST['edate'] = strtotime($_POST['edate'] . " 23:59:59");
+            if ($_POST['edate'] < time()) {
+                $return = ['success' => false, 'code' => 500, 'info' => "结束时间小于当前日期！"];
+                $this->jsonReturn($return);
+            }
+        }
+        $_POST['description'] = str_replace(array("&amp;", "background-color:#ffffff", "background-color:#fff", "white-space:nowrap;"), array("&", 'background-color:', 'background-color:', 'white-space:'), html_entity_decode($_POST['description'], ENT_QUOTES, "GB2312"));
+        $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+
+        try {
+            apiClient::init();
+            $jobAddService = new com\hlw\huiliewang\interfaces\company\JobAddServiceClient(null);
+            apiClient::build($jobAddService);
+            $saveJobDo = new com\hlw\huiliewang\dataobject\company\jobAddRequestDTO();
+            $saveJobDo->name = baseUtils::getStr($_POST['name']);
+            $saveJobDo->minsalary = baseUtils::getStr($_POST['minsalary']);
+            $saveJobDo->maxsalary = baseUtils::getStr($_POST['maxsalary']);
+            $saveJobDo->marriage = baseUtils::getStr($_POST['marriage'], 'int');
+            $saveJobDo->ejob_salary_month = baseUtils::getStr($_POST['ejob_salary_month'], 'int');
+            $saveJobDo->description = baseUtils::getStr($_POST['description'], 'html');
+            $saveJobDo->detail_report = baseUtils::getStr($_POST['detail_report']);
+            $saveJobDo->provinceid = baseUtils::getStr($_POST['provinceid'], 'int');
+            $saveJobDo->detail_subordinate = baseUtils::getStr($_POST['detail_subordinate'], 'int');
+            $saveJobDo->hy = baseUtils::getStr($_POST['hy'], 'int');
+            $saveJobDo->number = baseUtils::getStr($_POST['number'], 'int');
+            $saveJobDo->exp = baseUtils::getStr($_POST['exp'], 'int');
+            $saveJobDo->report = baseUtils::getStr($_POST['report'], 'int');
+            $saveJobDo->age = baseUtils::getStr($_POST['age'], 'int');
+            $saveJobDo->sex = baseUtils::getStr($_POST['sex'], 'int');
+            $saveJobDo->edu = baseUtils::getStr($_POST['edu'], 'int');
+            $saveJobDo->tblink = baseUtils::getStr($_POST['tblink'], 'int');
+            $saveJobDo->lang = baseUtils::getStr($_POST['lang']);
+            $saveJobDo->welfare = baseUtils::getStr($_POST['welfare']);
+            $saveJobDo->uId = baseUtils::getStr($uId, 'int');
+            $saveJobDo->jobId = baseUtils::getStr($id, 'int');
+            $saveJobDo->state = baseUtils::getStr($_POST['state'], 'int');
+            $saveJobDo->edate = baseUtils::getStr($_POST['edate'], 'int');
+            $saveJobDo->job_post = baseUtils::getStr($_POST['job_post']);
+            $res = $jobAddService->saveJob($saveJobDo);
+            if ($res->code != 200) {
+                $return = ['success' => false, 'code' => 500, 'info' => $res->message];
+                $this->jsonReturn($return);
+            }
+            $jobId = $res->message;
+        } catch (Exception $e) {
+            $return = ['success' => false, 'code' => 500, 'info' => $e->getMessage()];
+            $this->jsonReturn($return);
+        }
+        //
+        !isset($jobId) && $jobId = $id;
+        $res = $this->saveAfter($jobId, $id);
+        if ($res) {
+            $return = ['success' => true, 'code' => 200, 'info' => "更新成功"];
+        } else {
+            $return = ['success' => false, 'code' => 500, 'info' => "更新失败"];
+        }
+        $this->jsonReturn($return);
+    }
+
+    /**
+     * @desc  操作后
+     * @param $id
+     * @param $isUp
+     * @return bool
+     */
+    function saveAfter($id, $isUp = false) {
+        $id = intval($id);
+        if(!$id){
+            $lastInfo = $this->obj->DB_select_once("company_job", "`uid`='" . $this->uid , "id");
+            var_dump($lastInfo['id']);die;
+        }
+        $satic = $this->company_satic();
+        $islink = (int)$_POST['islink'];
+        $link_type = $islink;
+        if ($islink < 3) {
+            $linktype = $islink;
+        }
+        $isemail = (int)$_POST['isemail'];
+        $emailtype = $isemail;
+        $isemail = 0;
+        if ($isemail < 3) {
+            $isemail = 1;
+        }
+        $link_moblie = $_POST['link_moblie'];
+        $email = $_POST['email'];
+        $link_man = $_POST['link_man'];
+        $tblink = $_POST['tblink'];
+        if (!$isUp) {
+            $this->get_com(1, $satic);
+            $this->obj->DB_delete_all("lssave", "`uid`='" . $this->uid . "'and `savetype`='4'");
+            $this->obj->DB_update_all("company", "`jobtime`='" . $_POST['lastupdate'] . "'", "`uid`='" . $this->uid . "'");
+            $state_content = "发布了新职位 <a href=\"" . $this->config['sy_weburl'] . "/index.php?m=job&c=comapply&id=$id\" target=\"_blank\">" . $_POST['name'] . "</a>。";
+            $this->addstate($state_content, 2);
+
+        } else {
+            $where['id'] = $id;
+            $where['uid'] = $this->uid;
+            $this->obj->DB_update_all("company", "`lastupdate`='" . $_POST['lastupdate'] . "'", "`uid`='" . $this->uid . "'");
+
+        }
+        $joblink = array();
+        $joblink[] = "`email`='" . trim($email) . "',`is_email`='" . $isemail . "',`email_type`='" . $emailtype . "'";
+        if ($linktype == 2) {
+            $joblink[] = "`link_man`='" . $link_man . "',`link_moblie`='" . $link_moblie . "'";
+        }
+        if ($link_type) {
+            $joblink[] = "`link_type`='" . $link_type . "'";
+        }
+        if ($id) {
+            delfiledir("../data/upload/tel/" . $this->uid);
+            $linkid = $this->obj->DB_select_once("company_job_link", "`uid`='" . $this->uid . "' and `jobid`='" . $id . "'", "id");
+            if ($linkid['id']) {
+                if ($tblink == 1) {
+                    $this->obj->DB_update_all("company_job_link", @implode(',', $joblink), "`uid`='" . $this->uid . "'");
+                    $this->obj->DB_update_all("company_job", "`link_type`='2'", "`uid`='" . $this->uid . "'");
+                } else {
+                    $this->obj->DB_update_all("company_job_link", @implode(',', $joblink), "`id`='" . $linkid['id'] . "'");
+                }
+            } else {
+                $joblink[] = "`uid`='" . $this->uid . "'";
+                $sid = $this->obj->DB_insert_once("company_job_link", @implode(',', $joblink) . ",`jobid`='" . (int)$id . "'");
+                if ($sid && $tblink == 1) {
+                    $this->obj->DB_update_all("company_job_link", @implode(',', $joblink), "`uid`='" . $this->uid . "'");
+                    $this->obj->DB_update_all("company_job", "`link_type`='2'", "`uid`='" . $this->uid . "'");
+                }
+            }
+        }
+        ($id && $_POST['xuanshang']) && $this->company_invtal($this->uid, $_POST['xuanshang'], false, "发布竟价职位", true, 2, 'integral', 11);
+
+        //同步OA
+        $mode = $isUp ? "update" : 'add';
+        //处理语言要求
+        $language = [];
+        $_POST['lang103'] ? array_push($language, '英语') : '';
+        $_POST['lang100'] ? array_push($language, '普通话') : '';
+        $_POST['lang107'] ? array_push($language, '日语') : '';
+        $_POST['lang104'] ? array_push($language, '韩语') : '';
+        $_POST['lang105'] ? array_push($language, '德语') : '';
+        $_POST['lang106'] ? array_push($language, '法语') : '';
+        $_POST['lang108'] ? array_push($language, '粤语') : '';
+        $language = implode(',', $language);
+        $company = $this->get_user();
+        $_POST['sdate'] = time();
+        $_POST['lastupdate'] = time();
+        $_POST['com_name'] = $company['name'];
+        $_POST['com_logo'] = $company['logo'];
+        $_POST['com_provinceid'] = $company['provinceid'];
+        $_POST['pr'] = $company['pr'];
+        $_POST['mun'] = $company['mun'];
+        $_POST['rating'] = $satic['rating'];
+        $_POST['description'] = str_replace(array("&amp;", "background-color:#ffffff", "background-color:#fff", "white-space:nowrap;"), array("&", 'background-color:', 'background-color:', 'white-space:'), html_entity_decode($_POST['description'], ENT_QUOTES, "GB2312"));
+        try {
+            apiClient::init();
+            $jobService = new com\hlw\huilie\interfaces\JobServiceClient(null);
+            apiClient::build($jobService);
+            $saveJobDo = new com\hlw\huilie\dataobject\job\JobRequestDTO();
+            $saveJobDo->name = baseUtils::getStr($_POST['name']);
+            $saveJobDo->minsalary = baseUtils::getStr($_POST['minsalary'], 'int');
+            $saveJobDo->maxsalary = baseUtils::getStr($_POST['maxsalary'], 'int');
+            $saveJobDo->ejob_salary_month = baseUtils::getStr($_POST['ejob_salary_month'], 'int');
+            $saveJobDo->description = baseUtils::getStr($_POST['description']);
+            $saveJobDo->detail_report = baseUtils::getStr($_POST['detail_report']);
+            $saveJobDo->detail_subordinate = baseUtils::getStr($_POST['detail_subordinate'], 'int');
+            $saveJobDo->number = baseUtils::getStr($_POST['number'], 'int');
+            $saveJobDo->hy = baseUtils::getStr($_POST['hy']);
+            $saveJobDo->exp = baseUtils::getStr($_POST['exp']);
+            $saveJobDo->report = baseUtils::getStr($_POST['report']);
+            $saveJobDo->edate = baseUtils::getStr($_POST['edate']);
+            $saveJobDo->age = baseUtils::getStr($_POST['age']);
+            $saveJobDo->sex = baseUtils::getStr($_POST['sex']);
+            $saveJobDo->edu = baseUtils::getStr($_POST['edu']);
+            $saveJobDo->language = $language;
+            $saveJobDo->marriage = baseUtils::getStr($_POST['marriage']);
+            $saveJobDo->uid = baseUtils::getStr($_POST['uid'], 'int');
+            $saveJobDo->sdate = baseUtils::getStr($_POST['sdate']);
+            $saveJobDo->com_name = baseUtils::getStr($_POST['com_name']);
+            $saveJobDo->mode = baseUtils::getStr($mode);
+            $saveJobDo->job_id = baseUtils::getStr($id, 'int');
+            $result = $jobService->saveJob($saveJobDo);
+            if($result->code != 200){
+                $return = ['success' => false, 'code' => 500, 'info' => $result->message ];
+                $this->jsonReturn($return);
+            }
+        } catch (Exception $ex) {
+            $return = ['success' => false, 'code' => 500, 'info' => $ex->getMessage()];
+            $this->jsonReturn($return);
+        }
+        return true;
+    }
 }
 
 ?>
