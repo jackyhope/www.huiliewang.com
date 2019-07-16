@@ -10,12 +10,12 @@
  */
 class comapply_controller extends job_controller{
 	function index_action(){
-		include(CONFIG_PATH."db.data.php");		
+		include(CONFIG_PATH."db.data.php");
 		$this->yunset("arr_data",$arr_data);
 		$id=(int)$_GET['id'];
-		$M=$this->MODEL('job');
+		$M=$this->MODEL('job');//
 		$companyM=$this->MODEL('company');
-        $UserinfoM=$this->MODEL('userinfo');
+        $UserinfoM=$this->MODEL('userinfo');//
 		$ResumeM=$this->MODEL('resume');
         $AskM=$this->MODEL('ask');
         $CacheM=$this->MODEL('cache');
@@ -55,7 +55,7 @@ class comapply_controller extends job_controller{
 				}
 			}
 		}
- 
+
 		if($this->uid!=$JobInfo['uid']){
 			
 			if($this->usertype=='1'){
@@ -205,7 +205,7 @@ class comapply_controller extends job_controller{
         }else{
             $Job['salary_n'] ="ÃæÒé";
         }
-        $this->yunset("Info",$Job);
+//        $this->yunset("Info",$Job);
 
 		if($this->usertype==3){
 
@@ -242,11 +242,32 @@ class comapply_controller extends job_controller{
 //            $this->yun_tpl(array('comapply'));
             $this->lt_tpl('comapply');
         }else{
-
-            $this->yun_tpl(array('comapply'));
+                $arr = array();
+                if($Job){
+                    $arr['code'] = 200;
+                    $arr['data'] = $Job;
+                    $arr['success'] = true;
+                }else{
+                    $arr['code'] = 200;
+                    $arr['success'] = false;
+                    $arr['data'] = null;
+                }
+                $this->jsonReturn($arr);die;
         }
 
 	}
+
+	function jobdetail_action(){
+	    $id = baseUtils::getStr(trim($_GET['id']),'int');
+	    apiClient::init($appid,$secret);
+        $companyservice = new com\hlw\huiliewang\interfaces\company\CompanyServiceClient(null);
+        apiClient::build($companyservice);
+        $result = $companyservice->jobdetail($id);
+        $arr['code'] = $result->code;
+        $arr['message'] = $result->message;
+        $arr['data'] = $result->data;
+        echo json_encode($arr);die;
+    }
 	
 	function qrcode_action(){
 		$wapUrl = Url('job');
