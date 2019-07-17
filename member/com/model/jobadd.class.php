@@ -144,7 +144,7 @@ class jobadd_controller extends company
         $this->com_tpl('jobadd');
     }
 
-    function save1_action() {
+    function save_action() {
         if ($_POST['submitBtn']) {
             $id = intval($_POST['id']);
             if ($id) {
@@ -415,7 +415,7 @@ class jobadd_controller extends company
     /**
      * @desc 职位更新
      */
-    function save_action() {
+    function saveInfo_action() {
         $uId = $this->uid;
         $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
         if (!$_POST['name']) {
