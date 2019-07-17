@@ -2487,7 +2487,8 @@ class common{
      * @param $data
      */
     function jsonReturn($data){
-	    $data['info'] = yun_iconv("gbk","utf-8",$data['info']);
+	    isset($data['info'])  && $data['info'] = yun_iconv("gbk","utf-8",$data['info']);
+	    isset($data['data']) && $data['data'] = yun_iconv("gbk","utf-8",$data['data']);
         exit(json_encode($data));
     }
 
