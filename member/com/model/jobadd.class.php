@@ -144,7 +144,7 @@ class jobadd_controller extends company
         $this->com_tpl('jobadd');
     }
 
-    function save_action() {
+    function save1_action() {
         if ($_POST['submitBtn']) {
             $id = intval($_POST['id']);
             if ($id) {
@@ -415,10 +415,16 @@ class jobadd_controller extends company
     /**
      * @desc 职位更新
      */
-    function saveInfo_action() {
+    function save_action() {
         $uId = $this->uid;
+        $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
         if (!$_POST['name']) {
             $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
+            $this->jsonReturn($return);
+        }
+        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" .$uId . "' and `name`='" . $_POST['name'] . "'", "`id`");
+        if (!$id && $comjob) {
+            $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
         }
         $_POST['state'] = 0;
@@ -461,10 +467,11 @@ class jobadd_controller extends company
             }
         }
         $_POST['description'] = str_replace(array("&amp;", "background-color:#ffffff", "background-color:#fff", "white-space:nowrap;"), array("&", 'background-color:', 'background-color:', 'white-space:'), html_entity_decode($_POST['description'], ENT_QUOTES, "GB2312"));
-        $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+
 
         try {
             apiClient::init();
+            file_put_contents("F:\www\pc.huiliewang.com\App\Runtime\\test.html","888888888888||||||||||888888888888\r\n".time().PHP_EOL,FILE_APPEND);
             $jobAddService = new com\hlw\huiliewang\interfaces\company\JobAddServiceClient(null);
             apiClient::build($jobAddService);
             $saveJobDo = new com\hlw\huiliewang\dataobject\company\jobAddRequestDTO();
@@ -504,7 +511,7 @@ class jobadd_controller extends company
         }
         //
         !isset($jobId) && $jobId = $id;
-        $res = $this->saveAfter($jobId, $id);
+//        $res = $this->saveAfter($jobId, $id);
         if ($res) {
             $return = ['success' => true, 'code' => 200, 'info' => "更新成功"];
         } else {
