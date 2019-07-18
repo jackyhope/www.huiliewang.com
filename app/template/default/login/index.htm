@@ -97,7 +97,7 @@
 				<div class="signUpbox">
 						<span class="signUpTab">注册</span>
 							<div class="signUp">
-									<input type="num" class="singUpTel verify input_nomorl" rule='^\d{11}$' notice='请输入正确的手机号'
+									<input type="num" id="singUpTel" class="singUpTel verify input_nomorl" rule='^\d{11}$' notice='请输入正确的手机号'
 										placeholder="请输入手机号">
 									<input type="num" class="verifyCode2 input_nomorl" placeholder="请输入验证码">
 									<input type="num" class="inviCode input_nomorl" placeholder="无邀请码可不填">
@@ -159,7 +159,18 @@
 	<script src="{yun:}$config.sy_weburl{/yun}/js/geetest/gt.js"></script>
 	<script src="{yun:}$config.sy_weburl{/yun}/js/geetest/pc.js" type="text/javascript"></script>
 	<script src="/app/public/js/base.js"></script>
-
+<script >
+	$(document).ready(function () {
+		$('.singUpTel').blur(function () {
+			var tel =  $(this).val();
+			Get('{yun:}url m=register c=checktel{/yun}',{tel: tel}).then(function (res) {
+				alert(res.message);
+            }).catch(function (res) {
+                alert(res.message);
+			})
+        });
+    });
+</script>
 
 	<!--[if IE 6]>
 <script src="{yun:}$config.sy_weburl{/yun}/js/png.js"></script>
