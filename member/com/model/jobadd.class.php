@@ -422,7 +422,7 @@ class jobadd_controller extends company
             $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
             $this->jsonReturn($return);
         }
-        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" .$uId . "' and `name`='" . $_POST['name'] . "'", "`id`");
+        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`");
         if (!$id && $comjob) {
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
@@ -471,7 +471,7 @@ class jobadd_controller extends company
 
         try {
             apiClient::init();
-            file_put_contents("F:\www\pc.huiliewang.com\App\Runtime\\test.html","888888888888||||||||||888888888888\r\n".time().PHP_EOL,FILE_APPEND);
+            file_put_contents("F:\www\pc.huiliewang.com\App\Runtime\\test.html", "888888888888||||||||||888888888888\r\n" . time() . PHP_EOL, FILE_APPEND);
             $jobAddService = new com\hlw\huiliewang\interfaces\company\JobAddServiceClient(null);
             apiClient::build($jobAddService);
             $saveJobDo = new com\hlw\huiliewang\dataobject\company\jobAddRequestDTO();
@@ -528,9 +528,10 @@ class jobadd_controller extends company
      */
     function saveAfter($id, $isUp = false) {
         $id = intval($id);
-        if(!$id){
-            $lastInfo = $this->obj->DB_select_once("company_job", "`uid`='" . $this->uid , "id");
-            var_dump($lastInfo['id']);die;
+        if (!$id) {
+            $lastInfo = $this->obj->DB_select_once("company_job", "`uid`='" . $this->uid, "id");
+            var_dump($lastInfo['id']);
+            die;
         }
         $satic = $this->company_satic();
         $islink = (int)$_POST['islink'];
@@ -639,9 +640,10 @@ class jobadd_controller extends company
             $saveJobDo->com_name = baseUtils::getStr($_POST['com_name']);
             $saveJobDo->mode = baseUtils::getStr($mode);
             $saveJobDo->job_id = baseUtils::getStr($id, 'int');
+            $saveJobDo->service_type = baseUtils::getStr($_POST['service_type'], 'int');
             $result = $jobService->saveJob($saveJobDo);
-            if($result->code != 200){
-                $return = ['success' => false, 'code' => 500, 'info' => $result->message ];
+            if ($result->code != 200) {
+                $return = ['success' => false, 'code' => 500, 'info' => $result->message];
                 $this->jsonReturn($return);
             }
         } catch (Exception $ex) {
