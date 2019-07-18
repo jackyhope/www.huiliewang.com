@@ -1,0 +1,194 @@
+.login_header {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    float: left;
+}
+.login_left{
+    background: #fff;
+    border-radius: 8px;
+    width: 330px;
+    height: 367px;
+    transition: 0.2s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    overflow: hidden;
+}
+.logTab{
+    margin: 0 30px;
+    color: #666666;
+    font-size: 16px;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid rgba(238,238,238,1);;
+}
+.logTab span{
+    display: inline-block;
+    flex: 1;
+    line-height: 51px;
+    text-align: center;
+    cursor: pointer;
+}
+.logTab span.choosed{
+    color: #3CC1D3;
+}
+.logTab div{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 1px;
+    background: rgba(60,193,211,1);
+    transition: 0.2s;
+}
+.formBox{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 188px;
+}
+.passwordBox,.verifyBox{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 40px 30px;
+    transition: 0.2s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.passwordBox{
+    left: 100%;
+}
+.passTel,.loginPassword,.verTel,.verifyCode,.verifyCode2,.singUpTel,.inviCode{
+    padding-left: 39px;
+
+}
+.passTel,.verTel,.singUpTel{
+background: url(/app/public/imgs/user.png) 10px center no-repeat;
+}
+.loginPassword{
+    margin-top: 28px;
+    background: url(/app/public/imgs/password.png) 10px center no-repeat;
+}
+.verifyCode,.verifyCode2{
+    margin-top: 28px;
+    background: url(/app/public/imgs/verify_code.png) 10px center no-repeat;
+}
+.verifyCode2{
+    margin-top: 26px;
+}
+.inviCode{
+    margin-top: 26px;
+    background: url(/app/public/imgs/invition.png) 10px center no-repeat;
+}
+.forgetPass{
+    display: none;
+    margin: 0 35px  -13px  241px;
+    line-height: 13px;
+    font-size: 12px;
+    color: #333;
+    text-align: right;
+    cursor: pointer;
+}
+.login,.signUpBtn{
+    width: 270px;
+    display: block;
+    box-sizing: border-box;
+    margin: 20px auto 0;
+    height: 41px;
+    border-radius: 22px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 41px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+.toSignUp{
+    display: block;
+    text-align: center;
+    color: #333;
+    font-size: 13px;
+    margin-top: 22px;
+}
+.toSignUp span{
+    color: #3CC1D3;
+    cursor: pointer;
+}
+.signInBox{
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+    transition: 0.2s;
+}
+.signUpbox{
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    transition: 0.2s;
+    top: 0;
+}
+.signUpTab{
+    display: block;
+    margin: 0 97px;
+    line-height: 50px;
+    border-bottom: 1px solid rgba(60,193,211,1);
+    text-align: center;
+    color:rgba(60,193,211,1);
+    font-size: 16px;
+}
+ .signUp{
+    padding: 20px 30px;
+}
+.signUpBtn{
+    margin-top: 15px;
+}
+.agreeBox{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+.agreeBox input{
+    cursor: pointer;
+    margin-right: 5px;
+}
+.agreeBox label{
+    cursor: pointer;
+}
+.agreeBox a{
+    color: #3CC1D3;
+    cursor: pointer;
+}
+.toSignIn{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 30px;
+    margin-top: 5px;
+    cursor: pointer;
+    color: #3CC1D3;
+}
+.toSignIn img{
+    margin-left: 5px;
+}
+.form_notice{
+    margin-left: 40px;
+}
+.getCode{
+    position: absolute;
+    top: 119px;
+    left: 216px;
+    display: inline-block;
+    font-size: 13px;
+    color: #3CC1D3;
+    cursor: pointer;
+}
+.signUpbox .getCode{
+    top: 149px;
+} 

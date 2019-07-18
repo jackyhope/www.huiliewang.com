@@ -1,0 +1,48 @@
+.pwsetting {
+    width: 400px;
+    margin: 0 auto;
+    padding: 57px 0;
+    position: relative;
+}
+
+.yun_content {
+    float: left;
+    width: 100%;
+}
+.title{
+    display: flex;
+    align-items: center;
+}
+.input_nomorl{
+    display: block;
+    margin: 28px auto 0px;
+    padding-left: 19px;
+}
+.form_notice{
+    margin-left: 85px;
+}
+.getCode{
+    position: absolute;
+    top: 206px;
+    left: 250px;
+    display: inline-block;
+    font-size: 13px;
+    color: #3CC1D3;
+    cursor: pointer;
+}
+.submit{
+    width: 270px;
+    display: block;
+    box-sizing: border-box;
+    margin: 36px auto 0;
+    height: 41px;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 41px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
