@@ -22,6 +22,9 @@ function Get(url,data){
             data,
             type:'get',
             success(res){
+                if(typeof res == 'string'){
+                    res = JSON.parse(res)
+                }
                 if(res.code==200){
                     resolve(res);
                 }else{
@@ -35,7 +38,6 @@ function Get(url,data){
 function formVerify(){//这个验证只有提示作用，不拦截请求
     $('input.verify').blur(ev=>{
         let reg = new RegExp($(ev.target).attr('rule'))
-        console.log(reg)
         if(!$(ev.target).val()||!$(ev.target).val().match(reg)){
             //提示持有class名form_notice
             if($(ev.target).next('.form_notice').length==0){
