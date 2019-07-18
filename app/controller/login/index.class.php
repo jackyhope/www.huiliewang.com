@@ -37,20 +37,20 @@ class index_controller extends common{
         $post['username'] = mb_convert_encoding($post['username'], "utf-8", $encoding);
 
         if(!isset($post['username']) || empty($post['username'])){
-            self::return_json('手机号不能为空!',400);
+            self::return_json('手机号不能为空!',500);
         }
         if(!isset($post['l_type']) || empty($post['l_type'])){
-            self::return_json('请选择登录方式不能为空!',400);
+            self::return_json('请选择登录方式不能为空!',500);
         }
         if($post['l_type']!=1 && $post['l_type']!=2){
 
-            self::return_json('登录方式只能为1或者2!',400);
+            self::return_json('登录方式只能为1或者2!',500);
         }
         if(!isset($post['password']) || empty($post['password'])){
             $msg='';
             $post['l_type']==1 && $msg = '验证码不能为空';
             $post['l_type']==2 && $msg = '密码不能为空';
-            self::return_json($msg,400);
+            self::return_json($msg,500);
         }
 
         apiClient::init(APPID,SECRET);
@@ -85,27 +85,27 @@ class index_controller extends common{
         $post = $_POST;
 
         if(count($post)==0){
-            self::return_json('数据不能为空',400);
+            self::return_json('数据不能为空',500);
         }
         //手机号，手机验证码，新密码，重复密码
         if(!isset($post['username']) || empty($post['username'])){
-            self::return_json('手机号不能为空',400);
+            self::return_json('手机号不能为空',500);
         }
 
         if(!isset($post['verify']) || empty($post['verify'])){
-            self::return_json('验证码不能为空',400);
+            self::return_json('验证码不能为空',500);
         }
 
         if(!isset($post['password']) || empty($post['password'])){
-            self::return_json('新密码不能为空',400);
+            self::return_json('新密码不能为空',500);
         }
 
         if(!isset($post['repassword']) || empty($post['repassword'])){
-            self::return_json('重复新密码不能为空',400);
+            self::return_json('重复新密码不能为空',500);
         }
 
         if($post['repassword'] != $post['repassword']){
-            self::return_json('两次密码不一致',400);
+            self::return_json('两次密码不一致',500);
         }
 
         apiClient::init(APPID,SECRET);
@@ -133,31 +133,31 @@ class index_controller extends common{
         //$this->is_login();// 没检测，暂不用 0715
         $post = $_POST;
         if(count($post)==0){
-            self::return_json('数据不能为空',400);
+            self::return_json('数据不能为空',500);
         }
         if(!isset($post['business_license']) || empty($post['business_license'])){
-            self::return_json('企业营业执照不能为空',400);
+            self::return_json('企业营业执照不能为空',500);
         }
         if(!isset($post['business_name']) || empty($post['business_name'])){
-            self::return_json('企业名称不能为空',400);
+            self::return_json('企业名称不能为空',500);
         }
         if(!isset($post['business_province']) || empty($post['business_province'])){
-            self::return_json('请选择企业所在省',400);
+            self::return_json('请选择企业所在省',500);
         }
         if(!isset($post['business_city']) || empty($post['business_city'])){
-            self::return_json('请选择企业所在市',400);
+            self::return_json('请选择企业所在市',500);
         }
         if(!isset($post['business_districts']) || empty($post['business_districts'])){
-            self::return_json('请选择企业所在区县',400);
+            self::return_json('请选择企业所在区县',500);
         }
         if(!isset($post['business_addr']) || empty($post['business_addr'])){
-            self::return_json('请填写详细地址',400);
+            self::return_json('请填写详细地址',500);
         }
         if(!isset($post['business_industry']) || empty($post['business_industry'])){
-            self::return_json('请选择企业行业',400);
+            self::return_json('请选择企业行业',500);
         }
         if(!isset($post['business_industry']) || empty($post['business_industry'])){
-            self::return_json('请企业联系人',400);
+            self::return_json('请企业联系人',500);
         }
 
         //数组
@@ -189,7 +189,7 @@ class index_controller extends common{
         if($this->uid){
             //return true;
         }else{
-            self::return_json('您还未登录或登录已过期，请重新登录',400,['return_url'=>'/login']);die;
+            self::return_json('您还未登录或登录已过期，请重新登录',500,['return_url'=>'/login']);die;
         }
     }
 
@@ -212,7 +212,7 @@ class index_controller extends common{
             $post_data['where'] ='name like "%'.$kwd.'%"';
         }
         if($post_data['uid']<=0){
-            self::return_json('客户id不能为空!',400);
+            self::return_json('客户id不能为空!',500);
         }
         apiClient::init(APPID,SECRET);
         $obj = new FrontRequestDTO();
@@ -252,10 +252,10 @@ class index_controller extends common{
                 $re = $FrontLoginService->changeData($obj);
                 self::return_json('操作成功',200,return_toArray((object)$re));
             }else{
-                self::return_json('请求数据异常',400);
+                self::return_json('请求数据异常',500);
             }
         }else{
-            self::return_json('请求数据异常!',400);
+            self::return_json('请求数据异常!',500);
         }
 
     }
