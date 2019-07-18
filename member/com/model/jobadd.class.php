@@ -9,7 +9,6 @@
  *
  * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
  */
-
 class jobadd_controller extends company
 {
 
@@ -518,6 +517,21 @@ class jobadd_controller extends company
             $return = ['success' => false, 'code' => 500, 'info' => "更新失败"];
         }
         $this->jsonReturn($return);
+    }
+
+    function productlist_action(){
+        $uid = $this->uid;
+        $jobid = baseUtils::getStr(trim($_GET['id']));
+        apiClient::init($appid,$secret);
+        $companyService = new com\hlw\huiliewang\interfaces\company\CompanyServiceClient(null);
+        apiClient::build($companyService);
+        $res = $companyService->productList($uid,$jobid);
+        $arr_data = [];
+        foreach ($res->data as $v){
+            $arr_data[] = yun_iconv("gbk","utf-8",$v);
+        }
+        $return = ['success'=>$res->success,'code'=>$res->code,'data'=>$arr_data];
+        echo json_encode($return);die;
     }
 
     /**
