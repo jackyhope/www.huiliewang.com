@@ -154,7 +154,7 @@ class index_controller extends common{
         echo  json_encode($arr);die;
     }
 
-    //向手机发送验证码
+    //向手机发送验证码  xuyao重写
     function sendtel_action(){
         include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
         include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
