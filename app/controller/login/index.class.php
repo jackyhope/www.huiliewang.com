@@ -167,24 +167,29 @@ class index_controller extends common{
             if(!isset($post['business_industry']) || empty($post['business_industry'])){
                 self::return_json('请企业联系人',500);
             }
+            //数组
+            $post_data = [
+                'c_type'=>$post['c_type'],// 包括更新和添加
+                'uid'=>$this->uid,//登录人
+                'status'=>0,//审核中[该字段是要写到member表的]
+                'wt_yy_photo'=>$post['business_license'],//企业营业执照 是写到 cert表的
+                'name'=>$post['business_name'],//企业名称
+                'provinceid'=>$post['business_province'],//省
+                'cityid'=>$post['business_city'],//市
+                'three_cityid'=>$post['business_districts'],//区
+                'address'=>$post['business_addr'],//详细地址
+                'hy'=>$post['business_industry'],//行业
+                'linkman'=>$post['business_uname'],//联系人
+                'lastupdate'=>time(),//更新时间
+                'linktel'=>'后台去查询获取',
+            ];
+        }else{
+            $post_data = [
+                'c_type'=>$post['c_type'],// 包括更新和添加
+                'uid'   => $this->uid//登录人
+            ];
         }
 
-        //数组
-        $post_data = [
-            'c_type'=>$post['c_type'],// 包括更新和添加
-            'uid'=>$this->uid,//登录人
-            'status'=>0,//审核中[该字段是要写到member表的]
-            'wt_yy_photo'=>$post['business_license'],//企业营业执照 是写到 cert表的
-            'name'=>$post['business_name'],//企业名称
-            'provinceid'=>$post['business_province'],//省
-            'cityid'=>$post['business_city'],//市
-            'three_cityid'=>$post['business_districts'],//区
-            'address'=>$post['business_addr'],//详细地址
-            'hy'=>$post['business_industry'],//行业
-            'linkman'=>$post['business_uname'],//联系人
-            'lastupdate'=>time(),//更新时间
-            'linktel'=>'后台去查询获取',
-        ];
         apiClient::init(APPID,SECRET);
         $obj = new com\hlw\huiliewang\dataobject\frontLogin\FrontRequestDTO();
         $obj->post_data = $post_data;
