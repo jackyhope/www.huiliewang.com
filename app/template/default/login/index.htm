@@ -243,7 +243,7 @@
                 Post('{yun:}url m=register c=registcom{/yun}',{tel:tel,code:code,invitecode:inviCode}).then(function (res) {
                     alert(res.message);
                     if(res.success)
-                        window.location.href = '../member/index.php';
+                        window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
                         ;
                 }).catch(function (res) {
                     alert(res.message);
@@ -257,10 +257,10 @@
                     var pass = $('.loginPassword').val();
 					Post('{yun:}url m=login c=wt_login{/yun}',{username:tel,password:pass,l_type:2}).then(function (res) {
 					    alert(res.message);
-						window.location.href = '../member/index.php';  //后台没有成功射入cookie信息，
+						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';  //后台没有成功射入cookie信息，
                     }).catch(function (res) {
                         alert(res.message);
-                        window.location.href = '../member/index.php';
+                        window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 					});
                 }else{
                     //手机验证码登录
@@ -268,10 +268,10 @@
 					var verifyCode = $('.verifyCode').val();
                     Post('{yun:}url m=login c=wt_login{/yun}',{username:verTel,password:verifyCode,l_type:1}).then(function (res) {
                         alert(res.message);
-                        window.location.href = '../member/index.php';  //没有跳转成功，后台没有摄入cookie信息
+                        window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';  //没有跳转成功，后台没有摄入cookie信息
                     }).catch(function (res) {
                         alert(res.message);
-                        window.location.href = '../member/index.php';
+                        window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
                     });
                 }
             });

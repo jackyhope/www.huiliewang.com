@@ -29,31 +29,70 @@
         </div>
         <div>
             <span class="sp1">企业名称：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的企业名称，如重庆XX公司">
+            <input type="text" class="verTel input_nomorl" id="business_name" placeholder="请输入正确的企业名称，如重庆XX公司">
         </div>
         <div>
             <span class="sp1">企业地址：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的企业名称，如重庆XX公司">
+            <input type="text" class="verTel input_nomorl" id="business_addr" placeholder="请输入正确的企业地址">
         </div>
         <div>
             <span class="sp1">详细地址：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的公司地址">
+            <input type="text" class="verTel input_nomorl" id="business_province" placeholder="请输入正确的公司地址">
         </div>
         <div>
             <span class="sp1">行业：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的企业名称，如重庆XX公司">
+            <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业">
         </div>
         <div>
             <span class="sp1">联系人：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="联系人姓名">
+            <input type="text" class="verTel input_nomorl" id="business_uname" placeholder="联系人姓名">
         </div>
         <div>
             <span class="sp1">联系电话：</span>
-            <input type="num" class="verTel input_nomorl" placeholder="请输入联系电话">
+            <input type="num" class="verTel input_nomorl" id="linktel" placeholder="请输入联系电话">
         </div>
         <span class="notice"><span class="sp1"></span>企业认证执审核通过后，信息将无法修改，请您核对无误后提交</span>
-        <div style='padding-left:70px'></span><button type="button" class="button_1 gradient_1 submit">提交认证</button></div>
+        <div style='padding-left:70px'></span><button type="button" class="button_1 bb gradient_1 submit">提交认证</button></div>
     </div>
 </div>
-<script src="/app/public/js/base.js"></script>
+<script src="/app/public/js/base.js">
+    // $(document).ready(function () {
+    //     $('.bb').click(function () {
+    //         alert('dfadsfaf111111');return;
+    //         var business_name = $('#business_name').val();
+    //         var business_addr = $('#business_addr').val();
+    //         var business_province = $('#business_province').val();
+    //         var business_industry = $('#business_industry').val();
+    //         var business_uname = $('#business_uname').val();
+    //         var linktel = $('#linktel').val();
+    //         alert('dadsfa');return;
+    //         Post('{yun:}url m=login c=certify{/yun}',{business_license:'license',business_name:business_name,business_addr:business_addr,
+    //             business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
+    //             business_uname:business_uname,linktel:linktel}).then(function (res) {
+    //             alert(res.message);
+    //         }).catch(function (res) {
+    //             alert(res.message);
+    //         });
+    //     });
+    // });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.submit').click(function () {
+            var business_name = $('#business_name').val();
+            var business_addr = $('#business_addr').val();
+            var business_province = $('#business_province').val();
+            var business_industry = $('#business_industry').val();
+            var business_uname = $('#business_uname').val();
+            var linktel = $('#linktel').val();
+            Post('{yun:}url m=login c=certify{/yun}',{business_license:'license',business_name:business_name,business_addr:business_addr,
+                business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
+                business_uname:business_uname,linktel:linktel}).then(function (res) {
+                alert(res.message);
+            }).catch(function (res) {
+                alert(res.message);
+            });
+        });
+    });
+</script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
