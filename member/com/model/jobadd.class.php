@@ -79,6 +79,15 @@ class jobadd_controller extends company
         $this->com_tpl('jobadd');
     }
 
+    function  phone_action(){
+        $this->public_action();
+        $this->com_tpl('phone');
+    }
+    function  pw_reset_action(){
+        $this->public_action();
+        $this->com_tpl('pw_reset');
+    }
+
     function edit_action() {
 
         include(CONFIG_PATH . "db.data.php");

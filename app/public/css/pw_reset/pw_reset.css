@@ -1,0 +1,32 @@
+.pwBox{
+    width: 600px;
+    margin: 50px auto;
+}
+.pwBox .title{
+text-align: left;
+}
+.formBox{
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.formBox input{
+    margin-top: 28px;
+    padding-left: 15px;
+}
+.form_notice{
+    width: 385px;
+    padding-left: 145px;
+}
+.getCode{
+    position: absolute;
+    top: 131px;
+    left: 250px;
+    display: inline-block;
+    font-size: 13px;
+    color: #3CC1D3;
+    cursor: pointer;
+}

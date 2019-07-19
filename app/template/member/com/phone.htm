@@ -1,0 +1,84 @@
+{yun:}include file="$comstyle/header.htm"{/yun}
+<link rel="stylesheet" href="/app/public/css/base.css">
+<link rel="stylesheet" href="/app/public/css/phone/phone.css">
+<div class="pwConBox">
+    <div class="steps">
+        <div class="step hover">
+            <span>1</span>
+            <span>验证手机号码</span>
+        </div>
+        <span class="stepLine">······</span>
+        <div class="step">
+            <span>2</span>
+            <span>设置新手机号</span>
+        </div>
+        <span class="stepLine">······</span>
+        <div class="step">
+            <span>√</span>
+            <span>更换成功</span>
+        </div>
+    </div>
+    <div class="formBox">
+        <div class="form1">
+            <input type="num" class="oldTel verify input_nomorl" style="margin-top:51px " rule='^\d{11}$'
+                notice='请输入正确的手机号' placeholder="请输入手机号">
+            <input type="num" class="verifyCode input_nomorl" placeholder="请输入验证码">
+            <span class="getCode">获取验证码</span>
+            <button type="button" class="button_1 gradient_1 first">下一步</button>
+        </div>
+        <div class="form2">
+            <input type="num" class="newTel verify input_nomorl" style="margin-top:51px " rule='^\d{11}$'
+                notice='请输入正确的手机号' placeholder="请输入手机号">
+            <input type="num" class="verifyCode input_nomorl" placeholder="请输入验证码">
+            <span class="getCode">获取验证码</span>
+            <button type="button" class="button_1 gradient_1 submit">确认</button>
+        </div>
+    </div>
+</div>
+<script src="/app/public/js/base.js"></script>
+<script>
+    $(function () {
+        let count1 = 59;
+        $('.form1 .getCode').click(ev => {
+            if (count1 == 59) {
+                $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
+                let timeId = setInterval(() => {
+                    if (count1 != 0) {
+                        $(ev.target).html(count1 + 's后重试').css('cursor', 'wait').css('color',
+                            '#999');
+                        count1--;
+                    } else {
+                        $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
+                            '#3CC1D3');
+                        clearInterval(timeId);
+                        count1 = 59
+                    }
+                }, 1000)
+            }
+        })
+        let count2 = 59;
+        $('.form2 .getCode').click(ev => {
+            if (count2 == 59) {
+                $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
+                let timeId = setInterval(() => {
+                    if (count2 != 0) {
+                        $(ev.target).html(count2 + 's后重试').css('cursor', 'wait').css('color',
+                            '#999');
+                            count2--;
+                    } else {
+                        $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
+                            '#3CC1D3');
+                        clearInterval(timeId);
+                        count2 = 59
+                    }
+                }, 1000)
+            }
+        })
+        $('.first').click(ev=>{
+            $('.step:nth-child(3)').addClass('hover');
+            $('.form1').css('display','none');
+            $('.form2').css('display','flex');
+        })
+    })
+</script>
+{yun:}include file="$tplstyle/footer.htm"{/yun}

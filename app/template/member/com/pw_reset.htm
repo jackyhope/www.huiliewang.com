@@ -1,0 +1,55 @@
+{yun:}include file="$comstyle/header.htm"{/yun}
+<link rel="stylesheet" href="/app/public/css/pw_reset/pw_reset.css">
+<div class="pwBox">
+    <div class="title">
+        <span class="line_1"></span>
+        密码设置
+    </div>
+    <div class="formBox">
+        <input type="num" class="tel verify input_nomorl" style="margin-top:51px " rule='^\d{11}$'notice='请输入正确的手机号' placeholder="请输入手机号">
+        <input type="num" class="verifyCode input_nomorl" placeholder="请输入验证码">
+        <span class="getCode">获取验证码</span>
+        <input type="password" class="verify input_nomorl password_" rule='^(\d|[A-z]|\_){8}(\d|[A-z]|\_)*$' notice='密码只能是8位以上字母、数字和下划线' placeholder="密码只能是8位以上字母、数字和下划线">
+        <input type="password" class="input_nomorl pwAgain"  placeholder="再次输入密码">
+        <button type="button" class="button_1 gradient_1 first">确认</button>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.pwAgain').blur(ev=>{
+        if($('.pwAgain').val()!=$('.password_').val()){
+          $('.pwAgain').next('.form_notice').remove();
+          $('.pwAgain').after('<span class="form_notice">两次输入的密码不一致</span>')
+        }else{
+          $('.pwAgain').next('.form_notice').remove();
+        }
+      })
+      $('.password_').blur(ev=>{
+        if($('.pwAgain').val()!=$('.password_').val()){
+          $('.pwAgain').next('.form_notice').remove();
+          $('.pwAgain').after('<span class="form_notice">两次输入的密码不一致</span>')
+        }else{
+          $('.pwAgain').next('.form_notice').remove();
+        }
+      })
+      let count = 59;
+        $('.formBox .getCode').click(ev => {
+            if (count == 59) {
+                $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
+                let timeId = setInterval(() => {
+                    if (count != 0) {
+                        $(ev.target).html(count + 's后重试').css('cursor', 'wait').css('color',
+                            '#999');
+                        count--;
+                    } else {
+                        $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
+                            '#3CC1D3');
+                        clearInterval(timeId);
+                        count = 59
+                    }
+                }, 1000)
+            }
+        })
+    })
+</script>
+{yun:}include file="$tplstyle/footer.htm"{/yun}
