@@ -12,6 +12,9 @@
 use com\hlw\huiliewang\dataobject\frontLogin\FrontRequestDTO;
 use com\hlw\huiliewang\interfaces\FrontLoginServiceClient;
 
+ini_set('display_errors', 1);
+error_reporting(E_ERROR |  E_PARSE);
+
 class index_controller extends common{
     /**
      * author: hellocrab
@@ -135,47 +138,58 @@ class index_controller extends common{
         if(count($post)==0){
             self::return_json('数据不能为空',500);
         }
-        if(!isset($post['business_license']) || empty($post['business_license'])){
-            self::return_json('企业营业执照不能为空',500);
+        if(!isset($post['c_type']) || empty($post['c_type'])){
+            self::return_json('类型不能为空',500);
         }
-        if(!isset($post['business_name']) || empty($post['business_name'])){
-            self::return_json('企业名称不能为空',500);
-        }
-        if(!isset($post['business_province']) || empty($post['business_province'])){
-            self::return_json('请选择企业所在省',500);
-        }
-        if(!isset($post['business_city']) || empty($post['business_city'])){
-            self::return_json('请选择企业所在市',500);
-        }
-        if(!isset($post['business_districts']) || empty($post['business_districts'])){
-            self::return_json('请选择企业所在区县',500);
-        }
-        if(!isset($post['business_addr']) || empty($post['business_addr'])){
-            self::return_json('请填写详细地址',500);
-        }
-        if(!isset($post['business_industry']) || empty($post['business_industry'])){
-            self::return_json('请选择企业行业',500);
-        }
-        if(!isset($post['business_industry']) || empty($post['business_industry'])){
-            self::return_json('请企业联系人',500);
+        if($post['c_type']!='search'  && in_array($post['c_type'],['save','search','synchronous'])){
+            if(!isset($post['business_license']) || empty($post['business_license'])){
+                self::return_json('企业营业执照不能为空',500);
+            }
+
+            if(!isset($post['business_name']) || empty($post['business_name'])){
+                self::return_json('企业名称不能为空',500);
+            }
+            if(!isset($post['business_province']) || empty($post['business_province'])){
+                self::return_json('请选择企业所在省',500);
+            }
+            if(!isset($post['business_city']) || empty($post['business_city'])){
+                self::return_json('请选择企业所在市',500);
+            }
+            if(!isset($post['business_districts']) || empty($post['business_districts'])){
+                self::return_json('请选择企业所在区县',500);
+            }
+            if(!isset($post['business_addr']) || empty($post['business_addr'])){
+                self::return_json('请填写详细地址',500);
+            }
+            if(!isset($post['business_industry']) || empty($post['business_industry'])){
+                self::return_json('请选择企业行业',500);
+            }
+            if(!isset($post['business_industry']) || empty($post['business_industry'])){
+                self::return_json('请企业联系人',500);
+            }
+            //数组
+            $post_data = [
+                'c_type'=>$post['c_type'],// 包括更新和添加
+                'uid'=>$this->uid,//登录人
+                'status'=>0,//审核中[该字段是要写到member表的]
+                'wt_yy_photo'=>$post['business_license'],//企业营业执照 是写到 cert表的
+                'name'=>$post['business_name'],//企业名称
+                'provinceid'=>$post['business_province'],//省
+                'cityid'=>$post['business_city'],//市
+                'three_cityid'=>$post['business_districts'],//区
+                'address'=>$post['business_addr'],//详细地址
+                'hy'=>$post['business_industry'],//行业
+                'linkman'=>$post['business_uname'],//联系人
+                'lastupdate'=>time(),//更新时间
+                'linktel'=>'后台去查询获取',
+            ];
+        }else{
+            $post_data = [
+                'c_type'=>$post['c_type'],// 包括更新和添加
+                'uid'   => $this->uid//登录人
+            ];
         }
 
-        //数组
-        $post_data = [
-            'c_type'=>'save',// 包括更新和添加
-            'uid'=>$this->uid,//登录人
-            'status'=>0,//审核中[该字段是要写到member表的]
-            'wt_yy_photo'=>$post['business_license'],//企业营业执照 是写到 cert表的
-            'name'=>$post['business_name'],//企业名称
-            'provinceid'=>$post['business_province'],//省
-            'cityid'=>$post['business_city'],//市
-            'three_cityid'=>$post['business_districts'],//区
-            'address'=>$post['business_addr'],//详细地址
-            'hy'=>$post['business_industry'],//行业
-            'linkman'=>$post['business_uname'],//联系人
-            'lastupdate'=>time(),//更新时间
-            'linktel'=>'后台去查询获取',
-        ];
         apiClient::init(APPID,SECRET);
         $obj = new com\hlw\huiliewang\dataobject\frontLogin\FrontRequestDTO();
         $obj->post_data = $post_data;
@@ -196,15 +210,20 @@ class index_controller extends common{
     /* 列表页输出↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
     /**
      * 职位列表
+     * kwd 搜索关键词
+     * uid客户主键
+     * page 页码
+     * size 每页显示个数
      */
     function job_show_action(){
-
+        if(!$this->uid){
+            self::return_json('您还未登录!',500,['url'=>"/"]);
+        }
         if(!isset($_POST['kwd'])) $_POST['kwd']='';
-        if(!isset($_POST['uid'])) $_POST['uid']='';
         if(!isset($_POST['page'])) $_POST['page']='';
         if(!isset($_POST['size'])) $_POST['size']='';
         $kwd = baseUtils::getStr($_POST['kwd'],'string','');
-        $post_data['uid'] = baseUtils::getStr($_POST['uid'],'int',0);
+        $post_data['uid'] = baseUtils::getStr($this->uid,'int',0);
         $post_data['page'] = baseUtils::getStr($_POST['page'],'int',1);
         $post_data['size'] = baseUtils::getStr($_POST['size'],'int',10);
         //关键词
@@ -222,6 +241,41 @@ class index_controller extends common{
         $re = $FrontLoginService->jobShowData($obj);
         self::return_json('',200,return_toArray((object)$re));
     }
+    /**
+     * 简历列表  相关数据字段如下：
+     * job_id 为空的话，查看所有职位所有简历
+     * kwd 搜索关键词
+     * job_id 职位id
+     * page 页码
+     * size 每页显示个数
+     */
+    function resume_show_action(){
+        if(!$this->uid){
+            self::return_json('您还未登录!',500,['url'=>"/"]);
+        }
+        $post_data['uid'] = $this->uid;
+        if(!isset($_POST['kwd'])) $_POST['kwd']='';
+        if(!isset($_POST['job_id'])) $_POST['job_id']='';
+        if(!isset($_POST['page'])) $_POST['page']='';
+        if(!isset($_POST['size'])) $_POST['size']='';
+        $kwd = baseUtils::getStr($_POST['kwd'],'string','');
+        $post_data['job_id'] = baseUtils::getStr($_POST['job_id'],'int',0);
+        $post_data['page'] = baseUtils::getStr($_POST['page'],'int',1);
+        $post_data['size'] = baseUtils::getStr($_POST['size'],'int',10);
+        //关键词
+        if(!empty($kwd)){
+            $post_data['where'] ='name like "%'.$kwd.'%"';
+        }
+        apiClient::init(APPID,SECRET);
+        $obj = new FrontRequestDTO();
+        $obj->post_data = $post_data;
+        $FrontLoginService = new com\hlw\huiliewang\interfaces\FrontLoginServiceClient(null);
+        apiClient::build($FrontLoginService);
+        $re = $FrontLoginService->resumeShowData($obj);
+
+        self::return_json('',200,return_toArray((object)$re));
+    }
+
     /* 列表页输出↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*/
     /**
      * @throws Exception

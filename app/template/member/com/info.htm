@@ -29,27 +29,27 @@
         </div>
         <div>
             <span class="sp1">企业名称：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的企业名称，如重庆XX公司">
+            <input type="text" class="verTel input_nomorl" id="business_name" placeholder="请输入正确的企业名称，如重庆XX公司">
         </div>
         <div>
             <span class="sp1">企业地址：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的企业名称，如重庆XX公司">
+            <input type="text" class="verTel input_nomorl" id="business_addr" placeholder="请输入正确的企业地址">
         </div>
         <div>
             <span class="sp1">详细地址：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的公司地址">
+            <input type="text" class="verTel input_nomorl" id="business_province" placeholder="请输入正确的公司地址">
         </div>
         <div>
             <span class="sp1">行业：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="请输入正确的企业名称，如重庆XX公司">
+            <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业">
         </div>
         <div>
             <span class="sp1">联系人：</span>
-            <input type="text" class="verTel input_nomorl" placeholder="联系人姓名">
+            <input type="text" class="verTel input_nomorl" id="business_uname" placeholder="联系人姓名">
         </div>
         <div>
             <span class="sp1">联系电话：</span>
-            <input type="num" class="verTel input_nomorl" placeholder="请输入联系电话">
+            <input type="num" class="verTel input_nomorl" id="linktel" placeholder="请输入联系电话">
         </div>
         <span class="notice"><span class="sp1"></span>企业认证执审核通过后，信息将无法修改，请您核对无误后提交</span>
         <div style='padding-left:70px'></span><button type="button" class="button_1 gradient_1 submit">提交认证</button></div>
@@ -59,30 +59,89 @@
         <span>审核通过后即可享受24小时极速猎头服务</span>
         <div class="imgBox">
             <span class="sp4">营业执照：</span>
-            <img src="" alt="">
+            <img id="photo" src="" alt="">
         </div>
         <div>
             <span class="sp4">企业名称：</span>
             重庆南方新华管理咨询有限公司
+            <span id="business_name"></span>
         </div>
         <div>
             <span class="sp4">企业地址：</span>
             重庆市渝中区五一路平安国际金融中心36层
+            <span id="business_addr"></span>
         </div>
         <div>
             <span class="sp4">行业：</span>
             互联网
+            <span id="business_industry"></span>
         </div>
         <div>
             <span class="sp4">联系人：</span>
             航宝宝
+            <span id="business_uname"></span>
         </div>
         <div>
             <span class="sp4">联系电话：</span>
             13112756365
+            <span id="linktel"></span>
         </div>
         <div style="margin-top: 70px;"></span><button type="button" class="button_1 gradient_1 reset">修改资料</button></div>
     </div>
 </div>
-<script src="/app/public/js/base.js"></script>
+<script src="/app/public/js/base.js">
+
+</script>
+<script>
+    $(document).ready(function () {
+        //提交认证资料
+        $('.submit').click(function () {
+            var business_name = $('#business_name').val();
+            var business_addr = $('#business_addr').val();
+            var business_province = $('#business_province').val();
+            var business_industry = $('#business_industry').val();
+            var business_uname = $('#business_uname').val();
+            var linktel = $('#linktel').val();
+            Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
+                business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
+                business_uname:business_uname,linktel:linktel}).then(function (res) {
+                alert(res.message);
+                window.location.reload();
+            }).catch(function (res) {
+                alert(res.message);
+            });
+        });
+
+        //  编辑认证资料
+        $('.reset').click(function () {
+            var business_name = $('#business_name').val();
+            var business_addr = $('#business_addr').val();
+            var business_province = $('#business_province').val();
+            var business_industry = $('#business_industry').val();
+            var business_uname = $('#business_uname').val();
+            var linktel = $('#linktel').val();
+            var type =
+                Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
+                    business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
+                    business_uname:business_uname,linktel:linktel}).then(function (res) {
+                    alert(res.message);
+                    window.location.reload();
+                }).catch(function (res) {
+                    alert(res.message);
+                });
+        });
+
+        //展示认证资料
+        Post('{yun:}url m=login c=certify{/yun}',{c_type:'search'}).then(function (res) {
+            $('#photo').attr('src',res.data.wt_yy_photo);
+            $('#business_name').html(res.data.username);
+            $('#linktel').html(res.data.linkman);
+            $('#business_addr').html(res.data.address);
+            $('#business_industry').html(res.data.hy);
+        }).catch(function (res) {
+            alert(res.message);
+        });
+
+    });
+</script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
