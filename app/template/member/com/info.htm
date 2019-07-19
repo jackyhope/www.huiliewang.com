@@ -59,54 +59,42 @@
         <span>审核通过后即可享受24小时极速猎头服务</span>
         <div class="imgBox">
             <span class="sp4">营业执照：</span>
-            <img src="" alt="">
+            <img id="photo" src="" alt="">
         </div>
         <div>
             <span class="sp4">企业名称：</span>
             重庆南方新华管理咨询有限公司
+            <span id="business_name"></span>
         </div>
         <div>
             <span class="sp4">企业地址：</span>
             重庆市渝中区五一路平安国际金融中心36层
+            <span id="business_addr"></span>
         </div>
         <div>
             <span class="sp4">行业：</span>
             互联网
+            <span id="business_industry"></span>
         </div>
         <div>
             <span class="sp4">联系人：</span>
             航宝宝
+            <span id="business_uname"></span>
         </div>
         <div>
             <span class="sp4">联系电话：</span>
             13112756365
+            <span id="linktel"></span>
         </div>
         <div style="margin-top: 70px;"></span><button type="button" class="button_1 gradient_1 reset">修改资料</button></div>
     </div>
 </div>
 <script src="/app/public/js/base.js">
-    // $(document).ready(function () {
-    //     $('.bb').click(function () {
-    //         alert('dfadsfaf111111');return;
-    //         var business_name = $('#business_name').val();
-    //         var business_addr = $('#business_addr').val();
-    //         var business_province = $('#business_province').val();
-    //         var business_industry = $('#business_industry').val();
-    //         var business_uname = $('#business_uname').val();
-    //         var linktel = $('#linktel').val();
-    //         alert('dadsfa');return;
-    //         Post('{yun:}url m=login c=certify{/yun}',{business_license:'license',business_name:business_name,business_addr:business_addr,
-    //             business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
-    //             business_uname:business_uname,linktel:linktel}).then(function (res) {
-    //             alert(res.message);
-    //         }).catch(function (res) {
-    //             alert(res.message);
-    //         });
-    //     });
-    // });
+
 </script>
 <script>
     $(document).ready(function () {
+        //提交认证资料
         $('.submit').click(function () {
             var business_name = $('#business_name').val();
             var business_addr = $('#business_addr').val();
@@ -114,14 +102,46 @@
             var business_industry = $('#business_industry').val();
             var business_uname = $('#business_uname').val();
             var linktel = $('#linktel').val();
-            Post('{yun:}url m=login c=certify{/yun}',{business_license:'license',business_name:business_name,business_addr:business_addr,
+            Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
                 business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
                 business_uname:business_uname,linktel:linktel}).then(function (res) {
                 alert(res.message);
+                window.location.reload();
             }).catch(function (res) {
                 alert(res.message);
             });
         });
+
+        //  编辑认证资料
+        $('.reset').click(function () {
+            var business_name = $('#business_name').val();
+            var business_addr = $('#business_addr').val();
+            var business_province = $('#business_province').val();
+            var business_industry = $('#business_industry').val();
+            var business_uname = $('#business_uname').val();
+            var linktel = $('#linktel').val();
+            var type =
+                Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
+                    business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
+                    business_uname:business_uname,linktel:linktel}).then(function (res) {
+                    alert(res.message);
+                    window.location.reload();
+                }).catch(function (res) {
+                    alert(res.message);
+                });
+        });
+
+        //展示认证资料
+        Post('{yun:}url m=login c=certify{/yun}',{c_type:'search'}).then(function (res) {
+            $('#photo').attr('src',res.data.wt_yy_photo);
+            $('#business_name').html(res.data.username);
+            $('#linktel').html(res.data.linkman);
+            $('#business_addr').html(res.data.address);
+            $('#business_industry').html(res.data.hy);
+        }).catch(function (res) {
+            alert(res.message);
+        });
+
     });
 </script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
