@@ -161,8 +161,12 @@ class index_controller extends common{
         $tel = baseUtils::getStr(trim($_GET['tel']));
         $randstr = rand(100000,999999);
         require APP_PATH."/app/public/sms.mod.php";
+        apiClient::init($appid,$secret);
+        $register = new com\hlw\huiliewang\interfaces\HlwRegisterServiceClient(null);
+        apiClient::build($register);
+        $res = $register->sendMSG($tel,$randstr);
         session_start();
-        if(sendSms($tel,$randstr)){
+        if(sendSms($tel,$randstr)){//sendSms($tel,$randstr)
             unset($_SESSION['code']);
             unset($_SESSION['code_time']);
             $_SESSION['code'] = $randstr;
@@ -199,6 +203,9 @@ class index_controller extends common{
         $request->invite = $invitecode;
         apiClient::build($register);
         $result = $register->regist($request);
+        $data = $result->data;
+        $this->unset_cookie();
+        $this->add_cookie($data[0]['uid'],'','','','','2','1',0);
         $arr['code'] = $result->code;
         $arr['message'] = $result->message;
         $arr['success'] = $result->success;
