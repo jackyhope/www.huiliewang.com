@@ -6,6 +6,9 @@ function Post(url,data){
             data,
             type:'post',
             success(res){
+                if(typeof res == 'string'){
+                    res = JSON.parse(res);
+                }
                 if(res.code==200){
                     resolve(res);
                 }else{
