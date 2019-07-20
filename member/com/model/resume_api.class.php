@@ -324,6 +324,38 @@ class resume_api_controller extends company
         }
         $name = yun_iconv('utf-8', 'gbk', $name);
         $templateProcessor->saveAs($name);
+        $file = realpath('./' . $name);
+        $this->fileDown($file, $name);
+        @unlink($file);
+    }
+
+    /**
+     * @desc  浏览器下载
+     * @param $file
+     * @param $name
+     */
+    private function fileDown($file, $name) {
+        // 下载Word文件
+        ob_start(); //打开缓冲区
+        $fp = fopen($file, "r");
+        $file_size = filesize($file);
+        $downFileName = $name;
+
+        header("Cache-Control: public");
+        header("Content-type: application/octet-stream");
+        header("Accept-Ranges: bytes");
+        header("Content-Disposition: attachment; filename={$downFileName}");
+        header("Pragma:no-cache");
+        header("Expires:0");
+        $buffer = 1024;
+        $file_count = 0;
+        //向浏览输出回数据
+        while (!feof($fp) && $file_count < $file_size) {
+            $file_con = fread($fp, $buffer);
+            $file_count += $buffer;
+            echo $file_con;
+        }
+        ob_end_flush();//输出全部内容到浏览器
     }
 
     /**
