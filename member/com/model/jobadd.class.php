@@ -87,6 +87,10 @@ class jobadd_controller extends company
         $this->public_action();
         $this->com_tpl('pw_reset');
     }
+    function  feedback_action(){
+        $this->public_action();
+        $this->com_tpl('feedback');
+    }
 
     function edit_action() {
 

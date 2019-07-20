@@ -1,0 +1,76 @@
+.title {
+    display: flex;
+    align-items: center;
+    margin-left: 93px;
+    float: none;
+}
+
+.con {
+    width: 780px;
+    margin: 50px auto;
+}
+
+.sp1 {
+    display: block;
+    color: #333333;
+    font-size: 28px;
+    padding: 45px 0 44px;
+    text-align: center;
+}
+
+.p1 {
+    font-size: 16px;
+    color: #333;
+    line-height: 31px;
+}
+
+.sp2 {
+    display: inline-block;
+    width: 160px;
+    text-align: right;
+}
+
+.feedbackBox input {
+    width: 430px;
+    padding-left: 15px;
+}
+
+.feedbackBox textarea {
+    width: 430px;
+    padding: 15px;
+    height: 144px;
+}
+
+.con>div:not(:nth-child(1)) {
+    margin-top: 28px;
+}
+
+.con .form_notice {
+    margin-left: 179px;
+}
+
+.typeBox {
+    display: inline-flex;
+    align-items: center;
+}
+
+.typeBox div {
+    width: 80px;
+    height: 40px;
+    border: 1px solid rgba(238, 238, 238, 1);
+    border-radius: 4px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.typeBox .choosed{
+    border-color: #3CC1D3;
+    color: #3CC1D3;
+}
+.con .submit{
+    width: 295px;
+    margin-top: 38px;
+}

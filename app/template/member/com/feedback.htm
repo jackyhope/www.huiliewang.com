@@ -1,0 +1,50 @@
+{yun:}include file="$comstyle/header.htm"{/yun}
+<link rel="stylesheet" href="/app/public/css/feedback/feedback.css">
+<div class="feedbackBox">
+    <div class="con">
+        <div class="title">
+            <span class="line_1"></span>
+            意见反馈
+        </div>
+        <span class="sp1">
+            您的建议让我们每天变的更好
+        </span>
+        <p class="p1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户您好，请将您的意见、想法、建议或投诉内容告诉我们，以帮助我们为全体用户提供更加优质的服务。
+            我们将在第一时间及时回复您的反馈，如您的问题比较紧急，请致电服务热线 ：023-8859-7927
+        </p>
+        <div>
+            <span class="sp2">意见类型：</span>
+            <div class="typeBox">
+                <div class="choosed">建议</div>
+                <div>意见</div>
+                <div>求助</div>
+                <div>投诉</div>
+            </div>
+        </div>
+        <div>
+            <span class="sp2">联系人：</span>
+            <input type="text" class="input_nomorl userName" placeholder="请输入您的姓名">
+        </div>
+        <div>
+            <span class="sp2">联系电话：</span>
+            <input type="text" class="input_nomorl tel verify" rule='^\d{11}$'notice='请输入正确的手机号' placeholder="请输入您的手机号码以便和您沟通，您的信息仅工作人员可见！">
+        </div>
+        <div>
+            <span class="sp2" style="float: left">反馈内容：</span>
+            <textarea type="text" class="userName" placeholder="请详细描述您遇到的问题，有助于我们快速定位并解决问题"></textarea>
+        </div>
+        <div>
+            <button type="button" class="button_1 gradient_1 submit" style='margin-left: 160px;'>提交</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.typeBox div').click(ev=>{
+            $('.typeBox div').removeClass('choosed')
+            $(ev.target).addClass('choosed')
+        })
+    })
+</script>
+{yun:}include file="$tplstyle/footer.htm"{/yun}
