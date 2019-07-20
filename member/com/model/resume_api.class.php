@@ -266,6 +266,7 @@ class resume_api_controller extends company
             'name', 'sex', 'location', 'email', 'telephone',
             'industry', 'job_class', 'marital_status', 'curCompany',
             'age', 'school_name', 'curSalary', 'wantsalary', 'work_year', 'edu',
+            'project_time', 'work_time', 'edu_time'
         ];
         require_once(APP_PATH . "/include/phpword/vendor/autoload.php");
         $phpWord = new  \PhpOffice\PhpWord\PhpWord();
@@ -286,53 +287,39 @@ class resume_api_controller extends company
             $baseValue = trim($baseValue);
             $templateProcessor->setValue($filed, $baseValue);
         }
-//        print_r($list);die;
-//        //简历工作经验
-//        $works = $list['work'];
-//        $lines = count($works);
-////        $templateProcessor->cloneRow('experience_time', $lines); //clone行
-//        $templateProcessor->cloneBlock('WORKBLOCK', $lines, true, true);
-//        foreach ($works as $index => $workInfo) {
-//            $currentLine = $index + 1;
-//            foreach ($workInfo as $filed => $workValue) {
-//                $templateProcessor->setValue('experience_time#' . $currentLine, $workValue);
-//            }
-//        }
+        //工作经验
+        $works = $list['work'];
+        $lines = count($works);
+        $lines > 1 && $templateProcessor->cloneBlock('WORKLOCK', $lines, true, true);
+        foreach ($works as $index => $workInfo) {
+            $currentLine = $index + 1;
+            foreach ($workInfo as $filed => $workValue) {
+                $lines > 1 && $templateProcessor->setValue($filed . '#' . $currentLine, $workValue);
+                $lines <= 1 && $templateProcessor->setValue($filed, $workValue);
+            }
+        }
+
         //教育经验
         $edus = $list['edu'];
         $lines = count($edus);
-        if ($lines > 1) {
-            $templateProcessor->cloneRow('starttime', $lines); //clone行
-            foreach ($edus as $index => $eduInfo) {
-                $currentLine = $index + 1;
-                foreach ($eduInfo as $filed => $eduValue) {
-                    $templateProcessor->setValue($filed . '#' . $currentLine, $eduValue);
-                }
-            }
-        } else {
-            foreach ($edus as $index => $eduInfo) {
-                foreach ($eduInfo as $filed => $eduValue) {
-                    $templateProcessor->setValue($filed, $eduValue);
-                }
+        $lines > 1 && $templateProcessor->cloneRow('edu_time', $lines); //clone行
+        foreach ($edus as $index => $eduInfo) {
+            $currentLine = $index + 1;
+            foreach ($eduInfo as $filed => $eduValue) {
+                $lines > 1 && $templateProcessor->setValue($filed . '#' . $currentLine, $eduValue);
+                $lines <= 1 && $templateProcessor->setValue($filed, $eduValue);
             }
         }
 
         //${PROBLOCK}  项目经历
         $proList = $list['project'];
         $lines = count($proList);
-        if ($lines > 1) {
-            $templateProcessor->cloneBlock('PROBLOCK', $lines, true, true); //clone行
-            foreach ($proList as $index => $proInfo) {
-                $currentLine = $index + 1;
-                foreach ($proInfo as $filed => $proValue) {
-                    $templateProcessor->setValue($filed . '#' . $currentLine, $proValue);
-                }
-            }
-        } else {
-            foreach ($proList as $index => $proInfo) {
-                foreach ($proInfo as $filed => $proValue) {
-                    $templateProcessor->setValue($filed, $proValue);
-                }
+        $lines > 1 && $templateProcessor->cloneBlock('PROBLOCK', $lines, true, true); //clone行
+        foreach ($proList as $index => $proInfo) {
+            $currentLine = $index + 1;
+            foreach ($proInfo as $filed => $proValue) {
+                $lines > 1 && $templateProcessor->setValue($filed . '#' . $currentLine, $proValue);
+                $lines <= 1 && $templateProcessor->setValue($filed, $proValue);
             }
         }
         $name = yun_iconv('utf-8', 'gbk', $name);
