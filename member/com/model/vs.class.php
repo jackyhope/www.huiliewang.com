@@ -45,12 +45,26 @@ class vs_controller extends company
 		}
 	}
 
-	//往手机发验证
+	//检验手机号
+    function checkold_action(){
+	    $uid = $this->uid;
+	    $oldphone = baseUtils::getStr(trim($_GET['oldphone']));
+        apiClient::init($appid,$secret);
+        $adminmanager = new  com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
+        apiClient::build($adminmanager);
+        $res = $adminmanager->checkphone($uid,$oldphone);
+        $arr['code'] = $res->code;
+        $arr['success'] = $res->success;
+        $arr['message'] = $res->message;
+        echo json_encode($arr);die;
+    }
+
+	//往手机发验证码
     function phone_action(){
 	    session_start();
-	    $oldphone = baseUtils::getStr(trim($_GET['oldphone']));
-	    $uid = baseUtils::getStr(trim($_GET['uid']),'int');
-	    $username = baseUtils::getStr(trim($_GET['username']));
+	    $oldphone = baseUtils::getStr(trim($_POST['oldphone']));
+	    $uid = $this->uid;
+	    $username = $this->username;
 	    $code = rand(100000,999999);
 	    $content= '【慧猎网】您的验证码是 '.$code.',请勿泄漏他人，感谢您的支持!';
 	    unset($_SESSION['phone_code']);
@@ -101,7 +115,7 @@ class vs_controller extends company
     //设置新手机
     function newphone_action(){
         $newphone = baseUtils::getStr(trim($_POST['newphone']));
-        $uid = baseUtils::getStr(trim($_POST['uid']),'int');
+        $uid = $this->uid;
         apiClient::init($appid,$secret);
         $adminManager = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
         apiClient::build($adminManager);
@@ -109,7 +123,7 @@ class vs_controller extends company
         $arr['code'] = $res->code;
         $arr['message'] = $res->message;
         $arr['success'] = $res -> success;
-        echo json_encode($arr);//dafdsafsd
+        echo json_encode($arr);
     }
 
 }

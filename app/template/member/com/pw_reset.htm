@@ -15,6 +15,21 @@
     </div>
 </div>
 <script>
+    $(document).ready(function () {
+        $('.first').click(function () {
+            var tel = $('.tel').val();
+            var verifyCode = $('.verifyCode').val();
+            var password_ = $('.password_').val();
+            var pwAgain = $('.pwAgain').val();
+            Post('{yun:}url m=login c=forget_pwd{/yun}',{username:tel,verify:verifyCode,password:password_,repassword:pwAgain}).then(function (res) {
+                alert(res.message);
+            }).catch(function (res) {
+                alert(res.message);
+            });
+        });
+    });
+</script>
+<script>
     $(function(){
         $('.pwAgain').blur(ev=>{
         if($('.pwAgain').val()!=$('.password_').val()){
