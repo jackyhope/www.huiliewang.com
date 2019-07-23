@@ -1,0 +1,222 @@
+{yun:}include file="$comstyle/header.htm"{/yun}
+<link rel="stylesheet" href="/app/public/css/baseInfo/baseInfo.css">
+<div class="baseInfo">
+    <div class="title_">企业基本信息</div>
+    <div class="line_2"></div>
+    <div class="inputBox">
+        <span class="sp1" style="float: left">
+            <span>*&nbsp;</span>LOGO：
+        </span>
+        <img src="" alt="" class="showlogo">
+        <span class="upPicker gradient_1">点击上传</span>
+    </div>
+    <div class="inputBox">
+        <span class="sp1">
+            <span>*&nbsp;</span>企业全称：
+        </span>
+        <input class="input_nomorl" placeholder="请输入企业全称">
+    </div>
+    <div class="inputBox">
+        <span class="sp1">
+            <span>*&nbsp;</span>
+            从事行业：
+        </span>
+        <!-- <input class="input_nomorl" placeholder="请选择行业"> -->
+        <div class="input_nomorl selectBox2" style="z-index:400">
+
+            <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
+                value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
+                onclick="search_show('job_hy');">
+            <input type="hidden" id="hyid" name="hy" {yun:}if $row.hy {/yun} value="{yun:}$row.hy{/yun}"
+                {yun:}/if{/yun}/> <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
+            <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                <ul>
+                    {yun:}foreach item=v from=$industry_index key=k{/yun}
+                    <li><a href="javascript:;"
+                            onclick="selects('{yun:}$v{/yun}','hy','{yun:}$industry_name[$v]{/yun}');">
+                            {yun:}$industry_name[$v]{/yun}</a></li>
+                    {yun:}/foreach{/yun}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="inputBox">
+    <span class="sp1">
+        <span>*&nbsp;</span>
+        城市：
+
+    </span>
+    <div class="input_min selectBox">
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.provinceid{/yun}
+            value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
+            onclick="search_show('job_province');">
+        <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$row.provinceid{/yun}" />
+        <div id="job_province" class="cus-sel-opt-panel" style="display:none">
+            <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                <ul class="Search_Condition_box_list">
+                    {yun:}foreach from=$city_index key=j item=v{/yun}
+                    <li><a href="javascript:;"
+                            onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
+                            {yun:}$city_name[$v]{/yun}</a></li>
+                    {yun:}/foreach{/yun}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="input_min selectBox">
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.cityid{/yun}
+            value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
+            onclick="search_show('job_citys');">
+        <input type="hidden" id="citysid" name="cityid" value="{yun:}$row.cityid{/yun}" />
+        <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
+            <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                <ul class="Search_Condition_box_list">
+                    {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
+                    <li><a href="javascript:;"
+                            onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
+                            {yun:}$city_name[$v]{/yun}</a></li>
+                    {yun:}/foreach{/yun}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="input_min selectBox" {yun:}if $row.three_cityid<1{/yun}style="display:none"{yun:}/if{/yun}
+        id="cityshowth">
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun}
+            value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
+            onclick="three_city_show('job_three_city');">
+        <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$row.three_cityid{/yun}" />
+        <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
+            <ul class="Search_Condition_box_list">
+                {yun:}foreach from=$com key=j item=v{/yun}
+                <li><a href="javascript:;"
+                        onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
+                        {yun:}$city_name[$v]{/yun}</a></li>
+                {yun:}/foreach{/yun}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="inputBox">
+    <span class="sp1">
+        <span>*&nbsp;</span>
+        联系人：
+
+    </span>
+    <input class="input_nomorl" placeholder="请输入联系人姓名">
+</div>
+<div class="inputBox">
+    <span class="sp1">联系手机：
+    </span>
+    <input class="input_nomorl verify tel" rule='^\d{11}$' notice='请输入正确的手机号' placeholder="请输入手机号">
+</div>
+<div class="inputBox">
+    <span class="sp1">固定电话：
+    </span>
+    <input class="input_nomorl" placeholder="请输入固定电话号码">
+</div>
+<div class="inputBox">
+    <span class="sp1">
+        <span>*&nbsp;</span>
+        详细地址：
+    </span>
+    <input class="input_nomorl" placeholder="请输入详细地址">
+</div>
+<div class="inputBox">
+    <span class="sp1">
+        <span>*&nbsp;</span>
+        企业规模：
+    </span>
+    <div class="input_nomorl selectBox2" style="z-index: 101;">
+        <input id="mun" class="SpFormLBut text_seclet_w158" type="button" onclick="search_show('job_mun');" {yun:}if $comclass_name[$row.mun]==''{/yun} value="请选择企业规模" {yun:}else{/yun} value="{yun:}$comclass_name[$row.mun]{/yun}" {yun:}/if{/yun} >
+        <input id="munid" name="mun" type="hidden" {yun:}if $row.mun{/yun} value="{yun:}$row.mun{/yun}" {yun:}/if{/yun} >
+        <div id="job_mun" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display:none;">
+          <ul class="Search_Condition_box_list">
+            {yun:}foreach from=$comdata.job_mun key=j item=v{/yun}
+            <li><a onclick="selects('{yun:}$v{/yun}','mun','{yun:}$comclass_name[$v]{/yun}');" href="javascript:;"> {yun:}$comclass_name[$v]{/yun}</a></li>
+            {yun:}/foreach{/yun}
+          </ul>
+        </div>
+      </div>
+</div>
+<div class="inputBox">
+    <span class="sp1">
+        <span>*&nbsp;</span>
+        企业性质：
+    </span>
+    <div class="input_nomorl selectBox2">
+        <input id="qypr" class="SpFormLBut text_seclet_w158" type="button" onclick="search_show('job_qypr');" {yun:}if
+            $comclass_name[$row.pr]=='' {/yun} value="请选择企业性质" {yun:}else{/yun}
+            value="{yun:}$comclass_name[$row.pr]{/yun}" {yun:}/if{/yun}>
+        <input id="qyprid" type="hidden" name="pr" {yun:}if $row.pr{/yun} value="{yun:}$row.pr{/yun}" {yun:}/if{/yun}>
+        <div id="job_qypr" class="cus-sel-opt-panel cus-sel-opt-panel-w156 cus_h70" style="display: none;">
+            <ul class="Search_Condition_box_list">
+                {yun:}foreach from=$comdata.job_pr key=j item=v{/yun}
+                <li> <a onclick="selects('{yun:}$v{/yun}','qypr','{yun:}$comclass_name[$v]{/yun}');"
+                        href="javascript:;">{yun:}$comclass_name[$v]{/yun}</a> </li>
+                {yun:}/foreach{/yun}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="inputBox">
+    <span class="sp1" style="float: left">
+        <span>*&nbsp;</span>
+        企业简介：
+
+    </span>
+    <textarea class="profile" placeholder="请填写简介"></textarea>
+</div>
+<div class="inputBox">
+    <span class="sp1">公司官网：
+    </span>
+    <input class="input_nomorl" placeholder="">
+</div>
+<div class="title_">补充信息（选填项）</div>
+    <div class="line_2"></div>
+    <div class="inputBox els">
+        <span class="sp1" style="float: left">
+            创办时间：
+        </span>
+        <input class="input_min creatTime">
+    </div>
+    <div class="inputBox els">
+        <span class="sp1" style="float: left">
+            注册资金：
+        </span>
+        <input class="input_min creatMoney">&nbsp;&nbsp;万元
+    </div>
+    <div class="inputBox els">
+        <span class="sp1" style="float: left">
+            邮政编码：
+        </span>
+        <input class="input_min postCode">
+    </div>
+    <div class="inputBox els">
+        <span class="sp1" style="float: left">
+            联系人职位：
+        </span>
+        <input class="input_min userPosi">
+    </div>
+    <div class="inputBox els">
+        <span class="sp1" style="float: left">
+            联系QQ：
+        </span>
+        <input class="input_min qq">
+    </div>
+    <div class="inputBox els">
+        <span class="sp1" style="float: left">
+            招聘邮箱：
+        </span>
+        <input class="input_min email">
+    </div>
+    <div class="inputBox els">
+        <span class="sp1" style="float: left">
+            公司福利：
+        </span>
+        <textarea class="fuliji" placeholder=""></textarea>
+    </div>
+    <button type="button" class="button_1 gradient_1 submit" style='margin-left: 104px;'>保存信息</button>
+</div>
+{yun:}include file="$tplstyle/footer.htm"{/yun}

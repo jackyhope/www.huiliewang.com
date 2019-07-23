@@ -33,7 +33,11 @@ textarea{
     box-sizing: border-box;
 }
 .input_min{
-
+    width: 186px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
 }
 .input_nomorl{
     width: 270px;
@@ -43,7 +47,11 @@ textarea{
     box-sizing: border-box;
 }
 .input_large{
-
+    width: 387px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
 }
 input:focus{
     outline: 1px solid #3CC1D3;
@@ -70,6 +78,14 @@ textarea:focus{
     width: 3px;
     height: 16px;
     background: rgba(60, 193, 211, 1);
+}
+.line_2 {
+    display: inline-block;
+    width: 28px;
+    height: 3px;
+    background: rgba(60, 193, 211, 1);
+    margin-top: 16px;
+    margin-bottom: 43px;
 }
 body{
     background: #fff !important;

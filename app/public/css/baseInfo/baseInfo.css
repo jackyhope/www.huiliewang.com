@@ -1,0 +1,79 @@
+.baseInfo{
+    width: 675px;
+    margin: 50px auto;
+}
+.title_{
+    font-weight: 600;
+    color: #333;
+}
+.sp1{
+    width: 100px;
+    text-align: right;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+    display: inline-block;
+}
+.sp1 span{
+    color: #FF0000;
+}
+.showlogo{
+    border:1px solid rgba(180,247,255,1);
+    width: 170px;
+    margin: 0 30px 0 20px;
+}
+.upPicker{
+    width: 72px;
+    line-height: 24px;
+    display: inline-block;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+    bottom: -75px;
+}
+input,textarea{
+    margin-left: 5px;
+    padding-left: 15px;
+}
+textarea{
+    padding: 15px;
+}
+.inputBox{
+    margin-bottom: 28px;
+}
+.profile,.fuliji{
+    width: 548px;
+    height: 132px;
+}
+.selectBox,.selectBox2{
+    position: relative;
+    z-index: 100;
+    margin-left: 5px;
+    display: inline-block;
+}
+.selectBox input,.selectBox2 input{
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: #fff url(/admin-huilie/images/com_select.jpg) no-repeat 160px center;
+    margin: 0;
+    float: none;
+}
+.selectBox2 input{
+    background: #fff url(/admin-huilie/images/com_select.jpg) no-repeat 240px center;
+
+}
+.selectBox>div{
+    width: 182px;
+}
+.selectBox2>div{
+    width: 265px;
+}
+.form_notice{
+    margin-left: 127px;
+}
+.els .sp1{
+    color: #666;
+}
