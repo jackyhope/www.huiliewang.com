@@ -562,6 +562,11 @@ function return_json($msg='操作成功',$code=200,$data=[]){
 		if(!isset($data['code']) || empty($data['code'])){
 			$data['code']=$code;
 		}
+		$data = serialize($data);
+		$encode = mb_detect_encoding($data, array("ASCII", 'UTF-8', 'GB2312', "GBK", 'BIG5', 'EUC-CN'));//判断编码
+		$string = iconv($encode, 'UTF-8', $data); //全部转utf-8
+		$string = preg_replace('!s:(\d+):"(.*?)";!se', "'s:'.strlen('$2').':\"$2\";'", $string);
+		$data = unserialize($string);
 		echo json_encode($data);die;
 	}else{
 		echo '{"message":"'.$msg.'","code":'.$code.'}';die;
@@ -578,10 +583,42 @@ function return_json($msg='操作成功',$code=200,$data=[]){
  */
 function return_toArray($obj){
 	if(gettype($obj)=='object'){
+		/*$data = serialize($obj);
+        $encode = mb_detect_encoding($data, array("ASCII", 'UTF-8', 'GB2312', "GBK", 'BIG5', 'EUC-CN'));//判断编码
+        $string = iconv($encode, 'UTF-8', $data); //全部转utf-8
+        $string = preg_replace('!s:(\d+):"(.*?)";!se', "'s:'.strlen('$2').':\"$2\";'", $string);
+        $obj = unserialize($string);*/
 		return json_decode(json_encode($obj),true);
 	}else{
 		return true;
 	}
 }
+
+/**
+ * 判断数据编码， 支持  传入数组，对象，字符串，数字
+ * @param $str
+ * @return false|string
+ */
+function get_cur_code($str){
+	$_str = strval($str);
+	if(is_array($str) || is_object($str)){
+		$_str = serialize($str);
+	}
+	return mb_detect_encoding($_str, array("ASCII", 'UTF-8', 'GB2312', "GBK", 'BIG5', 'EUC-CN','Unicode','Base64','UTF-16'));
+}
+/**
+ * 把字符串类型的数值进行编码转换，返回目标编码类型的变量值
+ * @param $_str
+ * @param string $get_coding
+ * @return false|string
+ */
+function change_encoding($_str,$get_coding='UTF-8'){
+	$encode = mb_detect_encoding(strval($_str), array("ASCII", 'UTF-8', 'GB2312', "GBK", 'BIG5', 'EUC-CN'));//判断编码
+	if($encode != $get_coding){
+		$_str = iconv($encode, $get_coding, $_str);
+	}
+	return $_str;
+}
 /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
 ?>

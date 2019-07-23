@@ -1,13 +1,5 @@
 <?php
-/*
-* $Author ：PHPYUN开发团队
-*
-* 官网: http://www.phpyun.com
-*
-* 版权所有 2009-2016 宿迁鑫潮信息技术有限公司，并保留所有权利。
-*
-* 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
- */
+
 
 use com\hlw\huiliewang\dataobject\frontLogin\FrontRequestDTO;
 use com\hlw\huiliewang\interfaces\FrontLoginServiceClient;
@@ -27,7 +19,7 @@ class index_controller extends common{
         $post = $_POST;
 
         if(count($post)==0){
-            self::return_json('数据异常，访问的页面错误!');
+            return_json('数据异常，访问的页面错误!');
         }
         /*if($this->uid > 0 && $this->username!=""){
             if($this->usertype=='1'){
@@ -40,20 +32,20 @@ class index_controller extends common{
         $post['username'] = mb_convert_encoding($post['username'], "utf-8", $encoding);
 
         if(!isset($post['username']) || empty($post['username'])){
-            self::return_json('手机号不能为空!',500);
+            return_json('手机号不能为空!',500);
         }
         if(!isset($post['l_type']) || empty($post['l_type'])){
-            self::return_json('请选择登录方式不能为空!',500);
+            return_json('请选择登录方式不能为空!',500);
         }
         if($post['l_type']!=1 && $post['l_type']!=2){
 
-            self::return_json('登录方式只能为1或者2!',500);
+            return_json('登录方式只能为1或者2!',500);
         }
         if(!isset($post['password']) || empty($post['password'])){
             $msg='';
             $post['l_type']==1 && $msg = '验证码不能为空';
             $post['l_type']==2 && $msg = '密码不能为空';
-            self::return_json($msg,500);
+            return_json($msg,500);
         }
 
         apiClient::init(APPID,SECRET);
@@ -76,7 +68,7 @@ class index_controller extends common{
             $this->unset_cookie();
             $this->add_cookie($user['uid'],$user['username'],$user['salt'],$user['email'],$user['password'],$user['usertype'],$_POST['loginname'],$user['did']);
         }
-        self::return_json('',200,return_toArray((object)$re));
+        return_json('',200,return_toArray((object)$re));
     }
 
 
@@ -88,27 +80,27 @@ class index_controller extends common{
         $post = $_POST;
 
         if(count($post)==0){
-            self::return_json('数据不能为空',500);
+            return_json('数据不能为空',500);
         }
         //手机号，手机验证码，新密码，重复密码
         if(!isset($post['username']) || empty($post['username'])){
-            self::return_json('手机号不能为空',500);
+            return_json('手机号不能为空',500);
         }
 
         if(!isset($post['verify']) || empty($post['verify'])){
-            self::return_json('验证码不能为空',500);
+            return_json('验证码不能为空',500);
         }
 
         if(!isset($post['password']) || empty($post['password'])){
-            self::return_json('新密码不能为空',500);
+            return_json('新密码不能为空',500);
         }
 
         if(!isset($post['repassword']) || empty($post['repassword'])){
-            self::return_json('重复新密码不能为空',500);
+            return_json('重复新密码不能为空',500);
         }
 
         if($post['repassword'] != $post['repassword']){
-            self::return_json('两次密码不一致',500);
+            return_json('两次密码不一致',500);
         }
 
         apiClient::init(APPID,SECRET);
@@ -124,7 +116,7 @@ class index_controller extends common{
         apiClient::build($FrontLoginService);
         $re = $FrontLoginService->findData($obj);
 
-        self::return_json('',200,return_toArray((object)$re));
+        return_json('',200,return_toArray((object)$re));
 
 
     }
@@ -136,36 +128,36 @@ class index_controller extends common{
         //$this->is_login();// 没检测，暂不用 0715
         $post = $_POST;
         if(count($post)==0){
-            self::return_json('数据不能为空',500);
+            return_json('数据不能为空',500);
         }
         if(!isset($post['c_type']) || empty($post['c_type'])){
-            self::return_json('类型不能为空',500);
+            return_json('类型不能为空',500);
         }
         if($post['c_type']!='search'  && in_array($post['c_type'],['save','search','synchronous'])){
             if(!isset($post['business_license']) || empty($post['business_license'])){
-                self::return_json('企业营业执照不能为空',500);
+                return_json('企业营业执照不能为空',500);
             }
 
             if(!isset($post['business_name']) || empty($post['business_name'])){
-                self::return_json('企业名称不能为空',500);
+                return_json('企业名称不能为空',500);
             }
             if(!isset($post['business_province']) || empty($post['business_province'])){
-                self::return_json('请选择企业所在省',500);
+                return_json('请选择企业所在省',500);
             }
             if(!isset($post['business_city']) || empty($post['business_city'])){
-                self::return_json('请选择企业所在市',500);
+                return_json('请选择企业所在市',500);
             }
             if(!isset($post['business_districts']) || empty($post['business_districts'])){
-                self::return_json('请选择企业所在区县',500);
+                return_json('请选择企业所在区县',500);
             }
             if(!isset($post['business_addr']) || empty($post['business_addr'])){
-                self::return_json('请填写详细地址',500);
+                return_json('请填写详细地址',500);
             }
             if(!isset($post['business_industry']) || empty($post['business_industry'])){
-                self::return_json('请选择企业行业',500);
+                return_json('请选择企业行业',500);
             }
             if(!isset($post['business_industry']) || empty($post['business_industry'])){
-                self::return_json('请企业联系人',500);
+                return_json('请企业联系人',500);
             }
             //数组
             $post_data = [
@@ -203,7 +195,7 @@ class index_controller extends common{
         if($this->uid){
             //return true;
         }else{
-            self::return_json('您还未登录或登录已过期，请重新登录',500,['return_url'=>'/login']);die;
+            return_json('您还未登录或登录已过期，请重新登录',500,['return_url'=>'/login']);die;
         }
     }
 
@@ -216,64 +208,138 @@ class index_controller extends common{
      * size 每页显示个数
      */
     function job_show_action(){
-        if(!$this->uid){
-            self::return_json('您还未登录!',500,['url'=>"/"]);
+        $post_data['uid'] = 0;
+        if(isset($_POST['uid']) && intval($_POST['uid'])>0){
+            $post_data['uid'] = intval($_POST['uid']);
         }
-        if(!isset($_POST['kwd'])) $_POST['kwd']='';
-        if(!isset($_POST['page'])) $_POST['page']='';
-        if(!isset($_POST['size'])) $_POST['size']='';
-        $kwd = baseUtils::getStr($_POST['kwd'],'string','');
-        $post_data['uid'] = baseUtils::getStr($this->uid,'int',0);
-        $post_data['page'] = baseUtils::getStr($_POST['page'],'int',1);
-        $post_data['size'] = baseUtils::getStr($_POST['size'],'int',10);
-        //关键词
-        if(!empty($kwd)){
-            $post_data['where'] ='name like "%'.$kwd.'%"';
+        if(intval($this->uid)>0){
+            $post_data['uid'] = intval($this->uid);
         }
-        if($post_data['uid']<=0){
-            self::return_json('客户id不能为空!',500);
+        if(!$post_data['uid']){
+            return_json('您还未登录!',500,['url'=>"/"]);
         }
+
+        if(isset($_POST['kwd']) && !empty(strval($_POST['kwd']))){
+            $post_data['kwd'] = baseUtils::getStr(change_encoding($_POST['kwd'],'GBK'),'string','');
+        }else{
+            $post_data['kwd']='';
+        }
+
+        if(isset($_POST['page']) && !empty(intval($_POST['page'])) && intval($_POST['page']) > 0){
+            $post_data['page'] = intval($_POST['page']);
+        }else{
+            $post_data['page'] = 1;
+        }
+
+        if(isset($_POST['size']) && !empty(intval($_POST['size'])) && intval($_POST['size']) > 0){
+            $post_data['size'] = intval($_POST['size']);
+        }else{
+            $post_data['size'] = 10;
+        }
+
         apiClient::init(APPID,SECRET);
         $obj = new FrontRequestDTO();
         $obj->post_data = $post_data;
         $FrontLoginService = new com\hlw\huiliewang\interfaces\FrontLoginServiceClient(null);
         apiClient::build($FrontLoginService);
         $re = $FrontLoginService->jobShowData($obj);
-        self::return_json('',200,return_toArray((object)$re));
+        return_json('',200,return_toArray((object)$re));
     }
     /**
      * 简历列表  相关数据字段如下：
      * job_id 为空的话，查看所有职位所有简历
+     * job_type 职位类型
      * kwd 搜索关键词
      * job_id 职位id
      * page 页码
      * size 每页显示个数
+     * 限定 is_look 要么为1  要么没有  为1 则
      */
     function resume_show_action(){
-        if(!$this->uid){
-            self::return_json('您还未登录!',500,['url'=>"/"]);
+        $post_data['uid'] = 0;
+        if(isset($_POST['uid']) && intval($_POST['uid'])>0){
+            $post_data['uid'] = intval($_POST['uid']);
         }
-        $post_data['uid'] = $this->uid;
-        if(!isset($_POST['kwd'])) $_POST['kwd']='';
-        if(!isset($_POST['job_id'])) $_POST['job_id']='';
-        if(!isset($_POST['page'])) $_POST['page']='';
-        if(!isset($_POST['size'])) $_POST['size']='';
-        $kwd = baseUtils::getStr($_POST['kwd'],'string','');
-        $post_data['job_id'] = baseUtils::getStr($_POST['job_id'],'int',0);
-        $post_data['page'] = baseUtils::getStr($_POST['page'],'int',1);
-        $post_data['size'] = baseUtils::getStr($_POST['size'],'int',10);
-        //关键词
-        if(!empty($kwd)){
-            $post_data['where'] ='name like "%'.$kwd.'%"';
+        if(intval($this->uid)>0){
+            $post_data['uid'] = intval($this->uid);
         }
+        if(!$post_data['uid']){
+            return_json('您还未登录!',500,['url'=>"/"]);
+        }
+        $post_data['is_look'] = 99;
+        if(isset($_POST['is_look'])){
+            if($_POST['is_look'] === 0
+                || $_POST['is_look'] === '0'
+                || $_POST['is_look'] === 1
+                || $_POST['is_look'] === '1'
+                || $_POST['is_look'] === 2
+                || $_POST['is_look'] === '2'
+                || $_POST['is_look'] === 3
+                || $_POST['is_look'] === '3'
+                || $_POST['is_look'] === 4
+                || $_POST['is_look'] === '4'
+                || $_POST['is_look'] === 5
+                || $_POST['is_look'] === '5'
+                || $_POST['is_look'] === 6
+                || $_POST['is_look'] === '6'
+                || $_POST['is_look'] === 7
+                || $_POST['is_look'] === '7'
+                || $_POST['is_look'] === 8
+                || $_POST['is_look'] === '8'
+                || $_POST['is_look'] === 9
+                || $_POST['is_look'] === '9'
+                || $_POST['is_look'] === 10
+                || $_POST['is_look'] === '10'
+                || $_POST['is_look'] === 11
+                || $_POST['is_look'] === '11')
+            {
+                $post_data['is_look'] = $_POST['is_look'];
+            }
+        }
+
+        if(isset($_POST['kwd']) && !empty(strval($_POST['kwd']))){
+            $post_data['kwd'] = baseUtils::getStr(change_encoding($_POST['kwd'],'GBK'),'string','');
+        }else{
+            $post_data['kwd']='';
+        }
+
+        if(isset($_POST['job_id']) && !empty(intval($_POST['job_id'])) && intval($_POST['job_id']) > 0){
+            $post_data['job_id'] = intval($_POST['job_id']);
+        }else{
+            $post_data['job_id'] = 0;
+        }
+
+        $post_data['job_type'] = 99;
+        if(isset($_POST['job_type'])){
+            if($_POST['job_type'] === 0
+                || $_POST['job_type'] === '0'
+                || $_POST['job_type'] === 1
+                || $_POST['job_type'] === '1')
+            {
+                $post_data['job_type'] = $_POST['job_type'];
+            }
+        }
+
+        if(isset($_POST['page']) && !empty(intval($_POST['page'])) && intval($_POST['page']) > 0){
+            $post_data['page'] = intval($_POST['page']);
+        }else{
+            $post_data['page'] = 1;
+        }
+
+        if(isset($_POST['size']) && !empty(intval($_POST['size'])) && intval($_POST['size']) > 0){
+            $post_data['size'] = intval($_POST['size']);
+        }else{
+            $post_data['size'] = 10;
+        }
+
+
         apiClient::init(APPID,SECRET);
         $obj = new FrontRequestDTO();
         $obj->post_data = $post_data;
         $FrontLoginService = new com\hlw\huiliewang\interfaces\FrontLoginServiceClient(null);
         apiClient::build($FrontLoginService);
         $re = $FrontLoginService->resumeShowData($obj);
-
-        self::return_json('',200,return_toArray((object)$re));
+        return_json('',200,return_toArray((object)$re));
     }
 
     /* 列表页输出↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*/
@@ -304,54 +370,18 @@ class index_controller extends common{
                 $FrontLoginService = new com\hlw\huiliewang\interfaces\FrontLoginServiceClient(null);
                 apiClient::build($FrontLoginService);
                 $re = $FrontLoginService->changeData($obj);
-                self::return_json('操作成功',200,return_toArray((object)$re));
+                return_json('操作成功',200,return_toArray((object)$re));
             }else{
-                self::return_json('请求数据异常',500);
+                return_json('请求数据异常',500);
             }
         }else{
-            self::return_json('请求数据异常!',500);
+            return_json('请求数据异常!',500);
         }
 
     }
 
 
     /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
-    /**
-     * date  2019-07-13
-     * author hellocrab
-     * @param string $msg
-     * @param int $code
-     * 返回一个error  success 状态类型的json数据
-     */
-    static function return_json($msg='操作成功',$code=200,$data=[]){
-        if(count($data)>0){
-            if(!isset($data['message']) || empty($data['message'])){
-                $data['message']=$msg;
-            }
-            if(!isset($data['code']) || empty($data['code'])){
-                $data['code']=$code;
-            }
-            echo json_encode($data);die;
-        }else{
-            echo '{"message":"'.$msg.'","code":'.$code.'}';die;
-        }
-    }
-
-
-    /**
-     * date  2019-07-13
-     * author hellocrab
-     * 把对象转换为数组
-     * @param $obj
-     * @return bool|mixed
-     */
-    function return_toArray($obj){
-        if(gettype($obj)=='object'){
-            return json_decode(json_encode($obj),true);
-        }else{
-            return true;
-        }
-    }
     /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
     function index_action(){
         if($this->uid!=""&&$this->username!=""){
