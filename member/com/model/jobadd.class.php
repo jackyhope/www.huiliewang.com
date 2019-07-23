@@ -87,9 +87,11 @@ class jobadd_controller extends company
         $this->public_action();
         $this->com_tpl('pw_reset');
     }
-    function  feedback_action(){
+    function  base_info_action(){
+        $CacheArr = $this->MODEL('cache')->GetCache(array('hy', 'job', 'city', 'com', 'circle'));
+        $this->yunset($CacheArr);
         $this->public_action();
-        $this->com_tpl('feedback');
+        $this->com_tpl('base_info');
     }
 
     function edit_action() {
