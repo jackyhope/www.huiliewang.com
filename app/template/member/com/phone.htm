@@ -22,14 +22,14 @@
         <div class="form1">
             <input type="num" class="oldTel verify input_nomorl" style="margin-top:51px " rule='^\d{11}$'
                 notice='请输入正确的手机号' placeholder="请输入手机号">
-            <input type="num" class="verifyCode input_nomorl" placeholder="请输入验证码">
+            <input type="num" class="verifyCode1 input_nomorl" placeholder="请输入验证码">
             <span class="getCode">获取验证码</span>
             <button type="button" class="button_1 gradient_1 first">下一步</button>
         </div>
         <div class="form2">
             <input type="num" class="newTel verify input_nomorl" style="margin-top:51px " rule='^\d{11}$'
                 notice='请输入正确的手机号' placeholder="请输入手机号">
-            <input type="num" class="verifyCode input_nomorl" placeholder="请输入验证码">
+            <input type="num" class="verifyCode2 input_nomorl" placeholder="请输入验证码">
             <span class="getCode">获取验证码</span>
             <button type="button" class="button_1 gradient_1 submit">确认</button>
         </div>
@@ -37,9 +37,42 @@
 </div>
 <script src="/app/public/js/base.js"></script>
 <script>
+    $(document).ready(function () {
+        //检验旧手机号是否正确
+        var oldtel = $('.oldTel').val();
+        $('.oldTel').blur(function () {
+            Get('{yun:}url m=member c=vs act=checkold{/yun}',{oldphone:oldtel}).then(function (res) {
+
+            }).catch(function (reason) {
+                alert(reason.message);
+            });
+        });
+
+        //
+        $('.submit').click(function () {
+            var newTel = $('.newTel').val();
+            var verifyCode2 = $('.verifyCode2').val();
+            Post('{yun:}url m=member c=vs act=verify{/yun}',{phone:newTel,code:verifyCode2}).then(function () {
+                Post('{yun:}url m=member c=vs act=verify{/yun}',{newphone:newTel}).then(function (res) {
+                    alert(res.message);
+                }).catch(function (res) { alert(res.message); })
+            }).catch(function (reason) {
+               alert(reason.message);
+            });
+        });
+
+    });
+</script>
+<script>
     $(function () {
         let count1 = 59;
         $('.form1 .getCode').click(ev => {
+            var oldtel = $('.oldTel').val();
+            Post('{yun:}url m=member c=vs act=phone{/yun}',{oldphone:oldtel}).then(function (res) {
+                alert(res.message);
+            }).catch(function (reason) {
+                alert(reason.message);
+            });
             if (count1 == 59) {
                 $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
                 let timeId = setInterval(() => {
@@ -58,6 +91,12 @@
         })
         let count2 = 59;
         $('.form2 .getCode').click(ev => {
+            var newTel = $('.oldTel').val();
+            Post('{yun:}url m=member c=vs act=phone{/yun}',{oldphone:newTel}).then(function (res) {
+            alert(res.message);
+        }).catch(function (reason) {
+            alert(reason.message);
+        });
             if (count2 == 59) {
                 $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
                 let timeId = setInterval(() => {
@@ -75,9 +114,15 @@
             }
         })
         $('.first').click(ev=>{
-            $('.step:nth-child(3)').addClass('hover');
-            $('.form1').css('display','none');
-            $('.form2').css('display','flex');
+            var  oldtel = $('.oldTel').val();
+            var verifyCode1 = $('.verifyCode1').val();
+            Post('{yun:}url m=member c=vs act=verify{/yun}',{phone:oldtel,code:verifyCode1}).then(function () {
+                $('.step:nth-child(3)').addClass('hover');
+                $('.form1').css('display','none');
+                $('.form2').css('display','flex');
+            }).catch(function (reason) {
+                alert(reason.message);
+            });
         })
     })
 </script>
