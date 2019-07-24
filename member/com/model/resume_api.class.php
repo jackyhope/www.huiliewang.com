@@ -107,6 +107,11 @@ class resume_api_controller extends company
         $interview_address = baseUtils::getStr($_POST['interview_address']);
         $interviewer = baseUtils::getStr($_POST['interviewer']);
         $note = baseUtils::getStr($_POST['note']);
+        $companyInfo = $this->buyDetail();
+        $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
+        if ($paydCount < 1) {
+            $this->ajax_return(500, false, "套餐余额不足");
+        }
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
@@ -119,6 +124,8 @@ class resume_api_controller extends company
             $resumeDo->interview_time = $interview_time ? strtotime($interview_time) : 0;
             $resumeDo->interviewer = $interviewer;
             $resumeDo->uid = $this->uid;
+            $money = $companyInfo['money'];
+            $resumeDo->money = $money;
             $info = $resumeService->orderInterview($resumeDo);
             if ($info->code != 200) {
                 $this->ajax_return(500, false, $info->message);
@@ -130,11 +137,38 @@ class resume_api_controller extends company
     }
 
     /**
+     * @desc  简历购买详情
+     * @return array|mixed
+     */
+    private function buyDetail() {
+        try {
+            apiClient::init('', '');
+            $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
+            apiClient::build($resumeService);
+            $resumeDo = new com\hlw\huilie\dataobject\resume\resumeRequestDTO();
+            $resumeDo->resume_id = $this->resumeId;
+            $resumeDo->project_id = $this->projectId;
+            $resumeDo->uid = $this->uid;
+            $info = $resumeService->jobResumeDetail($resumeDo);
+            if ($info->code != 200) {
+                return [];
+            }
+            $info->message = json_decode($info->message, true);
+            return $info->message;
+
+        } catch (Exception $e) {
+            return [];
+        }
+    }
+
+    /**
      * @desc 购买清单
      *   列表数据传递过去
      */
     public function buy_detail_action() {
         //1、候选人、年薪、应扣点数、当前可用点数
+        $info = $this->buyDetail();
+        $this->ajax_return(200, true, $info);
     }
 
     /**
@@ -144,11 +178,12 @@ class resume_api_controller extends company
      */
     function pay_action() {
         //1、@todo 判断账户余额
-        $companyInfo = $this->obj->DB_select_once("company", "`uid`='" . $this->uid, "resume_payd,interview_payd,interview_payd_expect");
-        $paydCount = $companyInfo['resume_payd'];
+        $companyInfo = $this->buyDetail();
+        $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
         if ($paydCount < 1) {
             $this->ajax_return(500, false, "套餐余额不足");
         }
+        $money = $companyInfo['money'];
         //2、更改状态
         try {
             apiClient::init('', '');
@@ -158,6 +193,7 @@ class resume_api_controller extends company
             $resumeDo->resume_id = $this->resumeId;
             $resumeDo->project_id = $this->projectId;
             $resumeDo->status = 4;
+            $resumeDo->money = $money;
             $resumeDo->uid = $this->uid;
             $info = $resumeService->statusUp($resumeDo);
             if ($info->code != 200) {
@@ -168,8 +204,8 @@ class resume_api_controller extends company
         }
         //@todo 3、购买扣除点数
         //记录消费记录
-        $this->buyLog(-1);
-        $this->ajax_return(200, true, $info->message);
+        $this->buyLog(-$money);
+        $this->ajax_return(200, true, '购买成功');
     }
 
     /**
@@ -207,6 +243,11 @@ class resume_api_controller extends company
         if (!isset($_POST['is_present'])) {
             $this->ajax_return(500, false, '请求错误');
         }
+        $companyInfo = $this->buyDetail();
+        $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
+        if ($paydCount < 1) {
+            $this->ajax_return(500, false, "套餐余额不足");
+        }
         $isPresent = baseUtils::getStr($_POST['is_present'], 'int');
         $status = $isPresent ? 11 : 10;
         try {
@@ -218,6 +259,8 @@ class resume_api_controller extends company
             $resumeDo->project_id = $this->projectId;
             $resumeDo->status = $status;
             $resumeDo->uid = $this->uid;
+            $money = $companyInfo['money'];
+            $resumeDo->money = $money;
             $info = $resumeService->statusUp($resumeDo);
             if ($info->code != 200) {
                 $this->ajax_return(500, false, $info->message);
@@ -266,7 +309,7 @@ class resume_api_controller extends company
             'name', 'sex', 'location', 'email', 'telephone',
             'industry', 'job_class', 'marital_status', 'curCompany',
             'age', 'school_name', 'curSalary', 'wantsalary', 'work_year', 'edu',
-            'project_time', 'work_time', 'edu_time','curPosition','intentCity','curStatus'
+            'project_time', 'work_time', 'edu_time', 'curPosition', 'intentCity', 'curStatus'
         ];
         require_once(APP_PATH . "/include/phpword/vendor/autoload.php");
         $phpWord = new  \PhpOffice\PhpWord\PhpWord();
