@@ -14,7 +14,7 @@
         <span class="sp1">
             <span>*&nbsp;</span>企业全称：
         </span>
-        <input class="input_nomorl" placeholder="请输入企业全称">
+        <input class="input_nomorl" id="name" placeholder="请输入企业全称">
     </div>
     <div class="inputBox">
         <span class="sp1">
@@ -104,24 +104,24 @@
         联系人：
 
     </span>
-    <input class="input_nomorl" placeholder="请输入联系人姓名">
+    <input class="input_nomorl" id="linkman" placeholder="请输入联系人姓名">
 </div>
 <div class="inputBox">
     <span class="sp1">联系手机：
     </span>
-    <input class="input_nomorl verify tel" rule='^\d{11}$' notice='请输入正确的手机号' placeholder="请输入手机号">
+    <input class="input_nomorl verify tel" id="linktel" rule='^\d{11}$' notice='请输入正确的手机号' placeholder="请输入手机号">
 </div>
 <div class="inputBox">
     <span class="sp1">固定电话：
     </span>
-    <input class="input_nomorl" placeholder="请输入固定电话号码">
+    <input class="input_nomorl" id="phoneone" placeholder="请输入固定电话号码">
 </div>
 <div class="inputBox">
     <span class="sp1">
         <span>*&nbsp;</span>
         详细地址：
     </span>
-    <input class="input_nomorl" placeholder="请输入详细地址">
+    <input class="input_nomorl" id="address" placeholder="请输入详细地址">
 </div>
 <div class="inputBox">
     <span class="sp1">
@@ -166,12 +166,12 @@
         企业简介：
 
     </span>
-    <textarea class="profile" placeholder="请填写简介"></textarea>
+    <textarea class="profile" id="content" placeholder="请填写简介"></textarea>
 </div>
 <div class="inputBox">
     <span class="sp1">公司官网：
     </span>
-    <input class="input_nomorl" placeholder="">
+    <input class="input_nomorl" id="website" placeholder="">
 </div>
 <div class="title_">补充信息（选填项）</div>
     <div class="line_2"></div>
@@ -179,44 +179,99 @@
         <span class="sp1" style="float: left">
             创办时间：
         </span>
-        <input class="input_min creatTime">
+        <input class="input_min creatTime" id="sdate">
     </div>
     <div class="inputBox els">
         <span class="sp1" style="float: left">
             注册资金：
         </span>
-        <input class="input_min creatMoney">&nbsp;&nbsp;万元
+        <input class="input_min creatMoney" id="money">&nbsp;&nbsp;万元
     </div>
     <div class="inputBox els">
         <span class="sp1" style="float: left">
             邮政编码：
         </span>
-        <input class="input_min postCode">
+        <input class="input_min postCode" id="zip">
     </div>
     <div class="inputBox els">
         <span class="sp1" style="float: left">
             联系人职位：
         </span>
-        <input class="input_min userPosi">
+        <input class="input_min userPosi" id="linkjob">
     </div>
     <div class="inputBox els">
         <span class="sp1" style="float: left">
             联系QQ：
         </span>
-        <input class="input_min qq">
+        <input class="input_min qq" id="linkqq">
     </div>
     <div class="inputBox els">
         <span class="sp1" style="float: left">
             招聘邮箱：
         </span>
-        <input class="input_min email">
+        <input class="input_min email" id="linkmail">
     </div>
     <div class="inputBox els">
         <span class="sp1" style="float: left">
             公司福利：
         </span>
-        <textarea class="fuliji" placeholder=""></textarea>
+        <textarea class="fuliji" placeholder="" id="welfare"></textarea>
     </div>
     <button type="button" class="button_1 gradient_1 submit" style='margin-left: 104px;'>保存信息</button>
 </div>
+<script src="/app/public/js/base.js"></script>
+<script>
+    $(document).ready(function () {
+
+        //保存编辑的资料
+        $('.submit').click(function () {
+
+            var name = $('#name').val();
+            var hyid = $('#hyid').val();
+            var provinceid = $('#provinceid').val();
+            var citysid = $('#citysid').val();
+            var three_cityid = $('#three_cityid').val();
+            var linkman = $('#linkman').val();
+            var linktel = $('#linktel').val();
+            var qypr = $('#qypr').val();
+            var address = $('#address').val();
+            var munid = $('#munid').val();
+            var content = $('#content').val();
+            var sdate = $('#sdate').val();
+            var website = $('#website').val();
+            var money = $('#money').val();
+            var zip = $('#zip').val();
+            var linkjob = $('#linkjob').val();
+            var linkqq = $('#linkqq').val();
+            var linkmail = $('#linkmail').val();
+            var welfare = $('#welfare').val();
+            Post('{yun:}url m=member c=info act=saveinfo{/yun}',{
+                name:name,
+                hy:hyid,
+                provinceid:provinceid,
+                cityid:citysid,
+                three_cityid:three_cityid,
+                linkman:linkman,
+                linktel:linktel,
+                pr:qypr,
+                address:address,
+                mun:munid,
+                content:content,
+                sdate:sdate,
+                website:website,
+                money:money,
+                zip:zip,
+                linkjob:linkjob,
+                linkqq:linkqq,
+                linkmail:linkmail,
+                website:welfare
+            }).then(function (res) {
+                alert(res.info);
+            }).catch(function (res) {
+                alert(res.info);
+            });
+        });
+
+    });
+</script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
