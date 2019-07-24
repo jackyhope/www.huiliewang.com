@@ -1,0 +1,120 @@
+.headerBox{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.headerBox div{
+    height: 100%;
+    display: inline-block;
+}
+.headerBox nav{
+    width: 436px;
+    display: inline-flex;
+}
+.headerBox nav span{
+    display: inline-block;
+    flex: 1;
+    text-align: center;
+    line-height: 80px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+}
+.headerBox nav .choosed{
+    border-bottom: 3px solid #3CC1D3;
+}
+.ourLogo{
+    width: 151px;
+    display: inline-block;
+    margin-right: 70px;
+}
+.headerBox .userBox{
+    position: relative;
+    float: right;
+    display: inline-flex;
+    align-items: center;
+}
+.noticeImg{
+    margin-right: 12px;
+}
+.showNotice{
+    color: #666;
+    font-size: 14px;
+    margin-right: 42px;
+    cursor: pointer;
+}
+.userCenter{
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+}
+.userCenter img{
+    margin-left: 14px;
+}
+.noticeNum{
+    position: absolute;
+    top: 22px;
+    left: 57px;
+    background-color: #EE5E5E;
+    padding:0 3px;
+    border-radius: 2px;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+}
+.headerBox .noticeBox{
+    width: 296px;
+    position: absolute;
+    top: 80px;
+    left: 900px;
+    box-shadow:0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    height: auto !important;
+    z-index: 9999;
+    transition: 0.2s;
+    display: none;
+    overflow: hidden;
+}
+.readAll{
+    display: block;
+    text-align: right;
+    padding-right: 15px;
+    color: #999999;
+    font-size: 12px;
+    line-height: 39px;
+    border-bottom: 1px solid #e8e8e8;
+    cursor: pointer;
+}
+.noticeBox>div{
+    padding: 16px 27px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.noticeBox>div span:nth-child(1){
+    font-size: 14px;
+    color: #666;
+}
+.noticeBox>div span:nth-child(3){
+    font-size: 12px;
+    color: #999;
+    float: right;
+}
+.noticeBox .showAll{
+    line-height: 45px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+}
+.noticeBox>span:hover{
+    color: #3CC1D3;
+}
+.noticeBox>div:hover{
+    background: -webkit-linear-gradient(left, #75E4E5 , #5BCBD5); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #75E4E5, #5BCBD5); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #75E4E5, #5BCBD5); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #75E4E5 , #5BCBD5);
+}
+.noticeBox>div:hover span{
+    color: #fff;
+}
