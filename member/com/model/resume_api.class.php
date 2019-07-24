@@ -6,14 +6,19 @@ class resume_api_controller extends company
     protected $resumeId;
     protected $projectId;
 
-    public function __construct() {
-        $resumeId = baseUtils::getStr($_POST['resume_id'], 'int');
-        $projectId = baseUtils::getStr($_POST['project_id'], 'int');
-        if (!$resumeId || !$projectId) {
+    /**
+     * @desc 参数检测
+     */
+    private function publicCheck() {
+        $this->resumeId = baseUtils::getStr($_POST['resume_id'], 'int');
+        $this->projectId = baseUtils::getStr($_POST['project_id'], 'int');
+        $uId = $this->uid;
+        if (!$uId) {
+            $this->ajax_return(500, false, '请登录');
+        }
+        if (!$this->resumeId || !$this->projectId) {
             $this->ajax_return(500, false, '请求参数失败');
         }
-        $this->resumeId = $resumeId;
-        $this->projectId = $projectId;
     }
 
     /**
@@ -30,6 +35,7 @@ class resume_api_controller extends company
      * @desc 简历查看/详情
      */
     function info_action() {
+        $this->publicCheck();
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
@@ -54,6 +60,7 @@ class resume_api_controller extends company
      * @desc 简历项目操作日志 1
      */
     function log_action() {
+        $this->publicCheck();
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
@@ -80,6 +87,7 @@ class resume_api_controller extends company
      * @desc 简历状态变化操作
      */
     function reject_action() {
+        $this->publicCheck();
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
@@ -103,6 +111,7 @@ class resume_api_controller extends company
      * @desc 面试预约 1
      */
     function interview_action() {
+        $this->publicCheck();
         $interview_time = baseUtils::getStr($_POST['interview_time']);
         $interview_address = baseUtils::getStr($_POST['interview_address']);
         $interviewer = baseUtils::getStr($_POST['interviewer']);
@@ -141,6 +150,7 @@ class resume_api_controller extends company
      * @return array|mixed
      */
     private function buyDetail() {
+        $this->publicCheck();
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
@@ -177,6 +187,7 @@ class resume_api_controller extends company
      * 慧沟通  购买后下载简历/查看电话号码
      */
     function pay_action() {
+        $this->publicCheck();
         //1、@todo 判断账户余额
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
@@ -204,7 +215,7 @@ class resume_api_controller extends company
         }
         //@todo 3、购买扣除点数
         //记录消费记录
-        $this->buyLog(-$money);
+//        $this->buyLog(-$money);
         $this->ajax_return(200, true, '购买成功');
     }
 
@@ -212,6 +223,7 @@ class resume_api_controller extends company
      * @desc @todo 简历下载
      */
     function down_action() {
+        $this->publicCheck();
         //1、获取简历详情
         //2、更新状态
         $resumeInfo = [];
@@ -240,6 +252,7 @@ class resume_api_controller extends company
      * @desc 候选人是否到场【慧简历】 扣除点数 1\
      */
     function present_action() {
+        $this->publicCheck();
         if (!isset($_POST['is_present'])) {
             $this->ajax_return(500, false, '请求错误');
         }
@@ -269,9 +282,9 @@ class resume_api_controller extends company
         } catch (Exception $e) {
             $this->ajax_return(500, false, $e->getMessage());
         }
-        if ($isPresent) {
-            $this->buyLog(-1, '会面时到场扣除');
-        }
+//        if ($isPresent) {
+//            $this->buyLog(-1, '会面时到场扣除');
+//        }
         $this->ajax_return(200, true, '操作成功');
     }
 
@@ -279,6 +292,7 @@ class resume_api_controller extends company
      * @desc 移除简历 1
      */
     function remove_action() {
+        $this->publicCheck();
         $status = 0;
         try {
             apiClient::init('', '');
@@ -304,7 +318,7 @@ class resume_api_controller extends company
      * @throws Exception
      */
     private function download($list = []) {
-        error_reporting(E_ALL);
+//        error_reporting(E_ALL);
         $tempNameList = [
             'name', 'sex', 'location', 'email', 'telephone',
             'industry', 'job_class', 'marital_status', 'curCompany',
