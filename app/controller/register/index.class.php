@@ -154,29 +154,68 @@ class index_controller extends common{
         echo  json_encode($arr);die;
     }
 
+    function test_action(){
+//        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
+        ApiClient::init();
+        $messageService = new com\hlw\huiliewang\interfaces\sysmsg\SysmsgServiceClient(null);
+        ApiClient::build($messageService);
+        $messageRequestDo = new  com\hlw\huiliewang\dataobject\sysmsg\sysmsgRequestDTO();
+        $messageRequestDo->uid = 180;
+        $messageRequestDo->name = 'guoqingsong';
+        $messageRequestDo->content = [233,22];
+        $messageRequestDo->templateId = '377515';
+        $messageRequestDo->phone = '17320391819';
+        $res = $messageService->sendSms($messageRequestDo);
+
+        $res->message = yun_iconv('utf-8','gbk',$res->message);
+
+        var_dump($res);
+
+
+    }
+
     //向手机发送验证码  xuyao重写
     function sendtel_action(){
+//        var_dump('dadsfa');die;
         include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
         include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
         $tel = baseUtils::getStr(trim($_GET['tel']));
+//        $randstr = rand(100000,999999);
+//        require APP_PATH."/app/public/sms.mod.php";
+//        apiClient::init($appid,$secret);
+//        $messageRequestDo = new  com\hlw\huiliewang\dataobject\sysmsg\sysmsgRequestDTO();
+//        $messageRequestDo->uid = 180;
+//        $messageRequestDo->name = 'guoqingsong';
+//        $messageRequestDo->content = [233];
+//        $messageRequestDo->templateId = '377515';
+//        $messageRequestDo->phone = '17320391819';
+////        $register = new com\hlw\huiliewang\interfaces\HlwRegisterServiceClient(null);
+//        apiClient::build($register);
+
+        ApiClient::init();
+        $messageService = new com\hlw\huiliewang\interfaces\sysmsg\SysmsgServiceClient(null);
+        ApiClient::build($messageService);
+        $messageRequestDo = new  com\hlw\huiliewang\dataobject\sysmsg\sysmsgRequestDTO();
+        $messageRequestDo->uid = 180;
         $randstr = rand(100000,999999);
-        require APP_PATH."/app/public/sms.mod.php";
-        apiClient::init($appid,$secret);
-        $register = new com\hlw\huiliewang\interfaces\HlwRegisterServiceClient(null);
-        apiClient::build($register);
-        $res = $register->sendMSG($tel,$randstr);
+        $messageRequestDo->name = 'guoqingsong';
+        $messageRequestDo->content = [$randstr,5];
+        $messageRequestDo->templateId = '377515';
+        $messageRequestDo->phone = $tel;
+        $res = $messageService->sendSms($messageRequestDo);
+
         session_start();
-        if(sendSms($tel,$randstr)){//sendSms($tel,$randstr)
+        if($res->code == 200){//sendSms($tel,$randstr)
             unset($_SESSION['code']);
             unset($_SESSION['code_time']);
-            $_SESSION['code'] = $randstr;
+            $_SESSION['code'] = $randstr ;
             $_SESSION['code_time'] = time();
             $arr['code'] = '200';
             $arr['message'] = yun_iconv("gbk","utf-8",'发送成功');
             $arr['success'] = true;
             echo json_encode($arr);die;
         }else{
-            $arr['code'] = 200;
+            $arr['code'] = 500;
             $arr['message'] = yun_iconv("gbk","utf-8",'发送失败');
             $arr['success'] = false;
             echo json_encode($arr);die;
