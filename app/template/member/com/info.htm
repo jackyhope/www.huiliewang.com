@@ -18,7 +18,7 @@
         <div class="line_1"></div>
         企业认证
     </div>
-    <!-- <div class="sec">
+    <div class="sec" style="display: none">
         <div class="upBox">
             <span class="sp1">营业执照：</span>
             <div class="uploadBox">
@@ -53,8 +53,8 @@
         </div>
         <span class="notice"><span class="sp1"></span>企业认证执审核通过后，信息将无法修改，请您核对无误后提交</span>
         <div style='padding-left:70px'></span><button type="button" class="button_1 gradient_1 submit">提交认证</button></div>
-    </div> -->
-    <div class="sec2">
+    </div>
+    <div class="sec2" style="display: none">
         <span><span class="sp3">资料提交成功！</span>工作人员会在1个工作日内对您提交的信息进行审核，请您保持电话畅通，慧猎会派专属BD与您对接，</span>
         <span>审核通过后即可享受24小时极速猎头服务</span>
         <div class="imgBox">
@@ -133,11 +133,19 @@
 
         //展示认证资料
         Post('{yun:}url m=login c=certify{/yun}',{c_type:'search'}).then(function (res) {
-            $('#photo').attr('src',res.data.wt_yy_photo);
-            $('#business_name').html(res.data.username);
-            $('#linktel').html(res.data.linkman);
-            $('#business_addr').html(res.data.address);
-            $('#business_industry').html(res.data.hy);
+            console.log(111)
+            if(res.data.length!=0){
+                $('#photo').attr('src',res.data.wt_yy_photo);
+                $('#business_name').html(res.data.username);
+                $('#linktel').html(res.data.linkman);
+                $('#business_addr').html(res.data.address);
+                $('#business_industry').html(res.data.hy);
+                $('.sec2').css('display','block')
+                $('.sec').css('display','none')
+            }else {
+                $('.sec2').css('display','none')
+                $('.sec').css('display','block')
+            }
         }).catch(function (res) {
             alert(res.message);
         });
