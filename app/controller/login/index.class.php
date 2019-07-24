@@ -174,6 +174,7 @@ class index_controller extends common{
                 'three_cityid'=>$post['three_cityid'],//区
                 'address'=>$post['business_addr'],//详细地址
                 'hy'=>$post['business_industry'],//行业
+                'hyname'=>$post['hyname'],//行业名称
                 'linkman'=>$post['business_uname'],//联系人
                 'lastupdate'=>time(),//更新时间
                 'linktel'=>'后台去查询获取',

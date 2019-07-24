@@ -156,6 +156,7 @@
             var business_addr = $('#business_addr').val();
             var business_province = $('#business_province').val();
             var business_industry = $('#hyid').val();
+            var hyname = $('#hy').val();
             var business_uname = $('#business_uname').val();
             var linktel = $('#linktel').val();
             var provinceid = $('#provinceid').val();
@@ -165,11 +166,13 @@
                 c_type: 'save',
                 business_license: 'license',
                 business_name: business_name,
+
                 business_addr: business_addr,
                 business_province: provinceid,
                 business_city: citysid,
                 business_districts: three_cityid,
                 business_industry: business_industry,
+                hyname:hyname,
                 business_uname: business_uname,
                 linktel: linktel
             }).then(function (res) {
