@@ -266,7 +266,7 @@ class resume_api_controller extends company
             'name', 'sex', 'location', 'email', 'telephone',
             'industry', 'job_class', 'marital_status', 'curCompany',
             'age', 'school_name', 'curSalary', 'wantsalary', 'work_year', 'edu',
-            'project_time', 'work_time', 'edu_time'
+            'project_time', 'work_time', 'edu_time','curPosition','intentCity','curStatus'
         ];
         require_once(APP_PATH . "/include/phpword/vendor/autoload.php");
         $phpWord = new  \PhpOffice\PhpWord\PhpWord();
