@@ -49,6 +49,12 @@
       })
       let count = 59;
         $('.formBox .getCode').click(ev => {
+            var tel = $('.tel').val();
+            Get('{yun:}url m=login c=sendemail{/yun}',{tel:tel}).then(function (res) {
+                alert(res.message);
+            }).catch(function (res) {
+                alert(res.message);
+            });
             if (count == 59) {
                 $(ev.target).html('60sºóÖØÊÔ').css('cursor', 'wait').css('color', '#999');
                 let timeId = setInterval(() => {

@@ -86,7 +86,7 @@
         </div>
         <div>
             <span class="sp1">详细地址：</span>
-            <input type="text" class="verTel input_nomorl" id="business_province" placeholder="请输入正确的公司地址">
+            <input type="text" class="verTel input_nomorl" id="business_addr" placeholder="请输入正确的公司地址">
         </div>
         <div>
             <span class="sp1">行业：</span>
@@ -151,8 +151,12 @@
             var business_industry = $('#business_industry').val();
             var business_uname = $('#business_uname').val();
             var linktel = $('#linktel').val();
+            var provinceid = $('#provinceid').val();
+            var citysid = $('#citysid').val();
+            var three_cityid = $('#three_cityid').val();
             Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
-                business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
+                business_province:provinceid,business_city:citysid,business_districts:three_cityid,
+                business_industry:business_industry,
                 business_uname:business_uname,linktel:linktel}).then(function (res) {
                 alert(res.message);
                 window.location.reload();
@@ -168,7 +172,26 @@
             $('#business_province').val($('#business_name').html());
             $('#business_industry').val($('#business_industry').html());
             $('#business_uname').val($('#business_name').html());
-            $('#linktel').val($('#linktel').html());
+            $('#linktel').val($('#linktel').html()); //synchronous
+
+            var business_name = $('#business_name').val();
+            var business_addr = $('#business_addr').val();
+            var business_province = $('#business_province').val();
+            var business_industry = $('#business_industry').val();
+            var business_uname = $('#business_uname').val();
+            var linktel = $('#linktel').val();
+            var provinceid = $('#provinceid').val();
+            var citysid = $('#citysid').val();
+            var three_cityid = $('#three_cityid').val();
+            Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
+                business_province:provinceid,business_city:citysid,business_districts:three_cityid,
+                business_industry:business_industry,
+                business_uname:business_uname,linktel:linktel}).then(function (res) {
+                alert(res.message);
+                window.location.reload();
+            }).catch(function (res) {
+                alert(res.message);
+            });
         });
 
         //展示认证资料

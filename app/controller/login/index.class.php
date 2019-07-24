@@ -166,9 +166,12 @@ class index_controller extends common{
                 'status'=>0,//审核中[该字段是要写到member表的]
                 'wt_yy_photo'=>$post['business_license'],//企业营业执照 是写到 cert表的
                 'name'=>$post['business_name'],//企业名称
-                'provinceid'=>$post['business_province'],//省
-                'cityid'=>$post['business_city'],//市
-                'three_cityid'=>$post['business_districts'],//区
+//                'provinceid'=>$post['business_province'],//省
+//                'cityid'=>$post['business_city'],//市
+//                'three_cityid'=>$post['business_districts'],//区
+                'provinceid'=>$post['provinceid'],
+                'cityid'=>$post['citysid'],//市
+                'three_cityid'=>$post['three_cityid'],//区
                 'address'=>$post['business_addr'],//详细地址
                 'hy'=>$post['business_industry'],//行业
                 'linkman'=>$post['business_uname'],//联系人
@@ -383,6 +386,45 @@ class index_controller extends common{
 
     /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
     /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+    /********/
+    function sendemail_action(){
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
+        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
+
+        $tel = baseUtils::getStr(trim($_GET['tel']));
+        ApiClient::init();
+        $messageService = new com\hlw\huiliewang\interfaces\sysmsg\SysmsgServiceClient(null);
+        ApiClient::build($messageService);
+        $messageRequestDo = new  com\hlw\huiliewang\dataobject\sysmsg\sysmsgRequestDTO();
+        $messageRequestDo->uid = $this->uid;
+        $randstr = rand(100000,999999);
+        $messageRequestDo->name = $this->username ? $this->username : 'guoqingsong';
+        $messageRequestDo->content = [$randstr,5];
+        $messageRequestDo->templateId = '377515';
+        $messageRequestDo->phone = $tel;
+        $res = $messageService->sendSms($messageRequestDo);
+
+        session_start();
+        if($res->code == 200){//sendSms($tel,$randstr)
+            unset($_SESSION['code']);
+            unset($_SESSION['code_time']);
+            $_SESSION['code'] = $randstr ;
+            $_SESSION['code_time'] = time();
+            $arr['code'] = '200';
+            $arr['message'] = yun_iconv("gbk","utf-8",'发送成功');
+            $arr['success'] = true;
+            echo json_encode($arr);die;
+        }else{
+            $arr['code'] = 500;
+            $arr['message'] = yun_iconv("gbk","utf-8",'发送失败');
+            $arr['success'] = false;
+            echo json_encode($arr);die;
+        }
+    }
+    /********/
+
+
     function index_action(){
         if($this->uid!=""&&$this->username!=""){
             if($_GET['type']=="out"){
