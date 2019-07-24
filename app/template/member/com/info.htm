@@ -67,7 +67,7 @@
             </div>
             <div class="input_min selectBox" style="display:none"
                 id="cityshowth">
-                <input class="SpFormLBut text_seclet_w158" type="button" 
+                <input class="SpFormLBut text_seclet_w158" type="button"
                     value="ÇëÑ¡Ôñ"
                     id="three_city" onclick="three_city_show('job_three_city');">
                 <input type="hidden" id="three_cityid" name="three_cityid" value="" />
@@ -185,8 +185,8 @@
             $('#business_name').val(lastData.name);
             $('#business_addr').val(lastData.address);
             $('#hyid').val(lastData.hy);
-            $('#business_uname').val(lastData.business_uname);
-            $('#linktel').val(lastData.linkman);
+            $('#business_uname').val(lastData.linkman);
+            $('#linktel').val(lastData.linktel);
             $('.sec2').css('display', 'none')
             $('.sec').css('display', 'block')
         });
@@ -200,10 +200,10 @@
                 lastData = res.data;
                 $('#photo').attr('src', res.data.wt_yy_photo);
                 $('.business_name').html($('.business_name').html() + res.data.name);
-                $('.linktel').html($('.linktel').html() + res.data.linkman);
+                $('.linktel').html($('.linktel').html() + res.data.linktel);
                 $('.business_addr').html($('.business_addr').html() + res.data.address);
                 $('.business_industry').html($('.business_industry').html() + res.data.hy);
-                $('.business_uname').html($('.business_uname').html() + res.data.business_uname);
+                $('.business_uname').html($('.business_uname').html() + res.data.linkman);
                 $('.sec2').css('display', 'block')
                 $('.sec').css('display', 'none')
             } else {
