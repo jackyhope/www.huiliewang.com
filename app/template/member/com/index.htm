@@ -203,13 +203,13 @@ function break_job(num){
   	{yun:}if !$company.name{/yun}        
   	<div class="com_index_Prompt fltL">
   		<span class="com_index_Prompt_tip fltL">您公司的资料还未填写完整，暂时还不可以发职位哦</span>
-		<a href="{yun:}$config.sy_weburl{/yun}/member/?c=info" class="com_index_Prompt_ws cblue fltR">完善资料>></a>
+		<a href="{yun:}$config.sy_weburl{/yun}/member/?c=addjoc&act=base_info" class="com_index_Prompt_ws cblue fltR">完善资料>></a>
 	</div>
     {yun:}/if{/yun}
     {yun:}if $company.yyzz_status!="1"{/yun}
    	<div class="com_index_Prompt fltL">
    		<span class="com_index_Prompt_tip fltL">您公司还没进行营业执照认证，可能会影响您的招聘效果哦</span>
-        <a href="{yun:}$config.sy_weburl{/yun}/member/?c=binding" class="com_index_Prompt_ws cblue fltR">立即认证>></a>
+        <a href="{yun:}$config.sy_weburl{/yun}/member/?c=info" class="com_index_Prompt_ws cblue fltR">立即认证>></a>
    	</div>
     {yun:}/if{/yun}
 

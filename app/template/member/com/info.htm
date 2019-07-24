@@ -1,14 +1,14 @@
-{yun:}include file="$comstyle/header.htm"{/yun} 
-<script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script> 
-<script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script> 
-<script type="text/javascript" src="{yun:}$style{/yun}/js/index.js"></script> 
-<script src="{yun:}$config.sy_weburl{/yun}/js/lssave.js" type="text/javascript"></script> 
-<link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css" type="text/css">  
+{yun:}include file="$comstyle/header.htm"{/yun}
+<script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="{yun:}$style{/yun}/js/index.js"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/lssave.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css" type="text/css">
 <script src="{yun:}$config.sy_weburl{/yun}/js/datepicker/foundation-datepicker.min.js"></script>
 <script src="{yun:}$config.sy_weburl{/yun}/js/binding.js"></script>
-<link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/imgareaselect.css" type="text/css"/>
-<script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/jquery.imgareaselect.js"></script>  
-<script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/ajaxfileupload.js"></script>  
+<link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/imgareaselect.css" type="text/css" />
+<script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/jquery.imgareaselect.js"></script>
+<script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/ajaxfileupload.js"></script>
 <script src="{yun:}$config.mapurl{/yun}"></script>
 <script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/map.js"></script>
 <link rel="stylesheet" href="/app/public/css/base.css">
@@ -18,7 +18,7 @@
         <div class="line_1"></div>
         企业认证
     </div>
-    <div class="sec" >
+    <div class="sec" style="display:none">
         <div class="upBox">
             <span class="sp1">营业执照：</span>
             <div class="uploadBox">
@@ -33,56 +33,54 @@
         </div>
         <div style="width:1000px">
             <span class="sp1">企业地址：</span>
-            <div class="input_min selectBox">
-                    <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.provinceid{/yun}
-                        value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
-                        onclick="search_show('job_province');">
-                    <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$row.provinceid{/yun}" />
-                    <div id="job_province" class="cus-sel-opt-panel" style="display:none">
-                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                            <ul class="Search_Condition_box_list">
-                                {yun:}foreach from=$city_index key=j item=v{/yun}
-                                <li><a href="javascript:;"
-                                        onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
-                                        {yun:}$city_name[$v]{/yun}</a></li>
-                                {yun:}/foreach{/yun}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="input_min selectBox">
-                    <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.cityid{/yun}
-                        value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
-                        onclick="search_show('job_citys');">
-                    <input type="hidden" id="citysid" name="cityid" value="{yun:}$row.cityid{/yun}" />
-                    <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
-                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                            <ul class="Search_Condition_box_list">
-                                {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
-                                <li><a href="javascript:;"
-                                        onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
-                                        {yun:}$city_name[$v]{/yun}</a></li>
-                                {yun:}/foreach{/yun}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="input_min selectBox" {yun:}if $row.three_cityid<1{/yun}style="display:none"{yun:}/if{/yun}
-                    id="cityshowth">
-                    <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun}
-                        value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
-                        onclick="three_city_show('job_three_city');">
-                    <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$row.three_cityid{/yun}" />
-                    <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
+            <div class="input_min selectBox" style="z-index: 101">
+                <input class="SpFormLBut text_seclet_w158" type="button" value="请选择"
+                    id="province" onclick="search_show('job_province');">
+                <input type="hidden" id="provinceid" name="provinceid" value="" />
+                <div id="job_province" class="cus-sel-opt-panel" style="display:none">
+                    <div style="width:100%;  overflow:auto; overflow-x:hidden">
                         <ul class="Search_Condition_box_list">
-                            {yun:}foreach from=$com key=j item=v{/yun}
+                            {yun:}foreach from=$city_index key=j item=v{/yun}
                             <li><a href="javascript:;"
-                                    onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
+                                    onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
                                     {yun:}$city_name[$v]{/yun}</a></li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="input_min selectBox" style="z-index: 101">
+                <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="citys"
+                    onclick="search_show('job_citys');">
+                <input type="hidden" id="citysid" name="cityid" value="" />
+                <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
+                    <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                        <ul class="Search_Condition_box_list">
+                            {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
+                            <li><a href="javascript:;"
+                                    onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
+                                    {yun:}$city_name[$v]{/yun}</a></li>
+                            {yun:}/foreach{/yun}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="input_min selectBox" style="display:none"
+                id="cityshowth">
+                <input class="SpFormLBut text_seclet_w158" type="button" 
+                    value="请选择"
+                    id="three_city" onclick="three_city_show('job_three_city');">
+                <input type="hidden" id="three_cityid" name="three_cityid" value="" />
+                <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
+                    <ul class="Search_Condition_box_list">
+                        {yun:}foreach from=$com key=j item=v{/yun}
+                        <li><a href="javascript:;"
+                                onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
+                                {yun:}$city_name[$v]{/yun}</a></li>
+                        {yun:}/foreach{/yun}
+                    </ul>
+                </div>
+            </div>
         </div>
         <div>
             <span class="sp1">详细地址：</span>
@@ -90,7 +88,24 @@
         </div>
         <div>
             <span class="sp1">行业：</span>
-            <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业">
+            <!-- <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业"> -->
+            <div class="input_nomorl selectBox2">
+                    <input class="SpFormLBut text_seclet_w250 " type="button"
+                        value="请选择行业" id="hy"
+                        onclick="search_show('job_hy');">
+                    <input type="hidden" id="hyid" name="hy">
+                         <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
+                    <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                        <ul>
+                            {yun:}foreach item=v from=$industry_index key=k{/yun}
+                            <li><a href="javascript:;"
+                                    onclick="selects('{yun:}$v{/yun}','hy','{yun:}$industry_name[$v]{/yun}');">
+                                    {yun:}$industry_name[$v]{/yun}</a></li>
+                            {yun:}/foreach{/yun}
+                        </ul>
+                    </div>
+                    </div>
+                </div>
         </div>
         <div>
             <span class="sp1">联系人：</span>
@@ -101,7 +116,8 @@
             <input type="num" class="verTel input_nomorl" id="linktel" placeholder="请输入联系电话">
         </div>
         <span class="notice"><span class="sp1"></span>企业认证执审核通过后，信息将无法修改，请您核对无误后提交</span>
-        <div style='padding-left:70px'></span><button type="button" class="button_1 gradient_1 submit">提交认证</button></div>
+        <div style='padding-left:70px'></span><button type="button" class="button_1 gradient_1 submit">提交认证</button>
+        </div>
     </div>
     <div class="sec2" style="display: none">
         <span><span class="sp3">资料提交成功！</span>工作人员会在1个工作日内对您提交的信息进行审核，请您保持电话畅通，慧猎会派专属BD与您对接，</span>
@@ -110,32 +126,23 @@
             <span class="sp4">营业执照：</span>
             <img id="photo" src="" alt="">
         </div>
-        <div>
-            <span class="sp4">企业名称：</span>
-            重庆南方新华管理咨询有限公司
-            <span id="business_name"></span>
+        <div class="business_name">
+            <span class="sp4" >企业名称：</span>
         </div>
-        <div>
-            <span class="sp4">企业地址：</span>
-            重庆市渝中区五一路平安国际金融中心36层
-            <span id="business_addr"></span>
+        <div class="business_addr">
+            <span class="sp4" >企业地址：</span>
         </div>
-        <div>
-            <span class="sp4">行业：</span>
-            互联网
-            <span id="business_industry"></span>
+        <div class="business_industry">
+            <span class="sp4" >行业：</span>
         </div>
-        <div>
-            <span class="sp4">联系人：</span>
-            航宝宝
-            <span id="business_uname"></span>
+        <div class="business_uname">
+            <span class="sp4" >联系人：</span>
         </div>
-        <div>
-            <span class="sp4">联系电话：</span>
-            13112756365
-            <span id="linktel"></span>
+        <div class="linktel">
+            <span class="sp4" >联系电话：</span>
         </div>
-        <div style="margin-top: 70px;"></span><button type="button" class="button_1 gradient_1 reset">修改资料</button></div>
+        <div style="margin-top: 70px;"></span><button type="button" class="button_1 gradient_1 reset">修改资料</button>
+        </div>
     </div>
 </div>
 <script src="/app/public/js/base.js">
@@ -148,16 +155,24 @@
             var business_name = $('#business_name').val();
             var business_addr = $('#business_addr').val();
             var business_province = $('#business_province').val();
-            var business_industry = $('#business_industry').val();
+            var business_industry = $('#hyid').val();
             var business_uname = $('#business_uname').val();
             var linktel = $('#linktel').val();
             var provinceid = $('#provinceid').val();
             var citysid = $('#citysid').val();
             var three_cityid = $('#three_cityid').val();
-            Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
-                business_province:provinceid,business_city:citysid,business_districts:three_cityid,
-                business_industry:business_industry,
-                business_uname:business_uname,linktel:linktel}).then(function (res) {
+            Post('{yun:}url m=login c=certify{/yun}', {
+                c_type: 'save',
+                business_license: 'license',
+                business_name: business_name,
+                business_addr: business_addr,
+                business_province: provinceid,
+                business_city: citysid,
+                business_districts: three_cityid,
+                business_industry: business_industry,
+                business_uname: business_uname,
+                linktel: linktel
+            }).then(function (res) {
                 alert(res.message);
                 window.location.reload();
             }).catch(function (res) {
@@ -167,66 +182,52 @@
 
         //  编辑认证资料
         $('.reset').click(function () {
-            $('#business_name').val($('#business_name').html());
-            $('#business_addr').val($('#business_addr').html());
-            $('#business_province').val($('#business_name').html());
-            $('#business_industry').val($('#business_industry').html());
-            $('#business_uname').val($('#business_name').html());
-            $('#linktel').val($('#linktel').html()); //synchronous
-
-            var business_name = $('#business_name').val();
-            var business_addr = $('#business_addr').val();
-            var business_province = $('#business_province').val();
-            var business_industry = $('#business_industry').val();
-            var business_uname = $('#business_uname').val();
-            var linktel = $('#linktel').val();
-            var provinceid = $('#provinceid').val();
-            var citysid = $('#citysid').val();
-            var three_cityid = $('#three_cityid').val();
-            Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
-                business_province:provinceid,business_city:citysid,business_districts:three_cityid,
-                business_industry:business_industry,
-                business_uname:business_uname,linktel:linktel}).then(function (res) {
-                alert(res.message);
-                window.location.reload();
-            }).catch(function (res) {
-                alert(res.message);
-            });
+            $('#business_name').val(lastData.name);
+            $('#business_addr').val(lastData.address);
+            $('#hyid').val(lastData.hy);
+            $('#business_uname').val(lastData.business_uname);
+            $('#linktel').val(lastData.linkman);
+            $('.sec2').css('display', 'none')
+            $('.sec').css('display', 'block')
         });
 
         //展示认证资料
-        Post('{yun:}url m=login c=certify{/yun}',{c_type:'search'}).then(function (res) {
-            console.log(111)
-            if(res.data.length!=0){
-                $('#photo').attr('src',res.data.wt_yy_photo);
-                $('#business_name').html(res.data.username);
-                $('#linktel').html(res.data.linkman);
-                $('#business_addr').html(res.data.address);
-                $('#business_industry').html(res.data.hy);
-                $('.sec2').css('display','block')
-                $('.sec').css('display','none')
-            }else {
-                $('.sec2').css('display','none')
-                $('.sec').css('display','block')
+        var lastData;
+        Post('{yun:}url m=login c=certify{/yun}', {
+            c_type: 'search'
+        }).then(function (res) {
+            if (res.data) {
+                lastData = res.data;
+                $('#photo').attr('src', res.data.wt_yy_photo);
+                $('.business_name').html($('.business_name').html() + res.data.name);
+                $('.linktel').html($('.linktel').html() + res.data.linkman);
+                $('.business_addr').html($('.business_addr').html() + res.data.address);
+                $('.business_industry').html($('.business_industry').html() + res.data.hy);
+                $('.business_uname').html($('.business_uname').html() + res.data.business_uname);
+                $('.sec2').css('display', 'block')
+                $('.sec').css('display', 'none')
+            } else {
+                $('.sec2').css('display', 'none')
+                $('.sec').css('display', 'block')
             }
         }).catch(function (res) {
             alert(res.message);
         });
         //上传
-        $('.upload').click(ev=>{
+        $('.upload').click(ev => {
             upload({
-                type:'png,jpg,gif',
-                uploadStart(file,res){
-                    console.log('开始上传',res)
+                type: 'png,jpg,gif',
+                uploadStart(file, res) {
+                    console.log('开始上传', res)
                 },
-                uploadProgress(file,res){
-                    console.log('正在上传',file,res)
+                uploadProgress(file, res) {
+                    console.log('正在上传', file, res)
                 },
-                uploadSuccess(file,res){
-                    console.log('上传成功',file,res)
+                uploadSuccess(file, res) {
+                    console.log('上传成功', file, res)
                 },
-                uploadSuccess(file,res){
-                    console.log('上传失败',file,res)
+                uploadSuccess(file, res) {
+                    console.log('上传失败', file, res)
                 },
             })
         })

@@ -23,7 +23,6 @@
         </span>
         <!-- <input class="input_nomorl" placeholder="请选择行业"> -->
         <div class="input_nomorl selectBox2" style="z-index:400">
-
             <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
                 value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
                 onclick="search_show('job_hy');">
@@ -41,7 +40,7 @@
         </div>
     </div>
 </div>
-<div class="inputBox">
+<div class="inputBox" style="width: 1000px;">
     <span class="sp1">
         <span>*&nbsp;</span>
         城市：
@@ -114,7 +113,9 @@
 <div class="inputBox">
     <span class="sp1">固定电话：
     </span>
-    <input class="input_nomorl" id="phoneone" placeholder="请输入固定电话号码">
+    <input class="input_nomorl" type="text" placeholder="区号" type="number" style="width: 48px;padding-left: 5px;">-
+    <input  class="input_nomorl" id="phoneone" placeholder="请输入固定电话号码">-
+    <input class="input_nomorl" type="text" placeholder="分机号" style="width: 48px;padding-left: 5px;">
 </div>
 <div class="inputBox">
     <span class="sp1">
