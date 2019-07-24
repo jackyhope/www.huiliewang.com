@@ -389,8 +389,6 @@ class index_controller extends common{
 
     /********/
     function sendemail_action(){
-        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/apiClient.php");
-        include(dirname(dirname(dirname(dirname(__FILE__))))."/include/baseUtils.php");
 
         $tel = baseUtils::getStr(trim($_GET['tel']));
         ApiClient::init();
