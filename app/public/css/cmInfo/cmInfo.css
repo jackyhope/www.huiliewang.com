@@ -76,3 +76,29 @@
 .sec2 img{
     width: 127px;
 }
+.selectBox,.selectBox2{
+    position: relative;
+    z-index: 100;
+    display: inline-block;
+}
+.selectBox input,.selectBox2 input{
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: #fff url(/admin-huilie/images/com_select.jpg) no-repeat 160px center;
+    margin: 0;
+    float: none;
+}
+.selectBox2 input{
+    background: #fff url(/admin-huilie/images/com_select.jpg) no-repeat 240px center;
+
+}
+.selectBox>div{
+    width: 182px;
+}
+.selectBox2>div{
+    width: 265px;
+}
+input{
+    padding-left: 15px;
+}

@@ -18,12 +18,12 @@
         <div class="line_1"></div>
         企业认证
     </div>
-    <div class="sec" style="display: none">
+    <div class="sec" >
         <div class="upBox">
             <span class="sp1">营业执照：</span>
             <div class="uploadBox">
                 +<br>
-                <span>点击上传</span>
+                <span class="upload">点击上传</span>
             </div>
             <span class='sp2'>1、图片必须清晰、完整<br>2、不能带有无关的水印、标记</span>
         </div>
@@ -31,9 +31,58 @@
             <span class="sp1">企业名称：</span>
             <input type="text" class="verTel input_nomorl" id="business_name" placeholder="请输入正确的企业名称，如重庆XX公司">
         </div>
-        <div>
+        <div style="width:1000px">
             <span class="sp1">企业地址：</span>
-            <input type="text" class="verTel input_nomorl" id="business_addr" placeholder="请输入正确的企业地址">
+            <div class="input_min selectBox">
+                    <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.provinceid{/yun}
+                        value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
+                        onclick="search_show('job_province');">
+                    <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$row.provinceid{/yun}" />
+                    <div id="job_province" class="cus-sel-opt-panel" style="display:none">
+                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                            <ul class="Search_Condition_box_list">
+                                {yun:}foreach from=$city_index key=j item=v{/yun}
+                                <li><a href="javascript:;"
+                                        onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
+                                        {yun:}$city_name[$v]{/yun}</a></li>
+                                {yun:}/foreach{/yun}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_min selectBox">
+                    <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.cityid{/yun}
+                        value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
+                        onclick="search_show('job_citys');">
+                    <input type="hidden" id="citysid" name="cityid" value="{yun:}$row.cityid{/yun}" />
+                    <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
+                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                            <ul class="Search_Condition_box_list">
+                                {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
+                                <li><a href="javascript:;"
+                                        onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
+                                        {yun:}$city_name[$v]{/yun}</a></li>
+                                {yun:}/foreach{/yun}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_min selectBox" {yun:}if $row.three_cityid<1{/yun}style="display:none"{yun:}/if{/yun}
+                    id="cityshowth">
+                    <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun}
+                        value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
+                        onclick="three_city_show('job_three_city');">
+                    <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$row.three_cityid{/yun}" />
+                    <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
+                        <ul class="Search_Condition_box_list">
+                            {yun:}foreach from=$com key=j item=v{/yun}
+                            <li><a href="javascript:;"
+                                    onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
+                                    {yun:}$city_name[$v]{/yun}</a></li>
+                            {yun:}/foreach{/yun}
+                        </ul>
+                    </div>
+                </div>
         </div>
         <div>
             <span class="sp1">详细地址：</span>
@@ -114,21 +163,12 @@
 
         //  编辑认证资料
         $('.reset').click(function () {
-            var business_name = $('#business_name').val();
-            var business_addr = $('#business_addr').val();
-            var business_province = $('#business_province').val();
-            var business_industry = $('#business_industry').val();
-            var business_uname = $('#business_uname').val();
-            var linktel = $('#linktel').val();
-            var type =
-                Post('{yun:}url m=login c=certify{/yun}',{c_type:'save',business_license:'license',business_name:business_name,business_addr:business_addr,
-                    business_province:business_province,business_city:'city',business_districts:'districts', business_industry:business_industry,
-                    business_uname:business_uname,linktel:linktel}).then(function (res) {
-                    alert(res.message);
-                    window.location.reload();
-                }).catch(function (res) {
-                    alert(res.message);
-                });
+            $('#business_name').val($('#business_name').html());
+            $('#business_addr').val($('#business_addr').html());
+            $('#business_province').val($('#business_name').html());
+            $('#business_industry').val($('#business_industry').html());
+            $('#business_uname').val($('#business_name').html());
+            $('#linktel').val($('#linktel').html());
         });
 
         //展示认证资料
@@ -149,7 +189,24 @@
         }).catch(function (res) {
             alert(res.message);
         });
-
+        //上传
+        $('.upload').click(ev=>{
+            upload({
+                type:'png,jpg,gif',
+                uploadStart(file,res){
+                    console.log('开始上传',res)
+                },
+                uploadProgress(file,res){
+                    console.log('正在上传',file,res)
+                },
+                uploadSuccess(file,res){
+                    console.log('上传成功',file,res)
+                },
+                uploadSuccess(file,res){
+                    console.log('上传失败',file,res)
+                },
+            })
+        })
     });
 </script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
