@@ -1,0 +1,106 @@
+<div id="c_shade">
+    <div class="c_true_module">
+        <!--  买简历余额不足 not_money -->
+        <div id="not_money" class="c_module c_module_1 c_hide">
+            <i onclick="m_close(this)"></i>
+            <img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/bz_03.png" alt="">
+            <p>套餐余额不足啦！</p>
+            <div class="cont">您的慧面试套餐余量为：0，请购买后使用慧面试服务</div>
+            <a href="#" class="c_btn c_btn_md c_btn_light_bg mt_30">去购买</a>
+        </div>
+        <!--  买简历余额不足 not_money -->
+        <div id="buy_resume" class="c_module c_module_2 c_hide">
+            <i onclick="m_close(this)"></i>
+            <div class="c_title"><span></span>简历购买</div>
+            <div class="c_msg">购买简历后您可查看候选人联系方式，随时邀约候选人面试</div>
+            <div class="c_cont">
+                <p>扣点详情</p>
+                <div class="ul clearall">
+                    <div class="li">候选人</div>
+                    <div class="li">年薪</div>
+                    <div class="li">应扣点数</div>
+                    <div class="li">当前可用点数</div>
+                    <div class="li color-3CC1D3">王大锤</div>
+                    <div class="li color-3CC1D3">250W</div>
+                    <div class="li color-3CC1D3">10</div>
+                    <div class="li color-3CC1D3">6</div>
+                </div>
+            </div>
+            <div class="btnner c_hide">
+                <p>您当前慧沟通套餐可用点数不足，请购买</p>
+                <div class="mt_20"><a href="" class="c_btn c_btn_md c_btn_light_bg">购买套餐</a></div>
+            </div>
+            <div class="btnner">
+                <div class="mt_20"><a href="" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a href="" class="c_btn c_btn_md c_btn_light_bg">确&nbsp;&nbsp;定</a></div>
+            </div>
+        </div>
+        <!-- 确认到场 start -->
+        <div id="que_arrive" class="c_module c_module_2 c_module_3 c_hide">
+            <i onclick="m_close(this)"></i>
+            <div class="c_title"><span></span>确认到场</div>
+            <div class="c_msg">请确认候选人是否到场面试，确认到场后系统将扣除慧面试余量3点； 如未到场系统则返还预扣除的慧面试点数</div>
+            <div class="c_cont">
+                <p>扣点详情</p>
+                <div class="ul clearall">
+                    <div class="li">职位</div>
+                    <div class="li">候选人</div>
+                    <div class="li">预扣点数</div>
+                    <div class="li">实际扣除</div>
+                    <div class="li color-3CC1D3">导演助理</div>
+                    <div class="li color-3CC1D3">王大锤</div>
+                    <div class="li color-3CC1D3">5</div>
+                    <div class="li color-3CC1D3">5</div>
+                </div>
+            </div>
+            <div class="btnner is_arrive">
+                <div class="mt_20 clearall"><label for="is_arrive2" class="mr_60"><input type="radio" class="c_check" value="1" name="is_arrive" id="is_arrive2">&nbsp;&nbsp;已到场</label><label for="is_arrive3"><input
+                        type="radio" class="c_check" name="is_arrive" id="is_arrive3">&nbsp;&nbsp;未到场</label></div>
+            </div>
+            <div class="btnner">
+                <div class="mt_20"><a href="" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a href="" class="c_btn c_btn_md c_btn_light_bg">确&nbsp;&nbsp;定</a></div>
+            </div>
+        </div>
+        <!-- 确认到场 end -->
+        <!-- 邀约面试 start -->
+        <div id="invite_interview" class="c_module c_module_2 c_module_4 ">
+            <i onclick="m_close(this)"></i>
+            <div class="c_title"><span></span>邀约面试</div>
+            <div class="c_msg">本次为初步邀约面试，顾问收到面试消息后会向候选人确认， 最终面试信息慧猎会通过短信及网站消息通知您</div>
+            <div class="c_cont">
+                <div class="dl mt_10 clearall">
+                    <div class="dt">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
+                    <div class="dd color-3CC1D3">王大锤</div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">职&nbsp;&nbsp;&nbsp;&nbsp;位：</div>
+                    <div class="dd color-3CC1D3">男一号</div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">面试时间：</div>
+                    <div class="dd"><input class="input-normal" type="text" name="" id="" value="2019-07-26 02:30"></div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">面试地点：</div>
+                    <div class="dd"><input class="input-normal" type="text" name="" id="" value="重庆市渝中区解放碑朝天门码头广场"></div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">面试人：</div>
+                    <div class="dd"><input class="input-normal" type="text" name="" id="" value="冯XX导演"></div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">备&nbsp;&nbsp;&nbsp;&nbsp;注：</div>
+                    <div class="dd"><textarea name="" id="b_msg" cols="30" rows="10"></textarea></div>
+                </div>
+
+            </div>
+            <div class="btnner tips_msg">
+                <p>初次邀约面试时，系统会预扣除慧面试点数， </p>
+                <p>如果最终候选人未到场，预扣除的点数会返还账户</p>
+            </div>
+            <div class="btnner">
+                <div class="mt_20"><a href="" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a href="" class="c_btn c_btn_md c_btn_light_bg">确&nbsp;&nbsp;定</a></div>
+            </div>
+        </div>
+        <!-- 邀约面试 end -->
+    </div>
+</div>
