@@ -10,16 +10,9 @@
  */
 class admin_comrating_controller extends common{	 
 	function index_action(){
-		$where="`category`='1'";
-		if($_GET['rating']){
-			$where.=" and `id`='".$_GET['rating']."'";
-			$urlarr['rating']=$_GET['rating'];
-		}
-		$urlarr['page']="{{page}}";
-		$pageurl=Url($_GET['m'],$urlarr,'admin');
-		$list=$this->get_page("company_rating",$where,$pageurl,$this->config['sy_listnum']);
-		$this->yunset("list",$list);
-		$this->yuntpl(array('admin/admin_company_rating'));
+        $list=$this->obj->DB_select_all("company_service");
+        $this->yunset("list",$list);
+        $this->yuntpl(array('admin/admin_com_rating'));
 	}
 	function rating_action(){
 		if($_GET['id']){
