@@ -68,8 +68,8 @@ function upload(obj) {
         参数1：文件信息
         参数2：服务器回执
     */
-   $('#picker').remove();
-   $('header').append('<div id="picker" style="display: none;"></div>')
+    $('#picker').remove();
+    $('header').append('<div id="picker" style="display: none;"></div>')
     var uploader = WebUploader.create({
         swf: '/app/public/Uploader.swf',
         server: '/member/index.php?c=uppic&act=ajaxfileupload',
@@ -98,5 +98,72 @@ function upload(obj) {
             // swal('文件过大', "", "warning");
         }
     });
-    setTimeout(()=>{$('#picker input').click()},200)
+    setTimeout(() => {
+        $('#picker input').click()
+    }, 200)
+}
+//提示信息弹窗
+function alert_notice(obj) {
+    /*  参数obj为json对象
+        属性:
+        title:  标题
+        content:  详细说明（选填）
+        type:  warnin，success，error，除这三种，可以传入imgurl（默认success）
+        btn:按钮内容（默认确认）
+        else：附加信息（可在回调中操作）
+        src: 点击按钮跳转链接（选填）
+        callback：回调函数，弹窗出现时触发，会传入附加信息的jquery对象
+        以上展示信息都可以传入富文本格式
+    */
+    let img = '';
+    if (obj.type == 'warning') {
+        img = '/app/public/imgs/7_03.png'
+    } else if (obj.type == 'success' || !obj.type) {
+        img = '/app/public/imgs/5_03.png'
+    } else if (obj.type == 'error') {
+        img = '/app/public/imgs/6_03.png'
+    } else {
+        img = obj.type;
+    }
+    $('body').append(`
+    <div class="mask">
+    <div class="dialog_box">
+        <img src="/app/public/imgs/cl_03.png" alt="" class="close_dialog">
+        <img src="${img}" alt="" class="dialog_img">
+        <span class="dialog_title">${obj.title}</span>
+        <span class="dialog_con">${obj.content}</span>
+        <button class="dialog_btn button_2 gradient_1">${obj.btn?obj.btn:'确认'}</button>
+        <span class="dialog_else">${obj.else}</span>
+    </div>
+</div>
+    `)
+    $('.dialog_box .close_dialog').off('click');
+    if (obj.callback) {
+        $('.dialog_box .close_dialog').one('click',ev => {
+            obj.callback($(ev.target))
+        })
+        $('.dialog_box .close_dialog').click()
+    }
+    $('.dialog_box .dialog_btn').off('click');
+    $('.dialog_box .close_dialog').click(ev => {
+        $(ev.target).parent().parent('.mask').remove()
+    })
+    $('.dialog_box .dialog_btn').click(ev => {
+        $(ev.target).parent().parent('.mask').remove()
+        if (obj.src) {
+            window.location.href = obj.sec
+        }
+    })
+    $('.mask').off();
+    $('.mask').on('mousewheel',ev=>{
+        return false
+    })
+    $('.mask').click(ev=>{
+        $(ev.target).remove();
+    })
+    $('.mask .dialog_box').off();
+    $('.mask .dialog_box').click(ev=>{
+        return false
+    });
+
 }
