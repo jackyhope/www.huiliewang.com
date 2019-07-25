@@ -162,6 +162,9 @@
             var provinceid = $('#provinceid').val();
             var citysid = $('#citysid').val();
             var three_cityid = $('#three_cityid').val();
+            var provincename = $('#province').val();
+            var cityname = $('#citys').val();
+            var three_cityname = $('#three_city').val();
             Post('{yun:}url m=login c=certify{/yun}', {
                 c_type: 'save',
                 business_license: 'license',
@@ -171,6 +174,9 @@
                 business_province: provinceid,
                 business_city: citysid,
                 business_districts: three_cityid,
+                provincename:provincename,
+                cityname:cityname,
+                three_cityname:three_cityname,
                 business_industry: business_industry,
                 hyname:hyname,
                 business_uname: business_uname,

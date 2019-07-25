@@ -170,8 +170,11 @@ class index_controller extends common{
 //                'cityid'=>$post['business_city'],//市
 //                'three_cityid'=>$post['business_districts'],//区
                 'provinceid'=>$post['provinceid'],
+                'provincename'=>$post['provincename'],//省会名称
                 'cityid'=>$post['citysid'],//市
+                'cityname'=>$post['cityname'],//市名称
                 'three_cityid'=>$post['three_cityid'],//区
+                'three_cityname'=>$post['three_cityname'],//区名称
                 'address'=>$post['business_addr'],//详细地址
                 'hy'=>$post['business_industry'],//行业
                 'hyname'=>$post['hyname'],//行业名称
@@ -185,7 +188,6 @@ class index_controller extends common{
                 'uid'   => $this->uid//登录人
             ];
         }
-
         apiClient::init(APPID,SECRET);
         $obj = new com\hlw\huiliewang\dataobject\frontLogin\FrontRequestDTO();
         $obj->post_data = $post_data;
