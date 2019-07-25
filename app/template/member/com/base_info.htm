@@ -14,7 +14,7 @@
         <span class="sp1">
             <span>*&nbsp;</span>企业全称：
         </span>
-        <input class="input_nomorl" id="name" placeholder="请输入企业全称">
+        <input class="input_nomorl" id="name" value="{yun:}$row.name{/yun}" placeholder="请输入企业全称">
     </div>
     <div class="inputBox">
         <span class="sp1">
@@ -23,7 +23,7 @@
         </span>
         <!-- <input class="input_nomorl" placeholder="请选择行业"> -->
         <div class="input_nomorl selectBox2" style="z-index:400">
-            <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
+            <input class="SpFormLBut text_seclet_w250 " id="hyname" type="button" {yun:}if $row.hy{/yun}
                 value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
                 onclick="search_show('job_hy');">
             <input type="hidden" id="hyid" name="hy" {yun:}if $row.hy {/yun} value="{yun:}$row.hy{/yun}"
@@ -47,7 +47,7 @@
 
     </span>
     <div class="input_min selectBox">
-        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.provinceid{/yun}
+        <input class="SpFormLBut text_seclet_w158" id="provincename" type="button" {yun:}if $row.provinceid{/yun}
             value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
             onclick="search_show('job_province');">
         <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$row.provinceid{/yun}" />
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="input_min selectBox">
-        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.cityid{/yun}
+        <input class="SpFormLBut text_seclet_w158" id="cityname" type="button" {yun:}if $row.cityid{/yun}
             value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
             onclick="search_show('job_citys');">
         <input type="hidden" id="citysid" name="cityid" value="{yun:}$row.cityid{/yun}" />
@@ -82,7 +82,7 @@
     </div>
     <div class="input_min selectBox" {yun:}if $row.three_cityid<1{/yun}style="display:none"{yun:}/if{/yun}
         id="cityshowth">
-        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun}
+        <input class="SpFormLBut text_seclet_w158" id="three_cityname" type="button" {yun:}if $row.three_cityid{/yun}
             value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
             onclick="three_city_show('job_three_city');">
         <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$row.three_cityid{/yun}" />
@@ -103,26 +103,26 @@
         联系人：
 
     </span>
-    <input class="input_nomorl" id="linkman" placeholder="请输入联系人姓名">
+    <input class="input_nomorl" id="linkman" value="{yun:}$row.linkman{/yun}" placeholder="请输入联系人姓名">
 </div>
 <div class="inputBox">
     <span class="sp1">联系手机：
     </span>
-    <input class="input_nomorl verify tel" id="linktel" rule='^\d{11}$' notice='请输入正确的手机号' placeholder="请输入手机号">
+    <input class="input_nomorl verify tel" id="linktel" rule='^\d{11}$' value="{yun:}$row.linktel{/yun}" notice='请输入正确的手机号' placeholder="请输入手机号">
 </div>
 <div class="inputBox">
     <span class="sp1">固定电话：
     </span>
-    <input class="input_nomorl" type="text" placeholder="区号" type="number" style="width: 48px;padding-left: 5px;">-
-    <input  class="input_nomorl" id="phoneone" placeholder="请输入固定电话号码">-
-    <input class="input_nomorl" type="text" placeholder="分机号" style="width: 48px;padding-left: 5px;">
+    <input class="input_nomorl" type="text" placeholder="区号" value="{yun:}$row.phoneone{/yun}" type="number" style="width: 48px;padding-left: 5px;">-
+    <input  class="input_nomorl" id="phoneone" value="{yun:}$row.phonetwo{/yun}" placeholder="请输入固定电话号码">-
+    <input class="input_nomorl" type="text" placeholder="分机号" value="{yun:}$row.phonethree{/yun}" style="width: 48px;padding-left: 5px;">
 </div>
 <div class="inputBox">
     <span class="sp1">
         <span>*&nbsp;</span>
         详细地址：
     </span>
-    <input class="input_nomorl" id="address" placeholder="请输入详细地址">
+    <input class="input_nomorl" id="address" value="{yun:}$row.address{/yun}" placeholder="请输入详细地址">
 </div>
 <div class="inputBox">
     <span class="sp1">
@@ -167,12 +167,12 @@
         企业简介：
 
     </span>
-    <textarea class="profile" id="content" placeholder="请填写简介"></textarea>
+    <textarea class="profile" id="content" placeholder="请填写简介">{yun:}$row.content{/yun}</textarea>
 </div>
 <div class="inputBox">
     <span class="sp1">公司官网：
     </span>
-    <input class="input_nomorl" id="website" placeholder="">
+    <input class="input_nomorl" id="website" value="{yun:}$row.website{/yun}" placeholder="">
 </div>
 <div class="title_">补充信息（选填项）</div>
     <div class="line_2"></div>
@@ -180,43 +180,43 @@
         <span class="sp1" >
             创办时间：
         </span>
-        <input class="input_min creatTime" id="sdate">
+        <input class="input_min creatTime" value="{yun:}$row.sdate{/yun}" id="sdate">
     </div>
     <div class="inputBox els">
         <span class="sp1" >
             注册资金：
         </span>
-        <input class="input_min creatMoney" id="money">&nbsp;&nbsp;万元
+        <input class="input_min creatMoney" value="{yun:}$row.money{/yun}" id="money">&nbsp;&nbsp;万元
     </div>
     <div class="inputBox els">
         <span class="sp1" >
             邮政编码：
         </span>
-        <input class="input_min postCode" id="zip">
+        <input class="input_min postCode" value="{yun:}$row.zip{/yun}" id="zip">
     </div>
     <div class="inputBox els">
         <span class="sp1" >
             联系人职位：
         </span>
-        <input class="input_min userPosi" id="linkjob">
+        <input class="input_min userPosi" value="{yun:}$row.linkjob{/yun}" id="linkjob">
     </div>
     <div class="inputBox els">
         <span class="sp1" >
             联系QQ：
         </span>
-        <input class="input_min qq" id="linkqq">
+        <input class="input_min qq" value="{yun:}$row.linkqq{/yun}" id="linkqq">
     </div>
     <div class="inputBox els">
         <span class="sp1" >
             招聘邮箱：
         </span>
-        <input class="input_min email" id="linkmail">
+        <input class="input_min email" value="{yun:}$row.linkmail{/yun}" id="linkmail">
     </div>
     <div class="inputBox els">
         <span class="sp1" style="float: left">
             公司福利：
         </span>
-        <textarea class="fuliji" placeholder="" id="welfare"></textarea>
+        <textarea class="fuliji" placeholder="" id="welfare">{yun:}$row.welfare{/yun}</textarea>
     </div>
     <button type="button" class="button_1 gradient_1 submit" style='margin-left: 104px;'>保存信息</button>
 </div>
@@ -226,12 +226,16 @@
 
         //保存编辑的资料
         $('.submit').click(function () {
-
+            var qyprid = $('#qyprid').val();
             var name = $('#name').val();
             var hyid = $('#hyid').val();
+            var hyname = $('#hyname').val();
             var provinceid = $('#provinceid').val();
+            var provincename = $('#provincename').val();
             var citysid = $('#citysid').val();
+            var cityname = $('#cityname').val();
             var three_cityid = $('#three_cityid').val();
+            var three_cityname = $('#three_cityname').val();
             var linkman = $('#linkman').val();
             var linktel = $('#linktel').val();
             var qypr = $('#qypr').val();
@@ -249,9 +253,13 @@
             Post('{yun:}url m=member c=info act=saveinfo{/yun}',{
                 name:name,
                 hy:hyid,
+                hyname:hyname,
                 provinceid:provinceid,
+                provincename:provincename,
                 cityid:citysid,
+                cityname:cityname,
                 three_cityid:three_cityid,
+                three_cityname:three_cityname,
                 linkman:linkman,
                 linktel:linktel,
                 pr:qypr,
@@ -268,6 +276,7 @@
                 website:welfare
             }).then(function (res) {
                 alert(res.info);
+                window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=jobadd&act=edit';
             }).catch(function (res) {
                 alert(res.info);
             });
