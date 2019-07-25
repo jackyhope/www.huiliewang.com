@@ -167,3 +167,7 @@ function alert_notice(obj) {
     });
 
 }
+function close_all_dialog(){
+    //关闭所有弹窗
+    $('.mask').remove()
+}
