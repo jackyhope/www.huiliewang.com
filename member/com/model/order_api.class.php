@@ -1,5 +1,6 @@
 <?php
 
+//error_reporting(E_ALL);
 class order_api_controller extends company
 {
 
@@ -41,14 +42,21 @@ class order_api_controller extends company
      */
     public function orderList_action() {
         $this->publicCheck();
-        $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
-        $orderType = baseUtils::getStr($_REQUEST['order_type'], 'int', 0);
-        $payStatus = baseUtils::getStr($_REQUEST['pay_status'], 'int', 0);
+        $page = baseUtils::getStr($_POST['page'], 'int', 1);
+        $orderType = baseUtils::getStr($_GET['order_type'], 'int', 0);
+        $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
         $page < 1 && $page = 1;
         $pageSize = 15;
         $pageStart = ($page - 1) * $pageSize;
         $where = 'uid = ' . $this->uid . ' and type = 2';
-        $orderType > 0 && $where .= " and order_type=" . $orderType;
+        if ($orderType == 1) {
+            //线上充值
+            $where .= " and (order_type is NULL)";
+        }
+        if ($orderType == 2) {
+            //线下
+            $where .= " and (order_type is not NULL)";
+        }
         $payStatus > 0 && $where .= " and order_state=" . $payStatus;
         $where .= " order by order_time desc limit {$pageStart},{$pageSize}";
         $rows = $this->obj->DB_select_all_assoc('company_order', $where);
@@ -59,7 +67,7 @@ class order_api_controller extends company
                 }
                 $v['order_time'] = date("Y-m-d H:i:s", $v['order_time']);
                 $v['order_price'] = str_replace(".00", "", $v['order_price']);
-                $v['order_type'] = $v['order_type'] == 2 ? '线下充值' : '线上充值';
+                $v['order_type'] = ($v['order_type'] == 'adminpay' || $v['order_type'] == 'admincut') ? '线下充值' : '线上充值';
             }
         }
         $counts = $this->obj->DB_select_num('company_order', $where);
@@ -102,7 +110,7 @@ class order_api_controller extends company
     /**
      * @desc 服务购买记录
      */
-    public function buyList_action() {
+    public function useList_action() {
         $this->publicCheck();
         $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
         $serviceType = baseUtils::getStr($_REQUEST['service_type'], 'int', 0);
@@ -110,7 +118,7 @@ class order_api_controller extends company
         $page < 1 && $page = 1;
         $pageSize = 15;
         $pageStart = ($page - 1) * $pageSize;
-        $where = 'com_id = ' . $this->uid . ' and type in (1,0)';
+        $where = 'com_id = ' . $this->uid . ' and type in (1,0) and resume_id > 0';
         isset($_REQUEST['service_type']) && $where .= " and type=" . $serviceType;
         $payStatus > 0 && $where .= " and pay_type=" . $payStatus;
         $where .= " order by id desc limit {$pageStart},{$pageSize}";
@@ -186,15 +194,14 @@ class order_api_controller extends company
         $serviceType = $serviceInfo['type'];
 
         //查询余额
-        $companyStatis = $this->obj->DB_select_once('company_statis','uid = ' . $this->uid);
+        $companyStatis = $this->obj->DB_select_once('company_statis', 'uid = ' . $this->uid);
         $integral = intval($companyStatis['integral']);
         if ($integral < $price) {
             //余额不足
             $this->ajax_return(500, false, '余额不足');
         }
-       $supl = intval($companyStatis['integral'] - $price);
+        $supl = intval($companyStatis['integral'] - $price);
         try {
-//            $this->obj->startTran();
             //扣除积分
             $value = "`integral` = " . $supl;
             $this->obj->DB_update_all('company_statis', $value, 'uid = ' . $this->uid);
@@ -203,9 +210,9 @@ class order_api_controller extends company
             $this->obj->DB_update_all('company', $companyValue, 'uid = ' . $this->uid);
             //订单记录
             $this->orderAdd($price, $serviceType);
-//            $this->obj->commit();
+            $this->obj->commit();
         } catch (Exception $e) {
-//            $this->obj->rollback();
+            $this->obj->rollback();
             $this->ajax_return(500, false, '购买失败');
         }
         $this->ajax_return(200, true, '购买成功');
