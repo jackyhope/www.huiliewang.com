@@ -285,7 +285,24 @@ class model{
         return $row_return;
 	}
 
-	function DB_select_alls($tablename1,$tablename2, $where = 1, $select = "*") {
+    function DB_select_all_assoc($tablename, $where = 1, $select = "*",$special='') {
+
+        $cachename=$tablename.$where;
+        if(!$row_return=$this->Memcache_set($cachename)){
+            $row_return=array();
+            if($this->siteadmindir&&$special==''){
+
+                $where = $this->site_fetchsql($where,$tablename);
+            }
+            $SQL = "SELECT $select FROM `" . $this->def . $tablename . "` WHERE ".$where;
+            $query=$this->db->query($SQL);
+            while($row=$this->db->fetch_assoc($query)){$row_return[]=$row;}
+            $this->Memcache_set($cachename,$row_return);
+        }
+        return $row_return;
+    }
+
+    function DB_select_alls($tablename1,$tablename2, $where = 1, $select = "*") {
 		$cachename=$tablename1.$tablename2.$where;
 		if(!$row_return=$this->Memcache_set($cachename)){
 

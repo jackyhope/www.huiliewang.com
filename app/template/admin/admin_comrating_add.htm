@@ -13,19 +13,14 @@
 <body class="body_ifm">
 <div class="infoboxp">
 <div class="infoboxp_top_bg"></div>
-<div class="infoboxp_top" style="z-index:600;position:relative;">	
-	<div class="report_uaer_list"><span class="infoboxp_top_span">会员等级</span>
-	 <a href="index.php?m=admin_comrating" >等级设置</a>
-	 <a href="index.php?m=admin_comrating&c=server" class="report_uaer_list_on">增值服务</a> 
-	</div> 
-  </div> 
+
 <div class="admin_Prompt">
 <div class="admin_Prompt_span">
-    <b>提示：</b>增值服务关乎您的收入问题，请添加后编辑服务套餐，谨慎修改并注意整体的合理性。
+    <b>提示：</b>套餐服务关乎用户使用扣费问题，请添加后编辑服务套餐，谨慎修改并注意整体的合理性。
 </div>
 <div class="admin_Prompt_close"></div></div>
 <div class="infoboxp_top">
-	<h6>添加企业会员增值类型</h6>
+	<h6>添加套餐类型</h6>
 </div>
 <div style=" background: #FFFFFF; border: 1px solid #DCE3ED;">
 <div class="">
@@ -34,21 +29,59 @@
 <input type="hidden" name="pytoken" id='pytoken' value="{yun:}$pytoken{/yun}">
 <table width="100%" class="table_form table_form_thr" style="background:#fff;">
     <tr>
-        <th align="right" width="150">增值类型名称：</th>
+        <th align="right" width="150">慧猎套餐名称：</th>
         <td>
-        <input type="text" name="name" id="name" class="input-text tips_class" size="30">
-        <span class="admin_web_tip">如：简历下载服务</span>
+            <input type="text" name="name" id="name" class="input-text tips_class" size="30">
+            <span class="admin_web_tip">如：慧面试</span>
         </td>
         <th align="right">状态：</th>
-        <td>          
+        <td>
             <input type="radio" name="display" value="1" id="RadioGroup1_0" {yun:}if $row.display==1{/yun}checked{yun:}/if{/yun}>
             <label for="RadioGroup1_0">启用</label>
             <input type="radio" name="display" value="0" id="RadioGroup1_1" {yun:}if $row.display==0{/yun}checked{yun:}/if{/yun}>
             <label for="RadioGroup1_1">不启用</label>
-			<span class="admin_web_tip">前台是否可见</span>
+            <span class="admin_web_tip">前台是否可见</span>
         </td>
-    </tr>  
-<tr class="admin_table_trbg">
+    </tr>
+    <tr>
+        <th align="right" width="150">慧猎套餐主内容：</th>
+        <td>
+            <div class="yun_admin_select_box zindex200">
+                <input type="button" value="慧沟通" class="yun_admin_select_box_text" id="staple_product_name" onclick="select_click('staple_product');">
+                <input name="staple_product" type="hidden" id="staple_product_val" value="resume">
+                <div class="yun_admin_select_box_list_box dn" id="staple_product_select">
+                    <div class="yun_admin_select_box_list">
+                        <a href="javascript:;" onclick="select_new('staple_product','resume','慧沟通')">慧沟通</a>
+                    </div>
+                    <div class="yun_admin_select_box_list">
+                        <a href="javascript:;" onclick="select_new('staple_product','interview','慧面试')">慧面试</a>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <th align="right">&nbsp;</th>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <th align="right" width="150">慧猎套餐赠送内容：</th>
+        <td>
+            <div class="yun_admin_select_box zindex100">
+                <input type="button" value="慧面试" class="yun_admin_select_box_text" id="welfare_product_name" onclick="select_click('welfare_product');">
+                <input name="welfare_product" type="hidden" id="welfare_product_val" value="interview">
+                <div class="yun_admin_select_box_list_box dn" id="welfare_product_select">
+                    <div class="yun_admin_select_box_list">
+                        <a href="javascript:;" onclick="select_new('welfare_product','interview','慧面试')">慧面试</a>
+                    </div>
+                    <div class="yun_admin_select_box_list">
+                        <a href="javascript:;" onclick="select_new('welfare_product','resume','慧沟通')">慧沟通</a>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <th align="right">&nbsp;</th>
+        <td>&nbsp;</td>
+    </tr>
+    <tr class="admin_table_trbg">
 <td colspan="4" align="center">
 	<input name="id" type="hidden" value="{yun:}$row.id{/yun}">
 	<input class="admin_submit4" name="useradd" type="submit" value="提交" id="dosubmit">
@@ -61,7 +94,7 @@
 <script> 
 function checkform(){
 	if($("#name").val()==""){
-		parent.layer.msg("增值包名称不能为空",2,8);
+		parent.layer.msg("慧猎套餐名称不能为空",2,8);
 		return false;
 	}
 }

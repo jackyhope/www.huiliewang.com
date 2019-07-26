@@ -1,0 +1,250 @@
+<?php
+
+//error_reporting(E_ALL);
+class order_api_controller extends company
+{
+
+    /**
+     * @desc 参数检测
+     */
+    private function publicCheck() {
+        $uId = $this->uid;
+        if (!$uId) {
+            $this->ajax_return(500, false, '请登录');
+        }
+    }
+
+    /**
+     * @desc  数据返回
+     * @param int $code
+     * @param bool $success
+     * @param $dada
+     */
+    function ajax_return($code = 200, $success = true, $dada = []) {
+        exit(json_encode(['code' => $code, 'success' => $success, 'info' => $dada]));
+    }
+
+    /**
+     * @desc  服务类型
+     * @return array
+     */
+    private function getAllService() {
+        $allService = $this->obj->DB_select_all("company_service");
+        $rating = [];
+        foreach ($allService as $service) {
+            $rating[$service['id']] = yun_iconv('gbk', 'utf-8', $service['name']);
+        }
+        return $rating;
+    }
+
+    /**
+     * @desc 充值订单 company_order
+     */
+    public function orderList_action() {
+        $this->publicCheck();
+        $page = baseUtils::getStr($_POST['page'], 'int', 1);
+        $orderType = baseUtils::getStr($_GET['order_type'], 'int', 0);
+        $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
+        $page < 1 && $page = 1;
+        $pageSize = 15;
+        $pageStart = ($page - 1) * $pageSize;
+        $where = 'uid = ' . $this->uid . ' and type = 2';
+        if ($orderType == 1) {
+            //线上充值
+            $where .= " and (order_type is NULL)";
+        }
+        if ($orderType == 2) {
+            //线下
+            $where .= " and (order_type is not NULL)";
+        }
+        $payStatus > 0 && $where .= " and order_state=" . $payStatus;
+        $where .= " order by order_time desc limit {$pageStart},{$pageSize}";
+        $rows = $this->obj->DB_select_all_assoc('company_order', $where);
+        if (is_array($rows)) {
+            foreach ($rows as &$v) {
+                foreach ($v as &$value) {
+                    $value = yun_iconv('gbk', 'utf-8', $value);
+                }
+                $v['order_time'] = date("Y-m-d H:i:s", $v['order_time']);
+                $v['order_price'] = str_replace(".00", "", $v['order_price']);
+                $v['order_type'] = ($v['order_type'] == 'adminpay' || $v['order_type'] == 'admincut') ? '线下充值' : '线上充值';
+            }
+        }
+        $counts = $this->obj->DB_select_num('company_order', $where);
+        $list = ['list' => $rows, 'current_page' => $page, 'page_size' => $pageSize, 'counts' => $counts];
+        $this->ajax_return(200, true, $list);
+    }
+
+    /**
+     * @desc 消费记录
+     */
+    public function serviceList_action() {
+        $this->publicCheck();
+        $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
+        $orderType = baseUtils::getStr($_REQUEST['order_type'], 'int', 0);
+        $payStatus = baseUtils::getStr($_REQUEST['pay_status'], 'int', 0);
+        $allService = $this->getAllService();
+        $page < 1 && $page = 1;
+        $pageSize = 15;
+        $pageStart = ($page - 1) * $pageSize;
+        $where = 'uid = ' . $this->uid . ' and type = 5';
+        $orderType > 0 && $where .= " and order_type=" . $orderType;
+        $payStatus > 0 && $where .= " and order_state=" . $payStatus;
+        $where .= " order by order_time desc limit {$pageStart},{$pageSize}";
+        $rows = $this->obj->DB_select_all_assoc('company_order', $where);
+        if (is_array($rows)) {
+            foreach ($rows as &$v) {
+                foreach ($v as &$value) {
+                    $value = yun_iconv('gbk', 'utf-8', $value);
+                }
+                $v['order_time'] = date("Y-m-d H:i:s", $v['order_time']);
+                $v['order_price'] = str_replace(".00", "", $v['order_price']);
+                $v['rating'] = $allService[$v['rating']];
+            }
+        }
+        $counts = $this->obj->DB_select_num('company_order', $where);
+        $list = ['list' => $rows, 'current_page' => $page, 'page_size' => $pageSize, 'counts' => $counts];
+        $this->ajax_return(200, true, $list);
+    }
+
+    /**
+     * @desc 服务购买记录
+     */
+    public function useList_action() {
+        $this->publicCheck();
+        $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
+        $serviceType = baseUtils::getStr($_REQUEST['service_type'], 'int', 0);
+        $payStatus = baseUtils::getStr($_REQUEST['pay_status'], 'int', 0);
+        $page < 1 && $page = 1;
+        $pageSize = 15;
+        $pageStart = ($page - 1) * $pageSize;
+        $where = 'com_id = ' . $this->uid . ' and type in (1,0) and resume_id > 0';
+        isset($_REQUEST['service_type']) && $where .= " and type=" . $serviceType;
+        $payStatus > 0 && $where .= " and pay_type=" . $payStatus;
+        $where .= " order by id desc limit {$pageStart},{$pageSize}";
+        $rows = $this->obj->DB_select_all_assoc('company_pay', $where);
+        if (is_array($rows)) {
+            foreach ($rows as &$v) {
+                foreach ($v as &$value) {
+                    $value = yun_iconv('gbk', 'utf-8', $value);
+                }
+                $v['pay_time'] = date("Y-m-d H:i:s", $v['pay_time']);
+                $v['order_price'] = str_replace(".00", "", $v['order_price']);
+            }
+        }
+        $counts = $this->obj->DB_select_num('company_pay', $where);
+        $list = ['list' => $rows, 'current_page' => $page, 'page_size' => $pageSize, 'counts' => $counts];
+        $this->ajax_return(200, true, $list);
+    }
+
+    /**
+     * @desc  服务列表
+     */
+    public function services_action() {
+        $types = $this->getAllService();
+        $filed = "id,service_price,resume,resume_unit,interview,interview_unit,type";
+        $list = $this->obj->DB_select_all_assoc('company_service_detail', '1', $filed);
+        foreach ($list as $k => &$info) {
+            $type = $info['type'];
+            if (!isset($types[$type])) {
+                unset($list[$k]);
+                continue;
+            }
+            foreach ($info as &$value) {
+                $value = yun_iconv('gbk', 'utf-8', $value);
+            }
+            $info['type_name'] = $types[$type];
+            $title = '';
+            if ($type == 1) {
+                $title = $info['resume'] . $info['resume_unit'];
+                $info['interview'] > 0 && $title .= " +赠送{$types[3]}" . $info['interview'] . $info['interview_unit'];
+            }
+            if ($type == 3) {
+                $title = $info['interview'] . $info['interview_unit'];
+                $info['resume'] > 0 && $title .= " +赠送{$types[1]}" . $info['resume'] . $info['resume_unit'];
+            }
+            $info['title'] = $title;
+        }
+        $list = ['list' => $list];
+        $this->ajax_return(200, true, $list);
+    }
+
+    /**
+     * @desc 订单购买
+     */
+    public function buy_action() {
+//        error_reporting(E_ALL);
+        $serviceId = BaseUtils::getStr($_GET['id'], 'int');
+        $smsCode = BaseUtils::getStr($_GET['code'], 'int');
+        if ($serviceId <= 0 || !$smsCode) {
+            $this->ajax_return(500, false, '参数错误');
+        }
+        //@todo  短信验证码验证
+        if ($smsCode !== $_COOKIE['sms_code']) {
+//            $this->ajax_return(500, false, '短信验证码错误');
+        }
+        //余额验证
+        $serviceInfo = $this->obj->DB_select_once('company_service_detail', 'id = ' . $serviceId);
+        if (!$serviceInfo) {
+            $this->ajax_return(500, false, '服务信息查询错误');
+        }
+        $price = $serviceInfo['service_price'];
+        $resume = $serviceInfo['resume'];
+        $interview = $serviceInfo['interview'];
+        $serviceType = $serviceInfo['type'];
+
+        //查询余额
+        $companyStatis = $this->obj->DB_select_once('company_statis', 'uid = ' . $this->uid);
+        $integral = intval($companyStatis['integral']);
+        if ($integral < $price) {
+            //余额不足
+            $this->ajax_return(500, false, '余额不足');
+        }
+        $supl = intval($companyStatis['integral'] - $price);
+        try {
+            //扣除积分
+            $value = "`integral` = " . $supl;
+            $this->obj->DB_update_all('company_statis', $value, 'uid = ' . $this->uid);
+            //增加点数
+            $companyValue = "`resume_payd` = `resume_payd` +" . $resume . ",`interview_payd` = `interview_payd` +" . $interview;
+            $this->obj->DB_update_all('company', $companyValue, 'uid = ' . $this->uid);
+            //订单记录
+            $this->orderAdd($price, $serviceType);
+            $this->obj->commit();
+        } catch (Exception $e) {
+            $this->obj->rollback();
+            $this->ajax_return(500, false, '购买失败');
+        }
+        $this->ajax_return(200, true, '购买成功');
+    }
+
+    /**
+     * @desc  新增订单数据
+     * @param int $price
+     * @param int $rating
+     * @return mixed
+     */
+    private function orderAdd($price, $rating) {
+        $types = $this->getAllService();
+        $sn = mktime() . rand(10000, 99999);
+        $data = [
+            'type' => 5,
+            'order_id' => $sn,
+            'uid' => $this->uid,
+            'order_type' => 'balance',
+            'order_price' => $price,
+            'order_time' => time(),
+            'order_state' => 2,
+            'order_remark' => "购买{$types[$rating]}",
+            'rating' => $rating,
+            'integral' => 1,
+        ];
+        $vales = '';
+        foreach ($data as $k => $v) {
+            $v = yun_iconv('utf-8', 'gbk', $v);
+            $vales .= " {$k} = '$v',";
+        }
+        $vales = trim($vales, ',');
+        return $this->obj->DB_insert_once('company_order', $vales);
+    }
+}

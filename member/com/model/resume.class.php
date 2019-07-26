@@ -27,4 +27,8 @@ class resume_controller extends company{
         $this->yunset("js_def",8);
         $this->com_tpl('resume');
     }
+    function detail_action(){
+
+        $this->com_tpl('resume_detail');
+    }
 }

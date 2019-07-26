@@ -94,7 +94,7 @@ class recharge_controller extends common{
 		$nid=$this->obj->DB_update_all($table,$integral_v,"`uid`='".$uid."'"); 
 		if($fs==2)$_POST['type']=5;
 		if($nid){
-			$this->insert_company_pay($num,2,$uid,$remark,1,'',$type); 
+			$this->insert_company_pay($num,2,$uid,$remark,1,'100',$type);
 			$nid=$this->obj->insert_into("company_order",$_POST);
 		}
 		return $nid;

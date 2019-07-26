@@ -34,8 +34,10 @@
         <div style="width:1000px">
             <span class="sp1">企业地址：</span>
             <div class="input_min selectBox" style="z-index: 101">
-                <input class="SpFormLBut text_seclet_w158" type="button" value="请选择"
-                    id="province" onclick="search_show('job_province');">
+                <input class="SpFormLBut text_seclet_w158" type="button"
+                    id="province" {yun:}if $row.provinceid{/yun}
+                value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
+                onclick="search_show('job_province');">
                 <input type="hidden" id="provinceid" name="provinceid" value="" />
                 <div id="job_province" class="cus-sel-opt-panel" style="display:none">
                     <div style="width:100%;  overflow:auto; overflow-x:hidden">
@@ -50,8 +52,10 @@
                 </div>
             </div>
             <div class="input_min selectBox" style="z-index: 101">
-                <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="citys"
-                    onclick="search_show('job_citys');">
+                <input class="SpFormLBut text_seclet_w158" type="button" id="citys"
+                       {yun:}if $row.cityid{/yun}
+                value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
+                onclick="search_show('job_citys');">
                 <input type="hidden" id="citysid" name="cityid" value="" />
                 <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
                     <div style="width:100%;  overflow:auto; overflow-x:hidden">
@@ -67,9 +71,9 @@
             </div>
             <div class="input_min selectBox" style="display:none"
                 id="cityshowth">
-                <input class="SpFormLBut text_seclet_w158" type="button"
-                    value="请选择"
-                    id="three_city" onclick="three_city_show('job_three_city');">
+                <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun}
+                value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
+                onclick="three_city_show('job_three_city');">
                 <input type="hidden" id="three_cityid" name="three_cityid" value="" />
                 <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
                     <ul class="Search_Condition_box_list">
@@ -90,9 +94,9 @@
             <span class="sp1">行业：</span>
             <!-- <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业"> -->
             <div class="input_nomorl selectBox2">
-                    <input class="SpFormLBut text_seclet_w250 " type="button"
-                        value="请选择行业" id="hy"
-                        onclick="search_show('job_hy');">
+                    <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
+                value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
+                onclick="search_show('job_hy');">
                     <input type="hidden" id="hyid" name="hy">
                          <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
                     <div style="width:100%;  overflow:auto; overflow-x:hidden">

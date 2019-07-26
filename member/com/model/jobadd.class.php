@@ -88,6 +88,45 @@ class jobadd_controller extends company
         $this->com_tpl('pw_reset');
     }
     function  base_info_action(){
+
+        /**企业资料数据源   **/
+        $row = $this->obj->DB_select_once("company", "`uid`='" . $this->uid . "'");
+        if ($row['comqcode']) {
+            $row['comqcode'] = str_replace('./', $this->config['sy_weburl'] . '/', $row['comqcode']);
+        }
+        $save = $this->obj->DB_select_once("lssave", "`uid`='" . $this->uid . "'and `savetype`='3'");
+        $save = unserialize($save['save']);
+        if ($save['lastupdate']) {
+            $save['time'] = date('H:i', ceil(($save['lastupdate'])));
+        }
+        if ($row['linkphone']) {
+            $linkphone = @explode('-', $row['linkphone']);
+            $row['phoneone'] = $linkphone[0];
+            $row['phonetwo'] = $linkphone[1];
+            $row['phonethree'] = $linkphone[2];
+        }
+        if (($row['x'] == '' || $row['y'] == '') && $row['address'] != '') {
+            $row['setmap'] = 1;
+        } elseif ($row['x'] != '' && $row['y'] != '') {
+            $row['setmap'] = 2;
+        } else {
+            $row['setmap'] = 3;
+        }
+        $tel = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "' and `type`='2'");
+        $this->yunset("save", $save);
+        $this->yunset("tel", $tel);
+        $this->yunset("row", $row);
+        $this->public_action();
+        $this->city_cache();
+        $this->job_cache();
+        $this->com_cache();
+        $this->industry_cache();
+        $cert = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "' and type='3'");
+        $this->yunset("cert", $cert);
+        $this->yunset("js_def", 2);
+        /**企业资料数据源**/
+//        $this->com_tpl('info');
+
         $CacheArr = $this->MODEL('cache')->GetCache(array('hy', 'job', 'city', 'com', 'circle'));
         $this->yunset($CacheArr);
         $this->public_action();
@@ -155,7 +194,7 @@ class jobadd_controller extends company
         $this->yunset("company", $company);
         $this->yunset("row", $row);
         $this->yunset("js_def", 3);
-        $this->com_tpl('jobadd');
+        $this->com_tpl('base_info');
     }
 
     function save_action() {
