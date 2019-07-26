@@ -1,4 +1,4 @@
-//ajaxè¯·æ±‚å°è£…
+//ajaxÇëÇó·â×°
 function Post(url, data) {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -38,12 +38,12 @@ function Get(url, data) {
         })
     })
 }
-//è¡¨å•éªŒè¯
-function formVerify() { //è¿™ä¸ªéªŒè¯åªæœ‰æç¤ºä½œç”¨ï¼Œä¸æ‹¦æˆªè¯·æ±‚
+//±íµ¥ÑéÖ¤
+function formVerify() { //Õâ¸öÑéÖ¤Ö»ÓĞÌáÊ¾×÷ÓÃ£¬²»À¹½ØÇëÇó
     $('input.verify').blur(ev => {
         let reg = new RegExp($(ev.target).attr('rule'))
         if (!$(ev.target).val() || !$(ev.target).val().match(reg)) {
-            //æç¤ºæŒæœ‰classåform_notice
+            //ÌáÊ¾³ÖÓĞclassÃûform_notice
             if ($(ev.target).next('.form_notice').length == 0) {
                 $(ev.target).after(`<span class='form_notice'>${$(ev.target).attr('notice')}</span>`)
             }
@@ -52,21 +52,21 @@ function formVerify() { //è¿™ä¸ªéªŒè¯åªæœ‰æç¤ºä½œç”¨ï¼Œä¸æ‹¦æˆªè¯·æ±‚
         }
     })
 }
-//åŠ è½½å®Œæˆæ‰§è¡Œä¸€æ¬¡
+//¼ÓÔØÍê³ÉÖ´ĞĞÒ»´Î
 $(formVerify)
-//å•ä¸ªä¸Šä¼ 
+//µ¥¸öÉÏ´«
 function upload(obj) {
-    /*  å‚æ•°objä¸ºjsonå¯¹è±¡
-        å±æ€§:
-        typeï¼š  ä¸Šä¼ å…è®¸ç±»å‹,å­—ç¬¦ä¸²ï¼Œå¤šç±»å‹é€—å·éš”å¼€
-        data:   ä¸Šä¼ é™„å¸¦å‚æ•°ï¼Œjsonå¯¹è±¡
-        uploadStartï¼šä¸Šä¼ å¼€å§‹å›è°ƒ
-        uploadProgressï¼šä¸Šä¼ è¿‡ç¨‹å›è°ƒ
-        uploadSuccessï¼šä¸Šä¼ æˆåŠŸå›è°ƒ
-        uploadErrorï¼šä¸Šä¼ å®Œæ¯•å›è°ƒ
-        ä»¥ä¸Šå›è°ƒå‡æœ‰å‚æ•°
-        å‚æ•°1ï¼šæ–‡ä»¶ä¿¡æ¯
-        å‚æ•°2ï¼šæœåŠ¡å™¨å›æ‰§
+    /*  ²ÎÊıobjÎªjson¶ÔÏó
+        ÊôĞÔ:
+        type£º  ÉÏ´«ÔÊĞíÀàĞÍ,×Ö·û´®£¬¶àÀàĞÍ¶ººÅ¸ô¿ª
+        data:   ÉÏ´«¸½´ø²ÎÊı£¬json¶ÔÏó
+        uploadStart£ºÉÏ´«¿ªÊ¼»Øµ÷
+        uploadProgress£ºÉÏ´«¹ı³Ì»Øµ÷
+        uploadSuccess£ºÉÏ´«³É¹¦»Øµ÷
+        uploadError£ºÉÏ´«Íê±Ï»Øµ÷
+        ÒÔÉÏ»Øµ÷¾ùÓĞ²ÎÊı
+        ²ÎÊı1£ºÎÄ¼şĞÅÏ¢
+        ²ÎÊı2£º·şÎñÆ÷»ØÖ´
     */
     $('#picker').remove();
     $('header').append('<div id="picker" style="display: none;"></div>')
@@ -93,28 +93,29 @@ function upload(obj) {
     uploader.on('uploadError', obj.uploadStart)
     uploader.on('error', type => {
         if (type == 'Q_TYPE_DENIED') {
-            // swal('ä¸Šä¼ ç±»å‹é”™è¯¯', "", "warning");
+            // swal('ÉÏ´«ÀàĞÍ´íÎó', "", "warning");
         } else if (type == 'Q_EXCEED_SIZE_LIMIT') {
-            // swal('æ–‡ä»¶è¿‡å¤§', "", "warning");
+            // swal('ÎÄ¼ş¹ı´ó', "", "warning");
         }
     });
     setTimeout(() => {
         $('#picker input').click()
     }, 200)
 }
-//æç¤ºä¿¡æ¯å¼¹çª—
-function alert_notice(obj) {
-    /*  å‚æ•°objä¸ºjsonå¯¹è±¡
-        å±æ€§:
-        title:  æ ‡é¢˜
-        content:  è¯¦ç»†è¯´æ˜ï¼ˆé€‰å¡«ï¼‰
-        type:  warninï¼Œsuccessï¼Œerrorï¼Œé™¤è¿™ä¸‰ç§ï¼Œå¯ä»¥ä¼ å…¥imgurlï¼ˆé»˜è®¤successï¼‰
-        btn:æŒ‰é’®å†…å®¹ï¼ˆé»˜è®¤ç¡®è®¤ï¼‰
-        elseï¼šé™„åŠ ä¿¡æ¯ï¼ˆå¯åœ¨å›è°ƒä¸­æ“ä½œï¼‰
-        src: ç‚¹å‡»æŒ‰é’®è·³è½¬é“¾æ¥ï¼ˆé€‰å¡«ï¼‰
-        callbackï¼šå›è°ƒå‡½æ•°ï¼Œå¼¹çª—å‡ºç°æ—¶è§¦å‘ï¼Œä¼šä¼ å…¥é™„åŠ ä¿¡æ¯çš„jqueryå¯¹è±¡
-        ä»¥ä¸Šå±•ç¤ºä¿¡æ¯éƒ½å¯ä»¥ä¼ å…¥å¯Œæ–‡æœ¬æ ¼å¼
+//ÌáÊ¾ĞÅÏ¢µ¯´°
+function alert_notice(obj={title:'²Ù×÷³É¹¦',content:'',type:'success',btn:'È·ÈÏ',else:''}) {
+    /*  ²ÎÊıobjÎªjson¶ÔÏó
+        ÊôĞÔ:
+        title:  ±êÌâ£¨Ä¬ÈÏ£º²Ù×÷³É¹¦£©
+        content:  ÏêÏ¸ËµÃ÷£¨Ñ¡Ìî£©
+        type:  warnin£¬success£¬error£¬³ıÕâÈıÖÖ£¬¿ÉÒÔ´«Èëimgurl£¨Ä¬ÈÏsuccess£©
+        btn:°´Å¥ÄÚÈİ£¨Ä¬ÈÏÈ·ÈÏ£©
+        else£º¸½¼ÓĞÅÏ¢£¨¿ÉÔÚ»Øµ÷ÖĞ²Ù×÷£©
+        src: µã»÷°´Å¥Ìø×ªÁ´½Ó£¨Ñ¡Ìî£©
+        callback£º»Øµ÷º¯Êı£¬µ¯´°³öÏÖÊ±´¥·¢£¬»á´«Èë¸½¼ÓĞÅÏ¢µÄjquery¶ÔÏó
+        ÒÔÉÏÕ¹Ê¾ĞÅÏ¢¶¼¿ÉÒÔ´«Èë¸»ÎÄ±¾¸ñÊ½
     */
+   
     let img = '';
     if (obj.type == 'warning') {
         img = '/app/public/imgs/7_03.png'
@@ -131,9 +132,9 @@ function alert_notice(obj) {
         <img src="/app/public/imgs/cl_03.png" alt="" class="close_dialog">
         <img src="${img}" alt="" class="dialog_img">
         <span class="dialog_title">${obj.title}</span>
-        <span class="dialog_con">${obj.content}</span>
-        <button class="dialog_btn button_2 gradient_1">${obj.btn?obj.btn:'ç¡®è®¤'}</button>
-        <span class="dialog_else">${obj.else}</span>
+        <span class="dialog_con">${obj.content?obj.content:''}</span>
+        <button class="dialog_btn button_2 gradient_1">${obj.btn?obj.btn:'È·ÈÏ'}</button>
+        <span class="dialog_else">${obj.else?obj.else:''}</span>
     </div>
 </div>
     `)
@@ -168,6 +169,6 @@ function alert_notice(obj) {
 
 }
 function close_all_dialog(){
-    //å…³é—­æ‰€æœ‰å¼¹çª—
+    //¹Ø±ÕËùÓĞµ¯´°
     $('.mask').remove()
 }

@@ -82,6 +82,12 @@
             查看全部消息
           </span>
         </div>
+        <div class="ucBox">
+          <span>企业资料</span>
+          <span>更换手机</span>
+          <span>修改密码</span>
+          <span>退出</span>
+        </div>
       </div>
     </div>
     <div class="clear"></div>
@@ -92,7 +98,16 @@
         if ($('.headerBox .noticeBox').css('display') == 'block') {
           $('.headerBox .noticeBox').css('display', 'none')
         } else {
+          $('.headerBox .ucBox').css('display', 'none')
           $('.headerBox .noticeBox').css('display', 'block')
+        }
+      })
+      $('.userCenter').click(ev => {
+        if ($('.headerBox .ucBox').css('display') == 'block') {
+          $('.headerBox .ucBox').css('display', 'none')
+        } else {
+          $('.headerBox .noticeBox').css('display', 'none')
+          $('.headerBox .ucBox').css('display', 'block')
         }
       })
     })
