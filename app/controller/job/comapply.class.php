@@ -240,7 +240,8 @@ class comapply_controller extends job_controller{
             $this->yunset("download_num",$download_num);
             $this->yunset("refuse_num",$refuse_num);
 //            $this->yun_tpl(array('comapply'));
-            $this->lt_tpl('comapply');
+//            $this->lt_tpl('comapply');
+            $this->yun_tpl(array('comapply'));
         }else{
                 $arr = array();
                 if($Job){
@@ -252,6 +253,7 @@ class comapply_controller extends job_controller{
                     $arr['success'] = false;
                     $arr['data'] = null;
                 }
+                        $this->yun_tpl(array('comapply'));
                 $this->jsonReturn($arr);die;
         }
 
