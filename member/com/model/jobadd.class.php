@@ -552,6 +552,7 @@ class jobadd_controller extends company
             $saveJobDo->state = baseUtils::getStr($_POST['state'], 'int');
             $saveJobDo->edate = baseUtils::getStr($_POST['edate'], 'int');
             $saveJobDo->job_post = baseUtils::getStr($_POST['job_post']);
+            $saveJobDo->service_type = baseUtils::getStr($_POST['service_type']);
             $res = $jobAddService->saveJob($saveJobDo);
             if ($res->code != 200) {
                 $return = ['success' => false, 'code' => 500, 'info' => $res->message];
