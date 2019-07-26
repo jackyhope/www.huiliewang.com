@@ -275,10 +275,9 @@
                 linkmail:linkmail,
                 website:welfare
             }).then(function (res) {
-                alert(res.info);
                 window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=jobadd&act=edit';
             }).catch(function (res) {
-                alert(res.info);
+                alert_notice({title:'Œ¬‹∞Ã· æ',content:res.message,type:'warning'});
             });
         });
 

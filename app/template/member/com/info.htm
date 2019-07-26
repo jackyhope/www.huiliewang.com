@@ -186,10 +186,9 @@
                 business_uname: business_uname,
                 linktel: linktel
             }).then(function (res) {
-                alert(res.message);
                 window.location.reload();
             }).catch(function (res) {
-                alert(res.message);
+                alert_notice({title:'温馨提示',content:res.message,type:'warning'});
             });
         });
 
@@ -224,7 +223,7 @@
                 $('.sec').css('display', 'block')
             }
         }).catch(function (res) {
-            alert(res.message);
+            alert_notice({title:'温馨提示',content:res.message,type:'warning'});
         });
         //上传
         $('.upload').click(ev => {

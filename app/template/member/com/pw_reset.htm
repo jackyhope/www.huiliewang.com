@@ -22,9 +22,9 @@
             var password_ = $('.password_').val();
             var pwAgain = $('.pwAgain').val();
             Post('{yun:}url m=login c=forget_pwd{/yun}',{username:tel,verify:verifyCode,password:password_,repassword:pwAgain}).then(function (res) {
-                alert(res.message);
+                alert_notice({title:'温馨提示',content:res.message,type:'success'});
             }).catch(function (res) {
-                alert(res.message);
+                alert_notice({title:'温馨提示',content:res.message,type:'warning'});
             });
         });
     });
@@ -51,9 +51,9 @@
         $('.formBox .getCode').click(ev => {
             var tel = $('.tel').val();
             Get('{yun:}url m=login c=sendemail{/yun}',{tel:tel}).then(function (res) {
-                alert(res.message);
+                alert_notice({title:'温馨提示',content:res.message,type:'success'});
             }).catch(function (res) {
-                alert(res.message);
+                alert_notice({title:'温馨提示',content:res.message,type:'warning'});
             });
             if (count == 59) {
                 $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');

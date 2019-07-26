@@ -188,14 +188,12 @@
 						Get('{yun:}url m=register c=sendtel{/yun}', {
 							tel: tel
 						}).then(function (res) {
-							// alert(res.message);
-							console.log(1, res);
+							alert_notice({title:'温馨提示',content:res.message});
 						}).catch(function (res) {
-							// alert(res.message);
-							console.log(1, res);
+							alert_notice({title:'温馨提示',content:res.message,type:'warning'});
 						});
 					}).catch(function (res) {
-						alert(res.message);
+						alert_notice({title:'温馨提示',content:res.message,type:'warning'})
 					});
 					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
 					let timeId = setInterval(() => {
@@ -221,14 +219,12 @@
 						Get('{yun:}url m=register c=sendtel{/yun}', {
 							tel: tel
 						}).then(function (res) {
-							// alert(res.message);
-							console.log(1, res);
+                            alert_notice({title:'温馨提示',content:res.message})
 						}).catch(function (res) {
-							// alert(res.message);
-							console.log(1, res);
+                            alert_notice({title:'温馨提示',content:res.message,type:'warning'})
 						});
 					}).catch(function (res) {
-						alert(res.message);
+                        alert_notice({title:'温馨提示',content:res.message,type:'warning'})
 					});
 					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
 					let timeId = setInterval(() => {
@@ -251,18 +247,18 @@
 			$('.signUpBtn').click(function () {
 				var tel = $('.singUpTel').val();
 				var code = $('.verifyCode2').val();
-				code == '' && alert('请填写验证码');
+				// code == '' && alert('请填写验证码');
+				code == '' && alert_notice({'title':'',content:'请填写验证码',type:'warning'});
 				var inviCode = $('.inviCode').val();
 				Post('{yun:}url m=register c=registcom{/yun}', {
 					tel: tel,
 					code: code,
 					invitecode: inviCode
 				}).then(function (res) {
-					alert(res.message);
 					if (res.success)
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 				}).catch(function (res) {
-					alert(res.message);
+                    alert_notice({title:'温馨提示',content:res.message,type:'warning'})
 				});
 			});
 
@@ -278,7 +274,8 @@
 					}).then(function (res) {
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 					}).catch(function (res) {
-						alert(res.message);
+					    // alert(res.message);
+                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
 					});
 				} else {
 					//手机验证码登录
@@ -292,8 +289,7 @@
 						window.location.href =
 						'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
 					}).catch(function (res) {
-						alert(res.message);
-						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+                        alert_notice({title:'温馨提示',content:res.message,type:'warning'})
 					});
 				}
 			});
