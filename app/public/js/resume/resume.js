@@ -1,68 +1,3 @@
-(function($, h, c) {
-    var a = $([]), e = $.resize = $.extend($.resize, {}), i, k = "setTimeout", j = "resize", d = j
-        + "-special-event", b = "delay", f = "throttleWindow";
-    e[b] = 350;
-    e[f] = true;
-    $.event.special[j] = {
-        setup : function() {
-            if (!e[f] && this[k]) {
-                return false
-            }
-            var l = $(this);
-            a = a.add(l);
-            $.data(this, d, {
-                w : l.width(),
-                h : l.height()
-            });
-            if (a.length === 1) {
-                g()
-            }
-        },
-        teardown : function() {
-            if (!e[f] && this[k]) {
-                return false
-            }
-            var l = $(this);
-            a = a.not(l);
-            l.removeData(d);
-            if (!a.length) {
-                clearTimeout(i)
-            }
-        },
-        add : function(l) {
-            if (!e[f] && this[k]) {
-                return false
-            }
-            var n;
-            function m(s, o, p) {
-                var q = $(this), r = $.data(this, d);
-                r.w = o !== c ? o : q.width();
-                r.h = p !== c ? p : q.height();
-                n.apply(this, arguments)
-            }
-            if ($.isFunction(l)) {
-                n = l;
-                return m
-            } else {
-                n = l.handler;
-                l.handler = m
-            }
-        }
-    };
-    function g() {
-        i = h[k](function() {
-            a.each(function() {
-                var n = $(this), m = n.width(), l = n.height(), o = $
-                    .data(this, d);
-                if (m !== o.w || l !== o.h) {
-                    n.trigger(j, [ o.w = m, o.h = l ])
-                }
-            });
-            g()
-        }, e[b])
-    }
-})(jQuery, this);
-
 $(function(){
     $('.container .ul .li').click(function(){
         $('.container .ul .li').removeClass('current');
@@ -137,9 +72,26 @@ function select_new(name,val,valname){
 }
 /**通用单选下拉框 end **/
 
+
+/**
+ * module 叉关闭当前弹框
+ */
 function m_close(obj){
-    $('#c_shade').hide();
-    $(obj).parent().hide();
+    $('#c_shade').addClass('c_hide');
+    $(obj).parent().addClass('c_hide');
 }
 
+/**
+ * 余额不足  _module = c_module_1
+ * 余额不足  _module = c_module_2
+ * 余额不足  _module = c_module_3
+ * 余额不足  _module = c_module_4
+ *
+ * */
 
+function show_module(_module){
+    $('#c_shade').removeClass('c_hide');
+    $('.c_module').addClass('c_hide');
+    $('.'+_module).removeClass('c_hide');
+
+}
