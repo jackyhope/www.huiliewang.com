@@ -118,3 +118,31 @@
 .noticeBox>div:hover span{
     color: #fff;
 }
+.headerBox .ucBox{
+    width: 106px;
+    position: absolute;
+    top: 80px;
+    left: 1111px;
+    box-shadow:0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    height: auto !important;
+    z-index: 9999;
+    transition: 0.2s;
+    display: none;
+    overflow: hidden;
+}
+.ucBox span{
+    line-height: 26px;
+    display: block;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+}
+.ucBox span:hover{
+    background: -webkit-linear-gradient(left, #75E4E5 , #5BCBD5); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #75E4E5, #5BCBD5); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #75E4E5, #5BCBD5); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #75E4E5 , #5BCBD5);
+    color: #fff;
+}

@@ -1,0 +1,336 @@
+.jobadd {
+    width: 670px;
+    margin: 50px auto;
+}
+
+.title_ {
+    font-weight: 600;
+    color: #333;
+}
+
+.title_ span:nth-child(1) {
+    width: 15px;
+    display: inline-block;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 8px;
+    background: #F39800;
+    color: #fff;
+}
+
+.title_ span:nth-child(2) {
+    display: inline-block;
+    color: #3cc1d3;
+    font-size: 12px;
+    width: 226px;
+    text-align: center;
+    box-shadow: 1px 1px 3px 0px rgba(58, 141, 152, 0.33);
+    line-height: 22px;
+}
+
+.sp1 {
+    width: 120px;
+    margin-right: 15px;
+    text-align: right;
+    display: inline-block;
+    color: #333333;
+    font-weight: 600;
+}
+
+.sp6 {
+    width: 120px;
+    margin-right: 15px;
+    text-align: right;
+    display: inline-block;
+    color: #666;
+}
+
+.sp1 span {
+    color: #FF0000;
+    margin-right: 5px;
+}
+
+.hgt {
+    width: 203px;
+    height: 137px;
+    box-sizing: border-box;
+    padding: 34px;
+    color: #1F606E;
+    font-size: 12px;
+    background: url(/app/public/imgs/fw_03.png) no-repeat center center;
+    border: 3px #fff solid;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .2);
+}
+
+.hms {
+    width: 203px;
+    height: 137px;
+    box-sizing: border-box;
+    padding: 34px 26px;
+    color: #1F606E;
+    font-size: 12px;
+    background: url(/app/public/imgs/fw_05.png) no-repeat center center;
+    border: 3px #fff solid;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .2)
+}
+
+.typeBox>div {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 61px;
+}
+
+.sp2 {
+    width: 18px;
+    display: inline-block;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+    margin-left: 19px;
+    margin-right: 11px;
+    margin-top: 13px;
+    border: 1px solid rgba(60, 193, 211, 1);
+}
+
+.left {
+    display: inline-block;
+    line-height: 24px;
+    width: 126px;
+    text-align: center;
+    color: #3cc1d3;
+    border: 1px solid rgba(60, 193, 211, 1);
+    border-radius: 4px;
+}
+
+.typeBox .choosed .sp2 {
+    background: #3CC1D3;
+}
+
+.typeBox .choosed .left {
+    border: none;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #75E4E5, #5BCBD5);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #75E4E5, #5BCBD5);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #75E4E5, #5BCBD5);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #75E4E5, #5BCBD5);
+}
+
+input {
+    padding-left: 15px;
+}
+
+.jobadd .box1 {
+    margin-bottom: 15px;
+}
+
+.selectBox,
+.selectBox2 {
+    position: relative;
+    z-index: 100;
+    display: inline-block;
+}
+
+.selectBox input,
+.selectBox2 input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: #fff url(/admin-huilie/images/com_select.jpg) no-repeat 160px center;
+    margin: 0;
+    float: none;
+}
+
+.selectBox2 input {
+    background: #fff url(/admin-huilie/images/com_select.jpg) no-repeat 240px center;
+
+}
+
+.selectBox>div {
+    width: 182px;
+}
+
+.selectBox2>div {
+    width: 265px;
+}
+
+.sp3 {
+    margin-left: -44px
+}
+
+#description {
+    width: 548px;
+    height: 142px;
+    padding: 15px;
+    margin-left: 5px;
+}
+
+.inputMin {
+    width: 120px;
+}
+
+.selectBox_,
+.selectBox_2,
+.selectBox_3 {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 530px;
+    flex-wrap: wrap;
+}
+
+.select {
+    box-sizing: border-box;
+    width: 60px;
+    height: 36px;
+    line-height: 36px;
+    color: #333;
+    border: 1px solid #dcdcdc;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.triangle {
+    position: absolute;
+    transform: rotateZ(45deg);
+    width: 24px;
+    height: 24px;
+    background: #dcdcdc;
+    top: 22px;
+    left: 46px;
+}
+
+.gou {
+    position: absolute;
+    top: 18px;
+    left: 48px;
+    z-index: 3;
+    display: inline-block;
+    width: 20px;
+    line-height: 20px;
+    color: #fff;
+}
+
+.select:hover .triangle {
+    background: #3CC1D3;
+}
+
+.select:hover {
+    border-color: #3CC1D3;
+}
+
+.select.choosed .triangle {
+    background: #3CC1D3;
+}
+
+.select.choosed {
+    border-color: #3CC1D3;
+}
+
+.selectBox_2 .select {
+    margin-bottom: 10px;
+    width: 80px;
+    margin-right: 10px;
+}
+
+.selectBox_2 {
+    justify-content: flex-start;
+}
+
+.selectBox_2 .triangle {
+    left: 66px;
+}
+
+.selectBox_2 .gou {
+    left: 69px;
+}
+
+
+.selectBox_3 {
+    justify-content: flex-start;
+}
+
+.selectBox_3 .select:nth-child(1) {
+    margin-bottom: 10px;
+    width: 310px;
+    margin-right: 10px;
+}
+
+.selectBox_3 .select:nth-child(1) .triangle {
+    left: 296px;
+}
+
+.selectBox_3 .select:nth-child(1) .gou {
+    left: 299px;
+}
+
+.selectBox_3 .select:nth-child(2) {
+    margin-bottom: 10px;
+    width: 130px;
+    margin-right: 10px;
+}
+
+.selectBox_3 .select:nth-child(2) .triangle {
+    left: 116px;
+}
+
+.selectBox_3 .select:nth-child(2) .gou {
+    left: 119px;
+}
+
+.newTel input {
+    border-radius: 0;
+}
+
+.newTel {
+    width: 506px;
+    height: 64px;
+    border: 1px solid #dcdcdc;
+    padding: 10px;
+    display: none;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.newTel input {
+    margin-right: 10px;
+}
+
+.newTel p {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 15px;
+    width: 100%;
+}
+
+.newTel span {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.switch {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background: #dcdcdc;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.switch div {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.1s;
+}

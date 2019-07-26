@@ -193,7 +193,7 @@
 							alert_notice({title:'温馨提示',content:res.message,type:'warning'});
 						});
 					}).catch(function (res) {
-						alert_notice({title:'温馨提示',content:res.message,type:'warning'})
+						alert_notice({type:'error',title:'获取验证码失败',content:res.message})
 					});
 					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
 					let timeId = setInterval(() => {
@@ -224,7 +224,7 @@
                             alert_notice({title:'温馨提示',content:res.message,type:'warning'})
 						});
 					}).catch(function (res) {
-                        alert_notice({title:'温馨提示',content:res.message,type:'warning'})
+                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
 					});
 					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
 					let timeId = setInterval(() => {
@@ -258,7 +258,11 @@
 					if (res.success)
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 				}).catch(function (res) {
-                    alert_notice({title:'温馨提示',content:res.message,type:'warning'})
+                    alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+					if (res.success)
+						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+				}).catch(function (res) {
+					alert_notice({type:'error',title:res.message});
 				});
 			});
 
@@ -273,6 +277,7 @@
 						l_type: 2
 					}).then(function (res) {
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+
 					}).catch(function (res) {
 					    // alert(res.message);
                         alert_notice({title:'温馨提示',content:res.message,type:'warning'});
@@ -289,7 +294,8 @@
 						window.location.href =
 						'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
 					}).catch(function (res) {
-                        alert_notice({title:'温馨提示',content:res.message,type:'warning'})
+                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 					});
 				}
 			});
