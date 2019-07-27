@@ -471,6 +471,8 @@ class jobadd_controller extends company
     function saveInfo_action() {
         $uId = $this->uid;
         $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+        $_POST['name'] = change_encoding($_POST['name'],'gbk');
+        $_POST['description'] = change_encoding($_POST['description'],'gbk');
         if (!$_POST['name']) {
             $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
             $this->jsonReturn($return);
@@ -555,13 +557,11 @@ class jobadd_controller extends company
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type']);
             $res = $jobAddService->saveJob($saveJobDo);
             if ($res->code != 200) {
-                $res->message =  yun_iconv('utf-8','gbk', $res->message);
                 $return = ['success' => false, 'code' => 500, 'info' => $res->message];
-                $this->jsonReturn($return);
+                $this->jsonReturn($return,false);
             }
             $jobId = $res->message;
         } catch (Exception $e) {
-
             $return = ['success' => false, 'code' => 500, 'info' => $e->getMessage()];
             $this->jsonReturn($return);
         }
@@ -600,9 +600,8 @@ class jobadd_controller extends company
     function saveAfter($id, $isUp = false) {
         $id = intval($id);
         if (!$id) {
-            $lastInfo = $this->obj->DB_select_once("company_job", "`uid`='" . $this->uid, "id");
-            var_dump($lastInfo['id']);
-            die;
+            $return = ['success' => false, 'code' => 500, 'info' => '操作失败，请重新发布'];
+            $this->jsonReturn($return);
         }
         $satic = $this->company_satic();
         $islink = (int)$_POST['islink'];
@@ -684,16 +683,18 @@ class jobadd_controller extends company
         $_POST['mun'] = $company['mun'];
         $_POST['rating'] = $satic['rating'];
         $_POST['description'] = str_replace(array("&amp;", "background-color:#ffffff", "background-color:#fff", "white-space:nowrap;"), array("&", 'background-color:', 'background-color:', 'white-space:'), html_entity_decode($_POST['description'], ENT_QUOTES, "GB2312"));
+        $_POST['name'] = change_encoding($_POST['name'],'utf-8');
+        $_POST['description'] = change_encoding($_POST['description'],'utf-8');
         try {
             apiClient::init();
             $jobService = new com\hlw\huilie\interfaces\JobServiceClient(null);
             apiClient::build($jobService);
             $saveJobDo = new com\hlw\huilie\dataobject\job\JobRequestDTO();
-            $saveJobDo->name = baseUtils::getStr($_POST['name']);
+            $saveJobDo->name =$_POST['name'];
             $saveJobDo->minsalary = baseUtils::getStr($_POST['minsalary'], 'int');
             $saveJobDo->maxsalary = baseUtils::getStr($_POST['maxsalary'], 'int');
             $saveJobDo->ejob_salary_month = baseUtils::getStr($_POST['ejob_salary_month'], 'int');
-            $saveJobDo->description = baseUtils::getStr($_POST['description']);
+            $saveJobDo->description = $_POST['description'];
             $saveJobDo->detail_report = baseUtils::getStr($_POST['detail_report']);
             $saveJobDo->detail_subordinate = baseUtils::getStr($_POST['detail_subordinate'], 'int');
             $saveJobDo->number = baseUtils::getStr($_POST['number'], 'int');
@@ -712,10 +713,11 @@ class jobadd_controller extends company
             $saveJobDo->mode = baseUtils::getStr($mode);
             $saveJobDo->job_id = baseUtils::getStr($id, 'int');
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type'], 'int');
+
             $result = $jobService->saveJob($saveJobDo);
             if ($result->code != 200) {
                 $return = ['success' => false, 'code' => 500, 'info' => $result->message];
-                $this->jsonReturn($return);
+                $this->jsonReturn($return,false);
             }
         } catch (Exception $ex) {
             $return = ['success' => false, 'code' => 500, 'info' => $ex->getMessage()];
