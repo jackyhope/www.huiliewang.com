@@ -30,12 +30,6 @@ $(function(){
         })
     })
 
-    /****************/
-    // $('#c_shade').click(function(){
-    //     $(this).fadeOut(300);
-    //     $(this).find('.c_module').removeClass('c_show').addClass('c_hide');
-    // })
-    /****************/
 })
 /**通用单选下拉框 start **/
 function select_click(name){

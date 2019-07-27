@@ -20,7 +20,11 @@ class pay_controller extends company
 		}
 		$this->yunset("statis",$statis);
 		$this->yunset("js_def",4);
-		$this->com_tpl('pay');
+        $temp = 'pay';
+        if($_GET['cpu']==1){
+            $temp = 'pay-old';
+        }
+        $this->com_tpl($temp);
 	}
 	function dingdan_action(){
 		if($_POST['price'] || $_POST['money_int'] || $_POST['comvip'] || $_POST['comservice']){
@@ -91,13 +95,15 @@ class pay_controller extends company
 			$id=$this->obj->insert_into("company_order",$data);
 			if($id){
 				$this->obj->member_log("下单成功,订单ID".$dingdan);
-				$this->ACT_layer_msg("下单成功，请付款！",9,$this->config['sy_weburl']."/member/index.php?c=payment&id=".$id);
+                return_json('下单成功，请付款！',200,['url'=>$this->config['sy_weburl']."/member/index.php?c=payment&id=".$id]);
+//				$this->ACT_layer_msg("下单成功，请付款！",9,$this->config['sy_weburl']."/member/index.php?c=payment&id=".$id);
 			}else{
-				$this->ACT_layer_msg("提交失败，请重新提交订单！",8,$_SERVER['HTTP_REFERER']);
+                return_json('提交失败，请重新提交订单！',500,['url'=>$_SERVER['HTTP_REFERER']]);
+//				$this->ACT_layer_msg("提交失败，请重新提交订单！",8,$_SERVER['HTTP_REFERER']);
 			}
 		}else{
-
-			$this->ACT_layer_msg("提交失败，请正确提交订单！",8,$_SERVER['HTTP_REFERER']);
+            return_json('提交失败，请正确提交订单！',500,['url'=>$_SERVER['HTTP_REFERER']]);
+//			$this->ACT_layer_msg("提交失败，请正确提交订单！",8,$_SERVER['HTTP_REFERER']);
 		}
 	}
 }

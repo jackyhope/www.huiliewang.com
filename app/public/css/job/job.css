@@ -1,0 +1,142 @@
+.job{
+    width: 1060px;
+    margin: 50px auto;
+}
+.tabBox{
+    padding: 7px 47px 15px;
+    border-bottom: 1px solid #EEEEEE;
+    position: relative;
+}
+.tab{
+    margin: 0 30px;
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+}
+.line1{
+    width: 60px;
+    position: absolute;
+    background: #3CC1D3;
+    height: 2px;
+    bottom: 0;
+    left: 100px;
+    transition: .2s;
+}
+.tabBox .choosed{
+    color: #333333;
+
+}
+.tabBox .choosed span{
+    color: #3CC1D3;
+}
+.searchBox{
+    width: 321px;
+    height: 40px;
+    margin-top: 26px;
+    margin-bottom: 16px;
+    margin-left: 75px;
+    display: flex;
+}
+.searchInput{
+    width: 261px;
+    height: 40px;
+    border:1px solid rgba(220,220,220,1);
+    border-right: none;
+}
+.searchBtn{
+    display: inline-block;
+    width: 56px;
+    color: #fff;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+}
+.listBox{
+    width: 100%;
+    height: 125px;
+    box-sizing: border-box;
+    box-shadow:1px 2px 6px 0px rgba(4,0,0,0.11);
+    padding: 20px 35px 26px 48px;
+}
+.listBox:hover{
+    box-shadow:2px 3px 21px 0px rgba(4,0,0,0.2);
+}
+.postName{
+    color: #333;
+    font-weight: 600;
+    margin-right: 15px;
+}
+.postType{
+    width: 68px;
+    line-height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+}
+.postType img{
+    width: 21px;
+}
+.salary{
+    color: #E57474;
+    font-size: 18px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.adviser{
+    display: inline-block;
+margin-left: 69px;
+font-size: 14px;
+color: #666666;
+}
+.createTime{
+    color: #999;
+    font-size: 14px;
+}
+.listMid{
+    margin-left: 100px;
+}
+.listMid div{
+    width: 115px;
+    height: 43px;
+    margin: 18px 0;
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    border-right:1px solid #EEEEEE;
+}
+.listMid div:nth-last-child(1){
+    border: none;
+}
+.listBox>div{
+    float: left;
+    height: 100%;
+}
+.listMid span{
+    color: #3CC1D3;
+    font-size: 24px;
+    display: block;
+}
+.listBox{
+    margin-bottom: 10px;
+}
+.listBox .listRight{
+    float: right;
+    margin-top: 14px;
+}
+.listRight span{
+    display: block;
+    color: #3CC1D3;
+    border:  1px solid #3CC1D3;
+    border-radius: 4px;
+    margin-bottom: 7px;
+    width: 68px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}

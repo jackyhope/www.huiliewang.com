@@ -42,7 +42,12 @@ class payment_controller extends company{
 			$this->yunset("statis",$statis);
 			$this->yunset("js_def",4);
 			$this->public_action();
-			$this->com_tpl('payment');
+            //payment-old
+            $temp = 'payment';
+            if($_GET['cpu']==1){
+                $temp = 'payment-old';
+            }
+			$this->com_tpl($temp);
 		}
 	}
 	function wxurl_action(){

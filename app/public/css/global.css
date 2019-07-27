@@ -186,3 +186,36 @@ input.input-normal:focus,input.input-normal:hover{
     border:1px solid rgba(60,193,211,1);
     border-radius:6px;
 }
+
+/*page*/
+.diggg{width:100%; padding:20px 0; font-weight:normal; text-align:center}
+.diggg a{ display:inline-block;border:1px solid #eee; padding:5px 10px; margin-left:10px;color:#666}
+.diggg  .selected{ background:#3281CB;color:#fff; }
+.diggg em{ display:inline-block;padding:5px 10px;color:#666}
+.admin_mainbody{width:100%; float:left;margin-top:15px; padding-bottom:10px;}
+.index_admin_mainbody{width:100%; float:left;min-height:600px;margin-top:15px; padding-bottom:10px; }
+
+/**dl dt  dd**/
+
+.dl>.dt,.dl>.dd{
+    float:left;
+}
+.fllow_tips{
+    position: absolute;
+    bottom:-20px;
+    left:10px;
+    color:#cccccc;
+    font-size: 12px;
+}
+/**text-align**/
+.te_lgl{
+    text-align: left;
+}
+/**灰色字体*/
+.color-grey{
+    color:grey!important;
+}
+
+.color-cccccc{
+    color:#cccccc!important;
+}

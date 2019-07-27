@@ -1,58 +1,105 @@
-{yun:}include file="$comstyle/header.htm"{/yun}
-<div class="w1000">
-<div class="admin_mainbody"> 
-<style>.my_table_msg th{ text-align:right}</style>
-{yun:}include file="$comstyle/left.htm"{/yun}
-  <div class=right_box>
-    <div class=admincont_box>
-      <div class="job_list_tit">
-      	<ul class="">
-      		<li {yun:}if $smarty.get.c=="pay"&&$smarty.get.act==""{/yun} class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=pay">购买{yun:}$config.integral_pricename{/yun}</a></li>
-       	</ul>
-       </div>
-      <div class="com_body">
-        <div class='admin_note_pay2'>  
-          <div class="admin_note2">
-            <iframe id="fdingdan"  name="fdingdan" onload="returnmessage('fdingdan');" style="display:none"></iframe>
-            <form name="alipayment" target="fdingdan" action="index.php?c=pay&act=dingdan" method="post" onsubmit="return pay_form('请输入充值数量！');">
-			  <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="com_pay_table">
-                <tr>
-                  <th height="30" width="170">填写您要充值的{yun:}$config.integral_pricename{/yun}<span class="com_pay_table_pay_s">*</span></th>
-                  <td><input type="hidden" name="pay_type" value="{yun:}$smarty.post.usertype{/yun}" />
-                    <input type="text" name="price_int" id="price_int" size="20" value="0" int="{yun:}$config.integral_proportion{/yun}" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" maxlength='6' class="com_pay_table_pay_text">
-                    当前比例：1元={yun:}$config.integral_proportion{/yun}{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun} {yun:}if $config.integral_min_recharge>0{/yun}，单次最低充值{yun:}$config.integral_min_recharge{/yun}{yun:}$config.integral_pricename{/yun}。{yun:}/if{/yun}</td>
-                </tr>
-                <tr>
-                  <th height="30">所需金额<span class="com_pay_table_pay_s">*</span></th>
-                  <td><span id="span_com_vip_price">0</span>元
-                    <input type="hidden" name="price" size="10"  id="com_vip_price"></td>
-                </tr>
-                <tr>
-                  <th height="30">备注信息<span class="com_pay_table_pay_s"></span></th>
-                  <td><textarea name="remark" id='remark' wrap="physical"  class="bank_textarea"></textarea>
-                    <p style="line-height:23px;">(请备注你的姓名及其联系方式)</p></td>
-                </tr>
-             
-                <tr>
-                  <th>&nbsp;</th>
-                  <td height="40"><div style="padding:10px;"><input  type="submit" value="下一步" name=nextstep class="btn_01"></div></td>
-                </tr> 
-				</table>
-			</form>
-			</div>
+<!--头部 start -->
+{yun:}include file="$comstyle/c_header.htm"{/yun}
+{yun:}include file="$comstyle/c_header_nav.htm"{/yun}
+<!--头部 end -->
+<!--inner header start-->
+<title>在线充值</title>
+<link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/paylog/paylog.css">
+<script src="/app/public/js/resume/resume.js"></script>
+<script src="/app/public/js/resume/jquery.resize.js"></script>
+<script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/member_public.js"></script>
+<script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/public.js"></script>
+<style>
+    input.input-normal{
+        width: 300px;
+        height: 40px;
+    }
+</style>
+<script>
+    var weburl = '{yun:}$config.sy_weburl{/yun}';
+</script>
+<div class="inner_header">
+    <div class="container">
+        <div class="ul clearall">
+            <span class="li current">支付订单<i></i></span>
         </div>
-      </div>
     </div>
-  </div>
 </div>
+<!--inner header end-->
+<div class="content_detail">
+    <div class="c_detail_cont mb_80">
+        <form name="alipayment" id="c_alipayment" target="fdingdan" action="index.php?c=pay&act=dingdan" method="post">
+            <input type="hidden" name="dingdan" value="{yun:}$order.order_id{/yun}"/>
+            <input type="hidden" name="price" size="10"  id="com_true_price">
+            <div class="dl clearall">
+                <div class="dt">充值金额：</div>
+                <div class="dd c_money"><input type="text" class="input-normal" name="price_int" id="price_int" size="20" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');$('#com_true_price').val(this.value)" maxlength='8'></div>
+            </div>
+            <div class="dl clearall">
+                <div class="dt">充值方式：</div>
+                <div class="dd">
+                    <input id="pay_bank" type="hidden" name="pay_bank" value="directPay">
+                    <label class="pay_type fll show_hands current" for="alipay_logo">
+                        <i></i>
+                        <img id="alipay_logo" data-fatasy="directPay" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_alipay_logo.jpg" alt="" onclick="paycheck('alipay');light_up(this);">
+                    </label>
+                </div>
+            </div>
+            <div class="dl mt_30 clearall">
+                <div class="dt">&nbsp;</div>
+                <div class="dd"><input class="c_btn c_btn_lg c_btn_light_bg btn_01" name="nextstep" id="dingdan_submit" type="button" value="下一步"></div>
+            </div>
+        </form>
+        <div class="tips_more">
+            <p class="tips_title">温馨提示：</p>
+            <p class="tips_cont">1. 充值成功后，余额可能存在延迟现象，一般1到5分钟内到账，如有问题，请咨询客服，客服电话：<span style="color:#f60;font-size: 18px;">{yun:}$config.sy_freewebtel{/yun}</span>；</p>
+            <p class="tips_cont">2. 充值金额输入值必须是正整数；</p>
+            <p class="tips_cont">3. 目前只能使用支付宝充值方式，其他充值方式会陆续上线，如果您想使用其他支付方式充值，请联系客服；</p>
+            <p class="tips_cont">4. 付款完成后，您可以进入套餐中心页面进行查看余额充值状态。</p>
+        </div>
+    </div>
 </div>
 <script>
-var weburl="{yun:}$config.sy_weburl{/yun}";
-{yun:}if $smarty.get.id&&$smarty.get.type=='vip'{/yun}
-$(document).ready(function(){
-	check_rating_coupon('{yun:}$smarty.get.id{/yun}');
-});
-{yun:}/if{/yun}
-</script> 
-<input name='integral_min_recharge' value="{yun:}$config.integral_min_recharge{/yun}" type="hidden"/>
-{yun:}include file="$tplstyle/footer.htm"{/yun}
+    /***
+     * 验证
+     * @param name
+     * @returns {boolean}
+     */
+    function pay_form(name){
+        if($("#comvip").length!=0&&$("#comvip").val()==''){
+            layer.msg("请选择购买类型！",2,8);return false;
+        }
+        if($("#price_int").length!=0&&$("#price_int").val()<1){
+            layer.msg(name,2,8);return false;
+        }
+        if($("#money_int").length!=0&&$("#money_int").val()<1){
+            layer.msg(name,2,8);return false;
+        }
+    }
+    $(function(){
+       $('#dingdan_submit').click(function () {
+           pay_form('请输入充值数量！');
+           var _json={};
+           $.post('index.php?c=pay&act=dingdan',$('#c_alipayment').serialize(),function (data) {
+               data = JSON.parse(data);
+               if(data.code==200){
+                _json = {title:'温馨提示',content:data.message,type:'success',src:data.url,btn:'前往付款',else:''};
+                //默认2秒自动跳转
+                   setTimeout(function(){
+                       location.href=data.url;
+                   },2000);
+               }else{
+                   _json = {title:'温馨提示',content:data.message,type:'error',src:data.url,btn:'确定',else:''};
+               }
+               alert_notice(_json);
+           })
+       })
+    })
+</script>
+<!--尾巴 start-->
+{yun:}include file="$comstyle/c_footer.htm"{/yun}
+<!--尾巴 end-->
+
+</body>
+</html>

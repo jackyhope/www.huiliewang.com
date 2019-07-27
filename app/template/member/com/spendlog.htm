@@ -2,20 +2,18 @@
 {yun:}include file="$comstyle/c_header.htm"{/yun}
 {yun:}include file="$comstyle/c_header_nav.htm"{/yun}
 <!--头部 end -->
-<title>简历列表</title>
+<title>消费记录</title>
 <!--inner header start-->
 <link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/paylog/paylog.css">
 <script src="/app/public/js/resume/resume.js"></script>
 <div class="inner_header">
     <div class="container">
         <div class="ul clearall">
-            <span class="li current">收到的简历（12）<i></i></span>
-            <span class="li">已下载的简历（12）<i></i></span>
-            <span class="li">待面试（12）<i></i></span>
-            <span class="li">所有简历（12）<i></i></span>
-        </div>
-        <div class="search">
-            <div class="inp clearall"><input class="fll" type="text" name="kwd" id="kwd" placeholder="请输入关键字"><a href="" class="sou">搜索</a></div>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=1"><span class="li {yun:}if $c_tpu==1{/yun}current{yun:}/if{/yun}">我的套餐<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=2"><span class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">套餐使用记录<i></i></span>
+                <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=3"><span class="li {yun:}if $c_tpu==3{/yun}current{yun:}/if{/yun}">消费记录<i></i></span>
+                    <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4"><span class="li {yun:}if $c_tpu==4{/yun}current{yun:}/if{/yun}">充值记录<i></i></span>
         </div>
     </div>
 </div>
@@ -25,19 +23,7 @@
     <div class="screen_list mt_10">
         <div class="screen clearall">
             <span class="head_tit">筛选：</span>
-            <div class="select_box">
-                <input type="button" value="全部职位" class="select_box_text fll" id="business_name" onclick="select_click('business');">
-                <input name="business" type="hidden" id="business_val" value="0">
-                <div class="select_box_list_box dn" id="business_select">
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('business','0','全部职位')">全部职位</a>
-                    </div>
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('business','1','招有梦想的咸鱼')">招有梦想的咸鱼</a>
-                    </div>
 
-                </div>
-            </div>
             <div class="select_box">
                 <input type="button" value="所有类型" class="select_box_text fll" id="at_name" onclick="select_click('at');">
                 <input name="at" type="hidden" id="at_val" value="0">
@@ -53,65 +39,56 @@
                     </div>
                 </div>
             </div>
-            <div class="end_right fll"><input type="checkbox" class="c_check" name="is_look" id="is_look"> 未查看</div>
+
         </div>
     </div>
-<!--  收到的简历 start -->
+    <!--  收到的简历 start -->
     <div class="c_table mt_28 clearall">
         <div class="c_th clearall">
-            <div class="c_td">候选人</div>
-            <div class="c_td">学历</div>
-            <div class="c_td">工作年限</div>
-            <div class="c_td">意向职位</div>
-            <div class="c_td">类型</div>
-            <div class="c_td">顾问</div>
-            <div class="c_td">推荐时间</div>
-            <div class="c_td">操作</div>
+            <div class="c_td">服务方式</div>
+            <div class="c_td">套餐</div>
+            <div class="c_td">价格</div>
+            <div class="c_td">余额</div>
+            <div class="c_td">状态</div>
+            <div class="c_td">时间</div>
         </div>
         <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
             <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);" onclick="show_module('c_module_1')">购买简历</a><a class="not_fit" href="">不合适</a></div>
+            <div class="c_td">极速沟通</div>
+            <div class="c_td">1000</div>
+            <div class="c_td">-1000</div>
+            <div class="c_td">购买成功</div>
+            <div class="c_td">2019-7-12 14:32:19</div>
         </div>
         <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
             <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);" onclick="show_module('c_module_2')">MODULE2</a><a class="not_fit" href="">不合适</a></div>
+            <div class="c_td">极速沟通</div>
+            <div class="c_td">1000</div>
+            <div class="c_td">-1000</div>
+            <div class="c_td">购买成功</div>
+            <div class="c_td">2019-7-12 14:32:19</div>
         </div>
         <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
             <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);" onclick="show_module('c_module_3')">MODULE3</a><a class="not_fit" href="">不合适</a></div>
+            <div class="c_td">极速沟通</div>
+            <div class="c_td">1000</div>
+            <div class="c_td">-1000</div>
+            <div class="c_td">购买成功</div>
+            <div class="c_td">2019-7-12 14:32:19</div>
         </div>
         <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
             <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);" onclick="show_module('c_module_4')">MODULE4</a><a class="not_fit" href="">不合适</a></div>
+            <div class="c_td">极速沟通</div>
+            <div class="c_td">1000</div>
+            <div class="c_td">-1000</div>
+            <div class="c_td">购买成功</div>
+            <div class="c_td">2019-7-12 14:32:19</div>
         </div>
 
+
     </div>
-<!--  收到的简历 end -->
-<!--  已下载的简历 start -->
+    <!--  收到的简历 end -->
+    <!--  已下载的简历 start -->
     <div class="c_table c_hide mt_28 clearall">
         <div class="c_th clearall">
             <div class="c_td">候选人</div>
@@ -203,13 +180,13 @@
         </div>
 
     </div>
-<!--  已下载的简历 end  -->
-<!--  待面试  -->
+    <!--  已下载的简历 end  -->
+    <!--  待面试  -->
     <div class="c_table c_hide mt_28 clearall">
         <div class="c_no_data"><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_no_data.png" alt=""><p>暂无数据</p></div>
     </div>
-<!--  待面试  -->
-<!--  所有简历 start  -->
+    <!--  待面试  -->
+    <!--  所有简历 start  -->
     <div class="c_table mt_28 clearall c_hide">
         <div class="c_th clearall">
             <div class="c_td">候选人</div>
@@ -263,7 +240,7 @@
         </div>
 
     </div>
-<!--  所有简历 end  -->
+    <!--  所有简历 end  -->
 </div>
 <!--content-list end-->
 

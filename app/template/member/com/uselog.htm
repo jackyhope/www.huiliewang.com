@@ -1,0 +1,75 @@
+<!--头部 start -->
+{yun:}include file="$comstyle/c_header.htm"{/yun}
+{yun:}include file="$comstyle/c_header_nav.htm"{/yun}
+<!--头部 end -->
+<title> 套餐使用记录</title>
+<!--inner header start-->
+<link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/paylog/paylog.css">
+<script src="/app/public/js/resume/resume.js"></script>
+<div class="inner_header">
+    <div class="container">
+        <div class="ul clearall">
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=1"><span class="li {yun:}if $c_tpu==1{/yun}current{yun:}/if{/yun}">我的套餐<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=2"><span class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">套餐使用记录<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=3"><span class="li {yun:}if $c_tpu==3{/yun}current{yun:}/if{/yun}">消费记录<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4"><span class="li {yun:}if $c_tpu==4{/yun}current{yun:}/if{/yun}">充值记录<i></i></span></a>
+        </div>
+    </div>
+</div>
+<!--inner header end-->
+<!--content-list start-->
+<div class="content_list no_hover_text">
+    <div class="screen_list mt_10">
+        <div class="screen clearall">
+            <span class="head_tit">筛选：</span>
+
+            <div class="select_box">
+                <input type="button" value="所有类型" class="select_box_text fll" id="at_name" onclick="select_click('at');">
+                <input name="at" type="hidden" id="at_val" value="0">
+                <div class="select_box_list_box dn" id="at_select">
+                    <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('at','0','所有类型')">所有类型</a>
+                    </div>
+                    <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('at','1','慧沟通')">慧沟通</a>
+                    </div>
+                    <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('at','1','慧面试')">慧面试</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--  套餐使用记录 start -->
+    <div class="c_table mt_28 clearall">
+        <div class="c_th clearall">
+            <div class="c_td">职位</div>
+            <div class="c_td">候选人</div>
+            <div class="c_td">服务方式</div>
+            <div class="c_td">数量</div>
+            <div class="c_td">状态</div>
+            <div class="c_td">时间</div>
+        </div>
+        <div class="c_tr clearall">
+            <div class="c_td">设计师</div>
+            <div class="c_td">航宝宝</div>
+            <div class="c_td">慧沟通</div>
+            <div class="c_td">--2</div>
+            <div class="c_td">已扣除</div>
+            <div class="c_td">2019-7-12 14:32:19</div>
+        </div>
+
+    </div>
+    <!--  套餐使用记录 end -->
+
+</div>
+<!--content-list end-->
+
+<!--尾巴 start-->
+{yun:}include file="$comstyle/c_footer.htm"{/yun}
+<!--尾巴 end-->
+
+</body>
+</html>
