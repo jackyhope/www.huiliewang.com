@@ -181,8 +181,8 @@ class order_api_controller extends company
             $this->ajax_return(500, false, '参数错误');
         }
         //@todo  短信验证码验证
-        if ($smsCode !== $_COOKIE['sms_code']) {
-//            $this->ajax_return(500, false, '短信验证码错误');
+        if ($smsCode !== $_SESSION['code'] || (time() - $_SESSION['code_time']) > 300) {;
+            $this->ajax_return(500, false, '短信验证码错误');
         }
         //余额验证
         $serviceInfo = $this->obj->DB_select_once('company_service_detail', 'id = ' . $serviceId);
