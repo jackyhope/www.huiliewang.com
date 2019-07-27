@@ -9,53 +9,67 @@
     <div class="comTitle">公司信息</div>
     <img src="/app/public/imgs/9_03.png" class="comLogo" alt="">
     <span class="comName">
-      重庆南方新华企业管理咨询有限公司
+      {yun:}if $Info.identity<>3{/yun}
+                <a href="{yun:}$Info.com_url{/yun}" target="_blank" class="">{yun:}$Info.com_name|mb_substr:0:13:'gbk'{/yun}</a>
+                {yun:}else{/yun}
+                <label style="display:block;text-align: left;width: 100%;margin-left: 10px;">{yun:}$Info.com_name|mb_substr:0:13:'gbk'{/yun}</label>
+                {yun:}/if{/yun}
+                {yun:}if $Info.yyzz_status=='1'{/yun}
+                <img src="{yun:}$style{/yun}/images/disc_icon10.png" title="营业执照已审核" class="png"/>
+                {yun:}/if{/yun}
     </span>
     <div class="comInfo">
       <div class="div1">
         <img src="/app/public/imgs/9_18.png" alt="">
-        <span>广告·传媒·教育·文化</span>
+        <span>{yun:}$Info.job_hy{/yun}</span>
       </div>
       <div class="div1">
         <img src="/app/public/imgs/9_23.png" alt="">
-        <span>重庆</span>
+        <span>{yun:}$Info.com_city{/yun}</span>
       </div>
       <div class="div1">
         <img src="/app/public/imgs/9_27.png" alt="">
-        <span>上市公司</span>
+        <span>{yun:}$Info.job_pr{/yun}</span>
       </div>
       <div class="div1">
         <img src="/app/public/imgs/9_29.png" alt="">
-        <span>1000人以上</span>
+        <span>{yun:}$Info.job_mun{/yun}</span>
       </div>
     </div>
   </div>
   <div class="cvbox">
-    <span class="postName">运营总监</span>
-    <span class="salary">￥10000-15000</span>
+    <span class="postName">{yun:}$Info.jobname{/yun}</span>
+    <span class="salary">￥{yun:}$Info.minsalary{/yun}-{yun:}$Info.maxsalary{/yun}</span>
     <div class="div1">
       <img src="/app/public/imgs/9_06.png" alt="">
-      <span>重庆航航航网络股份有限公司</span>
+      <span>{yun:}$Info.com_name|mb_substr:0:13:'gbk'{/yun}</span>
     </div>
     <div class="div1">
       <img src="/app/public/imgs/9_09.png" alt="">
-      <span>不限经验 | 大专学历 | 不限到岗 | 年龄不限 | 性别不限 | 婚况不限 </span>
+      {yun:}if $Info.job_exp{/yun}<span class="Company_Basic_information_l">{yun:}$Info.job_exp{/yun}经验</span>{yun:}/if{/yun}
+      {yun:}if $Info.job_edu{/yun}<i class="Company_Basic_information_line">&nbsp;|&nbsp;</i><span class="Company_Basic_information_l">{yun:}$Info.job_edu{/yun}学历</span>{yun:}/if{/yun}
+      {yun:}if $Info.job_report{/yun}<i class="Company_Basic_information_line">&nbsp;|&nbsp;</i><span class="Company_Basic_information_l">{yun:}$Info.job_report{/yun}到岗</span> {yun:}/if{/yun}
+      {yun:}if $Info.job_age{/yun}<i class="Company_Basic_information_line">&nbsp;|&nbsp;</i><span class="Company_Basic_information_l">年龄{yun:}$Info.job_age{/yun}</span>{yun:}/if{/yun}
+      {yun:}if $Info.sex{/yun}<i class="Company_Basic_information_line">&nbsp;|&nbsp;</i><span class="Company_Basic_information_l">性别{yun:}$Info.sex{/yun}</span> {yun:}/if{/yun}
+      {yun:}if $Info.job_marriage{/yun}<i class="Company_Basic_information_line">&nbsp;|&nbsp;</i><span class="Company_Basic_information_l">婚况{yun:}$Info.job_marriage{/yun}</span>{yun:}/if{/yun}
     </div>
     <div class="div1">
       <img src="/app/public/imgs/9_11.png" alt="">
-      <span>江苏-南京-鼓楼区 | 2019年08月21日结束招聘 </span>
+      <span>{yun:}if $Info.job_city_one||$Info.job_city_two||$Info.job_city_three{/yun}
+           {yun:}$Info.job_city_one{/yun}-{yun:}$Info.job_city_two{/yun}{yun:}if $Info.job_city_three{/yun}-{yun:}$Info.job_city_three{/yun}
+           {yun:}/if{/yun}{yun:}/if{/yun}{yun:}if $Info.job_number{/yun}<i class="Company_Basic_information_line">|</i><span class="Company_Basic_information_l">招聘{yun:}$Info.job_number{/yun}</span> {yun:}/if{/yun}
+            <i class="Company_Basic_information_line">&nbsp;|&nbsp;</i>{yun:}$Info.edate{/yun}结束招聘</span>
     </div>
     <div class="div1">
       <img src="/app/public/imgs/9_11.png" alt="">
-      <span class="tag">奖励计划</span>
-      <span class="tag">五险一金</span>
-      <span class="tag">员工体检</span>
+      {yun:}if $Info.welfare_info{/yun}
+          {yun:}foreach from=$Info.welfare item=wlist{/yun}
+          <span>{yun:}$comclass_name[$wlist]{/yun}</span>{yun:}/foreach{/yun}
+      {yun:}/if{/yun}
     </div>
     <div class="div1 tag1">
       <img src="/app/public/imgs/9_11.png" alt="">
-      <span class="tag">奖励计划</span>
-      <span class="tag">五险一金</span>
-      <span class="tag">员工体检</span>
+      {yun:}foreach from=$Info.lang item=langlist{/yun} <span class="yun_com_fl_dy ">{yun:}$comclass_name[$langlist]{/yun}</span> {yun:}/foreach{/yun}
     </div>
     <img src="/app/public/imgs/0_03.png" alt="" class="divide">
     <div class="title2">
@@ -63,50 +77,49 @@
     </div>
     <p class="description">
 
-      1.全面负责项目产品线的规划、设计和生命周期管理；
-
-      2.带领项目产品团队，协调技术开发团队，项目运营团队，市场团队完成相关工作；
-
-      3. 研究国内外行业最新动态，保证产品处于行业领先地位。
-
-      4.跟踪线上产品的市场效果、用户反馈、收集和主动挖掘改进需求，根据业务需要持续改进产品，提升用户体验；
-
-      岗位要求：
-
-      1.计算机相关专业，3年以上产品部门负责人岗位经验。有较强的技术基础，有游戏、电商等相关行业经验者优先。
-
-      2.能负责产品部门所有事宜，精通产品设计基本知识，对布局、交互、信息、视觉有深刻理解。
-
-      3.具有同时管理WEB, 移动端产品经验，有海外市场产品经验者优先。
-
-      4.熟悉“Java、Python、PHP、C 、C#”中至少一门程序开发语言。
-
-      5.具有很强的逻辑思维能力、学习能力，良好的语言表达能力和技术讲解能力。
-
-      6.具备良好跨部门沟通能力，对于团队管理有一定的经验。
-
-      7.具有广阔的视野及前瞻性。
+      {yun:}$Info.description{/yun}
     </p>
     <img src="/app/public/imgs/0_03.png" alt="" class="divide">
     <div class="title2">
       <div class="line_1"></div>其他信息
     </div>
     <div class="div2">
-      <span>所属行业：<span>广告·传媒·教育·文化</span></span>
-      <span>企业性质：<span>上市公司</span></span>
-      <span>企业规模：<span>1000人以上</span></span>
-      <span>行业要求：<span>广告·传媒·教育·文化</span></span>
+      {yun:}if $Info.detail_report{/yun}
+      <label class="qtstyle666">汇报对象：<span class="resultss">{yun:}$Info.detail_report{/yun}</span></label>
+      {yun:}/if{/yun}
+
+      {yun:}if $Info.detail_subordinate{/yun}
+      <label class="qtstyle666">下属人数：<span class="resultss">{yun:}$Info.detail_subordinate{/yun}人</span></label>
+      {yun:}/if{/yun}
+
+      {yun:}if $Info.com_hy{/yun}
+      <label class="qtstyle666">所属行业：<span class="resultss">{yun:}$industry_name[$Info.com_hy]{/yun}</span></label>
+      {yun:}/if{/yun}
+
+      {yun:}if $Info.detail_dept_id{/yun}
+      <label class="qtstyle666">所属部门：<span class="resultss">{yun:}$Info.detail_dept_id{/yun}</span></label>
+      {yun:}/if{/yun}
+
+      {yun:}if $Info.com_pr{/yun}
+      <label class="qtstyle666">企业性质：<span class="resultss">{yun:}$comclass_name[$Info.com_pr]{/yun}</span></label>
+      {yun:}/if{/yun}
+      {yun:}if $Info.com_mun{/yun}
+      <label class="qtstyle666">企业规模：<span class="resultss">{yun:}$comclass_name[$Info.com_mun]{/yun}</span></label>
+      {yun:}/if{/yun}
+      {yun:}if $Info.job_hy{/yun}
+      <label class="qtstyle666">行业要求：<span class="resultss">{yun:}$Info.job_hy{/yun}</span></label>
+      {yun:}/if{/yun}
     </div>
     <img src="/app/public/imgs/0_03.png" alt="" class="divide">
     <div class="title2">
       <div class="line_1"></div>薪酬福利
     </div>
     <div class="div2">
-      <span>职位年薪：<span>12-18万</span></span>
-      <span>薪酬发放月数：<span>14月</span></span>
-      <span>年薪福利：<span>国家标准</span></span>
-      <span>社保福利：<span>国家标准</span></span>
-      <span>通讯交通：<span>不确定</span></span>
+      <label class="qtstyle666">职位年薪：<span class="resultss">{yun:}$Info.salary_n{/yun}</span></label>
+      <label class="qtstyle666">薪酬发放月数：<span class="resultss">{yun:}$Info.ejob_salary_month{/yun}月</span></label>
+      <label class="qtstyle666">年薪福利：<span class="resultss">国家标准</span></label>
+      <label class="qtstyle666">社保福利：<span class="resultss">国家标准</span></label>
+      <label class="qtstyle666">通讯交通：<span class="resultss">不确定</span></label>
     </div>
   </div>
 </div>

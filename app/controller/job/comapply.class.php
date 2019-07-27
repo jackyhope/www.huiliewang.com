@@ -76,7 +76,6 @@ class comapply_controller extends job_controller{
 
         $Info=array_merge_recursive($JobInfo,$ComInfo);
 
-
 		if($Info['linkman']){
 			$operatime=time()-$Info['operatime'];
 			if($Info['operatime']==''){
@@ -205,7 +204,7 @@ class comapply_controller extends job_controller{
         }else{
             $Job['salary_n'] ="ÃæÒé";
         }
-//        $this->yunset("Info",$Job);
+        $this->yunset("Info",$Job);
 
 		if($this->usertype==3){
 
@@ -253,8 +252,7 @@ class comapply_controller extends job_controller{
                     $arr['success'] = false;
                     $arr['data'] = null;
                 }
-                        $this->yun_tpl(array('comapply'));
-                $this->jsonReturn($arr);die;
+                 $this->yun_tpl(array('comapply'));
         }
 
 	}
