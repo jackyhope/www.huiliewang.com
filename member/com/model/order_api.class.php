@@ -174,6 +174,7 @@ class order_api_controller extends company
      */
     public function buy_action() {
 //        error_reporting(E_ALL);
+        error_reporting(E_ALL ^ E_NOTICE);
         $serviceId = BaseUtils::getStr($_GET['id'], 'int');
         $smsCode = BaseUtils::getStr($_GET['code'], 'int');
         if ($serviceId <= 0 || !$smsCode) {
@@ -210,9 +211,9 @@ class order_api_controller extends company
             $this->obj->DB_update_all('company', $companyValue, 'uid = ' . $this->uid);
             //订单记录
             $this->orderAdd($price, $serviceType);
-            $this->obj->commit();
+//            $this->obj->commit();
         } catch (Exception $e) {
-            $this->obj->rollback();
+//            $this->obj->rollback();
             $this->ajax_return(500, false, '购买失败');
         }
         $this->ajax_return(200, true, '购买成功');

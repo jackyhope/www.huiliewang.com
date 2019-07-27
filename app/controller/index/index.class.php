@@ -1,17 +1,18 @@
 <?php
 /*
-* $Author £ºPHPYUN¿ª·¢ÍÅ¶Ó
+* $Author ï¿½ï¿½PHPYUNï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½
 *
-* ¹ÙÍø: http://www.phpyun.com
+* ï¿½ï¿½ï¿½ï¿½: http://www.phpyun.com
 *
-* °æÈ¨ËùÓĞ 2009-2016 ËŞÇ¨öÎ³±ĞÅÏ¢¼¼ÊõÓĞÏŞ¹«Ë¾£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
+* ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ 2009-2016 ï¿½ï¿½Ç¨ï¿½Î³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş¹ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½
 *
-* Èí¼şÉùÃ÷£ºÎ´¾­ÊÚÈ¨Ç°ÌáÏÂ£¬²»µÃÓÃÓÚÉÌÒµÔËÓª¡¢¶ş´Î¿ª·¢ÒÔ¼°ÈÎºÎĞÎÊ½µÄÔÙ´Î·¢²¼¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½È¨Ç°ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Óªï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Îºï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ù´Î·ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 class index_controller extends common{
 	function index_action(){
 
+        $this->usertype = 2;
 		$hot_jobs = $this->obj->DB_select_all("company_job","1 limit 0,10");
 
 		if(!$this->config['did'] && $this->config['sy_gotocity']=='1' && !$_COOKIE['gotocity']){
@@ -62,13 +63,13 @@ class index_controller extends common{
     if(is_numeric($_GET['id'])){
         $ID=(int)$_GET['id'];
     }else{
-        echo '¸Ã¹«¸æ²»´æÔÚ£¡';die;
+        echo 'ï¿½Ã¹ï¿½ï¿½æ²»ï¿½ï¿½ï¿½Ú£ï¿½';die;
        
     }
 
     $AnnouncementInfo=$this->MODEL()->DB_select_once('admin_announcement','`id`='.$ID);
     if(!$AnnouncementInfo){
-        echo '¸Ã¹«¸æ²»´æÔÚ£¡';die;
+        echo 'ï¿½Ã¹ï¿½ï¿½æ²»ï¿½ï¿½ï¿½Ú£ï¿½';die;
       
     }
     $this->yunset("Info",$AnnouncementInfo);
@@ -94,7 +95,7 @@ class index_controller extends common{
 	
 	function site_action(){
 		if($this->config["sy_web_site"]!="1"){
-			$this->ACT_msg($_SERVER['HTTP_REFERER'], $msg = "ÔİÎ´¿ªÆô¶àÕ¾µãÄ£Ê½£¡");
+			$this->ACT_msg($_SERVER['HTTP_REFERER'], $msg = "ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½Ä£Ê½ï¿½ï¿½");
 		}
 		$this->seo("index");
 		$this->yun_tpl(array('site'));
