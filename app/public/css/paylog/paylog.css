@@ -1,0 +1,189 @@
+.inner_header{
+    height: 110px;
+}
+
+.content_list .c_table .c_td{
+    width: 16.666666667%;
+   max-width: 16.666666667%;
+}
+
+.content_detail .c_detail_cont{
+    width: 1059px;
+    margin:20px auto 0;
+    box-shadow:1px 2px 6px 0px rgba(4,0,0,0.11);
+    padding:20px 30px;
+}
+.content_detail .c_detail_cont.mb_80{
+    margin-bottom: 80px;
+}
+.content_detail .c_detail_cont .dl{
+    min-height: 77px;
+    line-height: 77px;
+}
+.content_detail .c_detail_cont .dl .dt,.content_detail .c_detail_cont .dl .dd{
+    float: left;
+    min-width: 90px;
+
+}
+.content_detail .c_detail_cont .dl .dd{
+    min-width: 200px;
+    max-width:80%;
+}
+
+.content_detail .c_detail_cont .dl .dd.c_money{
+    font-size: 18px;
+    color:#f60;
+    font-weight:bold;
+}
+
+.content_detail .c_detail_cont .dl .dd label{
+    display: inline-block;
+    margin:0 10px 10px 0;
+    border:1px solid #ffffff;
+    position: relative;
+}
+
+.content_detail .c_detail_cont .dl .dd label i{
+    display: none;
+    width: 32px;
+    height: 32px;
+    background:url("../../imgs/c_r_tick.png") right bottom no-repeat;
+    position: absolute;
+    right:0;
+    bottom:0;
+}
+
+.content_detail .c_detail_cont .dl .dd label:hover,.content_detail .c_detail_cont .dl .dd label.current{
+    border:1px solid #3CC1D3;
+}
+.content_detail .c_detail_cont .dl .dd label:hover i,.content_detail .c_detail_cont .dl .dd label.current i{
+    display: inline-block;
+}
+
+.content_detail .c_detail_cont .tips_more{
+    margin-top:50px;
+    color:#999999;
+}
+.content_detail .c_detail_cont .tips_more .tips_cont{
+    text-indent: 24px;
+    line-height: 28px;
+}
+#c_shade .c_true_module .c_module img{
+    margin:0;
+}
+
+/**我的套餐页面*/
+
+.content_list .c_tc_show{
+    margin:20px auto 80px;
+}
+
+.content_list .c_tc_show .c_show_one{
+    width: 515px;
+    padding-bottom: 100px;
+    margin-right:29px;
+    box-shadow:2px 3px 9px 0px rgba(4,0,0,0.11);
+}
+.content_list .c_tc_show .c_show_one.c_show_two{
+    padding-bottom: 52px;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_upper{
+    min-height: 188px;
+    background:linear-gradient(180deg,rgba(240,253,255,0.9),rgba(255,255,255,0));
+    padding:37px 50px 0;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_floor{
+    margin-top:50px;
+    padding-left:50px;
+    line-height:48px;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_floor p{
+    position: relative;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_floor p span{
+    position:absolute;
+    top:40%;
+    left:10%;
+    color:#999999;
+    font-size: 12px;
+}
+
+.content_list .c_tc_show .c_show_one .c_show_one_middle{
+    padding:0 9%;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_middle .li{
+    float:left;
+    text-align: center;
+    line-height:36px;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_middle .li span{
+    color:#3CC1D3;
+}
+
+.content_list .c_tc_show .c_show_one .c_show_one_upper .c_one_tit span{
+    display: inline-block;
+    padding-top: 13px;
+    float: left;
+    width: 0;
+    height: 18px;
+    margin-right:10px;
+    border:1.5px solid #3CC1D3;
+}
+
+.content_list .c_tc_show .c_show_one .c_show_one_upper .dl .dt{
+    width: 50%;
+    text-align: right;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_upper .dl .dd .c_btn{
+    margin:30px auto 0;
+}
+
+.content_list .c_tc_show .c_show_one .c_show_one_upper .dl .dt p{
+    width: 100%;
+}
+.content_list .c_tc_show .c_show_one .c_show_one_upper .dl .dt .num{
+    padding-right:55px;
+    float:left;
+    color:#3CC1D3;
+    font-size: 22px;
+}
+
+.content_list .c_tc_show .c_show_two{
+    margin-right:0;
+}
+
+.content_list .c_tc_show .c_show_one.c_show_two .c_show_one_middle{
+    padding:0;
+}
+
+
+ #buy_resume.c_module_6 .c_cont .dl{
+     height: 68px;
+     line-height: 68px;
+     text-align: center;
+     font-size: 12px;
+ }
+
+#buy_resume.c_module_6 .c_cont .dl:hover{
+    box-shadow:1px 2px 9px 0px rgba(4,0,0,0.31);
+}
+
+ #buy_resume.c_module_6 .c_cont .dl .dd img{
+     margin-top:3px;
+ }
+
+
+ .c_module_6 .c_cont .dl .dd .c_send_code{
+     color:#3CC1D3;
+     font-size: 12px;
+     position: absolute;
+     right:10px;
+     top:6px;
+     z-index:200;
+     cursor: pointer;
+ }
+
+#c_shade .c_true_module .c_module.c_module_4.c_module_6 .c_cont{
+    padding-bottom:20px;
+}
+

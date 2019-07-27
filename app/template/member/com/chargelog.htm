@@ -1,0 +1,100 @@
+<!--头部 start -->
+{yun:}include file="$comstyle/c_header.htm"{/yun}
+{yun:}include file="$comstyle/c_header_nav.htm"{/yun}
+<!--头部 end -->
+<title>充值记录</title>
+<!--inner header start-->
+<link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/paylog/paylog.css">
+<script src="/app/public/js/resume/resume.js"></script>
+<div class="inner_header">
+    <div class="container">
+        <div class="ul clearall">
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=1"><span class="li {yun:}if $c_tpu==1{/yun}current{yun:}/if{/yun}">我的套餐<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=2"><span class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">套餐使用记录<i></i></span></a>
+                <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=3"><span class="li {yun:}if $c_tpu==3{/yun}current{yun:}/if{/yun}">消费记录<i></i></span></a>
+                    <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4"><span class="li {yun:}if $c_tpu==4{/yun}current{yun:}/if{/yun}">充值记录<i></i></span></a>
+        </div>
+    </div>
+</div>
+<!--inner header end-->
+<!--content-list start-->
+<div class="content_list no_hover_text">
+    <div class="screen_list mt_10">
+        <div class="screen clearall">
+            <span class="head_tit">筛选：</span>
+
+            <div class="select_box">
+                <input type="button" value="所有类型" class="select_box_text fll" id="at_name" onclick="select_click('at');">
+                <input name="at" type="hidden" id="at_val" value="0">
+                <div class="select_box_list_box dn" id="at_select">
+                    <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('at','0','所有类型')">所有类型</a>
+                    </div>
+                    <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('at','1','慧沟通')">慧沟通</a>
+                    </div>
+                    <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('at','1','慧面试')">慧面试</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--  充值记录 start -->
+    <div class="c_table mt_28 clearall">
+        <div class="c_th clearall">
+            <div class="c_td">类型</div>
+            <div class="c_td">金额</div>
+            <div class="c_td">状态</div>
+            <div class="c_td">订单号</div>
+            <div class="c_td">时间</div>
+            <div class="c_td">操作</div>
+        </div>
+        {yun:}foreach from=$rows item=log{/yun}
+        {yun:}assign var="state" value=$log.order_state{/yun}
+        {yun:}assign var="type" value=$log.order_type{/yun}
+        <div class="c_tr clearall">
+            <div class="c_td">{yun:}if $log.type==1{/yun}购买会员
+                {yun:}elseif $log.type=='2'{/yun}{yun:}$config.integral_pricename{/yun}充值
+                {yun:}elseif $log.type=='3'{/yun}银行转帐
+                {yun:}elseif $log.type=='4'{/yun}金额充值
+                {yun:}elseif $log.type=='5'{/yun}购买慧猎套餐
+                {yun:}else{/yun}其他
+                {yun:}/if{/yun}</div>
+            <div class="c_td">{yun:}$log.order_price{/yun}</div>
+            <div class="c_td">{yun:}$arr_data.c_paystate.$state{/yun}</div>
+            <div class="c_td">{yun:}$log.order_id{/yun}</div>
+            <div class="c_td">{yun:}$log.order_time|date_format:'%Y-%m-%d %H:%M:%S'{/yun}</div>
+            <div class="c_td">{yun:}if $log.order_state=='1' && $log.order_type!='bank'{/yun}<a class="c_btn c_btn_light " href="index.php?c=payment&id={yun:}$log.id{/yun}">去支付</a>{yun:}else{/yun}
+                {yun:}$arr_data.c_paystate.$state{/yun}
+                {yun:}/if{/yun}</div>
+        </div>
+        {yun:}foreachelse{/yun}
+        <div class="c_no_data"><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_no_data.png" alt=""><p>您还没有充值记录</p></div>
+        {yun:}/foreach{/yun}
+
+    </div>
+    <!--  充值记录 end -->
+    <div class="diggg">{yun:}$pagenav{/yun}</div>
+</div>
+<!--content-list end-->
+<script>
+    $(function () {
+        if($('.diggg a').length>0){
+            //有分页页码
+            $('.diggg a').each(function (k,v) {
+                $(v).attr('href',$(v).attr('href')+'&c_tpu=4');
+            })
+        }
+    })
+</script>
+<!--尾巴 start-->
+{yun:}include file="$comstyle/c_footer.htm"{/yun}
+<!--尾巴 end-->
+<!--相关简历列表页的弹框module   start -->
+{yun:}include file="$comstyle/c_resume_module.htm"{/yun}
+<!--相关简历列表页的弹框module   end -->
+</body>
+</html>
