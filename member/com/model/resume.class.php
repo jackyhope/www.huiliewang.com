@@ -39,6 +39,9 @@ class resume_controller extends company
         $projectId = 323;
         $resumeDo = '';
         $resumeService = '';
+        if(!$resumeId || !$projectId){
+            $this->ACT_msg($this->config['sy_weburl'],"获取失败！");
+        }
         //简历详情
         $list = [];
         try {
@@ -51,10 +54,11 @@ class resume_controller extends company
             $info = $resumeService->info($resumeDo);
 
             if ($info->code != 200) {
+                $this->ACT_layer_msg($info->message, 8);
             }
             $list = json_decode($info->message, true);
         } catch (Exception $e) {
-            $this->ACT_layer_msg($e->getMessage(), 8);
+            $this->ACT_msg($this->config['sy_weburl'],$e->getMessage());
         }
 
         //简历项目操作记录
@@ -64,10 +68,12 @@ class resume_controller extends company
             $resumeDo->project_id = $projectId;
             $info = $resumeService->projectLog($resumeDo);
             if ($info->code != 200) {
+                $this->ACT_msg($this->config['sy_weburl'],$info->message);
             }
             $logs = json_decode($info->message, true);
 
         } catch (Exception $e) {
+            $this->ACT_msg($this->config['sy_weburl'],$e->getMessage());
         }
         $list = array_iconv($list, 'utf-8', 'gbk');
         $logs = array_iconv($logs, 'utf-8', 'gbk');

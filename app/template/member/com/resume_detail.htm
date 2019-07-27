@@ -1,9 +1,11 @@
+
+<!--inner header start-->
+<title>简历详情}</title>
 <!--头部 start -->
 {yun:}include file="$comstyle/c_header.htm"{/yun}
 {yun:}include file="$comstyle/c_header_nav.htm"{/yun}
 <!--头部 end -->
 <!--inner header start-->
-<title>简历详情</title>
 <link rel="stylesheet" href="/app/public/css/resume/resume.css">
 <script src="/app/public/js/resume/resume.js"></script>
 <script src="/app/public/js/resume/jquery.resize.js"></script>
@@ -28,26 +30,35 @@
 <div class="content_detail">
     <div class="detail_box">
         <div id="animate_high" class="detail_left">
-            <!--                右上角操作框 start -->
+            <!--                右上角操作框 //1-未查看  2-已查看 3-不合适  4-已购买  5-邀约面试  6-顾问面试确认  7-候选人拒绝  8-待面试  9-未到场确认中 10-未到场  11-已到场  0-移除 start -->
             <div class="select_box">
-                <input type="button" value="所有类型" class="select_box_text fll" id="at_name" onclick="select_click('at');">
+                <input type="button" value="操作" class="select_box_text fll" id="at_name" onclick="select_click('at');">
                 <input name="at" type="hidden" id="at_val" value="0">
                 <div class="select_box_list_box dn" id="at_select">
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','0','操作')">操作</a>
-                    </div>
+
+                    {yun:}if $status < 4 {/yun}
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('at','1','购买')">购买</a>
                     </div>
                     <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('at','2','不合适')">不合适</a>
+                    </div>
+                    {yun:}/if{/yun}
+                    {yun:}if $status == 4 {/yun}
+                    <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('at','2','面试')">面试</a>
                     </div>
+                    {yun:}/if{/yun}
+                    {yun:}if $status == 6 {/yun}
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('at','2','确认到场')">确认到场</a>
                     </div>
+                    {yun:}/if{/yun}
+                    {yun:}if $status == 8 {/yun}
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','2','不合适')">不合适</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','2','确认到场')">确认到场</a>
                     </div>
+                    {yun:}/if{/yun}
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('at','2','下载')">下载</a>
                     </div>
@@ -55,39 +66,39 @@
             </div>
             <!--                右上角操作框 end -->
             <div class="resume_message">
-                <div class="resume_name color-3CC1D3">王大锤</div>
+                <div class="resume_name color-3CC1D3">{yun:}$info.info.name{/yun}</div>
                 <section class="c_basic mt_30">
                     <p class="c_msg_header fs_16"><span></span>基本信息</p>
                     <div class="c_msg clearall">
                         <div class="dl clearall">
                             <div class="dt">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</div>
-                            <div class="dd">男</div>
+                            <div class="dd ">{yun:}$info.info.sex{/yun}</div>
                             <div class="dt">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</div>
-                            <div class="dd">38</div>
+                            <div class="dd" >{yun:}$info.info.age{/yun}</div>
                             <div class="dt">婚姻状况：</div>
-                            <div class="dd">未婚</div>
+                            <div class="dd">{yun:}$info.info.marital_status{/yun}</div>
                             <div class="dt">目前状态：</div>
-                            <div class="dd">在职</div>
+                            <div class="dd">{yun:}$info.info.curStatus{/yun}</div>
                         </div>
                         <div class="dl clearall">
                             <div class="dt">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</div>
-                            <div class="dd">博士</div>
+                            <div class="dd">{yun:}$info.info.edu{/yun}</div>
                             <div class="dt">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：</div>
-                            <div class="dd">河南</div>
+                            <div class="dd">{yun:}$info.info.location{/yun}</div>
                             <div class="dt">理想所在地：</div>
-                            <div class="dd">北京</div>
+                            <div class="dd">{yun:}$info.info.intentCity{/yun}</div>
                             <div class="dt">工作年限：</div>
-                            <div class="dd">10年</div>
+                            <div class="dd">{yun:}$info.info.work_year{/yun}年</div>
                         </div>
                         <div class="dl clearall">
                             <div class="dt">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</div>
-                            <div class="dd c_rela"><span class="fll">***********</span><img class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt="" width="20"></div>
+                            <div class="dd c_rela"><span class="fll">{yun:}$info.info.telephone{/yun}</span><img class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt="" width="20"></div>
                             <div class="dt">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</div>
-                            <div class="dd c_rela"><span class="fll">***********</span><img class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt="" width="20"></div>
+                            <div class="dd c_rela"><span class="fll">{yun:}$info.info.email{/yun}</span><img class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt="" width="20"></div>
                             <div class="dt">目前薪资：</div>
-                            <div class="dd">120w/年</div>
+                            <div class="dd">{yun:}$info.info.curSalary{/yun}W/年</div>
                             <div class="dt">期望薪资：</div>
-                            <div class="dd">200W/年以上</div>
+                            <div class="dd">{yun:}$info.info.wantsalary{/yun}W/年以上</div>
                         </div>
                     </div>
                 </section>
@@ -102,62 +113,39 @@
                                 <div class="c_th">专业</div>
                                 <div class="c_th">学历</div>
                             </div>
+                            {yun:}foreach item=edu from=$info.edu key=k{/yun}
                             <div class="c_tr clearall">
-                                <div class="c_td">2012年9月-2015年6月</div>
-                                <div class="c_td">北京艺术大学</div>
-                                <div class="c_td">演员的自我修养</div>
-                                <div class="c_td">硕士（统招）</div>
+                                <div class="c_td">{yun:}$edu.edu_time{/yun}</div>
+                                <div class="c_td">{yun:}$edu.schoolName{/yun}</div>
+                                <div class="c_td">{yun:}$edu.majorName{/yun}</div>
+                                <div class="c_td">{yun:}$edu.degree{/yun}</div>
                             </div>
-                            <div class="c_tr clearall">
-                                <div class="c_td">2012年9月-2015年6月</div>
-                                <div class="c_td">复旦大学</div>
-                                <div class="c_td">工商管理</div>
-                                <div class="c_td">博士（统招）</div>
-                            </div>
+                            {yun:}/foreach{/yun}
                         </div>
                     </div>
                 </section>
                 <div class="c_sidewards mt_20">&nbsp;</div>
                 <section class="c_basic mt_30">
                     <p class="c_msg_header fs_16"><span></span>工作经历</p>
+
                     <div class="c_msg clearall">
                         <div class="c_work">
+                            {yun:}foreach item=work from=$info.work key=k{/yun}
                             <div class="c_one mt_30 fs_12">
-                                <span>2017/8-2018/12</span>
-                                <span>候鸟产业集团网络股份有限公司</span>
-                                <span>产品经理</span>
+                                <span>{yun:}$work.work_time{/yun}</span>
+                                <span>{yun:}$work.company{/yun}</span>
+                                <span>{yun:}$work.jobPosition{/yun}</span>
                             </div>
                             <div class="c_dl mt_10 clearall">
                                 <div class="c_dt">工作职责：</div>
                                 <div class="c_dd">
-                                    <p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>
-                                    <p>2、根据产品需求，对产品的整体美术风格、交互设计、界面结构、操作流程等做出设计；</p>
-                                    <p>3、负责项目中各种交互界面、图标、LOGO、按钮等相关元素的设计与制作；</p>
-                                    <p>4、能积极与开发沟通，推进界面及交互设计的最终实现；</p>
-                                    <p>5、负责候鸟云生活平台的产品详情宣传和线上推广的专题页设计，保证商品详情与专题活动的有效推广；</p>
-                                    <p>6、负责候鸟云生活平台的产品宣传和线下推广的平面物料设计，与运营同事搭档完成线上线下推广；</p>
-                                    <p>7、负责H5设计制作以及微信公众号图文处理；</p>
-                                    <p>8、配合运营日常商品维护，按需求设计banner与店铺招牌以及图片美化；</p>
-                                    <p>9、对页面进行优化，使用户操作更趋于人性化；</p>
-                                    <p>10、维护现有的应用产品</p>
+                                    {yun:}$work.duty{/yun}
                                 </div>
                             </div>
-                            <div class="c_one mt_30 fs_12">
-                                <span>2019/1-至今</span>
-                                <span>南方新华</span>
-                                <span>事业部经理</span>
-                            </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">工作职责：</div>
-                                <div class="c_dd">
-                                    <p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>
-                                    <p>2、根据产品需求，对产品的整体美术风格、交互设计、界面结构、操作流程等做出设计；</p>
-                                    <p>3、负责项目中各种交互界面、图标、LOGO、按钮等相关元素的设计与制作；</p>
-                                </div>
-                            </div>
-
+                            {yun:}/foreach{/yun}
                         </div>
                     </div>
+
                 </section>
                 <div class="c_sidewards mt_20">&nbsp;</div>
                 <!-- 项目经历 start -->
@@ -165,58 +153,33 @@
                     <p class="c_msg_header fs_16"><span></span>项目经历</p>
                     <div class="c_msg clearall">
                         <div class="c_work">
+                            {yun:}if $info.project{/yun}
+                            {yun:}foreach item=project from=$info.project key=k{/yun}
                             <div class="c_one mt_30 fs_12">
-                                <span>2017/8-2018/12</span>
-                                <span>OPS路由规划与运营系统</span>
-                                <span>产品经理</span>
+                                <span>{yun:}$project.project_time{/yun}</span>
+                                <span>{yun:}$project.proName{/yun}</span>
+                                <span>{yun:}$project.proOffice{/yun}</span>
                             </div>
                             <div class="c_dl mt_10 clearall">
                                 <div class="c_dt">项目简介：</div>
                                 <div class="c_dd">
-                                    1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；
-                                    2、根据产品需求，对产品的整体美术风格、交互设计、界面结构、操作流程等做出设计；
-                                    3、负责项目中各种交互界面、图标、LOGO、按钮等相关元素的设计与制作；
+                                    {yun:}$project.proDes{/yun}
                                 </div>
                             </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">项目职责：</div>
-                                <div class="c_dd">
-                                    <p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>
-                                </div>
-                            </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">项目业绩：</div>
-                                <div class="c_dd">
-                                    <p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>
-                                </div>
-                            </div>
-
-                            <div class="c_one mt_30 fs_12">
-                                <span>2019/1-至今</span>
-                                <span>候鸟云生活APP改版迭代上线</span>
-                                <span>产品经理</span>
-                            </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">项目简介：</div>
-                                <div class="c_dd">
-                                    1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；
-                                    2、根据产品需求，对产品的整体美术风格、交互设计、界面结构、操作流程等做出设计；
-                                    3、负责项目中各种交互界面、图标、LOGO、按钮等相关元素的设计与制作；
-                                    4、能积极与开发沟通，推进界面及交互设计的最终实现；
-                                </div>
-                            </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">项目职责：</div>
-                                <div class="c_dd">
-                                    <p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>
-                                </div>
-                            </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">项目业绩：</div>
-                                <div class="c_dd">
-                                    <p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>
-                                </div>
-                            </div>
+                            <!--<div class="c_dl mt_10 clearall">-->
+                            <!--<div class="c_dt">项目职责：</div>-->
+                            <!--<div class="c_dd">-->
+                            <!--<p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="c_dl mt_10 clearall">-->
+                            <!--<div class="c_dt">项目业绩：</div>-->
+                            <!--<div class="c_dd">-->
+                            <!--<p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            {yun:}/foreach{/yun}
+                            {yun:}/if{/yun}
 
                         </div>
                     </div>
@@ -227,41 +190,44 @@
         <div class="detail_right">
             <div class="c_first">
                 <p class="c_htip mt_10 color-3CC1D3"><span></span>应聘职位</p>
-                <p class="c_htip_text mt_10">运营总监</p>
+                <p class="c_htip_text mt_10">{yun:}$info.work_info.work_name{/yun}</p>
                 <p class="c_htip mt_10 color-3CC1D3"><span></span>专属顾问</p>
-                <p class="c_htip_text mt_10">张扬</p>
+                <p class="c_htip_text mt_10">{yun:}$info.work_info.user_name{/yun}</p>
             </div>
             <div class="record_msg mt_20">
                 <p class="c_title color-3CC1D3">操作记录</p>
                 <!--    纯备注一句话类型-->
+                {yun:}if $logs{/yun}
+                {yun:}foreach item=log from=$logs key=k{/yun}
+                {yun:}if $log.step == 'interview'{/yun}
                 <div class="c_list">
                     <div class="c_ttl">
-                        <p class="c_con">企业确认候选人到场，扣除慧面试5点</p>
-                    </div>
-                    <div class="c_ttl">
-                        <p class="c_time">7-15 13:27</p>
-                    </div>
-                </div>
-                <!--    纯备注一句话类型-->
-                <!--    有详情的-->
-                <div class="c_list">
-                    <div class="c_ttl">
-                        <p class="c_con">顾问确认候选人最终面试信息</p>
+                        <p class="c_con">{yun:}$log.title{/yun}</p>
                     </div>
                     <div class="dl clearall">
                         <div class="dt">面试时间：</div>
-                        <div class="dd">2019-7-18   15:00</div>
+                        <div class="dd">{yun:}$log.timestart{/yun} </div>
                         <div class="dt">面试地点：</div>
-                        <div class="dd">解放碑平安国际金融中心</div>
+                        <div class="dd">{yun:}$log.interview_place{/yun}</div>
                         <div class="dt">面试备注：</div>
-                        <div class="dd">面试请带简历</div>
+                        <div class="dd">{yun:}$log.description{/yun}</div>
                     </div>
                     <div class="c_ttl">
-                        <p class="c_time">7-15 13:27</p>
+                        <p class="c_time">{yun:}$log.add_time{/yun}</p>
                     </div>
                 </div>
-                <!--                有详情的-->
-
+                {yun:}else{/yun}
+                <div class="c_list">
+                    <div class="c_ttl">
+                        <p class="c_con">{yun:}$log.title{/yun}</p>
+                    </div>
+                    <div class="c_ttl">
+                        <p class="c_time">{yun:}$log.add_time{/yun}</p>
+                    </div>
+                </div>
+                {yun:}/if{/yun}
+                {yun:}/foreach{/yun}
+                {yun:}/if{/yun}
             </div>
         </div>
     </div>
@@ -271,6 +237,5 @@
 <!--尾巴 start-->
 {yun:}include file="$comstyle/c_footer.htm"{/yun}
 <!--尾巴 end-->
-
 </body>
 </html>
