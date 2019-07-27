@@ -528,7 +528,7 @@ class jobadd_controller extends company
             $jobAddService = new com\hlw\huiliewang\interfaces\company\JobAddServiceClient(null);
             apiClient::build($jobAddService);
             $saveJobDo = new com\hlw\huiliewang\dataobject\company\jobAddRequestDTO();
-            $saveJobDo->name = baseUtils::getStr($_POST['name']);
+            $saveJobDo->name =$_POST['name'];
             $saveJobDo->minsalary = baseUtils::getStr($_POST['minsalary']);
             $saveJobDo->maxsalary = baseUtils::getStr($_POST['maxsalary']);
             $saveJobDo->marriage = baseUtils::getStr($_POST['marriage'], 'int');
@@ -555,17 +555,19 @@ class jobadd_controller extends company
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type']);
             $res = $jobAddService->saveJob($saveJobDo);
             if ($res->code != 200) {
+                $res->message =  yun_iconv('utf-8','gbk', $res->message);
                 $return = ['success' => false, 'code' => 500, 'info' => $res->message];
                 $this->jsonReturn($return);
             }
             $jobId = $res->message;
         } catch (Exception $e) {
+
             $return = ['success' => false, 'code' => 500, 'info' => $e->getMessage()];
             $this->jsonReturn($return);
         }
         //
         !isset($jobId) && $jobId = $id;
-//        $res = $this->saveAfter($jobId, $id);
+        $res = $this->saveAfter($jobId, $id);
         if ($res) {
             $return = ['success' => true, 'code' => 200, 'info' => "更新成功"];
         } else {
