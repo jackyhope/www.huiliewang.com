@@ -73,7 +73,7 @@ class show_controller extends resume_controller{
         }else if((int)$_GET['reid']){
             $resume_id = $this->obj->DB_select_once("userid_job"," id=".$_GET['reid'],"eid");
             $id= $resume_id['eid'];
-            $resume = $this->obr->DB_select_once("resume","id=".$id);
+            $resume = $this->obr->DB_select_once("resume_expect","id=".$id);//查询表 resume变成 resume_expect  这里resume查不到值，逻辑不对2019-07-17
         }
         $this->obr->DB_update_all("resume","hits=hits+1","id=".$resume['id']);
         if($resume['r_status']<'1'){

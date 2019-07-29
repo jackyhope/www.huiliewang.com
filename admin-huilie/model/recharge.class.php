@@ -43,16 +43,28 @@ class recharge_controller extends common{
 			$fsmsg=$fs==1?"充值":"扣除";
 			if(is_array($uidarr)){
 				foreach($uidarr as $v){ 
-					if($v['usertype']=="1"){
+					/*if($v['usertype']=="1"){
 						$table="member_statis";
 					}elseif($v['usertype']=="2"){
 						$table="company_statis";
+					}*/
+					if($v['usertype']=="1"){
+						/*$table="member_statis";*/
+                        continue;//跳出单次循环
+					}elseif($v['usertype']=="2"){
+						$table="company";//企业会员
 					}
 					if($fs==2){
-						$statis=$this->obj->DB_select_once($table,"`uid`='".$v['uid']."'","pay,integral");
+					    //扣除的意思，检查够不够最多扣剩下的
+						/*$statis=$this->obj->DB_select_once($table,"`uid`='".$v['uid']."'","pay,integral");
 						if($statis['integral']<$num){
 							$num=$statis['integral'];
-						} 
+						}*/
+                        $statis=$this->obj->DB_select_once($table,"`uid`='".$v['uid']."'","c_money");
+						if($statis['c_money']<$num){
+							$num=$statis['c_money'];
+						}
+
 					}
 					$nid=$this->pay_member($table,$v['uid'],$num,$remark,$v['usertype'],$fs);
 				}
@@ -74,7 +86,7 @@ class recharge_controller extends common{
 	function pay_member($table,$uid="",$num,$remark,$usertype,$fs){
 		$dingdan=mktime().rand(10000,99999);
 
-		if($fs==1){
+		/*if($fs==1){
 			$type=true;
 			$integral_v="`integral`=`integral`+$num";
 			$_POST['order_type']="adminpay";
@@ -82,7 +94,17 @@ class recharge_controller extends common{
 			$type=false;
 			$integral_v="`integral`=`integral`-$num";
 			$_POST['order_type']="admincut";
+		}*/
+		if($fs==1){
+			$type=true;
+			$c_money_v="`c_money`=`c_money`+$num,`all_pay2`=`all_pay2`+$num";
+			$_POST['order_type']="adminpay";
+		}else{
+			$type=false;
+			$c_money_v="`c_money`=`c_money`-$num,`all_pay2`=`all_pay3`-$num";
+			$_POST['order_type']="admincut";
 		}
+
 		$_POST['order_id']=$dingdan;
 		$_POST['order_price']=$num/$this->config['integral_proportion'];
 		$_POST['order_time']=mktime();
@@ -91,10 +113,10 @@ class recharge_controller extends common{
 		$_POST['uid']=$uid; 
 		$_POST['type']=2; 
 		$_POST['integral']=$num;
-		$nid=$this->obj->DB_update_all($table,$integral_v,"`uid`='".$uid."'"); 
+		$nid=$this->obj->DB_update_all($table,$c_money_v,"`uid`='".$uid."'");
 		if($fs==2)$_POST['type']=5;
 		if($nid){
-			$this->insert_company_pay($num,2,$uid,$remark,1,'100',$type);
+			$this->insert_company_pay($num,2,$uid,$remark,1,'',$type); 
 			$nid=$this->obj->insert_into("company_order",$_POST);
 		}
 		return $nid;
