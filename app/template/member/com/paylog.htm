@@ -56,7 +56,7 @@
                 <div class="c_one_tit"><span></span>慧沟通</div>
                 <div class="dl mt_50 clearall">
                     <div class="dt mr_20">
-                        <p class="num">12</p>
+                        <p class="num">{yun:}$company_msg['resume_payd']{/yun}</p>
                         <p class="fll color-999999">可买简历数（份）</p>
                     </div>
                     <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light_bg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car.png" alt="">&nbsp;&nbsp;购买</a></div>
@@ -104,7 +104,7 @@
                 <div class="c_one_tit"><span></span>慧面试</div>
                 <div class="dl mt_50 clearall">
                     <div class="dt mr_20">
-                        <p class="num">12</p>
+                        <p class="num">{yun:}$company_msg['interview_payd']{/yun}</p>
                         <p class="fll color-999999">剩余邀约面试（次）</p>
                     </div>
                     <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
@@ -222,7 +222,7 @@
             </div>
 
             <div class="btnner">
-                <div class="mt_20"><a href="#" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a id="c_addorder" data-id="0" href="javascript:;" class="c_btn c_btn_md c_btn_light_bg">下一步</a></div>
+                <div class="mt_20"><a href="#" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a id="c_addorder" data-id="0" href="javascript:;" class="c_btn c_btn_md c_btn_light_bg">确认购买</a></div>
             </div>
         </div>
         <!-- 购买确认 end -->
@@ -268,10 +268,11 @@
             $.post('index.php?c=order_api&act=buy',{id:$(this).attr('data-id'),code:_v_code},function(data){
                 data = JSON.parse(data);
                 if(data.code==200){
-                    _json = {title:'温馨提示',content:data.info,type:'success',src:data.url,btn:'前往付款',else:''};
+                    hide_module_all();
+                    _json = {title:'温馨提示',content:data.info,type:'success',src:'/',btn:'返回',else:''};
                     //默认2秒自动跳转
                     setTimeout(function(){
-                        location.href=data.url;
+                        location.reload();
                     },2000);
                 }else{
                     _json = {title:'温馨提示',content:data.info,type:'error',src:data.url,btn:'确定',else:''};
@@ -295,7 +296,10 @@
         })
     })
 
-
+    function hide_module_all(){
+        $('#c_shade').removeClass('c_hide');
+        $('.c_module').addClass('c_hide');
+    }
     function show_module() {
        // re.diff 比较余额和套餐最低价格，余额不足返回0，余额充足，返回1，并且继续查询返回套餐列表data.list
 
