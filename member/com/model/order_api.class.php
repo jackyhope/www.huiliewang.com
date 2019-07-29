@@ -43,7 +43,7 @@ class order_api_controller extends company
     public function orderList_action() {
         $this->publicCheck();
         $page = baseUtils::getStr($_POST['page'], 'int', 1);
-        $orderType = baseUtils::getStr($_GET['order_type'], 'int', 0);
+        $orderType = baseUtils::getStr($_POST['order_type'], 'int', 0);
         $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
         $page < 1 && $page = 1;
         $pageSize = 15;
@@ -80,12 +80,12 @@ class order_api_controller extends company
      */
     public function serviceList_action() {
         $this->publicCheck();
-        $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
-        $orderType = baseUtils::getStr($_REQUEST['order_type'], 'int', 0);
-        $payStatus = baseUtils::getStr($_REQUEST['pay_status'], 'int', 0);
+        $page = baseUtils::getStr($_POST['page'], 'int', 1);
+        $pageSize = baseUtils::getStr($_POST['page_size'], 'int', 15);
+        $orderType = baseUtils::getStr($_POST['order_type'], 'int', 0);
+        $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
         $allService = $this->getAllService();
         $page < 1 && $page = 1;
-        $pageSize = 15;
         $pageStart = ($page - 1) * $pageSize;
         $where = 'uid = ' . $this->uid . ' and type = 5';
         $orderType > 0 && $where .= " and order_type=" . $orderType;
@@ -100,6 +100,7 @@ class order_api_controller extends company
                 $v['order_time'] = date("Y-m-d H:i:s", $v['order_time']);
                 $v['order_price'] = str_replace(".00", "", $v['order_price']);
                 $v['rating'] = $allService[$v['rating']];
+                $v['rating2'] = $v['order_info'];
             }
         }
         $counts = $this->obj->DB_select_num('company_order', $where);
@@ -112,14 +113,14 @@ class order_api_controller extends company
      */
     public function useList_action() {
         $this->publicCheck();
-        $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
-        $serviceType = baseUtils::getStr($_REQUEST['service_type'], 'int', 0);
-        $payStatus = baseUtils::getStr($_REQUEST['pay_status'], 'int', 0);
+        $page = baseUtils::getStr($_POST['page'], 'int', 1);
+        $serviceType = baseUtils::getStr($_POST['service_type'], 'int', 0);
+        $pageSize = baseUtils::getStr($_POST['page_size'], 'int',15);
+        $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
         $page < 1 && $page = 1;
-        $pageSize = 15;
         $pageStart = ($page - 1) * $pageSize;
         $where = 'com_id = ' . $this->uid . ' and type in (1,0) and resume_id > 0';
-        isset($_REQUEST['service_type']) && $where .= " and type=" . $serviceType;
+        isset($_POST['service_type']) && $where .= " and type=" . $serviceType;
         $payStatus > 0 && $where .= " and pay_type=" . $payStatus;
         $where .= " order by id desc limit {$pageStart},{$pageSize}";
         $rows = $this->obj->DB_select_all_assoc('company_pay', $where);
@@ -195,6 +196,16 @@ class order_api_controller extends company
         $interview = $serviceInfo['interview'];
         $serviceType = $serviceInfo['type'];
 
+        $title = '';
+        $types = $this->getAllService();
+        if ($serviceType == 1) {
+            $title = $resume . $serviceInfo['resume_unit'];
+            $serviceInfo['interview'] > 0 && $title .= " +赠送{$types[3]}" . $serviceInfo['interview'] . $serviceInfo['interview_unit'];
+        }
+        if ($serviceType == 3) {
+            $title = $serviceInfo['interview'] . $serviceInfo['interview_unit'];
+            $serviceInfo['resume'] > 0 && $title .= " +赠送{$types[1]}" . $serviceInfo['resume'] . $serviceInfo['resume_unit'];
+        }
         //查询余额
         $companyStatis = $this->obj->DB_select_once('company', 'uid = ' . $this->uid);
         $integral = intval($companyStatis['c_money']);
@@ -211,7 +222,7 @@ class order_api_controller extends company
             $companyValue = "`resume_payd` = `resume_payd` +" . $resume . ",`interview_payd` = `interview_payd` +" . $interview;
             $this->obj->DB_update_all('company', $companyValue, 'uid = ' . $this->uid);
             //订单记录
-            $this->orderAdd($price, $serviceType);
+            $this->orderAdd($price, $serviceType,$title);
 //            $this->obj->commit();
         } catch (Exception $e) {
 //            $this->obj->rollback();
@@ -224,9 +235,10 @@ class order_api_controller extends company
      * @desc  新增订单数据
      * @param int $price
      * @param int $rating
+     * @param int $title
      * @return mixed
      */
-    private function orderAdd($price, $rating) {
+    private function orderAdd($price, $rating,$title) {
         $types = $this->getAllService();
         $sn = mktime() . rand(10000, 99999);
         $data = [
@@ -240,6 +252,7 @@ class order_api_controller extends company
             'order_remark' => "购买{$types[$rating]}",
             'rating' => $rating,
             'integral' => 1,
+            'order_info' => $title,
         ];
         $vales = '';
         foreach ($data as $k => $v) {
