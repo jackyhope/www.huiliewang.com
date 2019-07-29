@@ -79,7 +79,51 @@ class jobadd_controller extends company
         $jobnum = $this->obj->DB_select_num("company_job", "`uid`='" . $this->uid . "'");
         $this->yunset("jobnum", $jobnum);
         $this->yunset("row", $row);
+        $this->yunset('type', $cmj['service_type']);
         $this->yunset('company_job',$cmj);
+        $lang  =explode(',',$cmj['lang']);
+        $welfare = explode(',',$cmj['welfare']);
+        if($lang)
+        foreach ($lang as $k=>$v){
+            if($v=='103')
+                $this->yunset('lang103','103');;
+            if($v=='100')
+                $this->yunset("lang100", '100');
+            if($v=='107')
+                $this->yunset("lang107", '107');
+            if($v=='104')
+                $this->yunset("lang104", '104');
+            if($v=='105')
+                $this->yunset("lang105", '105');
+            if($v=='106')
+                $this->yunset("lang106", '106');
+            if($v=='108')
+                $this->yunset("lang108", '108');
+            if($v=='110')
+                $this->yunset("lang103", '110');
+        }
+        if($welfare){
+            foreach ($welfare as $k=>$v){
+                if($v =='95')
+                    $this->yunset('welfare95','95');
+                if($v =='94')
+                    $this->yunset('welfare94','94');
+                if($v =='92')
+                    $this->yunset('welfare92','92');
+                if($v =='91')
+                    $this->yunset('welfare91','91');
+                if($v =='90')
+                    $this->yunset('welfare90','90');
+                if($v =='96')
+                    $this->yunset('welfare96','96');
+                if($v =='97')
+                    $this->yunset('welfare97','97');
+                if($v =='93')
+                    $this->yunset('welfare93','93');
+                if($v =='98')
+                    $this->yunset('welfare98','98');
+            }
+        }
         $this->yunset("today", date('Y-m-d', time()));
         $this->yunset("js_def", 3);
         $this->com_tpl('jobadd');
