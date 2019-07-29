@@ -269,10 +269,29 @@
 <!--content-list end-->
 
 <!--尾巴 start-->
-{yun:}include file="$comstyle/c_footer.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}
 <!--尾巴 end-->
 <!--相关简历列表页的弹框module   start -->
 {yun:}include file="$comstyle/c_resume_module.htm"{/yun}
 <!--相关简历列表页的弹框module   end -->
 </body>
+<script>
+    $(function(){
+        getData(1,5)
+        function getData(page,size){
+            Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show',{
+                job_id:/*$('#business_val').val()*/96,
+                job_type:$('#at_val').val(),
+                kwd:$('#kwd').val(),
+                page,
+                size,
+                islook:$('#is_look').attr('checked')?1:void 0
+            }).then(res=>{
+
+            }).catch(res=>{
+
+            })
+        }
+    })
+</script>
 </html>
