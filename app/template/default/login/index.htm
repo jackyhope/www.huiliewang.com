@@ -258,10 +258,6 @@
 					if (res.success)
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 				}).catch(function (res) {
-                    alert_notice({title:'Œ¬‹∞Ã· æ',content:res.message,type:'warning'});
-					if (res.success)
-						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
-				}).catch(function (res) {
 					alert_notice({type:'error',title:res.message});
 				});
 			});

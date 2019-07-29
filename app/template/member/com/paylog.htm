@@ -1,216 +1,323 @@
-{yun:}include file="$comstyle/header.htm"{/yun}
-<div class="w1000">
-  <div class="admin_mainbody"> {yun:}include file="$comstyle/left.htm"{/yun} 
-   
-    <div class=right_box>
-    <div class=admincont_box>
-    <div class="job_list_tit">
-         <ul class="">
-     <li {yun:}if $smarty.get.c=="com"{/yun}class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=com">订单管理</a></li>
-         <li {yun:}if $smarty.get.c=="paylog"&&$smarty.get.consume=="ok"{/yun}class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=paylog&consume=ok">财务明细</a></li>
-       <li {yun:}if $smarty.get.c=="paylog"&&$smarty.get.consume!="ok"{/yun}  class="job_list_tit_cur"{yun:}/if{/yun} ><a href="index.php?c=paylog">充值记录</a></li> 
-         </ul>
-         </div> 
- <div class="com_body">
-    <div class=admin_textbox_04>
-    <iframe id="supportiframe"  name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe>
-    <form action="{yun:}$now_url{/yun}" target="supportiframe" method="post" id='myform'>
-      <div class=table> 
-	  {yun:}if $ordertype{/yun}
-        <div id="job_checkbokid">
-        {yun:}if $rows{/yun}
-        <div class="job_news_list job_news_list_h1">
-                <span class="job_news_list_span job_w150" style="padding-left:10px;">流水单号</span>
-                 <span class="job_news_list_span job_w100">金额</span>
-                  <span class="job_news_list_span job_w100">状态</span>
-                     <span class="job_news_list_span job_w320"> 备注</span>
-                  <span class="job_news_list_span job_w150" style=" text-align:center">时间</span>
-              </div>
-              {yun:}/if{/yun}
-          {yun:}foreach from=$rows item=log{/yun}
-          {yun:}assign var="state" value=$log.pay_state{/yun}
-          <div class="job_news_list">
-           <span class="job_news_list_span job_w150" style="padding-left:10px;">{yun:}$log.order_id{/yun}</span>
-            <span class="job_news_list_span job_w100">{yun:}$log.order_price{/yun}{yun:}if $log.type==2{/yun}元{yun:}else{/yun}{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}{yun:}/if{/yun}</span>
-             <span class="job_news_list_span job_w100">{yun:}$arr_data.paystate.$state{/yun}</span>
-             <span class="job_news_list_span job_w320">{yun:}$log.pay_remark{/yun}&nbsp;</span>
-             <span class="job_news_list_span job_w150" style="text-align:center">{yun:}$log.pay_time{/yun}</span>
-          </div>
-          {yun:}foreachelse{/yun} 
-		   <div class="msg_no">您还没有记录。</div>
-          {yun:}/foreach{/yun} 
-       
+<!--头部 start -->
+{yun:}include file="$comstyle/c_header.htm"{/yun}
+{yun:}include file="$comstyle/c_header_nav.htm"{/yun}
+<!--头部 end -->
+<title>我的套餐</title>
+<!--inner header start-->
+<link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/paylog/paylog.css">
+<script src="/app/public/js/resume/resume.js"></script>
+<style>
+    .c_btn{
+        text-align: center;
+    }
+    .screen_list{
+        color:rgba(153,153,153,1);
+    }
+    .screen_list img{
+        margin-top:16px;
+        margin-right:30px;
+    }
+    .screen_list .money{
+        font-size: 12px;
+    }
+    .screen_list .money span{
+        color:#000;
+        font-size: 20px;
+        margin:0 4px;
+    }
+</style>
+<div class="inner_header">
+    <div class="container">
+        <div class="ul clearall">
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=1"><span class="li {yun:}if $c_tpu==1{/yun}current{yun:}/if{/yun}">我的套餐<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=2"><span class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">套餐使用记录<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=3"><span class="li {yun:}if $c_tpu==3{/yun}current{yun:}/if{/yun}">消费记录<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4"><span class="li {yun:}if $c_tpu==4{/yun}current{yun:}/if{/yun}">充值记录<i></i></span></a>
         </div>
-        {yun:}else{/yun}
-        
-        <div id="job_checkbokid">
-        {yun:}if $rows{/yun}
-               <div class="job_news_list job_news_list_h1">
-                <span class="job_news_list_span job_w150" style="padding-left:10px;" >充值单号</span>
-                 <span class="job_news_list_span job_w100">支付类型</span>
-                 <span class="job_news_list_span job_w100">支付形式</span>
-                  <span class="job_news_list_span job_w100">充值金额</span>
-                  <span class="job_news_list_span job_w100">支付状态</span>
-                     <span class="job_news_list_span job_w150" style=" text-align:center"> 时间</span>
-                  <span class="job_news_list_span job_w140">操作</span>
-              </div>
-              {yun:}/if{/yun}
-          {yun:}foreach from=$rows item=log{/yun}
-          {yun:}assign var="state" value=$log.order_state{/yun}
-          {yun:}assign var="type" value=$log.order_type{/yun}
-          <div class="job_news_list">
-            <span class="job_news_list_span  job_w150" style="padding-left:10px;">{yun:}$log.order_id{/yun}</span>
-              <span class="job_news_list_span job_w100">
-              	{yun:}if $log.type==1{/yun}购买会员
-              	{yun:}elseif $log.type=='2'{/yun}{yun:}$config.integral_pricename{/yun}充值
-              	{yun:}elseif $log.type=='3'{/yun}银行转帐
-              	{yun:}elseif $log.type=='4'{/yun}金额充值
-              	{yun:}elseif $log.type=='5'{/yun}购买增值包
-              	{yun:}elseif $log.type=='10'{/yun}购买职位置顶
-            	{yun:}elseif $log.type=='11'{/yun}购买紧急招聘
-            	{yun:}elseif $log.type=='12'{/yun}购买职位推荐
-            	{yun:}elseif $log.type=='13'{/yun}购买职位自动刷新
-              	{yun:}/if{/yun}&nbsp;</span>
-            <span class="job_news_list_span job_w100">{yun:}if $type{/yun}{yun:}$arr_data.pay.$type{/yun}{yun:}else{/yun}手动{yun:}/if{/yun}</span>
-            <span class="job_news_list_span job_w100">{yun:}$log.order_price{/yun}</span>
-          <span class="job_news_list_span job_w100">{yun:}$arr_data.paystate.$state{/yun}</span>
-           <span class="job_news_list_span job_w150" style="text-align:center">{yun:}$log.order_time|date_format:'%Y-%m-%d %H:%M:%S'{/yun}</span>
-          <span class="job_news_list_span job_w140" style="text-align:center">
-			{yun:}if $log.order_type=='bank'&&$log.order_state!='2'{/yun} 
-            <a href="javascript:;" id="{yun:}$log.id{/yun}" class="status" remark="{yun:}$log.order_remark{/yun}">备注修改</a>| 
-            {yun:}/if{/yun} 
-              {yun:}if $log.order_state=='1' && $log.order_type!='bank'{/yun} <a href="index.php?c=payment&id={yun:}$log.id{/yun}"  class="cblue">去付款</a> |
-              <a href="javascript:void(0)" onclick="del_pay({yun:}$log.id{/yun})" class="cblue">取消充值</a> {yun:}else{/yun}
-              {yun:}$arr_data.paystate.$state{/yun}
-              {yun:}/if{/yun}
-              {yun:}if $log.invoice=='1'&&$log.order_state=='2'{/yun} |
-				 
-				{yun:}if $log.status==''{/yun}
-				<a href="javascript:;" order_id="{yun:}$log.order_id{/yun}" id="{yun:}$log.id{/yun}" class="invoice">申请发票</a>
-				{yun:}elseif $log.status=='0'||$log.status==''{/yun}
-					<a href="javascript:;" order_id="{yun:}$log.order_id{/yun}" id="{yun:}$log.id{/yun}" class="invoice">修改发票</a>
-				{yun:}elseif $log.status>='1'{/yun}
-				已审核
-				{yun:}/if{/yun}
-			{yun:}/if{/yun}
-			 </span>
-            {yun:}if $log.order_remark{/yun} <div class="job_news_list_bot">{yun:}$log.order_remark{/yun}</div>{yun:}/if{/yun}
-          </div>
-          {yun:}foreachelse{/yun} 
-		  <div class="msg_no">您还没有充值记录。</div>
-          {yun:}/foreach{/yun}
+    </div>
+</div>
+<!--inner header end-->
+<!--content-list start-->
+<div class="content_list no_hover_text">
+    <div class="screen_list mt_10 clearall">
+        <img class="fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_my_money.png" alt="" width="32">
+        <div class="money fll  mr_20">我的余额：<span>20000.00</span>元</div>
+        <a href="index.php?c=pay" class="c_btn_square c_btn_light">充值</a>
+    </div>
+    <div class="c_tc_show clearall">
+        <div class="c_show_one fll">
+            <div class="c_show_one_upper">
+                <div class="c_one_tit"><span></span>慧沟通</div>
+                <div class="dl mt_50 clearall">
+                    <div class="dt mr_20">
+                        <p class="num">12</p>
+                        <p class="fll color-999999">可买简历数（份）</p>
+                    </div>
+                    <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light_bg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car.png" alt="">&nbsp;&nbsp;购买</a></div>
+                </div>
+            </div>
+            <div class="c_show_one_middle clearall">
+                <div class="li wid20p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step1.png" alt=""></p>
+                    <p>发布职位<span> → </span></p>
+                </div>
+                <div class="li wid40p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step2.png" alt=""></p>
+                    <p>猎头推荐沟通过简历<span> → </span></p>
+                </div>
 
+                <div class="li wid20p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step3.png" alt=""></p>
+                    <p>查看简历<span> → </span></p>
+                </div>
+                <div class="li wid20p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step4.png" alt=""></p>
+                    <p>满意再付费</p>
+                </div>
+            </div>
+            <div class="c_show_one_middle clearall">
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid40p">&nbsp;</div>
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid20p">&nbsp;</div>
+            </div>
+            <div class="c_show_one_middle clearall">
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid40p">&nbsp;</div>
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid20p">&nbsp;</div>
+            </div>
+            <div class="c_show_one_floor">
+                <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_l1.png" alt="">慧沟通是市场上性价比最高的简历套餐</p>
+                <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_l2.png" alt="">推荐前必沟通，确保人才质量</p>
+                <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_l3.png" alt="">专业专注的工作风格，每位猎头只为同行业同区域服务</p>
+            </div>
         </div>
-        {yun:}/if{/yun} </div>
- 
-      <div>
-        <div style="clear:both"></div>
-        <div class="diggg">{yun:}$pagenav{/yun}</div>
-      </div>  
-    </form>
-    <div class="clear"></div>
-    
-	
-    
-  </div>
-</div>
-</div>
-</div>
-</div>  
-</div>  
-<div class="infoboxp22" id="invoice_div" style="display:none; ">
-      <div>
-        <form action="index.php?c=paylog&act=saveinvoice" method="post"  target="supportiframe" onsubmit="return paylog_invoice();">
-          <div class="jb_infobox" style="width: 100%;"> 
-			<table class="pay_log_qx">
-				<tr>
-					<td align="right" style="width:80px;">发票抬头：</td>
-					<td><input name="title" id="title" type='text' class="pay_log_text"></td>
-				</tr>
-				<tr>
-					<td align="right">联系人：</td>
-					<td><input name="link_man" id="link_man" type='text' class="pay_log_text"></td>
-				</tr>
-				<tr>
-					<td align="right">联系电话：</td>
-					<td><input name="link_moblie" id="link_moblie" type='text' class="pay_log_text"></td>
-				</tr>
-				<tr>
-					<td align="right">邮寄地址：</td>
-					<td><input name="address" id="address" type='text' class="pay_log_text"></td>
-				</tr>
-                <tr>
-					<td align="right">&nbsp;</td>
-					<td><input name='rid' type='hidden' id='rid'/>
-			<input name='oid' type='hidden' id='oid'/>
-            <input name='order_id' type='hidden' id='order_id'/>
-            <button type="submit" name='submit' value='1' class="submit_btn">确认</button>
-            &nbsp;&nbsp;
-            <button type="button" class="cancel_btn">取消</button></td>
-				</tr>
-			</table>
-          </div>
-      
-        </form>
-      </div>
-    </div>
-<div class="infoboxp22" id="infobox" style="display:none; ">
-      <div>
-        <form action="index.php?c=paylog" method="post" id="formstatus" target="supportiframe" onsubmit="return paylog_remark();">
-          <div class="jb_infobox" style="width: 100%;">
-            <input name="id" id='paylog_id' type="hidden"> 
-			 <textarea id="alertcontent" style="width:310px;margin:5px;height:100px" name="order_remark" cols="30" rows="9" class="hr_textarea"></textarea>
-          </div>
-          <div class="jb_infobox" style="width: 100%;">
-            <button type="submit" name='submit' value='1' class="submit_btn" style="margin-left:80px;">确认</button>
-            &nbsp;&nbsp;
-            <button type="button"   class="cancel_btn">取消</button>
-          </div>
-        </form>
-      </div>
-    </div>
- <script> 
-$(document).ready(function(){ 
-	$('.cancel_btn').click(function(){
-		layer.closeAll();
-	});
-	$(".status").click(function(){
-		$("#paylog_id").val($(this).attr("id"));
-		$("#alertcontent").val($(this).attr("remark"));
-		$.layer({
-			type : 1,
-			title :'备注', 
-			closeBtn : [0 , true],
-			border : [10 , 0.3 , '#000', true],
-			area : ['320px','200px'],
-			page : {dom :"#infobox"}
-		});
-	});
-	$(".invoice").click(function(){
-		var order_id=$(this).attr("order_id");
-		var oid=$(this).attr("id");
-		if(order_id){
-			$("#order_id").val(order_id);
-			$("#oid").val(oid);
-			$.post("index.php?c=paylog&act=invoice",{order_id:order_id},function(data){
-				var data=eval('('+data+')'); 
-				$("#rid").val(data.id);
-				$("#title").val(data.title);
-				$("#link_man").val(data.link_man);
-				$("#link_moblie").val(data.link_moblie);
-				$("#address").val(data.address); 
-				$.layer({
-					type : 1,
-					title :'申请发票', 
-					closeBtn : [0 , true],
-					border : [10 , 0.3 , '#000', true],
-					area : ['330px','230px'],
-					page : {dom :"#invoice_div"}
-				});	
-			});
-		} 
-	});
-});
+        <div class="c_show_one c_show_two fll">
+            <div class="c_show_one_upper">
+                <div class="c_one_tit"><span></span>慧面试</div>
+                <div class="dl mt_50 clearall">
+                    <div class="dt mr_20">
+                        <p class="num">12</p>
+                        <p class="fll color-999999">剩余邀约面试（次）</p>
+                    </div>
+                    <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
+                </div>
+            </div>
+            <div class="c_show_one_middle clearall">
+                <div class="li wid20p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step1.png" alt=""></p>
+                    <p>发布职位<span> → </span></p>
+                </div>
+                <div class="li wid30p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step2.png" alt=""></p>
+                    <p>猎头推荐沟通过简历<span> → </span></p>
+                </div>
 
+                <div class="li wid20p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step3.png" alt=""></p>
+                    <p>查看简历<span> → </span></p>
+                </div>
+                <div class="li wid30p">
+                    <p><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_step4.png" alt=""></p>
+                    <p>选择满意并邀约面试</p>
+                </div>
+            </div>
+            <div class="c_show_one_middle clearall">
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid30p">&nbsp;</div>
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid30p color-3CC1D3">↓</div>
+            </div>
+            <div class="c_show_one_middle clearall">
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid30p">&nbsp;</div>
+                <div class="li wid20p">&nbsp;</div>
+                <div class="li wid30p">候选人到场即扣费</div>
+            </div>
+            <div class="c_show_one_floor">
+                <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_r1.png" alt="">及时有效的流程反馈<span>您所操作的每一步会有专属猎头进行跟踪，并得到及时反馈</span></p>
+                <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_r2.png" alt="">无结果，不收费<span>候选人到场面试才收费，不到场不面试不收费</span></p>
+                <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_r3.png" alt="">确保人才质量<span>推荐前必沟通、面试、细致背景调查</span></p>
+                <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_r4.png" alt="">自建猎头团队8年，保障一对一专业服务</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--content-list end-->
+
+<!--尾巴 start-->
+{yun:}include file="$comstyle/c_footer.htm"{/yun}
+<!--尾巴 end-->
+<!--相关简历列表页的弹框module   start -->
+<div id="c_shade" class="c_hide">
+    <div class="c_true_module">
+        <div id="buy_resume" class="c_module c_module_2 c_module_6 c_hide">
+            <i onclick="m_close(this)"></i>
+            <div class="c_title"><span></span>套餐购买</div>
+            <div class="c_cont c_hide">
+                <div class="dl clearall">
+                    <div class="dd wid20p">慧沟通</div>
+                    <div class="dd wid40p">100份+赠送慧面试1次</div>
+                    <div class="dd wid20p">1000元</div>
+                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
+                </div>
+                <div class="dl clearall">
+                    <div class="dd wid20p">慧沟通</div>
+                    <div class="dd wid40p">100份+赠送慧面试1次</div>
+                    <div class="dd wid20p">1000元</div>
+                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
+                </div>
+                <div class="dl clearall">
+                    <div class="dd wid20p">慧沟通</div>
+                    <div class="dd wid40p">100份+赠送慧面试1次</div>
+                    <div class="dd wid20p">1000元</div>
+                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
+                </div>
+                <div class="dl clearall">
+                    <div class="dd wid20p color-EBCB66">慧面试</div>
+                    <div class="dd wid40p">5次</div>
+                    <div class="dd wid20p">1000元</div>
+                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
+                </div>
+            </div>
+<!--    余额不足显示   start  做php判断   -->
+            <div class="nomoney c_hide">
+                <img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/bz_03.png" alt="">
+                <p>套餐余额不足啦！</p>
+                <div class="cont">您的套餐余额不足，请前往充值</div>
+                <a href="index.php?c=pay" class="c_btn c_btn_md c_btn_light_bg mt_30">去充值</a>
+            </div>
+<!--    余额不足显示   end  做php判断   -->
+        </div>
+
+        <!-- 确认到场 start -->
+        <!-- 购买确认 start -->
+        <div id="invite_interview" class="c_module c_module_2 c_module_4 c_module_6 c_hide">
+            <i onclick="m_close(this)"></i>
+            <div class="c_title"><span></span>购买确认</div>
+            <div class="c_cont pb_20">
+                <div class="dl mt_10 clearall">
+                    <div class="dt">套餐类型：</div>
+                    <div class="dd color-3CC1D3">慧沟通</div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">套餐权益：</div>
+                    <div class="dd color-3CC1D3">100份+赠送慧面试1次</div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">套餐价格：</div>
+                    <div class="dd color-3CC1D3">1000元</div>
+                </div>
+                <div class="dl mt_10 clearall">
+                    <div class="dt">验证码：</div>
+                    <div class="dd c_rela"><input class="input-normal" type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码" maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><span onclick="send_code(this)" class="c_send_code">点击获取验证码</span><div class="fllow_tips">已发送验证码到手机号128****1111</div></div>
+                </div>
+            </div>
+
+            <div class="btnner">
+                <div class="mt_20"><a href="#" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a id="c_addorder" data-id="0" href="javascript:;" class="c_btn c_btn_md c_btn_light_bg">下一步</a></div>
+            </div>
+        </div>
+        <!-- 购买确认 end -->
+    </div>
+</div>
+
+<!--相关简历列表页的弹框module   end -->
+<script>
+    $(function(){
+        $('#c_addorder').click(function () {
+            var _json={};
+            //检测验证码是否正确
+            var _v_code = $('#verify_code').val();
+            if(parseInt(_v_code)==0){
+                //疑问  弹框是否会刷新页面？
+                _json = {title:'温馨提示',content:'请输入正确格式的验证码',type:'error',src:'',btn:'确定'};
+                alert_notice(_json);return;
+            }
+
+            $.post('index.php?c=pay&act=dingdan',{comservice:_id,},function(data){
+                data = JSON.parse(data);
+                if(data.code==200){
+                    _json = {title:'温馨提示',content:data.message,type:'success',src:data.url,btn:'前往付款'};
+                    //默认2秒自动跳转
+                    setTimeout(function(){
+                        location.href=data.url;
+                    },2000);
+                }else{
+                    _json = {title:'温馨提示',content:data.message,type:'error',src:data.url,btn:'确定'};
+                }
+                alert_notice(_json);
+            })
+        })
+    })
+    /**
+     *传套餐id
+     */
+    function buy_now(_id) {
+        //先切换显示弹窗
+        $('.c_module').addClass('c_hide');
+        $('#invite_interview').removeClass('c_hide');
+        $('#c_addorder').attr('data-id',_id);
+
+    }
+    function show_module() {
+       // re.diff 比较余额和套餐最低价格，余额不足返回0，余额充足，返回1，并且继续查询返回套餐列表data.list
+
+        //layer的加载中
+        /* var _loading = layer.load(2, {
+            shade: [0.5,'#000']
+        });*/
+        $.post('',{},function(re){
+            re = {code:200,diff:1};//模拟测试数据
+            //re = {code:200,diff:0};//模拟测试数据
+            if(re.code==200){
+                // layer.close(_loading);//关闭加载中
+                //获取数据成功，显示弹框
+                $('#c_shade').removeClass('c_hide');
+                $('.c_module').addClass('c_hide');
+                $('#buy_resume').removeClass('c_hide');
+                if(re.diff){
+                    $('#buy_resume .c_cont').removeClass('c_hide');
+                }else{
+                    $('#buy_resume .nomoney').removeClass('c_hide');
+                }
+            }
+        })
+
+    }
+    /**获取验证码**/
+    function send_code(obj) {
+        $.post('',{},function (data) {
+            if(data.code==200){
+                countdown(obj);
+            }
+        })
+    }
+    /*倒计时function**/
+    function countdown(obj){
+        var obj = $(obj);
+        var s = 60;/*倒计时时间*/
+        //改变按钮状态
+        obj.attr('onclick','');
+        //添加样式
+        obj.addClass('color-grey');
+        callback();
+        //循环定时器
+        var T = window.setInterval(callback,1000);
+        function callback()
+        {
+            if(s <= 0){
+                window.clearInterval(T);
+                obj.removeClass('color-grey');
+                obj.text('点击重新获取');
+                obj.attr('onclick','send_code(this)');
+            }else{
+                obj.text(--s + '秒后再获取');
+            }
+        }
+    }
 </script>
-{yun:}include file="$tplstyle/footer.htm"{/yun}
+</body>
+</html>

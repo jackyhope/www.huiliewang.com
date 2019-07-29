@@ -33,11 +33,13 @@
         <span class="sp1"><span>*</span>
             职位名称：
         </span>
-        <input class="input_min" name="" id="" placeholder="填写职位名称">
+        <input class="input_min" name="" id="name" placeholder="填写职位名称">
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>职位类别：</span>
         <div class="input_min selectBox" style="z-index:100">
+            <input type="hidden" id="job_id" value="{yun:}$id{/yun}">
+            <input type="hidden" id="service_type" value="{yun:}$company_job.service_type{/yun}">
             <input type="hidden" name="job_post" id="job_post" value="{yun:}$row.job_post{/yun}" />
             <input class="SpFormLBut text_seclet_w250 " type="button"
                 value="{yun:}if $job_name[$row.job_post]{/yun}{yun:}$job_name[$row.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}"
@@ -63,7 +65,7 @@
         <div class="input_min selectBox" style="z-index: 101">
             <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="province"
                 onclick="search_show('job_province');">
-            <input type="hidden" id="provinceid" name="provinceid" value="" />
+            <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$company_job.provinceid{/yun}" />
             <div id="job_province" class="cus-sel-opt-panel" style="display:none">
                 <div style="width:100%;  overflow:auto; overflow-x:hidden">
                     <ul class="Search_Condition_box_list">
@@ -79,7 +81,7 @@
         <div class="input_min selectBox" style="z-index: 101">
             <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="citys"
                 onclick="search_show('job_citys');">
-            <input type="hidden" id="citysid" name="cityid" value="" />
+            <input type="hidden" id="citysid" name="cityid" value="{yun:}$company_job.cityid{/yun}" />
             <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
                 <div style="width:100%;  overflow:auto; overflow-x:hidden">
                     <ul class="Search_Condition_box_list">
@@ -95,7 +97,7 @@
         <div class="input_min selectBox" style="display:none" id="cityshowth">
             <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="three_city"
                 onclick="three_city_show('job_three_city');">
-            <input type="hidden" id="three_cityid" name="three_cityid" value="" />
+            <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$company_job.three_cityid{/yun}" />
             <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
                 <ul class="Search_Condition_box_list">
                     {yun:}foreach from=$com key=j item=v{/yun}
@@ -111,39 +113,39 @@
         <span class="sp1"><span>*</span>
             职位有效期：
         </span>
-        <input type="text" class="endtime input_min" placeholder="填写职位有效时间">&nbsp;&nbsp;天
+        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间" value="{yun:}$company_job.days{/yun}">&nbsp;&nbsp;天
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>
             薪资待遇：
         </span>
-        <input type="text" class="base_money input_min" placeholder="最低薪资"><span class="sp3">元/月</span>
+        <input type="text" class="base_money input_min" id="minsalary" placeholder="最低薪资" value="{yun:}$company_job.minsalary{/yun}"><span class="sp3">元/月</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" class="base_money input_min" placeholder="最高薪资"><span class="sp3">元/月</span>
+        <input type="text" class="base_money input_min" id="maxsalary" placeholder="最高薪资" value="{yun:}$company_job.maxsalary{/yun}"><span class="sp3">元/月</span>
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>
             发放月数：
         </span>
-        <input type="text" class="mouthes input_min" placeholder="填写发放月数">
+        <input type="text" class="mouthes input_min" id="ejob_salary_month" placeholder="填写发放月数" value="{yun:}$company_job.ejob_salary_month{/yun}">
     </div>
     <div class="box1" style="width: 800px">
         <span class="sp1" style="float: left"><span>*</span>
             职位描述：
         </span>
-        <textarea id="description" cols="30" rows="10"></textarea>
+        <textarea id="description" cols="30" rows="10">{yun:}$company_job.description{/yun}</textarea>
     </div>
     <div class="box1">
         <span class="sp1">
             汇报对象：
         </span>
-        <input type="text" class="leader input_min">
+        <input type="text" id="detail_report" class="leader input_min" value="{yun:}$company_job.detail_report{/yun}">
     </div>
     <div class="box1">
         <span class="sp1">
             下属人数：
         </span>
-        <input type="text" class="worker input_min">
+        <input type="text" class="worker input_min" id="detail_subordinate">
     </div>
     <div class="title_">对候选人有什么需求？（选填项）
         <span>?</span>
@@ -174,7 +176,7 @@
     <span class="sp6">
         招聘人数：
     </span>
-    <input type="text" class="input_min inputMin" placeholder="输入招聘人数">
+    <input type="text" class="input_min inputMin" id="number" placeholder="输入招聘人数">
 </div>
 <div class="box1">
     <span class="sp6">
@@ -303,41 +305,49 @@
             普通话
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="100">
         </div>
         <div class="select">
             英语
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="103">
         </div>
         <div class="select">
             日语
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="107">
         </div>
         <div class="select">
             韩语
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="104">
         </div>
         <div class="select">
             德语
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="105">
         </div>
         <div class="select">
             法语
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="106">
         </div>
         <div class="select">
             粤语
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="108">
         </div>
         <div class="select">
             其它
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="110">
         </div>
     </div>
 </div>
@@ -350,46 +360,55 @@
             奖励计划
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="95">
         </div>
         <div class="select">
             年终奖金
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="94">
         </div>
         <div class="select">
             五险一金
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="91">
         </div>
         <div class="select">
             三险一金
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="90">
         </div>
         <div class="select">
-            员工体检
+            包吃住
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="92">
         </div>
         <div class="select">
             销售奖金
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="96">
         </div>
         <div class="select">
-            带薪年假
+            休假制度
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="97">
         </div>
         <div class="select">
-            交通补贴
+            综合补贴
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="93">
         </div>
         <div class="select">
-            定期旅游
+            法定节假日
             <div class="triangle"></div>
             <span class="gou">√</span>
+            <input type="hidden" value="98">
         </div>
     </div>
 </div>
@@ -399,7 +418,7 @@
     <span class="sp6">联系方式</span>
     <div class="selectBox_3">
         <div class="select choosed">
-            使用企业联系方式（胡汉三12345678901）
+            使用企业联系方式（{yun:}$company.linkman{/yun}&nbsp;{yun:}if $company.linktel{/yun}{yun:}$company.linktel{/yun}{yun:}else{/yun}{yun:}$company.linkphone{/yun}{yun:}/if{/yun}）
             <div class="triangle"></div>
             <span class="gou">√</span>
         </div>
@@ -410,11 +429,12 @@
         </div>
         <div class="newTel">
             <p>使用新联系方式</p>
-            <input type="text" class="input_min inputMin" placeholder="请输入联系人">
-            <input type="text" class="input_min" placeholder="请输入联系电话">
+            <input type="text" class="input_min inputMin" id="link_man" placeholder="请输入联系人">
+            <input type="text" class="input_min" id="link_moblie" placeholder="请输入联系电话">
             <div class="switch">
                 <div></div>
             </div>
+            <input id="tblink" type="hidden" value="2">
             <span>同步到所有职位</span>
         </div>
     </div>
@@ -446,11 +466,139 @@
             if($('.switch div').css('left')=='0px'){
                 $('.switch div').css('left','20px')
                 $('.switch').css('background','#3cc1d3')
+                $('#tblink').val(1);
             }else{
                 $('.switch div').css('left','0px')
                 $('.switch').css('background','#ededed')
+                $('#tblink').val(2);
             }
         })
+        $('.reset').click(function () {
+            var servicetype = $('.typeBox .choosed').children().first().attr('class');//服务方式
+             //
+            if(servicetype == 'hgt'){
+               servicetype = 0;
+            }else {
+                servicetype = 1;
+            }
+            var name = $('#name').val();
+            var id = $('#job_id').val();
+            var job_post = $('#job_post').val();
+            var provinceid =$('#provinceid').val();
+            var cityid= $('#citysid').val();
+            var three_cityid = $('#three_cityid').val();
+            var days = $('#days').val();
+            var minsalary = $('#minsalary').val();
+            var maxsalary = $('#maxsalary').val();
+            var ejob_salary_month = $('#ejob_salary_month').val();
+            var description = $('#description').val().trim();
+            var detail_report = $('#detail_report').val();
+            var detail_subordinate = $('#detail_subordinate').val();
+            var hy = $('#hyid').val();
+            var number = $('#number').val();
+            var report = $('#report').val();
+            var exp = $('#exp').val();
+            var sex = $('#sexid').val();
+            var age = $('#ageid').val();
+            var marriage = $('#marriageid').val();
+            var edu = $('#eduid').val();
+            var tel;
+            var lang100,lang103,lang107,lang104,lang105,lang106,lang108,lang110;
+            for(let i = 0;i<$('.selectBox_ .choosed').length;i++){
+                 tel = $('.selectBox_ .choosed input').eq(i).val();
+                 if(tel == '100')
+                     lang100 = 100;
+                 else if(tel == '103')
+                    lang103 = 103;
+                 else if(tel == '107')
+                     lang107 = 107;
+                 else if (tel == '104')
+                     lang104 = 104;
+                 else if(tel == '105')
+                     lang105 = 105;
+                 else if(tel == '106')
+                     lang106 = 106;
+                 else if(tel == '108')
+                     lang108 = 108;
+                 else if(tel == 110)
+                     lang110 =110;
+            }
+            var welfare95,welfare94,welfare92,welfare91,welfare90,welfare96,welfare97,welfare93,welfare98;
+            for(let i = 0;i<$('.selectBox_2 .choosed').length;i++){
+                tel = $('.selectBox_ .choosed input').eq(i).val();
+                if(welfare95 == '95')
+                    welfare95 = 95;
+                else if(welfare94 == '94')
+                    welfare94 = 94;
+                else if(welfare92 == '92')
+                    welfare92 = 92;
+                else if (welfare91 == '91')
+                    welfare91 = 91;
+                else if(welfare90 == '90')
+                    welfare90 = 90;
+                else if(welfare96 == '96')
+                    welfare96 = 96;
+                else if(welfare97 == '97')
+                    welfare97 = 97;
+                else if(welfare93 == 93)
+                    welfare93 =93;
+                else if(welfare98 == 98)
+                    welfare98 = 98;
+            }
+            var tblink = $('#tblink').val();
+            var linkman = $('#linkman').val();
+            var link_moblie = $('#link_moblie').val();
+            Post('{yun:}url m=member c=jobadd act=saveInfo{/yun}',{
+                service_type:servicetype,
+                name:name,
+                job_post:job_post,
+                provinceid:provinceid,
+                cityid:cityid,
+                three_cityid:three_cityid,
+                days:days,
+                minsalary:minsalary,
+                maxsalary:maxsalary,
+                ejob_salary_month:ejob_salary_month,
+                description:description,
+                detail_report:detail_report,
+                detail_subordinate:detail_subordinate,
+                hy:hy,
+                number:number,
+                exp:exp,
+                report:report,
+                age:age,
+                sex:sex,
+                edu:edu,
+                marriage:marriage,
+                lang103:lang103,
+                lang100:lang100,
+                lang107:lang107,
+                lang104:lang104,
+                lang105:lang105,
+                lang106:lang106,
+                lang108:lang108,
+                lang110:lang110,
+                welfare95:welfare95,
+                welfare94:welfare94,
+                welfare92:welfare92,
+                welfare91:welfare91,
+                welfare90:welfare90,
+                welfare96:welfare96,
+                welfare97:welfare97,
+                welfare93:welfare93,
+                welfare98:welfare98,
+                tblink:tblink,
+                link_man:linkman,
+                link_moblie:link_moblie,
+                id:id
+            }).then(function (res) {
+                alert_notice({title:'温馨提示',content:res.info});
+            }).catch(function (res) {
+                alert_notice({title:'温馨提示',content:res.info,type:'warning'});
+            });
+
+        });
+
     })
 </script>
 {yun:}include file="$comstyle/jobserver.htm"{/yun}

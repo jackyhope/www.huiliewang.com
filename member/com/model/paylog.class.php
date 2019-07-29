@@ -50,7 +50,30 @@ class paylog_controller extends company{
 		}
 
 		$this->yunset("js_def",4);
-		$this->com_tpl('paylog');
+
+		if(!empty($_GET['c_tpu']) && in_array($_GET['c_tpu'],[1,2,3,4,5])){
+		    switch ($_GET['c_tpu']){
+                case 1:
+                    $temp = 'paylog';
+                    break;
+                case 2:
+                    $temp = 'uselog';
+                    break;
+                case 3:
+                    $temp = 'spendlog';
+                    break;
+                case 4:
+                    $temp = 'chargelog';
+                    break;
+                case 5:
+                    $temp = 'paylog_old';
+                    break;
+            }
+        }else{
+            $temp = 'paylog';
+        }
+        $this->yunset("c_tpu",$_GET['c_tpu']?$_GET['c_tpu']:1);
+		$this->com_tpl($temp);
 	}
 	function del_action(){
 		if($this->usertype!='2' || $this->uid==''){
