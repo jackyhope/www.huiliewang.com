@@ -350,12 +350,12 @@ class resume_api_controller extends company
         //工作经验
         $works = $list['work'];
         $lines = count($works);
-        $lines > 1 && $templateProcessor->cloneBlock('WORKLOCK', $lines, true, true);
+        $lines > 0 && $templateProcessor->cloneBlock('WORKLOCK', $lines, true, true);
         foreach ($works as $index => $workInfo) {
             $currentLine = $index + 1;
             foreach ($workInfo as $filed => $workValue) {
-                $lines > 1 && $templateProcessor->setValue($filed . '#' . $currentLine, $workValue);
-                $lines <= 1 && $templateProcessor->setValue($filed, $workValue);
+                $lines > 0 && $templateProcessor->setValue($filed . '#' . $currentLine, $workValue);
+                $lines <= 0 && $templateProcessor->setValue($filed, $workValue);
             }
         }
 
@@ -374,12 +374,12 @@ class resume_api_controller extends company
         //${PROBLOCK}  项目经历
         $proList = $list['project'];
         $lines = count($proList);
-        $lines > 1 && $templateProcessor->cloneBlock('PROBLOCK', $lines, true, true); //clone行
+        $lines > 0 && $templateProcessor->cloneBlock('PROBLOCK', $lines, true, true); //clone行
         foreach ($proList as $index => $proInfo) {
             $currentLine = $index + 1;
             foreach ($proInfo as $filed => $proValue) {
-                $lines > 1 && $templateProcessor->setValue($filed . '#' . $currentLine, $proValue);
-                $lines <= 1 && $templateProcessor->setValue($filed, $proValue);
+                $lines > 0 && $templateProcessor->setValue($filed . '#' . $currentLine, $proValue);
+                $lines <= 0 && $templateProcessor->setValue($filed, $proValue);
             }
         }
         $name = yun_iconv('utf-8', 'gbk', $name);

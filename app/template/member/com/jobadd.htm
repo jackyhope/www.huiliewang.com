@@ -6,11 +6,11 @@
 <link rel="stylesheet" href="{yun:}$style{/yun}/style/class.public.css" type="text/css">
 <script src="{yun:}$config.sy_weburl{/yun}/js/class.public.js" type="text/javascript"></script>
 <div class="jobadd">
-    <div class="title_">发布职位</div>
+    <div class="title_">发布职位 {yun:}$type{/yun}</div>
     <div class="line_2"></div>
     <div class="typeBox box1">
         <span class="sp1" style="float:left;margin-top: 50px;"><span>*</span>服务方式：</span>
-        <div class="choosed">
+        <div {yun:}if !$type{/yun} class="choosed"{yun:}/if{/yun}>
             <div class="hgt">
                 为您推荐专属顾问已沟通过的简历，您获取简历则扣除相应的余量
             </div>
@@ -19,7 +19,7 @@
                 慧沟通余量
             </span>
         </div>
-        <div>
+        <div {yun:}if $type {/yun} class="choosed"{yun:}/if{/yun}>
             <div class="hms">
                 专属顾问为您筛选优质候选人，候选人到场面试扣除相应的余量，不到场则不扣除
             </div>
@@ -33,18 +33,17 @@
         <span class="sp1"><span>*</span>
             职位名称：
         </span>
-        <input class="input_min" name="" id="name" placeholder="填写职位名称">
+        <input class="input_min" name="name" id="name" value="{yun:}$company_job.name{/yun}" placeholder="填写职位名称">
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>职位类别：</span>
         <div class="input_min selectBox" style="z-index:100">
             <input type="hidden" id="job_id" value="{yun:}$id{/yun}">
             <input type="hidden" id="service_type" value="{yun:}$company_job.service_type{/yun}">
-            <input type="hidden" name="job_post" id="job_post" value="{yun:}$row.job_post{/yun}" />
             <input class="SpFormLBut text_seclet_w250 " type="button"
-                value="{yun:}if $job_name[$row.job_post]{/yun}{yun:}$job_name[$row.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}"
+                value="{yun:}if $job_name[$company_job.job_post]{/yun}{yun:}$job_name[$company_job.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}"
                 onclick="index_job(3,'#workadds_job','#job_post','left:100px;top:100px; position:absolute;','{yun:}$row.job_post{/yun}');"
-                id="workadds_job">
+                id="job_post">
             <link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css"
                 type="text/css">
             <script src="{yun:}$config.sy_weburl{/yun}/js/datepicker/foundation-datepicker.min.js"></script>
@@ -63,8 +62,9 @@
             工作地点：
         </span>
         <div class="input_min selectBox" style="z-index: 101">
-            <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="province"
-                onclick="search_show('job_province');">
+            <input class="SpFormLBut text_seclet_w158" type="button"  {yun:}if $company_job.provinceid{/yun}
+            value="{yun:}$city_name[$company_job.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
+            onclick="search_show('job_province');">
             <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$company_job.provinceid{/yun}" />
             <div id="job_province" class="cus-sel-opt-panel" style="display:none">
                 <div style="width:100%;  overflow:auto; overflow-x:hidden">
@@ -79,8 +79,9 @@
             </div>
         </div>
         <div class="input_min selectBox" style="z-index: 101">
-            <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="citys"
-                onclick="search_show('job_citys');">
+            <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.cityid{/yun}
+            value="{yun:}$city_name[$company_job.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
+            onclick="search_show('job_citys');">
             <input type="hidden" id="citysid" name="cityid" value="{yun:}$company_job.cityid{/yun}" />
             <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
                 <div style="width:100%;  overflow:auto; overflow-x:hidden">
@@ -95,8 +96,9 @@
             </div>
         </div>
         <div class="input_min selectBox" style="display:none" id="cityshowth">
-            <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="three_city"
-                onclick="three_city_show('job_three_city');">
+            <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.three_cityid{/yun}
+            value="{yun:}$city_name[$company_job.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
+            onclick="three_city_show('job_three_city');">
             <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$company_job.three_cityid{/yun}" />
             <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
                 <ul class="Search_Condition_box_list">
@@ -113,7 +115,7 @@
         <span class="sp1"><span>*</span>
             职位有效期：
         </span>
-        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间" value="{yun:}$company_job.days{/yun}">&nbsp;&nbsp;天
+        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间" value="{yun:}$company_job.edate|date_format:'%Y-%m-%d'{/yun}">&nbsp;&nbsp;
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>
@@ -145,7 +147,7 @@
         <span class="sp1">
             下属人数：
         </span>
-        <input type="text" class="worker input_min" id="detail_subordinate">
+        <input type="text" class="worker input_min" id="detail_subordinate"  value="{yun:}$company_job.detail_subordinate{/yun}">
     </div>
     <div class="title_">对候选人有什么需求？（选填项）
         <span>?</span>
@@ -157,10 +159,10 @@
             从事行业：
         </span>
         <div class="input_min selectBox" style="z-index:400">
-            <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
-                value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
+            <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $company_job.hy{/yun}
+                value="{yun:}$industry_name[$company_job.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
                 onclick="search_show('job_hy');">
-            <input type="hidden" id="hyid" name="hy" {yun:}if $row.hy {/yun} value="{yun:}$row.hy{/yun}"
+            <input type="hidden" id="hyid" name="hy" {yun:}if $company_job.hy {/yun} value="{yun:}$company_job.hy{/yun}"
                 {yun:}/if{/yun}/> <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
             <div style="width:100%;  overflow:auto; overflow-x:hidden">
                 <ul>
@@ -176,17 +178,17 @@
     <span class="sp6">
         招聘人数：
     </span>
-    <input type="text" class="input_min inputMin" id="number" placeholder="输入招聘人数">
+    <input type="text" class="input_min inputMin" id="number" placeholder="输入招聘人数" value="{yun:}$company_job.number{/yun}">
 </div>
 <div class="box1">
     <span class="sp6">
         到岗时间：
     </span>
     <div class="input_min selectBox">
-        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.report{/yun}
-            value="{yun:}$comclass_name[$row.report]{/yun}" {yun:}else{/yun} value="请选择到岗时间" {yun:}/if{/yun} id="report"
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.report{/yun}
+            value="{yun:}$comclass_name[$company_job.report]{/yun}" {yun:}else{/yun} value="请选择到岗时间" {yun:}/if{/yun} id="report"
             onclick="search_show('job_report');">
-        <input type="hidden" id="reportid" name="report" {yun:}if $row.report{/yun} value="{yun:}$row.report{/yun}"
+        <input type="hidden" id="reportid" name="report" {yun:}if $company_job.report{/yun} value="{yun:}$company_job.report{/yun}"
             {yun:}/if{/yun} />
         <div id="job_report" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
             <ul class="Search_Condition_box_list">
@@ -203,9 +205,9 @@
     </span>
     <div class="input_min selectBox">
         <input id="exp" class="SpFormLBut text_seclet_w158" type="button" onclick="search_show('job_exp');" {yun:}if
-            $row.exp{/yun} value="{yun:}$comclass_name[$row.exp]{/yun}" {yun:}else{/yun} value="请选择工作经验"
-            {yun:}/if{/yun}> <input id="expid" type="hidden" name="exp" {yun:}if $row.exp {/yun}
-            value="{yun:}$row.exp{/yun}" {yun:}/if{/yun}> <div id="job_exp"
+            $company_job.exp{/yun} value="{yun:}$comclass_name[$company_job.exp]{/yun}" {yun:}else{/yun} value="请选择工作经验"
+            {yun:}/if{/yun}> <input id="expid" type="hidden" name="exp" {yun:}if $company_job.exp {/yun}
+            value="{yun:}$company_job.exp{/yun}" {yun:}/if{/yun}> <div id="job_exp"
             class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
         <ul class="Search_Condition_box_list">
             {yun:}foreach from=$comdata.job_exp key=j item=v{/yun}
@@ -223,10 +225,10 @@
     </span>
     <div class="input_min selectBox">
         <input type="button"
-            value="{yun:}if $arr_data.sex[$row.sex]{/yun}{yun:}$arr_data.sex[$row.sex]{/yun}{yun:}else{/yun}不限{yun:}/if{/yun}"
+            value="{yun:}if $arr_data.sex[$company_job.sex]{/yun}{yun:}$arr_data.sex[$company_job.sex]{/yun}{yun:}else{/yun}不限{yun:}/if{/yun}"
             class="SpFormLBut text_seclet_w158" id="sex" onClick="search_show('job_sex');">
         <input name="sex" type="hidden" id="sexid"
-            value="{yun:}if $row.sex{/yun}{yun:}$row.sex{/yun}{yun:}else{/yun}3{yun:}/if{/yun}">
+            value="{yun:}if $company_job.sex{/yun}{yun:}$company_job.sex{/yun}{yun:}else{/yun}3{yun:}/if{/yun}">
         <div id="job_sex" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
             <ul class="Search_Condition_box_list">
                 {yun:}foreach from=$arr_data.sex key=j item=v{/yun}
@@ -240,10 +242,10 @@
         年龄要求：
     </span>
     <div class="input_min selectBox">
-        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.age{/yun}
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.age{/yun}
             value="{yun:}$comclass_name[$row.age]{/yun}" {yun:}else{/yun} value="请选择年龄要求" {yun:}/if{/yun} id="age"
             onclick="search_show('job_age');">
-        <input type="hidden" id="ageid" name="age" {yun:}if $row.age{/yun} value="{yun:}$row.age{/yun}"
+        <input type="hidden" id="ageid" name="age" {yun:}if $company_job.age{/yun} value="{yun:}$company_job.age{/yun}"
             {yun:}/if{/yun} />
         <div id="job_age" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
             <ul class="Search_Condition_box_list">
@@ -261,11 +263,11 @@
         婚姻状况：
     </span>
     <div class="input_min selectBox">
-        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.marriage{/yun}
-            value="{yun:}$comclass_name[$row.marriage]{/yun}" {yun:}else{/yun} value="请选择婚姻状况" {yun:}/if{/yun}
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.marriage{/yun}
+            value="{yun:}$comclass_name[$company_job.marriage]{/yun}" {yun:}else{/yun} value="请选择婚姻状况" {yun:}/if{/yun}
             id="marriage" onclick="search_show('job_marriage');">
-        <input type="hidden" id="marriageid" name="marriage" {yun:}if $row.marriage{/yun}
-            value="{yun:}$row.marriage{/yun}" {yun:}/if{/yun} />
+        <input type="hidden" id="marriageid" name="marriage" {yun:}if $company_job.marriage{/yun}
+            value="{yun:}$company_job.marriage{/yun}" {yun:}/if{/yun} />
         <div id="job_marriage" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
             <ul class="Search_Condition_box_list">
                 {yun:}foreach from=$comdata.job_marriage key=j item=v{/yun}
@@ -280,10 +282,10 @@
         教育程度：
     </span>
     <div class="input_min selectBox">
-        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.edu{/yun}
-            value="{yun:}$comclass_name[$row.edu]{/yun}" {yun:}else{/yun} value="请选择教育程度" {yun:}/if{/yun} id="edu"
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.edu{/yun}
+            value="{yun:}$comclass_name[$company_job.edu]{/yun}" {yun:}else{/yun} value="请选择教育程度" {yun:}/if{/yun} id="edu"
             onclick="search_show('job_edu');">
-        <input type="hidden" id="eduid" name="edu" {yun:}if $row.edu{/yun} value="{yun:}$row.edu{/yun}"
+        <input type="hidden" id="eduid" name="edu" {yun:}if $company_job.edu{/yun} value="{yun:}$company_job.edu{/yun}"
             {yun:}/if{/yun} />
         <div id="job_edu" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
             <ul class="Search_Condition_box_list">
@@ -301,49 +303,49 @@
         语言要求：
     </span>
     <div class="selectBox_">
-        <div class="select choosed">
+        <div class="select {yun:}if $lang100{/yun}choosed{yun:}/if{/yun}">
             普通话
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="100">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $lang103{/yun}choosed{yun:}/if{/yun}">
             英语
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="103">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $lang107{/yun}choosed{yun:}/if{/yun}">
             日语
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="107">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $lang104{/yun}choosed{yun:}/if{/yun}">
             韩语
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="104">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $lang105{/yun}choosed{yun:}/if{/yun}">
             德语
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="105">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $lang106{/yun}choosed{yun:}/if{/yun}">
             法语
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="106">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $lang108{/yun}choosed{yun:}/if{/yun}">
             粤语
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="108">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $lang110{/yun}choosed{yun:}/if{/yun}">
             其它
             <div class="triangle"></div>
             <span class="gou">√</span>
@@ -356,55 +358,55 @@
         福利待遇：
     </span>
     <div class="selectBox_2">
-        <div class="select choosed">
+        <div class="select {yun:}if $welfare95{/yun}choosed{yun:}/if{/yun}">
             奖励计划
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="95">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare94{/yun}choosed{yun:}/if{/yun}">
             年终奖金
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="94">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare91{/yun}choosed{yun:}/if{/yun}">
             五险一金
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="91">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare90{/yun}choosed{yun:}/if{/yun}">
             三险一金
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="90">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare92{/yun}choosed{yun:}/if{/yun}">
             包吃住
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="92">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare96{/yun}choosed{yun:}/if{/yun}">
             销售奖金
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="96">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare97{/yun}choosed{yun:}/if{/yun}">
             休假制度
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="97">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare93{/yun}choosed{yun:}/if{/yun}">
             综合补贴
             <div class="triangle"></div>
             <span class="gou">√</span>
             <input type="hidden" value="93">
         </div>
-        <div class="select">
+        <div class="select {yun:}if $welfare98{/yun}choosed{yun:}/if{/yun}">
             法定节假日
             <div class="triangle"></div>
             <span class="gou">√</span>
@@ -503,6 +505,7 @@
             var marriage = $('#marriageid').val();
             var edu = $('#eduid').val();
             var tel;
+            var wel;
             var lang100,lang103,lang107,lang104,lang105,lang106,lang108,lang110;
             for(let i = 0;i<$('.selectBox_ .choosed').length;i++){
                  tel = $('.selectBox_ .choosed input').eq(i).val();
@@ -525,24 +528,24 @@
             }
             var welfare95,welfare94,welfare92,welfare91,welfare90,welfare96,welfare97,welfare93,welfare98;
             for(let i = 0;i<$('.selectBox_2 .choosed').length;i++){
-                tel = $('.selectBox_ .choosed input').eq(i).val();
-                if(welfare95 == '95')
+                wel = $('.selectBox_2 .choosed input').eq(i).val();
+                if(wel == '95')
                     welfare95 = 95;
-                else if(welfare94 == '94')
+                else if(wel == '94')
                     welfare94 = 94;
-                else if(welfare92 == '92')
+                else if(wel == '92')
                     welfare92 = 92;
-                else if (welfare91 == '91')
+                else if (wel == '91')
                     welfare91 = 91;
-                else if(welfare90 == '90')
+                else if(wel == '90')
                     welfare90 = 90;
-                else if(welfare96 == '96')
+                else if(wel == '96')
                     welfare96 = 96;
-                else if(welfare97 == '97')
+                else if(wel == '97')
                     welfare97 = 97;
-                else if(welfare93 == 93)
+                else if(wel == 93)
                     welfare93 =93;
-                else if(welfare98 == 98)
+                else if(wel == 98)
                     welfare98 = 98;
             }
             var tblink = $('#tblink').val();
@@ -593,6 +596,7 @@
                 id:id
             }).then(function (res) {
                 alert_notice({title:'温馨提示',content:res.info});
+                window.location.reload();
             }).catch(function (res) {
                 alert_notice({title:'温馨提示',content:res.info,type:'warning'});
             });

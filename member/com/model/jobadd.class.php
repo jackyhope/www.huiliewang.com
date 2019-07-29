@@ -79,7 +79,51 @@ class jobadd_controller extends company
         $jobnum = $this->obj->DB_select_num("company_job", "`uid`='" . $this->uid . "'");
         $this->yunset("jobnum", $jobnum);
         $this->yunset("row", $row);
+        $this->yunset('type', $cmj['service_type']);
         $this->yunset('company_job',$cmj);
+        $lang  =explode(',',$cmj['lang']);
+        $welfare = explode(',',$cmj['welfare']);
+        if($lang)
+        foreach ($lang as $k=>$v){
+            if($v=='103')
+                $this->yunset('lang103','103');;
+            if($v=='100')
+                $this->yunset("lang100", '100');
+            if($v=='107')
+                $this->yunset("lang107", '107');
+            if($v=='104')
+                $this->yunset("lang104", '104');
+            if($v=='105')
+                $this->yunset("lang105", '105');
+            if($v=='106')
+                $this->yunset("lang106", '106');
+            if($v=='108')
+                $this->yunset("lang108", '108');
+            if($v=='110')
+                $this->yunset("lang103", '110');
+        }
+        if($welfare){
+            foreach ($welfare as $k=>$v){
+                if($v =='95')
+                    $this->yunset('welfare95','95');
+                if($v =='94')
+                    $this->yunset('welfare94','94');
+                if($v =='92')
+                    $this->yunset('welfare92','92');
+                if($v =='91')
+                    $this->yunset('welfare91','91');
+                if($v =='90')
+                    $this->yunset('welfare90','90');
+                if($v =='96')
+                    $this->yunset('welfare96','96');
+                if($v =='97')
+                    $this->yunset('welfare97','97');
+                if($v =='93')
+                    $this->yunset('welfare93','93');
+                if($v =='98')
+                    $this->yunset('welfare98','98');
+            }
+        }
         $this->yunset("today", date('Y-m-d', time()));
         $this->yunset("js_def", 3);
         $this->com_tpl('jobadd');
@@ -491,6 +535,18 @@ class jobadd_controller extends company
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
         }
+        //套餐余量检查
+        $companyInfo = $this->obj->DB_select_once("company", "`uid`='" . $this->uid , "resume_payd,interview_payd,c_money");
+        if($_POST['service_type'] == 0 && $companyInfo['interview_payd'] <= 0 ){
+            $return = ['success' => false, 'code' => 500, 'info' => "慧沟通余量不足"];
+            $this->jsonReturn($return);
+        }
+        //慧面试余量
+        if($_POST['service_type'] == 1 && $companyInfo['resume_payd'] <= 0 ){
+            $return = ['success' => false, 'code' => 500, 'info' => "慧面试余量不足"];
+            $this->jsonReturn($return);
+        }
+
         $_POST['state'] = 0;
         $companyCert = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "'and type=3", "uid,type,status");
         if ($this->config['com_free_status'] == "1" && $companyCert['status'] == "1") {
@@ -546,6 +602,8 @@ class jobadd_controller extends company
             $saveJobDo->description = baseUtils::getStr($_POST['description'], 'html');
             $saveJobDo->detail_report = baseUtils::getStr($_POST['detail_report']);
             $saveJobDo->provinceid = baseUtils::getStr($_POST['provinceid'], 'int');
+            $saveJobDo->cityid = baseUtils::getStr($_POST['cityid'], 'int');
+            $saveJobDo->three_cityid = baseUtils::getStr($_POST['three_cityid'], 'int');
             $saveJobDo->detail_subordinate = baseUtils::getStr($_POST['detail_subordinate'], 'int');
             $saveJobDo->hy = baseUtils::getStr($_POST['hy'], 'int');
             $saveJobDo->number = baseUtils::getStr($_POST['number'], 'int');
