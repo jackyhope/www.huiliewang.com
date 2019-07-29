@@ -387,7 +387,11 @@ class info_controller extends company
             $customerDo->hy = baseUtils::getStr($_POST['hy']);
             $customerDo->mun = baseUtils::getStr($_POST['mun']);
             $customerDo->customer_id = $company['tb_customer_id'];
-            $customerService->saveCustomer($customerDo);
+            $res = $customerService->saveCustomer($customerDo);
+            if ($res->code == 200) {
+                $oaCustomerId = intval($res->message);
+                $company['tb_customer_id'] <= 0 && $this->obj->update_once("company", ['tb_customer_id' => $oaCustomerId], array("uid" => $this->uid));
+            }
         } catch (Exception $ex) {
             $message = $ex->getMessage();
         }
