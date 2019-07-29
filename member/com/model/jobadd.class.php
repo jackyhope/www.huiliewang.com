@@ -21,6 +21,11 @@ class jobadd_controller extends company
 //				$this->ACT_msg($_SERVER['HTTP_REFERER'],"你的".$this->config['integral_pricename']."不够发布职位！",8);
 //			}
 //		}
+        if($_GET['id']){
+            $id = intval(baseUtils::getStr($_GET['id'],'int'));
+            $cmj = $this->obj->DB_select_once("company_job", "`id`='" . $id . "'");
+            $this->yunset('id',$id);
+        }
         $company = $this->get_user();
         $msg = array();
         $isallow_addjob = "1";
@@ -74,6 +79,7 @@ class jobadd_controller extends company
         $jobnum = $this->obj->DB_select_num("company_job", "`uid`='" . $this->uid . "'");
         $this->yunset("jobnum", $jobnum);
         $this->yunset("row", $row);
+        $this->yunset('company_job',$cmj);
         $this->yunset("today", date('Y-m-d', time()));
         $this->yunset("js_def", 3);
         $this->com_tpl('jobadd');
@@ -473,11 +479,14 @@ class jobadd_controller extends company
         $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
         $_POST['name'] = change_encoding($_POST['name'],'gbk');
         $_POST['description'] = change_encoding($_POST['description'],'gbk');
+
+
         if (!$_POST['name']) {
             $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
             $this->jsonReturn($return);
         }
         $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`");
+
         if (!$id && $comjob) {
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);

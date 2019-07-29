@@ -103,7 +103,14 @@ function upload(obj) {
     }, 200)
 }
 //提示信息弹窗
-function alert_notice(obj={title:'操作成功',content:'',type:'success',btn:'确认',else:''}) {
+function alert_notice(obj = {
+    title: '操作成功',
+    content: '',
+    type: 'success',
+    btn: '确认',
+    else: '',
+    comfirm(){}
+}) {
     /*  参数obj为json对象
         属性:
         title:  标题（默认：操作成功）
@@ -113,9 +120,10 @@ function alert_notice(obj={title:'操作成功',content:'',type:'success',btn:'确认'
         else：附加信息（可在回调中操作）
         src: 点击按钮跳转链接（选填）
         callback：回调函数，弹窗出现时触发，会传入附加信息的jquery对象
+        confirm：回调函数，点击按钮时触发,此时不触发默认事件（关闭弹窗和跳转）,会传入事件对象
         以上展示信息都可以传入富文本格式
     */
-   
+
     let img = '';
     if (obj.type == 'warning') {
         img = '/app/public/imgs/7_03.png'
@@ -140,35 +148,66 @@ function alert_notice(obj={title:'操作成功',content:'',type:'success',btn:'确认'
     `)
     $('.dialog_box .close_dialog').off('click');
     if (obj.callback) {
-        $('.dialog_box .close_dialog').one('click',ev => {
+        $('.dialog_box .close_dialog').one('click', ev => {
             obj.callback($(ev.target))
         })
         $('.dialog_box .close_dialog').click()
     }
     $('.dialog_box .dialog_btn').off('click');
     $('.dialog_box .close_dialog').click(ev => {
-        $(ev.target).parent().parent('.mask').remove()
+        $(ev.target).parent().parent('.mask').remove();
     })
-    $('.dialog_box .dialog_btn').click(ev => {
-        $(ev.target).parent().parent('.mask').remove()
-        if (obj.src) {
-            window.location.href = obj.sec
-        }
-    })
+    if(obj.confirm){
+        $('.dialog_box .dialog_btn').click(ev => {obj.confirm(ev)})
+    }else{
+        $('.dialog_box .dialog_btn').click(ev => {
+            $(ev.target).parent().parent('.mask').remove()
+            if (obj.src) {
+                window.location.href = obj.sec
+            }
+        })
+    }
     $('.mask').off();
-    $('.mask').on('mousewheel',ev=>{
+    $('.mask').on('mousewheel', ev => {
         return false
     })
-    $('.mask').click(ev=>{
+    $('.mask').click(ev => {
         $(ev.target).remove();
     })
     $('.mask .dialog_box').off();
-    $('.mask .dialog_box').click(ev=>{
+    $('.mask .dialog_box').click(ev => {
         return false
     });
 
 }
-function close_all_dialog(){
+
+function close_all_dialog() {
     //关闭所有弹窗
     $('.mask').remove()
+}
+//时间戳处理
+function get_time(date, type = 1) {
+    /*默认返回yyyy-MM-DD hh:mm:ss
+    type=1:yyyy-MM-DD hh:mm:ss,
+    type=2:yyyy-MM-DD hh:mm,
+    type=3:yyyy-MM-DD,
+    type=4:MM-DD hh:mm,
+    type=5:MM-DD*/
+    var time = new Date(date*1000);
+    var yy = time.getFullYear(); //年
+    var MM = time.getMonth() + 1; //月
+    var dd = time.getDate(); //日
+    var hh = time.getHours(); //时
+    var mm = time.getMinutes(); //分
+    var ss = time.getSeconds(); //秒
+    if (MM < 10) MM = "0"+MM;
+    if (dd < 10) dd = "0"+dd;
+    if (hh < 10) hh = "0"+hh;
+    if (mm < 10) mm = '0'+mm;
+    if (ss < 10) ss = '0'+ss;
+    if(type==1)return yy+'-'+MM+'-'+dd+' '+hh+':'+mm+':'+ss;
+    if(type==2)return yy+'-'+MM+'-'+dd;
+    if(type==3)return yy+'-'+MM+'-'+dd+' '+hh+':'+mm+':'+ss;
+    if(type==4)return MM+'-'+dd+' '+hh+':'+mm;
+    if(type==5)return MM+'-'+dd;
 }
