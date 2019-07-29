@@ -34,9 +34,9 @@ class resume_controller extends company
     function detail_action() {
 //        error_reporting(E_ALL);
         $resumeId = BaseUtils::getStr($_GET['resume_id'], 'int');
-        $resumeId = 2079009;
+        !$resumeId && $resumeId = 2079009;
         $projectId = BaseUtils::getStr($_GET['project_id'], 'int');
-        $projectId = 323;
+        !$projectId && $projectId = 323;
         $resumeDo = '';
         $resumeService = '';
         if(!$resumeId || !$projectId){
@@ -79,6 +79,8 @@ class resume_controller extends company
         $logs = array_iconv($logs, 'utf-8', 'gbk');
         $logs && $logs == array_values($logs);
 
+        $this->yunset("projectId", $projectId);
+        $this->yunset("resumeId", $resumeId);
         $this->yunset("info", $list);
         $this->yunset("logs", $logs);
         $this->yunset("status", $list['work_info']['huilie_status']);
