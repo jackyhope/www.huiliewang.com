@@ -10,8 +10,8 @@ class resume_api_controller extends company
      * @desc 参数检测
      */
     private function publicCheck() {
-        $this->resumeId = baseUtils::getStr($_POST['resume_id'], 'int');
-        $this->projectId = baseUtils::getStr($_POST['project_id'], 'int');
+        $this->resumeId = baseUtils::getStr($_GET['resume_id'], 'int');
+        $this->projectId = baseUtils::getStr($_GET['project_id'], 'int');
         $uId = $this->uid;
         if (!$uId) {
             $this->ajax_return(500, false, '请登录');
@@ -434,5 +434,26 @@ class resume_api_controller extends company
         ];
         //company_pay
         return $this->obj->insert_into('company_pay', $data);
+    }
+
+    /**
+     * @desc 公司主页信息
+     */
+    public function companyInfo_action() {
+        error_reporting(E_ALL);
+        try {
+            apiClient::init('', '');
+            $resumeService = new com\hlw\huiliewang\interfaces\company\CompanyInfoServiceClient(null);
+            apiClient::build($resumeService);
+
+            $info = $resumeService->getInfo($this->uid);
+            if ($info->code != 200) {
+                $this->ajax_return(500, false, $info->message);
+            }
+        } catch (Exception $e) {
+            $this->ajax_return(500, false, $e->getMessage());
+        }
+        $list = json_decode($info->message, true);
+        $this->ajax_return(200, true, $list);
     }
 }
