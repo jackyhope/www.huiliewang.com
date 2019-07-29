@@ -535,7 +535,6 @@ class jobadd_controller extends company
 
         try {
             apiClient::init();
-            file_put_contents("F:\www\pc.huiliewang.com\App\Runtime\\test.html", "888888888888||||||||||888888888888\r\n" . time() . PHP_EOL, FILE_APPEND);
             $jobAddService = new com\hlw\huiliewang\interfaces\company\JobAddServiceClient(null);
             apiClient::build($jobAddService);
             $saveJobDo = new com\hlw\huiliewang\dataobject\company\jobAddRequestDTO();
