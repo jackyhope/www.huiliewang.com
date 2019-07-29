@@ -602,6 +602,8 @@ class jobadd_controller extends company
             $saveJobDo->description = baseUtils::getStr($_POST['description'], 'html');
             $saveJobDo->detail_report = baseUtils::getStr($_POST['detail_report']);
             $saveJobDo->provinceid = baseUtils::getStr($_POST['provinceid'], 'int');
+            $saveJobDo->cityid = baseUtils::getStr($_POST['cityid'], 'int');
+            $saveJobDo->three_cityid = baseUtils::getStr($_POST['three_cityid'], 'int');
             $saveJobDo->detail_subordinate = baseUtils::getStr($_POST['detail_subordinate'], 'int');
             $saveJobDo->hy = baseUtils::getStr($_POST['hy'], 'int');
             $saveJobDo->number = baseUtils::getStr($_POST['number'], 'int');
