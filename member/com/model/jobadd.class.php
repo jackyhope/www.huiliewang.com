@@ -623,7 +623,7 @@ class jobadd_controller extends company
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type']);
             $res = $jobAddService->saveJob($saveJobDo);
             if ($res->code != 200) {
-                $return = ['success' => false, 'code' => 500, 'info' => $res->message];
+                $return = ['success' => false, 'code' => 500, 'info' => yun_iconv('utf-8','gbk',$res->message)];
                 $this->jsonReturn($return,false);
             }
             $jobId = $res->message;
