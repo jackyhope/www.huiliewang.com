@@ -201,7 +201,7 @@ class info_controller extends company {
                     $this->obj->update_once("blacklist", array("com_name" => $_POST['name']), array("c_uid" => $this->uid));
                     $this->obj->update_once("msg", array("com_name" => $_POST['name']), array("job_uid" => $this->uid));
                 }
-                
+
                 try {
                     apiClient::init($appid, $secret);
                     $customerService = new com\hlw\huilie\interfaces\CustomerServiceClient(null);
@@ -300,12 +300,22 @@ class info_controller extends company {
             }
         }
         //修改操作
+        $_POST['name'] = change_encoding($_POST['name'], 'gbk');
+
+//        var_dump( $_POST['content']);
+        $_POST['content'] = change_encoding($_POST['content'], 'GBK');
+        $_POST['address'] = change_encoding($_POST['address'], 'GBK');
+        $_POST['website'] = change_encoding($_POST['website'], 'GBK');
+        $_POST['linkjob'] = change_encoding($_POST['linkjob'], 'GBK');
+        $_POST['welfare'] = change_encoding($_POST['welfare'], 'GBK');
+//        var_dump( $_POST['content']);
+//        die;
         $name = baseUtils::getStr($_POST['name']);
         try {
-            ApiClient::init($appid, $secret);
+            ApiClient::init('', '');
             $companyInfoService = new com\hlw\huiliewang\interfaces\company\CompanyInfoServiceClient(null);
             ApiClient::build($companyInfoService);
-            $infoRequestDo = new com\hlw\huiliewang\dataobject\company\companyInfoRequestDTO();
+            $infoRequestDo = new com\hlw\huiliewang\dataobject\companyInfo\editInfoRequestDTO();
             $infoRequestDo->name = $name;
             $infoRequestDo->linkmail = baseUtils::getStr($_POST['linkmail']);
             $infoRequestDo->linktel = baseUtils::getStr($_POST['linktel']);
@@ -328,14 +338,16 @@ class info_controller extends company {
             $infoRequestDo->address = baseUtils::getStr($_POST['address']);
             $infoRequestDo->moneytype = baseUtils::getStr($_POST['moneytype']);
             $infoRequestDo->uid = $uid;
-            $infoRequestDo->content = baseUtils::getStr($_POST['content'],'html');
+            $infoRequestDo->content =  baseUtils::getStr($_POST['content'],'html');
             $infoRequestDo->comqcode = isset($_POST['comqcode']) ? baseUtils::getStr($_POST['comqcode']) : '';
             $infoRequestDo->sdate = baseUtils::getStr($_POST['sdate']);
 
             $infoRequestDo->money = baseUtils::getStr($_POST['money']);
             $infoRequestDo->website = baseUtils::getStr($_POST['website']);
             $infoRequestDo->infostatus = baseUtils::getStr($_POST['infostatus']);
-            $infoRes = $companyInfoService->save($infoRequestDo);;
+            $infoRequestDo->welfare = baseUtils::getStr($_POST['welfare']);
+
+            $infoRes = $companyInfoService->save($infoRequestDo);
         } catch (Exception $e) {
             $message = "更新失败！API服务失败" . $e->getMessage();
             $return = ['success' => false, 'code' => 500, 'info' => $message];
