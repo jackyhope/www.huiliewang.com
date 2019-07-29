@@ -26,6 +26,11 @@
         font-size: 20px;
         margin:0 4px;
     }
+    #tc_list{
+        height:200px;
+        max-height:300px;
+        overflow-y: auto;
+    }
 </style>
 <div class="inner_header">
     <div class="container">
@@ -42,7 +47,7 @@
 <div class="content_list no_hover_text">
     <div class="screen_list mt_10 clearall">
         <img class="fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_my_money.png" alt="" width="32">
-        <div class="money fll  mr_20">我的余额：<span>20000.00</span>元</div>
+        <div class="money fll  mr_20">我的余额：<span>{yun:}$company_msg['c_money']{/yun}</span>元</div>
         <a href="index.php?c=pay" class="c_btn_square c_btn_light">充值</a>
     </div>
     <div class="c_tc_show clearall">
@@ -51,7 +56,7 @@
                 <div class="c_one_tit"><span></span>慧沟通</div>
                 <div class="dl mt_50 clearall">
                     <div class="dt mr_20">
-                        <p class="num">12</p>
+                        <p class="num">{yun:}$company_msg['resume_payd']{/yun}</p>
                         <p class="fll color-999999">可买简历数（份）</p>
                     </div>
                     <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light_bg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car.png" alt="">&nbsp;&nbsp;购买</a></div>
@@ -99,7 +104,7 @@
                 <div class="c_one_tit"><span></span>慧面试</div>
                 <div class="dl mt_50 clearall">
                     <div class="dt mr_20">
-                        <p class="num">12</p>
+                        <p class="num">{yun:}$company_msg['interview_payd']{/yun}</p>
                         <p class="fll color-999999">剩余邀约面试（次）</p>
                     </div>
                     <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
@@ -156,31 +161,31 @@
         <div id="buy_resume" class="c_module c_module_2 c_module_6 c_hide">
             <i onclick="m_close(this)"></i>
             <div class="c_title"><span></span>套餐购买</div>
-            <div class="c_cont c_hide">
-                <div class="dl clearall">
-                    <div class="dd wid20p">慧沟通</div>
-                    <div class="dd wid40p">100份+赠送慧面试1次</div>
-                    <div class="dd wid20p">1000元</div>
-                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
-                </div>
-                <div class="dl clearall">
-                    <div class="dd wid20p">慧沟通</div>
-                    <div class="dd wid40p">100份+赠送慧面试1次</div>
-                    <div class="dd wid20p">1000元</div>
-                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
-                </div>
-                <div class="dl clearall">
-                    <div class="dd wid20p">慧沟通</div>
-                    <div class="dd wid40p">100份+赠送慧面试1次</div>
-                    <div class="dd wid20p">1000元</div>
-                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
-                </div>
-                <div class="dl clearall">
-                    <div class="dd wid20p color-EBCB66">慧面试</div>
-                    <div class="dd wid40p">5次</div>
-                    <div class="dd wid20p">1000元</div>
-                    <div class="dd wid20p te_lgl"><a href="javascript:buy_now(1);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>
-                </div>
+            <div class="c_cont c_hide" id="tc_list">
+<!--                <div class="dl clearall">-->
+<!--                    <div class="dd wid20p">慧沟通</div>-->
+<!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
+<!--                    <div class="dd wid20p">1000元</div>-->
+<!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+<!--                </div>-->
+<!--                <div class="dl clearall">-->
+<!--                    <div class="dd wid20p">慧沟通</div>-->
+<!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
+<!--                    <div class="dd wid20p">1000元</div>-->
+<!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+<!--                </div>-->
+<!--                <div class="dl clearall">-->
+<!--                    <div class="dd wid20p">慧沟通</div>-->
+<!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
+<!--                    <div class="dd wid20p">1000元</div>-->
+<!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+<!--                </div>-->
+<!--                <div class="dl clearall">-->
+<!--                    <div class="dd wid20p color-EBCB66">慧面试</div>-->
+<!--                    <div class="dd wid40p">5次</div>-->
+<!--                    <div class="dd wid20p">1000元</div>-->
+<!--                    <div class="dd wid20p te_lgl"><a data-name="慧面试" data-qy="5次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+<!--                </div>-->
             </div>
 <!--    余额不足显示   start  做php判断   -->
             <div class="nomoney c_hide">
@@ -200,24 +205,24 @@
             <div class="c_cont pb_20">
                 <div class="dl mt_10 clearall">
                     <div class="dt">套餐类型：</div>
-                    <div class="dd color-3CC1D3">慧沟通</div>
+                    <div class="dd color-3CC1D3" id="show_name">未指定</div>
                 </div>
                 <div class="dl mt_10 clearall">
                     <div class="dt">套餐权益：</div>
-                    <div class="dd color-3CC1D3">100份+赠送慧面试1次</div>
+                    <div class="dd color-3CC1D3" id="show_qy">未指定</div>
                 </div>
                 <div class="dl mt_10 clearall">
                     <div class="dt">套餐价格：</div>
-                    <div class="dd color-3CC1D3">1000元</div>
+                    <div class="dd color-3CC1D3" id="show_price">未指定</div>
                 </div>
                 <div class="dl mt_10 clearall">
                     <div class="dt">验证码：</div>
-                    <div class="dd c_rela"><input class="input-normal" type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码" maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><span onclick="send_code(this)" class="c_send_code">点击获取验证码</span><div class="fllow_tips">已发送验证码到手机号128****1111</div></div>
+                    <div class="dd c_rela"><input class="input-normal" type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码" maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><span onclick="send_code(this)" class="c_send_code">点击获取验证码</span><div class="fllow_tips">已发送验证码到手机号{yun:}substr($user_phone,0,3){/yun}*****{yun:}substr($user_phone,-3,3){/yun}</div></div>
                 </div>
             </div>
 
             <div class="btnner">
-                <div class="mt_20"><a href="#" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a id="c_addorder" data-id="0" href="javascript:;" class="c_btn c_btn_md c_btn_light_bg">下一步</a></div>
+                <div class="mt_20"><a href="#" class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a id="c_addorder" data-id="0" href="javascript:;" class="c_btn c_btn_md c_btn_light_bg">确认购买</a></div>
             </div>
         </div>
         <!-- 购买确认 end -->
@@ -227,40 +232,73 @@
 <!--相关简历列表页的弹框module   end -->
 <script>
     $(function(){
+        $.get('{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=services','',function(re){
+            re = JSON.parse(re);
+            console.log(re.code);
+            console.log(re.code==200);
+            console.log(re.info.list.length);
+            var _html = '';
+            if(re.code==200){
+                for (var i in re.info.list) {
+                    console.log(re.info.list[i]);
+                    _html += '<div class="dl clearall">\n' +
+                        '                    <div class="dd wid20p">'+re.info.list[i].type_name+'</div>\n' +
+                        '                    <div class="dd wid40p">'+re.info.list[i].title+'</div>\n' +
+                        '                    <div class="dd wid20p">'+re.info.list[i].service_price+'</div>\n' +
+                        '                    <div class="dd wid20p te_lgl"><a data-name="'+re.info.list[i].type_name+'" data-qy="'+re.info.list[i].title+'" data-price="'+re.info.list[i].service_price+'" data-id="'+re.info.list[i].id+'" href="javascript:void(0);" class="c_btn c_btn_light no_mg buy_now"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>\n' +
+                        '                </div>';
+
+
+                }
+                $('#tc_list').html(_html);//输出数据列表
+            }else{
+                alert_notice({title:'温馨提示',content:'获取套餐列表失败',type:'error',src:'',btn:'确定',else:''});
+            }
+        });
         $('#c_addorder').click(function () {
             var _json={};
             //检测验证码是否正确
-            var _v_code = $('#verify_code').val();
+            var _v_code = $.trim($('#verify_code').val());
             if(parseInt(_v_code)==0){
                 //疑问  弹框是否会刷新页面？
-                _json = {title:'温馨提示',content:'请输入正确格式的验证码',type:'error',src:'',btn:'确定'};
+                _json = {title:'温馨提示',content:'请输入正确格式的验证码',type:'error',src:'',btn:'确定',else:''};
                 alert_notice(_json);return;
             }
 
-            $.post('index.php?c=pay&act=dingdan',{comservice:_id,},function(data){
+            $.post('index.php?c=order_api&act=buy',{id:$(this).attr('data-id'),code:_v_code},function(data){
                 data = JSON.parse(data);
                 if(data.code==200){
-                    _json = {title:'温馨提示',content:data.message,type:'success',src:data.url,btn:'前往付款'};
+                    hide_module_all();
+                    _json = {title:'温馨提示',content:data.info,type:'success',src:'/',btn:'返回',else:''};
                     //默认2秒自动跳转
                     setTimeout(function(){
-                        location.href=data.url;
+                        location.reload();
                     },2000);
                 }else{
-                    _json = {title:'温馨提示',content:data.message,type:'error',src:data.url,btn:'确定'};
+                    _json = {title:'温馨提示',content:data.info,type:'error',src:data.url,btn:'确定',else:''};
                 }
                 alert_notice(_json);
             })
+        });
+
+        /**
+         *传套餐id
+         */
+        $(document).on('click','.buy_now',function(){
+            //先切换显示弹窗
+            $('.c_module').addClass('c_hide');
+            $('#invite_interview').removeClass('c_hide');
+            $('#c_addorder').attr('data-id',$(this).attr('data-id'));
+            $('#show_name').text($(this).attr('data-name'));
+            $('#show_qy').text($(this).attr('data-qy'));
+            $('#show_price').text($(this).attr('data-price'));
+            $('#c_addorder').attr('data-id',$(this).attr('data-id'));
         })
     })
-    /**
-     *传套餐id
-     */
-    function buy_now(_id) {
-        //先切换显示弹窗
-        $('.c_module').addClass('c_hide');
-        $('#invite_interview').removeClass('c_hide');
-        $('#c_addorder').attr('data-id',_id);
 
+    function hide_module_all(){
+        $('#c_shade').removeClass('c_hide');
+        $('.c_module').addClass('c_hide');
     }
     function show_module() {
        // re.diff 比较余额和套餐最低价格，余额不足返回0，余额充足，返回1，并且继续查询返回套餐列表data.list
@@ -269,7 +307,7 @@
         /* var _loading = layer.load(2, {
             shade: [0.5,'#000']
         });*/
-        $.post('',{},function(re){
+        $.post('',{id:2},function(re){
             re = {code:200,diff:1};//模拟测试数据
             //re = {code:200,diff:0};//模拟测试数据
             if(re.code==200){
@@ -289,9 +327,13 @@
     }
     /**获取验证码**/
     function send_code(obj) {
-        $.post('',{},function (data) {
+        $.get('{yun:}url m=register c=sendtel{/yun}',{tel:'{yun:}$user_phone{/yun}'},function (data) {
+            data = JSON.parse(data);
             if(data.code==200){
                 countdown(obj);
+            }else{
+              var _json = {title:'温馨提示',content:'短信验证码获取失败',type:'error',src:'',btn:'确定',else:''};
+                alert_notice(_json);
             }
         })
     }

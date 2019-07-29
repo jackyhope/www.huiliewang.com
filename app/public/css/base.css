@@ -72,6 +72,12 @@ textarea:focus{
     background: -moz-linear-gradient(right, #75E4E5, #5BCBD5); /* Firefox 3.6 - 15 */
     background: linear-gradient(to right, #75E4E5 , #5BCBD5);
 }
+.gradient_2{
+    background: -webkit-linear-gradient(left, #F4D36D , #D3B353); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #F4D36D, #D3B353); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #F4D36D, #D3B353); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #F4D36D , #D3B353);
+}
 .line_1 {
     display: inline-block;
     margin-right: 8px;
@@ -153,16 +159,17 @@ body{
     right: 13px;
 }
 .dialog_box .dialog_img{
-    height: 120px;
+    height: 70px;
+    margin-top: 41px;
 }
 .dialog_box .dialog_title{
     display: block;
-    margin: 32px 0 28px;
+    margin: 27px 0 14px;
     color: #3CC1D3;
 }
 .dialog_box .dialog_btn{
     margin-bottom: 28px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .dialog_box .dialog_con{
     color: #B2B2B2;

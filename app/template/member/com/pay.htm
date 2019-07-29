@@ -10,6 +10,16 @@
 <script src="/app/public/js/resume/jquery.resize.js"></script>
 <script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/member_public.js"></script>
 <script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/public.js"></script>
+<script>
+    $(function () {
+        var _layer_msg = $('#layer_msg').val();
+        var _layer_time = $('#layer_time').val();
+        var _layer_st = $('#layer_st').val();
+        if(_layer_msg){
+            layer.msg(_layer_msg,_layer_time,_layer_st);return false;
+        }
+    })
+</script>
 <style>
     input.input-normal{
         width: 300px;
@@ -67,15 +77,11 @@
      * @returns {boolean}
      */
     function pay_form(name){
-        if($("#comvip").length!=0&&$("#comvip").val()==''){
-            layer.msg("«Î—°‘Òπ∫¬Ú¿‡–Õ£°",2,8);return false;
-        }
+
         if($("#price_int").length!=0&&$("#price_int").val()<1){
             layer.msg(name,2,8);return false;
         }
-        if($("#money_int").length!=0&&$("#money_int").val()<1){
-            layer.msg(name,2,8);return false;
-        }
+
     }
     $(function(){
        $('#dingdan_submit').click(function () {

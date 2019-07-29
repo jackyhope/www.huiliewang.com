@@ -50,7 +50,9 @@ class paylog_controller extends company{
 		}
 
 		$this->yunset("js_def",4);
+        /********获取列表07-29**/
 
+        /********获取列表07-29**/
 		if(!empty($_GET['c_tpu']) && in_array($_GET['c_tpu'],[1,2,3,4,5])){
 		    switch ($_GET['c_tpu']){
                 case 1:
@@ -73,6 +75,11 @@ class paylog_controller extends company{
             $temp = 'paylog';
         }
         $this->yunset("c_tpu",$_GET['c_tpu']?$_GET['c_tpu']:1);
+		//输出登录人手机号
+        $user_msg = $this->obj->DB_select_once('member',"`uid`=".$this->uid,'moblie');
+        $company_msg = $this->obj->DB_select_once('company',"`uid`=".$this->uid,'*');
+        $this->yunset("user_phone",$user_msg['moblie']);
+        $this->yunset("company_msg",$company_msg);
 		$this->com_tpl($temp);
 	}
 	function del_action(){
@@ -88,5 +95,10 @@ class paylog_controller extends company{
 			}
 		}
 	}
+
+	function do_data_action(){
+	    $post = $_POST;
+
+    }
 }
 ?>
