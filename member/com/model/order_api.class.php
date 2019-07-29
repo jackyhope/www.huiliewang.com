@@ -174,16 +174,17 @@ class order_api_controller extends company
      */
     public function buy_action() {
 //        error_reporting(E_ALL);
-        error_reporting(E_ALL ^ E_NOTICE);
-        $serviceId = BaseUtils::getStr($_GET['id'], 'int');
-        $smsCode = BaseUtils::getStr($_GET['code'], 'int');
+//        error_reporting(E_ALL ^ E_NOTICE);
+        $serviceId = BaseUtils::getStr($_POST['id'], 'int');
+        $smsCode = BaseUtils::getStr($_POST['code'], 'int');
         if ($serviceId <= 0 || !$smsCode) {
             $this->ajax_return(500, false, '参数错误');
         }
-        //@todo  短信验证码验证
-        if ($smsCode !== $_SESSION['code'] || (time() - $_SESSION['code_time']) > 300) {;
+        //@todo  短信验证码验证 07-29 暂时跳过验证
+        /*if ($smsCode !== $_SESSION['code'] || (time() - $_SESSION['code_time']) > 300) {;
             $this->ajax_return(500, false, '短信验证码错误');
-        }
+        }*/
+
         //余额验证
         $serviceInfo = $this->obj->DB_select_once('company_service_detail', 'id = ' . $serviceId);
         if (!$serviceInfo) {
@@ -195,17 +196,17 @@ class order_api_controller extends company
         $serviceType = $serviceInfo['type'];
 
         //查询余额
-        $companyStatis = $this->obj->DB_select_once('company_statis', 'uid = ' . $this->uid);
-        $integral = intval($companyStatis['integral']);
+        $companyStatis = $this->obj->DB_select_once('company', 'uid = ' . $this->uid);
+        $integral = intval($companyStatis['c_money']);
         if ($integral < $price) {
             //余额不足
             $this->ajax_return(500, false, '余额不足');
         }
-        $supl = intval($companyStatis['integral'] - $price);
+        $supl = intval($companyStatis['c_money'] - $price);
         try {
             //扣除积分
-            $value = "`integral` = " . $supl;
-            $this->obj->DB_update_all('company_statis', $value, 'uid = ' . $this->uid);
+            $value = "`c_money` = " . $supl;
+            $this->obj->DB_update_all('company', $value, 'uid = ' . $this->uid);
             //增加点数
             $companyValue = "`resume_payd` = `resume_payd` +" . $resume . ",`interview_payd` = `interview_payd` +" . $interview;
             $this->obj->DB_update_all('company', $companyValue, 'uid = ' . $this->uid);
