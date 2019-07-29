@@ -43,7 +43,7 @@ class order_api_controller extends company
     public function orderList_action() {
         $this->publicCheck();
         $page = baseUtils::getStr($_POST['page'], 'int', 1);
-        $orderType = baseUtils::getStr($_GET['order_type'], 'int', 0);
+        $orderType = baseUtils::getStr($_POST['order_type'], 'int', 0);
         $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
         $page < 1 && $page = 1;
         $pageSize = 15;
@@ -80,10 +80,10 @@ class order_api_controller extends company
      */
     public function serviceList_action() {
         $this->publicCheck();
-        $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
-        $pageSize = baseUtils::getStr($_REQUEST['page_size'], 'int', 15);
-        $orderType = baseUtils::getStr($_REQUEST['order_type'], 'int', 0);
-        $payStatus = baseUtils::getStr($_REQUEST['pay_status'], 'int', 0);
+        $page = baseUtils::getStr($_POST['page'], 'int', 1);
+        $pageSize = baseUtils::getStr($_POST['page_size'], 'int', 15);
+        $orderType = baseUtils::getStr($_POST['order_type'], 'int', 0);
+        $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
         $allService = $this->getAllService();
         $page < 1 && $page = 1;
         $pageStart = ($page - 1) * $pageSize;
@@ -113,14 +113,14 @@ class order_api_controller extends company
      */
     public function useList_action() {
         $this->publicCheck();
-        $page = baseUtils::getStr($_REQUEST['page'], 'int', 1);
-        $serviceType = baseUtils::getStr($_REQUEST['service_type'], 'int', 0);
-        $pageSize = baseUtils::getStr($_REQUEST['page_size'], 'int',15);
-        $payStatus = baseUtils::getStr($_REQUEST['pay_status'], 'int', 0);
+        $page = baseUtils::getStr($_POST['page'], 'int', 1);
+        $serviceType = baseUtils::getStr($_POST['service_type'], 'int', 0);
+        $pageSize = baseUtils::getStr($_POST['page_size'], 'int',15);
+        $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
         $page < 1 && $page = 1;
         $pageStart = ($page - 1) * $pageSize;
         $where = 'com_id = ' . $this->uid . ' and type in (1,0) and resume_id > 0';
-        isset($_REQUEST['service_type']) && $where .= " and type=" . $serviceType;
+        isset($_POST['service_type']) && $where .= " and type=" . $serviceType;
         $payStatus > 0 && $where .= " and pay_type=" . $payStatus;
         $where .= " order by id desc limit {$pageStart},{$pageSize}";
         $rows = $this->obj->DB_select_all_assoc('company_pay', $where);
