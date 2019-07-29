@@ -58,6 +58,7 @@ class order_api_controller extends company
             $where .= " and (order_type is not NULL)";
         }
         $payStatus > 0 && $where .= " and order_state=" . $payStatus;
+        $countWhere = $where;
         $where .= " order by order_time desc limit {$pageStart},{$pageSize}";
         $rows = $this->obj->DB_select_all_assoc('company_order', $where);
         if (is_array($rows)) {
@@ -70,7 +71,7 @@ class order_api_controller extends company
                 $v['order_type'] = ($v['order_type'] == 'adminpay' || $v['order_type'] == 'admincut') ? '线下充值' : '线上充值';
             }
         }
-        $counts = $this->obj->DB_select_num('company_order', $where);
+        $counts = $this->obj->DB_select_num('company_order', $countWhere);
         $list = ['list' => $rows, 'current_page' => $page, 'page_size' => $pageSize, 'counts' => $counts];
         $this->ajax_return(200, true, $list);
     }
@@ -90,6 +91,7 @@ class order_api_controller extends company
         $where = 'uid = ' . $this->uid . ' and type = 5';
         $orderType > 0 && $where .= " and order_type=" . $orderType;
         $payStatus > 0 && $where .= " and order_state=" . $payStatus;
+        $countWhere = $where;
         $where .= " order by order_time desc limit {$pageStart},{$pageSize}";
         $rows = $this->obj->DB_select_all_assoc('company_order', $where);
         if (is_array($rows)) {
@@ -103,7 +105,7 @@ class order_api_controller extends company
                 $v['rating2'] = $v['order_info'];
             }
         }
-        $counts = $this->obj->DB_select_num('company_order', $where);
+        $counts = $this->obj->DB_select_num('company_order', $countWhere);
         $list = ['list' => $rows, 'current_page' => $page, 'page_size' => $pageSize, 'counts' => $counts];
         $this->ajax_return(200, true, $list);
     }
@@ -122,6 +124,7 @@ class order_api_controller extends company
         $where = 'com_id = ' . $this->uid . ' and type in (1,0) and resume_id > 0';
         isset($_POST['service_type']) && $where .= " and type=" . $serviceType;
         $payStatus > 0 && $where .= " and pay_type=" . $payStatus;
+        $countWhere = $where;
         $where .= " order by id desc limit {$pageStart},{$pageSize}";
         $rows = $this->obj->DB_select_all_assoc('company_pay', $where);
         if (is_array($rows)) {
@@ -133,7 +136,7 @@ class order_api_controller extends company
                 $v['order_price'] = str_replace(".00", "", $v['order_price']);
             }
         }
-        $counts = $this->obj->DB_select_num('company_pay', $where);
+        $counts = $this->obj->DB_select_num('company_pay', $countWhere);
         $list = ['list' => $rows, 'current_page' => $page, 'page_size' => $pageSize, 'counts' => $counts];
         $this->ajax_return(200, true, $list);
     }
