@@ -211,3 +211,13 @@ function get_time(date, type = 1) {
     if(type==4)return MM+'-'+dd+' '+hh+':'+mm;
     if(type==5)return MM+'-'+dd;
 }
+//ªÒ»°query÷µ
+function getQueryVariable(variable='c'){
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}

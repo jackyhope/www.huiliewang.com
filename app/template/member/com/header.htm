@@ -43,13 +43,13 @@
     <!--公共上传用-->
     <div class="header_top_main">
       <div class="headerBox">
-        <img src="/app/public/imgs/logo.png" class="ourLogo" alt="ourLogo">
+        <a href="index.php"><img src="/app/public/imgs/logo.png" class="ourLogo" alt="ourLogo"></a>
         <nav>
-          <span class="choosed">首页</span>
-          <span>简历管理</span>
-          <span>职位管理</span>
-          <span>套餐中心</span>
-          <span>发布职位</span>
+          <span class=""><a href="index.php"><span >首页</span></a></span>
+          <span><a href="/member/index.php?c=resume"><span class="">简历管理</span></a></span>
+          <span><a href="/member/index.php?c=job"><span class="">职位管理</span></a></span>
+          <span><a href="index.php"><span class="">套餐中心</span></a></span>
+          <span><a href="/member/index.php?c=jobadd"><span class="">发布职位</span></a></span>
         </nav>
         <div class="userBox">
           <img src="/app/public/imgs/notice.png" alt="" class="noticeImg">
@@ -96,6 +96,22 @@
   </header>
   <script>
     $(function () {
+      if(getQueryVariable()=='resume'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(2)').addClass('choosed');
+      }else if(getQueryVariable()=='job'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(3)').addClass('choosed');
+      }else if(getQueryVariable()=='套餐中心()'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(4)').addClass('choosed');
+      }else if(getQueryVariable()=='jobadd'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(5)').addClass('choosed');
+      }else{
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(1)').addClass('choosed');
+      }
       $('.showNotice').click(ev => {
         if ($('.headerBox .noticeBox').css('display') == 'block') {
           $('.headerBox .noticeBox').css('display', 'none')
