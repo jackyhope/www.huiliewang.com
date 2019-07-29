@@ -12,6 +12,7 @@ class pay_controller extends company
 {
 	function index_action()
 	{
+
 		$this->public_action();
 		$statis=$this->company_satic();
 		if($_GET['type']=='vip'){
@@ -32,7 +33,8 @@ class pay_controller extends company
 			if($company['name']==''||$company['hy']==''){
 						$this->ACT_layer_msg("请先完善基本资料！",8,$_SERVER['HTTP_REFERER']);
 			}
-			if($_POST['comvip']){
+
+			/*if($_POST['comvip']){
 				$comvip=(int)$_POST['comvip'];
 				$ratinginfo =  $this->obj->DB_select_once("company_rating","`id`='".$comvip."'");
 				if($ratinginfo['time_start']<time() && $ratinginfo['time_end']>time()){
@@ -78,9 +80,19 @@ class pay_controller extends company
 				$data['type']='4';
 			}else {
 				$this->ACT_layer_msg("参数不正确，请正确填写！",8,$_SERVER['HTTP_REFERER']);
-			}
+			}*/
+
+			//0729- 直接跳过老的判断，只判断输入的金额
+            $integral=intval($_POST['price_int']);
+            if($integral<=1){
+                //$this->ACT_layer_msg("参数不正确，请正确填写！",8,$_SERVER['HTTP_REFERER']);
+                return_json('参数不正确，请正确填写！',200,['url'=>$_SERVER['HTTP_REFERER']]);
+            }
+            $data['type']='2';//0729-直接设置该值
+            $price=$integral;//0729-直接设置该值
 			if($data['type']=='2'&&$integral<1){
-				$this->ACT_layer_msg("请正确填写购买数量！",8,$_SERVER['HTTP_REFERER']);
+				//$this->ACT_layer_msg("请正确填写购买数量！",8,$_SERVER['HTTP_REFERER']);
+                return_json('请正确填写购买数量！',200,['url'=>$_SERVER['HTTP_REFERER']]);
 			}
 			$dingdan=mktime().rand(10000,99999);
 			$data['order_id']=$dingdan;
@@ -90,7 +102,7 @@ class pay_controller extends company
 			$data['order_remark']=trim($_POST['remark']);
 			$data['uid']=$this->uid;
 			$data['did']=$this->userdid;
-			$data['rating']=$_POST['comvip']?$_POST['comvip']:$_POST['comservice'];
+			$data['rating']=0;//$_POST['comvip']?$_POST['comvip']:$_POST['comservice']    //0729改
 			$data['integral']=$integral;
 			$id=$this->obj->insert_into("company_order",$data);
 			if($id){
