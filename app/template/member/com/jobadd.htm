@@ -40,10 +40,10 @@
         <div class="input_min selectBox" style="z-index:100">
             <input type="hidden" id="job_id" value="{yun:}$id{/yun}">
             <input type="hidden" id="service_type" value="{yun:}$company_job.service_type{/yun}">
-            <input class="SpFormLBut text_seclet_w250 " type="button"
-                value="{yun:}if $job_name[$company_job.job_post]{/yun}{yun:}$job_name[$company_job.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}"
-                onclick="index_job(3,'#workadds_job','#job_post','left:100px;top:100px; position:absolute;','{yun:}$row.job_post{/yun}');"
-                id="job_post">
+
+            <input type="hidden" name="job_post" id="job_post" value="{yun:}$company_job.job_post{/yun}"/>
+            <input class="SpFormLBut text_seclet_w250 " type="button"  value="{yun:}if $job_name[$company_job.job_post]{/yun}{yun:}$job_name[$company_job.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}" onclick="index_job(3,'#workadds_job','#job_post','left:100px;top:100px; position:absolute;','{yun:}$row.job_post{/yun}');" id="workadds_job"  >
+
             <link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css"
                 type="text/css">
             <script src="{yun:}$config.sy_weburl{/yun}/js/datepicker/foundation-datepicker.min.js"></script>
