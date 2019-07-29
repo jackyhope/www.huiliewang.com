@@ -10,8 +10,8 @@ class resume_api_controller extends company
      * @desc 参数检测
      */
     private function publicCheck() {
-        $this->resumeId = baseUtils::getStr($_GET['resume_id'], 'int');
-        $this->projectId = baseUtils::getStr($_GET['project_id'], 'int');
+        $this->resumeId = baseUtils::getStr($_POST['resume_id'], 'int');
+        $this->projectId = baseUtils::getStr($_POST['project_id'], 'int');
         $uId = $this->uid;
         if (!$uId) {
             $this->ajax_return(500, false, '请登录');
@@ -223,7 +223,10 @@ class resume_api_controller extends company
      * @desc @todo 简历下载
      */
     function down_action() {
-        $this->publicCheck();
+        $this->resumeId = baseUtils::getStr($_POST['resume_id'], 'int');
+        !$this->resumeId && $this->resumeId =  baseUtils::getStr($_GET['resume_id'], 'int');
+        $this->projectId = baseUtils::getStr($_POST['project_id'], 'int');
+        !$this->projectId && $this->projectId =  baseUtils::getStr($_GET['project_id'], 'int');
         //1、获取简历详情
         //2、更新状态
         $resumeInfo = [];
