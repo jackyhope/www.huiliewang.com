@@ -28,7 +28,26 @@ class resume_controller extends company
         $this->yunset("type", $_GET['type']);
         $this->public_action();
         $this->yunset("js_def", 8);
-        $this->com_tpl('resume');
+        if(!empty($_GET['c_type']) && in_array($_GET['c_type'],[1,4,8,99])){
+            switch ($_GET['c_type']){
+                case 1:
+                    $temp = 'resume';
+                    break;
+                case 4:
+                    $temp = 'resume4';
+                    break;
+                case 8:
+                    $temp = 'resume8';
+                    break;
+                case 99:
+                    $temp = 'resume99';
+                    break;
+
+            }
+        }else{
+            $temp = 'resume';
+        }
+        $this->com_tpl($temp);
     }
 
     function detail_action() {
