@@ -12,146 +12,12 @@
     <span class="searchBtn gradient_1">搜索</span>
   </div>
   <div class="list">
-    <div class="listBox">
-      <div class="listLeft">
-        <span class="postName">运营总监</span>
-        <span class="postType gradient_1"><img src="/app/public/imgs/vw.png" alt="">慧沟通</span><br>
-        <span class="salary">20w-30w</span>
-        <span class="adviser">专属顾问：小西</span><br>
-        <span class="createTime">发布于2019-7-12</span>
-      </div>
-      <div class="listMid">
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-      </div>
-      <div class="listRight">
-        <span>修改</span>
-        <span>上线</span>
-      </div>
-    </div>
-    <div class="listBox">
-      <div class="listLeft">
-        <span class="postName">运营总监</span>
-        <span class="postType gradient_1"><img src="/app/public/imgs/vw.png" alt="">慧沟通</span><br>
-        <span class="salary">20w-30w</span>
-        <span class="adviser">专属顾问：小西</span><br>
-        <span class="createTime">发布于2019-7-12</span>
-      </div>
-      <div class="listMid">
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-      </div>
-      <div class="listRight">
-        <span>修改</span>
-        <span>上线</span>
-      </div>
-    </div>
-    <div class="listBox">
-      <div class="listLeft">
-        <span class="postName">运营总监</span>
-        <span class="postType gradient_1"><img src="/app/public/imgs/vw.png" alt="">慧沟通</span><br>
-        <span class="salary">20w-30w</span>
-        <span class="adviser">专属顾问：小西</span><br>
-        <span class="createTime">发布于2019-7-12</span>
-      </div>
-      <div class="listMid">
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-      </div>
-      <div class="listRight">
-        <span>修改</span>
-        <span>上线</span>
-      </div>
-    </div>
-    <div class="listBox">
-      <div class="listLeft">
-        <span class="postName">运营总监</span>
-        <span class="postType gradient_1"><img src="/app/public/imgs/vw.png" alt="">慧沟通</span><br>
-        <span class="salary">20w-30w</span>
-        <span class="adviser">专属顾问：小西</span><br>
-        <span class="createTime">发布于2019-7-12</span>
-      </div>
-      <div class="listMid">
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-      </div>
-      <div class="listRight">
-        <span>修改</span>
-        <span>上线</span>
-      </div>
-    </div>
-    <div class="listBox">
-      <div class="listLeft">
-        <span class="postName">运营总监</span>
-        <span class="postType gradient_1"><img src="/app/public/imgs/vw.png" alt="">慧沟通</span><br>
-        <span class="salary">20w-30w</span>
-        <span class="adviser">专属顾问：小西</span><br>
-        <span class="createTime">发布于2019-7-12</span>
-      </div>
-      <div class="listMid">
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-        <div>
-          <span>5</span>
-          收到简历
-        </div>
-      </div>
-      <div class="listRight">
-        <span>修改</span>
-        <span>上线</span>
-      </div>
-    </div>
   </div>
   <div id="pager" class="pagger-box pagger"></div>
 </div>
 <script>
   $(function () {
+    // getData(1,5)
     $('.tab').click(ev => {
       $('.tab').toggleClass('choosed');
       if ($('.line1').css('left') == '100px') {
@@ -160,15 +26,104 @@
         $('.line1').css('left', '100px')
       }
     })
-    $('#pager').paging({
+    let pager = $('#pager').paging({
       initPageNo: 1, // 初始页码
-      totalPages: 32, //总页数
-      totalCount: '共' + 222 + '条数据', // 条目总数
-      slideSpeed: 300, // 缓动速度。单位毫秒
+      totalPages: 1, //总页数
+      totalCount: '共' + 0 + '条', // 条目总数
+      slideSpeed: 200, // 缓动速度。单位毫秒
       jump: true, //是否支持跳转
-      callback: function (page,size) { // 回调函数
-      }
+      callback: getData // 回调函数
     });
+    $('.searchInput').keydown(ev => {
+      if (ev.keyCode == 13) {
+        $('.pagersel').change();
+      }
+    })
+    $('.searchBtn').click(ev => {
+      $('.pagersel').change();
+    })
+
+    function getData(page, size) {
+      Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=job_show', {
+        'uid': 176,
+        page,
+        size,
+        kwd: $('.searchInput').val()
+      }).then(res => {
+        $('.list').empty();
+        res.datas.map(val => {
+          $('.list').append(`<div class="listBox">
+      <div class="listLeft">
+        <span class="postName">${val.name}</span>
+        <span class="postType  ${val.service_type==0?'gradient_1':'gradient_2'}"><img src="/app/public/imgs/vw.png" alt="">${val.service_type==0?'慧沟通':'慧面试'}</span><br>
+        <span class="salary">${val.minsalary+'-'+val.maxsalary}</span>
+        <span class="adviser">专属顾问：${val.joiner_name}</span><br>
+        <span class="createTime">发布于${get_time(val.edate)}</span>
+      </div>
+      <div class="listMid">
+        <div>
+          <span>${val.all_total}</span>
+          收到简历
+        </div>
+        <div>
+          <span>${val.new_total}</span>
+          新简历
+        </div>
+        <div style='display:${val.service_type==1?'none':'inline-block'};border-right:none'>
+          <span>${val.buy_total}</span>
+          下载简历
+        </div>
+        <div style='display:${val.service_type==2?'inline-block':'none'}'>
+          <span>${val.waiting_interview}</span>
+          待面试
+        </div>
+        <div style='display:${val.service_type==2?'inline-block':'none'};border-right:none'>
+          <span>${val.allready_arrive}</span>
+          已到场
+        </div>
+      </div>
+      <div class="listRight">
+        <span onclick='toreset(${val.id})'>修改</span>
+        <span onclick='changeStatus(${val.id},${val.status})'>${val.status==1?'下线':'上线'}</span>
+      </div>
+    </div>`)
+        })
+        pager.options.pageNo = res.data.page;
+        pager.options.totalPages = res.data.totalPage;
+        pager.options.totalCount = '共' + res.data.totalSize + '条';
+        pager.options.callback = function () {};
+        pager.init();
+        pager.options.callback = getData;
+      }).catch(res => {
+        $('.list').html(
+          '<img src="/app/public/imgs/c_no_data.png" class="nodataImg"/><span class="nodataSp">暂无数据</span>')
+      })
+    }
   })
+
+  function toreset(id) {
+    window.location.href = '/member/index.php?c=jobadd?id=' + id
+  }
+
+  function changeStatus(id, status) {
+    alert_notice({
+      title: '确认要' + (status == 1 ? "下线" : "上线") + '职位？',
+      type: 'warning',
+      confirm(ev) {
+        Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=change_status', {
+          id:id,
+          status:status,
+          ctype:1
+        }).then(res => {
+          $(ev.target).parent().parent('.mask').remove();
+          alert_notice({title:'操作成功'})
+      $('.pagersel').change();
+        }).catch(res=>{
+          $(ev.target).parent().parent('.mask').remove();
+          alert_notice({title:'操作失败',type:'error',content:res.message})
+        });
+      }
+    })
+  }
 </script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}

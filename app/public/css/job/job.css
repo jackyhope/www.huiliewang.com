@@ -96,7 +96,7 @@ color: #666666;
     font-size: 14px;
 }
 .listMid{
-    margin-left: 100px;
+    margin-left: 30px;
 }
 .listMid div{
     width: 115px;
@@ -115,6 +115,9 @@ color: #666666;
 .listBox>div{
     float: left;
     height: 100%;
+}
+.listLeft{
+    width: 340px;
 }
 .listMid span{
     color: #3CC1D3;
@@ -139,4 +142,15 @@ color: #666666;
     line-height: 20px;
     cursor: pointer;
     font-weight: 600;
+}
+.nodataImg{
+    display: block;
+    margin: 50px auto 20px;
+
+}
+.nodataSp{
+    display: block;
+    text-align: center;
+    color: #999;
+    margin-bottom: 200px;
 }
