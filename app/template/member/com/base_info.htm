@@ -113,9 +113,9 @@
 <div class="inputBox">
     <span class="sp1">固定电话：
     </span>
-    <input class="input_nomorl" type="text" placeholder="区号" value="{yun:}$row.phoneone{/yun}" type="number" style="width: 48px;padding-left: 5px;">-
-    <input  class="input_nomorl" id="phoneone" value="{yun:}$row.phonetwo{/yun}" placeholder="请输入固定电话号码">-
-    <input class="input_nomorl" type="text" placeholder="分机号" value="{yun:}$row.phonethree{/yun}" style="width: 48px;padding-left: 5px;">
+    <input class="input_nomorl" type="text" id="phoneone" placeholder="区号" value="{yun:}$row.phoneone{/yun}" type="number" style="width: 48px;padding-left: 5px;">-
+    <input  class="input_nomorl" id="phonetwo" value="{yun:}$row.phonetwo{/yun}" placeholder="请输入固定电话号码">-
+    <input class="input_nomorl" type="text" id="pnonethree" placeholder="分机号" value="{yun:}$row.phonethree{/yun}" style="width: 48px;padding-left: 5px;">
 </div>
 <div class="inputBox">
     <span class="sp1">
@@ -238,6 +238,9 @@
             var three_cityname = $('#three_cityname').val();
             var linkman = $('#linkman').val();
             var linktel = $('#linktel').val();
+            var phoneone = $('#phoneone').val();
+            var phonetwo = $('#phonetwo').val();
+            var phonethree = $('#phonethree').val();
             var qypr = $('#qypr').val();
             var address = $('#address').val();
             var munid = $('#munid').val();
@@ -262,6 +265,9 @@
                 three_cityname:three_cityname,
                 linkman:linkman,
                 linktel:linktel,
+                phoneone:phoneone,
+                phonetwo:phonetwo,
+                phonethree:phonethree,
                 pr:qypr,
                 address:address,
                 mun:munid,
@@ -273,7 +279,7 @@
                 linkjob:linkjob,
                 linkqq:linkqq,
                 linkmail:linkmail,
-                website:welfare
+                welfare:welfare
             }).then(function (res) {
                 window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=jobadd&act=edit';
             }).catch(function (res) {
