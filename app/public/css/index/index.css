@@ -1,0 +1,227 @@
+.indexBox {
+    width: 1165px;
+    margin: 38px auto 50px;
+    box-sizing: border-box;
+}
+
+.ba {
+    height: 261px;
+}
+.infoBox{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.left {
+    background: #fff;
+    overflow: hidden;
+    display: inline-block;
+    width: 859px;
+    height: 180px;
+    box-sizing: border-box;
+    padding-top: 26px;
+    box-shadow: 1px 2px 6px 0px rgba(4, 0, 0, 0.11);
+}
+
+.comLogo {
+    display: block;
+    float: left;
+    margin: 6px 33px 0 42px;
+    width: 120px;
+}
+
+.comName {
+    font-size: 24px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.comName span {
+    width: 88px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 23px;
+}
+
+.comName img {
+    width: 22px;
+}
+
+.div1 span {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    font-size: 14px;
+    margin-right: 32px;
+    color: #666;
+}
+
+.div1 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.account {
+    margin-top: 10px;
+}
+
+.account div {
+    display: inline-flex;
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #EEEEEE;
+}
+
+.account img {
+    margin-bottom: 11px;
+}
+
+.account div span:nth-child(1) {
+    color: #3CC1D3;
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.right {
+    width: 277px;
+    background: #fff;
+    height: 180px;
+    box-shadow: 1px 2px 6px 0px rgba(4, 0, 0, 0.11);
+    padding-top: 39px;
+    box-sizing: border-box;
+}
+.right span{
+    display: block;
+    margin-left: 67px;
+    margin-bottom: 11px;
+    font-size: 14px;
+    color: #666;
+}
+.right .tel{
+    margin-left: 28px;
+    margin-bottom: 0;
+}
+.right .wt{
+    font-size   : 12px;
+    color: #999;
+}
+.sec1{
+    width: 100%;
+}
+.sec1>div:nth-child(1){
+    height: 47px;
+    padding-top: 80px;
+    border-bottom: 1px solid #EEEEEE;
+}
+.sec1>div:nth-child(1) span{
+    display: block;
+    width: 56px;
+    font-size: 14px;
+    margin-left: 71px;
+    color: #333;
+    font-weight: 600;
+    line-height: 47px;
+    border-bottom: 2px solid #3CC1D3;
+}
+.blocks{
+    margin-top: 60px;
+    display: flex;
+    justify-content:space-between;
+}
+.blocks>div{
+    width: 340px;
+    border:1px solid rgba(238, 238, 238, 1);
+    height: 340px;
+}
+.blocks .title_{
+    height: 84px;
+    box-sizing: border-box;
+    padding: 34px 25px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.box1{
+    padding: 28px 11px 28px 28px;
+}
+.box1{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.box1 span:nth-child(1){
+    font-size: 16px;
+    color: #333;
+display: block;
+width: 257px;
+    font-weight: 600;
+}
+.box1 span:nth-child(3){
+    margin-right: 11px;
+    color: #999;
+    font-weight:500;
+}
+.box1 span:nth-child(2){
+    font-size: 14px;
+    margin-right: 5px;
+    color: #3CC1D3;
+    font-weight:500;
+}
+.blocks>div:hover{
+    box-shadow:1px 2px 10px 0px rgba(4,0,0,0.2);
+}
+.toPublish{
+    color: #3CC1D3;
+    font-size: 12px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 100px;
+    cursor: pointer;
+}
+.sp1{
+    display: block;
+    text-align: center;
+    margin-top: 132px;
+    color: #333;
+    font-size: 26px;
+    margin-bottom: 93px;
+}
+.ads{
+    display: flex;
+    justify-content: space-around;
+}
+.ads div{
+    display: flex;
+    width: 176px;
+    flex-direction: column;
+    align-items: center;
+}
+.ads span:nth-child(1){
+    font-size: 20px;
+    color: #333333
+}
+.ads .divide{
+    width: 30px;height: 2px;
+    background: #3CC1D3;
+    margin-top: 11px;
+    margin-bottom: 36px;
+}
+.ads span:nth-child(3){
+    font-size: 18px;
+    color: #333333
+}
+.ads span:nth-child(4){
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #999
+}
