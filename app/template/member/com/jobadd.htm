@@ -38,6 +38,8 @@
     <div class="box1">
         <span class="sp1"><span>*</span>职位类别：</span>
         <div class="input_min selectBox" style="z-index:100">
+            <input type="hidden" id="job_id" value="{yun:}$id{/yun}">
+            <input type="hidden" id="service_type" value="{yun:}$company_job.service_type{/yun}">
             <input type="hidden" name="job_post" id="job_post" value="{yun:}$row.job_post{/yun}" />
             <input class="SpFormLBut text_seclet_w250 " type="button"
                 value="{yun:}if $job_name[$row.job_post]{/yun}{yun:}$job_name[$row.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}"
@@ -63,7 +65,7 @@
         <div class="input_min selectBox" style="z-index: 101">
             <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="province"
                 onclick="search_show('job_province');">
-            <input type="hidden" id="provinceid" name="provinceid" value="" />
+            <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$company_job.provinceid{/yun}" />
             <div id="job_province" class="cus-sel-opt-panel" style="display:none">
                 <div style="width:100%;  overflow:auto; overflow-x:hidden">
                     <ul class="Search_Condition_box_list">
@@ -79,7 +81,7 @@
         <div class="input_min selectBox" style="z-index: 101">
             <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="citys"
                 onclick="search_show('job_citys');">
-            <input type="hidden" id="citysid" name="cityid" value="" />
+            <input type="hidden" id="citysid" name="cityid" value="{yun:}$company_job.cityid{/yun}" />
             <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
                 <div style="width:100%;  overflow:auto; overflow-x:hidden">
                     <ul class="Search_Condition_box_list">
@@ -95,7 +97,7 @@
         <div class="input_min selectBox" style="display:none" id="cityshowth">
             <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="three_city"
                 onclick="three_city_show('job_three_city');">
-            <input type="hidden" id="three_cityid" name="three_cityid" value="" />
+            <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$company_job.three_cityid{/yun}" />
             <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
                 <ul class="Search_Condition_box_list">
                     {yun:}foreach from=$com key=j item=v{/yun}
@@ -111,33 +113,33 @@
         <span class="sp1"><span>*</span>
             职位有效期：
         </span>
-        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间">&nbsp;&nbsp;天
+        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间" value="{yun:}$company_job.days{/yun}">&nbsp;&nbsp;天
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>
             薪资待遇：
         </span>
-        <input type="text" class="base_money input_min" id="minsalary" placeholder="最低薪资"><span class="sp3">元/月</span>
+        <input type="text" class="base_money input_min" id="minsalary" placeholder="最低薪资" value="{yun:}$company_job.minsalary{/yun}"><span class="sp3">元/月</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" class="base_money input_min" id="maxsalary" placeholder="最高薪资"><span class="sp3">元/月</span>
+        <input type="text" class="base_money input_min" id="maxsalary" placeholder="最高薪资" value="{yun:}$company_job.maxsalary{/yun}"><span class="sp3">元/月</span>
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>
             发放月数：
         </span>
-        <input type="text" class="mouthes input_min" id="ejob_salary_month" placeholder="填写发放月数">
+        <input type="text" class="mouthes input_min" id="ejob_salary_month" placeholder="填写发放月数" value="{yun:}$company_job.ejob_salary_month{/yun}">
     </div>
     <div class="box1" style="width: 800px">
         <span class="sp1" style="float: left"><span>*</span>
             职位描述：
         </span>
-        <textarea id="description" cols="30" rows="10"></textarea>
+        <textarea id="description" cols="30" rows="10">{yun:}$company_job.description{/yun}</textarea>
     </div>
     <div class="box1">
         <span class="sp1">
             汇报对象：
         </span>
-        <input type="text" id="detail_report" class="leader input_min">
+        <input type="text" id="detail_report" class="leader input_min" value="{yun:}$company_job.detail_report{/yun}">
     </div>
     <div class="box1">
         <span class="sp1">
@@ -480,6 +482,7 @@
                 servicetype = 1;
             }
             var name = $('#name').val();
+            var id = $('#job_id').val();
             var job_post = $('#job_post').val();
             var provinceid =$('#provinceid').val();
             var cityid= $('#citysid').val();
@@ -586,9 +589,10 @@
                 welfare98:welfare98,
                 tblink:tblink,
                 link_man:linkman,
-                link_moblie:link_moblie
+                link_moblie:link_moblie,
+                id:id
             }).then(function (res) {
-                alert_notice({title:'温馨提示',content:res.message});
+                alert_notice({title:'温馨提示',content:res.info});
             }).catch(function (res) {
                 alert_notice({title:'温馨提示',content:res.info,type:'warning'});
             });
