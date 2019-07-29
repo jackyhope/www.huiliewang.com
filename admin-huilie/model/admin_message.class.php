@@ -96,6 +96,11 @@ class admin_message_controller extends common{
 		}elseif($con['infotype']==4){
 			$con['type']='Í¶Ëß';
 		}
+		foreach ($con as $k=>$v){
+		    if(is_numeric($k)){
+		        unset($con[$k]);
+            }
+        }
 		$con['name']=yun_iconv("gbk","utf-8",$con['username']);
 		$con['type']=yun_iconv("gbk","utf-8",$con['type']);
 		$con['ctime']=date('Y-m-d H:s:m',$con['ctime']);
