@@ -491,6 +491,18 @@ class jobadd_controller extends company
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
         }
+        //套餐余量检查
+        $companyInfo = $this->obj->DB_select_once("company", "`uid`='" . $this->uid , "resume_payd,interview_payd,c_money");
+        if($_POST['service_type'] == 0 && $companyInfo['interview_payd'] <= 0 ){
+            $return = ['success' => false, 'code' => 500, 'info' => "慧沟通余量不足"];
+            $this->jsonReturn($return);
+        }
+        //慧面试余量
+        if($_POST['service_type'] == 1 && $companyInfo['resume_payd'] <= 0 ){
+            $return = ['success' => false, 'code' => 500, 'info' => "慧面试余量不足"];
+            $this->jsonReturn($return);
+        }
+
         $_POST['state'] = 0;
         $companyCert = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "'and type=3", "uid,type,status");
         if ($this->config['com_free_status'] == "1" && $companyCert['status'] == "1") {
