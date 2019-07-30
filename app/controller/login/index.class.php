@@ -67,6 +67,7 @@ class index_controller extends common{
         if($re->code == 200){
             $user = return_toArray((object)$re);
             $user = $user['data'];
+
             //登录成功，写session--0715-暂未完成session
 
             $this->unset_cookie();

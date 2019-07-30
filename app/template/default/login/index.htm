@@ -345,48 +345,70 @@
 					});
 				});
 			});
-
+			
 			$('.login').click(function () {
-				if ($('.logTab .choosed+span').length == 0) {
-					//手机密码登录
-					var tel = $('.passTel').val();
-					var pass = $('.loginPassword').val();
-					Post('{yun:}url m=login c=wt_login{/yun}', {
-						username: tel,
-						password: pass,
-						l_type: 2
-					}).then(function (res) {
-						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+                //手机验证码登录
+                var verTel = $('.verTel').val();
+                var verifyCode = $('.verifyCode').val();
+                Post('{yun:}url m=login c=wt_login{/yun}', {
+                    username: verTel,
+                    password: verifyCode,
+                    l_type: 1
+                }).then(function (res) {
+                    // window.location.href =
+                    //     '{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
+                }).catch(function (res) {
+                    alert_notice({
+                        title: '温馨提示',
+                        content: res.message,
+                        type: 'warning'
+                    });
+                    // window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+                });
+            });
 
-					}).catch(function (res) {
-						// alert(res.message);
-						alert_notice({
-							title: '温馨提示',
-							content: res.message,
-							type: 'warning'
-						});
-					});
-				} else {
-					//手机验证码登录
-					var verTel = $('.verTel').val();
-					var verifyCode = $('.verifyCode').val();
-					Post('{yun:}url m=login c=wt_login{/yun}', {
-						username: verTel,
-						password: verifyCode,
-						l_type: 1
-					}).then(function (res) {
-						window.location.href =
-							'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
-					}).catch(function (res) {
-						alert_notice({
-							title: '温馨提示',
-							content: res.message,
-							type: 'warning'
-						});
-						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
-					});
-				}
-			});
+			// $('.login').click(function () {
+			// 	if ($('.logTab .choosed+span').length == 0) {
+			// 		//手机密码登录
+			// 		var tel = $('.passTel').val();
+			// 		var pass = $('.loginPassword').val();
+			// 		Post('{yun:}url m=login c=wt_login{/yun}', {
+			// 			username: tel,
+			// 			password: pass,
+			// 			l_type: 2
+			// 		}).then(function (res) {
+			// 			window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+            //
+			// 		}).catch(function (res) {
+			// 			// alert(res.message);
+			// 			alert_notice({
+			// 				title: '温馨提示',
+			// 				content: res.message,
+			// 				type: 'warning'
+			// 			});
+			// 		});
+			// 	} else {
+			// 		//手机验证码登录
+			// 		var verTel = $('.verTel').val();
+			// 		var verifyCode = $('.verifyCode').val();
+			// 		alert(verTel);alert(verifyCode);return;
+			// 		Post('{yun:}url m=login c=wt_login{/yun}', {
+			// 			username: verTel,
+			// 			password: verifyCode,
+			// 			l_type: 1
+			// 		}).then(function (res) {
+			// 			window.location.href =
+			// 				'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
+			// 		}).catch(function (res) {
+			// 			alert_notice({
+			// 				title: '温馨提示',
+			// 				content: res.message,
+			// 				type: 'warning'
+			// 			});
+			// 			window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+			// 		});
+			// 	}
+			// });
 
 
 			/*******end  edit  guo********************************************************************************************/
