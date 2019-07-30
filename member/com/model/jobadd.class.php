@@ -536,7 +536,7 @@ class jobadd_controller extends company
             $this->jsonReturn($return);
         }
         //Ì×²ÍÓàÁ¿¼ì²é
-        $companyInfo = $this->obj->DB_select_once("company", "`uid`='" . $this->uid , "resume_payd,interview_payd,c_money");
+        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid , "resume_payd,interview_payd,c_money");
         if($_POST['service_type'] == 0 && $companyInfo['interview_payd'] <= 0 ){
             $return = ['success' => false, 'code' => 500, 'info' => "»Û¹µÍ¨ÓàÁ¿²»×ã"];
             $this->jsonReturn($return);
