@@ -276,18 +276,23 @@
 <!--相关简历列表页的弹框module   end -->
 </body>
 <script>
+    var tp_status = 1;
     $(function(){
         getData(1,5)
         function getData(page,size){
             Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show',{
                 job_id:/*$('#business_val').val()*/96,
-                job_type:$('#at_val').val(),
-                kwd:$('#kwd').val(),
+                // job_type:$('#at_val').val(),
+                // kwd:$('#kwd').val(),
                 page,
                 size,
                 islook:$('#is_look').attr('checked')?1:void 0
             }).then(res=>{
-
+                if(tp_status==1){
+                    res.datas.map(val=>{
+                        
+                    })
+                }
             }).catch(res=>{
 
             })
