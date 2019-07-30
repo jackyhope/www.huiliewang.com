@@ -163,7 +163,7 @@ function alert_notice(obj = {
         $('.dialog_box .dialog_btn').click(ev => {
             $(ev.target).parent().parent('.mask').remove()
             if (obj.src) {
-                window.location.href = obj.sec
+                window.location.href = obj.src
             }
         })
     }
