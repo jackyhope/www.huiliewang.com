@@ -596,9 +596,10 @@
                 id:id
             }).then(function (res) {
                 alert_notice({title:'温馨提示',content:res.info});
-                window.location.reload();
+                window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=job';
             }).catch(function (res) {
                 alert_notice({title:'温馨提示',content:res.info,type:'warning'});
+                window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog';
             });
 
         });
