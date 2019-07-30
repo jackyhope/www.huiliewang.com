@@ -6,6 +6,7 @@ function Post(url, data) {
             data,
             type: 'post',
             success(res) {
+                
                 if (typeof res == 'string') {
                     res = JSON.parse(res);
                 }
@@ -206,8 +207,8 @@ function get_time(date, type = 1) {
     if (mm < 10) mm = '0'+mm;
     if (ss < 10) ss = '0'+ss;
     if(type==1)return yy+'-'+MM+'-'+dd+' '+hh+':'+mm+':'+ss;
-    if(type==2)return yy+'-'+MM+'-'+dd;
-    if(type==3)return yy+'-'+MM+'-'+dd+' '+hh+':'+mm+':'+ss;
+    if(type==2)return yy+'-'+MM+'-'+dd+' '+hh+':'+mm;
+    if(type==3)return yy+'-'+MM+'-'+dd;
     if(type==4)return MM+'-'+dd+' '+hh+':'+mm;
     if(type==5)return MM+'-'+dd;
 }

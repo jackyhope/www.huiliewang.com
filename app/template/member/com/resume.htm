@@ -61,7 +61,7 @@
         </div>
     </div>
     <!--  收到的简历 start -->
-    <div class="c_table mt_28 clearall">
+    <div class="c_table mt_28 clearall resumeList">
         <div class="c_th clearall">
             <div class="c_td">候选人</div>
             <div class="c_td">学历</div>
@@ -72,52 +72,8 @@
             <div class="c_td">推荐时间</div>
             <div class="c_td">操作</div>
         </div>
-        <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);"
-                    onclick="show_module('c_module_1')">购买简历</a><a class="not_fit" href="">不合适</a></div>
-        </div>
-        <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);"
-                    onclick="show_module('c_module_2')">MODULE2</a><a class="not_fit" href="">不合适</a></div>
-        </div>
-        <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);"
-                    onclick="show_module('c_module_3')">MODULE3</a><a class="not_fit" href="">不合适</a></div>
-        </div>
-        <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);"
-                    onclick="show_module('c_module_4')">MODULE4</a><a class="not_fit" href="">不合适</a></div>
-        </div>
-
     </div>
+    <div id="pager" class="pagger-box pagger"></div>
     <!--  收到的简历 end -->
 </div>
 <!--content-list end-->
@@ -132,24 +88,60 @@
 <script>
     var tp_status = 1;
     $(function () {
-        getData(1, 5)
+        let pager = $('#pager').paging({
+            initPageNo: 1, // 初始页码
+            totalPages: 1, //总页数
+            totalCount: '共' + 0 + '条', // 条目总数
+            slideSpeed: 200, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            callback: getData // 回调函数
+        });
         $('#business_val').bind('myev', change)
         $('#at_val').bind('myev', change)
+        Post('/member/index.php?c=resume_api&act=buy_detail',{resume_id:1385244,project_id:30}).then(res=>{
 
+        })
         function getData(page, size) {
             Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show', {
-                job_id: $('#business_val').val()!=0?$('#business_val').val():void 0,
-                job_type: $('#at_val').val()!=0?$('#at_val').val():void 0,
-                kwd: $('#kwd').val()?$('#kwd').val():void 0,
+                c_type: 1,
+                job_id: $('#business_val').val() != 0 ? $('#business_val').val() : void 0,
+                job_type: $('#at_val').val() != 0 ? $('#at_val').val() : void 0,
+                kwd: $('#kwd').val() ? $('#kwd').val() : void 0,
                 page,
                 size,
                 islook: $('#is_look').attr('checked') ? 1 : void 0
             }).then(res => {
-                if (tp_status == 1) {
-                    res.datas.map(val => {
-
-                    })
-                }
+                $('.resumeList').html(`<div class="c_th clearall">
+            <div class="c_td">候选人</div>
+            <div class="c_td">学历</div>
+            <div class="c_td">工作年限</div>
+            <div class="c_td">意向职位</div>
+            <div class="c_td">类型</div>
+            <div class="c_td">顾问</div>
+            <div class="c_td">推荐时间</div>
+            <div class="c_td">操作</div>
+        </div>`);
+                res.datas.map(val => {
+                    $('.resumeList').append(`
+                        <div class="c_tr clearall">
+            <div class="c_td">${val.name}</div>
+            <div class="c_td">${val.edu?val.edu:'&nbsp;'}</div>
+            <div class="c_td">${val.work_year}年</div>
+            <div class="c_td">${val.job_class}</div>
+            <div class="c_td">${val.tj_namer}</div>
+            <div class="c_td">${val.service_type==0?'慧沟通':'慧简历'}</div>
+            <div class="c_td">${get_time(val.tjaddtime,3)}</div>
+            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);"
+                    onclick="show_module('${val.service_type==0?'c_moudle_2':'c_moudle_3'}')">${val.service_type==0?'购买简历':'邀约面试'}</a><a class="not_fit" href="">不合适</a></div>
+        </div>
+                        `)
+                })
+                pager.options.pageNo = res.data.page;
+                pager.options.totalPages = res.data.totalPage;
+                pager.options.totalCount = '共' + res.data.totalSize + '条';
+                pager.options.callback = function () {};
+                pager.init();
+                pager.options.callback = getData;
             }).catch(res => {
 
             })
@@ -169,7 +161,7 @@
                     $('#kwd').val('')
                     break
             }
-        }else if (name == 'kwd') {
+        } else if (name == 'kwd') {
             $('#business_select>div:nth-child(1) a').click();
             $('#at_select>div:nth-child(1) a').click();
         }
