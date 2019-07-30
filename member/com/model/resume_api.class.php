@@ -473,4 +473,27 @@ class resume_api_controller extends company
         }
         $this->ajax_return(200, true, $list);
     }
+
+    /**
+     * @desc 备注信息
+     */
+    public function note_action(){
+        $this->publicCheck();
+        try {
+            apiClient::init('', '');
+            $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
+            apiClient::build($resumeService);
+            $resumeDo = new com\hlw\huilie\dataobject\resume\resumeRequestDTO();
+            $resumeDo->resume_id = $this->resumeId;
+            $resumeDo->project_id = $this->projectId;
+            $info = $resumeService->note($resumeDo);
+            if ($info->code != 200) {
+                $this->ajax_return(500, false, $info->message);
+            }
+            $info->message = json_decode($info->message,true);
+            $this->ajax_return(200, true, $info->message);
+        } catch (Exception $e) {
+            $this->ajax_return(500, false, $e->getMessage());
+        }
+    }
 }
