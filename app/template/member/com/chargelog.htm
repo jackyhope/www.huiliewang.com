@@ -56,18 +56,18 @@
         {yun:}assign var="state" value=$log.order_state{/yun}
         {yun:}assign var="type" value=$log.order_type{/yun}
         <div class="c_tr clearall">
-            <div class="c_td">{yun:}if $log.type==1{/yun}购买会员
+            <div class="c_td">&nbsp;{yun:}if $log.type==1{/yun}购买会员
                 {yun:}elseif $log.type=='2'{/yun}{yun:}$config.integral_pricename{/yun}充值
                 {yun:}elseif $log.type=='3'{/yun}银行转帐
                 {yun:}elseif $log.type=='4'{/yun}金额充值
                 {yun:}elseif $log.type=='5'{/yun}购买慧猎套餐
                 {yun:}else{/yun}其他
                 {yun:}/if{/yun}</div>
-            <div class="c_td">{yun:}$log.order_price{/yun}</div>
-            <div class="c_td">{yun:}$arr_data.c_paystate.$state{/yun}</div>
-            <div class="c_td">{yun:}$log.order_id{/yun}</div>
-            <div class="c_td">{yun:}$log.order_time|date_format:'%Y-%m-%d %H:%M:%S'{/yun}</div>
-            <div class="c_td">{yun:}if $log.order_state=='1' && $log.order_type!='bank'{/yun}<a class="c_btn c_btn_light " href="index.php?c=payment&id={yun:}$log.id{/yun}">去支付</a>{yun:}else{/yun}
+            <div class="c_td">&nbsp;{yun:}$log.order_price{/yun}</div>
+            <div class="c_td">&nbsp;{yun:}$arr_data.c_paystate.$state{/yun}</div>
+            <div class="c_td">&nbsp;{yun:}$log.order_id{/yun}</div>
+            <div class="c_td">&nbsp;{yun:}$log.order_time|date_format:'%Y-%m-%d %H:%M:%S'{/yun}</div>
+            <div class="c_td">&nbsp;{yun:}if $log.order_state=='1' && $log.order_type!='bank'{/yun}<a class="c_btn c_btn_light " href="index.php?c=payment&id={yun:}$log.id{/yun}">去支付</a>{yun:}else{/yun}
                 {yun:}$arr_data.c_paystate.$state{/yun}
                 {yun:}/if{/yun}</div>
         </div>
