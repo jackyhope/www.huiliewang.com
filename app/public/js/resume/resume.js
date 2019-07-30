@@ -36,7 +36,7 @@ function select_click(name){
     $("#"+name+"_select").toggle();//弹出框显示
 
 }
-function select_new(name,val,valname){
+function select_new(name,val,valname,){
     if(name=='type'){
         if(val==2){
             $("#photo").show();
@@ -59,6 +59,7 @@ function select_new(name,val,valname){
     if(name=='datetype'){
         $("#xfilename").attr('value',val);
     }
+    $('input[name='+name+']').trigger('myev',[$('input[name='+name+']').val(),val])
     val=='0'?$("#is_rec").show():$("#is_rec").hide();
     $("#"+name+"_name").val(valname);//替换新名称
     $("#"+name+"_val").val(val);//替换新值

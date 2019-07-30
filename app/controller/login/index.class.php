@@ -47,7 +47,11 @@ class index_controller extends common{
             $post['l_type']==2 && $msg = '密码不能为空';
             return_json($msg,500);
         }
-
+        //验证码验证
+        if( $post['l_type']==1 && ($post['password'] != $_SESSION['code'] || (time()-$_SESSION['code_time']) > 60) ){
+            $msg = '请输入正确的验证码';
+            return_json($msg,500);
+        }
         apiClient::init(APPID,SECRET);
         $obj = new com\hlw\huiliewang\dataobject\frontLogin\FrontRequestDTO();
         $obj->post_data = [
