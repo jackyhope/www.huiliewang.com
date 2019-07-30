@@ -40,13 +40,13 @@
     $(document).ready(function () {
         //检验旧手机号是否正确
         var oldtel = $('.oldTel').val();
-        $('.oldTel').blur(function () {
-            Get('{yun:}url m=member c=vs act=checkold{/yun}',{oldphone:oldtel}).then(function (res) {
-
-            }).catch(function (reason) {
-                alert(reason.message);
-            });
-        });
+        // $('.oldTel').blur(function () {
+        //     Get('{yun:}url m=member c=vs act=checkold{/yun}',{oldphone:oldtel}).then(function (res) {
+        //
+        //     }).catch(function (res) {
+        //         alert_notice()
+        //     });
+        // });
 
         //
         $('.submit').click(function () {
@@ -68,42 +68,51 @@
         let count1 = 59;
         $('.form1 .getCode').click(ev => {
             var oldtel = $('.oldTel').val();
-            Post('{yun:}url m=member c=vs act=phone{/yun}',{oldphone:oldtel}).then(function (res) {
-                alert(res.message);
-            }).catch(function (reason) {
-                alert(reason.message);
-            });
-            if (count1 == 59) {
-                $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
-                let timeId = setInterval(() => {
-                    if (count1 != 0) {
-                        $(ev.target).html(count1 + 's后重试').css('cursor', 'wait').css('color',
-                            '#999');
-                        count1--;
-                    } else {
-                        $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
-                            '#3CC1D3');
-                        clearInterval(timeId);
-                        count1 = 59
-                    }
-                }, 1000)
+            if(oldtel == ''){
+                alert_notice({title:'温馨提醒',content:'请先输入原手机号',type:'warning'});
+                return false;
             }
+            //校验原手机号是否正确
+            Get('{yun:}url m=member c=vs act=checkold{/yun}',{oldphone:oldtel}).then(function () {
+                Post('{yun:}url m=member c=vs act=phone{/yun}',{oldphone:oldtel}).then(function (res) {
+                    alert_notice({title:'温馨提醒',content:res.message});
+                    if (count1 == 59) {
+                        $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
+                        let timeId = setInterval(() => {
+                            if (count1 != 0) {
+                            $(ev.target).html(count1 + 's后重试').css('cursor', 'wait').css('color',
+                                '#999');
+                            count1--;
+                        } else {
+                            $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
+                                '#3CC1D3');
+                            clearInterval(timeId);
+                            count1 = 59
+                        }
+                    }, 1000);
+                    }
+                }).catch(function (res) {
+                    alert_notice({title:'温馨提醒',content:res.message,type:'warning'});
+                });
+            }).catch(function (res) {
+                alert_notice({title:'温馨提醒',content:res.message,type:'warning'});
+            });
         })
         let count2 = 59;
         $('.form2 .getCode').click(ev => {
             var newTel = $('.oldTel').val();
+            if(newTel == ''){
+                alert_notice({title:'温馨提醒',content:'请先输入新手机号',type:'warning'});
+            }
             Post('{yun:}url m=member c=vs act=phone{/yun}',{oldphone:newTel}).then(function (res) {
-            alert(res.message);
-        }).catch(function (reason) {
-            alert(reason.message);
-        });
-            if (count2 == 59) {
-                $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
-                let timeId = setInterval(() => {
-                    if (count2 != 0) {
+                alert_notice({title:'温馨提醒',content:res.message});
+                if (count2 == 59) {
+                    $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
+                    let timeId = setInterval(() => {
+                        if (count2 != 0) {
                         $(ev.target).html(count2 + 's后重试').css('cursor', 'wait').css('color',
                             '#999');
-                            count2--;
+                        count2--;
                     } else {
                         $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
                             '#3CC1D3');
@@ -111,7 +120,10 @@
                         count2 = 59
                     }
                 }, 1000)
-            }
+                }
+            }).catch(function (res) {
+                 alert_notice({title:'温馨提醒',content:res.message,type:'warning'});
+            });
         })
         $('.first').click(ev=>{
             var  oldtel = $('.oldTel').val();

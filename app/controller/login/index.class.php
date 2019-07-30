@@ -332,6 +332,11 @@ class index_controller extends common{
             }
         }
 
+        if(isset($_POST['c_type']) && !empty(intval($_POST['c_type'])) && !in_array($post_data['c_type'],[1,4,8,99])){
+            $post_data['c_type'] = intval($_POST['c_type']);
+        }else{
+            $post_data['c_type'] = 99;
+        }
         if(isset($_POST['page']) && !empty(intval($_POST['page'])) && intval($_POST['page']) > 0){
             $post_data['page'] = intval($_POST['page']);
         }else{
