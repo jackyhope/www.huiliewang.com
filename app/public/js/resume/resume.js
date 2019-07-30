@@ -221,7 +221,24 @@ function bindev() {
             resume_id: $(this).attr('resume_id'),
             project_id: $(this).attr('project_id')
         }).then(res => {
-
+            _que.html(`<p class="que_title">等待顾问最终确认面试信息</p>
+            <p>我发起的面试邀请</p>
+            <div class="dl clearall">
+                <div class="dt">面试时间：</div>
+                <div class="dd">${res.info.timestart}</div>
+            </div>
+            <div class="dl clearall">
+                <div class="dt">面试地点：</div>
+                <div class="dd">${res.info.interview_place}</div>
+            </div>
+            <div class="dl clearall">
+                <div class="dt">面试人：</div>
+                <div class="dd">${res.info.status_type}</div>
+            </div>
+            <div class="dl clearall">
+                <div class="dt">备注：</div>
+                <div class="dd">${res.info.description}</div>
+            </div>`)
         })
         $(this).parent('.c_tr').hover(function () {}, function () {
             setTimeout(function () {
