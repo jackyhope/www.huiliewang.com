@@ -2,6 +2,7 @@
 
 class resume_api_controller extends company
 {
+   
     //'1' => '未查看'//  2-已查看// 3-不合适//  4-已购买//  5-邀约面试//  6-顾问面试确认//  7-候选人拒绝//  8-待面试  9-未到场确认中 10-未到场  11-已到场  0-移除
     protected $resumeId;
     protected $projectId;

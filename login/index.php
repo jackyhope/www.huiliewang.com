@@ -2,7 +2,7 @@
 include(dirname(dirname(__FILE__)).'/global.php');
 include(dirname(dirname(__FILE__))."/include/apiClient.php");
 include(dirname(dirname(__FILE__))."/include/baseUtils.php");
-define('ENV','online');
+define('ENV','local');
 define('APPID','');
 define('SECRET','');
 $Dir = str_replace("/","\\",dirname(__FILE__));
