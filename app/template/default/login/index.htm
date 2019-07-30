@@ -250,43 +250,30 @@
                     return false;
 				}
 				if (count1 == 59) {
-					Get('{yun:}url m=register c=checktel{/yun}', {
-						tel: tel
-					}).then(function (res) {
-						Get('{yun:}url m=register c=sendtel{/yun}', {
-							tel: tel
-						}).then(function (res) {
-							alert_notice({
-								title: '温馨提示',
-								content: res.message
-							});
-						}).catch(function (res) {
-							alert_notice({
-								title: '温馨提示',
-								content: res.message,
-								type: 'warning'
-							});
-						});
-					}).catch(function (res) {
-						alert_notice({
-							type: 'error',
-							title: '获取验证码失败',
-							content: res.message
-						})
-					});
-					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
-					let timeId = setInterval(() => {
-						if (count1 != 0) {
-							$(ev.target).html(count1 + 's后重试').css('cursor', 'wait').css('color',
-								'#999');
-							count1--;
-						} else {
-							$(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
-								'#3CC1D3');
-							clearInterval(timeId);
-							count1 = 59
-						}
-					}, 1000)
+                    Get('{yun:}url m=register c=sendtel{/yun}', {
+                        tel: tel
+                    }).then(function (res) {
+                        alert_notice({title:'温馨提示',content:res.message});
+                        $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
+                        let timeId = setInterval(() => {
+                            if (count1 != 0) {
+                            $(ev.target).html(count1 + 's后重试').css('cursor', 'wait').css('color',
+                                '#999');
+                            count1--;
+                        } else {
+                            $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
+                                '#3CC1D3');
+                            clearInterval(timeId);
+                            count1 = 59
+                        }
+                    }, 1000);
+                    }).catch(function (res) {
+                        alert_notice({
+                            title: '温馨提示',
+                            content: res.message,
+                            type: 'warning'
+                        });
+                    });
 				}
 			})
 			$('.signUpbox .getCode').click(ev => {
@@ -302,10 +289,20 @@
 						Get('{yun:}url m=register c=sendtel{/yun}', {
 							tel: tel
 						}).then(function (res) {
-							alert_notice({
-								title: '温馨提示',
-								content: res.message
-							})
+                            alert_notice({title:'温馨提示',content:res.message});
+                            $(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
+                            let timeId = setInterval(() => {
+                                if (count2 != 0) {
+                                $(ev.target).html(count2 + 's后重试').css('cursor', 'wait').css('color',
+                                    '#999');
+                                count2--;
+                            } else {
+                                $(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
+                                    '#3CC1D3');
+                                clearInterval(timeId);
+                                count2 = 59
+                            }
+                        }, 1000);
 						}).catch(function (res) {
 							alert_notice({
 								title: '温馨提示',
@@ -320,19 +317,6 @@
 							type: 'warning'
 						});
 					});
-					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
-					let timeId = setInterval(() => {
-						if (count2 != 0) {
-							$(ev.target).html(count2 + 's后重试').css('cursor', 'wait').css('color',
-								'#999');
-							count2--;
-						} else {
-							$(ev.target).html('获取验证码').css('cursor', 'pointer').css('color',
-								'#3CC1D3');
-							clearInterval(timeId);
-							count2 = 59
-						}
-					}, 1000)
 				}
 			})
 
@@ -341,7 +325,6 @@
 			$('.signUpBtn').click(function () {
 				var tel = $('.singUpTel').val();
 				var code = $('.verifyCode2').val();
-				// code == '' && alert('请填写验证码');
 				code == '' && alert_notice({
 					'title': '',
 					content: '请填写验证码',
@@ -395,7 +378,12 @@
 						window.location.href =
 							'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
 					}).catch(function (res) {
-                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+						alert_notice({
+							title: '温馨提示',
+							content: res.message,
+							type: 'warning'
+						});
+						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 					});
 				}
 			});
