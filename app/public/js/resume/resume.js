@@ -48,19 +48,19 @@ $(function () {
             })
         })
     })
-    $('.c_module_3 .dcBtn').click(ev=>{
-        Post('/member/index.php?c=resume_api&act=present',{
+    $('.c_module_3 .dcBtn').click(ev => {
+        Post('/member/index.php?c=resume_api&act=present', {
             resume_id: $(ev.target).attr('resume_id'),
             project_id: $(ev.target).attr('project_id'),
-            is_present:$('input[name=is_arrive]').val()
-        }).then(res=>{
+            is_present: $('input[name=is_arrive]').val()
+        }).then(res => {
             $('.pagersel').change();
             $('.c_module_3').addClass('c_hide');
             $('#c_shade').addClass('c_hide');
             alert_notice({
                 title: res.info
             })
-        }).catch(res=>{
+        }).catch(res => {
             alert_notice({
                 title: res.info,
                 type: 'error'
@@ -217,6 +217,12 @@ function bindev() {
         $('.c_jsshow').hide();
         var _que = $(this).parent().find('.show_que');
         _que.stop(true).fadeToggle(600);
+        Post('/member/index.php?c=resume_api&act=note', {
+            resume_id: $(this).attr('resume_id'),
+            project_id: $(this).attr('project_id')
+        }).then(res => {
+
+        })
         $(this).parent('.c_tr').hover(function () {}, function () {
             setTimeout(function () {
                 _que.stop(true).fadeOut(300);
@@ -228,30 +234,35 @@ function bindev() {
         show_module(`c_module_3,${$(ev.target).attr('resume_id')},${$(ev.target).attr('project_id')}`)
     })
     $('.removeAt').click(ev => {
-        alert_notice({title:'操作确认',content:'确认移除该候选人？',type:'warning',confirm(){
-            Post('/member/index.php?c=resume_api&act=reject', {
-                resume_id:$(ev.target).attr('resume_id'),
-                project_id:$(ev.target).attr('project_id')
-            }).then(res => {
-                close_all_dialog();
-                $('.pagersel').change();
-                alert_notice({
-                    title: res.info
-                });
-            }).catch(res => {
-                alert_notice({
-                    title: res.info,
-                    type: 'error'
+        alert_notice({
+            title: '操作确认',
+            content: '确认移除该候选人？',
+            type: 'warning',
+            confirm() {
+                Post('/member/index.php?c=resume_api&act=reject', {
+                    resume_id: $(ev.target).attr('resume_id'),
+                    project_id: $(ev.target).attr('project_id')
+                }).then(res => {
+                    close_all_dialog();
+                    $('.pagersel').change();
+                    alert_notice({
+                        title: res.info
+                    });
+                }).catch(res => {
+                    alert_notice({
+                        title: res.info,
+                        type: 'error'
+                    })
                 })
-            })
-        }})
+            }
+        })
     })
 }
 
 function createDom(val) {
     if (val.huilie_status == 5) {
         return `
-        <div class="c_td show_hands que_tips" alt="点我查看详情" title="点我查看详情">待确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
+        <div class="c_td show_hands que_tips" alt="点我查看详情" title="点我查看详情" resume_id='${val.resume_id}' project_id='${val.project_id}'>待确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
             <div class="c_td"><a class="c_btn c_btn_light" style='cursor:default;background:#c1c1c1;color:#fff;border:none;' href="void:0">等待面试</a></div>
             <div class="c_jsshow show_que">
                 <p class="que_title">等待顾问最终确认面试信息</p>
@@ -276,7 +287,7 @@ function createDom(val) {
         `
     } else if (val.huilie_status == 6) {
         return `
-        <div class="c_td show_hands que_tips" alt="点我查看详情" title="点我查看详情">已确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
+        <div class="c_td show_hands que_tips" resume_id='${val.resume_id}' project_id='${val.project_id}' alt="点我查看详情" title="点我查看详情">已确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
             <div class="c_td"><a class="c_btn c_btn_light conAt" resume_id='${val.resume_id}' project_id='${val.project_id}' href="void:0">到场确认</a></div>
             <div class="c_jsshow show_que">
                 <p class="que_title">等待候选人前来面试</p>
@@ -301,7 +312,7 @@ function createDom(val) {
         `
     } else if (val.huilie_status == 7) {
         return `
-        <div class="c_td show_hands que_tips" alt="点我查看详情" title="点我查看详情">已拒绝 <img src="/app/public/imgs/c_holding.png" alt=""></div>
+        <div class="c_td show_hands que_tips" resume_id='${val.resume_id}' project_id='${val.project_id}' alt="点我查看详情" title="点我查看详情">已拒绝 <img src="/app/public/imgs/c_holding.png" alt=""></div>
             <div class="c_td"><a class="c_btn c_btn_light removeAt" resume_id='${val.resume_id}' project_id='${val.project_id}' href="void:0">移除</a></div>
             <div class="c_jsshow show_que">
                 <p class="que_title">候选人拒绝</p>
@@ -312,5 +323,34 @@ function createDom(val) {
             </div>
 
         `
+    }
+}
+
+function getStatus(status) {
+    switch (status) {
+        case '1':
+            return '未查看'
+        case '2':
+            return '已查看'
+        case '3':
+            return '不合适'
+        case '4':
+            return '已购买'
+        case '5':
+            return '邀约面试'
+        case '6':
+            return '顾问确认'
+        case '7':
+            return '候选人拒绝'
+        case '8':
+            return '待面试'
+        case '9':
+            return '未到场确认中'
+        case '10':
+            return '未到场'
+        case '11':
+            return '已到场'
+        case '0':
+            return '已移除'
     }
 }
