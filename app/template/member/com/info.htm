@@ -18,7 +18,7 @@
         <div class="line_1"></div>
         企业认证
     </div>
-    <div class="sec" style="display:none">
+    <div class="sec" style="display:block;">
         <div class="upBox">
             <span class="sp1">营业执照：</span>
             <div class="uploadBox">
@@ -38,7 +38,7 @@
                     id="province" {yun:}if $row.provinceid{/yun}
                 value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
                 onclick="search_show('job_province');">
-                <input type="hidden" id="provinceid" name="provinceid" value="" />
+                <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$city_name[$row.provinceid]{/yun}" />
                 <div id="job_province" class="cus-sel-opt-panel" style="display:none">
                     <div style="width:100%;  overflow:auto; overflow-x:hidden">
                         <ul class="Search_Condition_box_list">
@@ -56,7 +56,7 @@
                        {yun:}if $row.cityid{/yun}
                 value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
                 onclick="search_show('job_citys');">
-                <input type="hidden" id="citysid" name="cityid" value="" />
+                <input type="hidden" id="citysid" name="cityid" value="{yun:}$city_name[$row.cityid]{/yun}" />
                 <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
                     <div style="width:100%;  overflow:auto; overflow-x:hidden">
                         <ul class="Search_Condition_box_list">
@@ -74,7 +74,7 @@
                 <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun}
                 value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
                 onclick="three_city_show('job_three_city');">
-                <input type="hidden" id="three_cityid" name="three_cityid" value="" />
+                <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$city_name[$row.three_cityid]{/yun}" />
                 <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
                     <ul class="Search_Condition_box_list">
                         {yun:}foreach from=$com key=j item=v{/yun}
@@ -97,7 +97,7 @@
                     <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
                 value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
                 onclick="search_show('job_hy');">
-                    <input type="hidden" id="hyid" name="hy">
+                    <input type="hidden" id="hyid" name="hy" value="{yun:}$industry_name[$row.hy]{/yun}">
                          <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
                     <div style="width:100%;  overflow:auto; overflow-x:hidden">
                         <ul>
