@@ -6,7 +6,6 @@ function Post(url, data) {
             data,
             type: 'post',
             success(res) {
-                
                 if (typeof res == 'string') {
                     res = JSON.parse(res);
                 }
