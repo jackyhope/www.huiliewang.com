@@ -66,6 +66,7 @@ class index_controller extends common{
             //登录成功，写session--0715-暂未完成session
 
             $this->unset_cookie();
+            $user['username'] = yun_iconv('utf-8','gbk',$user['username']);
             $this->add_cookie($user['uid'],$user['username'],$user['salt'],$user['email'],$user['password'],$user['usertype'],$_POST['loginname'],$user['did']);
         }
         return_json('',200,return_toArray((object)$re));
