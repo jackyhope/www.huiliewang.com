@@ -6,20 +6,19 @@
 		<div class="left">
 			<img src="/app/public/imgs/9_03.png" class="comLogo" alt="">
 			<div class="comName">
-				重庆南方新华企业管理咨询有限公司
 				<span class="gradient_1"><img src="/app/public/imgs/vw.png" alt="">慧猎认证</span><br>
 			</div>
 			<div class="div1">
-				<span><img src="/app/public/imgs/9_18.png" alt="">广告·传媒·教育·文化</span>
-				<span><img src="/app/public/imgs/9_23.png" alt="">重庆</span>
+				<span class="hy"><img src="/app/public/imgs/9_18.png" alt=""></span>
+				<span class="addr"><img src="/app/public/imgs/9_23.png" alt=""></span>
 			</div>
 			<div class="account">
 				<div style="padding-left: 0;">
-					<span>5</span>
+					<span class="resume_payd">0</span>
 					<span>慧沟通余量</span>
 				</div>
 				<div>
-					<span>5</span>
+					<span class="interview_payd">0</span>
 					<span>慧面试余量</span>
 				</div>
 				<div>
@@ -37,8 +36,8 @@
 				客服电话：023-6366-8816
 			</span>
 			<span class="wt">（工作日：9:00——18:00）</span>
-			<span>您的专属BD：Linda</span>
-			<span>BD联系方式：19928256347</span>
+			<span>您的专属BD：<span class="bdname"></span></span>
+			<span>BD联系方式：<span class="telephone"></span></span>
 		</div>
 	</div>
 	<div class="sec1">
@@ -53,17 +52,17 @@
 				</div>
 				<div class="box1">
 					<span>新简历</span>
-					<span>12</span>
+					<span class="new_resumes">0</span>
 					<span>></span>
 				</div>
 				<div class="box1">
 					<span>邀约面试的简历</span>
-					<span>12</span>
+					<span class="interview_resumes">0</span>
 					<span>></span>
 				</div>
 				<div class="box1">
 					<span>已购买的简历</span>
-					<span>12</span>
+					<span class="buy_resumes">0</span>
 					<span>></span>
 				</div>
 			</div>
@@ -74,12 +73,12 @@
 				</div>
 				<div class="box1">
 					<span>待面试</span>
-					<span>12</span>
+					<span class="wait_interview_count">0</span>
 					<span>></span>
 				</div>
 				<div class="box1">
 					<span>待确认到场</span>
-					<span>12</span>
+					<span class="wait_present_count">0</span>
 					<span>></span>
 				</div>
 			</div>
@@ -90,7 +89,7 @@
 				</div>
 				<div class="box1">
 					<span>招聘中的职位</span>
-					<span>12</span>
+					<span class="job_count">0</span>
 					<span>></span>
 				</div>
 				<div class="toPublish">去发布职位&nbsp;&nbsp;<img src="/app/public/imgs/back.png" alt=""></div>
@@ -119,4 +118,25 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function () {
+		Post('{yun:}url m=member c=resume_api act=companyInfo{/yun}',{}).then(function (res) {
+		    var res = res.info;
+			$('.comName').prepend(res.name);
+			$('.hy').prepend(res.hy);
+			$('.addr').prepend(res.province);
+			$('.bdname').html(res.bd_name);
+			$('.telephone').html(res.bd_telephone);
+			$('.interview_payd').html(res.interview_payd);
+			$('.resume_payd').html(res.resume_payd);
+			$('.new_resumes').html(res.new_resumes);
+			$('.interview_resumes').html(res.interview_resumes);
+			$('.buy_resumes').html(res.buy_resumes);
+			$('.wait_interview_count').html(res.wait_interview_count);
+			$('.wait_present_count').html(res.wait_present_count);
+			$('.job_count').html(res.job_count);
+        });
+    });
+</script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
