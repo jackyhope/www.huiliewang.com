@@ -186,7 +186,10 @@
                 business_uname: business_uname,
                 linktel: linktel
             }).then(function (res) {
-                window.location.reload();
+                if(res.code==200){
+                    alert_notice({title:'温馨提示',content:res.message,type:'success',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=info',btn:'返回'});
+                }
+                //window.location.reload();
             }).catch(function (res) {
                 alert_notice({title:'温馨提示',content:res.message,type:'warning'});
             });
