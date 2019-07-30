@@ -36,7 +36,7 @@ function select_click(name){
     $("#"+name+"_select").toggle();//弹出框显示
 
 }
-function select_new(name,val,valname){
+function select_new(name,val,valname,){
     if(name=='type'){
         if(val==2){
             $("#photo").show();
