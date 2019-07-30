@@ -30,9 +30,10 @@ class pay_controller extends company
 	function dingdan_action(){
 		if($_POST['price'] || $_POST['money_int'] || $_POST['comvip'] || $_POST['comservice']){
 			$company=$this->obj->DB_select_once("company","`uid`='".$this->uid."'","`name`,`hy`");
-			if($company['name']==''||$company['hy']==''){
-						$this->ACT_layer_msg("请先完善基本资料！",8,$_SERVER['HTTP_REFERER']);
-			}
+            //07-30-暂时屏蔽该项目
+            /*if($company['name']==''||$company['hy']==''){
+                return_json('请完善资料',200,['url'=>$_SERVER['HTTP_REFERER']]);
+            }*/
 
 			/*if($_POST['comvip']){
 				$comvip=(int)$_POST['comvip'];
@@ -84,15 +85,15 @@ class pay_controller extends company
 
 			//0729- 直接跳过老的判断，只判断输入的金额
             $integral=intval($_POST['price_int']);
-            if($integral<=1){
+            if($integral<1){
                 //$this->ACT_layer_msg("参数不正确，请正确填写！",8,$_SERVER['HTTP_REFERER']);
-                return_json('参数不正确，请正确填写！',200,['url'=>$_SERVER['HTTP_REFERER']]);
+                return_json('参数不正确，请正确填写！',500,['url'=>$_SERVER['HTTP_REFERER']]);
             }
             $data['type']='2';//0729-直接设置该值
             $price=$integral;//0729-直接设置该值
 			if($data['type']=='2'&&$integral<1){
 				//$this->ACT_layer_msg("请正确填写购买数量！",8,$_SERVER['HTTP_REFERER']);
-                return_json('请正确填写购买数量！',200,['url'=>$_SERVER['HTTP_REFERER']]);
+                return_json('请正确填写购买数量！',500,['url'=>$_SERVER['HTTP_REFERER']]);
 			}
 			$dingdan=mktime().rand(10000,99999);
 			$data['order_id']=$dingdan;

@@ -536,7 +536,7 @@ class jobadd_controller extends company
             $this->jsonReturn($return);
         }
         //套餐余量检查
-        $companyInfo = $this->obj->DB_select_once("company", "`uid`='" . $this->uid , "resume_payd,interview_payd,c_money");
+        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid , "resume_payd,interview_payd,c_money,tb_customer_id");
         if($_POST['service_type'] == 0 && $companyInfo['interview_payd'] <= 0 ){
             $return = ['success' => false, 'code' => 500, 'info' => "慧沟通余量不足"];
             $this->jsonReturn($return);
@@ -633,7 +633,7 @@ class jobadd_controller extends company
         }
         //
         !isset($jobId) && $jobId = $id;
-        $res = $this->saveAfter($jobId, $id);
+        $res = $this->saveAfter($jobId, $id,$companyInfo['tb_customer_id']);
         if ($res) {
             $return = ['success' => true, 'code' => 200, 'info' => "更新成功"];
         } else {
@@ -663,7 +663,7 @@ class jobadd_controller extends company
      * @param $isUp
      * @return bool
      */
-    function saveAfter($id, $isUp = false) {
+    function saveAfter($id, $isUp = false,$oaCustomerId = 0) {
         $id = intval($id);
         if (!$id) {
             $return = ['success' => false, 'code' => 500, 'info' => '操作失败，请重新发布'];
@@ -779,6 +779,7 @@ class jobadd_controller extends company
             $saveJobDo->mode = baseUtils::getStr($mode);
             $saveJobDo->job_id = baseUtils::getStr($id, 'int');
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type'], 'int');
+            $saveJobDo->customer_id =intval($oaCustomerId);
 
             $result = $jobService->saveJob($saveJobDo);
             if ($result->code != 200) {

@@ -245,6 +245,10 @@
 			})
 			$('.signInBox .getCode').click(ev => {
 				var tel = $('.verTel').val();
+				if(tel == ''){
+                    alert_notice({title:'温馨提示',content:'请输入手机号',type:'warning'});
+                    return false;
+				}
 				if (count1 == 59) {
 					Get('{yun:}url m=register c=checktel{/yun}', {
 						tel: tel
@@ -287,6 +291,10 @@
 			})
 			$('.signUpbox .getCode').click(ev => {
 				var tel = $('.singUpTel').val();
+				if(tel == ''){
+                    alert_notice({title:'温馨提示',content:'请输入手机号',type:'warning'});
+                    return false;
+				}
 				if (count2 == 59) {
 					Get('{yun:}url m=register c=checktel{/yun}', {
 						tel: tel
@@ -387,12 +395,16 @@
 						window.location.href =
 							'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
 					}).catch(function (res) {
+<<<<<<< HEAD
 						alert_notice({
 							title: '温馨提示',
 							content: res.message,
 							type: 'warning'
 						});
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
+=======
+                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+>>>>>>> 0a079291bca6711d0be625eeab933409ef2b160b
 					});
 				}
 			});

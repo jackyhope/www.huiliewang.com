@@ -84,23 +84,25 @@
 
     }
     $(function(){
-       $('#dingdan_submit').click(function () {
-           pay_form('请输入充值数量！');
-           var _json={};
-           $.post('index.php?c=pay&act=dingdan',$('#c_alipayment').serialize(),function (data) {
-               data = JSON.parse(data);
-               if(data.code==200){
-                _json = {title:'温馨提示',content:data.message,type:'success',src:data.url,btn:'前往付款',else:''};
-                //默认2秒自动跳转
-                   setTimeout(function(){
-                       location.href=data.url;
-                   },2000);
-               }else{
-                   _json = {title:'温馨提示',content:data.message,type:'error',src:data.url,btn:'确定',else:''};
-               }
-               alert_notice(_json);
-           })
-       })
+        $('#dingdan_submit').click(function () {
+
+            pay_form('请输入充值数量！');
+            var _json={};
+            $.post('index.php?c=pay&act=dingdan',$('#c_alipayment').serialize(),function (data) {
+                data = JSON.parse(data);
+                console.log(data.url);
+                if(data.code==200){
+                    _json = {title:'温馨提示',content:data.message,type:'success',src:data.url,btn:'前往付款'};
+                    //默认2秒自动跳转
+                    setTimeout(function(){
+                        location.href=data.url;
+                    },1200);
+                }else{
+                    _json = {title:'温馨提示',content:data.message,type:'error',src:data.url,btn:'确定'};
+                }
+                alert_notice(_json);
+            })
+        })
     })
 </script>
 <!--尾巴 start-->
