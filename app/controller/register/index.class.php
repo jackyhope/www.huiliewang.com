@@ -211,12 +211,12 @@ class index_controller extends common{
             $_SESSION['code'] = $randstr ;
             $_SESSION['code_time'] = time();
             $arr['code'] = '200';
-            $arr['message'] = '发送成功';
+            $arr['message'] = yun_iconv("gbk","utf-8",'发送成功');
             $arr['success'] = true;
             echo json_encode($arr);die;
         }else{
             $arr['code'] = 500;
-            $arr['message'] = '发送失败';
+            $arr['message'] = yun_iconv("gbk","utf-8",'发送失败');
             $arr['success'] = false;
             echo json_encode($arr);die;
         }
