@@ -21,132 +21,196 @@
 </head>
 
 <body>
-	<div class="top">
-		<div class="top_cot">
-			<div class="top_cot_content">
-				<div class="top_left fl">
-					<div class="yun_welcome fl">欢迎来到{yun:}$config.sy_webname{/yun}！</div>
-				</div>
-				<div class="top_right_re fr">
-					<div class="top_right">
+	<header style="padding: 13px">
+		<img src="/app/public/imgs/ind_03.png" alt="" style="margin-left:10%;">
+	</header>
+	<div class="clear"></div>
 
-						<div class="yun_topNav fr" style="display: none;">
-							<a class="yun_navMore" href="javascript:;">网站导航</a>
-							<div class="yun_webMoredown none">
-								<div class="yun_top_nav_box">
-									<ul class="yun_top_nav_box_l">
-										{yun:}navmap key=key item=maplist{/yun}
-
-										<li><a href="{yun:}$maplist.url{/yun}" {yun:}if $maplist.eject{/yun}
-												target="_blank" {yun:}/if{/yun}>{yun:}$maplist.name{/yun} </a> </li>
-												{yun:}/navmap{/yun} </ul> <ul class="yun_top_nav_box_wx">
-												{yun:}nav item=navlist_app hovclass=nav_list_hover nid=11{/yun}
-										<li> <a class="move_0{yun:}$navlist_app.sort{/yun}" {yun:}if
-												$navlist_app.eject{/yun} target="_blank" {yun:}/if{/yun}
-												href="{yun:}$config.sy_weburl{/yun}/{yun:}$navlist_app.url{/yun}">{yun:}$navlist_app.name{/yun}</a>
-										</li>
-										{yun:}/nav{/yun}
-									</ul>
-
-								</div>
-							</div>
-						</div>
-						<!--<span class="fr"><a href="{yun:}$config.sy_weburl{/yun}/wap" class="wap_icon" target="_blank">手机版</a><i class="htop_line">|</i><a href="{yun:}url m=subscribe{/yun}" target="_blank" class="top_dy">订阅</a><i class="htop_line_two">|</i></span>-->
-						<script language='JavaScript' src='{yun:}url m=ajax c=RedLoginHead{/yun}'></script>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="login_cont">
-		<div class="login_w960">
-			<div class="login_header ">
-				<div class="logo fls" style="position:relative"><a href="{yun:}$config.sy_weburl{/yun}"><img
-							src="{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_logo{/yun}" class="png"></a></div>
-				<!--<a href="{yun:}$config.sy_weburl{/yun}" class="logo_fh fr">返回网站首页>></a>-->
-			</div>
-
-		</div>
-		<div class="clear"></div>
-
-		<div class="logoin_cont_box">
-			<div class="login_left">
-				<div class="signInBox">
-					<div class="logTab">
+	<div class="logoin_cont_box">
+		<div class="login_left">
+			<div class="signInBox">
+				<!-- <div class="logTab">
 						<span class="choosed">验证码登录</span>
 						<span>密码登录</span>
 						<div class="underline"></div>
-					</div>
-					<div class="formBox">
-						<div class="verifyBox">
-							<input type="num" class="verTel verify input_nomorl" rule='^\d{11}$' notice='请输入正确的手机号'
-								placeholder="请输入手机号">
-							<input type="num" class="verifyCode input_nomorl" placeholder="请输入验证码">
-							<span class="getCode">获取验证码</span>
-						</div>
-						<div class="passwordBox">
-							<input type="num" class="passTel verify input_nomorl" rule='^\d{11}$' notice='请输入正确的手机号'
-								placeholder="请输入手机号">
-							<input type="password" class="loginPassword input_nomorl" placeholder="请输入密码">
-						</div>
-					</div>
-					<a class="forgetPass" href='/index.php?m=forgetpw'>忘记密码?</a>
-					<button type="button" class="login gradient_1">登录</button>
-					<p class="toSignUp">没有账号？<span>立即注册</span></p>
-				</div>
-				<div class="signUpbox">
-					<span class="signUpTab">注册</span>
-					<div class="signUp">
-						<input type="num" id="singUpTel" class="singUpTel verify input_nomorl" rule='^\d{11}$'
-							notice='请输入正确的手机号' placeholder="请输入手机号">
-						<input type="num" class="verifyCode2 input_nomorl" placeholder="请输入验证码">
-						<input type="num" class="inviCode input_nomorl" placeholder="无邀请码可不填">
+					</div> -->
+				<span class="signUpTab">验证码登录</span>
+				<div class="formBox">
+					<div class="verifyBox">
+						<input type="num" class="verTel verify input_nomorl" rule='^\d{11}$' notice='请输入正确的手机号'
+							placeholder="请输入手机号">
+						<input type="num" class="verifyCode input_nomorl" placeholder="请输入验证码">
 						<span class="getCode">获取验证码</span>
 					</div>
-					<div class="agreeBox"><input type="checkbox" id="agree" /><label for="agree">我已阅读并同意</label><a
-							href="#" title="查看协议内容">《慧猎用户服务协议》</a></div>
-					<button type="button" class="signUpBtn gradient_1">注册</button>
-					<p class="toSignIn">返回登录<img src="/app/public/imgs/back.png" alt=""></p>
+					<div class="passwordBox">
+						<input type="num" class="passTel verify input_nomorl" rule='^\d{11}$' notice='请输入正确的手机号'
+							placeholder="请输入手机号">
+						<input type="password" class="loginPassword input_nomorl" placeholder="请输入密码">
+					</div>
 				</div>
+				<a class="forgetPass" href='/index.php?m=forgetpw'>忘记密码?</a>
+				<button type="button" class="login gradient_1">登录</button>
+				<p class="toSignUp">没有账号？<span>立即注册</span></p>
+			</div>
+			<div class="signUpbox">
+				<span class="signUpTab">注册</span>
+				<div class="signUp">
+					<input type="num" id="singUpTel" class="singUpTel verify input_nomorl" rule='^\d{11}$'
+						notice='请输入正确的手机号' placeholder="请输入手机号">
+					<input type="num" class="verifyCode2 input_nomorl" placeholder="请输入验证码">
+					<input type="num" class="inviCode input_nomorl" placeholder="无邀请码可不填">
+					<span class="getCode">获取验证码</span>
+				</div>
+				<div class="agreeBox"><input type="checkbox" id="agree" /><label for="agree">我已阅读并同意</label><a href="#"
+						title="查看协议内容">《慧猎用户服务协议》</a></div>
+				<button type="button" class="signUpBtn gradient_1">注册</button>
+				<p class="toSignIn">返回登录<img src="/app/public/imgs/back.png" alt=""></p>
 			</div>
 		</div>
-		<div class="clear"></div>
-		<!--banner-->
-		<div class="logoin_banner">
-			<div class="flexslider">
-				<ul class="slides">
-					<li style="background: url(/app/public/imgs/banner_02.png) 50% 0 no-repeat;">
-						<div href="#" style="display:block;width:100%;height:100%;"></div>
-					</li>
-				</ul>
+	</div>
+	<div class="clear"></div>
+	<!--banner-->
+	<div class="logoin_banner">
+		<div class="flexslider">
+			<ul class="slides">
+				<li style="background: url(/app/public/imgs/banner_02.png) 50% 0 no-repeat;">
+					<div href="#" style="display:block;width:100%;height:100%;"></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="blocks">
+		<span>行业人才精细化 人工真实对接</span>
+		<span>行业资深猎头一对一跟进服务，人才精准推荐</span>
+		<div class="imgs">
+			<div>
+				<img src="/app/public/imgs//sml_03.png" alt="">
+				<img src="/app/public/imgs/big_03.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs//sml_04.png" alt="">
+				<img src="/app/public/imgs/big_04.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs//sml_05.png" alt="">
+				<img src="/app/public/imgs/big_05.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs//sml_06.png" alt="">
+				<img src="/app/public/imgs/big_06.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs//sml_07.png" alt="">
+				<img src="/app/public/imgs/big_07.png" alt="">
 			</div>
 		</div>
-		<div class="clear"></div>
-		<div style="width:1200px; margin:0 auto">
-			<dl class="login_list">
-				<dt><img src="{yun:}$style{/yun}/images/log_img1.png" class="png" /></dt>
-				<dd>
-					<div class="login_list_h1">强大的人才库平台</div>
-					<div class="login_list_p">5000多万联合人才数据库</div>
-				</dd>
-			</dl>
-			<dl class="login_list">
-				<dt><img src="{yun:}$style{/yun}/images/log_img2.png" class="png" /></dt>
-				<dd>
-					<div class="login_list_h1">固化做单流程,保障服务质量</div>
-					<div class="login_list_p">重视每一单托付，只做有结果的招聘
-					</div>
-				</dd>
-			</dl>
-			<dl class="login_list">
-				<dt><img src="{yun:}$style{/yun}/images/log_img3.png" class="png" /></dt>
-				<dd>
-					<div class="login_list_h1">不仅招聘，还是人力资源管理专家</div>
-					<div class="login_list_p">600多位招聘猎头，为企业建立HR系统
-					</div>
-				</dd>
-			</dl>
+	</div>
+	<div class="sec2">
+		<img src="/app/public/imgs/ind8_02.png" alt="">
+	</div>
+	<div class="sec3">
+		<span>透明化流程 招聘进度实时更新</span>
+		<img src="/app/public/imgs/ind8_04.png" alt="">
+	</div>
+	<div class="sec4">
+		<span>平台优势</span>
+		<div>
+			<div class="div3">
+				<img src="/app/public/imgs/ind_13.png" alt="">
+				<span>1000+</span>
+				<span>自有猎头服务有保障</span>
+			</div>
+			<div class="div3">
+				<img src="/app/public/imgs/ind_15.png" alt="">
+				<span>24H</span>
+				<span>24小时内极速响应</span>
+			</div>
+			<div class="div3">
+				<img src="/app/public/imgs/ind_18.png" alt="">
+				<span>50,000,000+</span>
+				<span>人才数据库</span>
+			</div>
+			<div class="div3">
+				<img src="/app/public/imgs/ind_20.png" alt="">
+				<span>30000+</span>
+				<span>合作企业</span>
+			</div>
 		</div>
+	</div>
+	<div class="sec5">
+		<span>合作案例</span>
+		<div class="row1">
+			<div>
+				<img src="/app/public/imgs/ind_24.png" alt="">
+				<img src="/app/public/imgs/ind1_31.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_28.png" alt="">
+				<img src="/app/public/imgs/ind1_33.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_30.png" alt="">
+				<img src="/app/public/imgs/ind1_35.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_32.png" alt="">
+				<img src="/app/public/imgs/ind1_38.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_34.png" alt="">
+				<img src="/app/public/imgs/ind1_41.png" alt="">
+			</div>
+		</div>
+		<div class="row2">
+			<div>
+				<img src="/app/public/imgs/ind_42.png" alt="">
+				<img src="/app/public/imgs/ind1_49.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_44.png" alt="">
+				<img src="/app/public/imgs/ind1_51.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_46.png" alt="">
+				<img src="/app/public/imgs/ind1_53.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_48.png" alt="">
+				<img src="/app/public/imgs/ind1_55.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_50.png" alt="">
+				<img src="/app/public/imgs/ind1_57.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_52.png" alt="">
+				<img src="/app/public/imgs/ind1_59.png" alt="">
+			</div>
+		</div>
+		<div class="row1">
+			<div>
+				<img src="/app/public/imgs/ind_61.png" alt="">
+				<img src="/app/public/imgs/ind1_68.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_63.png" alt="">
+				<img src="/app/public/imgs/ind1_70.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_65.png" alt="">
+				<img src="/app/public/imgs/ind1_72.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_67.png" alt="">
+				<img src="/app/public/imgs/ind1_74.png" alt="">
+			</div>
+			<div>
+				<img src="/app/public/imgs/ind_69.png" alt="">
+				<img src="/app/public/imgs/ind1_76.png" alt="">
+			</div>
+		</div>
+	</div>
 	</div>
 	</div>
 
@@ -188,12 +252,23 @@
 						Get('{yun:}url m=register c=sendtel{/yun}', {
 							tel: tel
 						}).then(function (res) {
-							alert_notice({title:'温馨提示',content:res.message});
+							alert_notice({
+								title: '温馨提示',
+								content: res.message
+							});
 						}).catch(function (res) {
-							alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+							alert_notice({
+								title: '温馨提示',
+								content: res.message,
+								type: 'warning'
+							});
 						});
 					}).catch(function (res) {
-						alert_notice({type:'error',title:'获取验证码失败',content:res.message})
+						alert_notice({
+							type: 'error',
+							title: '获取验证码失败',
+							content: res.message
+						})
 					});
 					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
 					let timeId = setInterval(() => {
@@ -219,12 +294,23 @@
 						Get('{yun:}url m=register c=sendtel{/yun}', {
 							tel: tel
 						}).then(function (res) {
-                            alert_notice({title:'温馨提示',content:res.message})
+							alert_notice({
+								title: '温馨提示',
+								content: res.message
+							})
 						}).catch(function (res) {
-                            alert_notice({title:'温馨提示',content:res.message,type:'warning'})
+							alert_notice({
+								title: '温馨提示',
+								content: res.message,
+								type: 'warning'
+							})
 						});
 					}).catch(function (res) {
-                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+						alert_notice({
+							title: '温馨提示',
+							content: res.message,
+							type: 'warning'
+						});
 					});
 					$(ev.target).html('60s后重试').css('cursor', 'wait').css('color', '#999');
 					let timeId = setInterval(() => {
@@ -248,7 +334,11 @@
 				var tel = $('.singUpTel').val();
 				var code = $('.verifyCode2').val();
 				// code == '' && alert('请填写验证码');
-				code == '' && alert_notice({'title':'',content:'请填写验证码',type:'warning'});
+				code == '' && alert_notice({
+					'title': '',
+					content: '请填写验证码',
+					type: 'warning'
+				});
 				var inviCode = $('.inviCode').val();
 				Post('{yun:}url m=register c=registcom{/yun}', {
 					tel: tel,
@@ -258,7 +348,10 @@
 					if (res.success)
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 				}).catch(function (res) {
-					alert_notice({type:'error',title:res.message});
+					alert_notice({
+						type: 'error',
+						title: res.message
+					});
 				});
 			});
 
@@ -275,8 +368,12 @@
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 
 					}).catch(function (res) {
-					    // alert(res.message);
-                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+						// alert(res.message);
+						alert_notice({
+							title: '温馨提示',
+							content: res.message,
+							type: 'warning'
+						});
 					});
 				} else {
 					//手机验证码登录
@@ -288,9 +385,13 @@
 						l_type: 1
 					}).then(function (res) {
 						window.location.href =
-						'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
+							'{yun:}$config.sy_weburl{/yun}/member/index.php'; //jiekou有待做...
 					}).catch(function (res) {
-                        alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+						alert_notice({
+							title: '温馨提示',
+							content: res.message,
+							type: 'warning'
+						});
 						window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php';
 					});
 				}

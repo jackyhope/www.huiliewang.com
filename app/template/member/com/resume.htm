@@ -30,7 +30,7 @@
             <div class="select_box">
                 <input type="button" value="全部职位" class="select_box_text fll" id="business_name"
                     onclick="select_click('business');">
-                <input name="business" type="hidden" id="business_val" value="0" oninput="change(event)">
+                <input name="business" type="hidden" id="business_val" value="0">
                 <div class="select_box_list_box dn" id="business_select">
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('business','0','全部职位')">全部职位</a>
@@ -44,7 +44,7 @@
             <div class="select_box">
                 <input type="button" value="所有类型" class="select_box_text fll" id="at_name"
                     onclick="select_click('at');">
-                <input name="at" type="hidden" id="at_val" value="0" oninput="change(event)">
+                <input name="at" type="hidden" id="at_val" value="0">
                 <div class="select_box_list_box dn" id="at_select">
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('at','0','所有类型')">所有类型</a>
@@ -133,12 +133,14 @@
     var tp_status = 1;
     $(function () {
         getData(1, 5)
+        $('#business_val').bind('myev', change)
+        $('#at_val').bind('myev', change)
 
         function getData(page, size) {
             Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show', {
-                job_id: $('#business_val').val(),
-                job_type: $('#at_val').val(),
-                kwd: $('#kwd').val(),
+                job_id: $('#business_val').val()!=0?$('#business_val').val():void 0,
+                job_type: $('#at_val').val()!=0?$('#at_val').val():void 0,
+                kwd: $('#kwd').val()?$('#kwd').val():void 0,
                 page,
                 size,
                 islook: $('#is_look').attr('checked') ? 1 : void 0
@@ -153,8 +155,24 @@
             })
         }
     })
-    function change(ev){
-        console.log($(ev.target).attr('name'))
+
+    function change(ev, before, after) {
+        let name = $(ev.target).attr('name');
+        if (before != after) {
+            switch (name) {
+                case 'business':
+                    $('#at_select>div:nth-child(1) a').click();
+                    $('#kwd').val('')
+                    break
+                case 'at':
+                    $('#business_select>div:nth-child(1) a').click();
+                    $('#kwd').val('')
+                    break
+            }
+        }else if (name == 'kwd') {
+            $('#business_select>div:nth-child(1) a').click();
+            $('#at_select>div:nth-child(1) a').click();
+        }
     }
 </script>
 
