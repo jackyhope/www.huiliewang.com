@@ -780,6 +780,7 @@ class jobadd_controller extends company
             $saveJobDo->job_id = baseUtils::getStr($id, 'int');
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type'], 'int');
             $saveJobDo->customer_id =intval($oaCustomerId);
+            $saveJobDo->location = intval($_POST['provinceid']);
 
             $result = $jobService->saveJob($saveJobDo);
             if ($result->code != 200) {
