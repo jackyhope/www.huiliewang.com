@@ -225,9 +225,9 @@ class resume_api_controller extends company
      */
     function down_action() {
         $this->resumeId = baseUtils::getStr($_POST['resume_id'], 'int');
-        !$this->resumeId && $this->resumeId =  baseUtils::getStr($_GET['resume_id'], 'int');
+        !$this->resumeId && $this->resumeId = baseUtils::getStr($_GET['resume_id'], 'int');
         $this->projectId = baseUtils::getStr($_POST['project_id'], 'int');
-        !$this->projectId && $this->projectId =  baseUtils::getStr($_GET['project_id'], 'int');
+        !$this->projectId && $this->projectId = baseUtils::getStr($_GET['project_id'], 'int');
         //1、获取简历详情
         //2、更新状态
         $resumeInfo = [];
@@ -459,5 +459,42 @@ class resume_api_controller extends company
         }
         $list = json_decode($info->message, true);
         $this->ajax_return(200, true, $list);
+    }
+
+    /**
+     * @desc 职位列表
+     */
+    public function jobs_action() {
+        $list = $this->obj->DB_select_all_assoc('company_job', "uid = {$this->uid} order by id limit 15", 'id,name');
+        foreach ($list as $k => &$info) {
+            if (!$info['name']) {
+                unset($list[$k]);
+            }
+            $info['name'] = yun_iconv('gbk', 'utf-8', $info['name']);
+        }
+        $this->ajax_return(200, true, $list);
+    }
+
+    /**
+     * @desc 备注信息
+     */
+    public function note_action(){
+        $this->publicCheck();
+        try {
+            apiClient::init('', '');
+            $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
+            apiClient::build($resumeService);
+            $resumeDo = new com\hlw\huilie\dataobject\resume\resumeRequestDTO();
+            $resumeDo->resume_id = $this->resumeId;
+            $resumeDo->project_id = $this->projectId;
+            $info = $resumeService->note($resumeDo);
+            if ($info->code != 200) {
+                $this->ajax_return(500, false, $info->message);
+            }
+            $info->message = json_decode($info->message,true);
+            $this->ajax_return(200, true, $info->message);
+        } catch (Exception $e) {
+            $this->ajax_return(500, false, $e->getMessage());
+        }
     }
 }

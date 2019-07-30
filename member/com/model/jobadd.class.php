@@ -9,6 +9,7 @@
  *
  * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
  */
+
 class jobadd_controller extends company
 {
 
@@ -21,10 +22,10 @@ class jobadd_controller extends company
 //				$this->ACT_msg($_SERVER['HTTP_REFERER'],"你的".$this->config['integral_pricename']."不够发布职位！",8);
 //			}
 //		}
-        if($_GET['id']){
-            $id = intval(baseUtils::getStr($_GET['id'],'int'));
+        if ($_GET['id']) {
+            $id = intval(baseUtils::getStr($_GET['id'], 'int'));
             $cmj = $this->obj->DB_select_once("company_job", "`id`='" . $id . "'");
-            $this->yunset('id',$id);
+            $this->yunset('id', $id);
         }
         $company = $this->get_user();
         $msg = array();
@@ -80,48 +81,48 @@ class jobadd_controller extends company
         $this->yunset("jobnum", $jobnum);
         $this->yunset("row", $row);
         $this->yunset('type', $cmj['service_type']);
-        $this->yunset('company_job',$cmj);
-        $lang  =explode(',',$cmj['lang']);
-        $welfare = explode(',',$cmj['welfare']);
-        if($lang)
-        foreach ($lang as $k=>$v){
-            if($v=='103')
-                $this->yunset('lang103','103');;
-            if($v=='100')
-                $this->yunset("lang100", '100');
-            if($v=='107')
-                $this->yunset("lang107", '107');
-            if($v=='104')
-                $this->yunset("lang104", '104');
-            if($v=='105')
-                $this->yunset("lang105", '105');
-            if($v=='106')
-                $this->yunset("lang106", '106');
-            if($v=='108')
-                $this->yunset("lang108", '108');
-            if($v=='110')
-                $this->yunset("lang103", '110');
-        }
-        if($welfare){
-            foreach ($welfare as $k=>$v){
-                if($v =='95')
-                    $this->yunset('welfare95','95');
-                if($v =='94')
-                    $this->yunset('welfare94','94');
-                if($v =='92')
-                    $this->yunset('welfare92','92');
-                if($v =='91')
-                    $this->yunset('welfare91','91');
-                if($v =='90')
-                    $this->yunset('welfare90','90');
-                if($v =='96')
-                    $this->yunset('welfare96','96');
-                if($v =='97')
-                    $this->yunset('welfare97','97');
-                if($v =='93')
-                    $this->yunset('welfare93','93');
-                if($v =='98')
-                    $this->yunset('welfare98','98');
+        $this->yunset('company_job', $cmj);
+        $lang = explode(',', $cmj['lang']);
+        $welfare = explode(',', $cmj['welfare']);
+        if ($lang)
+            foreach ($lang as $k => $v) {
+                if ($v == '103')
+                    $this->yunset('lang103', '103');;
+                if ($v == '100')
+                    $this->yunset("lang100", '100');
+                if ($v == '107')
+                    $this->yunset("lang107", '107');
+                if ($v == '104')
+                    $this->yunset("lang104", '104');
+                if ($v == '105')
+                    $this->yunset("lang105", '105');
+                if ($v == '106')
+                    $this->yunset("lang106", '106');
+                if ($v == '108')
+                    $this->yunset("lang108", '108');
+                if ($v == '110')
+                    $this->yunset("lang103", '110');
+            }
+        if ($welfare) {
+            foreach ($welfare as $k => $v) {
+                if ($v == '95')
+                    $this->yunset('welfare95', '95');
+                if ($v == '94')
+                    $this->yunset('welfare94', '94');
+                if ($v == '92')
+                    $this->yunset('welfare92', '92');
+                if ($v == '91')
+                    $this->yunset('welfare91', '91');
+                if ($v == '90')
+                    $this->yunset('welfare90', '90');
+                if ($v == '96')
+                    $this->yunset('welfare96', '96');
+                if ($v == '97')
+                    $this->yunset('welfare97', '97');
+                if ($v == '93')
+                    $this->yunset('welfare93', '93');
+                if ($v == '98')
+                    $this->yunset('welfare98', '98');
             }
         }
         $this->yunset("today", date('Y-m-d', time()));
@@ -129,15 +130,17 @@ class jobadd_controller extends company
         $this->com_tpl('jobadd');
     }
 
-    function  phone_action(){
+    function phone_action() {
         $this->public_action();
         $this->com_tpl('phone');
     }
-    function  pw_reset_action(){
+
+    function pw_reset_action() {
         $this->public_action();
         $this->com_tpl('pw_reset');
     }
-    function  base_info_action(){
+
+    function base_info_action() {
 
         /**企业资料数据源   **/
         $row = $this->obj->DB_select_once("company", "`uid`='" . $this->uid . "'");
@@ -521,8 +524,8 @@ class jobadd_controller extends company
     function saveInfo_action() {
         $uId = $this->uid;
         $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-        $_POST['name'] = change_encoding($_POST['name'],'gbk');
-        $_POST['description'] = change_encoding($_POST['description'],'gbk');
+        $_POST['name'] = change_encoding($_POST['name'], 'gbk');
+        $_POST['description'] = change_encoding($_POST['description'], 'gbk');
 
 
         if (!$_POST['name']) {
@@ -536,13 +539,13 @@ class jobadd_controller extends company
             $this->jsonReturn($return);
         }
         //套餐余量检查
-        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid , "resume_payd,interview_payd,c_money,tb_customer_id");
-        if($_POST['service_type'] == 0 && $companyInfo['interview_payd'] <= 0 ){
+        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid, "resume_payd,interview_payd,c_money,tb_customer_id");
+        if ($_POST['service_type'] == 0 && $companyInfo['interview_payd'] <= 0) {
             $return = ['success' => false, 'code' => 500, 'info' => "慧沟通余量不足"];
             $this->jsonReturn($return);
         }
         //慧面试余量
-        if($_POST['service_type'] == 1 && $companyInfo['resume_payd'] <= 0 ){
+        if ($_POST['service_type'] == 1 && $companyInfo['resume_payd'] <= 0) {
             $return = ['success' => false, 'code' => 500, 'info' => "慧面试余量不足"];
             $this->jsonReturn($return);
         }
@@ -588,13 +591,12 @@ class jobadd_controller extends company
         }
         $_POST['description'] = str_replace(array("&amp;", "background-color:#ffffff", "background-color:#fff", "white-space:nowrap;"), array("&", 'background-color:', 'background-color:', 'white-space:'), html_entity_decode($_POST['description'], ENT_QUOTES, "GB2312"));
 
-
         try {
             apiClient::init();
             $jobAddService = new com\hlw\huiliewang\interfaces\company\JobAddServiceClient(null);
             apiClient::build($jobAddService);
             $saveJobDo = new com\hlw\huiliewang\dataobject\company\jobAddRequestDTO();
-            $saveJobDo->name =$_POST['name'];
+            $saveJobDo->name = $_POST['name'];
             $saveJobDo->minsalary = baseUtils::getStr($_POST['minsalary']);
             $saveJobDo->maxsalary = baseUtils::getStr($_POST['maxsalary']);
             $saveJobDo->marriage = baseUtils::getStr($_POST['marriage'], 'int');
@@ -623,8 +625,8 @@ class jobadd_controller extends company
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type']);
             $res = $jobAddService->saveJob($saveJobDo);
             if ($res->code != 200) {
-                $return = ['success' => false, 'code' => 500, 'info' => yun_iconv('utf-8','gbk',$res->message)];
-                $this->jsonReturn($return,false);
+                $return = ['success' => false, 'code' => 500, 'info' => yun_iconv('utf-8', 'gbk', $res->message)];
+                $this->jsonReturn($return, false);
             }
             $jobId = $res->message;
         } catch (Exception $e) {
@@ -633,7 +635,7 @@ class jobadd_controller extends company
         }
         //
         !isset($jobId) && $jobId = $id;
-        $res = $this->saveAfter($jobId, $id,$companyInfo['tb_customer_id']);
+        $res = $this->saveAfter($jobId, $id, $companyInfo['tb_customer_id']);
         if ($res) {
             $return = ['success' => true, 'code' => 200, 'info' => "更新成功"];
         } else {
@@ -642,19 +644,20 @@ class jobadd_controller extends company
         $this->jsonReturn($return);
     }
 
-    function productlist_action(){
+    function productlist_action() {
         $uid = $this->uid;
         $jobid = baseUtils::getStr(trim($_GET['id']));
-        apiClient::init($appid,$secret);
+        apiClient::init($appid, $secret);
         $companyService = new com\hlw\huiliewang\interfaces\company\CompanyServiceClient(null);
         apiClient::build($companyService);
-        $res = $companyService->productList($uid,$jobid);
+        $res = $companyService->productList($uid, $jobid);
         $arr_data = [];
-        foreach ($res->data as $v){
-            $arr_data[] = yun_iconv("gbk","utf-8",$v);
+        foreach ($res->data as $v) {
+            $arr_data[] = yun_iconv("gbk", "utf-8", $v);
         }
-        $return = ['success'=>$res->success,'code'=>$res->code,'data'=>$arr_data];
-        echo json_encode($return);die;
+        $return = ['success' => $res->success, 'code' => $res->code, 'data' => $arr_data];
+        echo json_encode($return);
+        die;
     }
 
     /**
@@ -663,7 +666,7 @@ class jobadd_controller extends company
      * @param $isUp
      * @return bool
      */
-    function saveAfter($id, $isUp = false,$oaCustomerId = 0) {
+    function saveAfter($id, $isUp = false, $oaCustomerId = 0) {
         $id = intval($id);
         if (!$id) {
             $return = ['success' => false, 'code' => 500, 'info' => '操作失败，请重新发布'];
@@ -749,14 +752,25 @@ class jobadd_controller extends company
         $_POST['mun'] = $company['mun'];
         $_POST['rating'] = $satic['rating'];
         $_POST['description'] = str_replace(array("&amp;", "background-color:#ffffff", "background-color:#fff", "white-space:nowrap;"), array("&", 'background-color:', 'background-color:', 'white-space:'), html_entity_decode($_POST['description'], ENT_QUOTES, "GB2312"));
-        $_POST['name'] = change_encoding($_POST['name'],'utf-8');
-        $_POST['description'] = change_encoding($_POST['description'],'utf-8');
+        $_POST['name'] = change_encoding($_POST['name'], 'utf-8');
+        $_POST['description'] = change_encoding($_POST['description'], 'utf-8');
+        $names = '';
+        if ($_POST['job_post']) {
+            $jobs = explode(',', $_POST['job_post']);
+            $jobclass = $this->MODEL('cache')->GetCache(array('job'));
+            $jobNames = $jobclass['job_name'];
+            $name = [];
+            foreach ($jobs as $jobId) {
+                array_push($name, $jobNames[$jobId]);
+            }
+            $names = implode(',',$name);
+        }
         try {
             apiClient::init();
             $jobService = new com\hlw\huilie\interfaces\JobServiceClient(null);
             apiClient::build($jobService);
             $saveJobDo = new com\hlw\huilie\dataobject\job\JobRequestDTO();
-            $saveJobDo->name =$_POST['name'];
+            $saveJobDo->name = $_POST['name'];
             $saveJobDo->minsalary = baseUtils::getStr($_POST['minsalary'], 'int');
             $saveJobDo->maxsalary = baseUtils::getStr($_POST['maxsalary'], 'int');
             $saveJobDo->ejob_salary_month = baseUtils::getStr($_POST['ejob_salary_month'], 'int');
@@ -779,13 +793,14 @@ class jobadd_controller extends company
             $saveJobDo->mode = baseUtils::getStr($mode);
             $saveJobDo->job_id = baseUtils::getStr($id, 'int');
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type'], 'int');
-            $saveJobDo->customer_id =intval($oaCustomerId);
+            $saveJobDo->customer_id = intval($oaCustomerId);
             $saveJobDo->location = intval($_POST['provinceid']);
+            $saveJobDo->job_class = baseUtils::getStr($names);
 
             $result = $jobService->saveJob($saveJobDo);
             if ($result->code != 200) {
                 $return = ['success' => false, 'code' => 500, 'info' => $result->message];
-                $this->jsonReturn($return,false);
+                $this->jsonReturn($return, false);
             }
         } catch (Exception $ex) {
             $return = ['success' => false, 'code' => 500, 'info' => $ex->getMessage()];
