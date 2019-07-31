@@ -109,7 +109,7 @@ function alert_notice(obj = {
     type: 'success',
     btn: '确认',
     else: '',
-    comfirm(){}
+    comfirm() {}
 }) {
     /*  参数obj为json对象
         属性:
@@ -157,9 +157,11 @@ function alert_notice(obj = {
     $('.dialog_box .close_dialog').click(ev => {
         $(ev.target).parent().parent('.mask').remove();
     })
-    if(obj.confirm){
-        $('.dialog_box .dialog_btn').click(ev => {obj.confirm(ev)})
-    }else{
+    if (obj.confirm) {
+        $('.dialog_box .dialog_btn').click(ev => {
+            obj.confirm(ev)
+        })
+    } else {
         $('.dialog_box .dialog_btn').click(ev => {
             $(ev.target).parent().parent('.mask').remove()
             if (obj.src) {
@@ -193,31 +195,113 @@ function get_time(date, type = 1) {
     type=3:yyyy-MM-DD,
     type=4:MM-DD hh:mm,
     type=5:MM-DD*/
-    var time = new Date(date*1000);
+    var time = new Date(date * 1000);
     var yy = time.getFullYear(); //年
     var MM = time.getMonth() + 1; //月
     var dd = time.getDate(); //日
     var hh = time.getHours(); //时
     var mm = time.getMinutes(); //分
     var ss = time.getSeconds(); //秒
-    if (MM < 10) MM = "0"+MM;
-    if (dd < 10) dd = "0"+dd;
-    if (hh < 10) hh = "0"+hh;
-    if (mm < 10) mm = '0'+mm;
-    if (ss < 10) ss = '0'+ss;
-    if(type==1)return yy+'-'+MM+'-'+dd+' '+hh+':'+mm+':'+ss;
-    if(type==2)return yy+'-'+MM+'-'+dd+' '+hh+':'+mm;
-    if(type==3)return yy+'-'+MM+'-'+dd;
-    if(type==4)return MM+'-'+dd+' '+hh+':'+mm;
-    if(type==5)return MM+'-'+dd;
+    if (MM < 10) MM = "0" + MM;
+    if (dd < 10) dd = "0" + dd;
+    if (hh < 10) hh = "0" + hh;
+    if (mm < 10) mm = '0' + mm;
+    if (ss < 10) ss = '0' + ss;
+    if (type == 1) return yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss;
+    if (type == 2) return yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm;
+    if (type == 3) return yy + '-' + MM + '-' + dd;
+    if (type == 4) return MM + '-' + dd + ' ' + hh + ':' + mm;
+    if (type == 5) return MM + '-' + dd;
 }
 //获取query值
-function getQueryVariable(variable='c'){
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
+function getQueryVariable(variable = 'c') {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return (false);
+}
+//通知获取
+function get_msg() {
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
+    }
+    if (!getCookie('uid'))return;
+        Post('/member/index.php?c=sysnews&act=msg_list').then(res => {
+            if (res.info.count == 0) {
+                $('.noticenum').css('display', 'none')
+                $('.noticeBox').html(`
+            <span class="readAll">全部设置为已读</span>
+            <span class="noMsg">没有新消息</span>
+            <span class='showAll'>
+            查看全部消息
+          </span>
+            `)
+
+            } else {
+                $('.noticenum').html(res.info.count);
+                $('.noticeBox').html(`
+            <span class="readAll">全部设置为已读</span>
+            <span class='showAll'>
+            查看全部消息
+          </span>
+            `)
+                res.info.list.map(val => {
+                    $('.showAll').before(`
+                <div message_id='${val.id}'>
+                <span>
+                  ${val.content}
+                </span><br>
+                <span>${val.ctime}</span>
+              </div>
+                `)
+                })
+                $('.noticenum').css('display', 'inline-block');
+                $('.noticeBox>div').one('mouseenter', ev => {
+                    Post('/member/index.php?c=sysnews&act=reed', {
+                        message_id: $(ev.target).attr('message_id')
+                    }).then(res => {
+                        get_msg()
+                    }).catch(res => {
+
+                    })
+                })
+                $('.readAll').click(ev => {
+                    Post('/member/index.php?c=sysnews&act=reed', {
+                        is_all: 1
+                    }).then(res => {
+                        get_msg()
+                    }).catch(res => {
+
+                    })
+                })
+            }
+        }).catch(res => {
+
+        })
+}
+$(function () {
+    get_msg();
+    setInterval(get_msg, 10000)
+})
+//登出
+function logout(url = 'index.php?act=logout', redirecturl) {
+    $.get(url, function (msg) {
+        if (msg == 1 || msg.indexOf('script')) {
+            if (msg.indexOf('script')) {
+                $('#uclogin').html(msg);
+            }
+            alert_notice({
+                title: '您已成功退出！'
+            });
+            window.location.href = '/login'
+        } else {
+            layer.msg('退出失败！', 2, 8);
+        }
+    });
 }

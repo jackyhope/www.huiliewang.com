@@ -13,6 +13,7 @@
 <script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/map.js"></script>
 <link rel="stylesheet" href="/app/public/css/base.css">
 <link rel="stylesheet" href="/app/public/css/cmInfo/cmInfo.css">
+
 <div class="infoFi">
     <div class="title">
         <div class="line_1"></div>
@@ -21,19 +22,25 @@
     <div class="sec" style="display:none">
         <div class="upBox">
             <span class="sp1">营业执照：</span>
-            <div class="uploadBox">
+            <div class="uploadBox" id="testy" onclick="$('#image').click()">
                 +<br>
                 <span class="upload">点击上传</span>
             </div>
             <span class='sp2'>1、图片必须清晰、完整<br>2、不能带有无关的水印、标记</span>
+            <input id="image" style="display:none;" type="file" name="image" onchange="ajaxfile();">
         </div>
-
+        <div class="upBox imageprview" style="max-height:100px;display: none;" title="点击查看大图" alt="点击查看大图">
+            <span class="sp1">图片预览：</span>
+            <a target="_blank" href="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_rz_default.png">
+                <img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_rz_default.png" alt="" height="75">
+            </a>
+        </div>
         <form id="certify_from">
             <div>
                 <span class="sp1">企业名称：</span>
                 <input type="hidden" name="c_type" value="save">
                 <!-- 营业执照-->
-                <input type="hidden" name="business_license" id="business_license" value="/2.png">
+                <input type="hidden" name="business_license" id="business_license" value="">
                 <input type="text" class="verTel input_nomorl" id="business_name" name="business_name" placeholder="请输入正确的企业名称，如重庆XX公司">
             </div>
             <div style="width:1000px">
@@ -74,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="input_min selectBox" style="display:none"
+                <div class="input_min selectBox"
                      id="cityshowth">
                     <input class="SpFormLBut text_seclet_w158" name="three_cityname" type="button" {yun:}if $row.three_cityid{/yun}
                     value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
@@ -130,43 +137,78 @@
         </form>
 
     </div>
-    <div class="sec2" style="display: none">
+    <div class="sec2">
         <span><span class="sp3">资料提交成功！</span>工作人员会在1个工作日内对您提交的信息进行审核，请您保持电话畅通，慧猎会派专属BD与您对接，</span>
         <span>审核通过后即可享受24小时极速猎头服务</span>
         <div class="imgBox">
             <span class="sp4">营业执照：</span>
-            <img id="photo" src="" alt="">
+            <img id="photo" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_rz_default.png" alt="">
         </div>
-        <div class="business_name">
-            <span class="sp4" >企业名称：</span>
+        <div class="business_name" style="width: 650px;">
+            <span class="sp4" >企业名称：</span><label>获取中...</label>
         </div>
         <div class="business_addr">
-            <span class="sp4" >企业地址：</span>
+            <span class="sp4" >企业地址：</span><label>获取中...</label>
         </div>
         <div class="business_industry">
-            <span class="sp4" >行业：</span>
+            <span class="sp4" >行业：</span><label>获取中...</label>
         </div>
         <div class="business_uname">
-            <span class="sp4" >联系人：</span>
+            <span class="sp4" >联系人：</span><label>获取中...</label>
         </div>
         <div class="linktel">
-            <span class="sp4" >联系电话：</span>
+            <span class="sp4" >联系电话：</span><label>获取中...</label>
         </div>
         <div style="margin-top: 70px;"></span><button type="button" class="button_1 gradient_1 reset">修改资料</button>
         </div>
     </div>
 </div>
+<script>
+
+    function ajaxfile() {
+        if($("#image").val() != '') {
+            layer.load(1, {
+                shade: [0.3,'#000']
+            });
+            $.ajaxFileUpload({
+                url: 'index.php?c=uppic&act=ajaxfileupload',
+                secureuri: false,
+                fileElementId: 'image',
+                dataType: 'json',
+                success: function (data, status){
+                    console.log(data);
+                    console.log(data.url);
+                    layer.closeAll('loading');
+                    layer.msg(data.message);
+                    if (data.code==200) {
+                        if(data.url){
+                            $('.imageprview a').attr('href',data.url);
+                            $('.imageprview img').attr('src',data.url);
+                            $('.imageprview').show();
+                            $('#business_license').val(data.url);
+                        }
+                    }
+                }
+            })
+        }
+    }
+
+</script>
 <script src="/app/public/js/base.js"></script>
 <script>
 
     $(function () {
+        var _json;
         $('#onsubmit').click(function () {
             // console.log($('#certify_from').serialize());return;
             $.post('{yun:}url m=login c=certify{/yun}',$('#certify_from').serialize(),function(res){
                 res = JSON.parse(res);
                 if(res.code==200){
-                    alert_notice({title:'温馨提示',content:res.message,type:'success',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=info',btn:'返回'});
+                    _json={title:'温馨提示',content:res.message,type:'success',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=info',btn:'返回'};
+                }else{
+                    _json={title:'温馨提示',content:res.message,type:'waring',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=info',btn:'返回'};
                 }
+                alert_notice(_json);
             })
         })
     })
@@ -179,26 +221,38 @@
         $('.reset').click(function () {
             $('#business_name').val(lastData.name);
             $('#business_addr').val(lastData.address);
-            $('#hyid').val(lastData.hy);
+            $('#hyid').val(lastData.hyname);
             $('#business_uname').val(lastData.linkman);
             $('#linktel').val(lastData.linktel);
+            $('#provinceid').val(lastData.provinceid);
+            $('#citysid').val(lastData.cityid);
+            $('#three_cityid').val(lastData.three_cityid);
+            if(lastData.wt_yy_photo){
+                $('#business_license').val(lastData.wt_yy_photo);
+                $('.imageprview a').attr('href',lastData.wt_yy_photo);
+                $('.imageprview img').attr('src',lastData.wt_yy_photo);
+                $('.imageprview').show();
+            }
             $('.sec2').css('display', 'none')
             $('.sec').css('display', 'block')
         });
-
+        var index = layer.load(1, {
+            shade: [0.3,'#000']
+        });
         //展示认证资料
         var lastData;
         Post('{yun:}url m=login c=certify{/yun}', {
             c_type: 'search'
         }).then(function (res) {
+            layer.closeAll();
             if (res.data) {
-                lastData = res.data;
+                lastData = res.data;console.log(lastData);
                 $('#photo').attr('src', res.data.wt_yy_photo);
-                $('.business_name').html($('.business_name').html() + res.data.name);
-                $('.linktel').html($('.linktel').html() + res.data.linktel);
-                $('.business_addr').html($('.business_addr').html() + res.data.address);
-                $('.business_industry').html($('.business_industry').html() + res.data.hy);
-                $('.business_uname').html($('.business_uname').html() + res.data.linkman);
+                $('.business_name label').text(res.data.name);
+                $('.linktel label').text(res.data.linktel);
+                $('.business_addr label').text(res.data.address);
+                $('.business_industry label').text(res.data.hy);
+                $('.business_uname label').text(res.data.linkman);
                 $('.sec2').css('display', 'block')
                 $('.sec').css('display', 'none')
             } else {
@@ -209,7 +263,7 @@
             alert_notice({title:'温馨提示',content:res.message,type:'warning'});
         });
         //上传
-        $('.upload').click(ev => {
+        /*$('.upload').click(ev => {
             upload({
                 type: 'png,jpg,gif',
                 uploadStart(file, res) {
@@ -225,7 +279,7 @@
                     console.log('上传失败', file, res)
                 },
             })
-        })
+        })*/
     });
 </script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
