@@ -27,7 +27,7 @@ class uppic_controller extends company{
 	}
 
 
-	function ajaxfileupload_action(){
+	/*function ajaxfileupload_action(){
 		if($_FILES['image']['tmp_name']){
 			$upload=$this->upload_pic("../data/upload/company",false,$this->config['com_pickb']);
 			$pictures=$upload->picture($_FILES['image']);
@@ -55,7 +55,18 @@ class uppic_controller extends company{
 			$res["s_thumb"] = iconv('gbk','utf-8','请选择上传图片');
 			echo json_encode($res);
 		}die;
-	}
+	}*/
+    function ajaxfileupload_action(){
+
+        if($_FILES['image']['tmp_name']){
+            $upload=$this->upload_pic("../data/upload/company",false,$this->config['com_pickb']);
+            $pictures=$upload->picture($_FILES['image']);
+            $res["url"] = $pictures;
+            return_json('上传成功',200,$res);
+        }else{
+            return_json('请选择上传图片',500);
+        }
+    }
 
 	function getInfo($file){
 		$data=getimagesize($file);
