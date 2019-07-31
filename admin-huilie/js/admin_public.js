@@ -649,8 +649,9 @@ function select_new(name,val,valname){
 	}
 	val=='0'?$("#is_rec").show():$("#is_rec").hide();	
 	$("#"+name+"_name").val(valname);//替换新名称
+	$("#gw_val1").val(valname);//替换新名称
 	$("#"+name+"_val").val(val);//替换新值
-	$("#"+name+"_select").hide();//弹出框隐藏	 	
+	$("#"+name+"_select").hide();//弹出框隐藏
 }
 //select4.3版新样式结束
 
