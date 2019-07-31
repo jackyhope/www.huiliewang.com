@@ -761,22 +761,23 @@ function manage(comid,url){
 			<em  id="siteusername"></em>
 		</div>
 		
-		<div class="admin_compay_fp">
-			<span class="admin_compay_fp_s">BDËÑË÷£º</span>
-			<input type="text" value="" id="gwkeyword" class="admin_compay_fp_sub">
-			<input type='button' onclick="searchs('1')"value="ËÑË÷" class="admin_compay_fp_sub1">
-		</div>
+		<!--<div class="admin_compay_fp">-->
+			<!--<span class="admin_compay_fp_s">BDËÑË÷£º</span>-->
+			<!--<input type="text" value="" id="gwkeyword" class="admin_compay_fp_sub">-->
+			<!--<input type='button' onclick="searchs('1')"value="ËÑË÷" class="admin_compay_fp_sub1">-->
+		<!--</div>-->
 		<div class="admin_compay_fp" style="height:34px;">
 			<span class="admin_compay_fp_s" style="float:left; line-height:34px; display:inline-block; margin-right:5px;">Ñ¡ÔñBD£º</span>
 			<div class="yun_admin_select_box zindex100" id="gw_option"> 
-            	<input type="button" value="ÇëÑ¡Ôñ" class="yun_admin_select_box_text" id="gw_name" onClick="select_click('gw');">
+            	<input type="button" name="gw_name" value="ÇëÑ¡Ôñ" class="yun_admin_select_box_text" id="gw_name" onClick="select_click('gw');">
                 <input name="conid" type="hidden" id="gw_val" value="">
 				<input name="addtime" type="hidden" value="">
-                <!--Õâ¿éºó¼Ó--> 
+				<input name="full_name" type="hidden" id="gw_val1" value="">
+                <!--Õâ¿éºó¼Ó-->
                 
                 <div class="yun_admin_select_box_list_box dn" id="gw_select"> 
 				{yun:}foreach from=$guweninfo key=key item=gwlist{/yun}
-                <div class="yun_admin_select_box_list"> <a href="javascript:;" onClick="select_new('gw','{yun:}$gwlist.id{/yun}','{yun:}$gwlist.username{/yun}')">{yun:}$gwlist.username{/yun}</a> </div>
+                <div class="yun_admin_select_box_list"> <a href="javascript:;" onClick="select_new('gw','{yun:}$gwlist.role_id{/yun}','{yun:}$gwlist.full_name{/yun}')">{yun:}$gwlist.full_name{/yun}</a> </div>
                 {yun:}/foreach{/yun} </div>
            </div>
 		</div>

@@ -222,7 +222,16 @@ class admin_company_controller extends common{
 		}
 
 		$guweninfo=$this->obj->DB_select_all("company_consultant","`id`>'0'");
-		$this->yunset("guweninfo",$guweninfo);
+
+ 		apiClient::init($appid,$secret);
+ 		$manager = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient();
+ 		apiClient::build($manager);
+ 		$res = $manager->bdList();
+ 		$data = $res->data;
+ 		foreach ($data as $k=>$v){
+ 		    $data[$k]['full_name'] = yun_iconv('utf-8','gbk',$v['full_name']) ;
+        }
+		$this->yunset("guweninfo",$data);
 		$nav_user=$this->obj->DB_select_alls("admin_user","admin_user_group","a.`m_id`=b.`id` and a.`uid`='".$_SESSION["auid"]."'");
 		$power=unserialize($nav_user[0]["group_power"]);
 		if(in_array('141',$power)){
@@ -763,7 +772,7 @@ class admin_company_controller extends common{
 		
 		$id?$this->ACT_layer_msg("企业会员(ID:".$_POST['uid'].")锁定设置成功！",9,$_SERVER['HTTP_REFERER'],2,1):$this->ACT_layer_msg( "设置失败！",8,$_SERVER['HTTP_REFERER']);
 	}
-	function addgw_action(){
+	function addgw1_action(){
 		 $value="`conid`='".$_POST['conid']."',";
 		 $value.="`addtime`='".time()."'";
 		 $where="`uid` in (".$_POST['uid'].")";
@@ -779,6 +788,22 @@ class admin_company_controller extends common{
 		 	$this->ACT_layer_msg( "非法操作！",8,$_SERVER['HTTP_REFERER']);
 		 }
 	}
+
+	function addgw_action(){
+	    $uid = baseUtils::getStr($_POST['uid'],'int');
+	    $role_id = baseUtils::getStr($_POST['conid'],'int');
+	    $full_name = baseUtils::getStr($_POST['full_name']);
+	    $addtime = time();
+	    apiClient::init($appid,$secret);
+	    $admin = new com\hlw\huiliewang\interfaces\AdminManagerServiceClient(null);
+	    apiClient::build($admin);
+	    $res = $admin->addBD($uid,$addtime,$role_id,$full_name);
+	    if($res->success){
+            $this->ACT_layer_msg($res->message,9,$_SERVER['HTTP_REFERER']);
+        }else{
+            $this->ACT_layer_msg($res->message,8,$_SERVER['HTTP_REFERER']);
+        }
+    }
 
 	//BD列表
     function showbd_action(){
