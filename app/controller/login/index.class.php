@@ -246,6 +246,8 @@ class index_controller extends common{
         }else{
             $post_data['size'] = 10;
         }
+        $status = BaseUtils::getStr($_POST['c_type'],'int','1');
+        $post_data['status'] = $status;
 
         apiClient::init(APPID,SECRET);
         $obj = new FrontRequestDTO();

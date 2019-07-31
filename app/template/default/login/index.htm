@@ -402,11 +402,22 @@
 			$('.signUpBtn').click(function () {
 				var tel = $('.singUpTel').val();
 				var code = $('.verifyCode2').val();
-				code == '' && alert_notice({
-					'title': '',
-					content: '请填写验证码',
-					type: 'warning'
-				});
+				if(tel == ''){
+                    alert_notice({
+                        'title': '',
+                        content: '请填写手机号',
+                        type: 'warning'
+                    });
+                    return;
+				}else if(code == ''){
+                    alert_notice({
+                        'title': '',
+                        content: '请填写验证码',
+                        type: 'warning'
+                    });
+                    return;
+				}
+
 				var inviCode = $('.inviCode').val();
 				Post('{yun:}url m=register c=registcom{/yun}', {
 					tel: tel,
