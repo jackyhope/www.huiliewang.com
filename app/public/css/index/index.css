@@ -99,7 +99,7 @@
     padding-top: 39px;
     box-sizing: border-box;
 }
-.right span{
+.right>span{
     display: block;
     margin-left: 67px;
     margin-bottom: 11px;
