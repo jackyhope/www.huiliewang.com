@@ -309,6 +309,7 @@ class info_controller extends company
         $_POST['website'] = change_encoding($_POST['website'], 'GBK');
         $_POST['linkjob'] = change_encoding($_POST['linkjob'], 'GBK');
         $_POST['welfare'] = change_encoding($_POST['welfare'], 'GBK');
+        $_POST['linkman'] = change_encoding($_POST['linkman'], 'GBK');
 //        var_dump( $_POST['content']);
 //        die;
         $name = baseUtils::getStr($_POST['name']);
@@ -334,7 +335,7 @@ class info_controller extends company
             $infoRequestDo->phonethree = baseUtils::getStr($_POST['phonethree']);
             $infoRequestDo->zip = baseUtils::getStr($_POST['zip']);
             $infoRequestDo->firmpic = $firmpic;
-            $infoRequestDo->logo = $logo ? $logo : $_POST['logo'];
+            $infoRequestDo->logo = baseUtils::getStr($_POST['logo']);
             $infoRequestDo->busstops = baseUtils::getStr($_POST['busstops']);
             $infoRequestDo->address = baseUtils::getStr($_POST['address']);
             $infoRequestDo->moneytype = baseUtils::getStr($_POST['moneytype']);
