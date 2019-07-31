@@ -334,7 +334,7 @@ class info_controller extends company
             $infoRequestDo->phonethree = baseUtils::getStr($_POST['phonethree']);
             $infoRequestDo->zip = baseUtils::getStr($_POST['zip']);
             $infoRequestDo->firmpic = $firmpic;
-            $infoRequestDo->logo = $logo;
+            $infoRequestDo->logo = $logo ? $logo : $_POST['logo'];
             $infoRequestDo->busstops = baseUtils::getStr($_POST['busstops']);
             $infoRequestDo->address = baseUtils::getStr($_POST['address']);
             $infoRequestDo->moneytype = baseUtils::getStr($_POST['moneytype']);
