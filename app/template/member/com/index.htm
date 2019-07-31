@@ -92,7 +92,8 @@
 					<span class="job_count">0</span>
 					<span>></span>
 				</div>
-				<div class="toPublish" onclick='gt(event)' link='/member/index.php?c=jobadd'>去发布职位&nbsp;&nbsp;<img src="/app/public/imgs/back.png" alt=""></div>
+				<div class="toPublish" onclick='gt(event)' link='/member/index.php?c=jobadd'>去发布职位&nbsp;&nbsp;<img
+						src="/app/public/imgs/back.png" alt=""></div>
 			</div>
 		</div>
 	</div>
@@ -120,12 +121,13 @@
 </div>
 
 <script>
-	function gt(ev){
+	function gt(ev) {
 		window.location.href = $(ev.currentTarget).attr('link')
 	}
 	$(document).ready(function () {
-		Post('{yun:}url m=member c=resume_api act=companyInfo{/yun}',{}).then(function (res) {
-		    var res = res.info;
+
+		Post('{yun:}url m=member c=resume_api act=companyInfo{/yun}', {}).then(function (res) {
+			var res = res.info;
 			$('.comName').prepend(res.name);
 			$('.hy').append(res.hy);
 			$('.addr').append(res.province);
@@ -139,7 +141,16 @@
 			$('.wait_interview_count').html(res.wait_interview_count);
 			$('.wait_present_count').html(res.wait_present_count);
 			$('.job_count').html(res.job_count);
-        });
-    });
+			if (res.is_cert ==0) {
+				alert_notice({
+					title: '您还未认证哦~',
+					content: '请先填写认证资料，审核通过后即可获得极速猎头服务',
+					btn: '知道了',
+					type: '/app/public/imgs/rz_03.png',
+					src: '/member/index.php?c=info'
+				})
+			}
+		});
+	});
 </script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
