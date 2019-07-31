@@ -9,21 +9,44 @@
 <link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/imgareaselect.css" type="text/css" />
 <script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/jquery.imgareaselect.js"></script>
 <script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/imgareaselect/ajaxfileupload.js"></script>
-<script src="{yun:}$config.mapurl{/yun}"></script>
-<script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/map.js"></script>
+
 <link rel="stylesheet" href="/app/public/css/base.css">
 <link rel="stylesheet" href="/app/public/css/cmInfo/cmInfo.css">
 <style>
-    .inputBox{
-        margin-bottom:28px;
+
+    .c_table{
+        display: none;
+    }
+    .sec3>span{
+        float: left;
+        margin-bottom: 35px;
+        margin-top: 20px;
     }
 </style>
+<script>
+    $(function () {
+        var _stat = '{yun:}$cert.status{/yun}';
+        if(_stat==0){
+            $('.c_table').hide();
+            $('.sec2').show();
+        }
+        if(_stat==2){
+
+            $('.c_table').hide();
+            $('.c_table').eq(_stat).show();
+        }
+        if(_stat==1){
+            location.href="{yun:}$config.sy_weburl{/yun}/member/index.php";
+        }
+    })
+
+</script>
 <div class="infoFi">
     <div class="title">
         <div class="line_1"></div>
         企业认证
     </div>
-    <div class="sec"  {yun:}if $cert.status==0{/yun}style='display:block'{yun:}/if{/yun}>
+    <div class="c_table sec">
         <div class="upBox">
             <span class="sp1">营业执照：</span>
             <div class="uploadBox" id="testy" onclick="$('#image').click()">
@@ -141,7 +164,7 @@
         </form>
 
     </div>
-    <div class="sec2"  {yun:}if $cert.status==1{/yun}style='display:block'{yun:}/if{/yun}>
+    <div class="c_table sec2">
         <span><span class="sp3">资料提交成功！</span>工作人员会在1个工作日内对您提交的信息进行审核，请您保持电话畅通，慧猎会派专属BD与您对接，</span>
         <span>审核通过后即可享受24小时极速猎头服务</span>
         <div class="imgBox">
@@ -166,17 +189,17 @@
         <div style="margin-top: 70px;"></span><button type="button" class="button_1 gradient_1 reset">修改资料</button>
         </div>
     </div>
-    <div class="sec3" {yun:}if $cert.status==2{/yun}style='display:block'{yun:}/if{/yun}>
+    <div class="c_table sec3" style="height:505px;">
         <span class="li_title"><span>审核未通过！</span>
         请修改企业资料重新提交审核信息。
     </span>
-    <div>
-        <span>未通过原因：</span>
-        <span class="reson">
+        <div>
+            <span>未通过原因：</span>
+            <span class="reson">
             {yun:}$cert.statusbody{/yun}
         </span>
-    </div>
-    <button type="button" class="button_1 gradient_1 reset">修改资料</button>
+        </div>
+        <button type="button" class="button_1 gradient_1 reset">修改资料</button>
     </div>
 </div>
 <script>
@@ -192,8 +215,8 @@
                 fileElementId: 'image',
                 dataType: 'json',
                 success: function (data, status){
-                    console.log(data);
-                    console.log(data.url);
+
+
                     layer.closeAll('loading');
                     layer.msg(data.message);
                     if (data.code==200) {
@@ -221,77 +244,58 @@
                 res = JSON.parse(res);
                 if(res.code==200){
                     _json={title:'温馨提示',content:res.message,type:'success',btn:'返回'};
+                    setTimeout(function () {
+                        location.reload();
+                    },1000)
                 }else{
                     _json={title:'温馨提示',content:res.message,type:'waring',btn:'返回'};
                 }
                 alert_notice(_json);
             })
         })
-    })
 
 
-
-    $(document).ready(function () {
-
-        //  编辑认证资料
-        $('.reset').click(function () {
-            $('#business_name').val(lastData.name);
-            $('#business_addr').val(lastData.address);
-            $('#hyid').val(lastData.hyname);
-            $('#business_uname').val(lastData.linkman);
-            $('#linktel').val(lastData.linktel);
-            $('#provinceid').val(lastData.provinceid);
-            $('#citysid').val(lastData.cityid);
-            $('#three_cityid').val(lastData.three_cityid);
-            if(lastData.wt_yy_photo){
-                $('#business_license').val(lastData.wt_yy_photo);
-                $('.imageprview a').attr('href',lastData.wt_yy_photo);
-                $('.imageprview img').attr('src',lastData.wt_yy_photo);
-                $('.imageprview').show();
-            }
-            $('.sec2').css('display', 'none')
-            $('.sec3').css('display', 'none')
-            $('.sec').css('display', 'block')
-        });
-        var index = layer.load(1, {
-            shade: [0.3,'#000']
-        });
-        //展示认证资料
-        var lastData;
-        Post('{yun:}url m=login c=certify{/yun}', {
-            c_type: 'search'
-        }).then(function (res) {
-            layer.closeAll();
+        /****/
+        $.post('{yun:}url m=login c=certify{/yun}',{c_type: 'search'},function(res){
+            res = JSON.parse(res);
             if (res.data) {
-                lastData = res.data;console.log(lastData);
+                lastData = res.data;
                 $('#photo').attr('src', res.data.wt_yy_photo);
                 $('.business_name label').text(res.data.name);
                 $('.linktel label').text(res.data.linktel);
                 $('.business_addr label').text(res.data.address);
-                $('.business_industry label').text(res.data.hy);
+                $('.business_industry label').text(res.data.hyname);
                 $('.business_uname label').text(res.data.linkman);
+                $('#business_name').val(lastData.name);
+                $('#business_addr').val(lastData.address);
+                $('#hyid').val(lastData.hyname);
+                $('#business_uname').val(lastData.linkman);
+                $('#linktel').val(lastData.linktel);
+                $('#provinceid').val(lastData.provinceid);
+                $('#citysid').val(lastData.cityid);
+                $('#three_cityid').val(lastData.three_cityid);
+
+                if(lastData.wt_yy_photo){
+                    $('#business_license').val(lastData.wt_yy_photo);
+                    $('.imageprview a').attr('href',lastData.wt_yy_photo);
+                    $('.imageprview img').attr('src',lastData.wt_yy_photo);
+                    $('.imageprview').show();
+                }else{
+
+                    $('.sec').show();
+                }
+
             }
-        }).catch(function (res) {
-            alert_notice({title:'温馨提示',content:res.message,type:'warning'});
-        });
-        //上传
-        /*$('.upload').click(ev => {
-            upload({
-                type: 'png,jpg,gif',
-                uploadStart(file, res) {
-                    console.log('开始上传', res)
-                },
-                uploadProgress(file, res) {
-                    console.log('正在上传', file, res)
-                },
-                uploadSuccess(file, res) {
-                    console.log('上传成功', file, res)
-                },
-                uploadSuccess(file, res) {
-                    console.log('上传失败', file, res)
-                },
-            })
-        })*/
-    });
+
+
+        })
+        /****/
+        $('.reset').click(function () {
+            console.log(12);
+            $('.c_table').hide();
+            $('.c_table').eq(0).show();
+        })
+    })
+
 </script>
 {yun:}include file="$tplstyle/footer.htm"{/yun}
