@@ -32,6 +32,7 @@ class index_controller extends common{
     $this->yunset($CacheList);
 
     if($this->usertype){
+        $_COOKIE['usertype'] = $this->usertype;
         header("location:".$this->config['sy_weburl']."/member/index.php");
     }
 
