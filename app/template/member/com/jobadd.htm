@@ -16,7 +16,7 @@
             </div>
             <span class="sp2">√</span>
             <span class="left">
-                慧沟通余量
+                慧沟通余量:{yun:}$company.interview_payd{/yun}
             </span>
         </div>
         <div {yun:}if $type {/yun} class="choosed"{yun:}/if{/yun}>
@@ -25,7 +25,8 @@
             </div>
             <span class="sp2">√</span>
             <span class="left">
-                慧面试余量
+
+                慧面试余量:{yun:}$company.resume_payd{/yun}
             </span>
         </div>
     </div>
@@ -184,7 +185,7 @@
     <span class="sp6">
         到岗时间：
     </span>
-    <div class="input_min selectBox">
+    <div class="input_min selectBox" style="z-index: 101">
         <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.report{/yun}
             value="{yun:}$comclass_name[$company_job.report]{/yun}" {yun:}else{/yun} value="请选择到岗时间" {yun:}/if{/yun} id="report"
             onclick="search_show('job_report');">
@@ -203,7 +204,7 @@
     <span class="sp6">
         工作经验：
     </span>
-    <div class="input_min selectBox">
+    <div class="input_min selectBox" style="z-index: 101">
         <input id="exp" class="SpFormLBut text_seclet_w158" type="button" onclick="search_show('job_exp');" {yun:}if
             $company_job.exp{/yun} value="{yun:}$comclass_name[$company_job.exp]{/yun}" {yun:}else{/yun} value="请选择工作经验"
             {yun:}/if{/yun}> <input id="expid" type="hidden" name="exp" {yun:}if $company_job.exp {/yun}
@@ -262,7 +263,7 @@
     <span class="sp6">
         婚姻状况：
     </span>
-    <div class="input_min selectBox">
+    <div class="input_min selectBox" style="z-index: 99">
         <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.marriage{/yun}
             value="{yun:}$comclass_name[$company_job.marriage]{/yun}" {yun:}else{/yun} value="请选择婚姻状况" {yun:}/if{/yun}
             id="marriage" onclick="search_show('job_marriage');">
@@ -281,7 +282,7 @@
     <span class="sp6">
         教育程度：
     </span>
-    <div class="input_min selectBox">
+    <div class="input_min selectBox" style="z-index: 99">
         <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.edu{/yun}
             value="{yun:}$comclass_name[$company_job.edu]{/yun}" {yun:}else{/yun} value="请选择教育程度" {yun:}/if{/yun} id="edu"
             onclick="search_show('job_edu');">

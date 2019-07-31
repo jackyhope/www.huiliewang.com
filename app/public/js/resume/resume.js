@@ -1,4 +1,16 @@
 $(function () {
+    Post('/member/index.php?c=resume_api&act=jobs').then(res=>{
+        $('#business_select').html(`<div class="select_box_list">
+        <a href="javascript:void(0);" onclick="select_new('business','0','全部职位')">全部职位</a>
+    </div>`)
+    res.info.map(val=>{
+        $('#business_select').append(`
+        <div class="select_box_list">
+                        <a href="javascript:void(0);" onclick="select_new('business','${val.id}','${val.name}')">${val.name}</a>
+                    </div>
+        `)
+    })
+    })
     $('.container .ul .li').click(ev => {
         // $('.container .ul .li').removeClass('current');
         // $(this).addClass('current');
@@ -7,6 +19,7 @@ $(function () {
         // /**批量模版切换测试js-end **/
         window.location.href = $(ev.target).attr('link')
     })
+
     bindev()
     $('.c_module_2 .gmBTn').click(ev => {
         Post('/member/index.php?c=resume_api&act=pay', {
