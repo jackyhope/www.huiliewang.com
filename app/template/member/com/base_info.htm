@@ -7,8 +7,10 @@
         <span class="sp1" style="float: left">
             <span>*&nbsp;</span>LOGO：
         </span>
-        <img src="" alt="" class="showlogo">
-        <span class="upPicker gradient_1">点击上传</span>
+        <img {yun:}if $row.logo {/yun} src="{yun:}$row.logo{/yun}" {yun:}else{/yun} src="/app/public/imgs/zl_11.png"
+        {yun:}/if{/yun} alt="" class="showlogo">
+        <span class="upPicker gradient_1" onclick="$('#image').click()">点击上传</span>
+        <input id="image" style="display:none;" type="file" name="image" onchange="ajaxfile();">
     </div>
     <div class="inputBox">
         <span class="sp1">
@@ -222,8 +224,29 @@
 </div>
 <script src="/app/public/js/base.js"></script>
 <script>
+    function ajaxfile() {
+        if($("#image").val() != '') {
+            layer.load(1, {
+                shade: [0.3,'#000']
+            });
+            $.ajaxFileUpload({
+                url: 'index.php?c=uppic&act=ajaxfileupload',
+                secureuri: false,
+                fileElementId: 'image',
+                dataType: 'json',
+                success: function (data, status){
+                    layer.closeAll('loading');
+                    layer.msg(data.message);
+                    if (data.code==200) {
+                        if(data.url){
+                            $('.showlogo').attr('src',data.url);
+                        }
+                    }
+                }
+            })
+        }
+    }
     $(document).ready(function () {
-
         //保存编辑的资料
         $('.submit').click(function () {
             var qyprid = $('#qyprid').val();
@@ -253,6 +276,7 @@
             var linkqq = $('#linkqq').val();
             var linkmail = $('#linkmail').val();
             var welfare = $('#welfare').val();
+            var logo = $('.showlogo').attr('src')
             Post('{yun:}url m=member c=info act=saveinfo{/yun}',{
                 name:name,
                 hy:hyid,
@@ -279,11 +303,12 @@
                 linkjob:linkjob,
                 linkqq:linkqq,
                 linkmail:linkmail,
-                welfare:welfare
+                welfare:welfare,
+                logo
             }).then(function (res) {
                 window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=jobadd&act=edit';
             }).catch(function (res) {
-                alert_notice({title:'温馨提示',content:res.message,type:'warning'});
+                alert_notice({title:'温馨提示',content:res.info,type:'warning'});
             });
         });
 

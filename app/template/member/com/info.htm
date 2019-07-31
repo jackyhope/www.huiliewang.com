@@ -23,7 +23,7 @@
         <div class="line_1"></div>
         企业认证
     </div>
-    <div class="sec" style="display:none">
+    <div class="sec"  {yun:}if $cert.status==0{/yun}style='display:block'{yun:}/if{/yun}>
         <div class="upBox">
             <span class="sp1">营业执照：</span>
             <div class="uploadBox" id="testy" onclick="$('#image').click()">
@@ -141,7 +141,7 @@
         </form>
 
     </div>
-    <div class="sec2">
+    <div class="sec2"  {yun:}if $cert.status==1{/yun}style='display:block'{yun:}/if{/yun}>
         <span><span class="sp3">资料提交成功！</span>工作人员会在1个工作日内对您提交的信息进行审核，请您保持电话畅通，慧猎会派专属BD与您对接，</span>
         <span>审核通过后即可享受24小时极速猎头服务</span>
         <div class="imgBox">
@@ -165,6 +165,18 @@
         </div>
         <div style="margin-top: 70px;"></span><button type="button" class="button_1 gradient_1 reset">修改资料</button>
         </div>
+    </div>
+    <div class="sec3" {yun:}if $cert.status==2{/yun}style='display:block'{yun:}/if{/yun}>
+        <span class="li_title"><span>审核未通过！</span>
+        请修改企业资料重新提交审核信息。
+    </span>
+    <div>
+        <span>未通过原因：</span>
+        <span class="reson">
+            {yun:}$cert.statusbody{/yun}
+        </span>
+    </div>
+    <button type="button" class="button_1 gradient_1 reset">修改资料</button>
     </div>
 </div>
 <script>
@@ -238,6 +250,7 @@
                 $('.imageprview').show();
             }
             $('.sec2').css('display', 'none')
+            $('.sec3').css('display', 'none')
             $('.sec').css('display', 'block')
         });
         var index = layer.load(1, {
@@ -257,11 +270,6 @@
                 $('.business_addr label').text(res.data.address);
                 $('.business_industry label').text(res.data.hy);
                 $('.business_uname label').text(res.data.linkman);
-                $('.sec2').css('display', 'block')
-                $('.sec').css('display', 'none')
-            } else {
-                $('.sec2').css('display', 'none')
-                $('.sec').css('display', 'block')
             }
         }).catch(function (res) {
             alert_notice({title:'温馨提示',content:res.message,type:'warning'});

@@ -43,6 +43,9 @@
 .sp2{
     margin-top: 43px;
 }
+.sec{
+    display: none;
+}
 .sec>div{
     margin-bottom: 20px;
 }
@@ -53,6 +56,7 @@
 }
 .sec2{
     padding-top: 65px;
+    display: none;
 }
 .sec2>span{
     white-space: nowrap;
@@ -104,4 +108,20 @@ input{
 }
 #certify_from div{
     margin-bottom: 28px;
+}
+.sec3{
+    padding-left: 30px;
+    display: none;
+}
+.sec3>span{
+    width: 405px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 64px;
+}
+.sec3>span>span{
+    font-weight: 500;
+    color: #FE7A78;
 }

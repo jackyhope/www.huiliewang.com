@@ -662,7 +662,7 @@ function manage(comid,url){
 					<div>{yun:}$v.vip_etime|date_format:"%Y-%m-%d"{/yun}</div>
 				{yun:}/if{/yun}{yun:}$list.uid{/yun}
 			</td>
-			<td align="left">{yun:}if $v.conid{/yun}{yun:}$v.con{/yun}{yun:}else{/yun}未分配{yun:}/if{/yun}</td> 
+			<td align="left">{yun:}if $v.conid{/yun}{yun:}$v.con_oa_username{/yun}{yun:}else{/yun}未分配{yun:}/if{/yun}</td>
             <td>
 			   {yun:}if $v.email_status==1{/yun}
 			   <img src="../config/ajax_img/1-1.png" alt="邮箱已认证" class="png">
