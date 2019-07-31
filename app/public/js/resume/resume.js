@@ -221,7 +221,8 @@ function bindev() {
             resume_id: $(this).attr('resume_id'),
             project_id: $(this).attr('project_id')
         }).then(res => {
-            _que.html(`<p class="que_title">等待顾问最终确认面试信息</p>
+            if($(this).attr('huilie_status')==5||$(this).attr('huilie_status')==6){
+                _que.html(`<p class="que_title">${$(this).attr('huilie_status')==5?'等待顾问最终确认面试信息':'等待候选人前来面试'}</p>
             <p>我发起的面试邀请</p>
             <div class="dl clearall">
                 <div class="dt">面试时间：</div>
@@ -239,6 +240,14 @@ function bindev() {
                 <div class="dt">备注：</div>
                 <div class="dd">${res.info.description}</div>
             </div>`)
+            }else{
+                _que.html(`<p class="que_title">候选人拒绝</p>
+                <div class="dl clearall">
+                    <div class="dt">拒绝原因：</div>
+                    <div class="dd">${val.description}</div>
+                </div>`)
+            }
+            
         })
         $(this).parent('.c_tr').hover(function () {}, function () {
             setTimeout(function () {
@@ -279,7 +288,7 @@ function bindev() {
 function createDom(val) {
     if (val.huilie_status == 5) {
         return `
-        <div class="c_td show_hands que_tips" alt="点我查看详情" title="点我查看详情" resume_id='${val.resume_id}' project_id='${val.project_id}'>待确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
+        <div class="c_td show_hands que_tips" huilie_status='${val.huilie_status}'  alt="点我查看详情" title="点我查看详情" resume_id='${val.resume_id}' project_id='${val.project_id}'>待确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
             <div class="c_td"><a class="c_btn c_btn_light" style='cursor:default;background:#c1c1c1;color:#fff;border:none;' href="void:0">等待面试</a></div>
             <div class="c_jsshow show_que">
                 <p class="que_title">等待顾问最终确认面试信息</p>
@@ -304,7 +313,7 @@ function createDom(val) {
         `
     } else if (val.huilie_status == 6) {
         return `
-        <div class="c_td show_hands que_tips" resume_id='${val.resume_id}' project_id='${val.project_id}' alt="点我查看详情" title="点我查看详情">已确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
+        <div class="c_td show_hands que_tips" huilie_status='${val.huilie_status}' resume_id='${val.resume_id}' project_id='${val.project_id}' alt="点我查看详情" title="点我查看详情">已确认<img src="/app/public/imgs/c_holding.png" alt=""></div>
             <div class="c_td"><a class="c_btn c_btn_light conAt" resume_id='${val.resume_id}' project_id='${val.project_id}' href="void:0">到场确认</a></div>
             <div class="c_jsshow show_que">
                 <p class="que_title">等待候选人前来面试</p>
@@ -329,7 +338,7 @@ function createDom(val) {
         `
     } else if (val.huilie_status == 7) {
         return `
-        <div class="c_td show_hands que_tips" resume_id='${val.resume_id}' project_id='${val.project_id}' alt="点我查看详情" title="点我查看详情">已拒绝 <img src="/app/public/imgs/c_holding.png" alt=""></div>
+        <div class="c_td show_hands que_tips" huilie_status='${val.huilie_status}' resume_id='${val.resume_id}' project_id='${val.project_id}' alt="点我查看详情" title="点我查看详情">已拒绝 <img src="/app/public/imgs/c_holding.png" alt=""></div>
             <div class="c_td"><a class="c_btn c_btn_light removeAt" resume_id='${val.resume_id}' project_id='${val.project_id}' href="void:0">移除</a></div>
             <div class="c_jsshow show_que">
                 <p class="que_title">候选人拒绝</p>
