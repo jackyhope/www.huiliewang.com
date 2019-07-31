@@ -596,11 +596,9 @@
                 link_moblie:link_moblie,
                 id:id
             }).then(function (res) {
-                alert_notice({title:'温馨提示',content:res.info});
-                window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=job';
+                alert_notice({title:'温馨提示',content:res.info,src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=job'});
             }).catch(function (res) {
-                alert_notice({title:'温馨提示',content:res.info,type:'warning'});
-                window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog';
+                alert_notice({title:'温馨提示',content:res.info,type:'warning',sec:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog'});
             });
 
         });
