@@ -402,6 +402,11 @@
 			/****start  edit guo***********************************************************************************************/
 			//手机验证码注册账号
 			$('.signUpBtn').click(function () {
+				
+				if(!$('#agree').attr('checked')){
+					alert_notice({title:'温馨提示',content:'请先阅读并同意《慧猎服务协议》',type:'warning'});
+					return
+				}
 				var tel = $('.singUpTel').val();
 				var code = $('.verifyCode2').val();
 				if(tel == ''){
