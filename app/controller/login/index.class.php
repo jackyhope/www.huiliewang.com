@@ -162,7 +162,7 @@ class index_controller extends common{
             if(!isset($post['business_industry']) || empty($post['business_industry'])){
                 return_json('请选择企业行业',500);
             }
-            if(!isset($post['business_industry']) || empty($post['business_industry'])){
+            if(!isset($post['business_uname']) || empty($post['business_uname'])){
                 return_json('请企业联系人',500);
             }
             //数组
@@ -172,21 +172,18 @@ class index_controller extends common{
                 'status'=>0,//审核中[该字段是要写到member表的]
                 'wt_yy_photo'=>$post['business_license'],//企业营业执照 是写到 cert表的
                 'name'=>$post['business_name'],//企业名称
-//                'provinceid'=>$post['business_province'],//省
-//                'cityid'=>$post['business_city'],//市
-//                'three_cityid'=>$post['business_districts'],//区
-                'provinceid'=>$post['provinceid'],
+                'provinceid'=>$post['business_province'],//省
+                'cityid'=>$post['business_city'],//市
+                'three_cityid'=>$post['business_districts'],//区
                 'provincename'=>$post['provincename'],//省会名称
-                'cityid'=>$post['citysid'],//市
                 'cityname'=>$post['cityname'],//市名称
-                'three_cityid'=>$post['three_cityid'],//区
                 'three_cityname'=>$post['three_cityname'],//区名称
                 'address'=>$post['business_addr'],//详细地址
                 'hy'=>$post['business_industry'],//行业
                 'hyname'=>$post['hyname'],//行业名称
                 'linkman'=>$post['business_uname'],//联系人
                 'lastupdate'=>time(),//更新时间
-                'linktel'=>'后台去查询获取',
+                'linktel'=>'后台去查询获取',//联系电话，获取的
             ];
         }else{
             $post_data = [
@@ -194,15 +191,16 @@ class index_controller extends common{
                 'uid'   => $this->uid//登录人
             ];
         }
+
         apiClient::init(APPID,SECRET);
         $obj = new com\hlw\huiliewang\dataobject\frontLogin\FrontRequestDTO();
         $obj->post_data = $post_data;
         $FrontLoginService = new com\hlw\huiliewang\interfaces\FrontLoginServiceClient(null);
         apiClient::build($FrontLoginService);
         $re = $FrontLoginService->certifyData($obj);
-        echo json_encode($re);
-    }
+        return_json('看看什么回来了',200,array_iconv(return_toArray($re),'UTF-8','gbk'));
 
+    }
     function is_login(){
         if($this->uid){
             //return true;
