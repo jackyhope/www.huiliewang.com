@@ -13,7 +13,11 @@
 <script type="text/javascript" src="{yun:}$config.sy_weburl{/yun}/js/map.js"></script>
 <link rel="stylesheet" href="/app/public/css/base.css">
 <link rel="stylesheet" href="/app/public/css/cmInfo/cmInfo.css">
-
+<style>
+    .inputBox{
+        margin-bottom:28px;
+    }
+</style>
 <div class="infoFi">
     <div class="title">
         <div class="line_1"></div>
@@ -36,14 +40,14 @@
             </a>
         </div>
         <form id="certify_from">
-            <div>
+            <div class="inputBox">
                 <span class="sp1">企业名称：</span>
                 <input type="hidden" name="c_type" value="save">
                 <!-- 营业执照-->
                 <input type="hidden" name="business_license" id="business_license" value="">
                 <input type="text" class="verTel input_nomorl" id="business_name" name="business_name" placeholder="请输入正确的企业名称，如重庆XX公司">
             </div>
-            <div style="width:1000px;height: 38px;">
+            <div style="width:1000px" class="inputBox">
                 <span class="sp1">企业地址：</span>
                 <div class="input_min selectBox" style="z-index: 101">
                     <input name="provincename" class="SpFormLBut text_seclet_w158" type="button"
@@ -98,11 +102,11 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="inputBox">
                 <span class="sp1">详细地址：</span>
                 <input type="text" name="business_addr" class="verTel input_nomorl" id="business_addr" placeholder="请输入正确的公司地址">
             </div>
-            <div style="height: 38px;">
+            <div class="inputBox">
                 <span class="sp1">行业：</span>
                 <!-- <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业"> -->
                 <div class="input_nomorl selectBox2">
@@ -123,11 +127,11 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="inputBox">
                 <span class="sp1">联系人：</span>
                 <input type="text" name="business_uname" class="verTel input_nomorl" id="business_uname" placeholder="联系人姓名">
             </div>
-            <div>
+            <div class="inputBox">
                 <span class="sp1">联系电话：</span>
                 <input type="num" class="verTel input_nomorl" id="linktel" placeholder="请输入联系电话">
             </div>
@@ -204,9 +208,9 @@
             $.post('{yun:}url m=login c=certify{/yun}',$('#certify_from').serialize(),function(res){
                 res = JSON.parse(res);
                 if(res.code==200){
-                    _json={title:'温馨提示',content:res.message,type:'success',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=info',btn:'返回'};
+                    _json={title:'温馨提示',content:res.message,type:'success',btn:'返回'};
                 }else{
-                    _json={title:'温馨提示',content:res.message,type:'waring',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=info',btn:'返回'};
+                    _json={title:'温馨提示',content:res.message,type:'waring',btn:'返回'};
                 }
                 alert_notice(_json);
             })

@@ -1,5 +1,6 @@
 <!--头部 start -->
-{yun:}include file="$comstyle/header.htm"{/yun}
+{yun:}include file="$comstyle/c_header.htm"{/yun}
+{yun:}include file="$comstyle/c_header_nav.htm"{/yun}
 <!--头部 end -->
 <title>我的套餐</title>
 <!--inner header start-->
@@ -29,6 +30,16 @@
         height:200px;
         max-height:300px;
         overflow-y: auto;
+    }
+    #c_shade .c_true_module .c_module i{
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        background-image: url("{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_close.png");
+        position: absolute;
+        top:10px;
+        right:10px;
+        cursor: pointer;
     }
 </style>
 <div class="inner_header">
@@ -161,39 +172,39 @@
             <i onclick="m_close(this)"></i>
             <div class="c_title"><span></span>套餐购买</div>
             <div class="c_cont c_hide" id="tc_list">
-<!--                <div class="dl clearall">-->
-<!--                    <div class="dd wid20p">慧沟通</div>-->
-<!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
-<!--                    <div class="dd wid20p">1000元</div>-->
-<!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-<!--                </div>-->
-<!--                <div class="dl clearall">-->
-<!--                    <div class="dd wid20p">慧沟通</div>-->
-<!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
-<!--                    <div class="dd wid20p">1000元</div>-->
-<!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-<!--                </div>-->
-<!--                <div class="dl clearall">-->
-<!--                    <div class="dd wid20p">慧沟通</div>-->
-<!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
-<!--                    <div class="dd wid20p">1000元</div>-->
-<!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-<!--                </div>-->
-<!--                <div class="dl clearall">-->
-<!--                    <div class="dd wid20p color-EBCB66">慧面试</div>-->
-<!--                    <div class="dd wid40p">5次</div>-->
-<!--                    <div class="dd wid20p">1000元</div>-->
-<!--                    <div class="dd wid20p te_lgl"><a data-name="慧面试" data-qy="5次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-<!--                </div>-->
+                <!--                <div class="dl clearall">-->
+                <!--                    <div class="dd wid20p">慧沟通</div>-->
+                <!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
+                <!--                    <div class="dd wid20p">1000元</div>-->
+                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+                <!--                </div>-->
+                <!--                <div class="dl clearall">-->
+                <!--                    <div class="dd wid20p">慧沟通</div>-->
+                <!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
+                <!--                    <div class="dd wid20p">1000元</div>-->
+                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+                <!--                </div>-->
+                <!--                <div class="dl clearall">-->
+                <!--                    <div class="dd wid20p">慧沟通</div>-->
+                <!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
+                <!--                    <div class="dd wid20p">1000元</div>-->
+                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+                <!--                </div>-->
+                <!--                <div class="dl clearall">-->
+                <!--                    <div class="dd wid20p color-EBCB66">慧面试</div>-->
+                <!--                    <div class="dd wid40p">5次</div>-->
+                <!--                    <div class="dd wid20p">1000元</div>-->
+                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧面试" data-qy="5次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
+                <!--                </div>-->
             </div>
-<!--    余额不足显示   start  做php判断   -->
+            <!--    余额不足显示   start  做php判断   -->
             <div class="nomoney c_hide">
                 <img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/bz_03.png" alt="">
                 <p>套餐余额不足啦！</p>
                 <div class="cont">您的套餐余额不足，请前往充值</div>
                 <a href="index.php?c=pay" class="c_btn c_btn_md c_btn_light_bg mt_30">去充值</a>
             </div>
-<!--    余额不足显示   end  做php判断   -->
+            <!--    余额不足显示   end  做php判断   -->
         </div>
 
         <!-- 确认到场 start -->
@@ -300,7 +311,7 @@
         $('.c_module').addClass('c_hide');
     }
     function show_module() {
-       // re.diff 比较余额和套餐最低价格，余额不足返回0，余额充足，返回1，并且继续查询返回套餐列表data.list
+        // re.diff 比较余额和套餐最低价格，余额不足返回0，余额充足，返回1，并且继续查询返回套餐列表data.list
 
         //layer的加载中
         /* var _loading = layer.load(2, {
@@ -331,7 +342,7 @@
             if(data.code==200){
                 countdown(obj);
             }else{
-              var _json = {title:'温馨提示',content:'短信验证码获取失败',type:'error',src:'',btn:'确定',else:''};
+                var _json = {title:'温馨提示',content:'短信验证码获取失败',type:'error',src:'',btn:'确定',else:''};
                 alert_notice(_json);
             }
         })
