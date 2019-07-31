@@ -6,7 +6,6 @@ include(dirname(dirname(__FILE__))."/include/baseUtils.php");
 $Dir = str_replace("/","\\",dirname(__FILE__));
 $DirNameList=explode('\\',$Dir);
 $ModuleName=end($DirNameList);
-define('ENV','local');
 
 if($_GET['c'] && !preg_match("/^[0-9a-zA-Z\_]*$/",$_GET['c'])){
 	$_GET['c'] = 'index';
