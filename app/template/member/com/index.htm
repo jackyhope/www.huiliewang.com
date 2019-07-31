@@ -124,8 +124,8 @@
 		Post('{yun:}url m=member c=resume_api act=companyInfo{/yun}',{}).then(function (res) {
 		    var res = res.info;
 			$('.comName').prepend(res.name);
-			$('.hy').prepend(res.hy);
-			$('.addr').prepend(res.province);
+			$('.hy').append(res.hy);
+			$('.addr').append(res.province);
 			$('.bdname').html(res.bd_name);
 			$('.telephone').html(res.bd_telephone);
 			$('.interview_payd').html(res.interview_payd);
