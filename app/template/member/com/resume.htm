@@ -10,14 +10,14 @@
 <div class="inner_header">
     <div class="container">
         <div class="ul clearall">
-            <span class="li current">收到的简历（2）<i></i></span>
-            <span class="li">已下载的简历（12）<i></i></span>
-            <span class="li">待面试（12）<i></i></span>
-            <span class="li">所有简历（12）<i></i></span>
+            <span class="li current" link='/member/index.php?c=resume'>收到的简历（2）<i></i></span>
+            <span class="li" link='/member/index.php?c=resume&c_type=4'>已下载的简历（12）<i></i></span>
+            <span class="li" link='/member/index.php?c=resume&c_type=8'>待面试（12）<i></i></span>
+            <span class="li" link='/member/index.php?c=resume&c_type=99'>所有简历（12）<i></i></span>
         </div>
         <div class="search">
             <div class="inp clearall"><input class="fll" type="text" name="kwd" oninput="change(event)" id="kwd"
-                    placeholder="请输入关键字"><a href="" class="sou">搜索</a></div>
+                    placeholder="请输入关键字"><a href="void:0" class="sou">搜索</a></div>
         </div>
     </div>
 </div>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <div class="end_right fll"><input type="checkbox" class="c_check" name="is_look" id="is_look"> 未查看</div>
+            <div class="end_right fll"><input type="checkbox" class="c_check" name="is_look" onchange="che()" id="is_look"> 未查看</div>
         </div>
     </div>
     <!--  收到的简历 start -->
@@ -98,9 +98,6 @@
         });
         $('#business_val').bind('myev', change)
         $('#at_val').bind('myev', change)
-        Post('/member/index.php?c=resume_api&act=buy_detail',{resume_id:1385244,project_id:30}).then(res=>{
-
-        })
         function getData(page, size) {
             Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show', {
                 c_type: 1,
@@ -128,11 +125,12 @@
             <div class="c_td">${val.edu?val.edu:'&nbsp;'}</div>
             <div class="c_td">${val.work_year}年</div>
             <div class="c_td">${val.job_class}</div>
-            <div class="c_td">${val.tj_namer}</div>
             <div class="c_td">${val.service_type==0?'慧沟通':'慧简历'}</div>
+            <div class="c_td">${val.tj_namer}</div>
             <div class="c_td">${get_time(val.tjaddtime,3)}</div>
             <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);"
-                    onclick="show_module('${val.service_type==0?'c_moudle_2':'c_moudle_3'}')">${val.service_type==0?'购买简历':'邀约面试'}</a><a class="not_fit" href="">不合适</a></div>
+                    onclick="show_module('${val.service_type==0?'c_module_2':'c_module_4'},${val.resume_id},${val.project_id}')">${val.service_type==0?'购买简历':'邀约面试'}</a>
+                    <a class="not_fit" href="javascript:void(0)" onclick='bhs(${val.resume_id},${val.project_id})'>不合适</a></div>
         </div>
                         `)
                 })
@@ -143,11 +141,28 @@
                 pager.init();
                 pager.options.callback = getData;
             }).catch(res => {
-
+                $('.resumeList').html('<div class="c_no_data"><img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_no_data.png" alt=""><p>暂无数据</p></div>')
+                pager.options.pageNo = 1;
+                pager.options.totalPages = 1;
+                pager.options.totalCount = '共' + 0 + '条';
+                pager.options.callback = function () {};
+                pager.init();
+                pager.options.callback = getData;
             })
         }
-    })
+        $('#kwd').keydown(ev=>{
+            if(ev.keyCode==13){
+                $('.pagersel').change();
+            }
+        })
+        $('.sou').click(ev=>{
+            $('.pagersel').change();
 
+        })
+    })
+    function che(){
+        $('.pagersel').change();
+    }
     function change(ev, before, after) {
         let name = $(ev.target).attr('name');
         if (before != after) {
@@ -161,6 +176,7 @@
                     $('#kwd').val('')
                     break
             }
+        $('.pagersel').change();
         } else if (name == 'kwd') {
             $('#business_select>div:nth-child(1) a').click();
             $('#at_select>div:nth-child(1) a').click();

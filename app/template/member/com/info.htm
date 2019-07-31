@@ -18,7 +18,7 @@
         <div class="line_1"></div>
         企业认证
     </div>
-    <div class="sec" style="display:block;">
+    <div class="sec" style="display:none">
         <div class="upBox">
             <span class="sp1">营业执照：</span>
             <div class="uploadBox">
@@ -27,101 +27,108 @@
             </div>
             <span class='sp2'>1、图片必须清晰、完整<br>2、不能带有无关的水印、标记</span>
         </div>
-        <div>
-            <span class="sp1">企业名称：</span>
-            <input type="text" class="verTel input_nomorl" id="business_name" placeholder="请输入正确的企业名称，如重庆XX公司">
-        </div>
-        <div style="width:1000px">
-            <span class="sp1">企业地址：</span>
-            <div class="input_min selectBox" style="z-index: 101">
-                <input class="SpFormLBut text_seclet_w158" type="button"
-                    id="province" {yun:}if $row.provinceid{/yun}
-                value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
-                onclick="search_show('job_province');">
-                <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$city_name[$row.provinceid]{/yun}" />
-                <div id="job_province" class="cus-sel-opt-panel" style="display:none">
-                    <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                        <ul class="Search_Condition_box_list">
-                            {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li><a href="javascript:;"
-                                    onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
+
+        <form id="certify_from">
+            <div>
+                <span class="sp1">企业名称：</span>
+                <input type="hidden" name="c_type" value="save">
+                <!-- 营业执照-->
+                <input type="hidden" name="business_license" id="business_license" value="/2.png">
+                <input type="text" class="verTel input_nomorl" id="business_name" name="business_name" placeholder="请输入正确的企业名称，如重庆XX公司">
+            </div>
+            <div style="width:1000px">
+                <span class="sp1">企业地址：</span>
+                <div class="input_min selectBox" style="z-index: 101">
+                    <input name="provincename" class="SpFormLBut text_seclet_w158" type="button"
+                           id="province" {yun:}if $row.provinceid{/yun}
+                    value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
+                    onclick="search_show('job_province');">
+                    <input type="hidden" id="provinceid" name="business_province" value="" />
+                    <div id="job_province" class="cus-sel-opt-panel" style="display:none">
+                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                            <ul class="Search_Condition_box_list">
+                                {yun:}foreach from=$city_index key=j item=v{/yun}
+                                <li><a href="javascript:;"
+                                       onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
                                     {yun:}$city_name[$v]{/yun}</a></li>
-                            {yun:}/foreach{/yun}
-                        </ul>
+                                {yun:}/foreach{/yun}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="input_min selectBox" style="z-index: 101">
-                <input class="SpFormLBut text_seclet_w158" type="button" id="citys"
-                       {yun:}if $row.cityid{/yun}
-                value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
-                onclick="search_show('job_citys');">
-                <input type="hidden" id="citysid" name="cityid" value="{yun:}$city_name[$row.cityid]{/yun}" />
-                <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
-                    <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                        <ul class="Search_Condition_box_list">
-                            {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
-                            <li><a href="javascript:;"
-                                    onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
+                <div class="input_min selectBox" style="z-index: 101">
+                    <input class="SpFormLBut text_seclet_w158" type="button" name="cityname" id="citys"
+                           {yun:}if $row.cityid{/yun}
+                    value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
+                    onclick="search_show('job_citys');">
+                    <input type="hidden" id="citysid" name="business_city" value="" />
+                    <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
+                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                            <ul class="Search_Condition_box_list">
+                                {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
+                                <li><a href="javascript:;"
+                                       onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
                                     {yun:}$city_name[$v]{/yun}</a></li>
-                            {yun:}/foreach{/yun}
-                        </ul>
+                                {yun:}/foreach{/yun}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="input_min selectBox" style="display:none"
-                id="cityshowth">
-                <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun}
-                value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
-                onclick="three_city_show('job_three_city');">
-                <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$city_name[$row.three_cityid]{/yun}" />
-                <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
-                    <ul class="Search_Condition_box_list">
-                        {yun:}foreach from=$com key=j item=v{/yun}
-                        <li><a href="javascript:;"
-                                onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
+                <div class="input_min selectBox" style="display:none"
+                     id="cityshowth">
+                    <input class="SpFormLBut text_seclet_w158" name="three_cityname" type="button" {yun:}if $row.three_cityid{/yun}
+                    value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
+                    onclick="three_city_show('job_three_city');">
+                    <input type="hidden" id="three_cityid" name="business_districts" value="" />
+                    <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
+                        <ul class="Search_Condition_box_list">
+                            {yun:}foreach from=$com key=j item=v{/yun}
+                            <li><a href="javascript:;"
+                                   onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
                                 {yun:}$city_name[$v]{/yun}</a></li>
-                        {yun:}/foreach{/yun}
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div>
-            <span class="sp1">详细地址：</span>
-            <input type="text" class="verTel input_nomorl" id="business_addr" placeholder="请输入正确的公司地址">
-        </div>
-        <div>
-            <span class="sp1">行业：</span>
-            <!-- <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业"> -->
-            <div class="input_nomorl selectBox2">
-                    <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
-                value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
-                onclick="search_show('job_hy');">
-                    <input type="hidden" id="hyid" name="hy" value="{yun:}$industry_name[$row.hy]{/yun}">
-                         <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
-                    <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                        <ul>
-                            {yun:}foreach item=v from=$industry_index key=k{/yun}
-                            <li><a href="javascript:;"
-                                    onclick="selects('{yun:}$v{/yun}','hy','{yun:}$industry_name[$v]{/yun}');">
-                                    {yun:}$industry_name[$v]{/yun}</a></li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div>
+                <span class="sp1">详细地址：</span>
+                <input type="text" name="business_addr" class="verTel input_nomorl" id="business_addr" placeholder="请输入正确的公司地址">
+            </div>
+            <div>
+                <span class="sp1">行业：</span>
+                <!-- <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业"> -->
+                <div class="input_nomorl selectBox2">
+                    <input name="hyname" class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
+                    value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
+                    onclick="search_show('job_hy');">
+                    <input type="hidden" id="hyid" name="business_industry">
+                    <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
+                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                            <ul>
+                                {yun:}foreach item=v from=$industry_index key=k{/yun}
+                                <li><a href="javascript:;"
+                                       onclick="selects('{yun:}$v{/yun}','hy','{yun:}$industry_name[$v]{/yun}');">
+                                    {yun:}$industry_name[$v]{/yun}</a></li>
+                                {yun:}/foreach{/yun}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-        </div>
-        <div>
-            <span class="sp1">联系人：</span>
-            <input type="text" class="verTel input_nomorl" id="business_uname" placeholder="联系人姓名">
-        </div>
-        <div>
-            <span class="sp1">联系电话：</span>
-            <input type="num" class="verTel input_nomorl" id="linktel" placeholder="请输入联系电话">
-        </div>
-        <span class="notice"><span class="sp1"></span>企业认证执审核通过后，信息将无法修改，请您核对无误后提交</span>
-        <div style='padding-left:70px'></span><button type="button" class="button_1 gradient_1 submit">提交认证</button>
-        </div>
+            </div>
+            <div>
+                <span class="sp1">联系人：</span>
+                <input type="text" name="business_uname" class="verTel input_nomorl" id="business_uname" placeholder="联系人姓名">
+            </div>
+            <div>
+                <span class="sp1">联系电话：</span>
+                <input type="num" class="verTel input_nomorl" id="linktel" placeholder="请输入联系电话">
+            </div>
+            <span class="notice"><span class="sp1"></span>企业认证执审核通过后，信息将无法修改，请您核对无误后提交</span>
+            <div style='padding-left:70px'></span><button id="onsubmit" type="button" class="button_1 gradient_1 submit">提交认证</button>
+            </div>
+        </form>
+
     </div>
     <div class="sec2" style="display: none">
         <span><span class="sp3">资料提交成功！</span>工作人员会在1个工作日内对您提交的信息进行审核，请您保持电话畅通，慧猎会派专属BD与您对接，</span>
@@ -149,51 +156,24 @@
         </div>
     </div>
 </div>
-<script src="/app/public/js/base.js">
-
-</script>
+<script src="/app/public/js/base.js"></script>
 <script>
-    $(document).ready(function () {
-        //提交认证资料
-        $('.submit').click(function () {
-            var business_name = $('#business_name').val();
-            var business_addr = $('#business_addr').val();
-            var business_province = $('#business_province').val();
-            var business_industry = $('#hyid').val();
-            var hyname = $('#hy').val();
-            var business_uname = $('#business_uname').val();
-            var linktel = $('#linktel').val();
-            var provinceid = $('#provinceid').val();
-            var citysid = $('#citysid').val();
-            var three_cityid = $('#three_cityid').val();
-            var provincename = $('#province').val();
-            var cityname = $('#citys').val();
-            var three_cityname = $('#three_city').val();
-            Post('{yun:}url m=login c=certify{/yun}', {
-                c_type: 'save',
-                business_license: 'license',
-                business_name: business_name,
 
-                business_addr: business_addr,
-                business_province: provinceid,
-                business_city: citysid,
-                business_districts: three_cityid,
-                provincename:provincename,
-                cityname:cityname,
-                three_cityname:three_cityname,
-                business_industry: business_industry,
-                hyname:hyname,
-                business_uname: business_uname,
-                linktel: linktel
-            }).then(function (res) {
+    $(function () {
+        $('#onsubmit').click(function () {
+            // console.log($('#certify_from').serialize());return;
+            $.post('{yun:}url m=login c=certify{/yun}',$('#certify_from').serialize(),function(res){
+                res = JSON.parse(res);
                 if(res.code==200){
                     alert_notice({title:'温馨提示',content:res.message,type:'success',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=info',btn:'返回'});
                 }
-                //window.location.reload();
-            }).catch(function (res) {
-                alert_notice({title:'温馨提示',content:res.message,type:'warning'});
-            });
-        });
+            })
+        })
+    })
+
+
+
+    $(document).ready(function () {
 
         //  编辑认证资料
         $('.reset').click(function () {

@@ -48,7 +48,7 @@
           <span class=""><a href="index.php"><span >首页</span></a></span>
           <span><a href="/member/index.php?c=resume"><span class="">简历管理</span></a></span>
           <span><a href="/member/index.php?c=job"><span class="">职位管理</span></a></span>
-          <span><a href="index.php"><span class="">套餐中心</span></a></span>
+          <span><a href="/member/index.php?c=paylog"><span class="">套餐中心</span></a></span>
           <span><a href="/member/index.php?c=jobadd"><span class="">发布职位</span></a></span>
         </nav>
         <div class="userBox">
@@ -102,7 +102,7 @@
       }else if(getQueryVariable()=='job'){
         $('.headerBox nav>span').removeClass('choosed');
         $('.headerBox nav>span:nth-child(3)').addClass('choosed');
-      }else if(getQueryVariable()=='套餐中心()'){
+      }else if(getQueryVariable()=='paylog'){
         $('.headerBox nav>span').removeClass('choosed');
         $('.headerBox nav>span:nth-child(4)').addClass('choosed');
       }else if(getQueryVariable()=='jobadd'){
