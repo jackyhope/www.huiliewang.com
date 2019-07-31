@@ -449,7 +449,6 @@ class resume_api_controller extends company
      * @desc 公司主页信息
      */
     public function companyInfo_action() {
-        error_reporting(E_ALL);
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huiliewang\interfaces\company\CompanyInfoServiceClient(null);
