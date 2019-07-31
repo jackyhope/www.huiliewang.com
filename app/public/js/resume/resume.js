@@ -165,7 +165,7 @@ function show_module(_module) {
         }
         if (module[0] == 'c_module_4') {
             $('.c_module_4 .msn').html(res.info.name);
-            $('.c_module_4 .msp').html(res.info.salary);
+            $('.c_module_4 .msp').html(res.info.job_name);
             $('.c_module_4 .ykc').html(res.info.money + '点');
             $('.c_module_4 .msBTn').attr('resume_id', module[1]);
             $('.c_module_4 .msBTn').attr('project_id', module[2]);
@@ -176,7 +176,7 @@ function show_module(_module) {
                     <div class="li">候选人</div>
                     <div class="li">预扣点数</div>
                     <div class="li">实际扣除</div>
-            <div class="li color-3CC1D3">${res.info.salary}</div>
+            <div class="li color-3CC1D3">${res.info.job_name}</div>
             <div class="li color-3CC1D3">${res.info.name}</div>
             <div class="li color-3CC1D3">${res.info.money}</div>
             <div class="li color-3CC1D3">${res.info.money}</div>
