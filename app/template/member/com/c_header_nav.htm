@@ -3,25 +3,67 @@
 </head>
 <body class="no_hover_text">
 <header id="c_header">
-    <div class="header_nav clearall">
-        <img class="fll" src="/app/public/imgs/logo.png" alt="" class="logo" width="240">
-        <div class="nav_ul fll clearall">
-            <a href="/" class="li current">首页<i></i></a>
-            <a href="/" class="li">简历管理<i></i></a>
-            <a href="/" class="li">职位管理<i></i></a>
-            <a href="/" class="li">套餐中心<i></i></a>
-            <a href="/" class="li">发布职位<i></i></a>
-        </div>
-        <div class="attention flr">
-            <div class="att fll"><img src="/app/public/imgs/notice.png" alt=""> 通知</div>
-            <div class="center fll">个人中心<img src="/app/public/imgs/more.png" alt="">
-                <div class="more_list clearall">
-                    <a href="#">企业资料</a>
-                    <a href="#">更换手机</a>
-                    <a href="#">修改密码</a>
-                    <a href="#">退出</a>
+        <div class="header_top_main">
+                <div class="headerBox">
+                  <a href="index.php"><img src="/app/public/imgs/logo.png" class="ourLogo" alt="ourLogo"></a>
+                  <nav>
+                    <span class=""><a href="index.php"><span >首页</span></a></span>
+                    <span><a href="/member/index.php?c=resume"><span class="">简历管理</span></a></span>
+                    <span><a href="/member/index.php?c=job"><span class="">职位管理</span></a></span>
+                    <span><a href="/member/index.php?c=paylog"><span class="">套餐中心</span></a></span>
+                    <span><a href="/member/index.php?c=jobadd"><span class="">发布职位</span></a></span>
+                  </nav>
+                  <div class="userBox">
+                    <img src="/app/public/imgs/notice.png" alt="" class="noticeImg">
+                    <span class="showNotice">通知</span>
+                    <span class="noticeNum"></span>
+                    <span class="userCenter">个人中心<img src="/app/public/imgs/more.png"></span>
+                  </div>
+                  <div class="noticeBox">
+                    
+                  </div>
+                  <div class="ucBox">
+                    <span><a href="/member/index.php?c=jobadd&act=base_info">企业资料</a></span>
+                    <!-- <span><a href="/member/index.php?c=jobadd&act=phone">更换手机</a></span> -->
+                    <!-- <span><a href="/member/index.php?c=jobadd&act=pw_reset">修改密码</a></span> -->
+                    <span onclick="logout()">退出</span>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
+              </div>
 </header>
+<script>
+    $(function () {
+      if(getQueryVariable()=='resume'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(2)').addClass('choosed');
+      }else if(getQueryVariable()=='job'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(3)').addClass('choosed');
+      }else if(getQueryVariable()=='paylog'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(4)').addClass('choosed');
+      }else if(getQueryVariable()=='jobadd'){
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(5)').addClass('choosed');
+      }else{
+        $('.headerBox nav>span').removeClass('choosed');
+        $('.headerBox nav>span:nth-child(1)').addClass('choosed');
+      }
+      $('.showNotice').click(ev => {
+        if ($('.headerBox .noticeBox').css('display') == 'block') {
+          $('.headerBox .noticeBox').css('display', 'none')
+        } else {
+          $('.headerBox .ucBox').css('display', 'none')
+          $('.headerBox .noticeBox').css('display', 'block')
+        }
+      })
+      $('.userCenter').click(ev => {
+        if ($('.headerBox .ucBox').css('display') == 'block') {
+          $('.headerBox .ucBox').css('display', 'none')
+        } else {
+          $('.headerBox .noticeBox').css('display', 'none')
+          $('.headerBox .ucBox').css('display', 'block')
+        }
+      })
+    })
+</script>
