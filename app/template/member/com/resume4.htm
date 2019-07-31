@@ -106,13 +106,13 @@
                 res.datas.map(val => {
                     $('.resumeList').append(`
                         <div class="c_tr clearall">
-            <div class="c_td">${val.name}</div>
-            <div class="c_td">${val.edu?val.edu:'&nbsp;'}</div>
-            <div class="c_td">${val.work_year}年</div>
-            <div class="c_td">${val.job_class}</div>
-            <div class="c_td">${val.service_type==0?'慧沟通':'慧简历'}</div>
-            <div class="c_td">${val.tj_namer}</div>
-            <div class="c_td">${get_time(val.tjaddtime,3)}</div>
+            <div class="c_td">&nbsp;${val.name}</div>
+            <div class="c_td">&nbsp;${val.edu?val.edu:'&nbsp;'}</div>
+            <div class="c_td">&nbsp;${val.work_year}年</div>
+            <div class="c_td">&nbsp;${val.job_class}</div>
+            <div class="c_td">&nbsp;${val.service_type==0?'慧沟通':'慧简历'}</div>
+            <div class="c_td">&nbsp;${val.tj_namer}</div>
+            <div class="c_td">&nbsp;${get_time(val.tjaddtime,3)}</div>
         </div>
                         `)
                 })
