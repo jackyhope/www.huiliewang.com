@@ -53,9 +53,7 @@ class resume_controller extends company
     function detail_action() {
 //        error_reporting(E_ALL);
         $resumeId = BaseUtils::getStr($_GET['resume_id'], 'int');
-        !$resumeId && $resumeId = 2079009;
         $projectId = BaseUtils::getStr($_GET['project_id'], 'int');
-        !$projectId && $projectId = 323;
         $resumeDo = '';
         $resumeService = '';
         if(!$resumeId || !$projectId){
@@ -73,11 +71,12 @@ class resume_controller extends company
             $info = $resumeService->info($resumeDo);
 
             if ($info->code != 200) {
-                $this->ACT_layer_msg($info->message, 8);
+                $info->message = yun_iconv('utf-8', 'gbk', $info->message);
+                $this->ACT_msg("index.php?c=resume",  $info->message);
             }
             $list = json_decode($info->message, true);
         } catch (Exception $e) {
-            $this->ACT_msg($this->config['sy_weburl'],$e->getMessage());
+            $this->ACT_msg("index.php?c=resume",  $e->getMessage());
         }
 
         //简历项目操作记录
@@ -87,12 +86,13 @@ class resume_controller extends company
             $resumeDo->project_id = $projectId;
             $info = $resumeService->projectLog($resumeDo);
             if ($info->code != 200) {
-                $this->ACT_msg($this->config['sy_weburl'],$info->message);
+                $info->message = yun_iconv('utf-8', 'gbk', $info->message);
+                $this->ACT_msg("index.php?c=resume",  $info->message);
             }
             $logs = json_decode($info->message, true);
 
         } catch (Exception $e) {
-            $this->ACT_msg($this->config['sy_weburl'],$e->getMessage());
+            $this->ACT_msg("index.php?c=resume",$e->getMessage());
         }
         $list = array_iconv($list, 'utf-8', 'gbk');
         $logs = array_iconv($logs, 'utf-8', 'gbk');

@@ -247,7 +247,6 @@ function bindev() {
                     <div class="dd">${val.description}</div>
                 </div>`)
             }
-            
         })
         $(this).parent('.c_tr').hover(function () {}, function () {
             setTimeout(function () {

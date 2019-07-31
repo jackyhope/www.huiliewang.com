@@ -58,7 +58,7 @@
     background-color: #EE5E5E;
     padding:0 3px;
     border-radius: 2px;
-    display: inline-block;
+    display: none;
     color: #fff;
     font-size: 12px;
 }
@@ -88,6 +88,9 @@
 .noticeBox>div{
     padding: 16px 27px;
     border-bottom: 1px solid #e8e8e8;
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
 }
 .noticeBox>div span:nth-child(1){
     font-size: 14px;
@@ -145,4 +148,11 @@
     background: -moz-linear-gradient(right, #75E4E5, #5BCBD5); /* Firefox 3.6 - 15 */
     background: linear-gradient(to right, #75E4E5 , #5BCBD5);
     color: #fff;
+}
+.noMsg{
+    display: block;
+    line-height: 200px;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
 }

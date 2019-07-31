@@ -21,11 +21,11 @@
 					<span class="interview_payd">0</span>
 					<span>慧面试余量</span>
 				</div>
-				<div>
+				<div link='/member/index.php?c=paylog&c_tpu=2'>
 					<img src="/app/public/imgs/ind_17.png" alt="">
 					<span>套餐使用记录</span>
 				</div>
-				<div style="border-right: none">
+				<div style="border-right: none" link='/member/index.php?c=paylog'>
 					<img src="/app/public/imgs/ind_19.png" alt="">
 					<span>购买套餐</span>
 				</div>
@@ -50,17 +50,17 @@
 					<div class="line_1"></div>
 					简历
 				</div>
-				<div class="box1">
+				<div class="box1" link='/member/index.php?c=resume'>
 					<span>新简历</span>
 					<span class="new_resumes">0</span>
 					<span>></span>
 				</div>
-				<div class="box1">
+				<div class="box1" link='/member/index.php?c=resume&c_type=8'>
 					<span>邀约面试的简历</span>
 					<span class="interview_resumes">0</span>
 					<span>></span>
 				</div>
-				<div class="box1">
+				<div class="box1" link='/member/index.php?c=resume&c_type=4'>
 					<span>已购买的简历</span>
 					<span class="buy_resumes">0</span>
 					<span>></span>
@@ -71,12 +71,12 @@
 					<div class="line_1"></div>
 					面试
 				</div>
-				<div class="box1">
+				<div class="box1" link='/member/index.php?c=resume&c_type=8'>
 					<span>待面试</span>
 					<span class="wait_interview_count">0</span>
 					<span>></span>
 				</div>
-				<div class="box1">
+				<div class="box1" link='/member/index.php?c=resume&c_type=8'>
 					<span>待确认到场</span>
 					<span class="wait_present_count">0</span>
 					<span>></span>
@@ -87,12 +87,12 @@
 					<div class="line_1"></div>
 					职位
 				</div>
-				<div class="box1">
+				<div class="box1" link='/member/index.php?c=job'>
 					<span>招聘中的职位</span>
 					<span class="job_count">0</span>
 					<span>></span>
 				</div>
-				<div class="toPublish">去发布职位&nbsp;&nbsp;<img src="/app/public/imgs/back.png" alt=""></div>
+				<div class="toPublish" link='/member/index.php?c=jobadd'>去发布职位&nbsp;&nbsp;<img src="/app/public/imgs/back.png" alt=""></div>
 			</div>
 		</div>
 	</div>
@@ -124,8 +124,8 @@
 		Post('{yun:}url m=member c=resume_api act=companyInfo{/yun}',{}).then(function (res) {
 		    var res = res.info;
 			$('.comName').prepend(res.name);
-			$('.hy').prepend(res.hy);
-			$('.addr').prepend(res.province);
+			$('.hy').append(res.hy);
+			$('.addr').append(res.province);
 			$('.bdname').html(res.bd_name);
 			$('.telephone').html(res.bd_telephone);
 			$('.interview_payd').html(res.interview_payd);

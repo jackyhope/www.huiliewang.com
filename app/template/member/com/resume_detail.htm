@@ -4,8 +4,10 @@
 <!--头部 start -->
 {yun:}include file="$comstyle/c_header.htm"{/yun}
 {yun:}include file="$comstyle/c_header_nav.htm"{/yun}
+{yun:}include file="$comstyle/c_resume_module.htm"{/yun}
 <!--头部 end -->
 <!--inner header start-->
+<link rel="stylesheet" href="/app/public/css/resume/resume.css">
 <link rel="stylesheet" href="/app/public/css/resume/resume.css">
 <script src="/app/public/js/resume/resume.js"></script>
 <script src="/app/public/js/resume/jquery.resize.js"></script>
@@ -27,7 +29,7 @@
     })
 </script>
 <!--content-list start-->
-<div class="content_detail">
+<div class="content_detail" style="position: relative;z-index:1;">
     <div class="detail_box">
         <div id="animate_high" class="detail_left">
             <!--                右上角操作框 //1-未查看  2-已查看 3-不合适  4-已购买  5-邀约面试  6-顾问面试确认  7-候选人拒绝  8-待面试  9-未到场确认中 10-未到场  11-已到场  0-移除 start -->
@@ -38,25 +40,25 @@
 
                     {yun:}if $status < 4 {/yun}
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','购买')">购买</a>
+                        <a href="javascript:void(0);" onclick="show_module(`c_module_2,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">购买</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','2','不合适')">不合适</a>
+                        <a href="javascript:void(0);" onclick="bhs(getQueryVariable('resume_id'),getQueryVariable('project_id'))">不合适</a>
                     </div>
                     {yun:}/if{/yun}
                     {yun:}if $status == 4 {/yun}
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','2','面试')">面试</a>
+                        <a href="javascript:void(0);" onclick="show_module(`c_module_4,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">面试</a>
                     </div>
                     {yun:}/if{/yun}
                     {yun:}if $status == 6 {/yun}
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','2','确认到场')">确认到场</a>
+                        <a href="javascript:void(0);" onclick="show_module(`c_module_3,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">确认到场</a>
                     </div>
                     {yun:}/if{/yun}
                     {yun:}if $status == 8 {/yun}
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','2','确认到场')">确认到场</a>
+                        <a href="javascript:void(0);" onclick="show_module(`c_module_3,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">确认到场</a>
                     </div>
                     {yun:}/if{/yun}
                     <div class="select_box_list">
