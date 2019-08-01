@@ -9,7 +9,7 @@
     }
 </style>
 <!--inner header start-->
-<link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/resume/resume.css?ver=20190801001">
 <script src="/app/public/js/resume/resume.js"></script>
 <div class="inner_header">
     <div class="container">
@@ -107,7 +107,7 @@
             <div class="c_td"><a href='/member/index.php?c=resume&act=detail&resume_id=${val.resume_id}&project_id=${val.project_id}'>${val.name}</a></div>
             <div class="c_td">${val.edu?val.edu:'&nbsp;'}</div>
             <div class="c_td">${val.work_year}Äê</div>
-            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_class}</a></div>
+            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_name}</a></div>
             <div class="c_td">${val.service_type==0?'»Û¹µÍ¨':'»Û¼òÀú'}</div>
             <div class="c_td">${val.tj_namer}</div>
             <div class="c_td">${get_time(val.tjaddtime,3)}</div>
