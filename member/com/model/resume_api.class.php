@@ -449,7 +449,6 @@ class resume_api_controller extends company
      * @desc 公司主页信息
      */
     public function companyInfo_action() {
-        error_reporting(E_ALL);
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huiliewang\interfaces\company\CompanyInfoServiceClient(null);
@@ -470,7 +469,7 @@ class resume_api_controller extends company
      * @desc 职位列表
      */
     public function jobs_action() {
-        $list = $this->obj->DB_select_all_assoc('company_job', "uid = {$this->uid} order by id limit 15", 'id,name');
+        $list = $this->obj->DB_select_all_assoc('company_job', "uid = {$this->uid} order by id desc limit 40", 'id,name');
         foreach ($list as $k => &$info) {
             if (!$info['name']) {
                 unset($list[$k]);
