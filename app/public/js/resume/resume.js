@@ -171,6 +171,9 @@ function show_module(_module) {
             $('.c_module_4 .msBTn').attr('project_id', module[2]);
         }
         if (module[0] == 'c_module_3') {
+            $('.c_module_3 .c_msg').html(`
+            请确认候选人是否到场面试，确认到场后系统将扣除慧面试余量${res.info.money}点； 如未到场系统则返还预扣除的慧面试点数
+            `)
             $('.c_module_3 .ul').html(`
                     <div class="li">职位</div>
                     <div class="li">候选人</div>
