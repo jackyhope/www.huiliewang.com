@@ -37,7 +37,7 @@ class comapply_controller extends job_controller{
 		}
 		if($_SESSION['auid']==""){
 			if($JobInfo['r_status']=='2'){
-				$this->ACT_msg($this->config['sy_weburl'],"企业已被锁定！");
+//				$this->ACT_msg($this->config['sy_weburl'],"企业已被锁定！");
 			}
 		}
 		if($this->usertype=="1"&&$this->uid){
