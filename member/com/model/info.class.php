@@ -47,6 +47,7 @@ class info_controller extends company
         $this->com_cache();
         $this->industry_cache();
         $cert = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "' and type='3'");
+        if(!$cert){$cert=[];$cert['status']=99;}
         $this->yunset("cert", $cert);
         $this->yunset("js_def", 2);
         $this->com_tpl('info');

@@ -25,21 +25,22 @@
 </style>
 <script>
     $(function () {
-        var _stat = '{yun:}$cert.status{/yun}';
-        if(_stat==0){
-            $('.c_table').hide();
-            $('.sec2').show();
-        }
-        if(_stat==2){
 
+        var _stat = '{yun:}$cert.status{/yun}';
+        if(_stat==='0'){
+            $('.c_table').hide();
+            $('.c_table').eq(1).show();
+        }else if(_stat==='2'){
             $('.c_table').hide();
             $('.c_table').eq(_stat).show();
-        }
-        if(_stat==1){
+        }else if(_stat==='1'){
+            location.href="{yun:}$config.sy_weburl{/yun}/member/index.php";
+        }else if(_stat==='99'){
+            $('.c_table').eq(0).show();
+        }else{
             location.href="{yun:}$config.sy_weburl{/yun}/member/index.php";
         }
     })
-
 </script>
 <div class="infoFi">
     <div class="title">
@@ -73,7 +74,7 @@
             <div style="width:1000px" class="inputBox">
                 <span class="sp1">企业地址：</span>
                 <div class="input_min selectBox" style="z-index: 101">
-                    <input name="provincename" class="SpFormLBut text_seclet_w158" type="button"
+                    <input name="provincename" class="SpFormLBut text_seclet_w158" readonly="readonly"
                            id="province" {yun:}if $row.provinceid{/yun}
                     value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
                     onclick="search_show('job_province');">
@@ -91,7 +92,7 @@
                     </div>
                 </div>
                 <div class="input_min selectBox" style="z-index: 101">
-                    <input class="SpFormLBut text_seclet_w158" type="button" name="cityname" id="citys"
+                    <input class="SpFormLBut text_seclet_w158" readonly="readonly" name="cityname" id="citys"
                            {yun:}if $row.cityid{/yun}
                     value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
                     onclick="search_show('job_citys');">
@@ -110,7 +111,7 @@
                 </div>
                 <div class="input_min selectBox"
                      id="cityshowth">
-                    <input class="SpFormLBut text_seclet_w158" name="three_cityname" type="button" {yun:}if $row.three_cityid{/yun}
+                    <input class="SpFormLBut text_seclet_w158" name="three_cityname" readonly="readonly" {yun:}if $row.three_cityid{/yun}
                     value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
                     onclick="three_city_show('job_three_city');">
                     <input type="hidden" id="three_cityid" name="business_districts" value="" />
@@ -133,7 +134,7 @@
                 <span class="sp1">行业：</span>
                 <!-- <input type="text" class="verTel input_nomorl" id="business_industry" placeholder="请输入正确的企业行业"> -->
                 <div class="input_nomorl selectBox2">
-                    <input name="hyname" class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $row.hy{/yun}
+                    <input name="hyname" class="SpFormLBut text_seclet_w250 " readonly="readonly" {yun:}if $row.hy{/yun}
                     value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
                     onclick="search_show('job_hy');">
                     <input type="hidden" id="hyid" name="business_industry">
@@ -239,13 +240,13 @@
     $(function () {
         var _json;
         $('#onsubmit').click(function () {
-            // console.log($('#certify_from').serialize());return;
+
             $.post('{yun:}url m=login c=certify{/yun}',$('#certify_from').serialize(),function(res){
                 res = JSON.parse(res);
                 if(res.code==200){
                     _json={title:'温馨提示',content:res.message,type:'success',btn:'返回'};
                     setTimeout(function () {
-                        location.reload();
+                        location.href=location.href;
                     },1000)
                 }else{
                     _json={title:'温馨提示',content:res.message,type:'waring',btn:'返回'};
@@ -268,7 +269,7 @@
                 $('.business_uname label').text(res.data.linkman);
                 $('#business_name').val(lastData.name);
                 $('#business_addr').val(lastData.address);
-                $('#hyid').val(lastData.hyname);
+                $('#hyid').val(lastData.hy);
                 $('#business_uname').val(lastData.linkman);
                 $('#linktel').val(lastData.linktel);
                 $('#provinceid').val(lastData.provinceid);
@@ -280,9 +281,6 @@
                     $('.imageprview a').attr('href',lastData.wt_yy_photo);
                     $('.imageprview img').attr('src',lastData.wt_yy_photo);
                     $('.imageprview').show();
-                }else{
-
-                    $('.sec').show();
                 }
 
             }
@@ -291,7 +289,7 @@
         })
         /****/
         $('.reset').click(function () {
-            console.log(12);
+
             $('.c_table').hide();
             $('.c_table').eq(0).show();
         })
