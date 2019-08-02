@@ -48,7 +48,7 @@ class index_controller extends common{
             return_json($msg,500);
         }
         //验证码验证
-        if( $post['l_type']==1 && ($post['password'] != $_SESSION['code'] || (time()-$_SESSION['code_time']) > 60) ){
+        if( $post['l_type']==1 && ($post['password'] != $_SESSION['code'] || (time()-$_SESSION['code_time']) > 300) ){
             $msg = '请输入正确的验证码';
             return_json($msg,500);
         }
