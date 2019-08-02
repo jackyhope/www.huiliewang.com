@@ -103,7 +103,6 @@ class resume_controller extends company
         $this->yunset("info", $list);
         $this->yunset("logs", $logs);
         $this->yunset("status", $list['work_info']['huilie_status']);
-        $this->yunset("pro_type", $list['work_info']['pro_type']);
         $this->com_tpl('resume_detail');
     }
 }

@@ -52,13 +52,8 @@
             <div class="c_td">状态</div>
             <div class="c_td">时间</div>
         </div>
-        <div class="c_tr clearall">
-            <div class="c_td">设计师</div>
-            <div class="c_td">航宝宝</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">--2</div>
-            <div class="c_td">已扣除</div>
-            <div class="c_td">2019-7-12 14:32:19</div>
+        <div class="list">
+
         </div>
 
     </div>
@@ -66,9 +61,49 @@
 
 </div>
 <!--content-list end-->
+<script>
+    let pager = $('#pager').paging({
+        initPageNo: 1, // 初始页码
+        totalPages: 1, //总页数
+        totalCount: '共' + 0 + '条', // 条目总数
+        slideSpeed: 200, // 缓动速度。单位毫秒
+        jump: true, //是否支持跳转
+        callback: getData(1,5) // 回调函数
+    });
 
+    function getData(page,size){
+        $.post('{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=useList',{'page':page,'page_size':size},function(re){
+            re = JSON.parse(re);
+            console.log(re);return;
+            var _html = '';
+            if(re.code==200){
+                for (var i in re.info.list) {
+                    _html +='<div class="c_tr clearall">\n' +
+                        '            <div class="c_td">&nbsp;'+re.info.list[i].id+re.info.list[i].rating+'</div>\n' +
+                        '            <div class="c_td">&nbsp;'+re.info.list[i].rating2+'</div>\n' +
+                        '            <div class="c_td">&nbsp;'+re.info.list[i].order_price+'</div>\n' +
+                        '            <div class="c_td">-'+re.info.list[i].order_price+'</div>\n' +
+                        '            <div class="c_td">购买成功</div>\n' +
+                        '            <div class="c_td">&nbsp;'+re.info.list[i].order_time+'</div>\n' +
+                        '        </div>';
+
+                }
+                $('.c_table .list').html(_html);//输出数据列表
+                pager.options.pageNo = re.info.current_page;
+                pager.options.totalPages = re.info.counts / re.info.page_size;
+                pager.options.totalCount = '共' + re.info.counts + '条';
+                pager.options.callback = function () {};
+                pager.init();
+                pager.options.callback = getData;
+            }else{
+                alert_notice({title:'温馨提示',content:'获取套餐列表失败',type:'error',src:'',btn:'确定',else:''});
+            }
+        })
+    }
+
+</script>
 <!--尾巴 start-->
-{yun:}include file="$comstyle/c_footer.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}
 <!--尾巴 end-->
 
 </body>

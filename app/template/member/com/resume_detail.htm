@@ -38,17 +38,15 @@
                 <input name="at" type="hidden" id="at_val" value="0">
                 <div class="select_box_list_box dn" id="at_select">
 
-                    {yun:}if $status < 4 && $pro_type == 4{/yun}
+                    {yun:}if $status < 4 {/yun}
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="show_module(`c_module_2,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">¹ºÂò</a>
                     </div>
-                    {yun:}/if{/yun}
-                    {yun:}if $status < 4{/yun}
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="bhs(getQueryVariable('resume_id'),getQueryVariable('project_id'))">²»ºÏÊÊ</a>
                     </div>
                     {yun:}/if{/yun}
-                    {yun:}if $status < 5 && $pro_type == 8 {/yun}
+                    {yun:}if $status == 4 {/yun}
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="show_module(`c_module_4,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">ÃæÊÔ</a>
                     </div>

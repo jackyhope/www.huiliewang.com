@@ -309,6 +309,7 @@ class info_controller extends company
         $_POST['website'] = change_encoding($_POST['website'], 'GBK');
         $_POST['linkjob'] = change_encoding($_POST['linkjob'], 'GBK');
         $_POST['welfare'] = change_encoding($_POST['welfare'], 'GBK');
+        $_POST['linkman'] = change_encoding($_POST['linkman'], 'GBK');
 //        var_dump( $_POST['content']);
 //        die;
         $name = baseUtils::getStr($_POST['name']);

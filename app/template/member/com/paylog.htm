@@ -163,7 +163,7 @@
 <!--content-list end-->
 
 <!--尾巴 start-->
-{yun:}include file="$comstyle/c_footer.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}
 <!--尾巴 end-->
 <!--相关简历列表页的弹框module   start -->
 <div id="c_shade" class="c_hide">
@@ -172,30 +172,7 @@
             <i onclick="m_close(this)"></i>
             <div class="c_title"><span></span>套餐购买</div>
             <div class="c_cont c_hide" id="tc_list">
-                <!--                <div class="dl clearall">-->
-                <!--                    <div class="dd wid20p">慧沟通</div>-->
-                <!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
-                <!--                    <div class="dd wid20p">1000元</div>-->
-                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-                <!--                </div>-->
-                <!--                <div class="dl clearall">-->
-                <!--                    <div class="dd wid20p">慧沟通</div>-->
-                <!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
-                <!--                    <div class="dd wid20p">1000元</div>-->
-                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-                <!--                </div>-->
-                <!--                <div class="dl clearall">-->
-                <!--                    <div class="dd wid20p">慧沟通</div>-->
-                <!--                    <div class="dd wid40p">100份+赠送慧面试1次</div>-->
-                <!--                    <div class="dd wid20p">1000元</div>-->
-                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧沟通" data-qy="100份+赠送慧面试1次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-                <!--                </div>-->
-                <!--                <div class="dl clearall">-->
-                <!--                    <div class="dd wid20p color-EBCB66">慧面试</div>-->
-                <!--                    <div class="dd wid40p">5次</div>-->
-                <!--                    <div class="dd wid20p">1000元</div>-->
-                <!--                    <div class="dd wid20p te_lgl"><a data-name="慧面试" data-qy="5次" data-price="1000" data-id="1" href="javascript:buy_now(this);" class="c_btn c_btn_light no_mg"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>-->
-                <!--                </div>-->
+
             </div>
             <!--    余额不足显示   start  做php判断   -->
             <div class="nomoney c_hide">
@@ -279,13 +256,13 @@
                 data = JSON.parse(data);
                 if(data.code==200){
                     hide_module_all();
-                    _json = {title:'温馨提示',content:data.info,type:'success',src:'/',btn:'返回',else:''};
+                    _json = {title:'温馨提示',content:data.info,type:'success',btn:'返回',else:''};
                     //默认2秒自动跳转
                     setTimeout(function(){
                         location.reload();
-                    },2000);
+                    },1000);
                 }else{
-                    _json = {title:'温馨提示',content:data.info,type:'error',src:data.url,btn:'确定',else:''};
+                    _json = {title:'温馨提示',content:data.info,type:'error',btn:'确定',else:''};
                 }
                 alert_notice(_json);
             })
