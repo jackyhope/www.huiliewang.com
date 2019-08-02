@@ -101,7 +101,7 @@
     }
   })
   function toreset(id) {
-    window.location.href = '/member/index.php?c=jobadd?id=' + id
+    window.location.href = '/member/index.php?c=jobadd&id=' + id
   }
 
   function changeStatus(id, status) {
@@ -111,7 +111,7 @@
       confirm(ev) {
         Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=change_status', {
           id:id,
-          status:status,
+          status:Math.abs(status-3),
           ctype:1
         }).then(res => {
           $(ev.target).parent().parent('.mask').remove();
