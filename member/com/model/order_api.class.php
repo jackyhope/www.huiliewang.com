@@ -134,6 +134,10 @@ class order_api_controller extends company
                 }
                 $v['pay_time'] = date("Y-m-d H:i:s", $v['pay_time']);
                 $v['order_price'] = str_replace(".00", "", $v['order_price']);
+                $v['pay_status_name'] = '未扣除';
+                $v['pay_state'] == 2 && $v['pay_status_name'] = '已扣除'; //2:扣款  3：预扣
+                $v['pay_state'] == 3 && $v['pay_status_name'] = '预扣'; //2:扣款  3：预扣
+                $v['type_name'] = $v['type'] == 1 ? '慧面试' : '慧沟通';
             }
         }
         $counts = $this->obj->DB_select_num('company_pay', $countWhere);
@@ -185,7 +189,8 @@ class order_api_controller extends company
             $this->ajax_return(500, false, '参数错误');
         }
         //@todo  短信验证码验证 07-29 暂时跳过验证
-        if ($smsCode !== $_SESSION['code'] || (time() - $_SESSION['code_time']) > 300) {;
+        if ($smsCode !== $_SESSION['code'] || (time() - $_SESSION['code_time']) > 300) {
+            ;
             $this->ajax_return(500, false, '短信验证码错误');
         }
 
@@ -201,7 +206,7 @@ class order_api_controller extends company
 
         $title = '';
         $types = $this->getAllService();
-        $sent = $this->characet('+赠送'.$types[3]);
+        $sent = $this->characet('+赠送' . $types[3]);
         if ($serviceType == 1) {
             $title = $resume . $serviceInfo['resume_unit'];
             $serviceInfo['interview'] > 0 && $title .= $sent . $serviceInfo['interview'] . $serviceInfo['interview_unit'];
