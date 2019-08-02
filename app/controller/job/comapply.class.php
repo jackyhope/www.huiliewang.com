@@ -21,7 +21,7 @@ class comapply_controller extends job_controller{
         $CacheM=$this->MODEL('cache');
         $CacheList=$CacheM->GetCache(array('job','city','com','user','hy'));
         $this->yunset($CacheList);
-		$JobInfo=$M->GetComjobOne(array('id'=>$id,'state'=>1,'`r_status`<>2 and `status`<>1'));
+		$JobInfo=$M->GetComjobOne(array('id'=>$id));
 		session_start();
         $this->industry_cache();
         $this->com_cache();
@@ -37,7 +37,7 @@ class comapply_controller extends job_controller{
 		}
 		if($_SESSION['auid']==""){
 			if($JobInfo['r_status']=='2'){
-				$this->ACT_msg($this->config['sy_weburl'],"企业已被锁定！");
+//				$this->ACT_msg($this->config['sy_weburl'],"企业已被锁定！");
 			}
 		}
 		if($this->usertype=="1"&&$this->uid){

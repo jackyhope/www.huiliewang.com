@@ -2,7 +2,7 @@
 
 class resume_api_controller extends company
 {
-   
+
     //'1' => '未查看'//  2-已查看// 3-不合适//  4-已购买//  5-邀约面试//  6-顾问面试确认//  7-候选人拒绝//  8-待面试  9-未到场确认中 10-未到场  11-已到场  0-移除
     protected $resumeId;
     protected $projectId;
@@ -113,9 +113,9 @@ class resume_api_controller extends company
      */
     function interview_action() {
         $this->publicCheck();
-        $interview_time = baseUtils::getStr($_POST['interview_time']);
-        $interview_address = baseUtils::getStr($_POST['interview_address']);
-        $interviewer = baseUtils::getStr($_POST['interviewer']);
+        $interview_time = baseUtils::getStr($this->characet($_POST['interview_time']));
+        $interview_address = baseUtils::getStr($this->characet($_POST['interview_address']));
+        $interviewer = baseUtils::getStr($this->characet($_POST['interviewer']));
         $note = baseUtils::getStr($_POST['note']);
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
@@ -478,7 +478,7 @@ class resume_api_controller extends company
     /**
      * @desc 备注信息
      */
-    public function note_action(){
+    public function note_action() {
         $this->publicCheck();
         try {
             apiClient::init('', '');
@@ -491,10 +491,26 @@ class resume_api_controller extends company
             if ($info->code != 200) {
                 $this->ajax_return(500, false, $info->message);
             }
-            $info->message = json_decode($info->message,true);
+            $info->message = json_decode($info->message, true);
             $this->ajax_return(200, true, $info->message);
         } catch (Exception $e) {
             $this->ajax_return(500, false, $e->getMessage());
         }
+    }
+
+    /**
+     * 编码转换
+     * @param $data
+     * @param string $charSet
+     * @return string
+     */
+    function characet($data, $charSet = 'GBK') {
+        if (!empty($data)) {
+            $fileType = mb_detect_encoding($data, array('UTF-8', 'GBK', 'LATIN1', 'BIG5'));
+            if ($fileType != $charSet) {
+                $data = mb_convert_encoding($data, $charSet, $fileType);
+            }
+        }
+        return $data;
     }
 }
