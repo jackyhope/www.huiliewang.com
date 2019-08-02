@@ -21,7 +21,7 @@ class comapply_controller extends job_controller{
         $CacheM=$this->MODEL('cache');
         $CacheList=$CacheM->GetCache(array('job','city','com','user','hy'));
         $this->yunset($CacheList);
-		$JobInfo=$M->GetComjobOne(array('id'=>$id,'state'=>1,'`r_status`<>2 and `status`<>1'));
+		$JobInfo=$M->GetComjobOne(array('id'=>$id));
 		session_start();
         $this->industry_cache();
         $this->com_cache();
