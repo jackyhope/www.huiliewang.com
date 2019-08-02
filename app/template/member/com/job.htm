@@ -54,7 +54,7 @@
         res.datas.map(val => {
           $('.list').append(`<div class="listBox">
       <div class="listLeft">
-        <span class="postName">${val.name}</span>
+        <span class="postName"><a href='/job/index.php?c=comapply&id=${val.id}'>${val.name}</a></span>
         <span class="postType  ${val.service_type==0?'gradient_1':'gradient_2'}"><img src="/app/public/imgs/vw.png" alt="">${val.service_type==0?'慧沟通':'慧面试'}</span><br>
         <span class="salary">${val.minsalary+'-'+val.maxsalary}</span>
         <span class="adviser">专属顾问：${val.joiner_name}</span><br>

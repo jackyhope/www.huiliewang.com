@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{yun:}$style{/yun}/style/class.public.css" type="text/css">
 <script src="{yun:}$config.sy_weburl{/yun}/js/class.public.js" type="text/javascript"></script>
 <div class="jobadd">
-    <div class="title_">发布职位 {yun:}$type{/yun}</div>
+    <div class="title_">发布职位</div>
     <div class="line_2"></div>
     <div class="typeBox box1">
         <span class="sp1" style="float:left;margin-top: 50px;"><span>*</span>服务方式：</span>
@@ -598,7 +598,7 @@
             }).then(function (res) {
                 alert_notice({title:'温馨提示',content:res.info,src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=job'});
             }).catch(function (res) {
-                alert_notice({title:'温馨提示',content:res.info,type:'warning',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog'});
+                alert_notice({title:'温馨提示',content:res.info,type:'warning'});
             });
 
         });
