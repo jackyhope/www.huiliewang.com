@@ -504,7 +504,7 @@ class resume_api_controller extends company
      * @param string $charSet
      * @return string
      */
-    function characet($data, $charSet = 'UTF-8') {
+    function characet($data, $charSet = 'GBK') {
         if (!empty($data)) {
             $fileType = mb_detect_encoding($data, array('UTF-8', 'GBK', 'LATIN1', 'BIG5'));
             if ($fileType != $charSet) {
