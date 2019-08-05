@@ -117,11 +117,11 @@ function select_new(name, val, valname, ) {
     if (name == 'datetype') {
         $("#xfilename").attr('value', val);
     }
-    $('input[name=' + name + ']').trigger('myev', [$('input[name=' + name + ']').val(), val])
     val == '0' ? $("#is_rec").show() : $("#is_rec").hide();
     $("#" + name + "_name").val(valname); //替换新名称
     $("#" + name + "_val").val(val); //替换新值
     $("#" + name + "_select").hide(); //弹出框隐藏
+    $('input[name=' + name + ']').trigger('myev', [$('input[name=' + name + ']').val(), val])
 }
 /**通用单选下拉框 end **/
 
