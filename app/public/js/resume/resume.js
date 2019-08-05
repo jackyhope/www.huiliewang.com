@@ -164,8 +164,10 @@ function show_module(_module) {
             `)
             if (res.info.money - 0 > (res.info.surplus)) {
                 $('.bgl').removeClass('c_hide')
+                $('.c_module_2 .hgn').addClass('c_hide')
             } else {
                 $('.bgl').addClass('c_hide')
+                $('.c_module_2 .hgn').removeClass('c_hide')
             }
             $('.c_module_2 .gmBTn').attr('resume_id', module[1]);
             $('.c_module_2 .gmBTn').attr('project_id', module[2]);
