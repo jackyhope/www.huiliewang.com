@@ -58,48 +58,54 @@
 
     </div>
     <!--  套餐使用记录 end -->
-
+    <div id="pager" class="pagger-box pagger"></div>
 </div>
 <!--content-list end-->
 <script>
-    let pager = $('#pager').paging({
-        initPageNo: 1, // 初始页码
-        totalPages: 1, //总页数
-        totalCount: '共' + 0 + '条', // 条目总数
-        slideSpeed: 200, // 缓动速度。单位毫秒
-        jump: true, //是否支持跳转
-        callback: getData(1,5) // 回调函数
-    });
+    $(function () {
+        let pager = $('#pager').paging({
+            initPageNo: 1, // 初始页码
+            totalPages: 1, //总页数
+            totalCount: '共' + 0 + '条', // 条目总数
+            slideSpeed: 200, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            callback: getData(1,5) // 回调函数
+        });
+        function getData(page,size){
+            var _url = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=useList';
 
-    function getData(page,size){
-        $.post('{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=useList',{'page':page,'page_size':size},function(re){
-            re = JSON.parse(re);
-            console.log(re);return;
-            var _html = '';
-            if(re.code==200){
-                for (var i in re.info.list) {
-                    _html +='<div class="c_tr clearall">\n' +
-                        '            <div class="c_td">&nbsp;'+re.info.list[i].id+re.info.list[i].rating+'</div>\n' +
-                        '            <div class="c_td">&nbsp;'+re.info.list[i].rating2+'</div>\n' +
-                        '            <div class="c_td">&nbsp;'+re.info.list[i].order_price+'</div>\n' +
-                        '            <div class="c_td">-'+re.info.list[i].order_price+'</div>\n' +
-                        '            <div class="c_td">购买成功</div>\n' +
-                        '            <div class="c_td">&nbsp;'+re.info.list[i].order_time+'</div>\n' +
-                        '        </div>';
+            $.post(_url,{'page':page,'page_size':size},function(re){
+                re = JSON.parse(re);
 
+                var _html = _ttpye = '';
+                if(re.code==200){
+                    for (var i in re.info.list) {
+                        if(re.info.list[i].type==0){_ttpye ='慧沟通'}else{_ttpye ='慧面试'}
+                        _html +='<div class="c_tr clearall">\n' +
+                            '            <div class="c_td">&nbsp;'+re.info.list[i].job+'</div>\n' +
+                            '            <div class="c_td">&nbsp;'+re.info.list[i].resume+'</div>\n' +
+                            '            <div class="c_td">&nbsp;'+_ttpye+'</div>\n' +
+                            '            <div class="c_td">-'+re.info.list[i].order_price+'</div>\n' +
+                            '            <div class="c_td">'+re.info.list[i].pay_remark+'</div>\n' +
+                            '            <div class="c_td">&nbsp;'+re.info.list[i].pay_time+'</div>\n' +
+                            '        </div>';
+
+                    }
+                    $('.c_table .list').html(_html);//输出数据列表
+                    pager.options.pageNo = re.info.current_page;
+                    pager.options.totalPages = re.info.counts / re.info.page_size;
+                    pager.options.totalCount = '共' + re.info.counts + '条';
+                    pager.options.callback = function () {};
+                    pager.init();
+                    pager.options.callback = getData;
+                }else{
+                    alert_notice({title:'温馨提示',content:'获取套餐列表失败',type:'error',src:'',btn:'确定',else:''});
                 }
-                $('.c_table .list').html(_html);//输出数据列表
-                pager.options.pageNo = re.info.current_page;
-                pager.options.totalPages = re.info.counts / re.info.page_size;
-                pager.options.totalCount = '共' + re.info.counts + '条';
-                pager.options.callback = function () {};
-                pager.init();
-                pager.options.callback = getData;
-            }else{
-                alert_notice({title:'温馨提示',content:'获取套餐列表失败',type:'error',src:'',btn:'确定',else:''});
-            }
-        })
-    }
+            })
+        }
+    })
+
+
 
 </script>
 <!--尾巴 start-->
