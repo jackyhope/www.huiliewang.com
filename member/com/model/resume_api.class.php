@@ -265,7 +265,7 @@ class resume_api_controller extends company
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
         $needMoney = $companyInfo['money'] ? $companyInfo['money'] : 1;
-        if ($paydCount < $needMoney) {
+        if ($paydCount <= 0) {
             $this->ajax_return(500, false, "套餐余额不足");
         }
         $isPresent = baseUtils::getStr($_POST['is_present'], 'int');
