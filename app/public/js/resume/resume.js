@@ -62,7 +62,7 @@ $(function () {
         })
     })
     $('.c_module_3 .dcBtn').click(ev => {
-        if (!$('input[name=is_arrive]:checked').val()) {
+        if (!$('input[name=is_arrive]:checked')) {
             alert_notice({
                 title: "请选择候选人是否到场！",
                 type: 'warning'
