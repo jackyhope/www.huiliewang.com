@@ -158,7 +158,7 @@ function show_module(_module) {
             <div class="li">应扣点数</div>
             <div class="li">当前可用点数</div>
             <div class="li color-3CC1D3">${res.info.name}</div>
-            <div class="li color-3CC1D3">${res.info.salary}</div>
+            <div class="li color-3CC1D3">${res.info.salary}万</div>
             <div class="li color-3CC1D3">${res.info.money}</div>
             <div class="li color-3CC1D3">${res.info.surplus}</div>
             `)

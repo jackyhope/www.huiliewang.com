@@ -26,6 +26,9 @@
     padding-bottom:15px;
     position:relative;
     cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .container .ul .li .i{
