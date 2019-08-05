@@ -244,7 +244,7 @@ class index_controller extends common{
         $result = $register->regist($request);
         $data = $result->data;
         $this->unset_cookie();
-        $this->add_cookie($data[0]['uid'],'','','','','2','1',0);
+        $this->add_cookie($data[0]['uid'],$tel,'','','','2','1',0);
         $arr['code'] = $result->code;
         $arr['message'] = $result->message;
         $arr['success'] = $result->success;
