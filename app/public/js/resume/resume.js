@@ -1,15 +1,15 @@
 $(function () {
-    Post('/member/index.php?c=resume_api&act=jobs').then(res=>{
+    Post('/member/index.php?c=resume_api&act=jobs').then(res => {
         $('#business_select').html(`<div class="select_box_list">
         <a href="javascript:void(0);" onclick="select_new('business','0','全部职位')">全部职位</a>
     </div>`)
-    res.info.map(val=>{
-        $('#business_select').append(`
+        res.info.map(val => {
+            $('#business_select').append(`
         <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('business','${val.id}','${val.name}')">${val.name}</a>
                     </div>
         `)
-    })
+        })
     })
     $('.container .ul .li').click(ev => {
         // $('.container .ul .li').removeClass('current');
@@ -62,10 +62,17 @@ $(function () {
         })
     })
     $('.c_module_3 .dcBtn').click(ev => {
+        if ($('input[name=is_arrive]:checked').length==0) {
+            alert_notice({
+                title: "请选择候选人是否到场！",
+                type: 'warning'
+            })
+            return
+        }
         Post('/member/index.php?c=resume_api&act=present', {
             resume_id: $(ev.target).attr('resume_id'),
             project_id: $(ev.target).attr('project_id'),
-            is_present: $('input[name=is_arrive]').val()
+            is_present: $('input[name=is_arrive]:checked').val()
         }).then(res => {
             $('.pagersel').change();
             $('.c_module_3').addClass('c_hide');
@@ -190,6 +197,10 @@ function show_module(_module) {
     }).catch(res => {
 
     })
+    $('.cancel').click(ev => {
+        $('.c_module').addClass('c_hide');
+        $('#c_shade').addClass('c_hide');
+    })
 }
 
 function bhs(resume_id, project_id) {
@@ -237,7 +248,7 @@ function bindev() {
             resume_id: $(this).attr('resume_id'),
             project_id: $(this).attr('project_id')
         }).then(res => {
-            if($(this).attr('huilie_status')==5||$(this).attr('huilie_status')==6){
+            if ($(this).attr('huilie_status') == 5 || $(this).attr('huilie_status') == 6) {
                 _que.html(`<p class="que_title">${$(this).attr('huilie_status')==5?'等待顾问最终确认面试信息':'等待候选人前来面试'}</p>
             <p>我发起的面试邀请</p>
             <div class="dl clearall">
@@ -256,7 +267,7 @@ function bindev() {
                 <div class="dt">备注：</div>
                 <div class="dd">${res.info.description}</div>
             </div>`)
-            }else{
+            } else {
                 _que.html(`<p class="que_title">候选人拒绝</p>
                 <div class="dl clearall">
                     <div class="dt">拒绝原因：</div>
