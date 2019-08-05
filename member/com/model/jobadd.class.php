@@ -29,7 +29,7 @@ class jobadd_controller extends company
         }
         $company = $this->get_user();
         $isCompleate = true;
-        if(!$company['name'] || !$company['address'] || !$company['pr']){
+        if (!$company['name'] || !$company['address'] || !$company['pr']) {
             $isCompleate = false;
         }
         $company['interview_payd'] = $company['interview_payd'] + $company['interview_payd_expect'];
@@ -88,7 +88,7 @@ class jobadd_controller extends company
         $this->yunset("isComplete", $isCompleate);
         $this->yunset('type', $cmj['service_type']);
         $cmj['edate'] = ($cmj['edate']-time())/24/3600;
-        $cmj['edate'] = ceil($cmj['edate']);
+        $cmj['edate'] = ceil($cmj['edate']) < 0  ? 0 : ceil($cmj['edate']);
         $this->yunset('company_job', $cmj);
         $lang = explode(',', $cmj['lang']);
         $welfare = explode(',', $cmj['welfare']);
@@ -532,19 +532,29 @@ class jobadd_controller extends company
     function saveInfo_action() {
         $uId = $this->uid;
         $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-        $_POST['name'] = change_encoding($_POST['name'], 'gbk');
-        $_POST['description'] = change_encoding($_POST['description'], 'gbk');
+        $_POST['name'] = $this->characet($_POST['name'], 'gbk');
+        $_POST['description'] = $this->characet($_POST['description'], 'gbk');
+        $_POST['detail_report'] = $this->characet($_POST['detail_report'], 'gbk');
 
 
         if (!$_POST['name']) {
             $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
             $this->jsonReturn($return);
         }
-        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`");
-
+        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`,service_type,uid");
         if (!$id && $comjob) {
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
+        }
+        if ($id && $comjob) {
+            if ($_POST['service_type'] != $comjob[0]['service_type']) {
+                $return = ['success' => false, 'code' => 500, 'info' => "服务方式不能修改"];
+                $this->jsonReturn($return);
+            }
+            if ($uId != $comjob[0]['uid']) {
+                $return = ['success' => false, 'code' => 500, 'info' => "您没权限更改"];
+                $this->jsonReturn($return);
+            }
         }
         //套餐余量检查
         $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid, "resume_payd,interview_payd,interview_payd_expect,c_money,tb_customer_id");
@@ -771,7 +781,7 @@ class jobadd_controller extends company
             foreach ($jobs as $jobId) {
                 array_push($name, $jobNames[$jobId]);
             }
-            $names = implode(',',$name);
+            $names = implode(',', $name);
         }
         try {
             apiClient::init();
@@ -815,6 +825,22 @@ class jobadd_controller extends company
             $this->jsonReturn($return);
         }
         return true;
+    }
+
+    /**
+     * 编码转换
+     * @param $data
+     * @param string $charSet
+     * @return string
+     */
+    function characet($data, $charSet = 'GBK') {
+        if (!empty($data)) {
+            $fileType = mb_detect_encoding($data, array('UTF-8', 'GBK', 'LATIN1', 'BIG5'));
+            if ($fileType != $charSet) {
+                $data = mb_convert_encoding($data, $charSet, $fileType);
+            }
+        }
+        return $data;
     }
 }
 
