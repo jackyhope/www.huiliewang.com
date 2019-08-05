@@ -116,7 +116,7 @@ class resume_api_controller extends company
         $interview_time = baseUtils::getStr($this->characet($_POST['interview_time']));
         $interview_address = baseUtils::getStr($this->characet($_POST['interview_address']));
         $interviewer = baseUtils::getStr($this->characet($_POST['interviewer']));
-        $note = baseUtils::getStr($_POST['note']);
+        $note = baseUtils::getStr($this->characet($_POST['note']));
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
         $needMoney = $companyInfo['money'] ? $companyInfo['money'] : 1;
