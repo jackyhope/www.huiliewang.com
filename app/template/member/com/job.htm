@@ -58,7 +58,7 @@
         <span class="postType  ${val.service_type==0?'gradient_1':'gradient_2'}"><img src="/app/public/imgs/vw.png" alt="">${val.service_type==0?'慧沟通':'慧面试'}</span><br>
         <span class="salary">${val.minsalary+'-'+val.maxsalary}</span>
         <span class="edate" style='display:${val.status==1?'inline-block':'none'}'>到期时间：${Math.floor((val.edate-val.add_time)/86400)}天</span><br>
-        <span class="adviser" style='display:${val.status==2?'inline-block':'none'}>专属顾问：${val.joiner_name}</span><br>
+        <span class="adviser" style='display:${val.status==2?'inline-block':'none'}'>专属顾问：${val.joiner_name}</span><br>
         <span class="createTime">发布于${get_time(val.add_time)}</span>
       </div>
       <div class="listMid">
