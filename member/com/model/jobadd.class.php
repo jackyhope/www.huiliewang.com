@@ -28,6 +28,10 @@ class jobadd_controller extends company
             $this->yunset('id', $id);
         }
         $company = $this->get_user();
+        $isCompleate = true;
+        if(!$company['name'] || !$company['address'] || !$company['pr']){
+            $isCompleate = false;
+        }
         $company['interview_payd'] = $company['interview_payd'] + $company['interview_payd_expect'];
         $msg = array();
         $isallow_addjob = "1";
@@ -55,7 +59,7 @@ class jobadd_controller extends company
         }
         if ($this->config['com_enforce_setposition'] == "1") {
             if (empty($company['x']) || empty($company['y'])) {
-                $this->ACT_msg("index.php?c=map", "请先完成地图设置！");
+//                $this->ACT_msg("index.php?c=map", "请先完成地图设置！");
             }
         }
         $save = $this->obj->DB_select_once("lssave", "`uid`='" . $this->uid . "'and `savetype`='4'");
@@ -81,6 +85,7 @@ class jobadd_controller extends company
         $jobnum = $this->obj->DB_select_num("company_job", "`uid`='" . $this->uid . "'");
         $this->yunset("jobnum", $jobnum);
         $this->yunset("row", $row);
+        $this->yunset("isComplete", $isCompleate);
         $this->yunset('type', $cmj['service_type']);
         $this->yunset('company_job', $cmj);
         $lang = explode(',', $cmj['lang']);
