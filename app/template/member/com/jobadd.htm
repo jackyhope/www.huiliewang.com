@@ -116,7 +116,7 @@
         <span class="sp1"><span>*</span>
             职位有效期：
         </span>
-        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间" value="{yun:}$company_job.edate{/yun}">&nbsp;&nbsp;
+        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间" value="{yun:}$company_job.edate{/yun}">&nbsp;&nbsp;天
     </div>
     <div class="box1">
         <span class="sp1"><span>*</span>
@@ -491,6 +491,7 @@
             var cityid= $('#citysid').val();
             var three_cityid = $('#three_cityid').val();
             var days = $('#days').val();
+            days = Date.parse(new Date())/1000 + days * 24 * 3600;
             var minsalary = $('#minsalary').val();
             var maxsalary = $('#maxsalary').val();
             var ejob_salary_month = $('#ejob_salary_month').val();

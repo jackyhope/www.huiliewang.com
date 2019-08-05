@@ -88,7 +88,7 @@ class jobadd_controller extends company
         $this->yunset("isComplete", $isCompleate);
         $this->yunset('type', $cmj['service_type']);
         $cmj['edate'] = ($cmj['edate']-time())/24/3600;
-        $cmj['edate'] = ceil($cmj['edate']);
+        $cmj['edate'] = ceil($cmj['edate']) < 0  ? 0 : ceil($cmj['edate']);
         $this->yunset('company_job', $cmj);
         $lang = explode(',', $cmj['lang']);
         $welfare = explode(',', $cmj['welfare']);
