@@ -82,6 +82,7 @@
     color: #E57474;
     font-size: 18px;
     margin-top: 6px;
+    margin-bottom: 10px;
     display: inline-block;
 }
 .adviser{
@@ -89,6 +90,8 @@
 margin-left: 69px;
 font-size: 14px;
 color: #666666;
+margin-bottom: -20px;
+margin-top: 10px;
 }
 .edate{
     
