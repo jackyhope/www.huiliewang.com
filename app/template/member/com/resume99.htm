@@ -119,12 +119,12 @@
                 res.datas.map(val => {
                     $('.resumeList').append(`
                     <div class="c_tr clearall">
-            <div class="c_td"><a href='/member/index.php?c=resume&act=detail&resume_id=${val.resume_id}&project_id=${val.project_id}'>${val.name}</a></div>
+            <div class="c_td"><a href='/member/index.php?c=resume&act=detail&resume_id=${val.resume_id}&project_id=${val.project_id}'>${val.name?val.name:'&nbsp;'}</a></div>
             <div class="c_td">${val.edu?val.edu:'&nbsp;'}</div>
-            <div class="c_td">${val.work_year}年</div>
-            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_name}</a></div>
+            <div class="c_td">${val.work_year?val.work_year:'&nbsp;'}年</div>
+            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_name?val.job_name:'&nbsp;'}</a></div>
             <div class="c_td">${val.service_type==0?'慧沟通':'慧简历'}</div>
-            <div class="c_td">${val.tj_namer}</div>
+            <div class="c_td">${val.tj_namer?val.tj_namer:'&nbsp;'}</div>
             <div class="c_td">${get_time(val.tjaddtime,3)}</div>
             <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 hide_hands" href="javascript:void(0);">${getStatus(val.huilie_status)}</a></div>
         </div> `)
