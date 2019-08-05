@@ -28,6 +28,7 @@ class jobadd_controller extends company
             $this->yunset('id', $id);
         }
         $company = $this->get_user();
+        $company['interview_payd'] = $company['interview_payd'] + $company['interview_payd_expect'];
         $msg = array();
         $isallow_addjob = "1";
         $url = "index.php?c=binding";
@@ -539,17 +540,17 @@ class jobadd_controller extends company
             $this->jsonReturn($return);
         }
         //套餐余量检查
-        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid, "resume_payd,interview_payd,c_money,tb_customer_id");
-        if ($_POST['service_type'] == 0 && $companyInfo['interview_payd'] <= 0) {
+        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid, "resume_payd,interview_payd,interview_payd_expect,c_money,tb_customer_id");
+        if ($_POST['service_type'] == 0 && $companyInfo['resume_payd'] <= 0) {
             $return = ['success' => false, 'code' => 500, 'info' => "慧沟通余量不足"];
             $this->jsonReturn($return);
         }
         //慧面试余量
-        if ($_POST['service_type'] == 1 && $companyInfo['resume_payd'] <= 0) {
+        $companyInfo['interview_payd'] = $companyInfo['interview_payd'] + $companyInfo['interview_payd_expect'];
+        if ($_POST['service_type'] == 1 && $companyInfo['interview_payd'] <= 0) {
             $return = ['success' => false, 'code' => 500, 'info' => "慧面试余量不足"];
             $this->jsonReturn($return);
         }
-
         $_POST['state'] = 0;
         $companyCert = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "'and type=3", "uid,type,status");
         if ($this->config['com_free_status'] == "1" && $companyCert['status'] == "1") {

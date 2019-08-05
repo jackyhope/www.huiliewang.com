@@ -119,8 +119,9 @@ class resume_api_controller extends company
         $note = baseUtils::getStr($_POST['note']);
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
-        if ($paydCount < 1) {
-            $this->ajax_return(500, false, "套餐余额不足");
+        $needMoney = $companyInfo['money'] ? $companyInfo['money'] : 1;
+        if ($paydCount < $needMoney) {
+            $this->ajax_return(500, false, "套餐余额不足{$needMoney}");
         }
         try {
             apiClient::init('', '');
@@ -266,7 +267,7 @@ class resume_api_controller extends company
             $this->ajax_return(500, false, "套餐余额不足");
         }
         $isPresent = baseUtils::getStr($_POST['is_present'], 'int');
-        $status = $isPresent ? 11 : 10;
+        $status = $isPresent ? 11 : 9;
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
