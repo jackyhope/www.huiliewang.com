@@ -799,9 +799,9 @@ class admin_company_controller extends common{
 	    apiClient::build($admin);
 	    $res = $admin->addBD($uid,$addtime,$role_id,$full_name);
 	    if($res->success){
-            $this->ACT_layer_msg($res->message,9,$_SERVER['HTTP_REFERER']);
+            $this->ACT_layer_msg(yun_iconv('utf-8','gbk',$res->message),9,$_SERVER['HTTP_REFERER']);
         }else{
-            $this->ACT_layer_msg($res->message,8,$_SERVER['HTTP_REFERER']);
+            $this->ACT_layer_msg(yun_iconv('utf-8','gbk', $res->message),8,$_SERVER['HTTP_REFERER']);
         }
     }
 
