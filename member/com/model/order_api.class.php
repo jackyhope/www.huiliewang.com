@@ -188,7 +188,6 @@ class order_api_controller extends company
         }
         //@todo  短信验证码验证 07-29 暂时跳过验证
         if ($smsCode !== $_SESSION['code'] || (time() - $_SESSION['code_time']) > 300) {
-            ;
             $this->ajax_return(500, false, '短信验证码错误');
         }
 
@@ -197,7 +196,7 @@ class order_api_controller extends company
         if (!$serviceInfo) {
             $this->ajax_return(500, false, '服务信息查询错误');
         }
-        $price = $serviceInfo['type'];
+        $price = $serviceInfo['service_price'];
         $resume = $serviceInfo['resume'];
         $interview = $serviceInfo['interview'];
         $serviceType = $serviceInfo['type'];
