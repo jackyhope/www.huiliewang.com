@@ -26,6 +26,7 @@ class paylog_controller extends company{
             }
         }else{
             $order_type = 0;
+            $where.=" and `order_type` in('alipay','adminpay') ";
         }
         $where.="  order by order_time desc";
         $rows=$this->get_page("company_order",$where,$pageurl,"10");
