@@ -83,11 +83,10 @@
             callback: getData // »Øµ÷º¯Êý
         });
         $('#business_val').bind('myev', change)
-        $('#at_val').bind('myev', change)
         function getData(page, size) {
             Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show', {
                 c_type: 4,
-                job_type: $('#at_val').val() != 0 ? $('#at_val').val() : void 0,
+                job_id: $('#business_val').val() != 0 ? $('#business_val').val() : void 0,
                 kwd: $('#kwd').val() ? $('#kwd').val() : void 0,
                 page,
                 size,
