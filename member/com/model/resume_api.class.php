@@ -468,7 +468,7 @@ class resume_api_controller extends company
      * @desc 职位列表
      */
     public function jobs_action() {
-        $list = $this->obj->DB_select_all_assoc('company_job', "uid = {$this->uid} order by id limit 15", 'id,name');
+        $list = $this->obj->DB_select_all_assoc('company_job', "uid = {$this->uid} order by id desc limit 45", 'id,name');
         foreach ($list as $k => &$info) {
             if (!$info['name']) {
                 unset($list[$k]);
