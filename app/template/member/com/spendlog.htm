@@ -35,7 +35,7 @@
                         <a href="javascript:void(0);" onclick="select_new('at','1','慧沟通')">慧沟通</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','慧面试')">慧面试</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','3','慧面试')">慧面试</a>
                     </div>
                 </div>
             </div>
@@ -70,9 +70,12 @@
         jump: true, //是否支持跳转
         callback: getData(1,5) // 回调函数
     });
-
+    $('#at_val').bind('myev',function(){
+        $('.pagerSel').change();
+        })
     function getData(page,size){
-        $.post('{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=serviceList',{'page':page,'page_size':size},function(re){
+        $.post('{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=serviceList',
+        {'page':page,'page_size':size,rating:$('#at_val').val()},function(re){
             re = JSON.parse(re);
             var _html = '';
             if(re.code==200){
@@ -89,7 +92,7 @@
                 }
                 $('.c_table .list').html(_html);//输出数据列表
                 pager.options.pageNo = re.info.current_page;
-                pager.options.totalPages = re.info.counts / re.info.page_size;
+                pager.options.totalPages = Math.ceil(re.info.counts / re.info.page_size);
                 pager.options.totalCount = '共' + re.info.counts + '条';
                 pager.options.callback = function () {};
                 pager.init();
