@@ -122,7 +122,7 @@ class order_api_controller extends company
         $page < 1 && $page = 1;
         $pageStart = ($page - 1) * $pageSize;
         $where = 'com_id = ' . $this->uid . ' and type in (1,0) and resume_id > 0';
-        isset($_POST['service_type']) && $where .= " and type=" . $serviceType;
+        (isset($_POST['service_type']) && $serviceType != '-1') && $where .= " and type=" . $serviceType;
         $payStatus > 0 && $where .= " and pay_type=" . $payStatus;
         $countWhere = $where;
         $where .= " order by id desc limit {$pageStart},{$pageSize}";
