@@ -541,7 +541,11 @@ class jobadd_controller extends company
             $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
             $this->jsonReturn($return);
         }
-        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`,service_type,uid");
+        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`,service_type,uid,name,address,pr");
+        if(!$comjob['name'] || !$comjob['address'] || !$comjob['pr']){
+            $return = ['success' => false, 'code' => 500, 'info' => "请先完善企业资料"];
+            $this->jsonReturn($return);
+        }
         if (!$id && $comjob) {
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
