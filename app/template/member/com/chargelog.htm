@@ -25,17 +25,17 @@
             <span class="head_tit">筛选：</span>
 
             <div class="select_box">
-                <input type="button" value="所有类型" class="select_box_text fll" id="at_name" onclick="select_click('at');">
-                <input name="at" type="hidden" id="at_val" value="0">
+                <input type="button" value="{yun:}$order_type_name[$order_type]{/yun}" class="select_box_text fll" id="at_name" onclick="select_click('at');">
+                <input name="at" type="hidden" id="at_val" value="{yun:}$order_type{/yun}">
                 <div class="select_box_list_box dn" id="at_select">
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','0','所有类型')">所有类型</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','0','充值方式');c_search(0);">充值方式</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','慧沟通')">慧沟通</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','1','支付宝充值');c_search(1);">支付宝充值</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','慧面试')">慧面试</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','2','线下充值');c_search(2);">线下充值</a>
                     </div>
                 </div>
             </div>
@@ -81,6 +81,10 @@
 </div>
 <!--content-list end-->
 <script>
+    function c_search(ctu){
+        var _url='{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4&ctu='+ctu;
+        location.href = _url;
+    }
     $(function () {
         if($('.diggg a').length>0){
             //有分页页码

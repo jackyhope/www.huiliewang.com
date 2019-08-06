@@ -13,7 +13,26 @@ class paylog_controller extends company{
 		include(CONFIG_PATH."db.data.php");
 		$this->yunset("arr_data",$arr_data);
 		$this->public_action();
-		if($_GET['consume']=="ok"){
+        $order_type = $_GET['ctu'];
+        $urlarr=array("c"=>"paylog","page"=>"{{page}}");
+        $pageurl=Url('member',$urlarr);
+        $where="`uid`=".$this->uid;
+        if(!empty($order_type)){
+            if($order_type==2){
+                $where.=" and `order_type`='adminpay' ";
+            }
+            if($order_type==1){
+                $where.=" and `order_type`='alipay' ";
+            }
+        }else{
+            $order_type = 0;
+        }
+        $where.="  order by order_time desc";
+        $rows=$this->get_page("company_order",$where,$pageurl,"10");
+        $this->yunset("rows",$rows);
+        $this->yunset("order_type_name",['充值方式','支付宝充值','线下充值']);
+        $this->yunset("order_type",$order_type);
+		/*if($_GET['consume']=="ok"){
 			$urlarr=array("c"=>"paylog","consume"=>"ok","page"=>"{{page}}");
 			$pageurl=Url('member',$urlarr);
 			$where="`com_id`='".$this->uid."'";
@@ -34,8 +53,8 @@ class paylog_controller extends company{
 			$where="`uid`='".$this->uid."'  order by order_time desc";
 			$rows=$this->get_page("company_order",$where,$pageurl,"10");
 			$this->yunset("rows",$rows);
-		} 
-		if($_POST['submit']){
+		} */
+		/*if($_POST['submit']){
 			if(trim($_POST['order_remark'])==""){
 				$this->ACT_layer_msg("备注不能为空！",8,$_SERVER['HTTP_REFERER']);
 			}
@@ -47,7 +66,7 @@ class paylog_controller extends company{
 			}else{
 				$this->ACT_layer_msg("修改失败！",8,$_SERVER['HTTP_REFERER']);
 			}
-		}
+		}*/
 
 		$this->yunset("js_def",4);
         /********获取列表07-29**/
