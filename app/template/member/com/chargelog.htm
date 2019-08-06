@@ -56,12 +56,8 @@
         {yun:}assign var="state" value=$log.order_state{/yun}
         {yun:}assign var="type" value=$log.order_type{/yun}
         <div class="c_tr clearall">
-            <div class="c_td">&nbsp;{yun:}if $log.type==1{/yun}购买会员
-                {yun:}elseif $log.type=='2'{/yun}{yun:}$config.integral_pricename{/yun}充值
-                {yun:}elseif $log.type=='3'{/yun}银行转帐
-                {yun:}elseif $log.type=='4'{/yun}金额充值
-                {yun:}elseif $log.type=='5'{/yun}购买慧猎套餐
-                {yun:}else{/yun}其他
+            <div class="c_td">&nbsp;{yun:}if $log.order_type=='alipay'{/yun}支付宝充值
+                {yun:}elseif $log.order_type=='adminpay'{/yun}线下充值
                 {yun:}/if{/yun}</div>
             <div class="c_td">&nbsp;{yun:}$log.order_price{/yun}</div>
             <div class="c_td">&nbsp;{yun:}$arr_data.c_paystate.$state{/yun}</div>
