@@ -38,7 +38,7 @@
 				{yun:}foreach from=$zzlist key=key item=v{/yun}
 				{yun:}if $row.name==$v.name{/yun}
 				<input type="button" value="{yun:}$row.name{/yun}" id="zzlist_name" class="yun_admin_select_box_text" onClick="select_click('zzlist')">
-				<input name="service_type" type="hidden" id="service_type_val" value="{yun:}$v{/yun}">
+				<input name="service_type" type="hidden" id="service_type_val" value="{yun:}$v.id{/yun}">
 				{yun:}/if{/yun}
 				{yun:}/foreach{/yun}
 				{yun:}else{/yun}
@@ -63,7 +63,7 @@
 		<td colspan="3">
 			<ul class="com_com_a_list  com_com_a_list_l">
 				<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通数：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-				<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通单位：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume_unit{/yun}" placeholder="单位：份"></li>
+				<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通单位：</span><input class="admin_cm_zz_box" type="text" name="resume_unit" id="resume_unit" value="{yun:}$listinfo.resume_unit{/yun}" placeholder="单位：份"></li>
 				<li><span style="display:inline-block;width:100px; text-align:right;">慧面试数：</span><input class="admin_cm_zz_box" type="text" name="interview" id="interview" value="{yun:}$listinfo.interview{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
 				<li><span style="display:inline-block;width:100px; text-align:right;">慧面试单位：</span><input class="admin_cm_zz_box" type="text" name="interview_unit" id="interview_unit" value="{yun:}$listinfo.interview_unit{/yun}" placeholder="单位：次"></li>
 				<!-- <li><span style="display:inline-block;width:100px; text-align:right;">刷新职位数：</span><input class="admin_cm_zz_box" type="text" name="breakjob_num" id="breakjob_num" value="{yun:}$listinfo.breakjob_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>

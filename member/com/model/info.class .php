@@ -47,7 +47,6 @@ class info_controller extends company
         $this->com_cache();
         $this->industry_cache();
         $cert = $this->obj->DB_select_once("company_cert", "`uid`='" . $this->uid . "' and type='3'");
-        if(!$cert){$cert=[];$cert['status']=99;}
         $this->yunset("cert", $cert);
         $this->yunset("js_def", 2);
         $this->com_tpl('info');
@@ -310,6 +309,7 @@ class info_controller extends company
         $_POST['website'] = change_encoding($_POST['website'], 'GBK');
         $_POST['linkjob'] = change_encoding($_POST['linkjob'], 'GBK');
         $_POST['welfare'] = change_encoding($_POST['welfare'], 'GBK');
+        $_POST['linkman'] = change_encoding($_POST['linkman'], 'GBK');
 //        var_dump( $_POST['content']);
 //        die;
         $name = baseUtils::getStr($_POST['name']);

@@ -9,7 +9,7 @@
     }
 </style>
 <!--inner header start-->
-<link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/resume/resume.css?ver=20190801001">
 <script src="/app/public/js/resume/resume.js"></script>
 <div class="inner_header">
     <div class="container">
@@ -83,11 +83,10 @@
             callback: getData // 回调函数
         });
         $('#business_val').bind('myev', change)
-        $('#at_val').bind('myev', change)
         function getData(page, size) {
             Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show', {
                 c_type: 4,
-                job_type: $('#at_val').val() != 0 ? $('#at_val').val() : void 0,
+                job_id: $('#business_val').val() != 0 ? $('#business_val').val() : void 0,
                 kwd: $('#kwd').val() ? $('#kwd').val() : void 0,
                 page,
                 size,
@@ -104,12 +103,12 @@
                 res.datas.map(val => {
                     $('.resumeList').append(`
                         <div class="c_tr clearall">
-            <div class="c_td"><a href='/member/index.php?c=resume&act=detail&resume_id=${val.resume_id}&project_id=${val.project_id}'>${val.name}</a></div>
+            <div class="c_td"><a href='/member/index.php?c=resume&act=detail&resume_id=${val.resume_id}&project_id=${val.project_id}'>${val.name?val.name:'&nbsp;'}</a></div>
             <div class="c_td">${val.edu?val.edu:'&nbsp;'}</div>
-            <div class="c_td">${val.work_year}年</div>
-            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_class}</a></div>
+            <div class="c_td">${val.work_year?val.work_year:'&nbsp;'}年</div>
+            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_name?val.job_name:'&nbsp;'}</a></div>
             <div class="c_td">${val.service_type==0?'慧沟通':'慧简历'}</div>
-            <div class="c_td">${val.tj_namer}</div>
+            <div class="c_td">${val.tj_namer?val.tj_namer:'&nbsp;'}</div>
             <div class="c_td">${get_time(val.tjaddtime,3)}</div>
         </div>
                         `)

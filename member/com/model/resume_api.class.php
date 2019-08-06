@@ -113,13 +113,14 @@ class resume_api_controller extends company
      */
     function interview_action() {
         $this->publicCheck();
-        $interview_time = baseUtils::getStr($_POST['interview_time']);
-        $interview_address = baseUtils::getStr($_POST['interview_address']);
-        $interviewer = baseUtils::getStr($_POST['interviewer']);
-        $note = baseUtils::getStr($_POST['note']);
+        $interview_time = baseUtils::getStr($this->characet($_POST['interview_time']));
+        $interview_address = baseUtils::getStr($this->characet($_POST['interview_address']));
+        $interviewer = baseUtils::getStr($this->characet($_POST['interviewer']));
+        $note = baseUtils::getStr($this->characet($_POST['note']));
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
-        if ($paydCount < 1) {
+        $needMoney = $companyInfo['money'] ? $companyInfo['money'] : 1;
+        if ($paydCount < $needMoney) {
             $this->ajax_return(500, false, "套餐余额不足");
         }
         try {
@@ -192,7 +193,8 @@ class resume_api_controller extends company
         //1、@todo 判断账户余额
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
-        if ($paydCount < 1) {
+        $needMoney = $companyInfo['money'] ? $companyInfo['money'] : 1;
+        if ($paydCount < $needMoney) {
             $this->ajax_return(500, false, "套餐余额不足");
         }
         $money = $companyInfo['money'];
@@ -262,11 +264,12 @@ class resume_api_controller extends company
         }
         $companyInfo = $this->buyDetail();
         $paydCount = $companyInfo['surplus'] ? $companyInfo['surplus'] : 0;
-        if ($paydCount < 1) {
+        $needMoney = $companyInfo['money'] ? $companyInfo['money'] : 1;
+        if ($paydCount < 0) {
             $this->ajax_return(500, false, "套餐余额不足");
         }
         $isPresent = baseUtils::getStr($_POST['is_present'], 'int');
-        $status = $isPresent ? 11 : 10;
+        $status = $isPresent ? 11 : 9;
         try {
             apiClient::init('', '');
             $resumeService = new com\hlw\huilie\interfaces\resume\ResumeServiceClient(null);
@@ -329,70 +332,65 @@ class resume_api_controller extends company
             'age', 'school_name', 'curSalary', 'wantsalary', 'work_year', 'edu',
             'project_time', 'work_time', 'edu_time', 'curPosition', 'intentCity', 'curStatus'
         ];
-        try {
-            require_once(APP_PATH . "/include/phpword/vendor/autoload.php");
-            $phpWord = new  \PhpOffice\PhpWord\PhpWord();
-            $tempDir = realpath(APP_PATH . '/resume/resume.docx');
-            $templateProcessor = $phpWord->loadTemplate($tempDir);
-            //填充基础信息
-            $info = $list['info'];
-            $name = "report.docx";
-            //简历基础信息
-            foreach ($info as $filed => $baseValue) {
-                //过滤不需要的字段变量
-                if (in_array($filed, $tempNameList) === false) {
-                    continue;
-                }
-                if ($filed == 'name') {
-                    $name = $baseValue . $name;
-                }
-                $baseValue = trim($baseValue);
-                $templateProcessor->setValue($filed, $baseValue);
+        require_once(APP_PATH . "/include/phpword/vendor/autoload.php");
+        $phpWord = new  \PhpOffice\PhpWord\PhpWord();
+        $tempDir = APP_PATH . '/resume/resume.docx';
+        $templateProcessor = $phpWord->loadTemplate($tempDir);
+        //填充基础信息
+        $info = $list['info'];
+        $name = "简历报告.docx";
+        //简历基础信息
+        foreach ($info as $filed => $baseValue) {
+            //过滤不需要的字段变量
+            if (in_array($filed, $tempNameList) === false) {
+                continue;
             }
-            //工作经验
-            $works = $list['work'];
-            $lines = count($works);
-            $lines > 0 && $templateProcessor->cloneBlock('WORKLOCK', $lines, true, true);
-            foreach ($works as $index => $workInfo) {
-                $currentLine = $index + 1;
-                foreach ($workInfo as $filed => $workValue) {
-                    $lines > 0 && $templateProcessor->setValue($filed . '#' . $currentLine, $workValue);
-                    $lines <= 0 && $templateProcessor->setValue($filed, $workValue);
-                }
+            if ($filed == 'name') {
+                $name = $baseValue . $name;
             }
-
-            //教育经验
-            $edus = $list['edu'];
-            $lines = count($edus);
-            $lines > 1 && $templateProcessor->cloneRow('edu_time', $lines); //clone行
-            foreach ($edus as $index => $eduInfo) {
-                $currentLine = $index + 1;
-                foreach ($eduInfo as $filed => $eduValue) {
-                    $lines > 1 && $templateProcessor->setValue($filed . '#' . $currentLine, $eduValue);
-                    $lines <= 1 && $templateProcessor->setValue($filed, $eduValue);
-                }
-            }
-
-            //${PROBLOCK}  项目经历
-            $proList = $list['project'];
-            $lines = count($proList);
-            $lines > 0 && $templateProcessor->cloneBlock('PROBLOCK', $lines, true, true); //clone行
-            foreach ($proList as $index => $proInfo) {
-                $currentLine = $index + 1;
-                foreach ($proInfo as $filed => $proValue) {
-                    $lines > 0 && $templateProcessor->setValue($filed . '#' . $currentLine, $proValue);
-                    $lines <= 0 && $templateProcessor->setValue($filed, $proValue);
-                }
-            }
-            $name = yun_iconv('utf-8', 'gbk', $name);
-            $templateProcessor->saveAs('../resume_file/' . $name);
-            $file = realpath('../resume_file/' . $name);
-            $this->fileDown($file, $name);
-            @unlink($file);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-            die;
+            $baseValue = trim($baseValue);
+            $templateProcessor->setValue($filed, $baseValue);
         }
+        //工作经验
+        $works = $list['work'];
+        $lines = count($works);
+        $lines > 0 && $templateProcessor->cloneBlock('WORKLOCK', $lines, true, true);
+        foreach ($works as $index => $workInfo) {
+            $currentLine = $index + 1;
+            foreach ($workInfo as $filed => $workValue) {
+                $lines > 0 && $templateProcessor->setValue($filed . '#' . $currentLine, $workValue);
+                $lines <= 0 && $templateProcessor->setValue($filed, $workValue);
+            }
+        }
+
+        //教育经验
+        $edus = $list['edu'];
+        $lines = count($edus);
+        $lines > 1 && $templateProcessor->cloneRow('edu_time', $lines); //clone行
+        foreach ($edus as $index => $eduInfo) {
+            $currentLine = $index + 1;
+            foreach ($eduInfo as $filed => $eduValue) {
+                $lines > 1 && $templateProcessor->setValue($filed . '#' . $currentLine, $eduValue);
+                $lines <= 1 && $templateProcessor->setValue($filed, $eduValue);
+            }
+        }
+
+        //${PROBLOCK}  项目经历
+        $proList = $list['project'];
+        $lines = count($proList);
+        $lines > 0 && $templateProcessor->cloneBlock('PROBLOCK', $lines, true, true); //clone行
+        foreach ($proList as $index => $proInfo) {
+            $currentLine = $index + 1;
+            foreach ($proInfo as $filed => $proValue) {
+                $lines > 0 && $templateProcessor->setValue($filed . '#' . $currentLine, $proValue);
+                $lines <= 0 && $templateProcessor->setValue($filed, $proValue);
+            }
+        }
+        $name = yun_iconv('utf-8', 'gbk', $name);
+        $templateProcessor->saveAs($name);
+        $file = realpath('./' . $name);
+        $this->fileDown($file, $name);
+        @unlink($file);
     }
 
     /**
@@ -470,7 +468,7 @@ class resume_api_controller extends company
      * @desc 职位列表
      */
     public function jobs_action() {
-        $list = $this->obj->DB_select_all_assoc('company_job', "uid = {$this->uid} order by id limit 15", 'id,name');
+        $list = $this->obj->DB_select_all_assoc('company_job', "uid = {$this->uid} order by id desc limit 45", 'id,name');
         foreach ($list as $k => &$info) {
             if (!$info['name']) {
                 unset($list[$k]);
@@ -483,7 +481,7 @@ class resume_api_controller extends company
     /**
      * @desc 备注信息
      */
-    public function note_action(){
+    public function note_action() {
         $this->publicCheck();
         try {
             apiClient::init('', '');
@@ -496,10 +494,26 @@ class resume_api_controller extends company
             if ($info->code != 200) {
                 $this->ajax_return(500, false, $info->message);
             }
-            $info->message = json_decode($info->message,true);
+            $info->message = json_decode($info->message, true);
             $this->ajax_return(200, true, $info->message);
         } catch (Exception $e) {
             $this->ajax_return(500, false, $e->getMessage());
         }
+    }
+
+    /**
+     * 编码转换
+     * @param $data
+     * @param string $charSet
+     * @return string
+     */
+    function characet($data, $charSet = 'GBK') {
+        if (!empty($data)) {
+            $fileType = mb_detect_encoding($data, array('UTF-8', 'GBK', 'LATIN1', 'BIG5'));
+            if ($fileType != $charSet) {
+                $data = mb_convert_encoding($data, $charSet, $fileType);
+            }
+        }
+        return $data;
     }
 }

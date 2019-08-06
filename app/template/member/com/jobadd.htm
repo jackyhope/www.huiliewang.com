@@ -6,180 +6,185 @@
 <link rel="stylesheet" href="{yun:}$style{/yun}/style/class.public.css" type="text/css">
 <script src="{yun:}$config.sy_weburl{/yun}/js/class.public.js" type="text/javascript"></script>
 <div class="jobadd">
-    <div class="title_">发布职位 {yun:}$type{/yun}</div>
+    <div class="title_">发布职位</div>
     <div class="line_2"></div>
     <div class="typeBox box1">
         <span class="sp1" style="float:left;margin-top: 50px;"><span>*</span>服务方式：</span>
-        <div {yun:}if !$type{/yun} class="choosed"{yun:}/if{/yun}>
-            <div class="hgt">
-                为您推荐专属顾问已沟通过的简历，您获取简历则扣除相应的余量
-            </div>
-            <span class="sp2">√</span>
-            <span class="left">
-                慧沟通余量:{yun:}$company.resume_payd{/yun}
-            </span>
+        <div {yun:}if !$type{/yun} class="choosed" {yun:}/if{/yun}> <div class="hgt">
+            为您推荐专属顾问已沟通过的简历，您获取简历则扣除相应的余量
         </div>
-        <div {yun:}if $type {/yun} class="choosed"{yun:}/if{/yun}>
-            <div class="hms">
-                专属顾问为您筛选优质候选人，候选人到场面试扣除相应的余量，不到场则不扣除
-            </div>
-            <span class="sp2">√</span>
-            <span class="left">
-
-                慧面试余量:{yun:}$company.interview_payd{/yun}
-            </span>
-        </div>
-    </div>
-    <div class="box1">
-        <span class="sp1"><span>*</span>
-            职位名称：
+        <span class="sp2">√</span>
+        <span class="left">
+            慧沟通余量:{yun:}$company.resume_payd{/yun}
         </span>
-        <input class="input_min" name="name" id="name" value="{yun:}$company_job.name{/yun}" placeholder="填写职位名称">
     </div>
-    <div class="box1">
-        <span class="sp1"><span>*</span>职位类别：</span>
-        <div class="input_min selectBox" style="z-index:100">
-            <input type="hidden" id="job_id" value="{yun:}$id{/yun}">
-            <input type="hidden" id="service_type" value="{yun:}$company_job.service_type{/yun}">
-
-            <input type="hidden" name="job_post" id="job_post" value="{yun:}$company_job.job_post{/yun}"/>
-            <input class="SpFormLBut text_seclet_w250 " type="button"  value="{yun:}if $job_name[$company_job.job_post]{/yun}{yun:}$job_name[$company_job.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}" onclick="index_job(3,'#workadds_job','#job_post','left:100px;top:100px; position:absolute;','{yun:}$row.job_post{/yun}');" id="workadds_job"  >
-
-            <link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css"
-                type="text/css">
-            <script src="{yun:}$config.sy_weburl{/yun}/js/datepicker/foundation-datepicker.min.js"></script>
-            <script type="text/javascript">
-                $('#edate').fdatepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 4,
-                    minView: 2
-                });
-            </script>
-        </div>
+    <div {yun:}if $type {/yun} class="choosed" {yun:}/if{/yun}> <div class="hms">
+        专属顾问为您筛选优质候选人，候选人到场面试扣除相应的余量，不到场则不扣除
     </div>
-    <div class="box1" style="width:1000px">
-        <span class="sp1">
-            <span>*</span>
-            工作地点：
-        </span>
-        <div class="input_min selectBox" style="z-index: 101">
-            <input class="SpFormLBut text_seclet_w158" type="button"  {yun:}if $company_job.provinceid{/yun}
-            value="{yun:}$city_name[$company_job.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="province"
-            onclick="search_show('job_province');">
-            <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$company_job.provinceid{/yun}" />
-            <div id="job_province" class="cus-sel-opt-panel" style="display:none">
-                <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                    <ul class="Search_Condition_box_list">
-                        {yun:}foreach from=$city_index key=j item=v{/yun}
-                        <li><a href="javascript:;"
-                                onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
-                                {yun:}$city_name[$v]{/yun}</a></li>
-                        {yun:}/foreach{/yun}
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="input_min selectBox" style="z-index: 101">
-            <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.cityid{/yun}
-            value="{yun:}$city_name[$company_job.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
-            onclick="search_show('job_citys');">
-            <input type="hidden" id="citysid" name="cityid" value="{yun:}$company_job.cityid{/yun}" />
-            <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
-                <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                    <ul class="Search_Condition_box_list">
-                        {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
-                        <li><a href="javascript:;"
-                                onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
-                                {yun:}$city_name[$v]{/yun}</a></li>
-                        {yun:}/foreach{/yun}
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="input_min selectBox" style="display:none" id="cityshowth">
-            <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.three_cityid{/yun}
-            value="{yun:}$city_name[$company_job.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city"
-            onclick="three_city_show('job_three_city');">
-            <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$company_job.three_cityid{/yun}" />
-            <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
+    <span class="sp2">√</span>
+    <span class="left">
+
+        慧面试余量:{yun:}$company.interview_payd{/yun}
+    </span>
+</div>
+</div>
+<div class="box1">
+    <span class="sp1"><span>*</span>
+        职位名称：
+    </span>
+    <input class="input_min" name="name" id="name" value="{yun:}$company_job.name{/yun}" placeholder="填写职位名称">
+</div>
+<div class="box1">
+    <span class="sp1"><span>*</span>职位类别：</span>
+    <div class="input_min selectBox" style="z-index:100">
+        <input type="hidden" id="job_id" value="{yun:}$id{/yun}">
+        <input type="hidden" id="service_type" value="{yun:}$company_job.service_type{/yun}">
+
+        <input type="hidden" name="job_post" id="job_post" value="{yun:}$company_job.job_post{/yun}" />
+        <input class="SpFormLBut text_seclet_w250 " type="button"
+            value="{yun:}if $job_name[$company_job.job_post]{/yun}{yun:}$job_name[$company_job.job_post]{/yun}{yun:}else{/yun}请选择职位类别{yun:}/if{/yun}"
+            onclick="index_job(3,'#workadds_job','#job_post','left:100px;top:100px; position:absolute;','{yun:}$row.job_post{/yun}');"
+            id="workadds_job">
+
+        <link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css"
+            type="text/css">
+        <script src="{yun:}$config.sy_weburl{/yun}/js/datepicker/foundation-datepicker.min.js"></script>
+        <script type="text/javascript">
+            $('#edate').fdatepicker({
+                format: 'yyyy-mm-dd',
+                startView: 4,
+                minView: 2
+            });
+        </script>
+    </div>
+</div>
+<div class="box1" style="width:1000px">
+    <span class="sp1">
+        <span>*</span>
+        工作地点：
+    </span>
+    <div class="input_min selectBox" style="z-index: 101">
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.provinceid{/yun}
+            value="{yun:}$city_name[$company_job.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun}
+            id="province" onclick="search_show('job_province');">
+        <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$company_job.provinceid{/yun}" />
+        <div id="job_province" class="cus-sel-opt-panel" style="display:none">
+            <div style="width:100%;  overflow:auto; overflow-x:hidden">
                 <ul class="Search_Condition_box_list">
-                    {yun:}foreach from=$com key=j item=v{/yun}
+                    {yun:}foreach from=$city_index key=j item=v{/yun}
                     <li><a href="javascript:;"
-                            onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
+                            onclick="select_city('{yun:}$v{/yun}','province','{yun:}$city_name[$v]{/yun}','citys','city');">
                             {yun:}$city_name[$v]{/yun}</a></li>
                     {yun:}/foreach{/yun}
                 </ul>
             </div>
         </div>
     </div>
-    <div class="box1">
-        <span class="sp1"><span>*</span>
-            职位有效期：
-        </span>
-        <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间" value="{yun:}$company_job.edate|date_format:'%Y-%m-%d'{/yun}">&nbsp;&nbsp;
-    </div>
-    <div class="box1">
-        <span class="sp1"><span>*</span>
-            薪资待遇：
-        </span>
-        <input type="text" class="base_money input_min" id="minsalary" placeholder="最低薪资" value="{yun:}$company_job.minsalary{/yun}"><span class="sp3">元/月</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" class="base_money input_min" id="maxsalary" placeholder="最高薪资" value="{yun:}$company_job.maxsalary{/yun}"><span class="sp3">元/月</span>
-    </div>
-    <div class="box1">
-        <span class="sp1"><span>*</span>
-            发放月数：
-        </span>
-        <input type="text" class="mouthes input_min" id="ejob_salary_month" placeholder="填写发放月数" value="{yun:}$company_job.ejob_salary_month{/yun}">
-    </div>
-    <div class="box1" style="width: 800px">
-        <span class="sp1" style="float: left"><span>*</span>
-            职位描述：
-        </span>
-        <textarea id="description" cols="30" rows="10">{yun:}$company_job.description{/yun}</textarea>
-    </div>
-    <div class="box1">
-        <span class="sp1">
-            汇报对象：
-        </span>
-        <input type="text" id="detail_report" class="leader input_min" value="{yun:}$company_job.detail_report{/yun}">
-    </div>
-    <div class="box1">
-        <span class="sp1">
-            下属人数：
-        </span>
-        <input type="text" class="worker input_min" id="detail_subordinate"  value="{yun:}$company_job.detail_subordinate{/yun}">
-    </div>
-    <div class="title_">对候选人有什么需求？（选填项）
-        <span>?</span>
-        <span>填写详细信息，有助于您招聘精准人才！</span>
-    </div>
-    <div class="line_2"></div>
-    <div class="box1">
-        <span class="sp6">
-            从事行业：
-        </span>
-        <div class="input_min selectBox" style="z-index:400">
-            <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $company_job.hy{/yun}
-                value="{yun:}$industry_name[$company_job.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
-                onclick="search_show('job_hy');">
-            <input type="hidden" id="hyid" name="hy" {yun:}if $company_job.hy {/yun} value="{yun:}$company_job.hy{/yun}"
-                {yun:}/if{/yun}/> <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
+    <div class="input_min selectBox" style="z-index: 101">
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.cityid{/yun}
+            value="{yun:}$city_name[$company_job.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="citys"
+            onclick="search_show('job_citys');">
+        <input type="hidden" id="citysid" name="cityid" value="{yun:}$company_job.cityid{/yun}" />
+        <div id="job_citys" class="cus-sel-opt-panel" style="display:none">
             <div style="width:100%;  overflow:auto; overflow-x:hidden">
-                <ul>
-                    {yun:}foreach item=v from=$industry_index key=k{/yun}
+                <ul class="Search_Condition_box_list">
+                    {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
                     <li><a href="javascript:;"
-                            onclick="selects('{yun:}$v{/yun}','hy','{yun:}$industry_name[$v]{/yun}');">
-                            {yun:}$industry_name[$v]{/yun}</a></li>
+                            onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');">
+                            {yun:}$city_name[$v]{/yun}</a></li>
                     {yun:}/foreach{/yun}
                 </ul>
             </div>
         </div>
     </div>
-    <span class="sp6">
-        招聘人数：
+    <div class="input_min selectBox" style="display:none" id="cityshowth">
+        <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.three_cityid{/yun}
+            value="{yun:}$city_name[$company_job.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun}
+            id="three_city" onclick="three_city_show('job_three_city');">
+        <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$company_job.three_cityid{/yun}" />
+        <div id="job_three_city" class="cus-sel-opt-panel" style="display:none">
+            <ul class="Search_Condition_box_list">
+                {yun:}foreach from=$com key=j item=v{/yun}
+                <li><a href="javascript:;"
+                        onclick="selects('{yun:}$v{/yun}','three_city','{yun:}$city_name[$v]{/yun}');">
+                        {yun:}$city_name[$v]{/yun}</a></li>
+                {yun:}/foreach{/yun}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="box1">
+    <span class="sp1"><span>*</span>
+        职位有效期：
     </span>
-    <input type="text" class="input_min inputMin" id="number" placeholder="输入招聘人数" value="{yun:}$company_job.number{/yun}">
+    <input type="text" class="endtime input_min" id="days" placeholder="填写职位有效时间"
+        value="{yun:}$company_job.edate{/yun}">&nbsp;&nbsp;天
+</div>
+<div class="box1">
+    <span class="sp1"><span>*</span>
+        薪资待遇：
+    </span>
+    <input type="text" class="base_money input_min" id="minsalary" placeholder="最低薪资"
+        value="{yun:}$company_job.minsalary{/yun}"><span class="sp3">元/月</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="base_money input_min" id="maxsalary" placeholder="最高薪资"
+        value="{yun:}$company_job.maxsalary{/yun}"><span class="sp3">元/月</span>
+</div>
+<div class="box1">
+    <span class="sp1"><span>*</span>
+        发放月数：
+    </span>
+    <input type="text" class="mouthes input_min" id="ejob_salary_month" placeholder="填写发放月数"
+        value="{yun:}$company_job.ejob_salary_month{/yun}">
+</div>
+<div class="box1" style="width: 800px">
+    <span class="sp1" style="float: left"><span>*</span>
+        职位描述：
+    </span>
+    <textarea id="description" cols="30" rows="10">{yun:}$company_job.description{/yun}</textarea>
+</div>
+<div class="box1">
+    <span class="sp1">
+        汇报对象：
+    </span>
+    <input type="text" id="detail_report" class="leader input_min" value="{yun:}$company_job.detail_report{/yun}">
+</div>
+<div class="box1">
+    <span class="sp1">
+        下属人数：
+    </span>
+    <input type="text" class="worker input_min" id="detail_subordinate"
+        value="{yun:}$company_job.detail_subordinate{/yun}">
+</div>
+<div class="title_">对候选人有什么需求？（选填项）
+    <span>?</span>
+    <span>填写详细信息，有助于您招聘精准人才！</span>
+</div>
+<div class="line_2"></div>
+<div class="box1">
+    <span class="sp6">
+        从事行业：
+    </span>
+    <div class="input_min selectBox" style="z-index:400">
+        <input class="SpFormLBut text_seclet_w250 " type="button" {yun:}if $company_job.hy{/yun}
+            value="{yun:}$industry_name[$company_job.hy]{/yun}" {yun:}else{/yun} value="请选择行业" {yun:}/if{/yun} id="hy"
+            onclick="search_show('job_hy');">
+        <input type="hidden" id="hyid" name="hy" {yun:}if $company_job.hy {/yun} value="{yun:}$company_job.hy{/yun}"
+            {yun:}/if{/yun}/> <div id="job_hy" class="cus-sel-opt-panel" style="display:none; z-index:301">
+        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+            <ul>
+                {yun:}foreach item=v from=$industry_index key=k{/yun}
+                <li><a href="javascript:;" onclick="selects('{yun:}$v{/yun}','hy','{yun:}$industry_name[$v]{/yun}');">
+                        {yun:}$industry_name[$v]{/yun}</a></li>
+                {yun:}/foreach{/yun}
+            </ul>
+        </div>
+    </div>
+</div>
+<span class="sp6">
+    招聘人数：
+</span>
+<input type="text" class="input_min inputMin" id="number" placeholder="输入招聘人数" value="{yun:}$company_job.number{/yun}">
 </div>
 <div class="box1">
     <span class="sp6">
@@ -187,10 +192,10 @@
     </span>
     <div class="input_min selectBox" style="z-index: 101">
         <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.report{/yun}
-            value="{yun:}$comclass_name[$company_job.report]{/yun}" {yun:}else{/yun} value="请选择到岗时间" {yun:}/if{/yun} id="report"
-            onclick="search_show('job_report');">
-        <input type="hidden" id="reportid" name="report" {yun:}if $company_job.report{/yun} value="{yun:}$company_job.report{/yun}"
-            {yun:}/if{/yun} />
+            value="{yun:}$comclass_name[$company_job.report]{/yun}" {yun:}else{/yun} value="请选择到岗时间" {yun:}/if{/yun}
+            id="report" onclick="search_show('job_report');">
+        <input type="hidden" id="reportid" name="report" {yun:}if $company_job.report{/yun}
+            value="{yun:}$company_job.report{/yun}" {yun:}/if{/yun} />
         <div id="job_report" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
             <ul class="Search_Condition_box_list">
                 {yun:}foreach from=$comdata.job_report key=j item=v{/yun}
@@ -284,8 +289,8 @@
     </span>
     <div class="input_min selectBox" style="z-index: 99">
         <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $company_job.edu{/yun}
-            value="{yun:}$comclass_name[$company_job.edu]{/yun}" {yun:}else{/yun} value="请选择教育程度" {yun:}/if{/yun} id="edu"
-            onclick="search_show('job_edu');">
+            value="{yun:}$comclass_name[$company_job.edu]{/yun}" {yun:}else{/yun} value="请选择教育程度" {yun:}/if{/yun}
+            id="edu" onclick="search_show('job_edu');">
         <input type="hidden" id="eduid" name="edu" {yun:}if $company_job.edu{/yun} value="{yun:}$company_job.edu{/yun}"
             {yun:}/if{/yun} />
         <div id="job_edu" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display: none;">
@@ -421,7 +426,8 @@
     <span class="sp6">联系方式</span>
     <div class="selectBox_3">
         <div class="select choosed">
-            使用企业联系方式（{yun:}$company.linkman{/yun}&nbsp;{yun:}if $company.linktel{/yun}{yun:}$company.linktel{/yun}{yun:}else{/yun}{yun:}$company.linkphone{/yun}{yun:}/if{/yun}）
+            使用企业联系方式（{yun:}$company.linkman{/yun}&nbsp;{yun:}if
+            $company.linktel{/yun}{yun:}$company.linktel{/yun}{yun:}else{/yun}{yun:}$company.linkphone{/yun}{yun:}/if{/yun}）
             <div class="triangle"></div>
             <span class="gou">√</span>
         </div>
@@ -451,46 +457,81 @@
             $('.typeBox>div').removeClass('choosed');
             $(ev.currentTarget).addClass('choosed');
         })
-        $('.selectBox_ .select,.selectBox_2 .select').click(ev=>{
+        $('.selectBox_ .select,.selectBox_2 .select').click(ev => {
             $(ev.currentTarget).toggleClass('choosed');
         })
-        $('.selectBox_3 .select').click(ev=>{
+        $('.selectBox_3 .select').click(ev => {
             $(ev.currentTarget).toggleClass('choosed');
-            if($(ev.currentTarget).siblings('.select').hasClass('choosed')){
+            if ($(ev.currentTarget).siblings('.select').hasClass('choosed')) {
                 $(ev.currentTarget).siblings('.select').removeClass('choosed');
             }
-            if($('.selectBox_3 .select:nth-child(2)').hasClass('choosed')){
-                $('.newTel').css('display','flex');
-            }else{
-                $('.newTel').css('display','none');
+            if ($('.selectBox_3 .select:nth-child(2)').hasClass('choosed')) {
+                $('.newTel').css('display', 'flex');
+            } else {
+                $('.newTel').css('display', 'none');
             }
         })
-        $('.switch').click(ev=>{
-            if($('.switch div').css('left')=='0px'){
-                $('.switch div').css('left','20px')
-                $('.switch').css('background','#3cc1d3')
+        $('.switch').click(ev => {
+            if ($('.switch div').css('left') == '0px') {
+                $('.switch div').css('left', '20px')
+                $('.switch').css('background', '#3cc1d3')
                 $('#tblink').val(1);
-            }else{
-                $('.switch div').css('left','0px')
-                $('.switch').css('background','#ededed')
+            } else {
+                $('.switch div').css('left', '0px')
+                $('.switch').css('background', '#ededed')
                 $('#tblink').val(2);
             }
         })
         $('.reset').click(function () {
-            var servicetype = $('.typeBox .choosed').children().first().attr('class');//服务方式
-             //
-            if(servicetype == 'hgt'){
-               servicetype = 0;
-            }else {
+
+            if (!"{yun:}$isComplete{/yun}") {
+                alert_notice({
+                    'title': '您还未完善资料哦~',
+                    type: '/app/public/imgs/ws_03.png',
+                    content: '为了保障您的权益，快速获取最满意的候选人，请完善资料后发布职位',
+                    src: '/member/index.php?c=jobadd&act=base_info'
+                })
+                return
+            }
+            var servicetype = $('.typeBox .choosed').children().first().attr('class'); //服务方式
+            //  if('{yun:}$company.resume_payd{/yun}'==0||'{yun:}$company.interview_payd{/yun}'==0){
+
+            // }
+            if (servicetype == 'hgt') {
+                servicetype = 0;
+                if ('{yun:}$company.resume_payd{/yun}' == 0) {
+                    alert_notice({
+                        'title': '温馨提示',
+                        type: 'warning',
+                        content: '您的慧沟通余额不足',
+                        src: '/member/index.php?c=paylog',
+                        btn: '去购买'
+                    })
+                    return
+                }
+            } else {
                 servicetype = 1;
+                if ('{yun:}$company.interview_payd{/yun}' == 0) {
+                    alert_notice({
+                        'title': '温馨提示',
+                        type: 'warning',
+                        content: '您的慧简历余额不足',
+                        src: '/member/index.php?c=paylog',
+                        btn: '去购买'
+                    })
+                    return
+
+
+                }
             }
             var name = $('#name').val();
             var id = $('#job_id').val();
             var job_post = $('#job_post').val();
-            var provinceid =$('#provinceid').val();
-            var cityid= $('#citysid').val();
+            var provinceid = $('#provinceid').val();
+            var cityid = $('#citysid').val();
             var three_cityid = $('#three_cityid').val();
             var days = $('#days').val();
+            days = Date.parse(new Date()) / 1000 + days * 24 * 3600;
             var minsalary = $('#minsalary').val();
             var maxsalary = $('#maxsalary').val();
             var ejob_salary_month = $('#ejob_salary_month').val();
@@ -507,98 +548,107 @@
             var edu = $('#eduid').val();
             var tel;
             var wel;
-            var lang100,lang103,lang107,lang104,lang105,lang106,lang108,lang110;
-            for(let i = 0;i<$('.selectBox_ .choosed').length;i++){
-                 tel = $('.selectBox_ .choosed input').eq(i).val();
-                 if(tel == '100')
-                     lang100 = 100;
-                 else if(tel == '103')
+            var lang100, lang103, lang107, lang104, lang105, lang106, lang108, lang110;
+            for (let i = 0; i < $('.selectBox_ .choosed').length; i++) {
+                tel = $('.selectBox_ .choosed input').eq(i).val();
+                if (tel == '100')
+                    lang100 = 100;
+                else if (tel == '103')
                     lang103 = 103;
-                 else if(tel == '107')
-                     lang107 = 107;
-                 else if (tel == '104')
-                     lang104 = 104;
-                 else if(tel == '105')
-                     lang105 = 105;
-                 else if(tel == '106')
-                     lang106 = 106;
-                 else if(tel == '108')
-                     lang108 = 108;
-                 else if(tel == 110)
-                     lang110 =110;
+                else if (tel == '107')
+                    lang107 = 107;
+                else if (tel == '104')
+                    lang104 = 104;
+                else if (tel == '105')
+                    lang105 = 105;
+                else if (tel == '106')
+                    lang106 = 106;
+                else if (tel == '108')
+                    lang108 = 108;
+                else if (tel == 110)
+                    lang110 = 110;
             }
-            var welfare95,welfare94,welfare92,welfare91,welfare90,welfare96,welfare97,welfare93,welfare98;
-            for(let i = 0;i<$('.selectBox_2 .choosed').length;i++){
+            var welfare95, welfare94, welfare92, welfare91, welfare90, welfare96, welfare97, welfare93,
+                welfare98;
+            for (let i = 0; i < $('.selectBox_2 .choosed').length; i++) {
                 wel = $('.selectBox_2 .choosed input').eq(i).val();
-                if(wel == '95')
+                if (wel == '95')
                     welfare95 = 95;
-                else if(wel == '94')
+                else if (wel == '94')
                     welfare94 = 94;
-                else if(wel == '92')
+                else if (wel == '92')
                     welfare92 = 92;
                 else if (wel == '91')
                     welfare91 = 91;
-                else if(wel == '90')
+                else if (wel == '90')
                     welfare90 = 90;
-                else if(wel == '96')
+                else if (wel == '96')
                     welfare96 = 96;
-                else if(wel == '97')
+                else if (wel == '97')
                     welfare97 = 97;
-                else if(wel == 93)
-                    welfare93 =93;
-                else if(wel == 98)
+                else if (wel == 93)
+                    welfare93 = 93;
+                else if (wel == 98)
                     welfare98 = 98;
             }
             var tblink = $('#tblink').val();
             var linkman = $('#linkman').val();
             var link_moblie = $('#link_moblie').val();
-            Post('{yun:}url m=member c=jobadd act=saveInfo{/yun}',{
-                service_type:servicetype,
-                name:name,
-                job_post:job_post,
-                provinceid:provinceid,
-                cityid:cityid,
-                three_cityid:three_cityid,
-                days:days,
-                minsalary:minsalary,
-                maxsalary:maxsalary,
-                ejob_salary_month:ejob_salary_month,
-                description:description,
-                detail_report:detail_report,
-                detail_subordinate:detail_subordinate,
-                hy:hy,
-                number:number,
-                exp:exp,
-                report:report,
-                age:age,
-                sex:sex,
-                edu:edu,
-                marriage:marriage,
-                lang103:lang103,
-                lang100:lang100,
-                lang107:lang107,
-                lang104:lang104,
-                lang105:lang105,
-                lang106:lang106,
-                lang108:lang108,
-                lang110:lang110,
-                welfare95:welfare95,
-                welfare94:welfare94,
-                welfare92:welfare92,
-                welfare91:welfare91,
-                welfare90:welfare90,
-                welfare96:welfare96,
-                welfare97:welfare97,
-                welfare93:welfare93,
-                welfare98:welfare98,
-                tblink:tblink,
-                link_man:linkman,
-                link_moblie:link_moblie,
-                id:id
+            Post('{yun:}url m=member c=jobadd act=saveInfo{/yun}', {
+                service_type: servicetype,
+                name: name,
+                job_post: job_post,
+                provinceid: provinceid,
+                cityid: cityid,
+                three_cityid: three_cityid,
+                days: days,
+                minsalary: minsalary,
+                maxsalary: maxsalary,
+                ejob_salary_month: ejob_salary_month,
+                description: description,
+                detail_report: detail_report,
+                detail_subordinate: detail_subordinate,
+                hy: hy,
+                number: number,
+                exp: exp,
+                report: report,
+                age: age,
+                sex: sex,
+                edu: edu,
+                marriage: marriage,
+                lang103: lang103,
+                lang100: lang100,
+                lang107: lang107,
+                lang104: lang104,
+                lang105: lang105,
+                lang106: lang106,
+                lang108: lang108,
+                lang110: lang110,
+                welfare95: welfare95,
+                welfare94: welfare94,
+                welfare92: welfare92,
+                welfare91: welfare91,
+                welfare90: welfare90,
+                welfare96: welfare96,
+                welfare97: welfare97,
+                welfare93: welfare93,
+                welfare98: welfare98,
+                tblink: tblink,
+                link_man: linkman,
+                link_moblie: link_moblie,
+                id: id
             }).then(function (res) {
-                alert_notice({title:'温馨提示',content:res.info,src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=job'});
+                alert_notice({
+                    title: '温馨提示',
+                    content: res.info,
+                    src: '{yun:}$config.sy_weburl{/yun}/member/index.php?c=job'
+                });
             }).catch(function (res) {
-                alert_notice({title:'温馨提示',content:res.info,type:'warning',src:'{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog'});
+                alert_notice({
+                    title: '温馨提示',
+                    content: res.info,
+                    type: 'warning'
+                });
             });
 
         });

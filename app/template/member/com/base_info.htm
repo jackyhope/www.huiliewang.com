@@ -3,7 +3,7 @@
 <div class="baseInfo">
     <div class="title_">企业基本信息</div>
     <div class="line_2"></div>
-    <div class="inputBox">
+    <div class="inputBox" style="min-height: 117px">
         <span class="sp1" style="float: left">
             <span>*&nbsp;</span>LOGO：
         </span>
@@ -306,7 +306,7 @@
                 welfare:welfare,
                 logo
             }).then(function (res) {
-                window.location.href = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=jobadd&act=edit';
+                window.location.href = '/member/index.php';
             }).catch(function (res) {
                 alert_notice({title:'温馨提示',content:res.info,type:'warning'});
             });

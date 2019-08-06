@@ -20,10 +20,10 @@
     // getData(1,5)
     $('.tab').click(ev => {
       $('.tab').toggleClass('choosed');
-      if ($('.line1').css('left') == '100px') {
-        $('.line1').css('left', '290px')
+      if ($('.line1').css('left') == '89px') {
+        $('.line1').css('left', '238px')
       } else {
-        $('.line1').css('left', '100px')
+        $('.line1').css('left', '89px')
       }
       $('.pagersel').change();
     })
@@ -54,11 +54,15 @@
         res.datas.map(val => {
           $('.list').append(`<div class="listBox">
       <div class="listLeft">
-        <span class="postName">${val.name}</span>
+        <span class="postName"><a href='/job/index.php?c=comapply&id=${val.id}'>${val.name}</a></span>
         <span class="postType  ${val.service_type==0?'gradient_1':'gradient_2'}"><img src="/app/public/imgs/vw.png" alt="">${val.service_type==0?'慧沟通':'慧面试'}</span><br>
         <span class="salary">${val.minsalary+'-'+val.maxsalary}</span>
-        <span class="adviser">专属顾问：${val.joiner_name}</span><br>
-        <span class="createTime">发布于${get_time(val.edate)}</span>
+        <span class="adviser">
+          ${val.status==1?"到期时间："+Math.floor((val.edate-val.add_time)/86400)+"天":''}
+         <br>
+         <br>
+        专属顾问：${val.joiner_name}</span><br>
+        <span class="createTime">发布于${get_time(val.add_time,3)}</span>
       </div>
       <div class="listMid">
         <div>
@@ -101,7 +105,7 @@
     }
   })
   function toreset(id) {
-    window.location.href = '/member/index.php?c=jobadd?id=' + id
+    window.location.href = '/member/index.php?c=jobadd&id=' + id
   }
 
   function changeStatus(id, status) {
@@ -111,7 +115,7 @@
       confirm(ev) {
         Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=change_status', {
           id:id,
-          status:status,
+          status:Math.abs(status-3),
           ctype:1
         }).then(res => {
           $(ev.target).parent().parent('.mask').remove();

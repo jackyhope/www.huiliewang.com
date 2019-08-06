@@ -233,7 +233,7 @@ class company extends common{
 	function get_user(){
 		$rows=$this->obj->DB_select_once("company","`uid`='".$this->uid."'");
 		if(!$rows['name'] || !$rows['address'] || !$rows['pr']){
-			$this->ACT_msg("index.php?c=info","请先完善企业资料！");
+//			$this->ACT_msg("index.php?c=info","请先完善企业资料！");
 		}
 		return $rows;
 	}

@@ -4,7 +4,7 @@
 <!--头部 end -->
 <title>简历列表</title>
 <!--inner header start-->
-<link rel="stylesheet" href="/app/public/css/resume/resume.css">
+<link rel="stylesheet" href="/app/public/css/resume/resume.css?ver=20190801001">
 <script src="/app/public/js/resume/resume.js"></script>
 <div class="inner_header">
     <div class="container">
@@ -48,10 +48,10 @@
                         <a href="javascript:void(0);" onclick="select_new('at','0','所有类型')">所有类型</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','慧沟通')">慧沟通</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','2','慧沟通')">慧沟通</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','2','慧面试')">慧面试</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','1','慧面试')">慧面试</a>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
         $('#at_val').bind('myev', change)
         function getData(page, size) {
             Post('{yun:}$config.sy_weburl{/yun}/login/index.php?c=resume_show', {
-                c_type: 1,
+                c_type: 99,
                 job_id: $('#business_val').val() != 0 ? $('#business_val').val() : void 0,
                 job_type: $('#at_val').val() != 0 ? $('#at_val').val() : void 0,
                 kwd: $('#kwd').val() ? $('#kwd').val() : void 0,
@@ -119,13 +119,13 @@
                 res.datas.map(val => {
                     $('.resumeList').append(`
                     <div class="c_tr clearall">
-            <div class="c_td"><a href='/member/index.php?c=resume&act=detail&resume_id=${val.resume_id}&project_id=${val.project_id}'>${val.name}</a></div>
+            <div class="c_td"><a href='/member/index.php?c=resume&act=detail&resume_id=${val.resume_id}&project_id=${val.project_id}'>${val.name?val.name:'&nbsp;'}</a></div>
             <div class="c_td">${val.edu?val.edu:'&nbsp;'}</div>
-            <div class="c_td">${val.work_year}年</div>
-            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_class}</a></div>
+            <div class="c_td">${val.work_year?val.work_year:'&nbsp;'}年</div>
+            <div class="c_td"><a href='/job/index.php?c=comapply&id=${val.project_id}'>${val.job_name?val.job_name:'&nbsp;'}</a></div>
             <div class="c_td">${val.service_type==0?'慧沟通':'慧简历'}</div>
+            <div class="c_td">${val.tj_namer?val.tj_namer:'&nbsp;'}</div>
             <div class="c_td">${get_time(val.tjaddtime,3)}</div>
-            <div class="c_td">219-07-24</div>
             <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 hide_hands" href="javascript:void(0);">${getStatus(val.huilie_status)}</a></div>
         </div> `)
                 })
@@ -180,38 +180,3 @@
 </script>
 
 </html>
-
-
-<!-- <div class="c_table mt_28 clearall c_hide">
-        
-        <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 hide_hands" href="javascript:void(0);">未查看</a></div>
-        </div>
-        <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 hide_hands" href="javascript:void(0);">已查看</a></div>
-        </div>
-        
-        <div class="c_tr clearall">
-            <div class="c_td">王大锤</div>
-            <div class="c_td">砖士</div>
-            <div class="c_td">10年</div>
-            <div class="c_td">跑龙套</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">冯小刚冯小刚冯小刚冯小刚冯小刚冯小刚</div>
-            <div class="c_td">219-07-24</div>
-            <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 hide_hands" href="javascript:void(0);">已到场</a></div>
-        </div> -->

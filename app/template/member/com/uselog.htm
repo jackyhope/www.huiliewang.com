@@ -10,10 +10,14 @@
 <div class="inner_header">
     <div class="container">
         <div class="ul clearall">
-            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=1"><span class="li {yun:}if $c_tpu==1{/yun}current{yun:}/if{/yun}">我的套餐<i></i></span></a>
-            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=2"><span class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">套餐使用记录<i></i></span></a>
-            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=3"><span class="li {yun:}if $c_tpu==3{/yun}current{yun:}/if{/yun}">消费记录<i></i></span></a>
-            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4"><span class="li {yun:}if $c_tpu==4{/yun}current{yun:}/if{/yun}">充值记录<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=1"><span
+                    class="li {yun:}if $c_tpu==1{/yun}current{yun:}/if{/yun}">我的套餐<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=2"><span
+                    class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">套餐使用记录<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=3"><span
+                    class="li {yun:}if $c_tpu==3{/yun}current{yun:}/if{/yun}">消费记录<i></i></span></a>
+            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4"><span
+                    class="li {yun:}if $c_tpu==4{/yun}current{yun:}/if{/yun}">充值记录<i></i></span></a>
         </div>
     </div>
 </div>
@@ -25,14 +29,15 @@
             <span class="head_tit">筛选：</span>
 
             <div class="select_box">
-                <input type="button" value="所有类型" class="select_box_text fll" id="at_name" onclick="select_click('at');">
-                <input name="at" type="hidden" id="at_val" value="0">
+                <input type="button" value="所有类型" class="select_box_text fll" id="at_name"
+                    onclick="select_click('at');">
+                <input name="at" type="hidden" id="at_val" value="-1">
                 <div class="select_box_list_box dn" id="at_select">
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','0','所有类型')">所有类型</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','-1','所有类型')">所有类型</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','慧沟通')">慧沟通</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','0','慧沟通')">慧沟通</a>
                     </div>
                     <div class="select_box_list">
                         <a href="javascript:void(0);" onclick="select_new('at','1','慧面试')">慧面试</a>
@@ -52,24 +57,85 @@
             <div class="c_td">状态</div>
             <div class="c_td">时间</div>
         </div>
-        <div class="c_tr clearall">
-            <div class="c_td">设计师</div>
-            <div class="c_td">航宝宝</div>
-            <div class="c_td">慧沟通</div>
-            <div class="c_td">--2</div>
-            <div class="c_td">已扣除</div>
-            <div class="c_td">2019-7-12 14:32:19</div>
+        <div class="list">
+
         </div>
 
     </div>
     <!--  套餐使用记录 end -->
-
+    <div id="pager" class="pagger-box pagger"></div>
 </div>
 <!--content-list end-->
+<script>
+    $(function () {
+        $('#at_val').bind('myev', function () {
+            $('.pagerSel').change();
+        })
+        let pager = $('#pager').paging({
+            initPageNo: 1, // 初始页码
+            totalPages: 1, //总页数
+            totalCount: '共' + 0 + '条', // 条目总数
+            slideSpeed: 200, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            callback: getData(1, 5) // 回调函数
+        });
 
+        function getData(page, size) {
+            var _url = '{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=useList';
+
+            $.post(_url, {
+                'page': page,
+                'page_size': size,
+                service_type: $('#at_val').val()
+            }, function (re) {
+                re = JSON.parse(re);
+
+                var _html = _ttpye = '';
+                if (re.code == 200) {
+                    for (var i in re.info.list) {
+                        if (re.info.list[i].type == 0) {
+                            _ttpye = '慧沟通'
+                        } else {
+                            _ttpye = '慧面试'
+                        }
+                        _html += '<div class="c_tr clearall">\n' +
+                            '            <div class="c_td">&nbsp;' + re.info.list[i].job + '</div>\n' +
+                            '            <div class="c_td">&nbsp;' + re.info.list[i].resume +
+                            '</div>\n' +
+                            '            <div class="c_td">&nbsp;' + _ttpye + '</div>\n' +
+                            '            <div class="c_td">-' + re.info.list[i].order_price +
+                            '</div>\n' +
+                            '            <div class="c_td">' + re.info.list[i].pay_remark + '</div>\n' +
+                            '            <div class="c_td">&nbsp;' + re.info.list[i].pay_time +
+                            '</div>\n' +
+                            '        </div>';
+
+                    }
+                    $('.c_table .list').html(_html); //输出数据列表
+                    pager.options.pageNo = re.info.current_page;
+                    pager.options.totalPages = re.info.counts / re.info.page_size;
+                    pager.options.totalCount = '共' + re.info.counts + '条';
+                    pager.options.callback = function () {};
+                    pager.init();
+                    pager.options.callback = getData;
+                } else {
+                    alert_notice({
+                        title: '温馨提示',
+                        content: '获取套餐列表失败',
+                        type: 'error',
+                        src: '',
+                        btn: '确定',
+                        else: ''
+                    });
+                }
+            })
+        }
+    })
+</script>
 <!--尾巴 start-->
-{yun:}include file="$comstyle/c_footer.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}
 <!--尾巴 end-->
 
 </body>
+
 </html>

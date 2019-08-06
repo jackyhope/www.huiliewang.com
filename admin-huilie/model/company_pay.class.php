@@ -13,7 +13,7 @@ class company_pay_controller extends common
 	function set_search(){
 		$ad_time=array('1'=>'今天','3'=>'最近三天','7'=>'最近七天','15'=>'最近半月','30'=>'最近一个月');
 		$search_list[]=array("param"=>"end","name"=>'发布时间',"value"=>$ad_time);
-		$search_list[]=array("param"=>"pay_state","name"=>'消费状态',"value"=>array("0"=>"支付失败","1"=>"等待付款","2"=>"支付成功","3"=>"等待确认"));
+		$search_list[]=array("param"=>"pay_state","name"=>'消费状态',"value"=>array("0"=>"支付失败","1"=>"等待付款","2"=>"支付成功","3"=>"预扣",'4'=>'预扣返还'));
 		$this->yunset("search_list",$search_list);
 	}
 	function index_action(){
