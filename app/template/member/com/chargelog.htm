@@ -25,17 +25,17 @@
             <span class="head_tit">筛选：</span>
 
             <div class="select_box">
-                <input type="button" value="所有类型" class="select_box_text fll" id="at_name" onclick="select_click('at');">
-                <input name="at" type="hidden" id="at_val" value="0">
+                <input type="button" value="{yun:}$order_type_name[$order_type]{/yun}" class="select_box_text fll" id="at_name" onclick="select_click('at');">
+                <input name="at" type="hidden" id="at_val" value="{yun:}$order_type{/yun}">
                 <div class="select_box_list_box dn" id="at_select">
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','0','所有类型')">所有类型</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','0','充值方式');c_search(0);">充值方式</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','慧沟通')">慧沟通</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','1','支付宝充值');c_search(1);">支付宝充值</a>
                     </div>
                     <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="select_new('at','1','慧面试')">慧面试</a>
+                        <a href="javascript:void(0);" onclick="select_new('at','2','线下充值');c_search(2);">线下充值</a>
                     </div>
                 </div>
             </div>
@@ -56,12 +56,8 @@
         {yun:}assign var="state" value=$log.order_state{/yun}
         {yun:}assign var="type" value=$log.order_type{/yun}
         <div class="c_tr clearall">
-            <div class="c_td">&nbsp;{yun:}if $log.type==1{/yun}购买会员
-                {yun:}elseif $log.type=='2'{/yun}{yun:}$config.integral_pricename{/yun}充值
-                {yun:}elseif $log.type=='3'{/yun}银行转帐
-                {yun:}elseif $log.type=='4'{/yun}金额充值
-                {yun:}elseif $log.type=='5'{/yun}购买慧猎套餐
-                {yun:}else{/yun}其他
+            <div class="c_td">&nbsp;{yun:}if $log.order_type=='alipay'{/yun}支付宝充值
+                {yun:}elseif $log.order_type=='adminpay'{/yun}线下充值
                 {yun:}/if{/yun}</div>
             <div class="c_td">&nbsp;{yun:}$log.order_price{/yun}</div>
             <div class="c_td">&nbsp;{yun:}$arr_data.c_paystate.$state{/yun}</div>
@@ -81,6 +77,10 @@
 </div>
 <!--content-list end-->
 <script>
+    function c_search(ctu){
+        var _url='{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4&ctu='+ctu;
+        location.href = _url;
+    }
     $(function () {
         if($('.diggg a').length>0){
             //有分页页码
