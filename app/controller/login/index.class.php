@@ -198,7 +198,12 @@ class index_controller extends common{
         $FrontLoginService = new com\hlw\huiliewang\interfaces\FrontLoginServiceClient(null);
         apiClient::build($FrontLoginService);
         $re = $FrontLoginService->certifyData($obj);
-        return_json('看看什么回来了',200,array_iconv(return_toArray($re),'UTF-8','gbk'));
+        $user = $re->data;
+        if($post['c_type']=='save' && count($user)>0){
+            $user['username'] = change_encoding($user['username'],'GB2312');
+            $this->add_cookie($user['uid'],$user['username'],$user['salt'],$user['email'],$user['password'],$user['usertype'],'',$user['did']);
+        }
+        return_json('操作成功',200,array_iconv(return_toArray($re),'UTF-8','gbk'));
 
     }
     function is_login(){
