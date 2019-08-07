@@ -198,6 +198,19 @@ class resume_api_controller extends company
             $this->ajax_return(500, false, "套餐余额不足");
         }
         $money = $companyInfo['money'];
+        $leaveReason = $_POST['reason'] ? 1 : 0;
+        $salary = $_POST['current_salary'] ? 1 : 0;
+        $maritalStatus = $_POST['marital_status'] ? 1 : 0;
+        $location = $_POST['location'] ? 1 : 0;
+        $other = $_POST['other'] ? $_POST['other'] : '';
+        $otherData = [
+            'reason_opportunities' => $leaveReason,
+            'marital_status' => $maritalStatus,
+            'curSalary' => $salary,
+            'hlocation' => $location,
+            'other' => $other,
+        ];
+
         //2、更改状态
         try {
             apiClient::init('', '');
@@ -209,6 +222,7 @@ class resume_api_controller extends company
             $resumeDo->status = 4;
             $resumeDo->money = $money;
             $resumeDo->uid = $this->uid;
+            $resumeDo->others = $otherData;
             $info = $resumeService->statusUp($resumeDo);
             if ($info->code != 200) {
                 $this->ajax_return(500, false, $info->message);
