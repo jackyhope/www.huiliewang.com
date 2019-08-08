@@ -788,6 +788,7 @@ class jobadd_controller extends company
             }
             $names = implode(',', $name);
         }
+        $_POST['service_type'] == 2 && $_POST['service_type'] = 0; //0慧简历初级，2慧简历高级 3：慧面试
         try {
             apiClient::init();
             $jobService = new com\hlw\huilie\interfaces\JobServiceClient(null);
