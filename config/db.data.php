@@ -1,6 +1,29 @@
 <?php
 $arr_data = array (
-    'new_price'=>array('communicate_base_position'=>300,'communicate_expert_position'=>500),
+    'new_price'=>array(
+        'communicate_base_position'=>300,//沟通基础版
+        'communicate_expert_position'=>500,//沟通高级版
+        'interview'=>array(
+            'base'=>array(
+                'price'=>2000,
+                'interval'=>'0-20',
+                'giving'=>0.5,
+                'start_buy'=>10000
+            ),
+            'Intermediate'=>array(
+                'price'=>3000,
+                'interval'=>'20-50',
+                'giving'=>0.5,
+                'start_buy'=>10000
+            ),
+            'expert'=>array(
+                'price'=>4000,
+                'interval'=>'50-9999999',
+                'giving'=>0.5,
+                'start_buy'=>10000
+            )
+        ),
+    ),
 	'pay' => array ('alipay'=>'支付宝','wxpay'=>'微信支付','tenpay'=>'财富通','bank'=>'银行转帐','alipaydual'=>'支付宝双接口','alipayescow'=>'担保交易','adminpay'=>'管理员充值','balance'=>'余额支付','admincut'=>'管理员扣款','wapalipay'=>'支付宝手机支付'),
 	'source' => array ('1'=>'网页','2'=>'手机','3'=>'App','4'=>'微信','6'=>'采集','7'=>'Excel导入','8'=>'QQ登录','9'=>'微信扫一扫','10'=>'微博','11'=>'PC快速投递','12'=>'WAP快速投递','13'=>'微信小程序'),
 	'rewardstate' => array ( '1'=>array('id'=>'1','name'=>'待查看','state'=>array('0'))
