@@ -4,11 +4,13 @@ $arr_data = array (
         'communicate'=>array(
             'base'=>array(
                 'price'=>300,
-                'deduct'=>1
+                'deduct'=>1,
+                'giving'=>1
             ),
             'expert'=>array(
                 'price'=>500,
-                'deduct'=>1
+                'deduct'=>1,
+                'giving'=>1
             ),
         ),
         'interview'=>array(
