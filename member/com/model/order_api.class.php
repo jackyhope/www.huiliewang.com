@@ -83,14 +83,12 @@ class order_api_controller extends company
         $this->publicCheck();
         $page = baseUtils::getStr($_POST['page'], 'int', 1);
         $pageSize = baseUtils::getStr($_POST['page_size'], 'int', 15);
-        $orderType = baseUtils::getStr($_POST['order_type'], 'int', 0);
-        $payStatus = baseUtils::getStr($_POST['pay_status'], 'int', 0);
+        $rating = baseUtils::getStr($_POST['rating'], 'int', 0);
         $allService = $this->getAllService();
         $page < 1 && $page = 1;
         $pageStart = ($page - 1) * $pageSize;
         $where = 'uid = ' . $this->uid . ' and type = 5';
-        $orderType > 0 && $where .= " and order_type=" . $orderType;
-        $payStatus > 0 && $where .= " and order_state=" . $payStatus;
+        $rating > 0 && $where .= " and rating=" . $rating;
         $countWhere = $where;
         $where .= " order by order_time desc limit {$pageStart},{$pageSize}";
         $rows = $this->obj->DB_select_all_assoc('company_order', $where);
@@ -190,7 +188,6 @@ class order_api_controller extends company
         }
         //@todo  短信验证码验证 07-29 暂时跳过验证
         if ($smsCode !== $_SESSION['code'] || (time() - $_SESSION['code_time']) > 300) {
-            ;
             $this->ajax_return(500, false, '短信验证码错误');
         }
 
@@ -199,7 +196,7 @@ class order_api_controller extends company
         if (!$serviceInfo) {
             $this->ajax_return(500, false, '服务信息查询错误');
         }
-        $price = $serviceInfo['type'];
+        $price = $serviceInfo['service_price'];
         $resume = $serviceInfo['resume'];
         $interview = $serviceInfo['interview'];
         $serviceType = $serviceInfo['type'];

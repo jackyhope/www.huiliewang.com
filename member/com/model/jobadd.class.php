@@ -87,8 +87,8 @@ class jobadd_controller extends company
         $this->yunset("row", $row);
         $this->yunset("isComplete", $isCompleate);
         $this->yunset('type', $cmj['service_type']);
-        $cmj['edate'] = ($cmj['edate']-time())/24/3600;
-        $cmj['edate'] = ceil($cmj['edate']) < 0  ? 0 : ceil($cmj['edate']);
+        $cmj['edate'] = ($cmj['edate'] - time()) / 24 / 3600;
+        $cmj['edate'] = ceil($cmj['edate']) < 0 ? 0 : ceil($cmj['edate']);
         $this->yunset('company_job', $cmj);
         $lang = explode(',', $cmj['lang']);
         $welfare = explode(',', $cmj['welfare']);
@@ -541,7 +541,11 @@ class jobadd_controller extends company
             $return = ['success' => false, 'code' => 500, 'info' => "参数错误"];
             $this->jsonReturn($return);
         }
-        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`,service_type,uid");
+        $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`,service_type,uid,name,address,pr");
+        if(!$comjob['name'] || !$comjob['address'] || !$comjob['pr']){
+            $return = ['success' => false, 'code' => 500, 'info' => "请先完善企业资料"];
+            $this->jsonReturn($return);
+        }
         if (!$id && $comjob) {
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
@@ -595,13 +599,14 @@ class jobadd_controller extends company
         $_POST['welfare'] = '';
         !empty($welfare) && $_POST['welfare'] = pyLode(',', $welfare);
 
+        $_POST['days_type'] = 1;
         if (intval($_POST['days']) && $_POST['days_type'] == '') {
             if (intval($_POST['days']) > 999) {
                 $_POST['days'] = 999;
             }
             $_POST['edate'] = time() + (int)trim($_POST['days']) * 86400;
         } else if ($_POST['days_type']) {
-            $_POST['edate'] = strtotime($_POST['edate'] . " 23:59:59");
+            $_POST['edate'] = strtotime(date('Y-m-d', $_POST['days']) . " 23:59:59");
             if ($_POST['edate'] < time()) {
                 $return = ['success' => false, 'code' => 500, 'info' => "结束时间小于当前日期！"];
                 $this->jsonReturn($return);
