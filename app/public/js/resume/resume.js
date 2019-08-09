@@ -25,6 +25,11 @@ $(function () {
         Post('/member/index.php?c=resume_api&act=pay', {
             resume_id: $(ev.target).attr('resume_id'),
             project_id: $(ev.target).attr('project_id'),
+            current_salary:$('#b10').attr('checked')?1:0,
+            reason:$('#b11').attr('checked')?1:0,
+            marital_status:$('#b12').attr('checked')?1:0,
+            location:$('#b13').attr('checked')?1:0,
+            other:$('#gtt').val()
         }).then(res => {
             $('.pagersel').change();
             $('.c_module_2').addClass('c_hide');
