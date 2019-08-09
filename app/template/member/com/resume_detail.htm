@@ -19,7 +19,7 @@
 <!--inner header end-->
 <script>
     $(function () {
-        var _default_hight = $('#animate_high').height();
+        var _default_hight = $('#animate_high').height()+$('.detail_left2').height();
         $('.content_detail').height(_default_hight + 100);
         $('#animate_high').resize(function () {
             $('.content_detail').height($(this).height() + 100);
@@ -51,9 +51,12 @@
         color: #666666;
         font-weight: 600;
     }
+    .content_detail{
+        position: relative;z-index:1;
+    }
 </style>
 <!--content-list start-->
-<div class="content_detail" style="position: relative;z-index:1;">
+<div class="content_detail" {yun:}if $communicate{/yun}style="height: 1230px;"  {yun:}/if{/yun}>
     <div class="detail_box">
         <div class="detail_left detail_left2" {yun:}if $communicate{/yun} style="display: block" {yun:}/if{/yun}> <p
             class="c_msg_header fs_16"><span></span>基本信息</p>
@@ -107,7 +110,7 @@
                 <div></div>
                 {yun:}/if{/yun}
                 {yun:}if $communicate.other_cont{/yun}
-                <div><span>其他：</span><span>{yun:}$communicate.other_cont{/yun}</span></div>
+                <div><span>{yun:}$communicate.other_cont[0]{/yun}:</span><span>{yun:}$communicate.other_cont[1]{/yun}</span></div>
                 {yun:}/if{/yun}
             </div>
         </div>
