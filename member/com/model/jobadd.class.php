@@ -542,10 +542,6 @@ class jobadd_controller extends company
             $this->jsonReturn($return);
         }
         $comjob = $this->obj->DB_select_all("company_job", "`uid`='" . $uId . "' and `name`='" . $_POST['name'] . "'", "`id`,service_type,uid,name,address,pr");
-        if(!$comjob['name'] || !$comjob['address'] || !$comjob['pr']){
-            $return = ['success' => false, 'code' => 500, 'info' => "请先完善企业资料"];
-            $this->jsonReturn($return);
-        }
         if (!$id && $comjob) {
             $return = ['success' => false, 'code' => 500, 'info' => "职位名称已存在"];
             $this->jsonReturn($return);
@@ -560,10 +556,26 @@ class jobadd_controller extends company
                 $this->jsonReturn($return);
             }
         }
+        if ($_POST['service_type'] == 0 && !$_POST['job_type']) {
+            $return = ['success' => false, 'code' => 500, 'info' => "当前慧沟通职位级别"];
+            $this->jsonReturn($return);
+        }
         //套餐余量检查
-        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid, "resume_payd,interview_payd,interview_payd_expect,c_money,tb_customer_id");
-        if ($_POST['service_type'] == 0 && $companyInfo['resume_payd'] <= 0) {
+        $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid, "resume_payd,interview_payd,interview_payd_expect,c_money,tb_customer_id,resume_payd_high");
+        $serviceType = $_POST['service_type'];
+        $jobType = $_POST['job_type'] ? intval($_POST['job_type']) : 1;
+        if ($serviceType == 0 && $jobType == 1 && $companyInfo['resume_payd'] <= 0) {
             $return = ['success' => false, 'code' => 500, 'info' => "慧沟通余量不足"];
+            $this->jsonReturn($return);
+        }
+        //检查年薪
+        $salary = intval($_POST['maxsalary']) * intval($_POST['ejob_salary_month']);
+        if ($serviceType == 0 && $jobType == 1 && $salary >= 20) {
+            $return = ['success' => false, 'code' => 500, 'info' => "低级职位不能发布大于20W年薪职位"];
+            $this->jsonReturn($return);
+        }
+        if ($serviceType == 0 && $jobType == 2 && $companyInfo['resume_payd_high'] <= 0) {
+            $return = ['success' => false, 'code' => 500, 'info' => "慧沟通高级职位余量不足"];
             $this->jsonReturn($return);
         }
         //慧面试余量
@@ -646,6 +658,7 @@ class jobadd_controller extends company
             $saveJobDo->edate = baseUtils::getStr($_POST['edate'], 'int');
             $saveJobDo->job_post = baseUtils::getStr($_POST['job_post']);
             $saveJobDo->service_type = baseUtils::getStr($_POST['service_type']);
+            $saveJobDo->job_type = baseUtils::getStr($_POST['job_type']);
             $res = $jobAddService->saveJob($saveJobDo);
             if ($res->code != 200) {
                 $return = ['success' => false, 'code' => 500, 'info' => yun_iconv('utf-8', 'gbk', $res->message)];
