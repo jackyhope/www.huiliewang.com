@@ -97,10 +97,10 @@ class resume_controller extends company
         $list = array_iconv($list, 'utf-8', 'gbk');
         $logs = array_iconv($logs, 'utf-8', 'gbk');
         $logs && $logs == array_values($logs);
-
         $this->yunset("projectId", $projectId);
         $this->yunset("resumeId", $resumeId);
         $this->yunset("info", $list);
+        $this->yunset("communicate", $list['connect_result']);//¹µÍ¨½á¹û
         $this->yunset("logs", $logs);
         $this->yunset("status", $list['work_info']['huilie_status']);
         $this->com_tpl('resume_detail');

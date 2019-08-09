@@ -49,7 +49,6 @@
                         <th>编号</th>
                         <th>套餐价格</th>
                         <th>慧沟通</th>
-                        <th>慧面试</th>
                         <th class="admin_table_th_bg">操作</th>
                     </tr>
                     </thead>
@@ -60,7 +59,7 @@
                         <td><span>{yun:}$v.id{/yun}</span></td>
                         <td><span>{yun:}$v.service_price{/yun}</span>元</td>
                         <td><span>{yun:}$v.resume{/yun} {yun:}$v.resume_unit{/yun}</span></td>
-                        <td><span>{yun:}$v.interview{/yun} {yun:}$v.interview_unit{/yun}</span></td>
+                        <!--<td><span>{yun:}$v.interview{/yun} {yun:}$v.interview_unit{/yun}</span></td>-->
                         <td>
                             <a href="index.php?m=admin_comrating&c=edittc&id={yun:}$v.type{/yun}&tid={yun:}$v.id{/yun}"class="admin_cz_bj">编辑</a> |
                             <a href="javascript:void(0)" onClick="layer_del('确定要删除？', 'index.php?m=admin_comrating&c=del&id={yun:}$v.id{/yun}');"class="admin_cz_sc"> 删除</a>

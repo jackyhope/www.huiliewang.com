@@ -38,7 +38,7 @@
 				{yun:}foreach from=$zzlist key=key item=v{/yun}
 				{yun:}if $row.name==$v.name{/yun}
 				<input type="button" value="{yun:}$row.name{/yun}" id="zzlist_name" class="yun_admin_select_box_text" onClick="select_click('zzlist')">
-				<input name="service_type" type="hidden" id="service_type_val" value="{yun:}$v.id{/yun}">
+				<input name="service_type1" type="hidden" id="service_type_val" value="{yun:}$v.id{/yun}">
 				{yun:}/if{/yun}
 				{yun:}/foreach{/yun}
 				{yun:}else{/yun}
@@ -57,20 +57,23 @@
 		<th align="right" rowspan="3"  width="150">慧猎套餐设置：</th>
 		<td colspan="3">
 			<ul class="com_com_a_list">
-				<li>服务价格：<input class="admin_cm_zz_box" type="text" value="{yun:}$listinfo.service_price{/yun}" name="service_price" id="service_price" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')">元</li>
+				<li>服务价格：<input class="admin_cm_zz_box" type="text" readonly="readonly" value="{yun:}$listinfo.service_price{/yun}" name="service_price" id="service_price"  onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')">元</li>
 			</ul>
 	<tr class="vip_type_2 admin_table_trbg">
 		<td colspan="3">
 			<ul class="com_com_a_list  com_com_a_list_l">
-				<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通数：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-				<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通单位：</span><input class="admin_cm_zz_box" type="text" name="resume_unit" id="resume_unit" value="{yun:}$listinfo.resume_unit{/yun}" placeholder="单位：份"></li>
-				<li><span style="display:inline-block;width:100px; text-align:right;">慧面试数：</span><input class="admin_cm_zz_box" type="text" name="interview" id="interview" value="{yun:}$listinfo.interview{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-				<li><span style="display:inline-block;width:100px; text-align:right;">慧面试单位：</span><input class="admin_cm_zz_box" type="text" name="interview_unit" id="interview_unit" value="{yun:}$listinfo.interview_unit{/yun}" placeholder="单位：次"></li>
+				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通数：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>-->
+				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通单位：</span><input class="admin_cm_zz_box" type="text" name="resume_unit" id="resume_unit" value="{yun:}$listinfo.resume_unit{/yun}" placeholder="单位：份"></li>-->
+				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧面试数：</span><input class="admin_cm_zz_box" type="text" name="interview" id="interview" value="{yun:}$listinfo.interview{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>-->
+				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧面试单位：</span><input class="admin_cm_zz_box" type="text" name="interview_unit" id="interview_unit" value="{yun:}$listinfo.interview_unit{/yun}" placeholder="单位：次"></li>-->
 				<!-- <li><span style="display:inline-block;width:100px; text-align:right;">刷新职位数：</span><input class="admin_cm_zz_box" type="text" name="breakjob_num" id="breakjob_num" value="{yun:}$listinfo.breakjob_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-                <li><span style="display:inline-block;width:100px; text-align:right;">发布兼职数：</span><input class="admin_cm_zz_box" type="text" name="part_num" id="part_num" value="{yun:}$listinfo.part_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-                <li><span style="display:inline-block;width:100px; text-align:right;">刷新兼职数：</span><input class="admin_cm_zz_box" type="text" name="breakpart_num" id="breakpart_num" value="{yun:}$listinfo.breakpart_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li> -->
-
+                <li><span style="display:inline-block;width:100px; text-align:right;">发布兼职：</span><input class="admin_cm_zz_box" type="text" name="part_num" id="part_num" value="{yun:}$listinfo.part_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+                <li><span style="display:inline-block;width:100px; text-align:right;">刷新兼职数数：</span><input class="admin_cm_zz_box" type="text" name="breakpart_num" id="breakpart_num" value="{yun:}$listinfo.breakpart_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li> -->
+				<li><span style="display:inline-block;width:100px; text-align:right;">充值次数：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume{/yun}" onblur="compute();" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+				<li><span style="display:inline-block;width:100px; text-align:right;">赠送次数：</span><input class="admin_cm_zz_box" type="text" name="resume_present" id="resume_unit" value="{yun:}$listinfo.resume_present{/yun}" readonly="readonly" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+				<li><span style="display:inline-block;width:100px; text-align:right;">单价：</span><input class="admin_cm_zz_box" type="text" name="unit_price" readonly="readonly" id="resume_pri" value="{yun:}$listinfo.unit_price{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
 				<input name="id" type="hidden" value="{yun:}$row.id{/yun}">
+				<input id="giving" type="hidden" value="{yun:}$listinfo.giving{/yun}">
 				<input name="tid" type="hidden" value="{yun:}$listinfo.id{/yun}">
 			</ul>
 		</td>
@@ -97,7 +100,18 @@
 </div>
 </div>
 </div>
-<script> 
+<script>
+    //价格转换
+function compute() {
+    var giving = $('#giving').val();
+	var pri = $('#resume_pri').val();
+	var num = $('#resume').val();
+	var service_price = num * pri;
+	var resume_unit = num * giving;
+	$('#resume_unit').val(resume_unit);
+	$('#service_price').val(service_price);
+}
+
 function checkform(){
 	if($("#service_type_val").val()==''){
 		parent.layer.msg("请选择套餐类型",2,8);return false;
