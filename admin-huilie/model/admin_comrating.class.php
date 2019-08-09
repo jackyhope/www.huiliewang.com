@@ -118,10 +118,26 @@ class admin_comrating_controller extends common{
 		$nid?$this->ACT_layer_msg($name."成功，请添加增值包！",9,"index.php?m=admin_comrating&c=edit&id=".$nid,2,1):$this->ACT_layer_msg($name."失败！",8);
 	}
 	function edit_action(){
+//	    error_reporting(E_ALL);
 		$zzlist=$this->obj->DB_select_all("company_service");
 		$this->yunset("zzlist",$zzlist);
 		if($_GET['id']){
 			$row=$this->obj->DB_select_once("company_service","`id`='".$_GET['id']."'");
+			include '/../../config/db.data.php';
+			if($row['name'] == '慧沟通——初级职位'){
+                $listinfo['unit_price'] = $arr_data['new_price']['communicate']['base']['price'] ;
+                $listinfo['resume_present'] = '' ;
+                $listinfo['giving'] = $arr_data['new_price']['communicate']['base']['giving'];
+                $listinfo['service_price'] = '' ;
+                $listinfo['resume'] = '' ;
+            }else{
+                $listinfo['unit_price'] = $arr_data['new_price']['communicate']['expert']['price'] ;
+                $listinfo['resume_present'] = '' ;
+                $listinfo['giving'] = $arr_data['new_price']['communicate']['expert']['giving'];
+                $listinfo['service_price'] = '' ;
+                $listinfo['resume'] = '' ;
+            }
+            $this->yunset('listinfo',$listinfo);
 			$this->yunset("row",$row);
 			$list=$this->obj->DB_select_all("company_service_detail","`type`='".$_GET['id']."' order by `id` asc");
 			$this->yunset("list",$list);
@@ -129,7 +145,7 @@ class admin_comrating_controller extends common{
 		$this->yuntpl(array('admin/admin_comservice_add'));
 	}
 	
-	function list_action(){
+	function   list_action(){
 		$zzlist=$this->obj->DB_select_all("company_service");
 		$this->yunset("zzlist",$zzlist);
 		
@@ -137,6 +153,11 @@ class admin_comrating_controller extends common{
 			$row=$this->obj->DB_select_once("company_service","`id`='".$_GET['id']."'");
 			$this->yunset("row",$row);
 			$list=$this->obj->DB_select_all("company_service_detail","`type`='".$_GET['id']."' order by `id` asc");
+			foreach ($list as $k=>$v){
+			    if(!empty($v['resume_present'])){
+			        $list[$k]['resume'] = intval($v['resume']) + intval($v['resume_present']);
+                }
+            }
 			$this->yunset("list",$list);
 		}
 		$this->yuntpl(array('admin/admin_comservice_list'));
@@ -170,16 +191,29 @@ class admin_comrating_controller extends common{
 			$_POST['type']=$id;
 			unset($_POST['useradd']);
 			unset($_POST['id']);
+			$_POST['resume_present'] = intval($_POST['resume_present']);
+			$_POST['unit_price'] = intval($_POST['unit_price']);
 			$nid=$this->obj->insert_into("company_service_detail",$_POST);
 			$name="套餐（ID：".$id."）添加";
 		}elseif ($_POST['userupdate']){
 			$id=$_POST['id'];
-			$tid=$_POST['tid'];
-			$_POST['id']=$tid;
+			$_POST['tid']=$id;
+			$_POST['service_type'] = $_POST['service_type1'];
+            $has = $this->obj->DB_select_once('company_service_detail',"`type`='".$_POST['service_type']."'",'*');
 			unset($_POST['userupdate']);
 			unset($_POST['tid']);
-			$nid=$this->obj->update_once("company_service_detail",$_POST,"`id`='".$tid."'");
-			$name="套餐（ID：".$tid."）更新";
+			unset($_POST['service_type1']);
+			$_POST['unit_price'] = intval($_POST['unit_price']);
+			$_POST['resume_present'] = intval($_POST['resume_present']);
+			if(empty($has)){
+			    $_POST['type'] = $_POST['service_type'];
+			    unset($_POST['id']);
+			    $nid = $this->obj->insert_into("company_service_detail",$_POST);
+                $name="套餐（ID：".$id."）添加";
+            }else{
+                $nid=$this->obj->update_once("company_service_detail",$_POST,"`id`='".$id."'");
+                $name="套餐（ID：".$id."）更新";
+            }
 		}
 		$nid?$this->ACT_layer_msg($name."成功！",9,"index.php?m=admin_comrating&c=list&id=".$id,2,1):$this->ACT_layer_msg($name."失败！",8,$_SERVER['HTTP_REFERER']);
 	}
