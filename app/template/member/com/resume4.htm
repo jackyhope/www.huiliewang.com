@@ -3,10 +3,6 @@
 <!--头部 end -->
 <title>简历列表</title>
 <style>
-    .content_list .c_table .c_td{
-        width: 14% !important;
-        max-width: 14% !important;
-    }
 </style>
 <!--inner header start-->
 <link rel="stylesheet" href="/app/public/css/resume/resume.css?ver=20190801001">
@@ -99,6 +95,7 @@
             <div class="c_td">类型</div>
             <div class="c_td">顾问</div>
             <div class="c_td">推荐时间</div>
+            <div class="c_td">状态</div>
         </div>`);
                 res.datas.map(val => {
                     $('.resumeList').append(`
@@ -110,6 +107,7 @@
             <div class="c_td">${val.service_type==0?'慧沟通':'慧简历'}</div>
             <div class="c_td">${val.tj_namer?val.tj_namer:'&nbsp;'}</div>
             <div class="c_td">${get_time(val.tjaddtime,3)}</div>
+            <div class="c_td">${getStatus(val.huilie_status)}</div>
         </div>
                         `)
                 })
