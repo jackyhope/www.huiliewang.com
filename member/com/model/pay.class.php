@@ -138,6 +138,7 @@ class pay_controller extends company
 
             $dingdan=mktime().rand(10000,99999);//订单号
             $data['order_id']=$dingdan;
+            $data['type']=233;//客户huilie端支付宝付款购买慧沟通份数状态类型
             $data['job_type'] = intval($_POST['c_type']);//强制整型--购买的订单类型 1 慧沟通初级  2 慧沟通高级
             switch (intval($_POST['c_type'])){
                 case 1:
