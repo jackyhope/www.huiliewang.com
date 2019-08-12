@@ -14,6 +14,7 @@ class jobadd_controller extends company
 {
 
     function index_action() {
+//        error_reporting(E_ALL);
         include(CONFIG_PATH . "db.data.php");
         $this->yunset("arr_data", $arr_data);
         $statics = $this->company_satic();
