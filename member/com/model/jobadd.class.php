@@ -557,8 +557,8 @@ class jobadd_controller extends company
             }
         }
         if ($_POST['service_type'] == 0 && !$_POST['job_type']) {
-            $return = ['success' => false, 'code' => 500, 'info' => "当前慧沟通职位级别"];
-            $this->jsonReturn($return);
+//            $return = ['success' => false, 'code' => 500, 'info' => "当前慧沟通职位级别"];
+//            $this->jsonReturn($return);
         }
         //套餐余量检查
         $companyInfo = $this->obj->DB_select_once("company", "`uid`=" . $this->uid, "resume_payd,interview_payd,interview_payd_expect,c_money,tb_customer_id,resume_payd_high");
@@ -571,8 +571,8 @@ class jobadd_controller extends company
         //检查年薪
         $salary = intval($_POST['maxsalary']) * intval($_POST['ejob_salary_month']);
         if ($serviceType == 0 && $jobType == 1 && $salary >= 20) {
-            $return = ['success' => false, 'code' => 500, 'info' => "低级职位不能发布大于20W年薪职位"];
-            $this->jsonReturn($return);
+//            $return = ['success' => false, 'code' => 500, 'info' => "低级职位不能发布大于20W年薪职位"];
+//            $this->jsonReturn($return);
         }
         if ($serviceType == 0 && $jobType == 2 && $companyInfo['resume_payd_high'] <= 0) {
             $return = ['success' => false, 'code' => 500, 'info' => "慧沟通高级职位余量不足"];
