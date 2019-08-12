@@ -208,7 +208,7 @@ class resume_api_controller extends company
             'marital_status' => $maritalStatus,
             'curSalary' => $salary,
             'hlocation' => $location,
-            'other' => $this->characet($other),
+            'other' => $this->characet($other,'utf-8'),
         ];
 
         //2、更改状态
