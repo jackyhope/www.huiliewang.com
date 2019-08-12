@@ -119,5 +119,62 @@ class pay_controller extends company
 //			$this->ACT_layer_msg("提交失败，请正确提交订单！",8,$_SERVER['HTTP_REFERER']);
 		}
 	}
+
+    /**
+     * 支付宝付款，在线购买套餐【慧沟通初级，慧沟通高级】
+     * @param numric 所购次数，
+     * @param job_type 购买的慧沟通类型： 初级 1   or  高级 2
+     */
+    function buy_now_action(){
+        $config = $this->config;
+        if(!$this->uid){
+            return_json('您还未登录或登录已失效，请重新登录！',500,['url'=>$config['sy_weburl'].'/login']);
+        }
+        if(isset($_POST['numric']) && intval($_POST['numric'])>0 && isset($_POST['c_type']) && intval($_POST['c_type'])>0 && in_array(intval($_POST['c_type']),[1,2])){
+            //取配置
+            include(CONFIG_PATH."db.data.php");
+            $communicate= $arr_data['new_price']['communicate'];//慧沟通配置
+            //校验购买的次数，获取登录人，购买的慧沟通类型： 初级 or  高级
+
+            $dingdan=mktime().rand(10000,99999);//订单号
+            $data['order_id']=$dingdan;
+            $data['type']=233;//客户huilie端支付宝付款购买慧沟通份数状态类型
+            $data['job_type'] = intval($_POST['c_type']);//强制整型--购买的订单类型 1 慧沟通初级  2 慧沟通高级
+            switch (intval($_POST['c_type'])){
+                case 1:
+                    $field = 'resume_payd';
+                    $price = intval($communicate['base']['price']);//暂不考虑单价有小数点，此处强制转换为整型
+                    $giving = floatval($communicate['base']['giving']);//赠送的倍数,实际配置为小数
+                    $remark = '购买慧沟通初级职位套餐';
+                    $info = '初级';
+                    break;
+                case 2:
+                    $field = 'resume_payd_high';
+                    $price = intval($communicate['expert']['price']);//暂不考虑单价有小数点，此处强制转换为整型
+                    $giving = floatval($communicate['expert']['giving']);//赠送的倍数,实际配置为小数
+                    $remark = '购买慧沟通高级职位套餐';
+                    $info = '高级';
+                    break;
+            }
+            $data['info'] = $info = '购买慧沟通'.$info.intval($_POST['numric']).'次，赠送慧沟通'.$info.(intval($_POST['numric']) * $giving).'次';
+            //计算订单价格
+            $data['order_price']=$price * $data['resume_payd_high']; //单价 * 数量
+            //计算实际客户所得额度【包括赠送的】
+            $data[$field] = intval($_POST['numric']) + intval($_POST['numric']) * $giving;
+            $data['uid']=$this->uid;
+            $data['did']=$this->userdid;
+            $data['order_remark']=$remark;
+            $data['order_time']=mktime();
+            $id=$this->obj->insert_into("company_order",$data);
+            if($id){
+                $this->obj->member_log("下单成功,订单ID".$dingdan);
+                return_json('下单成功，请付款！',200,['url'=>$this->config['sy_weburl']."/member/index.php?c=payment&id=".$id]);
+            }else{
+                return_json('提交失败，请重新提交订单！',500,['url'=>$_SERVER['HTTP_REFERER']]);
+            }
+        }else{
+            return_json('提交失败，请正确提交订单！',500,['url'=>$_SERVER['HTTP_REFERER']]);
+        }
+    }
 }
 ?>

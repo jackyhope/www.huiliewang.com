@@ -1,4 +1,3 @@
-
 <!--inner header start-->
 <title>简历详情</title>
 <!--头部 start -->
@@ -7,7 +6,6 @@
 {yun:}include file="$comstyle/c_resume_module.htm"{/yun}
 <!--头部 end -->
 <!--inner header start-->
-<link rel="stylesheet" href="/app/public/css/resume/resume.css">
 <link rel="stylesheet" href="/app/public/css/resume/resume.css">
 <script src="/app/public/js/resume/resume.js"></script>
 <script src="/app/public/js/resume/jquery.resize.js"></script>
@@ -21,223 +19,319 @@
 <!--inner header end-->
 <script>
     $(function () {
-        var _default_hight = $('#animate_high').height();
-        $('.content_detail').height(_default_hight+100);
+        var _default_hight = $('#animate_high').height()+$('.detail_left2').height();
+        $('.content_detail').height(_default_hight + 100);
         $('#animate_high').resize(function () {
-            $('.content_detail').height($(this).height()+100);
+            $('.content_detail').height($(this).height() + 100);
         })
     })
 </script>
+<style>
+    .box1 {
+        display: flex;
+    }
+
+    .box1 div {
+        flex: 1;
+    }
+
+    .box1 div span {
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    .box1 div span:nth-child(1) {
+        color: #666666;
+        text-align: right;
+        width: 142px;
+        margin-right: 3px;
+    }
+
+    .box1 div span:nth-child(2) {
+        color: #666666;
+        font-weight: 600;
+    }
+    .content_detail{
+        position: relative;z-index:1;
+    }
+</style>
 <!--content-list start-->
-<div class="content_detail" style="position: relative;z-index:1;">
+<div class="content_detail" {yun:}if $communicate{/yun}style="height: 1230px;"  {yun:}/if{/yun}>
     <div class="detail_box">
-        <div id="animate_high" class="detail_left">
-            <!--                右上角操作框 //1-未查看  2-已查看 3-不合适  4-已购买  5-邀约面试  6-顾问面试确认  7-候选人拒绝  8-待面试  9-未到场确认中 10-未到场  11-已到场  0-移除 start -->
+        <div class="detail_left detail_left2" {yun:}if $communicate{/yun} style="display: block" {yun:}/if{/yun}> <p
+            class="c_msg_header fs_16"><span></span>基本信息</p>
+            <div class="box1" style="margin-top: 27px">
+                <div><span>姓名：</span><span>{yun:}$communicate.name{/yun}</span></div>
+                <div><span>电话沟通结果：</span><span>{yun:}$communicate.call_result{/yun}</span></div>
+                <div><span>期望薪资：</span><span>{yun:}$communicate.wantsalary{/yun}</span></div>
+            </div>
+            <div class="box1" style="margin-top: 27px">
+                <div><span>电话号码：</span><span>{yun:}$communicate.telephone{/yun}</span></div>
+                <div><span>目前工作状态：</span><span>{yun:}$communicate.curStatus{/yun}</span></div>
+                <div><span>是否了解客户公司：</span><span>{yun:}$communicate.is_known{/yun}</span></div>
+            </div>
+            <div class="box1" style="margin-top: 27px">
+                <div><span>工作地点：</span><span>{yun:}$communicate.work_place{/yun}</span></div>
+                <div style="flex: 2"><span>目前公司和职位：</span><span>{yun:}$communicate.curDepartment{/yun}</span></div>
+            </div>
+            <div class="box1" style="margin-top: 27px">
+                <div><span>是否考虑此工作机会：</span><span>{yun:}$communicate.is_consider{/yun}</span></div>
+            </div>
+            <div class="box1" style="margin-top: 47px">
+                {yun:}if $communicate.marital_status{/yun}
+                <div><span>婚育状况：</span><span>{yun:}$communicate.marital_status{/yun}</span></div>
+                {yun:}/if{/yun}
+                {yun:}if $communicate.curSalary{/yun}
+                <div><span>目前薪酬：</span><span>{yun:}$communicate.curSalary{/yun}</span></div>
+                {yun:}/if{/yun}
+                {yun:}if $communicate.hlocation{/yun}
+                <div><span>籍贯：</span><span>{yun:}$communicate.hlocation{/yun}</span></div>
+                {yun:}/if{/yun}
+                {yun:}if $communicate.marital_status==''{/yun}
+                <div></div>
+                {yun:}/if{/yun}
+                {yun:}if $communicate.curSalary==''{/yun}
+                <div></div>
+                {yun:}/if{/yun}
+                {yun:}if $communicate.hlocation==''{/yun}
+                <div></div>
+                {yun:}/if{/yun}
+            </div>
+            <div class="box1" style="margin-top: 27px">
+                {yun:}if $communicate.reason_opportunities==''{/yun}
+                <div></div>
+                {yun:}/if{/yun}
+                {yun:}if $communicate.reason_opportunities{/yun}
+                <div><span>看新机会的原因：</span><span>{yun:}$communicate.reason_opportunities{/yun}</span></div>
+                {yun:}/if{/yun}
+            </div>
+            <div class="box1" style="margin-top: 27px">
+                {yun:}if $communicate.other_cont==''{/yun}
+                <div></div>
+                {yun:}/if{/yun}
+                {yun:}if $communicate.other_cont{/yun}
+                <div><span>{yun:}$communicate.other_cont[0]{/yun}:</span><span>{yun:}$communicate.other_cont[1]{/yun}</span></div>
+                {yun:}/if{/yun}
+            </div>
+        </div>
+        <div id="animate_high" class="detail_left" {yun:}if $communicate{/yun} style="top: 385px" {yun:}/if{/yun}> <!--
+            右上角操作框 //1-未查看 2-已查看 3-不合适 4-已购买 5-邀约面试 6-顾问面试确认 7-候选人拒绝 8-待面试 9-未到场确认中 10-未到场 11-已到场 0-移除 start -->
             <div class="select_box">
                 <input type="button" value="操作" class="select_box_text fll" id="at_name" onclick="select_click('at');">
                 <input name="at" type="hidden" id="at_val" value="0">
                 <div class="select_box_list_box dn" id="at_select">
 
-                    {yun:}if $status < 4 {/yun}
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="show_module(`c_module_2,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">购买</a>
-                    </div>
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="bhs(getQueryVariable('resume_id'),getQueryVariable('project_id'))">不合适</a>
-                    </div>
-                    {yun:}/if{/yun}
-                    {yun:}if $status == 4 {/yun}
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="show_module(`c_module_4,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">面试</a>
-                    </div>
-                    {yun:}/if{/yun}
-                    {yun:}if $status == 6 {/yun}
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="show_module(`c_module_3,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">确认到场</a>
-                    </div>
-                    {yun:}/if{/yun}
-                    {yun:}if $status == 8 {/yun}
-                    <div class="select_box_list">
-                        <a href="javascript:void(0);" onclick="show_module(`c_module_3,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">确认到场</a>
-                    </div>
-                    {yun:}/if{/yun}
-                    <div class="select_box_list">
-                        <a href="/member/index.php?c=resume_api&act=down&resume_id={yun:}$resumeId{/yun}&project_id={yun:}$projectId{/yun}" onclick="select_new('at','2','下载')">下载</a>
-                    </div>
+                    {yun:}if $status < 4 {/yun} <div class="select_box_list">
+                        <a href="javascript:void(0);"
+                            onclick="show_module(`c_module_2,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">购买</a>
+                </div>
+                <div class="select_box_list">
+                    <a href="javascript:void(0);"
+                        onclick="bhs(getQueryVariable('resume_id'),getQueryVariable('project_id'))">不合适</a>
+                </div>
+                {yun:}/if{/yun}
+                {yun:}if $status == 4 {/yun}
+                <div class="select_box_list">
+                    <a href="javascript:void(0);"
+                        onclick="show_module(`c_module_4,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">面试</a>
+                </div>
+                {yun:}/if{/yun}
+                {yun:}if $status == 6 {/yun}
+                <div class="select_box_list">
+                    <a href="javascript:void(0);"
+                        onclick="show_module(`c_module_3,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">确认到场</a>
+                </div>
+                {yun:}/if{/yun}
+                {yun:}if $status == 8 {/yun}
+                <div class="select_box_list">
+                    <a href="javascript:void(0);"
+                        onclick="show_module(`c_module_3,${getQueryVariable('resume_id')},${getQueryVariable('project_id')}`)">确认到场</a>
+                </div>
+                {yun:}/if{/yun}
+                <div class="select_box_list">
+                    <a href="/member/index.php?c=resume_api&act=down&resume_id={yun:}$resumeId{/yun}&project_id={yun:}$projectId{/yun}"
+                        onclick="select_new('at','2','下载')">下载</a>
                 </div>
             </div>
-            <!--                右上角操作框 end -->
-            <div class="resume_message">
-                <div class="resume_name color-3CC1D3">{yun:}$info.info.name{/yun}</div>
-                <section class="c_basic mt_30">
-                    <p class="c_msg_header fs_16"><span></span>基本信息</p>
-                    <div class="c_msg clearall">
-                        <div class="dl clearall">
-                            <div class="dt">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</div>
-                            <div class="dd ">{yun:}$info.info.sex{/yun}</div>
-                            <div class="dt">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</div>
-                            <div class="dd" >{yun:}$info.info.age{/yun}</div>
-                            <div class="dt">婚姻状况：</div>
-                            <div class="dd">{yun:}$info.info.marital_status{/yun}</div>
-                            <div class="dt">目前状态：</div>
-                            <div class="dd">{yun:}$info.info.curStatus{/yun}</div>
-                        </div>
-                        <div class="dl clearall">
-                            <div class="dt">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</div>
-                            <div class="dd">{yun:}$info.info.edu{/yun}</div>
-                            <div class="dt">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：</div>
-                            <div class="dd">{yun:}$info.info.location{/yun}</div>
-                            <div class="dt">理想所在地：</div>
-                            <div class="dd">{yun:}$info.info.intentCity{/yun}</div>
-                            <div class="dt">工作年限：</div>
-                            <div class="dd">{yun:}$info.info.work_year{/yun}年</div>
-                        </div>
-                        <div class="dl clearall">
-                            <div class="dt">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</div>
-                            <div class="dd c_rela"><span class="fll">{yun:}$info.info.telephone{/yun}</span><img class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt="" width="20"></div>
-                            <div class="dt">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</div>
-                            <div class="dd c_rela"><span class="fll">{yun:}$info.info.email{/yun}</span><img class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt="" width="20"></div>
-                            <div class="dt">目前薪资：</div>
-                            <div class="dd">{yun:}$info.info.curSalary{/yun}W/年</div>
-                            <div class="dt">期望薪资：</div>
-                            <div class="dd">{yun:}$info.info.wantsalary{/yun}W/年以上</div>
-                        </div>
-                    </div>
-                </section>
-                <div class="c_sidewards mt_20">&nbsp;</div>
-                <section class="c_basic mt_30">
-                    <p class="c_msg_header fs_16"><span></span>教育经历</p>
-                    <div class="c_msg clearall">
-                        <div class="c_table clearall">
-                            <div class="c_tr clearall">
-                                <div class="c_th">时间</div>
-                                <div class="c_th">毕业院校</div>
-                                <div class="c_th">专业</div>
-                                <div class="c_th">学历</div>
-                            </div>
-                            {yun:}foreach item=edu from=$info.edu key=k{/yun}
-                            <div class="c_tr clearall">
-                                <div class="c_td">{yun:}$edu.edu_time{/yun}</div>
-                                <div class="c_td">{yun:}$edu.schoolName{/yun}</div>
-                                <div class="c_td">{yun:}$edu.majorName{/yun}</div>
-                                <div class="c_td">{yun:}$edu.degree{/yun}</div>
-                            </div>
-                            {yun:}/foreach{/yun}
-                        </div>
-                    </div>
-                </section>
-                <div class="c_sidewards mt_20">&nbsp;</div>
-                <section class="c_basic mt_30">
-                    <p class="c_msg_header fs_16"><span></span>工作经历</p>
-
-                    <div class="c_msg clearall">
-                        <div class="c_work">
-                            {yun:}foreach item=work from=$info.work key=k{/yun}
-                            <div class="c_one mt_30 fs_12">
-                                <span>{yun:}$work.work_time{/yun}</span>
-                                <span>{yun:}$work.company{/yun}</span>
-                                <span>{yun:}$work.jobPosition{/yun}</span>
-                            </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">工作职责：</div>
-                                <div class="c_dd">
-                                    {yun:}$work.duty{/yun}
-                                </div>
-                            </div>
-                            {yun:}/foreach{/yun}
-                        </div>
-                    </div>
-
-                </section>
-                <div class="c_sidewards mt_20">&nbsp;</div>
-                <!-- 项目经历 start -->
-                <section class="c_basic mt_30">
-                    <p class="c_msg_header fs_16"><span></span>项目经历</p>
-                    <div class="c_msg clearall">
-                        <div class="c_work">
-                            {yun:}if $info.project{/yun}
-                            {yun:}foreach item=project from=$info.project key=k{/yun}
-                            <div class="c_one mt_30 fs_12">
-                                <span>{yun:}$project.project_time{/yun}</span>
-                                <span>{yun:}$project.proName{/yun}</span>
-                                <span>{yun:}$project.proOffice{/yun}</span>
-                            </div>
-                            <div class="c_dl mt_10 clearall">
-                                <div class="c_dt">项目简介：</div>
-                                <div class="c_dd">
-                                    {yun:}$project.proDes{/yun}
-                                </div>
-                            </div>
-                            <!--<div class="c_dl mt_10 clearall">-->
-                            <!--<div class="c_dt">项目职责：</div>-->
-                            <!--<div class="c_dd">-->
-                            <!--<p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="c_dl mt_10 clearall">-->
-                            <!--<div class="c_dt">项目业绩：</div>-->
-                            <!--<div class="c_dd">-->
-                            <!--<p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            {yun:}/foreach{/yun}
-                            {yun:}/if{/yun}
-
-                        </div>
-                    </div>
-                </section>
-                <!-- 项目经历 end -->
-            </div>
         </div>
-        <div class="detail_right">
-            <div class="c_first">
-                <p class="c_htip mt_10 color-3CC1D3"><span></span>应聘职位</p>
-                <p class="c_htip_text mt_10">{yun:}$info.work_info.work_name{/yun}</p>
-                <p class="c_htip mt_10 color-3CC1D3"><span></span>专属顾问</p>
-                <p class="c_htip_text mt_10">{yun:}$info.work_info.user_name{/yun}</p>
-            </div>
-            <div class="record_msg mt_20">
-                <p class="c_title color-3CC1D3">操作记录</p>
-                <!--    纯备注一句话类型-->
-                {yun:}if $logs{/yun}
-                {yun:}foreach item=log from=$logs key=k{/yun}
-                {yun:}if $log.step == 'interview'{/yun}
-                <div class="c_list">
-                    <div class="c_ttl">
-                        <p class="c_con">{yun:}$log.title{/yun}</p>
+        <!--                右上角操作框 end -->
+
+        <div class="resume_message">
+            <div class="resume_name color-3CC1D3">{yun:}$info.info.name{/yun}</div>
+            <section class="c_basic mt_30">
+                <p class="c_msg_header fs_16"><span></span>基本信息</p>
+                <div class="c_msg clearall">
+                    <div class="dl clearall">
+                        <div class="dt">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</div>
+                        <div class="dd ">{yun:}$info.info.sex{/yun}</div>
+                        <div class="dt">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</div>
+                        <div class="dd">{yun:}$info.info.age{/yun}</div>
+                        <div class="dt">婚姻状况：</div>
+                        <div class="dd">{yun:}$info.info.marital_status{/yun}</div>
+                        <div class="dt">目前状态：</div>
+                        <div class="dd">{yun:}$info.info.curStatus{/yun}</div>
                     </div>
                     <div class="dl clearall">
-                        <div class="dt">面试时间：</div>
-                        <div class="dd">{yun:}$log.timestart{/yun} </div>
-                        <div class="dt">面试地点：</div>
-                        <div class="dd">{yun:}$log.interview_place{/yun}</div>
-                        <div class="dt">面试备注：</div>
-                        <div class="dd">{yun:}$log.description{/yun}</div>
+                        <div class="dt">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</div>
+                        <div class="dd">{yun:}$info.info.edu{/yun}</div>
+                        <div class="dt">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：</div>
+                        <div class="dd">{yun:}$info.info.location{/yun}</div>
+                        <div class="dt">理想所在地：</div>
+                        <div class="dd">{yun:}$info.info.intentCity{/yun}</div>
+                        <div class="dt">工作年限：</div>
+                        <div class="dd">{yun:}$info.info.work_year{/yun}年</div>
                     </div>
-                    <div class="c_ttl">
-                        <p class="c_time">{yun:}$log.add_time{/yun}</p>
+                    <div class="dl clearall">
+                        <div class="dt">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</div>
+                        <div class="dd c_rela"><span class="fll">{yun:}$info.info.telephone{/yun}</span><img
+                                class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt=""
+                                width="20"></div>
+                        <div class="dt">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</div>
+                        <div class="dd c_rela"><span class="fll">{yun:}$info.info.email{/yun}</span><img
+                                class="ml_10 fll" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_eyer.png" alt=""
+                                width="20"></div>
+                        <div class="dt">目前薪资：</div>
+                        <div class="dd">{yun:}$info.info.curSalary{/yun}W/年</div>
+                        <div class="dt">期望薪资：</div>
+                        <div class="dd">{yun:}$info.info.wantsalary{/yun}W/年以上</div>
                     </div>
                 </div>
-                {yun:}else{/yun}
-                <div class="c_list">
-                    <div class="c_ttl">
-                        <p class="c_con">{yun:}$log.title{/yun}</p>
-                    </div>
-                    <div class="c_ttl">
-                        <p class="c_time">{yun:}$log.add_time{/yun}</p>
+            </section>
+            <div class="c_sidewards mt_20">&nbsp;</div>
+            <section class="c_basic mt_30">
+                <p class="c_msg_header fs_16"><span></span>教育经历</p>
+                <div class="c_msg clearall">
+                    <div class="c_table clearall">
+                        <div class="c_tr clearall">
+                            <div class="c_th">时间</div>
+                            <div class="c_th">毕业院校</div>
+                            <div class="c_th">专业</div>
+                            <div class="c_th">学历</div>
+                        </div>
+                        {yun:}foreach item=edu from=$info.edu key=k{/yun}
+                        <div class="c_tr clearall">
+                            <div class="c_td">{yun:}$edu.edu_time{/yun}</div>
+                            <div class="c_td">{yun:}$edu.schoolName{/yun}</div>
+                            <div class="c_td">{yun:}$edu.majorName{/yun}</div>
+                            <div class="c_td">{yun:}$edu.degree{/yun}</div>
+                        </div>
+                        {yun:}/foreach{/yun}
                     </div>
                 </div>
-                {yun:}/if{/yun}
-                {yun:}/foreach{/yun}
-                {yun:}/if{/yun}
-            </div>
+            </section>
+            <div class="c_sidewards mt_20">&nbsp;</div>
+            <section class="c_basic mt_30">
+                <p class="c_msg_header fs_16"><span></span>工作经历</p>
+
+                <div class="c_msg clearall">
+                    <div class="c_work">
+                        {yun:}foreach item=work from=$info.work key=k{/yun}
+                        <div class="c_one mt_30 fs_12">
+                            <span>{yun:}$work.work_time{/yun}</span>
+                            <span>{yun:}$work.company{/yun}</span>
+                            <span>{yun:}$work.jobPosition{/yun}</span>
+                        </div>
+                        <div class="c_dl mt_10 clearall">
+                            <div class="c_dt">工作职责：</div>
+                            <div class="c_dd">
+                                {yun:}$work.duty{/yun}
+                            </div>
+                        </div>
+                        {yun:}/foreach{/yun}
+                    </div>
+                </div>
+
+            </section>
+            <div class="c_sidewards mt_20">&nbsp;</div>
+            <!-- 项目经历 start -->
+            <section class="c_basic mt_30">
+                <p class="c_msg_header fs_16"><span></span>项目经历</p>
+                <div class="c_msg clearall">
+                    <div class="c_work">
+                        {yun:}if $info.project{/yun}
+                        {yun:}foreach item=project from=$info.project key=k{/yun}
+                        <div class="c_one mt_30 fs_12">
+                            <span>{yun:}$project.project_time{/yun}</span>
+                            <span>{yun:}$project.proName{/yun}</span>
+                            <span>{yun:}$project.proOffice{/yun}</span>
+                        </div>
+                        <div class="c_dl mt_10 clearall">
+                            <div class="c_dt">项目简介：</div>
+                            <div class="c_dd">
+                                {yun:}$project.proDes{/yun}
+                            </div>
+                        </div>
+                        <!--<div class="c_dl mt_10 clearall">-->
+                        <!--<div class="c_dt">项目职责：</div>-->
+                        <!--<div class="c_dd">-->
+                        <!--<p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="c_dl mt_10 clearall">-->
+                        <!--<div class="c_dt">项目业绩：</div>-->
+                        <!--<div class="c_dd">-->
+                        <!--<p>1、配合产品经理和技术开发和网页设计，及时保证产品上线的美观性与功能性；</p>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        {yun:}/foreach{/yun}
+                        {yun:}/if{/yun}
+
+                    </div>
+                </div>
+            </section>
+            <!-- 项目经历 end -->
         </div>
     </div>
+    <div class="detail_right">
+        <div class="c_first">
+            <p class="c_htip mt_10 color-3CC1D3"><span></span>应聘职位</p>
+            <p class="c_htip_text mt_10">{yun:}$info.work_info.work_name{/yun}</p>
+            <p class="c_htip mt_10 color-3CC1D3"><span></span>专属顾问</p>
+            <p class="c_htip_text mt_10">{yun:}$info.work_info.user_name{/yun}</p>
+        </div>
+        <div class="record_msg mt_20">
+            <p class="c_title color-3CC1D3">操作记录</p>
+            <!--    纯备注一句话类型-->
+            {yun:}if $logs{/yun}
+            {yun:}foreach item=log from=$logs key=k{/yun}
+            {yun:}if $log.step == 'interview'{/yun}
+            <div class="c_list">
+                <div class="c_ttl">
+                    <p class="c_con">{yun:}$log.title{/yun}</p>
+                </div>
+                <div class="dl clearall">
+                    <div class="dt">面试时间：</div>
+                    <div class="dd">{yun:}$log.timestart{/yun} </div>
+                    <div class="dt">面试地点：</div>
+                    <div class="dd">{yun:}$log.interview_place{/yun}</div>
+                    <div class="dt">面试备注：</div>
+                    <div class="dd">{yun:}$log.description{/yun}</div>
+                </div>
+                <div class="c_ttl">
+                    <p class="c_time">{yun:}$log.add_time{/yun}</p>
+                </div>
+            </div>
+            {yun:}else{/yun}
+            <div class="c_list">
+                <div class="c_ttl">
+                    <p class="c_con">{yun:}$log.title{/yun}</p>
+                </div>
+                <div class="c_ttl">
+                    <p class="c_time">{yun:}$log.add_time{/yun}</p>
+                </div>
+            </div>
+            {yun:}/if{/yun}
+            {yun:}/foreach{/yun}
+            {yun:}/if{/yun}
+        </div>
+    </div>
+</div>
 </div>
 <!--content-list end-->
 
 <!--尾巴 start-->
-{yun:}include file="$comstyle/c_footer.htm"{/yun}
+{yun:}include file="$tplstyle/footer.htm"{/yun}
 <!--尾巴 end-->
 </body>
+
 </html>

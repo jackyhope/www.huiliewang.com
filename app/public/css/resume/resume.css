@@ -230,6 +230,18 @@
     width: 876px;
     min-height: 800px;
 }
+.content_detail .detail_box .detail_left2{
+    position: absolute;
+    top:-51px;
+    left:0;
+    background: #ffffff;
+    width: 876px;
+    min-height: 400px;
+    display: none;
+    box-shadow:0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+
+}
+
 .content_detail .detail_box .detail_left{
     box-shadow:0px 0px 9px 0px rgba(0, 0, 0, 0.25);
     padding:26px;
@@ -251,6 +263,15 @@
 }
 
 .content_detail .detail_box .detail_left .resume_message .c_basic .c_msg_header span{
+    display: inline-block;
+    padding-top: 13px;
+    float: left;
+    width: 0;
+    height: 18px;
+    border:1.5px solid #3CC1D3;
+    margin-right:10px;
+}
+.c_msg_header span{
     display: inline-block;
     padding-top: 13px;
     float: left;
@@ -909,4 +930,12 @@ a:hover{
 .c_module_4 textarea{
     box-sizing: border-box;
     padding: 10px;
+}
+.c_module_2 .labels{
+    height: 300px;
+    overflow-y: scroll;
+}
+.c_module_2 label{
+    display: block;
+    margin-bottom: 24px;
 }

@@ -9,18 +9,39 @@
             <a href="/member/index.php?c=paylog" class="c_btn c_btn_md c_btn_light_bg mt_30">去购买</a>
         </div>
         <!--  买简历余额不足 not_money -->
-        <div id="buy_resume" class="c_module c_module_2 c_hide">
+        <div id="buy_resume" class="c_module c_module_2 c_hide" style="top:12%">
             <i onclick="m_close(this)"></i>
-            <div class="c_title"><span></span>简历购买</div>
-            <div class="c_msg">购买简历后您可查看候选人联系方式，随时邀约候选人面试</div>
+            <div class="c_title"><span></span>候选人沟通</div>
+            <div class="c_msg">发起沟通后，猎头会根据你所选择沟通内容，给你一个最全面的候选人信息</div>
             <div class="c_cont">
                 <p>扣点详情</p>
                 <div class="ul clearall">
                 </div>
+                <div class="mt_20 clearall labels">
+                    <label for="b1"><input type="radio" readonly checked class="c_check" id="b1">&nbsp;&nbsp;1、姓名</label>
+                    <label for="b2"><input type="radio" readonly checked class="c_check" id="b2">&nbsp;&nbsp;2、电话号码</label>
+                    <label for="b3"><input type="radio" readonly checked class="c_check" id="b3">&nbsp;&nbsp;3、目前工作地点（具体到城市）</label>
+                    <label for="b4"><input type="radio" readonly checked class="c_check" id="b4">&nbsp;&nbsp;4、电话沟通结果（接通/未接听/电话忙/其他）</label>
+                    <label for="b5"><input type="radio" readonly checked class="c_check" id="b5">&nbsp;&nbsp;5、目前工作状态（在职/离职/其他）</label>
+                    <label for="b6"><input type="radio" readonly checked class="c_check" id="b6">&nbsp;&nbsp;6、目前公司和职位</label>
+                    <label for="b7"><input type="radio" readonly checked class="c_check" id="b7">&nbsp;&nbsp;7、期望薪酬</label>
+                    <label for="b8"><input type="radio" readonly checked class="c_check" id="b8">&nbsp;&nbsp;8、是否了解客户公司</label>
+                    <label for="b9"><input type="radio" readonly checked class="c_check" id="b9">&nbsp;&nbsp;9、是否考虑客户公司工作机会</label>
+                    <span style="font-size:14px;color:#333;display:inline-block;margin-top:40px;margin-bottom:28px;">额外沟通内容（选择勾选）</span>
+                    <label for="b10"><input type="checkbox" class="c_check" id="b10">&nbsp;&nbsp;10、目前薪酬</label>
+                    <label for="b11"><input type="checkbox" class="c_check" id="b11">&nbsp;&nbsp;11、离职/看机会原因</label>
+                    <label for="b12"><input type="checkbox" class="c_check" id="b12">&nbsp;&nbsp;12、婚育状况（已婚/未婚）</label>
+                    <label for="b13"><input type="checkbox" class="c_check" id="b13">&nbsp;&nbsp;13、籍贯</label>
+                    <div>
+                        <span>14、其他问题</span><br><br>
+                        <textarea id="gtt" style="width: 370px;padding: 15px;height: 90px;"></textarea>
+                    </div>
+                </div>
             </div>
             <div class="btnner c_hide bgl">
                 <p>您当前慧沟通套餐可用点数不足，请购买</p>
-                <div class="mt_20"><a href="/member/index.php?c=paylog" class="c_btn c_btn_md c_btn_light_bg">购买套餐</a></div>
+                <div class="mt_20"><a href="/member/index.php?c=paylog" class="c_btn c_btn_md c_btn_light_bg">购买套餐</a>
+                </div>
             </div>
             <div class="btnner hgn">
                 <div class="mt_20">
@@ -37,15 +58,19 @@
             <div class="c_cont">
                 <p>扣点详情</p>
                 <div class="ul clearall">
-                    
+
                 </div>
             </div>
             <div class="btnner is_arrive">
-                <div class="mt_20 clearall"><label for="is_arrive2" class="mr_60"><input type="radio" class="c_check" value="1" name="is_arrive" id="is_arrive2">&nbsp;&nbsp;已到场</label><label for="is_arrive3"><input
-                        type="radio" class="c_check" name="is_arrive" value="0" id="is_arrive3">&nbsp;&nbsp;未到场</label></div>
+                <div class="mt_20 clearall"><label for="is_arrive2" class="mr_60"><input type="radio" class="c_check"
+                            value="1" name="is_arrive" id="is_arrive2">&nbsp;&nbsp;已到场</label><label
+                        for="is_arrive3"><input type="radio" class="c_check" name="is_arrive" value="0"
+                            id="is_arrive3">&nbsp;&nbsp;未到场</label>
+                </div>
             </div>
             <div class="btnner">
-                <div class="mt_20"><span  class="c_btn c_btn_md c_btn_light mr_60 cancel">取&nbsp;&nbsp;消</span><span  class="c_btn c_btn_md c_btn_light_bg dcBtn">确&nbsp;&nbsp;定</span></div>
+                <div class="mt_20"><span class="c_btn c_btn_md c_btn_light mr_60 cancel">取&nbsp;&nbsp;消</span><span
+                        class="c_btn c_btn_md c_btn_light_bg dcBtn">确&nbsp;&nbsp;定</span></div>
             </div>
         </div>
         <!-- 确认到场 end -->

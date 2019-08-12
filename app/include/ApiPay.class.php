@@ -75,8 +75,26 @@ class ApiPay extends common{
 
 			}
 
-			
-			if($order['type']=='1' && $order['rating'] && $member['usertype']!='1'){
+
+            if($order['type']=='233' && $order['job_type']>0){
+                switch (intval($order['job_type'])){
+                    case 1:
+                        $field = 'resume_payd';
+                        break;
+                    case 2:
+                        $field = 'resume_payd_high';
+                        break;
+                }
+                //在线购买慧沟通
+                $nid=$this->obj->DB_update_all('company',$field."=".$field."+".$order[$field],"`uid`='".$order['uid']."'");
+
+                if($nid){
+                    $this->obj->DB_insert_once("company_pay","`order_id`='".$order['order_id']."',`order_price`='".$order['order_price']."',`pay_time`='".time()."',`pay_state`='2',`com_id`='".$order["uid"]."',`pay_remark`='".$order["order_remark"]."',`type`='1',`pay_type`='2',`did`='".$this->config['did']."'");
+                    $sendMail = 1;
+                }
+
+                $sendInfo['info'] = $order["order_remark"].':'.$order[$field].'次';
+            }elseif($order['type']=='1' && $order['rating'] && $member['usertype']!='1'){
 
 
 				$row=$this->obj->DB_select_once("company_rating","`id`='".$order['rating']."'");

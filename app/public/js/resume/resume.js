@@ -25,6 +25,11 @@ $(function () {
         Post('/member/index.php?c=resume_api&act=pay', {
             resume_id: $(ev.target).attr('resume_id'),
             project_id: $(ev.target).attr('project_id'),
+            current_salary: $('#b10').attr('checked') ? 1 : 0,
+            reason: $('#b11').attr('checked') ? 1 : 0,
+            marital_status: $('#b12').attr('checked') ? 1 : 0,
+            location: $('#b13').attr('checked') ? 1 : 0,
+            other: $('#gtt').val()
         }).then(res => {
             $('.pagersel').change();
             $('.c_module_2').addClass('c_hide');
@@ -62,7 +67,7 @@ $(function () {
         })
     })
     $('.c_module_3 .dcBtn').click(ev => {
-        if ($('input[name=is_arrive]:checked').length==0) {
+        if ($('input[name=is_arrive]:checked').length == 0) {
             alert_notice({
                 title: "请选择候选人是否到场！",
                 type: 'warning'
@@ -390,7 +395,7 @@ function getStatus(status) {
         case '3':
             return '不合适'
         case '4':
-            return '已购买'
+            return '正在沟通'
         case '5':
             return '邀约面试'
         case '6':
@@ -405,6 +410,8 @@ function getStatus(status) {
             return '未到场'
         case '11':
             return '已到场'
+        case '12':
+            return '沟通完成'
         case '0':
             return '已移除'
     }

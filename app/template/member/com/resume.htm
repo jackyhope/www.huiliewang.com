@@ -9,7 +9,7 @@
     <div class="container">
         <div class="ul clearall">
             <span class="li current" link='/member/index.php?c=resume'>收到的简历<i></i></span>
-            <span class="li" link='/member/index.php?c=resume&c_type=4'>已购买的简历<i></i></span>
+            <span class="li" link='/member/index.php?c=resume&c_type=4'>沟通的简历<i></i></span>
             <span class="li" link='/member/index.php?c=resume&c_type=8'>待面试<i></i></span>
             <span class="li" link='/member/index.php?c=resume&c_type=99'>所有简历<i></i></span>
         </div>
@@ -127,7 +127,7 @@
             <div class="c_td">${val.tj_namer?val.tj_namer:'&nbsp;'}</div>
             <div class="c_td">${get_time(val.tjaddtime,3)}</div>
             <div class="c_td"><a class="c_btn c_btn_light_bg mr_6 fll" href="javascript:void(0);"
-                    onclick="show_module('${val.service_type==0?'c_module_2':'c_module_4'},${val.resume_id},${val.project_id}')">${val.service_type==0?'购买简历':'邀约面试'}</a>
+                    onclick="show_module('${val.service_type==0?'c_module_2':'c_module_4'},${val.resume_id},${val.project_id}')">${val.service_type==0?'发起沟通':'邀约面试'}</a>
                     <a class="not_fit" href="javascript:void(0)" onclick='bhs(${val.resume_id},${val.project_id})'>不合适</a></div>
         </div>
                         `)
