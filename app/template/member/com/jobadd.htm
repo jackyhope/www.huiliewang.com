@@ -10,7 +10,7 @@
     <div class="line_2"></div>
     <div class="typeBox box1">
         <span class="sp1" style="float:left;margin-top: 50px;"><span>*</span>服务方式：</span>
-        <div {yun:}if !$type{/yun} class="choosed" {yun:}/if{/yun}> <div class="hgt">
+        <div {yun:}if $job_type==1&&!$type{/yun} class="choosed" {yun:}/if{/yun}> <div class="hgt hgtp">
             提供年薪20万以下的候选人定制化沟通，发起沟通则扣除套餐余量1次，余量为0时无法获得慧沟通服务
         </div>
         <span class="sp2">√</span>
@@ -18,12 +18,12 @@
             慧沟通·初级&nbsp;剩余:{yun:}$company.resume_payd{/yun}
         </span>
     </div>
-    <div {yun:}if !$type{/yun} class="choosed" {yun:}/if{/yun}> <div class="hgt">
+    <div {yun:}if $job_type==2&&!$type{/yun} class="choosed" {yun:}/if{/yun}> <div class="hgt hgth">
         提供年薪20万及以上的候选人定制化沟通，发起沟通则扣除套餐余量1次，余量为0时无法获得慧沟通服务
     </div>
     <span class="sp2">√</span>
     <span class="left">
-        慧沟通·高级&nbsp;剩余:{yun:}$company.resume_payd{/yun}
+        慧沟通·高级&nbsp;剩余:{yun:}$company.resume_payd_high{/yun}
     </span>
 </div>
     <div {yun:}if $type {/yun} class="choosed" {yun:}/if{/yun}> <div class="hms">
@@ -460,6 +460,20 @@
 </div>
 </div>
 <script>
+    $(document).ready(function () {
+        if (!"{yun:}$isComplete{/yun}") {
+            alert_notice({
+                'title': '您还未完善资料哦~',
+                type: '/app/public/imgs/ws_03.png',
+                content: '为了保障您的权益，快速获取最满意的候选人，请完善资料后发布职位',
+                src: '/member/index.php?c=jobadd&act=base_info',
+                btn: '去完善'
+            })
+            return
+        }
+    });
+</script>
+<script>
     $(function () {
         $('.typeBox>div').click(ev => {
             $('.typeBox>div').removeClass('choosed');
@@ -505,13 +519,30 @@
             //  if('{yun:}$company.resume_payd{/yun}'==0||'{yun:}$company.interview_payd{/yun}'==0){
 
             // }
-            if (servicetype == 'hgt') {
+            var job_type;
+            if (servicetype != 'hms') {
+                var arr = servicetype.split(' ');
+                job_type = arr[1];
+                if(job_type == 'hgtp'){
+                    job_type = 1;
+                }else {
+                    job_type = 2;
+                }
                 servicetype = 0;
-                if ('{yun:}$company.resume_payd{/yun}' == 0) {
+                if ('{yun:}$company.resume_payd{/yun}' == 0 && job_type == 1) {
                     alert_notice({
                         'title': '温馨提示',
                         type: 'warning',
-                        content: '您的慧沟通余额不足',
+                        content: '您的慧沟通·初级余额不足',
+                        src: '/member/index.php?c=paylog',
+                        btn: '去购买'
+                    })
+                    return
+                }else if('{yun:}$company.resume_payd_high{/yun}' == 0 && job_type ==2){
+                    alert_notice({
+                        'title': '温馨提示',
+                        type: 'warning',
+                        content: '您的慧沟通·高级余额不足',
                         src: '/member/index.php?c=paylog',
                         btn: '去购买'
                     })
@@ -519,16 +550,16 @@
                 }
             } else {
                 servicetype = 1;
+                job_type = 0 ;
                 if ('{yun:}$company.interview_payd{/yun}' == 0) {
                     alert_notice({
                         'title': '温馨提示',
                         type: 'warning',
-                        content: '您的慧简历余额不足',
+                        content: '您的慧面试余额不足',
                         src: '/member/index.php?c=paylog',
                         btn: '去购买'
                     })
                     return
-
 
                 }
             }
@@ -604,6 +635,7 @@
             var link_moblie = $('#link_moblie').val();
             Post('{yun:}url m=member c=jobadd act=saveInfo{/yun}', {
                 service_type: servicetype,
+                job_type:job_type,
                 name: name,
                 job_post: job_post,
                 provinceid: provinceid,
