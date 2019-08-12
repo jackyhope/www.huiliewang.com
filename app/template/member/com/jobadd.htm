@@ -11,20 +11,28 @@
     <div class="typeBox box1">
         <span class="sp1" style="float:left;margin-top: 50px;"><span>*</span>服务方式：</span>
         <div {yun:}if !$type{/yun} class="choosed" {yun:}/if{/yun}> <div class="hgt">
-            为您推荐专属顾问已沟通过的简历，您获取简历则扣除相应的余量
+            提供年薪20万以下的候选人定制化沟通，发起沟通则扣除套餐余量1次，余量为0时无法获得慧沟通服务
         </div>
         <span class="sp2">√</span>
         <span class="left">
-            慧沟通余量:{yun:}$company.resume_payd{/yun}
+            慧沟通·初级&nbsp;剩余:{yun:}$company.resume_payd{/yun}
         </span>
     </div>
+    <div {yun:}if !$type{/yun} class="choosed" {yun:}/if{/yun}> <div class="hgt">
+        提供年薪20万及以上的候选人定制化沟通，发起沟通则扣除套餐余量1次，余量为0时无法获得慧沟通服务
+    </div>
+    <span class="sp2">√</span>
+    <span class="left">
+        慧沟通·高级&nbsp;剩余:{yun:}$company.resume_payd{/yun}
+    </span>
+</div>
     <div {yun:}if $type {/yun} class="choosed" {yun:}/if{/yun}> <div class="hms">
-        专属顾问为您筛选优质候选人，候选人到场面试扣除相应的余量，不到场则不扣除
+        专属顾问为您筛选优质候选人，候选人到场面试扣除相应的余量，不到场则不扣除，余额不足时时无法获得慧面试服务
     </div>
     <span class="sp2">√</span>
     <span class="left">
 
-        慧面试余量:{yun:}$company.interview_payd{/yun}
+        慧面试余额:{yun:}$company.interview_payd{/yun}
     </span>
 </div>
 </div>

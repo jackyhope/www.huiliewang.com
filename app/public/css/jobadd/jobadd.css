@@ -54,7 +54,7 @@
     width: 203px;
     height: 137px;
     box-sizing: border-box;
-    padding: 34px;
+    padding: 34px 26px;
     color: #1F606E;
     font-size: 12px;
     background: url(/app/public/imgs/fw_03.png) no-repeat center center;
@@ -66,7 +66,7 @@
     width: 203px;
     height: 137px;
     box-sizing: border-box;
-    padding: 34px 26px;
+    padding: 26px 26px;
     color: #1F606E;
     font-size: 12px;
     background: url(/app/public/imgs/fw_05.png) no-repeat center center;
@@ -86,7 +86,7 @@
     text-align: center;
     line-height: 18px;
     color: #fff;
-    margin-left: 19px;
+    margin-left: 12px;
     margin-right: 11px;
     margin-top: 13px;
     border: 1px solid rgba(60, 193, 211, 1);
@@ -95,7 +95,7 @@
 .left {
     display: inline-block;
     line-height: 24px;
-    width: 126px;
+    width: 148px;
     text-align: center;
     color: #3cc1d3;
     border: 1px solid rgba(60, 193, 211, 1);
@@ -124,6 +124,7 @@ input {
 
 .jobadd .box1 {
     margin-bottom: 15px;
+    width: 937px;
 }
 
 .selectBox,
