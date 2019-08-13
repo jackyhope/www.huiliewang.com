@@ -238,10 +238,10 @@ function get_msg() {
                 $('.noticeBox').html(`
             <span class="readAll">全部设置为已读</span>
             <span class="noMsg">没有新消息</span>
-            <span class='showAll'>
-            查看全部消息
-          </span>
             `)
+        //     <span class='showAll'>
+        //     查看全部消息
+        //   </span>
 
             } else {
                 $('.noticenum').html(res.info.count);
