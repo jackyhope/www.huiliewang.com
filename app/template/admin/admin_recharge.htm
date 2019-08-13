@@ -65,7 +65,23 @@ function check(){
 			   <label for="fs_1"><span class="admin_radio_box" style="padding-top:6px;"><input type="radio" name="fs" value="2" id="fs_1"  class="admin_radio_box_r"><span class="admin_rec_plus"> 扣除</span></span></label>
 			  </td>
 		</tr>
-        <tr class="int" id="integral_tr">
+		<tr class="int" id="integral_tr1">
+			<th width="140">类别：</th>
+			<td>
+				<label for="fs_1">
+				<span class="admin_radio_box" style="padding-top:6px;width: 160px;">
+					<input type="radio" name="job_type" value="1" id="fs_20"  class="admin_radio_box_r"><span class="admin_rec_plus">慧面试余额</span></span></label>
+
+			<label for="fs_0">
+				<span class="admin_radio_box" style="padding-top:6px;width: 160px;">
+					<input type="radio" name="job_type" value="2" id="fs_00" checked class="admin_radio_box_r"> <span class="admin_rec_plus">慧沟通低级职位点数</span></span></label>
+			<label for="fs_1">
+				<span class="admin_radio_box" style="padding-top:6px; width: 160px;">
+					<input type="radio" name="job_type" value="3" id="fs_10"  class="admin_radio_box_r"><span class="admin_rec_plus"> 慧沟通高职位点数</span></span></label>
+			</td>
+
+		</tr>
+		<tr class="int" id="integral_tr">
             <th height="30">{yun:}$config.integral_pricename{/yun}：</th>
             <td>
             <input type="text" name="price_int" id="price_int" size="20" maxlength="16" value="" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'')"   class="input-text"> {yun:}$config.integral_priceunit{/yun}</td>

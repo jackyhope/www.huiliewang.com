@@ -41,7 +41,9 @@ class recharge_controller extends common{
 			$num=$price_int;
 			$msg=$price_int.$this->config['integral_pricename']; 
 			$fsmsg=$fs==1?"³äÖµ":"¿Û³ý";
-			if(is_array($uidarr)){
+			$jobType = $_POST['job_type'];
+            unset($_POST['job_type']);
+            if(is_array($uidarr)){
 				foreach($uidarr as $v){ 
 					/*if($v['usertype']=="1"){
 						$table="member_statis";
@@ -66,7 +68,7 @@ class recharge_controller extends common{
 						}
 
 					}
-					$nid=$this->pay_member($table,$v['uid'],$num,$remark,$v['usertype'],$fs);
+					$nid=$this->pay_member($table,$v['uid'],$num,$remark,$v['usertype'],$fs,$jobType);
 				}
 			}
 			if($nid){
@@ -83,7 +85,7 @@ class recharge_controller extends common{
 		}
 		$this->yuntpl(array('admin/admin_recharge'));
 	}
-	function pay_member($table,$uid="",$num,$remark,$usertype,$fs){
+	function pay_member($table,$uid="",$num,$remark,$usertype,$fs,$jobType){
 		$dingdan=mktime().rand(10000,99999);
 
 		/*if($fs==1){
@@ -95,13 +97,28 @@ class recharge_controller extends common{
 			$integral_v="`integral`=`integral`-$num";
 			$_POST['order_type']="admincut";
 		}*/
+
+        $filesInc = '';
+        $filesDec = '';
+		if($jobType == 1){
+		    $filesInc = ",`interview_payd` = `interview_payd` +$num";
+		    $filesDec = ",`interview_payd` = `interview_payd` -$num";
+        }
+		if($jobType == 2){
+            $filesInc = ",`resume_payd` = `resume_payd` +$num";
+		    $filesDec = ",`resume_payd` = `resume_payd` -$num";
+        }
+		if($jobType == 3){
+            $filesInc = ",`resume_payd_high` = `resume_payd_high` +$num";
+		    $filesDec = ",`resume_payd_high` = `resume_payd_high` -$num";
+        }
 		if($fs==1){
 			$type=true;
-			$c_money_v="`c_money`=`c_money`+$num,`all_pay2`=`all_pay2`+$num";
+			$c_money_v="`c_money`=`c_money`+$num,`all_pay2`=`all_pay2`+$num " .$filesInc;
 			$_POST['order_type']="adminpay";
 		}else{
 			$type=false;
-			$c_money_v="`c_money`=`c_money`-$num,`all_pay2`=`all_pay3`-$num";
+			$c_money_v="`c_money`=`c_money`-$num,`all_pay2`=`all_pay3`-$num ".$filesDec;
 			$_POST['order_type']="admincut";
 		}
 
