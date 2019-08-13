@@ -162,7 +162,7 @@
                     <span>(年薪20万及以下)</span>
                 </div>
                 <div class="right">
-                    <span>（原价：2000元/次面试）</span>
+                    <span>（原价：500元/次面试）</span>
                     <span>10000<span>元起购</span></span>
                     <span>（满10000送5000，上不封顶）</span>
                 </div>
@@ -402,14 +402,14 @@
         $('.add').click(ev => {
             $('.con').html($('.con').html() - 0 + 10)
             $('.sent span').html(($('.con').html() - 0) * times)
-            $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 2000) + '.00')
+            $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
         })
         $('.sub').click(ev => {
             let a = type == 1 ? 50 : 20;
             if ($('.con').html() - 0 <= a) return;
             $('.con').html($('.con').html() - 0 - 10)
             $('.sent span').html(($('.con').html() - 0) * times)
-            $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 2000) + '.00')
+            $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
         })
         $('.box3 .c_check').click(ev => {
             if ($(ev.currentTarget).val() == 0) {
@@ -419,12 +419,12 @@
                     $('.con').html(50);
                 }
                 $('.sent span').html(($('.con').html() - 0) * times)
-                $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 2000) + '.00')
+                $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
             } else {
                 type = 2;
-                $('.univalent span').html('2000.00元')
+                $('.univalent span').html('500.00元')
                 $('.sent span').html(($('.con').html() - 0) * times)
-                $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 2000) + '.00')
+                $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
             }
         })
         $('.box2 .dd a').click(ev=>{
