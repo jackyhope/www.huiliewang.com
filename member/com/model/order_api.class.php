@@ -171,11 +171,14 @@ class order_api_controller extends company
             $title = '';
             if ($type == 1) {
                 $title = '慧沟通-';
-                $info['job_type'] = 1 ? '初级' :'高级';
-                $title .= $info['job_type'];
+                $info['job_type_name'] = 1 ? '初级' :'高级';
+                $title .= $info['job_type_name'];
             }
             if ($type == 3) {
-                $title = '慧面试';
+                $title = '慧面试-';
+                $info['job_type_name'] = 1 ? '初级' :'高级';
+                $title .= $info['job_type_name'];
+
             }
             $info['title'] = $title;
         }
