@@ -124,6 +124,7 @@ class paylog_controller extends company{
 		//输出登录人手机号
         $user_msg = $this->obj->DB_select_once('member',"`uid`=".$this->uid,'moblie');
         $company_msg = $this->obj->DB_select_once('company',"`uid`=".$this->uid,'*');
+        $company_msg['diff_yue'] = $company_msg['interview_payd'] + $company_msg['interview_payd_expect'];
         $this->yunset("user_phone",$user_msg['moblie']);
         $this->yunset("company_msg",$company_msg);
 		$this->com_tpl($temp);
