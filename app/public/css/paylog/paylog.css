@@ -293,3 +293,160 @@
     padding: 40px 20px 5px;
 
 }
+.box2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow:1px 2px 6px 0px rgba(4,0,0,0.11);
+    width: 472px;
+    height: 68px;
+    margin-top: 20px;
+}
+.box2:hover{
+    box-shadow:1px 2px 9px 0px rgba(4,0,0,0.31);
+}
+.box2>span:nth-child(1){
+    color: #3CC1D3;
+    font-weight: 600;
+}
+.box2>span:nth-child(2){
+    color: #999;
+}
+.box2>div:nth-child(3){
+    text-align: center;
+}
+.box2>div>span:nth-child(1){
+    color: #FC746E;
+}
+.box2>div>span:nth-child(2){
+    color: #999;
+}
+.agreeBox{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    padding: 25px 0 0;
+}
+.agreeBox input{
+    cursor: pointer;
+    margin-right: 5px;
+}
+.agreeBox label{
+    cursor: pointer;
+    margin: 0;
+}
+.agreeBox a{
+    color: #3CC1D3;
+    cursor: pointer;
+}
+.agreementMask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .3);
+    z-index: 9999;
+    display: none;
+}
+.agreementBox{
+    width: 756px;
+    margin: 74px auto 0;
+    border-radius: 8px;
+    background: #fff;
+    padding-bottom: 30px;
+}
+.box3{
+    padding: 0px 60px 25px;
+    color: #333;
+    text-align: left;
+}
+.box3>span{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.box3>div{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.box3 .end_right{
+    margin-right: 50px;
+}
+.box3 .end_right input{
+    margin-right: 10px;
+}
+.univalent{
+    margin: 29px 30px 15px;
+}
+.univalent span{
+    color: #FC746E;
+}
+.box3 .times{
+    display: flex;
+    align-items: center;
+}
+.box3 .times>div{
+    width: 90px;
+    height: 27px;
+    justify-content: space-around;
+    align-items: center;
+    color: #000;
+    border: 1px solid #eee;
+    display: inline-flex;
+}
+.add,.sub{
+    cursor: pointer;
+    font-size: 24px;
+}
+.total{
+    margin-left: 30px;
+}
+.total span{
+    color: #FC746E;
+}
+.sp4{
+    margin-top: 35px;
+    margin-bottom: 25px;
+    margin-left: 37px;
+    text-align: left;
+    display: block;
+}
+.amTitle{
+    padding-left: 38px;
+    padding-top: 57px;
+    padding-bottom: 46px;
+    display: flex;
+    align-items: center;
+}
+.amClose{
+    float: right;
+    margin: 14px;
+    cursor: pointer;
+    display: block;
+}
+.am{
+    margin: 0 50px 42px;
+    height: 614px;
+    overflow-y: scroll;
+    line-height: 26px;
+    font-size: 14px;
+    color: #333;
+}
+.am b{
+    font-size: 16px;
+    line-height: 48px;
+}
+.agreementBox .btn{
+    width: 129px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+}
+.sp5{
+    display: block;
+    margin-top: 15px;
+    color: #666;
+    font-size: 12px;
+    text-align: left;
+}
