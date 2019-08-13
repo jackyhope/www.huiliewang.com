@@ -471,6 +471,16 @@
             })
             return
         }
+        if(!"{yun:}$company.resume_payd{/yun}" && !"{yun:}$company.resume_payd_high{/yun}" && !"{yun:}$company.interview_payd{/yun}"){
+            alert_notice({
+                'title': '温馨提示',
+                type: 'warning',
+                content: '您的套餐余额为0，购买套餐后即可发布职位',
+                src: '/member/index.php?c=paylog',
+                btn: '去购买'
+            })
+            return;
+        }
     });
 </script>
 <script>
@@ -478,6 +488,48 @@
         $('.typeBox>div').click(ev => {
             $('.typeBox>div').removeClass('choosed');
             $(ev.currentTarget).addClass('choosed');
+            var servicetype = $('.typeBox .choosed').children().first().attr('class');
+        var job_type;
+        if (servicetype != 'hms') {
+            var arr = servicetype.split(' ');
+            job_type = arr[1];
+            if(job_type == 'hgtp'){
+                job_type = 1;
+            }else {
+                job_type = 2;
+            }
+            if ('{yun:}$company.resume_payd{/yun}' == 0 && job_type == 1) {
+                alert_notice({
+                    'title': '温馨提示',
+                    type: 'warning',
+                    content: '您的慧沟通·初级余额不足',
+                    src: '/member/index.php?c=paylog',
+                    btn: '去购买'
+                })
+                return
+            }else if('{yun:}$company.resume_payd_high{/yun}' == 0 && job_type ==2){
+                alert_notice({
+                    'title': '温馨提示',
+                    type: 'warning',
+                    content: '您的慧沟通·高级余额不足',
+                    src: '/member/index.php?c=paylog',
+                    btn: '去购买'
+                })
+                return
+            }
+        } else {
+            if ('{yun:}$company.interview_payd{/yun}' == 0) {
+                alert_notice({
+                    'title': '温馨提示',
+                    type: 'warning',
+                    content: '您的慧面试余额不足',
+                    src: '/member/index.php?c=paylog',
+                    btn: '去购买'
+                })
+                return
+
+            }
+        }
         })
         $('.selectBox_ .select,.selectBox_2 .select').click(ev => {
             $(ev.currentTarget).toggleClass('choosed');
