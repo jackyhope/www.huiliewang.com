@@ -183,7 +183,7 @@ function show_module(_module) {
         if (module[0] == 'c_module_4') {
             $('.c_module_4 .msn').html(res.info.name);
             $('.c_module_4 .msp').html(res.info.job_name);
-            $('.c_module_4 .ykc').html(res.info.money + 'µã');
+            $('.c_module_4 .ykc').html(res.info.money + 'Ôª');
             $('.c_module_4 .msBTn').attr('resume_id', module[1]);
             $('.c_module_4 .msBTn').attr('project_id', module[2]);
         }
