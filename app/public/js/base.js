@@ -262,7 +262,7 @@ function get_msg() {
                 `)
                 })
                 $('.noticenum').css('display', 'inline-block');
-                $('.noticeBox>div').one('mouseenter', ev => {
+                $('.noticeBox>div').one('click', ev => {
                     Post('/member/index.php?c=sysnews&act=reed', {
                         message_id: $(ev.target).attr('message_id')
                     }).then(res => {
