@@ -77,6 +77,26 @@ class paylog_controller extends company{
 		    switch ($_GET['c_tpu']){
                 case 1:
                     $temp = 'paylog';
+                    //套餐数组，静态返回
+                    $tc_arr = [
+                        [
+                            'name' => '慧沟通-初级',
+                            'price' => $arr_data['new_price']['communicate']['base']['price'],
+                            'numric' => 50,
+                            'unit' => '元/次',
+                            'order_price' => 50 * $arr_data['new_price']['communicate']['base']['price'],
+                            'giving' => 50 * $arr_data['new_price']['communicate']['base']['giving'],
+                        ],
+                        [
+                            'name' => '慧沟通-高级',
+                            'price' => $arr_data['new_price']['communicate']['expert']['price'],
+                            'numric' => 20,
+                            'unit' => '元/次',
+                            'order_price' => 20 * $arr_data['new_price']['communicate']['expert']['price'],
+                            'giving' => 20 * $arr_data['new_price']['communicate']['expert']['giving'],
+                        ]
+                    ];
+                    $this->yunset("tc_arr",$tc_arr);
                     break;
                 case 2:
                     $temp = 'uselog';
