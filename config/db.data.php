@@ -5,12 +5,14 @@ $arr_data = array (
             'base'=>array(
                 'price'=>300,
                 'deduct'=>1,
-                'giving'=>1
+                'giving'=>1,
+                'c_type'=>1,
             ),
             'expert'=>array(
                 'price'=>500,
                 'deduct'=>1,
-                'giving'=>1
+                'giving'=>1,
+                'c_type'=>2,
             ),
         ),
         'interview'=>array(

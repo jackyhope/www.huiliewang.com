@@ -84,13 +84,13 @@ class pay_controller extends company
 			}*/
 
 			//0729- 直接跳过老的判断，只判断输入的金额
-            $integral=intval($_POST['price_int']);
+            $integral=intval($_POST['price']);
             if($integral<1){
                 //$this->ACT_layer_msg("参数不正确，请正确填写！",8,$_SERVER['HTTP_REFERER']);
                 return_json('参数不正确，请正确填写！',500,['url'=>$_SERVER['HTTP_REFERER']]);
             }
             $data['type']='2';//0729-直接设置该值
-            $price=$integral;//0729-直接设置该值
+            $price=intval($_POST['price_int']);//0729-直接设置该值
 			if($data['type']=='2'&&$integral<1){
 				//$this->ACT_layer_msg("请正确填写购买数量！",8,$_SERVER['HTTP_REFERER']);
                 return_json('请正确填写购买数量！',500,['url'=>$_SERVER['HTTP_REFERER']]);
@@ -158,13 +158,14 @@ class pay_controller extends company
             }
             $data['info'] = $info = '购买慧沟通'.$info.intval($_POST['numric']).'次，赠送慧沟通'.$info.(intval($_POST['numric']) * $giving).'次';
             //计算订单价格
-            $data['order_price']=$price * $data['resume_payd_high']; //单价 * 数量
+            $data['order_price']=$price * $_POST['numric']; //单价 * 数量
             //计算实际客户所得额度【包括赠送的】
             $data[$field] = intval($_POST['numric']) + intval($_POST['numric']) * $giving;
             $data['uid']=$this->uid;
             $data['did']=$this->userdid;
             $data['order_remark']=$remark;
             $data['order_time']=mktime();
+            $data['order_state']=1;//默认审核字段
             $id=$this->obj->insert_into("company_order",$data);
             if($id){
                 $this->obj->member_log("下单成功,订单ID".$dingdan);

@@ -161,8 +161,8 @@ function show_module(_module) {
             $('.c_module_2 .ul').html(`
             <div class="li">候选人</div>
             <div class="li">年薪</div>
-            <div class="li">应扣点数</div>
-            <div class="li">当前可用点数</div>
+            <div class="li">应扣(次)</div>
+            <div class="li">可用余量(次)</div>
             <div class="li color-3CC1D3">${res.info.name}</div>
             <div class="li color-3CC1D3">${res.info.salary}万</div>
             <div class="li color-3CC1D3">${res.info.money}</div>
@@ -171,9 +171,11 @@ function show_module(_module) {
             if (res.info.money - 0 > (res.info.surplus)) {
                 $('.bgl').removeClass('c_hide')
                 $('.c_module_2 .hgn').addClass('c_hide')
+                $('.c_moudle_2 .labels').addClass('c_hide')
             } else {
                 $('.bgl').addClass('c_hide')
                 $('.c_module_2 .hgn').removeClass('c_hide')
+                $('.c_moudle_2 .labels').removeClass('c_hide')
             }
             $('.c_module_2 .gmBTn').attr('resume_id', module[1]);
             $('.c_module_2 .gmBTn').attr('project_id', module[2]);
@@ -181,19 +183,19 @@ function show_module(_module) {
         if (module[0] == 'c_module_4') {
             $('.c_module_4 .msn').html(res.info.name);
             $('.c_module_4 .msp').html(res.info.job_name);
-            $('.c_module_4 .ykc').html(res.info.money + '点');
+            $('.c_module_4 .ykc').html(res.info.money + '元');
             $('.c_module_4 .msBTn').attr('resume_id', module[1]);
             $('.c_module_4 .msBTn').attr('project_id', module[2]);
         }
         if (module[0] == 'c_module_3') {
             $('.c_module_3 .c_msg').html(`
-            请确认候选人是否到场面试，确认到场后系统将扣除慧面试余量${res.info.money}点； 如未到场系统则返还预扣除的慧面试点数
+            请确认候选人是否到场面试，确认到场后系统将扣除慧面试余额${res.info.money}元； 如未到场系统则返还预扣除的慧面试点数
             `)
             $('.c_module_3 .ul').html(`
                     <div class="li">职位</div>
                     <div class="li">候选人</div>
-                    <div class="li">预扣点数</div>
-                    <div class="li">实际扣除</div>
+                    <div class="li">预扣金额(元)</div>
+                    <div class="li">实际扣除(元)</div>
             <div class="li color-3CC1D3">${res.info.job_name}</div>
             <div class="li color-3CC1D3">${res.info.name}</div>
             <div class="li color-3CC1D3">${res.info.money}</div>

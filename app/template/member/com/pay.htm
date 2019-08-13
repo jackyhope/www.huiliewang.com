@@ -41,10 +41,13 @@
     <div class="c_detail_cont mb_80">
         <form name="alipayment" id="c_alipayment" target="fdingdan" action="index.php?c=pay&act=dingdan" method="post">
             <input type="hidden" name="dingdan" value="{yun:}$order.order_id{/yun}"/>
-            <input type="hidden" name="price" size="10"  id="com_true_price">
+            <input type="hidden" name="price" size="10"  id="com_true_price" value="10000">
             <div class="dl clearall">
                 <div class="dt">充值金额：</div>
-                <div class="dd c_money"><input type="text" class="input-normal" name="price_int" id="price_int" size="20" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');$('#com_true_price').val(this.value)" maxlength='8'></div>
+                <div class="dd c_money" style="position:relative;">
+                    <input type="text" class="input-normal" name="price_int" id="price_int" size="20" value="10000" onchange="chk_in(this)" onkeyup="ani_cge(this)" maxlength='8'>
+                    <span style="line-height: 20px;position: absolute;right:-178px;top:40%;font-size:13px;color:#777;width:168px;display: inline-block;">实际到账：<span id="true_money" style="color:#f60;font-size: 1rem;">10000</span> 元</span>
+                </div>
             </div>
             <div class="dl clearall">
                 <div class="dt">充值方式：</div>
@@ -71,6 +74,33 @@
     </div>
 </div>
 <script>
+    let _giving = '{yun:}$giving{/yun}';_giving = parseFloat(_giving);
+    $(function(){
+        $('#true_money').text(10000+10000 * _giving);
+        $('#com_true_price').val(10000+10000 * _giving);
+    })
+    function ani_cge(obj) {
+        console.log(_giving);
+        $(obj).val($(obj).val().replace(/[^0-9]/g,''));
+        if($(obj).val()<10000){
+            $('#true_money').text(0);
+            $('#com_true_price').val(0);
+        }else{
+            $('#true_money').text(parseFloat($(obj).val()) + parseFloat($(obj).val()) * _giving);
+            $('#com_true_price').val(parseFloat($(obj).val()) + parseFloat($(obj).val()) * _giving);
+        }
+    }
+    function chk_in(obj) {
+        let _price = parseInt($(obj).val());
+
+        if(_price<10000){
+            $(obj).val(10000);
+            $('#true_money,#com_true_price').text(10000);
+            layer.msg('最低10000起充');
+            return;
+        }
+
+    }
     /***
      * 验证
      * @param name
@@ -78,7 +108,7 @@
      */
     function pay_form(name){
 
-        if($("#price_int").length!=0&&$("#price_int").val()<1){
+        if($("#price_int").length!=0&&$("#price_int").val()<10000){
             layer.msg(name,2,8);return false;
         }
 
@@ -86,7 +116,7 @@
     $(function(){
         $('#dingdan_submit').click(function () {
 
-            pay_form('请输入充值数量！');
+            pay_form('请输入正确的充值数量！');
             var _json={};
             $.post('index.php?c=pay&act=dingdan',$('#c_alipayment').serialize(),function (data) {
                 data = JSON.parse(data);

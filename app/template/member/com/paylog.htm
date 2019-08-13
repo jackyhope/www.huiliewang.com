@@ -35,9 +35,7 @@
             <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=1"><span
                     class="li {yun:}if $c_tpu==1{/yun}current{yun:}/if{/yun}">我的套餐<i></i></span></a>
             <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=2"><span
-                    class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">套餐使用记录<i></i></span></a>
-            <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=3"><span
-                    class="li {yun:}if $c_tpu==3{/yun}current{yun:}/if{/yun}">消费记录<i></i></span></a>
+                    class="li {yun:}if $c_tpu==2{/yun}current{yun:}/if{/yun}">服务记录<i></i></span></a>
             <a href="{yun:}$config.sy_weburl{/yun}/member/index.php?c=paylog&c_tpu=4"><span
                     class="li {yun:}if $c_tpu==4{/yun}current{yun:}/if{/yun}">充值记录<i></i></span></a>
         </div>
@@ -49,7 +47,7 @@
     <div class="screen_list mt_10 clearall blocks">
         <div class="block">
             <span class="sp1">慧沟通<span>(初级职位)</span></span>
-            <span class="sp2">剩余<span>123</span>次</span>
+            <span class="sp2">剩余<span>{yun:}$company_msg.resume_payd{/yun}</span>次</span>
             <div>
                 <span>年薪20w以下为初级职位</span>
                 <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light_bg"><img class="fll mt_3"
@@ -58,7 +56,7 @@
         </div>
         <div class="block">
             <span class="sp1">慧沟通<span>(高级职位)</span></span>
-            <span class="sp2">剩余<span>456</span>次</span>
+            <span class="sp2">剩余<span>{yun:}$company_msg.resume_payd_high{/yun}</span>次</span>
             <div>
                 <span>年薪20w以下为初级职位</span>
                 <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light_bg"><img class="fll mt_3"
@@ -66,12 +64,11 @@
             </div>
         </div>
         <div class="block">
-            <span class="sp1">慧面试<span>(初级职位)</span></span>
-            <span class="sp2">剩余<span></span>次</span>
+            <span class="sp1">慧面试</span>
+            <span class="sp2">余额<span>{yun:}$company_msg.diff_yue{/yun}</span>元</span>
             <div>
                 <span></span>
-                <div class="dd"><a href="javascript:show_module();" class="c_btn c_btn_light_bg"><img class="fll mt_3"
-                            src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car.png" alt="">购买</a></div>
+                <div class="dd"><a href="index.php?c=pay" class="c_btn c_btn_light_bg">￥&nbsp;充值</a></div>
             </div>
         </div>
     </div>
@@ -113,19 +110,19 @@
                 </div>
             </div>
             <div class="box1">
-                    <div class="left">
-                        <span>高级职位</span>
-                        <span>(年薪20万及以上)</span>
-                    </div>
-                    <div class="right">
-                        <span>（原价：500元/次）</span>
-                        <span>10000<span>元</span></span>
-                        <span>（买20次赠20次，共计40次）</span>
-                    </div>
-                    <div class="corner gradient_1">
-                        本月优惠
-                    </div>
+                <div class="left">
+                    <span>高级职位</span>
+                    <span>(年薪20万及以上)</span>
                 </div>
+                <div class="right">
+                    <span>（原价：500元/次）</span>
+                    <span>10000<span>元</span></span>
+                    <span>（买20次赠20次，共计40次）</span>
+                </div>
+                <div class="corner gradient_1">
+                    本月优惠
+                </div>
+            </div>
             <div class="c_show_one_floor">
                 <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_l1.png"
                         alt="">慧沟通是市场上性价比最高的简历套餐</p>
@@ -160,47 +157,47 @@
                 </div>
             </div>
             <div class="box1">
-                    <div class="left">
-                        <span>初级职位</span>
-                        <span>(年薪20万及以下)</span>
-                    </div>
-                    <div class="right">
-                        <span>（原价：2000元/次面试）</span>
-                        <span>10000<span>元起购</span></span>
-                        <span>（满10000送5000，上不封顶）</span>
-                    </div>
-                    <div class="corner gradient_1">
-                        本月优惠
-                    </div>
+                <div class="left">
+                    <span>初级职位</span>
+                    <span>(年薪20万及以下)</span>
                 </div>
-                <div class="box1">
-                        <div class="left">
-                            <span>中级职位</span>
-                            <span>（年薪20万-50万）</span>
-                        </div>
-                        <div class="right">
-                            <span>（原价：3000元/次面试）</span>
-                            <span>10000<span>元起购</span></span>
-                            <span>（满10000送5000，上不封顶）</span>
-                        </div>
-                        <div class="corner gradient_1">
-                            本月优惠
-                        </div>
-                    </div>
-                    <div class="box1">
-                            <div class="left">
-                                <span>高级职位</span>
-                                <span>（年薪50万及以上）</span>
-                            </div>
-                            <div class="right">
-                                <span>（原价：4000元/次面试）</span>
-                                <span>10000<span>元起购</span></span>
-                                <span>（满10000送5000，上不封顶）</span>
-                            </div>
-                            <div class="corner gradient_1">
-                                本月优惠
-                            </div>
-                        </div>
+                <div class="right">
+                    <span>（原价：500元/次面试）</span>
+                    <span>10000<span>元起购</span></span>
+                    <span>（满10000送5000，上不封顶）</span>
+                </div>
+                <div class="corner gradient_1">
+                    本月优惠
+                </div>
+            </div>
+            <div class="box1">
+                <div class="left">
+                    <span>中级职位</span>
+                    <span>（年薪20万-50万）</span>
+                </div>
+                <div class="right">
+                    <span>（原价：3000元/次面试）</span>
+                    <span>10000<span>元起购</span></span>
+                    <span>（满10000送5000，上不封顶）</span>
+                </div>
+                <div class="corner gradient_1">
+                    本月优惠
+                </div>
+            </div>
+            <div class="box1">
+                <div class="left">
+                    <span>高级职位</span>
+                    <span>（年薪50万及以上）</span>
+                </div>
+                <div class="right">
+                    <span>（原价：4000元/次面试）</span>
+                    <span>10000<span>元起购</span></span>
+                    <span>（满10000送5000，上不封顶）</span>
+                </div>
+                <div class="corner gradient_1">
+                    本月优惠
+                </div>
+            </div>
             <div class="c_show_one_floor">
                 <p><img class="mr_20" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_r1.png"
                         alt="">及时有效的流程反馈<span>您所操作的每一步会有专属猎头进行跟踪，并得到及时反馈</span></p>
@@ -222,12 +219,47 @@
 <!--相关简历列表页的弹框module   start -->
 <div id="c_shade" class="c_hide">
     <div class="c_true_module">
-        <div id="buy_resume" class="c_module c_module_2 c_module_6 c_hide">
+        <div id="buy_resume" class="c_module c_module_2 c_module_6 c_hide" style="width: 513px;left: 30%;top: 10%;">
             <i onclick="m_close(this)"></i>
-            <div class="c_title"><span></span>套餐购买</div>
-            <div class="c_cont c_hide" id="tc_list">
-
+            <div class="c_title"><span></span>慧沟通套餐购买</div>
+            <span class="sp4">快捷购买</span>
+            {yun:}foreach item=val key=index from=$tc_arr{/yun}
+            <div class="box2">
+                <span>{yun:}$val.name{/yun}</span>
+                <span>{yun:}$val.price{/yun}&nbsp;{yun:}$val.unit_price{/yun}/{yun:}$val.unit_num{/yun}</span>
+                <div>
+                    <span>{yun:}$val.order_price{/yun}元</span><br>
+                    <span>{yun:}$val.numric{/yun}次+赠送{yun:}$val.name{/yun}{yun:}$val.giving{/yun}次</span>
+                </div>
+                <div class="dd"><a numric='{yun:}$val.numric{/yun}' c_type='{yun:}$val.c_type{/yun}'
+                        href="javascript:void(0);" class="c_btn c_btn_light_bg"><img style="margin-top: 3px;"
+                            class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car.png"
+                            alt="">购买</a></div>
             </div>
+            {yun:}/foreach{/yun}
+            <span class="sp4">自定义</span>
+            <div class="box3">
+                <div class="end_right fll"><input type="radio" class="c_check" value="0" checked name="rank">慧沟通初级</div>
+                <div class="end_right fll"><input type="radio" class="c_check" value='1' name="rank">慧沟通高级</div>
+                <br clear="both">
+                <span class="univalent">价格：<span>300.00元</span>/次</span>
+                <div class="times">服务次数：<div><span class="sub">-</span><span class="con">50</span><span
+                            class="add">+</span></div>
+                </div>
+                <span class="sent">赠送次数：<span>50</span></span>
+                <span class="total">总价：<span>15000.00</span></span>
+                <div class="agreeBox">
+                    <input type="checkbox" id="agree" checked />
+                    <label for="agree">我已阅读并同意</label><a href="#" title="查看协议内容">《慧猎用户服务协议》</a></div>
+            </div>
+            <div class="btnner">
+                <div class="mt_20"><a href="javascript:void(0);"
+                        onclick="$('#c_shade').addClass('c_hide');$('#invite_interview').addClass('c_hide');"
+                        class="c_btn c_btn_md c_btn_light mr_60">取&nbsp;&nbsp;消</a><a id="submit" data-id="0"
+                        href="javascript:;" class="c_btn c_btn_md c_btn_light_bg">确认购买</a></div>
+            </div>
+            <span class="sp5">1、活动期间，买多少送多少</span>
+            <span class="sp5">2、慧沟通初级产品最低50次起买，高级产品最低20次起买，递增购买以10次为单位</span>
             <!--    余额不足显示   start  做php判断   -->
             <div class="nomoney c_hide">
                 <img src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/bz_03.png" alt="">
@@ -278,46 +310,150 @@
         <!-- 购买确认 end -->
     </div>
 </div>
+<div class="agreementMask">
+    <div class="agreementBox">
+        <img src="/app/public/imgs/cl_03.png" alt="" class="amClose">
+        <div class="amTitle">
+            <div class="line_1"></div>
+            慧猎服务协议
+        </div>
+        <div class="am">
+            本协议是您与慧猎（简称“本站”，网址：www.huiliewang.com）所有者重庆慧猎信息科技有限公司（以下简称为“慧猎科技”）之间就慧猎服务等相关事宜所订立的契约，请您仔细阅读本协议，购买套餐并勾选用户服务协议即代表您已阅读并同意“《慧猎用户服务协议》”，本协议即构成对双方有约束力的法律文件。
+            <br/>
+            <br/><b>第一条 服务内容</b><br/>
+            <br/>www.huiliewang.com网站向用户提供套餐服务以完成用户招聘需求。套餐类型包括:
+            <br/>套餐的数量、价格产品信息等随时会发生变化，请以购买时套餐页面实时说明为准。
+            <br/>套餐一：慧沟通
+            <br/>慧沟通，用户购买简历即扣相应套餐余量。
+            <br/>套餐二：慧面试
+            <br/>慧面试，面试邀请预扣套餐余量，面试到场实际扣除套餐余量；候选人未到场经核实后退还预扣的套餐余量。
+            <br/>套餐的有效期为1年，购买的套餐余量未在1年内用完则有效期自动延长6个月，6个月到期之后双方协商延长时间。在服务有效期内，网站提供相应余额可购买产品份数，以及购买慧猎的其他服务。
+            <br/>注：1、服务开始提供日期以实际服务开通日为准。
+            <br/>2、本协议载明的用户所有服务内容仅在本协议服务期内有效，用户在服务期内未使用的服务内容将在服务期届满时自动失效。
+            <br/>
+            <br/><b>第二条 费用支付方式</b><br/>
+            <br/>甲方可以选择下述方式之一向乙方付款：
+            <br/>1、在www.huiliewang.com官网的“购买服务”页面通过支付宝付款;
+            <br/>2、对公转账汇款：
+            <br/>账户名称：重庆慧猎信息科技有限公司
+            <br/>税 号：91500106MA5U6XBT3B
+            <br/>开户银行：招商银行股份有限公司重庆大学城支行
+            <br/>账 号：1239 0809 6510 202
+            <br/>特别提示：选择对公转账汇款需要您转账后第一时间联系专属BD。除以上支付方式外，乙方不接受甲方直接向乙方工作人员个人付款。
+            <br/>
+            <br/><b>第三条 正当用途限制</b><br/>
+            <br/>乙方向甲方所提供的简历，仅限甲方用于企业招聘用途，严禁用于其他用途，如果甲方将从乙方获得的简历用于其他用途，对乙方的商业利益造成了损害，或对求职者对乙方的商业利益造成了损害，乙方有权停止服务并追究甲方责任。
+            <br/>
+            <br/><b>第四条 双方权利和义务</b><br/>
+            <br/>1、用户保证在本网站（www.huiliewang.com）上发布信息的真实性、有效性及合法性.如甲方提供的信息中涉及或使用无第三方授权的商标、商号，或甲方发布的信息中包含国家法律法规禁止性、限制性内容，经本站通知后拒不改正，则乙方有权随时停止为甲方提供服务，同时视为甲方提前终止服务，且放弃本协议未享之权利，用户赔偿因此给本站造成的损失；
+            <br/>3、用户承诺本协议有关服务，仅限于招聘内部员工使用，不得用于任何第三方招聘或其他商业和非商业之目的；用户所下载的简历不得用于招聘以外的其他目的，也不得向第三方透露、转让、出售；用户不得利用第三方软件或其他技术手段
+            <br/>大量下载本站简历信息。用户违反本约定，本站有权立即终止为用户提供服务，甲方已支付的服务费不予退还；
+            <br/>4、用户应知道由于网络带宽的限制，可能会出现网络拥塞，造成网络短时间内无法访问。同时，因网站系统维护、升级的需要，本站需要短时间关机，但此类关机时间如超过24小时，我站将相应对等延长用户的服务期限；
+            <br/>5、本站有义务及时答复用户的咨询，告知用户网站操作使用方法；
+            <br/>6、本站有义务审核用户发布的信息，本站的审核不代表本站对用户提交内容的真实性、合法性负责，若因用户发布的信息 导致任何第三方索赔或国家机关处罚，用户应足额赔偿本站因此遣受的损失；
+            <br/>8、任何一方不得将对方的信息用作除本协议目的以外的其他商业目的。
+            <br/>
+            <br/><b>第五条 违约责任</b><br/>
+            <br/>1、用户购买慧面试产品，发出面试邀请且乙方预扣余额后，发生用户向本站反映面试人员未实际到场的情况。经过本站核实，若未到场情况属实，则本站退还相应余额；若面试人员已经到场，则本站直接扣除相应余额。
+            <br/>2、双方因任何一方违反本协议内容，另一方有权保留追究责任的权利。
+            <br/>3、双方在履行本协议时，如发生争议，通过协商解决，通过协商不能解决的，双方同意向本站所在地人民法院提起诉讼。争议解决所产生的全部成本（包括：诉讼费、律师费、差旅费、查封费、保全费、保全担保或保险费等）全部由败诉方承担。
+            <br/>
+            <br/><b>第六条 不可抗力</b><br/>
+            <br/>如受不可抗力事件的影响,致使本站无法继续向用户提供本协议约定的服务内容，对本站已经支付了服务费，但服务尚未开始提供的，本站将扣除已付税款后的余额退还用户。
+            <br/>
+            <br/><b>第七条 其它</b><br/>
+            <br/>1、本协议在用户购买之日起生效。
+
+
+        </div>
+        <button class="button_1 gradient_1 btn">确定</button>
+    </div>
+</div>
 
 <!--相关简历列表页的弹框module   end -->
 <script>
     $(function () {
-        $.get('{yun:}$config.sy_weburl{/yun}/member/index.php?c=order_api&act=services', '', function (re) {
-            re = JSON.parse(re);
-            console.log(re.code);
-            console.log(re.code == 200);
-            console.log(re.info.list.length);
-            var _html = '';
-            if (re.code == 200) {
-                for (var i in re.info.list) {
-                    console.log(re.info.list[i]);
-                    _html += '<div class="dl clearall">\n' +
-                        '                    <div class="dd wid20p">' + re.info.list[i].type_name +
-                        '</div>\n' +
-                        '                    <div class="dd wid40p">' + re.info.list[i].title +
-                        '</div>\n' +
-                        '                    <div class="dd wid20p">' + re.info.list[i].service_price +
-                        '</div>\n' +
-                        '                    <div class="dd wid20p te_lgl"><a data-name="' + re.info
-                        .list[i].type_name + '" data-qy="' + re.info.list[i].title + '" data-price="' +
-                        re.info.list[i].service_price + '" data-id="' + re.info.list[i].id +
-                        '" href="javascript:void(0);" class="c_btn c_btn_light no_mg buy_now"><img class="fll mt_3" src="{yun:}$config.sy_weburl{/yun}/app/public/imgs/c_buy_car_bg.png" alt="">&nbsp;&nbsp;购买</a></div>\n' +
-                        '                </div>';
-
-
+        let type = 1;
+        let times = "{yun:}$arr_data['new_price']['communicate']['expert']['giving']{/yun}";
+        $('.agreeBox a').click(ev => {
+            $('.agreementMask').css('display', 'block');
+        })
+        $('.agreementMask .btn').click(ev => {
+            $('.agreementMask').css('display', 'none');
+        })
+        $('.agreementMask .amClose').click(ev => {
+            $('.agreementMask').css('display', 'none');
+        })
+        $('.add').click(ev => {
+            $('.con').html($('.con').html() - 0 + 10)
+            $('.sent span').html(($('.con').html() - 0) * times)
+            $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
+        })
+        $('.sub').click(ev => {
+            let a = type == 1 ? 50 : 20;
+            if ($('.con').html() - 0 <= a) return;
+            $('.con').html($('.con').html() - 0 - 10)
+            $('.sent span').html(($('.con').html() - 0) * times)
+            $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
+        })
+        $('.box3 .c_check').click(ev => {
+            if ($(ev.currentTarget).val() == 0) {
+                type = 1;
+                $('.univalent span').html('300.00元')
+                if ($('.con').html() - 0 <= 50) {
+                    $('.con').html(50);
                 }
-                $('#tc_list').html(_html); //输出数据列表
+                $('.sent span').html(($('.con').html() - 0) * times)
+                $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
             } else {
+                type = 2;
+                $('.univalent span').html('500.00元')
+                $('.sent span').html(($('.con').html() - 0) * times)
+                $('.total span').html(($('.con').html() - 0) * times * (type == 1 ? 300 : 500) + '.00')
+            }
+        })
+        $('.box2 .dd a').click(ev => {
+            if (!$('#agree').attr('checked')) {
                 alert_notice({
                     title: '温馨提示',
-                    content: '获取套餐列表失败',
-                    type: 'error',
-                    src: '',
-                    btn: '确定',
-                    else: ''
+                    content: '请先阅读并同意《慧猎服务协议》',
+                    type: 'warning'
                 });
+                return
             }
-        });
+            Post('index.php?c=pay&act=buy_now', {
+                numric: $(ev.currentTarget).attr('numric'),
+                c_type: $(ev.currentTarget).attr('c_type')
+            }).then(res => {
+                window.location.href = res.url;
+            }).catch(res => {
+                alert_notice({
+                    type: 'error',
+                    title: res.message
+                })
+            })
+        })
+        $('#submit').click(ev => {
+            if (!$('#agree').attr('checked')) {
+                alert_notice({
+                    title: '温馨提示',
+                    content: '请先阅读并同意《慧猎服务协议》',
+                    type: 'warning'
+                });
+                return
+            }
+            Post('index.php?c=pay&act=buy_now', {
+                numric: $('.con').html() - 0,
+                c_type: type
+            }).then(res => {
+                window.location.href = res.url;
+            }).catch(res => {
+                alert_notice({
+                    type: 'error',
+                    title: res.message
+                })
+            })
+        })
         $('#c_addorder').click(function () {
             var _json = {};
             //检测验证码是否正确

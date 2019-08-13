@@ -77,28 +77,6 @@ class paylog_controller extends company{
 		    switch ($_GET['c_tpu']){
                 case 1:
                     $temp = 'paylog';
-                    //套餐数组，静态返回
-                    $tc_arr = [
-                        [
-                            'name' => '慧沟通-初级',
-                            'price' => $arr_data['new_price']['communicate']['base']['price'],
-                            'numric' => 50,
-                            'unit_price' => '元',
-                            'unit_num' => '次',
-                            'order_price' => 50 * $arr_data['new_price']['communicate']['base']['price'],
-                            'giving' => 50 * $arr_data['new_price']['communicate']['base']['giving'],
-                        ],
-                        [
-                            'name' => '慧沟通-高级',
-                            'price' => $arr_data['new_price']['communicate']['expert']['price'],
-                            'numric' => 20,
-                            'unit_price' => '元',
-                            'unit_num' => '次',
-                            'order_price' => 20 * $arr_data['new_price']['communicate']['expert']['price'],
-                            'giving' => 20 * $arr_data['new_price']['communicate']['expert']['giving'],
-                        ]
-                    ];
-                    $this->yunset("tc_arr",$tc_arr);
                     break;
                 case 2:
                     $temp = 'uselog';
@@ -116,10 +94,37 @@ class paylog_controller extends company{
         }else{
             $temp = 'paylog';
         }
+        if($temp == 'paylog'){
+            //套餐数组，静态返回
+            $tc_arr = [
+                [
+                    'name' => '慧沟通-初级',
+                    'price' => $arr_data['new_price']['communicate']['base']['price'],
+                    'numric' => 50,
+                    'unit_price' => '元',
+                    'unit_num' => '次',
+                    'order_price' => 50 * $arr_data['new_price']['communicate']['base']['price'],
+                    'giving' => 50 * $arr_data['new_price']['communicate']['base']['giving'],
+                    'c_type'=> $arr_data['new_price']['communicate']['base']['c_type'],
+                ],
+                [
+                    'name' => '慧沟通-高级',
+                    'price' => $arr_data['new_price']['communicate']['expert']['price'],
+                    'numric' => 20,
+                    'unit_price' => '元',
+                    'unit_num' => '次',
+                    'order_price' => 20 * $arr_data['new_price']['communicate']['expert']['price'],
+                    'giving' => 20 * $arr_data['new_price']['communicate']['expert']['giving'],
+                    'c_type'=> $arr_data['new_price']['communicate']['expert']['c_type'],
+                ]
+            ];
+            $this->yunset("tc_arr",$tc_arr);
+        }
         $this->yunset("c_tpu",$_GET['c_tpu']?$_GET['c_tpu']:1);
 		//输出登录人手机号
         $user_msg = $this->obj->DB_select_once('member',"`uid`=".$this->uid,'moblie');
         $company_msg = $this->obj->DB_select_once('company',"`uid`=".$this->uid,'*');
+        $company_msg['diff_yue'] = $company_msg['interview_payd'] + $company_msg['interview_payd_expect'];
         $this->yunset("user_phone",$user_msg['moblie']);
         $this->yunset("company_msg",$company_msg);
 		$this->com_tpl($temp);
