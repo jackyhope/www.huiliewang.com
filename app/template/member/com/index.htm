@@ -15,11 +15,15 @@
 			<div class="account">
 				<div style="padding-left: 0;">
 					<span class="resume_payd">0</span>
-					<span>慧沟通余量</span>
+					<span>慧沟通初级</span>
+				</div>
+				<div>
+					<span class="resume_high">0</span>
+					<span>慧沟通高级</span>
 				</div>
 				<div>
 					<span class="interview_payd">0</span>
-					<span>慧面试余量</span>
+					<span>慧面试余额</span>
 				</div>
 				<div onclick='gt(event)' link='/member/index.php?c=paylog&c_tpu=2'>
 					<img src="/app/public/imgs/ind_17.png" alt="">
@@ -141,6 +145,8 @@
 			$('.wait_interview_count').html(res.wait_interview_count);
 			$('.wait_present_count').html(res.wait_present_count);
 			$('.job_count').html(res.job_count);
+			$('.resume_high').html(res.resume_payd_high);
+
 			if (res.is_cert ==0) {
 				alert_notice({
 					title: '您还未认证哦~',

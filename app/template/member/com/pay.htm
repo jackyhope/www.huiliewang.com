@@ -74,14 +74,20 @@
     </div>
 </div>
 <script>
+    let _giving = '{yun:}$giving{/yun}';_giving = parseFloat(_giving);
+    $(function(){
+        $('#true_money').text(10000+10000 * _giving);
+        $('#com_true_price').val(10000+10000 * _giving);
+    })
     function ani_cge(obj) {
-        let _giving = '{yun:}$giving{/yun}';_giving = parseFloat(_giving);
         console.log(_giving);
         $(obj).val($(obj).val().replace(/[^0-9]/g,''));
         if($(obj).val()<10000){
             $('#true_money').text(0);
+            $('#com_true_price').val(0);
         }else{
             $('#true_money').text(parseFloat($(obj).val()) + parseFloat($(obj).val()) * _giving);
+            $('#com_true_price').val(parseFloat($(obj).val()) + parseFloat($(obj).val()) * _giving);
         }
     }
     function chk_in(obj) {
@@ -102,7 +108,7 @@
      */
     function pay_form(name){
 
-        if($("#price_int").length!=0&&$("#price_int").val()<1){
+        if($("#price_int").length!=0&&$("#price_int").val()<10000){
             layer.msg(name,2,8);return false;
         }
 
@@ -110,7 +116,7 @@
     $(function(){
         $('#dingdan_submit').click(function () {
 
-            pay_form('请输入充值数量！');
+            pay_form('请输入正确的充值数量！');
             var _json={};
             $.post('index.php?c=pay&act=dingdan',$('#c_alipayment').serialize(),function (data) {
                 data = JSON.parse(data);

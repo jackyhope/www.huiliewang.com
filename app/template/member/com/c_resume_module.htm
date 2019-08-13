@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/app/public/css/dateTime.css">
+
 <div id="c_shade" class="c_hide">
     <div class="c_true_module">
         <!--  Âò¼òÀúÓà¶î²»×ã not_money -->
@@ -120,3 +122,13 @@
         <!-- ÑûÔ¼ÃæÊÔ end -->
     </div>
 </div>
+<script src="/app/public/js/dateTime.min.js"></script>
+<script>
+    $(function(){
+        let time = new Date();
+        $("#atTime").datetime({
+			type:"datetime",
+			value:[time.getFullYear(),time.getMonth() + 1,time.getDate(),time.getHours(),time.getMinutes()]
+		})
+    })
+</script>
