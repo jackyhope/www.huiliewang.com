@@ -2,21 +2,12 @@
 *{
 margin:0; padding:0;
 }
-body, html body {
-    color: #262626;
-    font: 12px/1.5 Microsoft YaHei,tahoma,arial,Hiragino Sans GB,sans-serif;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td { margin: 0; padding: 0; font-family: "???ии??иж?бниж?бо"; }
-fieldset, img { border: 0; }
-ul, ol, li { list-style: none; font-family:'Microsoft YaHei'; }
 address, caption, cite, code, dfn, em, strong, th, var, optgroup { font-style: normal; font-weight: normal; }
 h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
-input, button, textarea, select, optgroup, option { font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; background-color: #fff; border: none;}
 a{text-decoration:none;}
 a:hover{
 text-decoration: none;
 }
-input, button, textarea{ *font-size: 100%;}
 ol, ul { list-style: none; }
 /* tables still need 'cellspacing="0"' in the markup */
 table,tr,td { border-collapse: collapse; border-spacing: 0; margin:0;padding:0;}
