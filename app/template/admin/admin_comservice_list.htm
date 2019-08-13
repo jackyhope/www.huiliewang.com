@@ -48,6 +48,7 @@
                         <th style="width:20px;"><label for="chkall"><input type="checkbox" id='chkAll' onclick='CheckAll(this.form)' /></label></th>
                         <th>编号</th>
                         <th>套餐价格</th>
+                        <th>职位类别</th>
                         <th>慧沟通</th>
                         <th class="admin_table_th_bg">操作</th>
                     </tr>
@@ -58,6 +59,7 @@
                         <td><input type="checkbox" value="{yun:}$v.id{/yun}" name='del[]' onclick='unselectall()' rel="del_chk" /></td>
                         <td><span>{yun:}$v.id{/yun}</span></td>
                         <td><span>{yun:}$v.service_price{/yun}</span>元</td>
+                        <td><span>{yun:}$v.job_type_name{/yun}</span></td>
                         <td><span>{yun:}$v.resume{/yun} {yun:}$v.resume_unit{/yun}</span></td>
                         <!--<td><span>{yun:}$v.interview{/yun} {yun:}$v.interview_unit{/yun}</span></td>-->
                         <td>

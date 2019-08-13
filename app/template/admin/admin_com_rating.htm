@@ -15,7 +15,7 @@
 <div class="infoboxp_top_bg"></div>
 
 <div class="infoboxp_top"style="background:#fff;border-top:none;">
-  <a href="index.php?m=admin_comrating&c=srating" class="admin_infoboxp_tj"> 添加套餐类型</a>
+  <!--<a href="index.php?m=admin_comrating&c=srating" class="admin_infoboxp_tj"> 添加套餐类型</a>-->
   <a href="index.php?m=admin_comrating&c=edit" class="admin_infoboxp_tj"> 添加套餐包</a>
 </div>
 <div class="table-list">
@@ -44,22 +44,25 @@
 		  </td>
           <td>
             {yun:}if $v.display==1{/yun}
-            	<font color="red">已启用</font><a href="javascript:onstatus('{yun:}$v.id{/yun}','2');">【下架】</a>
+            	<font color="red">已启用</font>
+                <!--<a href="javascript:onstatus('{yun:}$v.id{/yun}','2');">【下架】</a>-->
             {yun:}else{/yun}
-            	<font color="blue">未启用</font><a href="javascript:onstatus('{yun:}$v.id{/yun}','1');">【启用】</a>
+            	<font color="blue">未启用</font>
+                <!--<a href="javascript:onstatus('{yun:}$v.id{/yun}','1');">【启用】</a>-->
             {yun:}/if{/yun}
             </td>
         <td>
-        <a href="index.php?m=admin_comrating&c=list&id={yun:}$v.id{/yun}"class="admin_cz_bj">服务列表</a> |
-        <a href="javascript:void(0)" onClick="layer_del('确定要删除？', 'index.php?m=admin_comrating&c=delserver&id={yun:}$v.id{/yun}');"class="admin_cz_sc"> 删除</a></td>
+        <a href="index.php?m=admin_comrating&c=list&id={yun:}$v.id{/yun}"class="admin_cz_bj">服务列表</a>
+          <!--|-->
+        <!--<a href="javascript:void(0)" onClick="layer_del('确定要删除？', 'index.php?m=admin_comrating&c=delserver&id={yun:}$v.id{/yun}');"class="admin_cz_sc"> 删除</a></td>-->
          
         </tr>
         {yun:}/foreach{/yun}
         <tr style="background:#f1f1f1;">
             <td align="center"><input type="checkbox" id='chkAll2' onclick='CheckAll2(this.form)' /></td>
             <td colspan="8" >
-            <label for="chkAll2">全选</label>&nbsp;
-          <input class="admin_submit4"  type="button" name="delsub" value="删除所选"  onclick="return really('del[]')"/></td>
+            <!--<label for="chkAll2">全选</label>&nbsp;-->
+          <!--<input class="admin_submit4"  type="button" name="delsub" value="删除所选"  onclick="return really('del[]')"/></td>-->
         </tr>
           </tbody>
       </table>

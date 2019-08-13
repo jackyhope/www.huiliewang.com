@@ -29,7 +29,7 @@ class order_api_controller extends company
      * @return array
      */
     private function getAllService() {
-        $allService = $this->obj->DB_select_all("company_service");
+        $allService = $this->obj->DB_select_all("company_service", 'display = 1');
         $rating = [];
         foreach ($allService as $service) {
             $rating[$service['id']] = yun_iconv('gbk', 'utf-8', $service['name']);
@@ -135,7 +135,10 @@ class order_api_controller extends company
                 $v['pay_status_name'] = '未扣除';
                 $v['pay_state'] == 2 && $v['pay_status_name'] = '已扣除'; //2:扣款  3：预扣
                 $v['pay_state'] == 3 && $v['pay_status_name'] = '预扣'; //2:扣款  3：预扣
-                $v['type_name'] = $v['type'] == 1 ? '慧面试' : '慧沟通';
+                $jobType = '初级';
+                $v['job_type'] == 2 && $jobType = '中级';
+                $v['job_type'] == 3 && $jobType = '高级';
+                $v['type_name'] = $v['type'] == 1 ? '慧面试-' . $jobType : '慧沟通-' . $jobType;
             }
         }
         $counts = $this->obj->DB_select_num('company_pay', $countWhere);
@@ -148,8 +151,13 @@ class order_api_controller extends company
      */
     public function services_action() {
         $types = $this->getAllService();
-        $filed = "id,service_price,resume,resume_unit,interview,interview_unit,type";
-        $list = $this->obj->DB_select_all_assoc('company_service_detail', '1', $filed);
+        $type = baseUtils::getStr('type', 0);
+        $where = 'type = 1';
+        if ($type > 0) {
+            $where = $type == 1 ? "type = 1" : "type = 3";
+        }
+        $filed = "id,service_price,resume,resume_unit,interview,interview_unit,type,job_type,unit_price,resume_present";
+        $list = $this->obj->DB_select_all_assoc('company_service_detail', $where, $filed);
         foreach ($list as $k => &$info) {
             $type = $info['type'];
             if (!isset($types[$type])) {
@@ -162,12 +170,15 @@ class order_api_controller extends company
             $info['type_name'] = $types[$type];
             $title = '';
             if ($type == 1) {
-                $title = $info['resume'] . $info['resume_unit'];
-                $info['interview'] > 0 && $title .= " +赠送{$types[3]}" . $info['interview'] . $info['interview_unit'];
+                $title = '慧沟通-';
+                $info['job_type_name'] = 1 ? '初级' :'高级';
+                $title .= $info['job_type_name'];
             }
             if ($type == 3) {
-                $title = $info['interview'] . $info['interview_unit'];
-                $info['resume'] > 0 && $title .= " +赠送{$types[1]}" . $info['resume'] . $info['resume_unit'];
+                $title = '慧面试-';
+                $info['job_type_name'] = 1 ? '初级' :'高级';
+                $title .= $info['job_type_name'];
+
             }
             $info['title'] = $title;
         }
