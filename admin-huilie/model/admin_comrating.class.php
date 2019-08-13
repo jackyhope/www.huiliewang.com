@@ -146,7 +146,7 @@ class admin_comrating_controller extends common{
 	}
 	
 	function   list_action(){
-		$zzlist=$this->obj->DB_select_all("company_service");
+		$zzlist=$this->obj->DB_select_all("company_service",'display = 1');
 		$this->yunset("zzlist",$zzlist);
 		
 		if($_GET['id']){
@@ -157,6 +157,7 @@ class admin_comrating_controller extends common{
 			    if(!empty($v['resume_present'])){
 			        $list[$k]['resume'] = intval($v['resume']) + intval($v['resume_present']);
                 }
+                $list[$k]['job_type_name'] = $v['job_type'] == 1 ? '普通职位' : '高级职位';
             }
 			$this->yunset("list",$list);
 		}

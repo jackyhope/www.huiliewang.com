@@ -57,12 +57,20 @@
 		<th align="right" rowspan="3"  width="150">慧猎套餐设置：</th>
 		<td colspan="3">
 			<ul class="com_com_a_list">
-				<li>服务价格：<input class="admin_cm_zz_box" type="text" readonly="readonly" value="{yun:}$listinfo.service_price{/yun}" name="service_price" id="service_price"  onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')">元</li>
+				<li>服务价格：<input class="admin_cm_zz_box" type="text" value="{yun:}$listinfo.service_price{/yun}" name="service_price" id="service_price"  onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')">元</li>
 			</ul>
 	<tr class="vip_type_2 admin_table_trbg">
 		<td colspan="3">
 			<ul class="com_com_a_list  com_com_a_list_l">
-				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通数：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>-->
+				<!--<li style="width: 300px"><span style="display:inline-block;width:60px; text-align:right;">套餐名称：</span>-->
+					<!--<input class="admin_cm_zz_box" style="width: 200px;!important;" type="text" name="name" id="name" value="{yun:}$listinfo.name{/yun}"></li>-->
+				<li>
+					<span style="display:inline-block;width:60px; text-align:right;">职位类别：</span>
+					<label class="admin_cm_zz_box">
+						<input type="radio" name="job_type" {yun:}if $listinfo.job_type == 1{/yun}  checked {yun:}/if{/yun} value="1" id="plstatus0" checked="" >初级
+						<input type="radio" name="job_type" value="2" id="plstatus1" {yun:}if $listinfo.job_type == 2{/yun} checked {yun:}/if{/yun}>高级
+					</label>
+				</li>
 				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧沟通单位：</span><input class="admin_cm_zz_box" type="text" name="resume_unit" id="resume_unit" value="{yun:}$listinfo.resume_unit{/yun}" placeholder="单位：份"></li>-->
 				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧面试数：</span><input class="admin_cm_zz_box" type="text" name="interview" id="interview" value="{yun:}$listinfo.interview{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>-->
 				<!--<li><span style="display:inline-block;width:100px; text-align:right;">慧面试单位：</span><input class="admin_cm_zz_box" type="text" name="interview_unit" id="interview_unit" value="{yun:}$listinfo.interview_unit{/yun}" placeholder="单位：次"></li>-->
@@ -70,9 +78,9 @@
                 <li><span style="display:inline-block;width:100px; text-align:right;">发布兼职：</span><input class="admin_cm_zz_box" type="text" name="part_num" id="part_num" value="{yun:}$listinfo.part_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
                 <li><span style="display:inline-block;width:100px; text-align:right;">刷新兼职数数：</span><input class="admin_cm_zz_box" type="text" name="breakpart_num" id="breakpart_num" value="{yun:}$listinfo.breakpart_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li> -->
 				<li><span style="display:inline-block;width:100px; text-align:right;">充值次数：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume{/yun}" onblur="compute();" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-				<li><span style="display:inline-block;width:100px; text-align:right;">赠送次数：</span><input class="admin_cm_zz_box" type="text" name="resume_present" id="resume_unit" value="{yun:}$listinfo.resume_present{/yun}" readonly="readonly" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-				<li><span style="display:inline-block;width:100px; text-align:right;">单价：</span><input class="admin_cm_zz_box" type="text" name="unit_price" readonly="readonly" id="resume_pri" value="{yun:}$listinfo.unit_price{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
-				<input name="id" type="hidden" value="{yun:}$row.id{/yun}">
+				<li><span style="display:inline-block;width:100px; text-align:right;">赠送次数：</span><input class="admin_cm_zz_box" type="text" name="resume_present" id="resume_unit" value="{yun:}$listinfo.resume_present{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+				<li><span style="display:inline-block;width:100px; text-align:right;">单价：</span><input class="admin_cm_zz_box" type="text" name="unit_price" id="resume_pri" value="{yun:}$listinfo.unit_price{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+				<input name="id" type="hidden" value="{yun:}$listinfo.id{/yun}">
 				<input id="giving" type="hidden" value="{yun:}$listinfo.giving{/yun}">
 				<input name="tid" type="hidden" value="{yun:}$listinfo.id{/yun}">
 			</ul>
