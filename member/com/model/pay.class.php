@@ -90,7 +90,7 @@ class pay_controller extends company
                 return_json('参数不正确，请正确填写！',500,['url'=>$_SERVER['HTTP_REFERER']]);
             }
             $data['type']='2';//0729-直接设置该值
-            $price=$integral;//0729-直接设置该值
+            $price=intval($_POST['price_int']);//0729-直接设置该值
 			if($data['type']=='2'&&$integral<1){
 				//$this->ACT_layer_msg("请正确填写购买数量！",8,$_SERVER['HTTP_REFERER']);
                 return_json('请正确填写购买数量！',500,['url'=>$_SERVER['HTTP_REFERER']]);
