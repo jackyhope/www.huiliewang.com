@@ -12,7 +12,10 @@ class pay_controller extends company
 {
 	function index_action()
 	{
-
+        include(CONFIG_PATH."db.data.php");
+        //取充值的赠送倍数，目前没区分，默认取一个二维数组里面的倍数值当通用
+        $new_price_interview_giving = current($arr_data['new_price']['interview'])['giving'];
+        $this->yunset("giving",$new_price_interview_giving);
 		$this->public_action();
 		$statis=$this->company_satic();
 		if($_GET['type']=='vip'){
