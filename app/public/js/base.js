@@ -263,9 +263,9 @@ function get_msg() {
                 })
                 $('.noticenum').css('display', 'inline-block');
                 $('.noticeBox>div').one('click', ev => {
-                    window.location.href = `/member/index.php?c=resume&act=detail&resume_id=${$(ev.target).attr('resume_id')}&project_id=${$(ev.target).attr('project_id_id')}`
+                    window.location.href = `/member/index.php?c=resume&act=detail&resume_id=${$(ev.currenttarget).attr('resume_id')}&project_id=${$(ev.currenttarget).attr('project_id')}`
                     Post('/member/index.php?c=sysnews&act=reed', {
-                        message_id: $(ev.target).attr('message_id')
+                        message_id: $(ev.currenttarget).attr('message_id')
                     }).then(res => {
                         get_msg()
                     }).catch(res => {
