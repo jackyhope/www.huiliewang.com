@@ -247,12 +247,12 @@ function get_msg() {
                 $('.noticenum').html(res.info.count);
                 $('.noticeBox').html(`
             <span class="readAll">全部设置为已读</span>
-            <span class='showAll'>
-            查看全部消息
-          </span>
             `)
+        //     <span class='showAll'>
+        //     查看全部消息
+        //   </span>
                 res.info.list.map(val => {
-                    $('.showAll').before(`
+                    $('.readAll').after(`
                 <div message_id='${val.id}' project_id='${val.job_id}' resume_id='${val.resume_id}'>
                 <span>
                   ${val.content}
@@ -263,9 +263,9 @@ function get_msg() {
                 })
                 $('.noticenum').css('display', 'inline-block');
                 $('.noticeBox>div').one('click', ev => {
-                    window.location.href = `/member/index.php?c=resume&act=detail&resume_id=${$(ev.currenttarget).attr('resume_id')}&project_id=${$(ev.currenttarget).attr('project_id')}`
+                    window.location.href = `/member/index.php?c=resume&act=detail&resume_id=${$(ev.currentTarget).attr('resume_id')}&project_id=${$(ev.currentTarget).attr('project_id')}`
                     Post('/member/index.php?c=sysnews&act=reed', {
-                        message_id: $(ev.currenttarget).attr('message_id')
+                        message_id: $(ev.currentTarget).attr('message_id')
                     }).then(res => {
                         get_msg()
                     }).catch(res => {
