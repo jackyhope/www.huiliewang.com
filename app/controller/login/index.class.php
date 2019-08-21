@@ -260,6 +260,10 @@ class index_controller extends common{
         $FrontLoginService = new com\hlw\huiliewang\interfaces\FrontLoginServiceClient(null);
         apiClient::build($FrontLoginService);
         $re = $FrontLoginService->jobShowData($obj);
+        foreach ($re->datas as &$info){
+            $info['logs'] && $info['logs'] = json_decode($info['logs'],true);
+        }
+
         return_json('',200,return_toArray((object)$re));
     }
     /**
