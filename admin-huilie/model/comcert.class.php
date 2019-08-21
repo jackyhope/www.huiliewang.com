@@ -126,6 +126,19 @@ class comcert_controller extends common{
 		     }
 		   }
 			if($id){
+			    //给认证过的企业增加慧沟通点数
+                if($_POST['status'] == 1){
+                    $userList = explode(',',$uid);
+                    foreach ($userList as $userId){
+                        $companyPayd = $this->obj->DB_select_once('company',"uid = {$userId}",'resume_payd,resume_payd_high');
+                        if($companyPayd['resume_payd'] > 0){
+                            continue;
+                        }
+                        $this->obj->DB_update_all("company","`resume_payd`=1,resume_payd_high = 1","`uid` = {$userId}");
+                    }
+
+                }
+
 				$this->ACT_layer_msg("企业认证审核(UID:".$uid.")设置成功！",9,$_SERVER['HTTP_REFERER'],2,1);
 			}else{
 				$this->ACT_layer_msg("设置失败！",8,$_SERVER['HTTP_REFERER']);
